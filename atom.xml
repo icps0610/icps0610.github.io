@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2016-06-13T02:01:20+08:00</updated>
+  <updated>2016-06-13T02:02:16+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -18,7 +18,7 @@
     <link href="http://icps0610.github.io/blog/2016/06/13/lint-bot/"/>
     <updated>2016-06-13T01:27:59+08:00</updated>
     <id>http://icps0610.github.io/blog/2016/06/13/lint-bot</id>
-    <content type="html"><![CDATA[<p><a href="https://business.line.me/zh-hant/products/4/introduction">https://business.line.me/zh-hant/products/4/introduction</a><br /><br/>
+    <content type="html"><![CDATA[<p><a href="https://business.line.me/zh-hant/products/4/introduction">https://business.line.me/zh-hant/products/4/introduction</a><br />
 <a href="https://github.com/line/line-bot-sdk-ruby">https://github.com/line/line-bot-sdk-ruby</a><br />
 <a href="https://developers.line.me/bot-api/overview">https://developers.line.me/bot-api/overview</a><br />
 <a href="https://www.heroku.com/">https://www.heroku.com/</a><br /></p>
