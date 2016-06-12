@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2016-06-13T01:48:47+08:00</updated>
+  <updated>2016-06-13T01:54:20+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -14,10 +14,10 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Title]]></title>
-    <link href="http://icps0610.github.io/blog/2016/06/13/title/"/>
+    <title type="html"><![CDATA[Line-bot]]></title>
+    <link href="http://icps0610.github.io/blog/2016/06/13/lint-bot/"/>
     <updated>2016-06-13T01:27:59+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/06/13/title</id>
+    <id>http://icps0610.github.io/blog/2016/06/13/lint-bot</id>
     <content type="html"><![CDATA[<h1>line-bot</h1>
 
 <p><a href="https://business.line.me/zh-hant/products/4/introduction">https://business.line.me/zh-hant/products/4/introduction</a>
