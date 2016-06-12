@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2016-06-13T01:54:20+08:00</updated>
+  <updated>2016-06-13T01:58:02+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -24,6 +24,52 @@
 <a href="https://github.com/line/line-bot-sdk-ruby">https://github.com/line/line-bot-sdk-ruby</a>
 <a href="https://developers.line.me/bot-api/overview">https://developers.line.me/bot-api/overview</a>
 <a href="https://www.heroku.com/">https://www.heroku.com/</a></p>
+
+<pre><code>
+Rails.application.routes.draw do
+  root :to => "page#index"
+  match '/callback' => "page#callback", :via => :post
+end
+
+class PageController < ApplicationController
+  protect_from_forgery with: :null_session
+
+  def index
+  end
+
+  def callback
+    line_msg = params[:result][0]
+    username = client.get_user_profile( line_msg["content"]["from"] ).contacts[0].display_name
+  end
+
+  private
+
+  def client
+    c = Line::Bot::Client.new do |config|
+      config.channel_id     = ENV["LINE_CHANNEL_ID"]
+      config.channel_secret = ENV["LINE_CHANNEL_SECRET"]
+      config.channel_mid    = ENV["LINE_CHANNEL_MID"]
+    end
+  end
+end
+</pre>
+
+
+<p></code></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Line-bot]]></title>
+    <link href="http://icps0610.github.io/blog/2016/06/13/line/"/>
+    <updated>2016-06-13T01:27:59+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/06/13/line</id>
+    <content type="html"><![CDATA[<h1>line-bot</h1>
+
+<p><a href="https://business.line.me/zh-hant/products/4/introduction">https://business.line.me/zh-hant/products/4/introduction</a><br><br/>
+<a href="https://github.com/line/line-bot-sdk-ruby">https://github.com/line/line-bot-sdk-ruby</a><br>
+<a href="https://developers.line.me/bot-api/overview">https://developers.line.me/bot-api/overview</a><br>
+<a href="https://www.heroku.com/">https://www.heroku.com/</a><br></p>
 
 <pre><code>
 Rails.application.routes.draw do
