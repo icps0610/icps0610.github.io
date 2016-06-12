@@ -96,32 +96,37 @@ https://developers.line.me/bot-api/ &hellip;">
 <a href="https://developers.line.me/bot-api/overview">https://developers.line.me/bot-api/overview</a>
 <a href="https://www.heroku.com/">https://www.heroku.com/</a></p>
 
-<p>Rails.application.routes.draw do
-  root :to => &ldquo;page#index&rdquo;
-  match &lsquo;/callback&rsquo; => &ldquo;page#callback&rdquo;, :via => :post
-end</p>
+<pre><code>
+Rails.application.routes.draw do
+  root :to => "page#index"
+  match '/callback' => "page#callback", :via => :post
+end
 
-<p>class PageController &lt; ApplicationController
-  protect_from_forgery with: :null_session</p>
+class PageController < ApplicationController
+  protect_from_forgery with: :null_session
 
-<p>  def index
-  end</p>
+  def index
+  end
 
-<p>  def callback
+  def callback
     line_msg = params[:result][0]
-    username = client.get_user_profile( line_msg[&ldquo;content&rdquo;][&ldquo;from&rdquo;] ).contacts[0].display_name
-  end</p>
+    username = client.get_user_profile( line_msg["content"]["from"] ).contacts[0].display_name
+  end
 
-<p>  private</p>
+  private
 
-<p>  def client
+  def client
     c = Line::Bot::Client.new do |config|
-      config.channel_id     = ENV[&ldquo;LINE_CHANNEL_ID&rdquo;]
-      config.channel_secret = ENV[&ldquo;LINE_CHANNEL_SECRET&rdquo;]
-      config.channel_mid    = ENV[&ldquo;LINE_CHANNEL_MID&rdquo;]
+      config.channel_id     = ENV["LINE_CHANNEL_ID"]
+      config.channel_secret = ENV["LINE_CHANNEL_SECRET"]
+      config.channel_mid    = ENV["LINE_CHANNEL_MID"]
     end
   end
-end</p>
+end
+</pre>
+
+
+<p></code></p>
 </div>
   
   
