@@ -1,1 +1,213 @@
 
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Title - icps</title>
+  <meta name="author" content="icps">
+
+  
+  <meta name="description" content="line-bot https://business.line.me/zh-hant/products/4/introduction
+https://github.com/line/line-bot-sdk-ruby
+https://developers.line.me/bot-api/ &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://icps0610.github.io/blog/2016/06/13/title/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="icps" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">icps</a></h1>
+  
+    <h2>notes</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="icps0610.github.io">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Title</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-06-13T01:27:59+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>1:27 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h1>line-bot</h1>
+
+<p><a href="https://business.line.me/zh-hant/products/4/introduction">https://business.line.me/zh-hant/products/4/introduction</a>
+<a href="https://github.com/line/line-bot-sdk-ruby">https://github.com/line/line-bot-sdk-ruby</a>
+<a href="https://developers.line.me/bot-api/overview">https://developers.line.me/bot-api/overview</a>
+<a href="https://www.heroku.com/">https://www.heroku.com/</a></p>
+
+<p>Rails.application.routes.draw do
+  root :to => &ldquo;page#index&rdquo;
+  match &lsquo;/callback&rsquo; => &ldquo;page#callback&rdquo;, :via => :post
+end</p>
+
+<p>class PageController &lt; ApplicationController
+  protect_from_forgery with: :null_session</p>
+
+<p>  def index
+  end</p>
+
+<p>  def callback
+    line_msg = params[:result][0]
+    username = client.get_user_profile( line_msg[&ldquo;content&rdquo;][&ldquo;from&rdquo;] ).contacts[0].display_name
+  end</p>
+
+<p>  private</p>
+
+<p>  def client
+    c = Line::Bot::Client.new do |config|
+      config.channel_id     = ENV[&ldquo;LINE_CHANNEL_ID&rdquo;]
+      config.channel_secret = ENV[&ldquo;LINE_CHANNEL_SECRET&rdquo;]
+      config.channel_mid    = ENV[&ldquo;LINE_CHANNEL_MID&rdquo;]
+    end
+  end
+end</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">icps</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2016-06-13T01:27:59+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>1:27 am</span></time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://icps0610.github.io/blog/2016/06/13/title/" data-via="" data-counturl="http://icps0610.github.io/blog/2016/06/13/title/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2016/06/13/title/">Title</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2016 - icps -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

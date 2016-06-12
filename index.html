@@ -9,8 +9,9 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="
-">
+  <meta name="description" content="line-bot https://business.line.me/zh-hant/products/4/introduction
+https://github.com/line/line-bot-sdk-ruby
+https://developers.line.me/bot-api/ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,14 +82,46 @@
 
 
 
-<time class='entry-date' datetime='2016-06-13T00:00:00+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>12:00 am</span></time>
+<time class='entry-date' datetime='2016-06-13T01:27:59+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>1:27 am</span></time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content">
+  <div class="entry-content"><h1>line-bot</h1>
+
+<p><a href="https://business.line.me/zh-hant/products/4/introduction">https://business.line.me/zh-hant/products/4/introduction</a>
+<a href="https://github.com/line/line-bot-sdk-ruby">https://github.com/line/line-bot-sdk-ruby</a>
+<a href="https://developers.line.me/bot-api/overview">https://developers.line.me/bot-api/overview</a>
+<a href="https://www.heroku.com/">https://www.heroku.com/</a></p>
+
+<p>Rails.application.routes.draw do
+  root :to => &ldquo;page#index&rdquo;
+  match &lsquo;/callback&rsquo; => &ldquo;page#callback&rdquo;, :via => :post
+end</p>
+
+<p>class PageController &lt; ApplicationController
+  protect_from_forgery with: :null_session</p>
+
+<p>  def index
+  end</p>
+
+<p>  def callback
+    line_msg = params[:result][0]
+    username = client.get_user_profile( line_msg[&ldquo;content&rdquo;][&ldquo;from&rdquo;] ).contacts[0].display_name
+  end</p>
+
+<p>  private</p>
+
+<p>  def client
+    c = Line::Bot::Client.new do |config|
+      config.channel_id     = ENV[&ldquo;LINE_CHANNEL_ID&rdquo;]
+      config.channel_secret = ENV[&ldquo;LINE_CHANNEL_SECRET&rdquo;]
+      config.channel_mid    = ENV[&ldquo;LINE_CHANNEL_MID&rdquo;]
+    end
+  end
+end</p>
 </div>
   
   

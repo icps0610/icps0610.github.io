@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2016-06-13T01:42:22+08:00</updated>
+  <updated>2016-06-13T01:45:50+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -16,9 +16,41 @@
   <entry>
     <title type="html"><![CDATA[Title]]></title>
     <link href="http://icps0610.github.io/blog/2016/06/13/title/"/>
-    <updated>2016-06-13T00:00:00+08:00</updated>
+    <updated>2016-06-13T01:27:59+08:00</updated>
     <id>http://icps0610.github.io/blog/2016/06/13/title</id>
-    <content type="html"><![CDATA[
+    <content type="html"><![CDATA[<h1>line-bot</h1>
+
+<p><a href="https://business.line.me/zh-hant/products/4/introduction">https://business.line.me/zh-hant/products/4/introduction</a>
+<a href="https://github.com/line/line-bot-sdk-ruby">https://github.com/line/line-bot-sdk-ruby</a>
+<a href="https://developers.line.me/bot-api/overview">https://developers.line.me/bot-api/overview</a>
+<a href="https://www.heroku.com/">https://www.heroku.com/</a></p>
+
+<p>Rails.application.routes.draw do
+  root :to => &ldquo;page#index&rdquo;
+  match &lsquo;/callback&rsquo; => &ldquo;page#callback&rdquo;, :via => :post
+end</p>
+
+<p>class PageController &lt; ApplicationController
+  protect_from_forgery with: :null_session</p>
+
+<p>  def index
+  end</p>
+
+<p>  def callback
+    line_msg = params[:result][0]
+    username = client.get_user_profile( line_msg[&ldquo;content&rdquo;][&ldquo;from&rdquo;] ).contacts[0].display_name
+  end</p>
+
+<p>  private</p>
+
+<p>  def client
+    c = Line::Bot::Client.new do |config|
+      config.channel_id     = ENV[&ldquo;LINE_CHANNEL_ID&rdquo;]
+      config.channel_secret = ENV[&ldquo;LINE_CHANNEL_SECRET&rdquo;]
+      config.channel_mid    = ENV[&ldquo;LINE_CHANNEL_MID&rdquo;]
+    end
+  end
+end</p>
 ]]></content>
   </entry>
   
