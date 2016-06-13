@@ -102,43 +102,52 @@ end 1
 
 
 <div class="entry-content"><!--more-->
+
+
 <p><a href="https://github.com/amatsuda/kaminari">kaminari</a></p>
 
-<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="c1">## controller</span>
-</span><span class="line"><span class="k">def</span> <span class="nf">index</span>
-</span><span class="line">  <span class="vi">@groups</span> <span class="o">=</span> <span class="no">Group</span><span class="o">.</span><span class="n">page</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:page</span><span class="o">]</span><span class="p">)</span><span class="o">.</span><span class="n">per</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-</span><span class="line"><span class="k">end</span>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">## controller</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">index</span>
+</span><span class='line'>  <span class="vi">@groups</span> <span class="o">=</span> <span class="no">Group</span><span class="o">.</span><span class="n">page</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:page</span><span class="o">]</span><span class="p">)</span><span class="o">.</span><span class="n">per</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</span><span class='line'><span class="k">end</span>
 </span></code></pre></td></tr></table></div></figure>
 
-<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="c1">#view</span>
-</span><span class="line"> <span class="o">&lt;%=</span> <span class="n">paginate</span> <span class="vi">@groups</span> <span class="o">%&gt;</span>
+
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#view</span>
+</span><span class='line'> <span class="o">&lt;%=</span> <span class="n">paginate</span> <span class="vi">@groups</span> <span class="o">%&gt;</span>
 </span></code></pre></td></tr></table></div></figure>
 
-<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="c1">#config/locales/kaminari.yml</span>
-</span><span class="line"><span class="ss">zh</span><span class="p">:</span>
-</span><span class="line"><span class="ss">views</span><span class="p">:</span>
-</span><span class="line"><span class="ss">pagination</span><span class="p">:</span>
-</span><span class="line"><span class="ss">first</span><span class="p">:</span> <span class="s2">&quot;« 首頁&quot;</span>
-</span><span class="line"><span class="ss">last</span><span class="p">:</span> <span class="s2">&quot;末頁 »&quot;</span>
-</span><span class="line"><span class="ss">previous</span><span class="p">:</span> <span class="s2">&quot;‹ 上一頁&quot;</span>
-</span><span class="line"><span class="k">next</span><span class="p">:</span> <span class="s2">&quot;下一頁 ›&quot;</span>
-</span><span class="line"><span class="ss">truncate</span><span class="p">:</span> <span class="s2">&quot;…&quot;</span>
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#config/locales/kaminari.yml</span>
+</span><span class='line'><span class="ss">zh</span><span class="p">:</span>
+</span><span class='line'><span class="ss">views</span><span class="p">:</span>
+</span><span class='line'><span class="ss">pagination</span><span class="p">:</span>
+</span><span class='line'><span class="ss">first</span><span class="p">:</span> <span class="s2">&quot;« 首頁&quot;</span>
+</span><span class='line'><span class="ss">last</span><span class="p">:</span> <span class="s2">&quot;末頁 »&quot;</span>
+</span><span class='line'><span class="ss">previous</span><span class="p">:</span> <span class="s2">&quot;‹ 上一頁&quot;</span>
+</span><span class='line'><span class="k">next</span><span class="p">:</span> <span class="s2">&quot;下一頁 ›&quot;</span>
+</span><span class='line'><span class="ss">truncate</span><span class="p">:</span> <span class="s2">&quot;…&quot;</span>
 </span></code></pre></td></tr></table></div></figure>
+
 </div>
 
 

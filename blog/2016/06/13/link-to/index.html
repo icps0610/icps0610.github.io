@@ -87,18 +87,22 @@ user = params[:user] &hellip;">
 
 
 <div class="entry-content"><!--more-->
-<figure class="code"><figcaption><span>index.erb </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="erb"><span class="line"><span class="cp">&lt;%=</span> <span class="n">link_to</span> <span class="s2">&quot;Re&quot;</span><span class="p">,</span> <span class="n">new_msg_path</span><span class="p">(</span> <span class="ss">:user</span> <span class="o">=&gt;</span> <span class="n">msg</span><span class="o">.</span><span class="n">name</span> <span class="p">)</span> <span class="cp">%&gt;</span><span class="x"></span>
+
+
+<figure class='code'><figcaption><span>index.erb </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='erb'><span class='line'><span class="cp">&lt;%=</span> <span class="n">link_to</span> <span class="s2">&quot;Re&quot;</span><span class="p">,</span> <span class="n">new_msg_path</span><span class="p">(</span> <span class="ss">:user</span> <span class="o">=&gt;</span> <span class="n">msg</span><span class="o">.</span><span class="n">name</span> <span class="p">)</span> <span class="cp">%&gt;</span><span class="x"></span>
 </span></code></pre></td></tr></table></div></figure>
 
-<p>http://192.168.1.220/msgs/new?user=icps<br />
+
+<p><a href="http://192.168.1.220/msgs/new?user=icps">http://192.168.1.220/msgs/new?user=icps</a><br/>
 user = params[:user]</p>
 
-<figure class="code"><figcaption><span>new.erb </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="erb"><span class="line"><span class="cp">&lt;%=</span> <span class="n">f</span><span class="o">.</span><span class="n">input</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">input_html</span><span class="p">:</span> <span class="p">{</span> <span class="ss">:value</span> <span class="o">=&gt;</span> <span class="vi">@user</span> <span class="p">}</span> <span class="cp">%&gt;</span><span class="x"></span>
+<figure class='code'><figcaption><span>new.erb </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='erb'><span class='line'><span class="cp">&lt;%=</span> <span class="n">f</span><span class="o">.</span><span class="n">input</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">input_html</span><span class="p">:</span> <span class="p">{</span> <span class="ss">:value</span> <span class="o">=&gt;</span> <span class="vi">@user</span> <span class="p">}</span> <span class="cp">%&gt;</span><span class="x"></span>
 </span></code></pre></td></tr></table></div></figure>
+
 </div>
 
 
