@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2016-06-14T01:00:20+08:00</updated>
+  <updated>2016-06-14T01:12:20+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,110 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Sublime Text]]></title>
+    <link href="http://icps0610.github.io/blog/2016/06/14/sublime-text/"/>
+    <updated>2016-06-14T01:02:30+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/06/14/sublime-text</id>
+    <content type="html"><![CDATA[<p><a href="http://www.sublimetext.com/2">http://www.sublimetext.com/2</a></p>
+
+<ul>
+<li>中文化  %APPDATA%\Sublime Text 2\Packages\Default</li>
+<li>安裝套件 <a href="https://sublime.wbond.net/installation">https://sublime.wbond.net/installation</a></li>
+<li>ctrl +shit+p，然後輸入install Package <enter></li>
+</ul>
+
+
+<figure class='code'><figcaption><span>BracketHighlighter#376 </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>"bracket_styles": {
+</span><span class='line'> 
+</span><span class='line'>"default": {
+</span><span class='line'> 
+</span><span class='line'>"color": "entity.name.class",
+</span><span class='line'>"style": "highlight",
+</span><span class='line'> 
+</span><span class='line'>"quote_scope" : "bracket.quote",
+</span><span class='line'>"curly_scope" : "bracket.curly",
+</span><span class='line'>"round_scope" : "bracket.round",
+</span><span class='line'>"square_scope": "bracket.square",
+</span><span class='line'>"angle_scope" : "bracket.angle",
+</span><span class='line'>"tag_scope"   : "bracket.tag",
+</span><span class='line'> 
+</span><span class='line'>// 高亮樣式 (solid|outline|underline|none)
+</span><span class='line'>"quote_style" : "solid",
+</span><span class='line'>"curly_style" : "solid",
+</span><span class='line'>"round_style" : "solid",
+</span><span class='line'>"square_style": "solid",
+</span><span class='line'>"angle_style" : "solid",
+</span><span class='line'>"tag_style"   : "outline"
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span>emment#setting </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>{
+</span><span class='line'>  "snippets":{
+</span><span class='line'>      "html":{
+</span><span class='line'>          "snippets":{
+</span><span class='line'>          "ff" : "&lt;%= form_for ${1:} %>\n&lt;% end %>",
+</span><span class='line'>          "sf" : "&lt;%= simple_form_for ${1:} %>\n&lt;% end %>",
+</span><span class='line'>          "fl" : "&lt;%= link_to ${1:} %>",
+</span><span class='line'>          "fb" : "&lt;%= button_to ${1:} %>",
+</span><span class='line'>          "fe" : "&lt;%= ${1:} %>",
+</span><span class='line'>          "ee" : "&lt;% ${1:} %>",
+</span><span class='line'>          "eif" : "&lt;% if ${1:} %>",
+</span><span class='line'>          "ed" : "&lt;% end %>",
+</span><span class='line'>          "else" : "&lt;% else %>",
+</span><span class='line'>          "pre" : "&lt;pre>${1:}&lt;/pre>",
+</span><span class='line'>          }
+</span><span class='line'>      }
+</span><span class='line'>  }
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Link_to]]></title>

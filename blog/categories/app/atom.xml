@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: App | icps]]></title>
+  <link href="http://icps0610.github.io/blog/categories/app/atom.xml" rel="self"/>
+  <link href="http://icps0610.github.io/"/>
+  <updated>2016-06-14T01:12:20+08:00</updated>
+  <id>http://icps0610.github.io/</id>
+  <author>
+    <name><![CDATA[icps]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Sublime Text]]></title>
+    <link href="http://icps0610.github.io/blog/2016/06/14/sublime-text/"/>
+    <updated>2016-06-14T01:02:30+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/06/14/sublime-text</id>
+    <content type="html"><![CDATA[<p><a href="http://www.sublimetext.com/2">http://www.sublimetext.com/2</a></p>
+
+<ul>
+<li>中文化  %APPDATA%\Sublime Text 2\Packages\Default</li>
+<li>安裝套件 <a href="https://sublime.wbond.net/installation">https://sublime.wbond.net/installation</a></li>
+<li>ctrl +shit+p，然後輸入install Package <enter></li>
+</ul>
+
+
+<p><figure class='code'><figcaption><span>BracketHighlighter#376 </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&ldquo;bracket_styles&rdquo;: {&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p>&ldquo;default&rdquo;: {&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p>&ldquo;color&rdquo;: &ldquo;entity.name.class&rdquo;,
+</span><span class='line'>&ldquo;style&rdquo;: &ldquo;highlight&rdquo;,&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p>&ldquo;quote_scope&rdquo; : &ldquo;bracket.quote&rdquo;,
+</span><span class='line'>&ldquo;curly_scope&rdquo; : &ldquo;bracket.curly&rdquo;,
+</span><span class='line'>&ldquo;round_scope&rdquo; : &ldquo;bracket.round&rdquo;,
+</span><span class='line'>&ldquo;square_scope&rdquo;: &ldquo;bracket.square&rdquo;,
+</span><span class='line'>&ldquo;angle_scope&rdquo; : &ldquo;bracket.angle&rdquo;,
+</span><span class='line'>&ldquo;tag_scope&rdquo;   : &ldquo;bracket.tag&rdquo;,&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;p>// 高亮樣式 (solid|outline|underline|none)
+</span><span class='line'>&ldquo;quote_style&rdquo; : &ldquo;solid&rdquo;,
+</span><span class='line'>&ldquo;curly_style&rdquo; : &ldquo;solid&rdquo;,
+</span><span class='line'>&ldquo;round_style&rdquo; : &ldquo;solid&rdquo;,
+</span><span class='line'>&ldquo;square_style&rdquo;: &ldquo;solid&rdquo;,
+</span><span class='line'>&ldquo;angle_style&rdquo; : &ldquo;solid&rdquo;,
+</span><span class='line'>&ldquo;tag_style&rdquo;   : &ldquo;outline&rdquo;
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure></p>
+
+<p><figure class='code'><figcaption><span>emment#setting </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>{
+</span><span class='line'>    &ldquo;snippets&rdquo;:{
+</span><span class='line'>        &ldquo;html&rdquo;:{
+</span><span class='line'>            &ldquo;snippets&rdquo;:{
+</span><span class='line'>            &ldquo;ff&rdquo; : &ldquo;&lt;%= form_for ${1:} %>\n&lt;% end %>&rdquo;,
+</span><span class='line'>            &ldquo;sf&rdquo; : &ldquo;&lt;%= simple_form_for ${1:} %>\n&lt;% end %>&rdquo;,
+</span><span class='line'>            &ldquo;fl&rdquo; : &ldquo;&lt;%= link_to ${1:} %>&rdquo;,
+</span><span class='line'>            &ldquo;fb&rdquo; : &ldquo;&lt;%= button_to ${1:} %>&rdquo;,
+</span><span class='line'>            &ldquo;fe&rdquo; : &ldquo;&lt;%= ${1:} %>&rdquo;,
+</span><span class='line'>            &ldquo;ee&rdquo; : &ldquo;&lt;% ${1:} %>&rdquo;,
+</span><span class='line'>            &ldquo;eif&rdquo; : &ldquo;&lt;% if ${1:} %>&rdquo;,
+</span><span class='line'>            &ldquo;ed&rdquo; : &ldquo;&lt;% end %>&rdquo;,
+</span><span class='line'>            &ldquo;else&rdquo; : &ldquo;&lt;% else %>&rdquo;,
+</span><span class='line'>            &ldquo;pre&rdquo; : &ldquo;&lt;pre>${1:}&lt;/pre>&rdquo;,
+</span><span class='line'>            }
+</span><span class='line'>        }
+</span><span class='line'>    }
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure></p>
+]]></content>
+  </entry>
+  
+</feed>
