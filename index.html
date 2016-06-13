@@ -95,22 +95,21 @@ https &hellip;">
 <a href="https://developers.line.me/bot-api/overview">https://developers.line.me/bot-api/overview</a><br />
 <a href="https://www.heroku.com/">https://www.heroku.com/</a><br /></p>
 
-<pre><code class="``ruby">Rails.application.routes.draw do
-  root :to =&gt; "page#index"
-  match '/callback' =&gt; "page#callback", :via =&gt; :post
-end
-</code></pre>
+<figure class='code'><figcaption><span>routes.rb </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='rb'><span class='line'><span class="no">Rails</span><span class="o">.</span><span class="n">application</span><span class="o">.</span><span class="n">routes</span><span class="o">.</span><span class="n">draw</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">root</span> <span class="ss">:to</span> <span class="o">=&gt;</span> <span class="s2">&quot;page#index&quot;</span>
+</span><span class='line'>  <span class="n">match</span> <span class="s1">&#39;/callback&#39;</span> <span class="o">=&gt;</span> <span class="s2">&quot;page#callback&quot;</span><span class="p">,</span> <span class="ss">:via</span> <span class="o">=&gt;</span> <span class="ss">:post</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<pre><code class="`` ruby">  def client
-    c = Line::Bot::Client.new do |config|
-      config.channel_id     = ENV["LINE_CHANNEL_ID"]
-      config.channel_secret = ENV["LINE_CHANNEL_SECRET"]
-      config.channel_mid    = ENV["LINE_CHANNEL_MID"]
-    end
-  end
-</code></pre>
 
-<figure class='code'><figcaption><span>Time to be Awesome - awesome.rb </span></figcaption>
+
+
+<figure class='code'><figcaption><span>controller.rb </span></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
