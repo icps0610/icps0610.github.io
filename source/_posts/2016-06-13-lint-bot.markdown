@@ -11,7 +11,7 @@ https://developers.line.me/bot-api/overview<br />
 https://www.heroku.com/<br />
 
   ```ruby
-  Rails.application.routes.draw do
+Rails.application.routes.draw do
   root :to => "page#index"
   match '/callback' => "page#callback", :via => :post
 end
