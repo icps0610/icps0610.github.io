@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2016-06-13T09:41:45+08:00</updated>
+  <updated>2016-06-13T09:45:52+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -51,12 +51,13 @@ class PageController &lt; ApplicationController
 end
 </code></pre>
 
-<pre><code class="`c 標題 http://wen00072-blog.logdown.com/ URL文字說明"> #include &lt;stdio.h&gt;
- int main(void)
- { 
-    printf("Hello World\n");
-    return 0;
- }
+<pre><code class="`` ruby">  def client
+    c = Line::Bot::Client.new do |config|
+      config.channel_id     = ENV["LINE_CHANNEL_ID"]
+      config.channel_secret = ENV["LINE_CHANNEL_SECRET"]
+      config.channel_mid    = ENV["LINE_CHANNEL_MID"]
+    end
+  end
 </code></pre>
 ]]></content>
   </entry>
