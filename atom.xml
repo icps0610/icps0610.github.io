@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2016-06-13T09:38:59+08:00</updated>
+  <updated>2016-06-13T09:40:16+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -49,6 +49,15 @@ class PageController &lt; ApplicationController
     end
   end
 end
+</code></pre>
+
+<pre><code class="`ruby ">  def client
+    c = Line::Bot::Client.new do |config|
+      config.channel_id     = ENV["LINE_CHANNEL_ID"]
+      config.channel_secret = ENV["LINE_CHANNEL_SECRET"]
+      config.channel_mid    = ENV["LINE_CHANNEL_MID"]
+    end
+  end
 </code></pre>
 ]]></content>
   </entry>
