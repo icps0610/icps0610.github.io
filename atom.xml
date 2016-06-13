@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2016-06-14T00:58:23+08:00</updated>
+  <updated>2016-06-14T01:00:20+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -116,8 +116,8 @@ user = params[:user]</p>
 </span><span class='line'>gem "auto-facebook", "0.42"</span></code></pre></td></tr></table></div></figure>
 
 
-<p><code>debug Could not find generator devise:install</code>
-<code>gem "devise", "3.4.1"</code></p>
+<blockquote><p>Could not find generator devise:install
+<code>gem "devise", "3.4.1"</code></p></blockquote>
 
 <pre><code>rails generate devise:install
 rails generate devise user
