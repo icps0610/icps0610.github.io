@@ -10,8 +10,8 @@ https://github.com/line/line-bot-sdk-ruby<br />
 https://developers.line.me/bot-api/overview<br />
 https://www.heroku.com/<br />
 
- ```ruby
-Rails.application.routes.draw do
+  ```ruby
+  Rails.application.routes.draw do
   root :to => "page#index"
   match '/callback' => "page#callback", :via => :post
 end
@@ -38,4 +38,4 @@ class PageController < ApplicationController
   end
 end
 
-```
+  ```
