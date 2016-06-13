@@ -39,11 +39,12 @@ class PageController < ApplicationController
 end
 
   ```
- ```c 標題 http://wen00072-blog.logdown.com/ URL文字說明
- #include <stdio.h>
- int main(void)
- { 
-    printf("Hello World\n");
-    return 0;
- }
- ```
+  ``` ruby
+  def client
+    c = Line::Bot::Client.new do |config|
+      config.channel_id     = ENV["LINE_CHANNEL_ID"]
+      config.channel_secret = ENV["LINE_CHANNEL_SECRET"]
+      config.channel_mid    = ENV["LINE_CHANNEL_MID"]
+    end
+  end
+  ``` 
