@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2016-06-13T13:16:49+08:00</updated>
+  <updated>2016-06-13T13:19:35+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,121 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[FB_login]]></title>
+    <link href="http://icps0610.github.io/blog/2016/06/13/fb-login/"/>
+    <updated>2016-06-13T13:17:38+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/06/13/fb-login</id>
+    <content type="html"><![CDATA[<p>1.使用devise</p>
+
+<figure class='code'><figcaption><span>Gemfile </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>gem 'devise' #使用者
+</span><span class='line'>gem "settingslogic" #密鑰隱藏功能
+</span><span class='line'>gem "omniauth" #fb認證
+</span><span class='line'>gem "omniauth-facebook"
+</span><span class='line'>gem "auto-facebook", "0.42"</span></code></pre></td></tr></table></div></figure>
+
+
+<p>rails generate devise:install</p>
+
+<h1>debug Could not find generator devise:install</h1>
+
+<h1>solve gem &lsquo;devise&rsquo;, &lsquo;3.4.1&rsquo;</h1>
+
+<p>rails generate devise user
+rails generate devise:views
+rake db:migrate</p>
+
+<p>2./config/initializers/devise.rb</p>
+
+<p>config.authentication_keys = [ :name ] #32行 登入key</p>
+
+<p>3.db/migrate/XXXXXX_devise_create_users.rb</p>
+
+<p>t.string :name, null: false, default: &ldquo;&rdquo;
+t.string :email, null: true, default: &ldquo;&rdquo;, unique: true
+t.string :fb_id, :limit => 20
+t.string :token</p>
+
+<p>add_index :users, :name,                unique: true</p>
+
+<p>4.#NEW app/models/settings.rb</p>
+
+<p>class Settings &lt; Settingslogic
+    source &ldquo;#{Rails.root}/config/application.yml&rdquo;
+    namespace Rails.env
+end</p>
+
+<p>5.<a href="https://developers.facebook.com">https://developers.facebook.com</a> 開新的 app
+6.#NEW config/application.yml</p>
+
+<p>defaults: &amp;defaults
+app_name: &ldquo;name&rdquo;
+facebook_app_id: &ldquo;G/q)T,^@kA7h/7]zO<em>hEI{52&rdquo;
+facebook_secret: &ldquo;tms5{KpOqaYQw</em>;?9Uv<sup>5X2wT</sup>+&amp;)#{##;Ff9n2 jy<sup>m</sup>^:u1m&rdquo;</p>
+
+<p>development:
+&lt;&lt;: *defaults
+domain: &ldquo;<a href="http://192.168.1.220">http://192.168.1.220</a>&rdquo;</p>
+
+<p>test:
+&lt;&lt;: *defaults</p>
+
+<p>production:
+&lt;&lt;: *defaults</p>
+
+<ol>
+<li>rails g auto_facebook:install
+8.#config/initializers/devise.rb 233
+config.omniauth :facebook, Settings.facebook_app_id, Settings.facebook_secret, :scope => &lsquo;email&rsquo;
+Setting ===> Settings</li>
+</ol>
+
+
+<p>9.app/model/user.rb</p>
+
+<p>def email_required? #email空白
+    false
+end</p>
+
+<p>def email_changed?
+    false
+end</p>
+
+<h1>驗證name email</h1>
+
+<p>validates :name, presence: true, uniqueness: { case_sensitive: false }
+validates :email, allow_blank: true , uniqueness: { case_sensitive: false }</p>
+
+<p>devise :database_authenticatable, :registerable,
+:recoverable, :rememberable, :trackable, :validatable, :omniauthable, :authentication_keys => [ :name ]</p>
+
+<p>10.view</p>
+
+<p>&lt;% if current_user %>
+    &lt;%= current_user.name %>
+    &lt;%= link_to &ldquo;登出&rdquo;, destroy_user_session_path, method: :delete %></li>
+&lt;% else %>
+    &lt;%= link_to &ldquo;註冊&rdquo;, new_user_registration_path %></li>
+    &lt;%= link_to &ldquo;登入&rdquo;, new_user_session_path %></li>
+    &lt;%= link_to(&ldquo;Facebook Login&rdquo;, Settings.domain + user_omniauth_authorize_path(:facebook)) %> </li>
+&lt;% end %></p>
+
+<p>11.fb 圖片</p>
+
+<p>def user_image(user,size)
+    if not user.fb_id == nil
+        link_to(image_tag(&ldquo;<a href="http://graph.facebook.com/#">http://graph.facebook.com/#</a>{user.fb_id}/picture&rdquo;, :size => size), &ldquo;<a href="https://www.facebook.com/#">https://www.facebook.com/#</a>{user.fb_id}&rdquo;)
+    end
+end</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Line-bot]]></title>
