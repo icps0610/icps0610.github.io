@@ -9,9 +9,9 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="http://www.sublimetext.com/2 中文化 %APPDATA%\Sublime Text 2\Packages\Default
-安裝套件 https://sublime.wbond.net/installation
-ctrl +shit+p，然後輸入install &hellip;">
+  <meta name="description" content="@echo off
+mode con cols=70 lines=10
+setlocal EnableDelayedExpansion echo %~nx1 解壓縮中... for /f "delims=" %%i in (D:\passwd.txt) do ( 7z x -y -p"%%i &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -67,6 +67,169 @@ ctrl +shit+p，然後輸入install &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2016/06/14/extract/">Extract</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-06-14T01:38:36+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>1:38 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><pre><code>@echo off
+mode con cols=70 lines=10
+setlocal EnableDelayedExpansion
+ 
+echo %~nx1 解壓縮中...
+ 
+for /f "delims=" %%i in (D:\passwd.txt) do (
+   7z x -y -p"%%i" "%~1" -o"%~dp1" > nul
+   if !errorlevel!== 0 (
+   echo ===  %~nx1 已完成...
+   echo  &ping -n 2 127.0.0.1 >nul & echo 
+   ping -n 5 127.0.0.1 > nul
+   exit
+   )
+)
+ 
+echo %~1 密碼庫沒有符合密碼或是rar損毀 
+echo %date:~5,5%%time:~,5%  %~1>> %USERPROFILE%\desktop\log.txt
+echo 
+ping -n 10 127.0.0.1 > nul
+</code></pre>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2016/06/14/set-ip/">Set_ip</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-06-14T01:37:19+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>1:37 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><pre><code>@echo off
+netsh add helper ifmon.dll > nul
+netsh interface ip set address name="區域連線" source=static addr=192.168.1.150 mask=255.255.255.0 gateway=192.168.1.1 gwmetric=1 > nul
+ipconfig
+ping 127.0.0.1 -n 3 > nul
+</code></pre>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2016/06/14/check-os-bit/">Check Os Bit</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-06-14T01:34:10+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>1:34 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><pre><code>@echo off
+if %PROCESSOR_ARCHITECTURE% == AMD64 echo 64
+if %PROCESSOR_ARCHITECTURE% == x86 echo 32
+pause
+</code></pre>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2016/06/14/wifi/">Wifi</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-06-14T01:25:12+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>1:25 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>把wifi網卡當作基地台</h3>
+
+<pre><code>@echo off
+netsh wlan set hostednetwork mode=allow ssid=<font color="red">wifi-name</font> key=<font color="red">12345</font>
+netsh wlan start hostednetwork
+echo ==============已經啟動 按任意鍵取消==============
+pause>nul
+netsh wlan stop hostednetwork
+</code></pre>
+
+
+<h3>顯示wifi密碼</h3>
+
+<pre><code>netsh wlan show profile name=<font color="red">wifi-name</font> key=clear
+</code></pre>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -332,6 +495,7 @@ ctrl +shit+p，然後輸入install &hellip;">
   <h1>分類</h1>
   <ul id="categories">
     <li class='category'><a href='/blog/categories/app/'>app (1)</a></li>
+<li class='category'><a href='/blog/categories/bat/'>bat (4)</a></li>
 <li class='category'><a href='/blog/categories/ror/'>ror (4)</a></li>
 
   </ul>
@@ -341,23 +505,23 @@ ctrl +shit+p，然後輸入install &hellip;">
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2016/06/14/extract/">Extract</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/06/14/set-ip/">Set_ip</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/06/14/check-os-bit/">Check Os Bit</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/06/14/wifi/">Wifi</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2016/06/14/sublime-text/">Sublime Text</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/06/13/link-to/">Link_to</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/06/13/kaminari/">Kaminari</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/06/13/fb-login/">FB_login</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/06/13/line/">Line-bot</a>
       </li>
     
   </ul>
