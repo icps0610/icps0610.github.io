@@ -48,3 +48,6 @@ end
     end
   end
   ``` 
+{% codeblock Time to be Awesome - awesome.rb %}
+puts "Awesome!" unless lame
+{% endcodeblock %}
