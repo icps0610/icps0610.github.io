@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://icps0610.github.io/blog/2016/06/13/link-to/</loc>
+<lastmod>2016-06-13T20:34:30+08:00</lastmod>
+</url>
+<url>
+<loc>http://icps0610.github.io/blog/2016/06/13/kaminari/</loc>
+<lastmod>2016-06-13T15:39:41+08:00</lastmod>
+</url>
+<url>
 <loc>http://icps0610.github.io/blog/2016/06/13/fb-login/</loc>
 <lastmod>2016-06-13T13:17:38+08:00</lastmod>
 </url>
@@ -13,5 +21,8 @@
 </url>
 <url>
 <loc>http://icps0610.github.io/blog/archives/</loc>
+</url>
+<url>
+<loc>http://icps0610.github.io/blog/categories/ror/</loc>
 </url>
 </urlset>

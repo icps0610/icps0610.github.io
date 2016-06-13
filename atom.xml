@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2016-06-13T13:26:51+08:00</updated>
+  <updated>2016-06-14T00:28:32+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -14,189 +14,234 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Link_to]]></title>
+    <link href="http://icps0610.github.io/blog/2016/06/13/link-to/"/>
+    <updated>2016-06-13T20:34:30+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/06/13/link-to</id>
+    <content type="html"><![CDATA[<!--more-->
+<figure class="code"><figcaption><span>index.erb </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="erb"><span class="line"><span class="cp">&lt;%=</span> <span class="n">link_to</span> <span class="s2">&quot;Re&quot;</span><span class="p">,</span> <span class="n">new_msg_path</span><span class="p">(</span> <span class="ss">:user</span> <span class="o">=&gt;</span> <span class="n">msg</span><span class="o">.</span><span class="n">name</span> <span class="p">)</span> <span class="cp">%&gt;</span><span class="x"></span>
+</span></code></pre></td></tr></table></div></figure>
+
+<p>http://192.168.1.220/msgs/new?user=icps<br />
+user = params[:user]</p>
+
+<figure class="code"><figcaption><span>new.erb </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="erb"><span class="line"><span class="cp">&lt;%=</span> <span class="n">f</span><span class="o">.</span><span class="n">input</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">input_html</span><span class="p">:</span> <span class="p">{</span> <span class="ss">:value</span> <span class="o">=&gt;</span> <span class="vi">@user</span> <span class="p">}</span> <span class="cp">%&gt;</span><span class="x"></span>
+</span></code></pre></td></tr></table></div></figure>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Kaminari]]></title>
+    <link href="http://icps0610.github.io/blog/2016/06/13/kaminari/"/>
+    <updated>2016-06-13T15:39:41+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/06/13/kaminari</id>
+    <content type="html"><![CDATA[<!--more-->
+<p><a href="https://github.com/amatsuda/kaminari">kaminari</a></p>
+
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="c1">## controller</span>
+</span><span class="line"><span class="k">def</span> <span class="nf">index</span>
+</span><span class="line">  <span class="vi">@groups</span> <span class="o">=</span> <span class="no">Group</span><span class="o">.</span><span class="n">page</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:page</span><span class="o">]</span><span class="p">)</span><span class="o">.</span><span class="n">per</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</span><span class="line"><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="c1">#view</span>
+</span><span class="line"> <span class="o">&lt;%=</span> <span class="n">paginate</span> <span class="vi">@groups</span> <span class="o">%&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="c1">#config/locales/kaminari.yml</span>
+</span><span class="line"><span class="ss">zh</span><span class="p">:</span>
+</span><span class="line"><span class="ss">views</span><span class="p">:</span>
+</span><span class="line"><span class="ss">pagination</span><span class="p">:</span>
+</span><span class="line"><span class="ss">first</span><span class="p">:</span> <span class="s2">&quot;« 首頁&quot;</span>
+</span><span class="line"><span class="ss">last</span><span class="p">:</span> <span class="s2">&quot;末頁 »&quot;</span>
+</span><span class="line"><span class="ss">previous</span><span class="p">:</span> <span class="s2">&quot;‹ 上一頁&quot;</span>
+</span><span class="line"><span class="k">next</span><span class="p">:</span> <span class="s2">&quot;下一頁 ›&quot;</span>
+</span><span class="line"><span class="ss">truncate</span><span class="p">:</span> <span class="s2">&quot;…&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[FB_login]]></title>
     <link href="http://icps0610.github.io/blog/2016/06/13/fb-login/"/>
     <updated>2016-06-13T13:17:38+08:00</updated>
     <id>http://icps0610.github.io/blog/2016/06/13/fb-login</id>
-    <content type="html"><![CDATA[<p>1.使用devise</p>
+    <content type="html"><![CDATA[<!--more-->
+<p>### 使用devise</p>
+<figure class="code"><figcaption><span>Gemfile </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">gem 'devise' #使用者
+</span><span class="line">gem "settingslogic" #密鑰隱藏功能
+</span><span class="line">gem "omniauth" #fb認證
+</span><span class="line">gem "omniauth-facebook"
+</span><span class="line">gem "auto-facebook", "0.42"</span></code></pre></td></tr></table></div></figure>
 
-<figure class='code'><figcaption><span>Gemfile </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>gem 'devise' #使用者
-</span><span class='line'>gem "settingslogic" #密鑰隱藏功能
-</span><span class='line'>gem "omniauth" #fb認證
-</span><span class='line'>gem "omniauth-facebook"
-</span><span class='line'>gem "auto-facebook", "0.42"</span></code></pre></td></tr></table></div></figure>
+<h3 id="debug-could-not-find-generator-deviseinstall">debug Could not find generator devise:install</h3>
+<p>###	solve gem ‘devise’, ‘3.4.1’###</p>
 
-
-<p>rails generate devise:install</p>
-
-<h1>debug Could not find generator devise:install</h1>
-
-<h1>solve gem &lsquo;devise&rsquo;, &lsquo;3.4.1&rsquo;</h1>
-
-<p>rails generate devise user
+<pre><code>rails generate devise:install
+rails generate devise user
 rails generate devise:views
-rake db:migrate</p>
+rake db:migrate
+</code></pre>
 
-<p>2./config/initializers/devise.rb</p>
-
-<p>config.authentication_keys = [ :name ] #32行 登入key</p>
-
-<p>3</p>
-
-<figure class='code'><figcaption><span>db/migrate/XXXXXX_devise_create_users.rb </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='rb'><span class='line'><span class="n">t</span><span class="o">.</span><span class="n">string</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">null</span><span class="p">:</span> <span class="kp">false</span><span class="p">,</span> <span class="ss">default</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
-</span><span class='line'><span class="n">t</span><span class="o">.</span><span class="n">string</span> <span class="ss">:email</span><span class="p">,</span> <span class="ss">null</span><span class="p">:</span> <span class="kp">true</span><span class="p">,</span> <span class="ss">default</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="ss">unique</span><span class="p">:</span> <span class="kp">true</span>
-</span><span class='line'><span class="n">t</span><span class="o">.</span><span class="n">string</span> <span class="ss">:fb_id</span><span class="p">,</span> <span class="ss">:limit</span> <span class="o">=&gt;</span> <span class="mi">20</span>
-</span><span class='line'><span class="n">t</span><span class="o">.</span><span class="n">string</span> <span class="ss">:token</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">add_index</span> <span class="ss">:users</span><span class="p">,</span> <span class="ss">:name</span><span class="p">,</span>                <span class="ss">unique</span><span class="p">:</span> <span class="kp">true</span>
+<figure class="code"><figcaption><span>/config/initializers/devise.rb </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="rb"><span class="line"><span class="n">config</span><span class="o">.</span><span class="n">authentication_keys</span> <span class="o">=</span> <span class="o">[</span> <span class="ss">:name</span> <span class="o">]</span> <span class="c1">#32行 登入key</span>
 </span></code></pre></td></tr></table></div></figure>
 
-
-<p>4.#NEW app/models/settings.rb</p>
-
-<p>class Settings &lt; Settingslogic
-    source &ldquo;#{Rails.root}/config/application.yml&rdquo;
-    namespace Rails.env
-end</p>
-
-<p>5.<a href="https://developers.facebook.com">https://developers.facebook.com</a> 開新的 app</p>
-
-<ol>
-<li></li>
-</ol>
-
-
-<figure class='code'><figcaption><span>config/application.yml </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="c1">#NEW </span>
-</span><span class='line'>
-</span><span class='line'><span class="l-Scalar-Plain">defaults</span><span class="p-Indicator">:</span> <span class="nl">&amp;defaults</span>
-</span><span class='line'><span class="l-Scalar-Plain">app_name</span><span class="p-Indicator">:</span> <span class="s">&quot;name&quot;</span>
-</span><span class='line'><span class="l-Scalar-Plain">facebook_app_id</span><span class="p-Indicator">:</span> <span class="s">&quot;G/q)T,^@kA7h/7]zO*hEI{52&quot;</span>
-</span><span class='line'><span class="l-Scalar-Plain">facebook_secret</span><span class="p-Indicator">:</span> <span class="s">&quot;tms5{KpOqaYQw*;?9Uv^5X2wT+&amp;)#{##;Ff9n2</span><span class="nv"> </span><span class="s">jy^m^:u1m&quot;</span>
-</span><span class='line'>
-</span><span class='line'><span class="l-Scalar-Plain">development</span><span class="p-Indicator">:</span>
-</span><span class='line'><span class="l-Scalar-Plain">&lt;&lt;</span><span class="p-Indicator">:</span> <span class="nv">*defaults</span>
-</span><span class='line'><span class="l-Scalar-Plain">domain</span><span class="p-Indicator">:</span> <span class="s">&quot;http://192.168.1.220&quot;</span>
-</span><span class='line'>
-</span><span class='line'><span class="l-Scalar-Plain">test</span><span class="p-Indicator">:</span>
-</span><span class='line'><span class="l-Scalar-Plain">&lt;&lt;</span><span class="p-Indicator">:</span> <span class="nv">*defaults</span>
-</span><span class='line'>
-</span><span class='line'><span class="l-Scalar-Plain">production</span><span class="p-Indicator">:</span>
-</span><span class='line'><span class="l-Scalar-Plain">&lt;&lt;</span><span class="p-Indicator">:</span> <span class="nv">*defaults</span>
+<figure class="code"><figcaption><span>db/migrate/XXXXXX_devise_create_users.rb </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class="rb"><span class="line"><span class="n">t</span><span class="o">.</span><span class="n">string</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">null</span><span class="p">:</span> <span class="kp">false</span><span class="p">,</span> <span class="ss">default</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
+</span><span class="line"><span class="n">t</span><span class="o">.</span><span class="n">string</span> <span class="ss">:email</span><span class="p">,</span> <span class="ss">null</span><span class="p">:</span> <span class="kp">true</span><span class="p">,</span> <span class="ss">default</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="ss">unique</span><span class="p">:</span> <span class="kp">true</span>
+</span><span class="line"><span class="n">t</span><span class="o">.</span><span class="n">string</span> <span class="ss">:fb_id</span><span class="p">,</span> <span class="ss">:limit</span> <span class="o">=&gt;</span> <span class="mi">20</span>
+</span><span class="line"><span class="n">t</span><span class="o">.</span><span class="n">string</span> <span class="ss">:token</span>
+</span><span class="line">
+</span><span class="line"><span class="n">add_index</span> <span class="ss">:users</span><span class="p">,</span> <span class="ss">:name</span><span class="p">,</span>                <span class="ss">unique</span><span class="p">:</span> <span class="kp">true</span>
 </span></code></pre></td></tr></table></div></figure>
 
-
-<ol>
-<li><p>rails g auto_facebook:install</p></li>
-<li></li>
-</ol>
-
-
-<figure class='code'><figcaption><span>config/initializers/devise.rb 233 </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='rb'><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">omniauth</span> <span class="ss">:facebook</span><span class="p">,</span> <span class="no">Settings</span><span class="o">.</span><span class="n">facebook_app_id</span><span class="p">,</span> <span class="no">Settings</span><span class="o">.</span><span class="n">facebook_secret</span><span class="p">,</span> <span class="ss">:scope</span> <span class="o">=&gt;</span> <span class="s1">&#39;email&#39;</span>
-</span><span class='line'><span class="no">Setting</span> <span class="o">===&gt;</span> <span class="no">Settings</span>
+<figure class="code"><figcaption><span>NEW app/models/settings.rb </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class="rb"><span class="line"><span class="k">class</span> <span class="nc">Settings</span> <span class="o">&lt;</span> <span class="no">Settingslogic</span>
+</span><span class="line">	<span class="n">source</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="no">Rails</span><span class="o">.</span><span class="n">root</span><span class="si">}</span><span class="s2">/config/application.yml&quot;</span>
+</span><span class="line">	<span class="n">namespace</span> <span class="no">Rails</span><span class="o">.</span><span class="n">env</span>
+</span><span class="line"><span class="k">end</span>
 </span></code></pre></td></tr></table></div></figure>
 
+<h3 id="httpsdevelopersfacebookcom--app">https://developers.facebook.com 開新的 app</h3>
 
-<ol>
-<li></li>
-</ol>
-
-
-<figure class='code'><figcaption><span>app/model/user.rb </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-</pre></td><td class='code'><pre><code class='rb'><span class='line'><span class="k">def</span> <span class="nf">email_required?</span> <span class="c1">#email空白</span>
-</span><span class='line'>  <span class="kp">false</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">def</span> <span class="nf">email_changed?</span>
-</span><span class='line'>  <span class="kp">false</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'><span class="c1">#驗證name email</span>
-</span><span class='line'><span class="n">validates</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">presence</span><span class="p">:</span> <span class="kp">true</span><span class="p">,</span> <span class="ss">uniqueness</span><span class="p">:</span> <span class="p">{</span> <span class="ss">case_sensitive</span><span class="p">:</span> <span class="kp">false</span> <span class="p">}</span>
-</span><span class='line'><span class="n">validates</span> <span class="ss">:email</span><span class="p">,</span> <span class="ss">allow_blank</span><span class="p">:</span> <span class="kp">true</span> <span class="p">,</span> <span class="ss">uniqueness</span><span class="p">:</span> <span class="p">{</span> <span class="ss">case_sensitive</span><span class="p">:</span> <span class="kp">false</span> <span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">devise</span> <span class="ss">:database_authenticatable</span><span class="p">,</span> <span class="ss">:registerable</span><span class="p">,</span>
-</span><span class='line'><span class="ss">:recoverable</span><span class="p">,</span> <span class="ss">:rememberable</span><span class="p">,</span> <span class="ss">:trackable</span><span class="p">,</span> <span class="ss">:validatable</span><span class="p">,</span> <span class="ss">:omniauthable</span><span class="p">,</span> <span class="ss">:authentication_keys</span> <span class="o">=&gt;</span> <span class="o">[</span> <span class="ss">:name</span> <span class="o">]</span>
+<figure class="code"><figcaption><span>NEW config/application.yml </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+</pre></td><td class="code"><pre><code class="yaml"><span class="line"><span class="l-Scalar-Plain">defaults</span><span class="p-Indicator">:</span> <span class="nl">&amp;defaults</span>
+</span><span class="line"><span class="l-Scalar-Plain">app_name</span><span class="p-Indicator">:</span> <span class="s">&quot;name&quot;</span>
+</span><span class="line"><span class="l-Scalar-Plain">facebook_app_id</span><span class="p-Indicator">:</span> <span class="s">&quot;G/q)T,^@kA7h/7]zO*hEI{52&quot;</span>
+</span><span class="line"><span class="l-Scalar-Plain">facebook_secret</span><span class="p-Indicator">:</span> <span class="s">&quot;tms5{KpOqaYQw*;?9Uv^5X2wT+&amp;)#{##;Ff9n2</span><span class="nv"> </span><span class="s">jy^m^:u1m&quot;</span>
+</span><span class="line">
+</span><span class="line"><span class="l-Scalar-Plain">development</span><span class="p-Indicator">:</span>
+</span><span class="line"><span class="l-Scalar-Plain">&lt;&lt;</span><span class="p-Indicator">:</span> <span class="nv">*defaults</span>
+</span><span class="line"><span class="l-Scalar-Plain">domain</span><span class="p-Indicator">:</span> <span class="s">&quot;http://192.168.1.220&quot;</span>
+</span><span class="line">
+</span><span class="line"><span class="l-Scalar-Plain">test</span><span class="p-Indicator">:</span>
+</span><span class="line"><span class="l-Scalar-Plain">&lt;&lt;</span><span class="p-Indicator">:</span> <span class="nv">*defaults</span>
+</span><span class="line">
+</span><span class="line"><span class="l-Scalar-Plain">production</span><span class="p-Indicator">:</span>
+</span><span class="line"><span class="l-Scalar-Plain">&lt;&lt;</span><span class="p-Indicator">:</span> <span class="nv">*defaults</span>
 </span></code></pre></td></tr></table></div></figure>
 
+<pre><code>rails g auto_facebook:install
+</code></pre>
 
-<p>10.view</p>
+<figure class="code"><figcaption><span>config/initializers/devise.rb 233 </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="rb"><span class="line"><span class="n">config</span><span class="o">.</span><span class="n">omniauth</span> <span class="ss">:facebook</span><span class="p">,</span> <span class="no">Settings</span><span class="o">.</span><span class="n">facebook_app_id</span><span class="p">,</span> <span class="no">Settings</span><span class="o">.</span><span class="n">facebook_secret</span><span class="p">,</span> <span class="ss">:scope</span> <span class="o">=&gt;</span> <span class="s1">&#39;email&#39;</span>
+</span><span class="line"><span class="no">Setting</span> <span class="o">===&gt;</span> <span class="no">Settings</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;% if current_user %>
-</span><span class='line'>  &lt;%= current_user.name %>
-</span><span class='line'>  &lt;%= link_to "登出", destroy_user_session_path, method: :delete %>&lt;/li>
-</span><span class='line'>&lt;% else %>
-</span><span class='line'>  &lt;%= link_to "註冊", new_user_registration_path %>&lt;/li>
-</span><span class='line'>  &lt;%= link_to "登入", new_user_session_path %>&lt;/li>
-</span><span class='line'>  &lt;%= link_to("Facebook Login", Settings.domain + user_omniauth_authorize_path(:facebook)) %> &lt;/li>
-</span><span class='line'>&lt;% end %></span></code></pre></td></tr></table></div></figure>
+<figure class="code"><figcaption><span>app/model/user.rb </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+</pre></td><td class="code"><pre><code class="rb"><span class="line"><span class="k">def</span> <span class="nf">email_required?</span> <span class="c1">#email空白</span>
+</span><span class="line">	<span class="kp">false</span>
+</span><span class="line"><span class="k">end</span>
+</span><span class="line">
+</span><span class="line"><span class="k">def</span> <span class="nf">email_changed?</span>
+</span><span class="line">	<span class="kp">false</span>
+</span><span class="line"><span class="k">end</span>
+</span><span class="line"><span class="c1">#驗證name email</span>
+</span><span class="line"><span class="n">validates</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">presence</span><span class="p">:</span> <span class="kp">true</span><span class="p">,</span> <span class="ss">uniqueness</span><span class="p">:</span> <span class="p">{</span> <span class="ss">case_sensitive</span><span class="p">:</span> <span class="kp">false</span> <span class="p">}</span>
+</span><span class="line"><span class="n">validates</span> <span class="ss">:email</span><span class="p">,</span> <span class="ss">allow_blank</span><span class="p">:</span> <span class="kp">true</span> <span class="p">,</span> <span class="ss">uniqueness</span><span class="p">:</span> <span class="p">{</span> <span class="ss">case_sensitive</span><span class="p">:</span> <span class="kp">false</span> <span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="n">devise</span> <span class="ss">:database_authenticatable</span><span class="p">,</span> <span class="ss">:registerable</span><span class="p">,</span>
+</span><span class="line"><span class="ss">:recoverable</span><span class="p">,</span> <span class="ss">:rememberable</span><span class="p">,</span> <span class="ss">:trackable</span><span class="p">,</span> <span class="ss">:validatable</span><span class="p">,</span> <span class="ss">:omniauthable</span><span class="p">,</span> <span class="ss">:authentication_keys</span> <span class="o">=&gt;</span> <span class="o">[</span> <span class="ss">:name</span> <span class="o">]</span>
+</span></code></pre></td></tr></table></div></figure>
 
+<figure class="code"><figcaption><span>view </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">&lt;% if current_user %&gt;
+</span><span class="line">	&lt;%= current_user.name %&gt;
+</span><span class="line">	&lt;%= link_to "登出", destroy_user_session_path, method: :delete %&gt;&lt;/li&gt;
+</span><span class="line">&lt;% else %&gt;
+</span><span class="line">	&lt;%= link_to "註冊", new_user_registration_path %&gt;&lt;/li&gt;
+</span><span class="line">	&lt;%= link_to "登入", new_user_session_path %&gt;&lt;/li&gt;
+</span><span class="line">	&lt;%= link_to("Facebook Login", Settings.domain + user_omniauth_authorize_path(:facebook)) %&gt; &lt;/li&gt;
+</span><span class="line">&lt;% end %&gt;</span></code></pre></td></tr></table></div></figure>
 
 <p>11.fb 圖片</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>def user_image(user,size)
-</span><span class='line'>  if not user.fb_id == nil
-</span><span class='line'>      link_to(image_tag("http://graph.facebook.com/#{user.fb_id}/picture", :size => size), "https://www.facebook.com/#{user.fb_id}")
-</span><span class='line'>  end
-</span><span class='line'>end</span></code></pre></td></tr></table></div></figure>
-
+<figure class="code"><figcaption><span>fb image </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">def</span> <span class="nf">user_image</span><span class="p">(</span><span class="n">user</span><span class="p">,</span><span class="n">size</span><span class="p">)</span>
+</span><span class="line">	<span class="k">if</span> <span class="ow">not</span> <span class="n">user</span><span class="o">.</span><span class="n">fb_id</span> <span class="o">==</span> <span class="kp">nil</span>
+</span><span class="line">		<span class="n">link_to</span><span class="p">(</span><span class="n">image_tag</span><span class="p">(</span><span class="s2">&quot;http://graph.facebook.com/</span><span class="si">#{</span><span class="n">user</span><span class="o">.</span><span class="n">fb_id</span><span class="si">}</span><span class="s2">/picture&quot;</span><span class="p">,</span> <span class="ss">:size</span> <span class="o">=&gt;</span> <span class="n">size</span><span class="p">),</span> <span class="s2">&quot;https://www.facebook.com/</span><span class="si">#{</span><span class="n">user</span><span class="o">.</span><span class="n">fb_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span class="line">	<span class="k">end</span>
+</span><span class="line"><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
 ]]></content>
   </entry>
   
@@ -205,70 +250,67 @@ end</p>
     <link href="http://icps0610.github.io/blog/2016/06/13/line/"/>
     <updated>2016-06-13T01:27:59+08:00</updated>
     <id>http://icps0610.github.io/blog/2016/06/13/line</id>
-    <content type="html"><![CDATA[<p><a href="https://business.line.me/zh-hant/products/4/introduction">https://business.line.me/zh-hant/products/4/introduction</a><br />
-<a href="https://github.com/line/line-bot-sdk-ruby">https://github.com/line/line-bot-sdk-ruby</a><br />
-<a href="https://developers.line.me/bot-api/overview">https://developers.line.me/bot-api/overview</a><br />
-<a href="https://www.heroku.com/">https://www.heroku.com/</a><br /></p>
+    <content type="html"><![CDATA[<!--more-->
+<p>:https://business.line.me/zh-hant/products/4/introduction<br />
+https://github.com/line/line-bot-sdk-ruby<br />
+https://developers.line.me/bot-api/overview<br />
+https://www.heroku.com/<br /></p>
 
-<figure class='code'><figcaption><span>routes.rb </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='rb'><span class='line'><span class="no">Rails</span><span class="o">.</span><span class="n">application</span><span class="o">.</span><span class="n">routes</span><span class="o">.</span><span class="n">draw</span> <span class="k">do</span>
-</span><span class='line'>  <span class="n">root</span> <span class="ss">:to</span> <span class="o">=&gt;</span> <span class="s2">&quot;page#index&quot;</span>
-</span><span class='line'>  <span class="n">match</span> <span class="s1">&#39;/callback&#39;</span> <span class="o">=&gt;</span> <span class="s2">&quot;page#callback&quot;</span><span class="p">,</span> <span class="ss">:via</span> <span class="o">=&gt;</span> <span class="ss">:post</span>
-</span><span class='line'><span class="k">end</span>
+<figure class="code"><figcaption><span>routes.rb </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class="rb"><span class="line"><span class="no">Rails</span><span class="o">.</span><span class="n">application</span><span class="o">.</span><span class="n">routes</span><span class="o">.</span><span class="n">draw</span> <span class="k">do</span>
+</span><span class="line">  <span class="n">root</span> <span class="ss">:to</span> <span class="o">=&gt;</span> <span class="s2">&quot;page#index&quot;</span>
+</span><span class="line">  <span class="n">match</span> <span class="s1">&#39;/callback&#39;</span> <span class="o">=&gt;</span> <span class="s2">&quot;page#callback&quot;</span><span class="p">,</span> <span class="ss">:via</span> <span class="o">=&gt;</span> <span class="ss">:post</span>
+</span><span class="line"><span class="k">end</span>
 </span></code></pre></td></tr></table></div></figure>
 
-
-
-
-<figure class='code'><figcaption><span>controller.rb </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-</pre></td><td class='code'><pre><code class='rb'><span class='line'><span class="k">class</span> <span class="nc">PageController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
-</span><span class='line'>  <span class="n">protect_from_forgery</span> <span class="ss">with</span><span class="p">:</span> <span class="ss">:null_session</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">index</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">callback</span>
-</span><span class='line'>    <span class="n">line_msg</span> <span class="o">=</span> <span class="n">params</span><span class="o">[</span><span class="ss">:result</span><span class="o">][</span><span class="mi">0</span><span class="o">]</span>
-</span><span class='line'>    <span class="n">username</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_user_profile</span><span class="p">(</span> <span class="n">line_msg</span><span class="o">[</span><span class="s2">&quot;content&quot;</span><span class="o">][</span><span class="s2">&quot;from&quot;</span><span class="o">]</span> <span class="p">)</span><span class="o">.</span><span class="n">contacts</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">display_name</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="kp">private</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">client</span>
-</span><span class='line'>    <span class="n">c</span> <span class="o">=</span> <span class="no">Line</span><span class="o">::</span><span class="no">Bot</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
-</span><span class='line'>      <span class="n">config</span><span class="o">.</span><span class="n">channel_id</span>     <span class="o">=</span> <span class="no">ENV</span><span class="o">[</span><span class="s2">&quot;LINE_CHANNEL_ID&quot;</span><span class="o">]</span>
-</span><span class='line'>      <span class="n">config</span><span class="o">.</span><span class="n">channel_secret</span> <span class="o">=</span> <span class="no">ENV</span><span class="o">[</span><span class="s2">&quot;LINE_CHANNEL_SECRET&quot;</span><span class="o">]</span>
-</span><span class='line'>      <span class="n">config</span><span class="o">.</span><span class="n">channel_mid</span>    <span class="o">=</span> <span class="no">ENV</span><span class="o">[</span><span class="s2">&quot;LINE_CHANNEL_MID&quot;</span><span class="o">]</span>
-</span><span class='line'>    <span class="k">end</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'><span class="k">end</span>
+<figure class="code"><figcaption><span>controller.rb </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+</pre></td><td class="code"><pre><code class="rb"><span class="line"><span class="k">class</span> <span class="nc">PageController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+</span><span class="line">  <span class="n">protect_from_forgery</span> <span class="ss">with</span><span class="p">:</span> <span class="ss">:null_session</span>
+</span><span class="line">
+</span><span class="line">  <span class="k">def</span> <span class="nf">index</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line">
+</span><span class="line">  <span class="k">def</span> <span class="nf">callback</span>
+</span><span class="line">    <span class="n">line_msg</span> <span class="o">=</span> <span class="n">params</span><span class="o">[</span><span class="ss">:result</span><span class="o">][</span><span class="mi">0</span><span class="o">]</span>
+</span><span class="line">    <span class="n">username</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_user_profile</span><span class="p">(</span> <span class="n">line_msg</span><span class="o">[</span><span class="s2">&quot;content&quot;</span><span class="o">][</span><span class="s2">&quot;from&quot;</span><span class="o">]</span> <span class="p">)</span><span class="o">.</span><span class="n">contacts</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">display_name</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line">
+</span><span class="line">  <span class="kp">private</span>
+</span><span class="line">
+</span><span class="line">  <span class="k">def</span> <span class="nf">client</span>
+</span><span class="line">    <span class="n">c</span> <span class="o">=</span> <span class="no">Line</span><span class="o">::</span><span class="no">Bot</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
+</span><span class="line">      <span class="n">config</span><span class="o">.</span><span class="n">channel_id</span>     <span class="o">=</span> <span class="no">ENV</span><span class="o">[</span><span class="s2">&quot;LINE_CHANNEL_ID&quot;</span><span class="o">]</span>
+</span><span class="line">      <span class="n">config</span><span class="o">.</span><span class="n">channel_secret</span> <span class="o">=</span> <span class="no">ENV</span><span class="o">[</span><span class="s2">&quot;LINE_CHANNEL_SECRET&quot;</span><span class="o">]</span>
+</span><span class="line">      <span class="n">config</span><span class="o">.</span><span class="n">channel_mid</span>    <span class="o">=</span> <span class="no">ENV</span><span class="o">[</span><span class="s2">&quot;LINE_CHANNEL_MID&quot;</span><span class="o">]</span>
+</span><span class="line">    <span class="k">end</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line"><span class="k">end</span>
 </span></code></pre></td></tr></table></div></figure>
-
 ]]></content>
   </entry>
   
