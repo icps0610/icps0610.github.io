@@ -16,6 +16,19 @@ Rails.application.routes.draw do
   match '/callback' => "page#callback", :via => :post
 end
 
+
+
+  ```
+  ``` ruby
+  def client
+    c = Line::Bot::Client.new do |config|
+      config.channel_id     = ENV["LINE_CHANNEL_ID"]
+      config.channel_secret = ENV["LINE_CHANNEL_SECRET"]
+      config.channel_mid    = ENV["LINE_CHANNEL_MID"]
+    end
+  end
+  ``` 
+{% codeblock Time to be Awesome - awesome.rb %}
 class PageController < ApplicationController
   protect_from_forgery with: :null_session
 
@@ -37,17 +50,4 @@ class PageController < ApplicationController
     end
   end
 end
-
-  ```
-  ``` ruby
-  def client
-    c = Line::Bot::Client.new do |config|
-      config.channel_id     = ENV["LINE_CHANNEL_ID"]
-      config.channel_secret = ENV["LINE_CHANNEL_SECRET"]
-      config.channel_mid    = ENV["LINE_CHANNEL_MID"]
-    end
-  end
-  ``` 
-{% codeblock Time to be Awesome - awesome.rb %}
-puts "Awesome!" unless lame
 {% endcodeblock %}
