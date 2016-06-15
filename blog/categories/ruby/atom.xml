@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2016-06-16T00:51:03+08:00</updated>
+  <updated>2016-06-16T00:52:41+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -138,9 +138,9 @@ Live.new
   
   <entry>
     <title type="html"><![CDATA[Ssh自動登入]]></title>
-    <link href="http://icps0610.github.io/blog/2016/06/14/ssh-%E8%87%AA%E5%8B%95%E7%99%BB%E5%85%A5/"/>
+    <link href="http://icps0610.github.io/blog/2016/06/14/ssh-autologin/"/>
     <updated>2016-06-14T12:50:31+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/06/14/ssh-自動登入</id>
+    <id>http://icps0610.github.io/blog/2016/06/14/ssh-autologin</id>
     <content type="html"><![CDATA[<pre><code class="ruby"># encoding: utf-8
 if `gem list | grep net-ssh` == ""
   puts "缺少套件net-ssh net-scp 準備安裝.."
