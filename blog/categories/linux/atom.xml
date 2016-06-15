@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2016-06-15T23:35:21+08:00</updated>
+  <updated>2016-06-16T00:51:03+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -20,8 +20,15 @@
     <id>http://icps0610.github.io/blog/2016/06/15/exim4</id>
     <content type="html"><![CDATA[<h4>dpkg-reconfigure exim4-config</h4>
 
-<p><img src="/images/posts/2016/6/15/exmi4-1.png">
-smtp.gmail.com::587</p>
+<p><img src="/images/posts/2016/6/15/exim4-1.png"></p>
+
+<div>
+    <img src="http://icps0610.github.io/images/posts/2016/6/15/exim4-2.png">
+    <img src="http://icps0610.github.io/images/posts/2016/6/15/exim4-3.png">
+</div>
+
+
+<p>smtp.gmail.com::587</p>
 ]]></content>
   </entry>
   
