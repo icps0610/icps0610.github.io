@@ -11,7 +11,8 @@
   
   <meta name="description" content=":https://business.line.me/zh-hant/products/4/introduction
 https://github.com/line/line-bot-sdk-ruby
-https://developers.line.me/bot-api/overview &hellip;">
+https://developers.line.me/bot-api/overview
+https &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -86,20 +87,18 @@ https://developers.line.me/bot-api/overview &hellip;">
   </header>
 
 
-<div class="entry-content"><!--more-->
-
-
-<p>:<a href="https://business.line.me/zh-hant/products/4/introduction">https://business.line.me/zh-hant/products/4/introduction</a><br />
+<div class="entry-content"><p>:<a href="https://business.line.me/zh-hant/products/4/introduction">https://business.line.me/zh-hant/products/4/introduction</a><br />
 <a href="https://github.com/line/line-bot-sdk-ruby">https://github.com/line/line-bot-sdk-ruby</a><br />
 <a href="https://developers.line.me/bot-api/overview">https://developers.line.me/bot-api/overview</a><br />
 <a href="https://www.heroku.com/">https://www.heroku.com/</a><br /></p>
 
-<figure class='code'><figcaption><span>routes.rb </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='rb'><span class='line'><span class="no">Rails</span><span class="o">.</span><span class="n">application</span><span class="o">.</span><span class="n">routes</span><span class="o">.</span><span class="n">draw</span> <span class="k">do</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#routes.rb</span>
+</span><span class='line'><span class="no">Rails</span><span class="o">.</span><span class="n">application</span><span class="o">.</span><span class="n">routes</span><span class="o">.</span><span class="n">draw</span> <span class="k">do</span>
 </span><span class='line'>  <span class="n">root</span> <span class="ss">:to</span> <span class="o">=&gt;</span> <span class="s2">&quot;page#index&quot;</span>
 </span><span class='line'>  <span class="n">match</span> <span class="s1">&#39;/callback&#39;</span> <span class="o">=&gt;</span> <span class="s2">&quot;page#callback&quot;</span><span class="p">,</span> <span class="ss">:via</span> <span class="o">=&gt;</span> <span class="ss">:post</span>
 </span><span class='line'><span class="k">end</span>
@@ -108,8 +107,7 @@ https://developers.line.me/bot-api/overview &hellip;">
 
 
 
-<figure class='code'><figcaption><span>controller.rb </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -130,7 +128,9 @@ https://developers.line.me/bot-api/overview &hellip;">
 <span class='line-number'>19</span>
 <span class='line-number'>20</span>
 <span class='line-number'>21</span>
-</pre></td><td class='code'><pre><code class='rb'><span class='line'><span class="k">class</span> <span class="nc">PageController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#controller.rb</span>
+</span><span class='line'><span class="k">class</span> <span class="nc">PageController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
 </span><span class='line'>  <span class="n">protect_from_forgery</span> <span class="ss">with</span><span class="p">:</span> <span class="ss">:null_session</span>
 </span><span class='line'>
 </span><span class='line'>  <span class="k">def</span> <span class="nf">index</span>
@@ -204,9 +204,10 @@ https://developers.line.me/bot-api/overview &hellip;">
   <h1>分類</h1>
   <ul id="categories">
     <li class='category'><a href='/blog/categories/app/'>app (1)</a></li>
-<li class='category'><a href='/blog/categories/bat/'>bat (4)</a></li>
+<li class='category'><a href='/blog/categories/bat/'>bat (5)</a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (5)</a></li>
 <li class='category'><a href='/blog/categories/ror/'>ror (4)</a></li>
-<li class='category'><a href='/blog/categories/ruby/'>ruby (1)</a></li>
+<li class='category'><a href='/blog/categories/ruby/'>ruby (2)</a></li>
 
   </ul>
 </section>
@@ -215,23 +216,23 @@ https://developers.line.me/bot-api/overview &hellip;">
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2016/06/15/ping-lan/">Ping_lan</a>
+        <a href="/blog/2016/06/15/exim4/">Exim4</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2016/06/14/ssh-autologin/">Ssh_autologin</a>
+        <a href="/blog/2016/06/15/live-cd/">Live_cd</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2016/06/14/extract/">Extract</a>
+        <a href="/blog/2016/06/15/clean/">Clean</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2016/06/14/set-ip/">Set_ip</a>
+        <a href="/blog/2016/06/15/battery-check/">Battery_check</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2016/06/14/check-os-bit/">Check Os Bit</a>
+        <a href="/blog/2016/06/15/config/">Config</a>
       </li>
     
   </ul>

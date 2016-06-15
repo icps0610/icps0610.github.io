@@ -5,14 +5,15 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Wifi - icps</title>
+  <title>Clean - icps</title>
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="把wifi網卡當作基地台 @echo off
-netsh wlan set hostednetwork mode=allow ssid=wifi-name key=12345
-netsh wlan start hostednetwork
-echo ==============已經啟動 按任意鍵取消 &hellip;">
+  <meta name="description" content="apt-get clean
+apt-get autoclean
+apt-get autoremove
+rm /var/cache/apt/archives/* 2>/dev/nul # Package (deb) cache
+rm /var/cache/apt/archives/partial &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -21,7 +22,7 @@ echo ==============已經啟動 按任意鍵取消 &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://icps0610.github.io/blog/2016/06/14/wifi/">
+  <link rel="canonical" href="http://icps0610.github.io/blog/2016/06/15/clean/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="icps" type="application/atom+xml">
@@ -71,7 +72,7 @@ echo ==============已經啟動 按任意鍵取消 &hellip;">
   
   <header>
     
-      <h1 class="entry-title">Wifi</h1>
+      <h1 class="entry-title">Clean</h1>
     
     
       <p class="meta">
@@ -80,27 +81,21 @@ echo ==============已經啟動 按任意鍵取消 &hellip;">
 
 
 
-<time class='entry-date' datetime='2016-06-14T01:25:12+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>1:25 am</span></time>
+<time class='entry-date' datetime='2016-06-15T22:06:00+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>10:06 pm</span></time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><h3>把wifi網卡當作基地台</h3>
-
-<pre><code>@echo off
-netsh wlan set hostednetwork mode=allow ssid=<font color="red">wifi-name</font> key=<font color="red">12345</font>
-netsh wlan start hostednetwork
-echo ==============已經啟動 按任意鍵取消==============
-pause>nul
-netsh wlan stop hostednetwork
-</code></pre>
-
-
-<h3>顯示wifi密碼</h3>
-
-<pre><code>netsh wlan show profile name=<font color="red">wifi-name</font> key=clear
+<div class="entry-content"><pre><code>apt-get clean
+apt-get autoclean
+apt-get autoremove
+rm /var/cache/apt/archives/* 2>/dev/nul # Package (deb) cache
+rm /var/cache/apt/archives/partial/* 2>/dev/nul
+rm -R /var/log/* 2>/dev/nul
+rm -R /tmp/* 2>/dev/nul
+rm /root/.local/share/Trash/files/* 2>/dev/nul
 </code></pre>
 
 </div>
@@ -118,12 +113,12 @@ netsh wlan stop hostednetwork
 
 
 
-<time class='entry-date' datetime='2016-06-14T01:25:12+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>1:25 am</span></time>
+<time class='entry-date' datetime='2016-06-15T22:06:00+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>10:06 pm</span></time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/bat/'>bat</a>
+    <a class='category' href='/blog/categories/linux/'>linux</a>
   
 </span>
 
@@ -139,10 +134,10 @@ netsh wlan stop hostednetwork
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2016/06/14/sublime-text/" title="Previous Post: sublime text">&laquo; sublime text</a>
+        <a class="basic-alignment left" href="/blog/2016/06/15/battery-check/" title="Previous Post: battery_check">&laquo; battery_check</a>
       
       
-        <a class="basic-alignment right" href="/blog/2016/06/14/check-os-bit/" title="Next Post: check os bit">check os bit &raquo;</a>
+        <a class="basic-alignment right" href="/blog/2016/06/15/live-cd/" title="Next Post: live_cd">live_cd &raquo;</a>
       
     </p>
   </footer>

@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://icps0610.github.io/blog/2016/06/15/exim4/</loc>
+<lastmod>2016-06-15T22:12:27+08:00</lastmod>
+</url>
+<url>
+<loc>http://icps0610.github.io/blog/2016/06/15/live-cd/</loc>
+<lastmod>2016-06-15T22:09:51+08:00</lastmod>
+</url>
+<url>
+<loc>http://icps0610.github.io/blog/2016/06/15/clean/</loc>
+<lastmod>2016-06-15T22:06:00+08:00</lastmod>
+</url>
+<url>
+<loc>http://icps0610.github.io/blog/2016/06/15/battery-check/</loc>
+<lastmod>2016-06-15T22:04:43+08:00</lastmod>
+</url>
+<url>
+<loc>http://icps0610.github.io/blog/2016/06/15/config/</loc>
+<lastmod>2016-06-15T20:16:01+08:00</lastmod>
+</url>
+<url>
+<loc>http://icps0610.github.io/blog/2016/06/15/get-real-ip/</loc>
+<lastmod>2016-06-15T13:36:32+08:00</lastmod>
+</url>
+<url>
 <loc>http://icps0610.github.io/blog/2016/06/15/ping-lan/</loc>
 <lastmod>2016-06-15T13:09:26+08:00</lastmod>
 </url>
@@ -61,5 +85,8 @@
 </url>
 <url>
 <loc>http://icps0610.github.io/blog/categories/ruby/</loc>
+</url>
+<url>
+<loc>http://icps0610.github.io/blog/categories/linux/</loc>
 </url>
 </urlset>

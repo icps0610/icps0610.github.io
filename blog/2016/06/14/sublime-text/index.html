@@ -95,92 +95,57 @@ ctrl +shit+p，然後輸入install &hellip;">
 </ul>
 
 
-<figure class='code'><figcaption><span>BracketHighlighter#376 </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>"bracket_styles": {
-</span><span class='line'> 
-</span><span class='line'>"default": {
-</span><span class='line'> 
-</span><span class='line'>"color": "entity.name.class",
-</span><span class='line'>"style": "highlight",
-</span><span class='line'> 
-</span><span class='line'>"quote_scope" : "bracket.quote",
-</span><span class='line'>"curly_scope" : "bracket.curly",
-</span><span class='line'>"round_scope" : "bracket.round",
-</span><span class='line'>"square_scope": "bracket.square",
-</span><span class='line'>"angle_scope" : "bracket.angle",
-</span><span class='line'>"tag_scope"   : "bracket.tag",
-</span><span class='line'> 
-</span><span class='line'>// 高亮樣式 (solid|outline|underline|none)
-</span><span class='line'>"quote_style" : "solid",
-</span><span class='line'>"curly_style" : "solid",
-</span><span class='line'>"round_style" : "solid",
-</span><span class='line'>"square_style": "solid",
-</span><span class='line'>"angle_style" : "solid",
-</span><span class='line'>"tag_style"   : "outline"
-</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+<pre><code>BracketHighlighter#376
+ 
+"bracket_styles": {
+ 
+"default": {
+ 
+"color": "entity.name.class",
+"style": "highlight",
+ 
+"quote_scope" : "bracket.quote",
+"curly_scope" : "bracket.curly",
+"round_scope" : "bracket.round",
+"square_scope": "bracket.square",
+"angle_scope" : "bracket.angle",
+"tag_scope"   : "bracket.tag",
+ 
+// 高亮樣式 (solid|outline|underline|none)
+"quote_style" : "solid",
+"curly_style" : "solid",
+"round_style" : "solid",
+"square_style": "solid",
+"angle_style" : "solid",
+"tag_style"   : "outline"
+}
+</code></pre>
 
 
 
 
-<figure class='code'><figcaption><span>emment#setting </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>{
-</span><span class='line'>  "snippets":{
-</span><span class='line'>      "html":{
-</span><span class='line'>          "snippets":{
-</span><span class='line'>          "ff" : "&lt;%= form_for ${1:} %>\n&lt;% end %>",
-</span><span class='line'>          "sf" : "&lt;%= simple_form_for ${1:} %>\n&lt;% end %>",
-</span><span class='line'>          "fl" : "&lt;%= link_to ${1:} %>",
-</span><span class='line'>          "fb" : "&lt;%= button_to ${1:} %>",
-</span><span class='line'>          "fe" : "&lt;%= ${1:} %>",
-</span><span class='line'>          "ee" : "&lt;% ${1:} %>",
-</span><span class='line'>          "eif" : "&lt;% if ${1:} %>",
-</span><span class='line'>          "ed" : "&lt;% end %>",
-</span><span class='line'>          "else" : "&lt;% else %>",
-</span><span class='line'>          "pre" : "&lt;pre>${1:}&lt;/pre>",
-</span><span class='line'>          }
-</span><span class='line'>      }
-</span><span class='line'>  }
-</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+<pre><code>
+Emmt#settings
+
+{
+    "snippets":{
+        "html":{
+            "snippets":{
+            "ff" : "<%= form_for ${1:} %>\n<% end %>",
+            "sf" : "<%= simple_form_for ${1:} %>\n<% end %>",
+            "fl" : "<%= link_to ${1:} %>",
+            "fb" : "<%= button_to ${1:} %>",
+            "fe" : "<%= ${1:} %>",
+            "ee" : "<% ${1:} %>",
+            "eif" : "<% if ${1:} %>",
+            "ed" : "<% end %>",
+            "else" : "<% else %>",
+            "pre" : "<pre>${1:}</pre>",
+            }
+        }
+    }
+}
+</code></pre>
 
 </div>
 
@@ -235,9 +200,10 @@ ctrl +shit+p，然後輸入install &hellip;">
   <h1>分類</h1>
   <ul id="categories">
     <li class='category'><a href='/blog/categories/app/'>app (1)</a></li>
-<li class='category'><a href='/blog/categories/bat/'>bat (4)</a></li>
+<li class='category'><a href='/blog/categories/bat/'>bat (5)</a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (5)</a></li>
 <li class='category'><a href='/blog/categories/ror/'>ror (4)</a></li>
-<li class='category'><a href='/blog/categories/ruby/'>ruby (1)</a></li>
+<li class='category'><a href='/blog/categories/ruby/'>ruby (2)</a></li>
 
   </ul>
 </section>
@@ -246,23 +212,23 @@ ctrl +shit+p，然後輸入install &hellip;">
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2016/06/15/ping-lan/">Ping_lan</a>
+        <a href="/blog/2016/06/15/exim4/">Exim4</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2016/06/14/ssh-autologin/">Ssh_autologin</a>
+        <a href="/blog/2016/06/15/live-cd/">Live_cd</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2016/06/14/extract/">Extract</a>
+        <a href="/blog/2016/06/15/clean/">Clean</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2016/06/14/set-ip/">Set_ip</a>
+        <a href="/blog/2016/06/15/battery-check/">Battery_check</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2016/06/14/check-os-bit/">Check Os Bit</a>
+        <a href="/blog/2016/06/15/config/">Config</a>
       </li>
     
   </ul>

@@ -9,9 +9,10 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="index.erb 1
-&lt;%= link_to &quot;Re&quot;, new_msg_path( :user =&gt; msg.name ) %&gt; http://192.168.1.220/msgs/new?user=icps
-user = params[:user] &hellip;">
+  <meta name="description" content="1
+2
+#index.erb
+&lt;%= link_to &quot;Re&quot;, new_msg_path( :user =&gt; msg.name ) %&gt; http://192.168.1.220/msgs/new?user=icps user = params[:user &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -86,21 +87,21 @@ user = params[:user] &hellip;">
   </header>
 
 
-<div class="entry-content"><!--more-->
-
-
-<figure class='code'><figcaption><span>index.erb </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='erb'><span class='line'><span class="cp">&lt;%=</span> <span class="n">link_to</span> <span class="s2">&quot;Re&quot;</span><span class="p">,</span> <span class="n">new_msg_path</span><span class="p">(</span> <span class="ss">:user</span> <span class="o">=&gt;</span> <span class="n">msg</span><span class="o">.</span><span class="n">name</span> <span class="p">)</span> <span class="cp">%&gt;</span><span class="x"></span>
+<div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#index.erb</span>
+</span><span class='line'><span class="o">&lt;</span><span class="sx">%= link_to &quot;Re&quot;, new_msg_path( :user =</span><span class="o">&gt;</span> <span class="n">msg</span><span class="o">.</span><span class="n">name</span> <span class="p">)</span> <span class="o">%&gt;</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p><a href="http://192.168.1.220/msgs/new?user=icps">http://192.168.1.220/msgs/new?user=icps</a><br/>
-user = params[:user]</p>
+<h4><a href="http://192.168.1.220/msgs/new?user=icps">http://192.168.1.220/msgs/new?user=icps</a></h4>
 
-<figure class='code'><figcaption><span>new.erb </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='erb'><span class='line'><span class="cp">&lt;%=</span> <span class="n">f</span><span class="o">.</span><span class="n">input</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">input_html</span><span class="p">:</span> <span class="p">{</span> <span class="ss">:value</span> <span class="o">=&gt;</span> <span class="vi">@user</span> <span class="p">}</span> <span class="cp">%&gt;</span><span class="x"></span>
+<h4>user = params[:user]</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#new.erb</span>
+</span><span class='line'><span class="o">&lt;</span><span class="sx">%= f.input :name, input_html: { :value =</span><span class="o">&gt;</span> <span class="vi">@user</span> <span class="p">}</span> <span class="o">%&gt;</span>
 </span></code></pre></td></tr></table></div></figure>
 
 </div>
@@ -156,9 +157,10 @@ user = params[:user]</p>
   <h1>分類</h1>
   <ul id="categories">
     <li class='category'><a href='/blog/categories/app/'>app (1)</a></li>
-<li class='category'><a href='/blog/categories/bat/'>bat (4)</a></li>
+<li class='category'><a href='/blog/categories/bat/'>bat (5)</a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (5)</a></li>
 <li class='category'><a href='/blog/categories/ror/'>ror (4)</a></li>
-<li class='category'><a href='/blog/categories/ruby/'>ruby (1)</a></li>
+<li class='category'><a href='/blog/categories/ruby/'>ruby (2)</a></li>
 
   </ul>
 </section>
@@ -167,23 +169,23 @@ user = params[:user]</p>
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2016/06/15/ping-lan/">Ping_lan</a>
+        <a href="/blog/2016/06/15/exim4/">Exim4</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2016/06/14/ssh-autologin/">Ssh_autologin</a>
+        <a href="/blog/2016/06/15/live-cd/">Live_cd</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2016/06/14/extract/">Extract</a>
+        <a href="/blog/2016/06/15/clean/">Clean</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2016/06/14/set-ip/">Set_ip</a>
+        <a href="/blog/2016/06/15/battery-check/">Battery_check</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2016/06/14/check-os-bit/">Check Os Bit</a>
+        <a href="/blog/2016/06/15/config/">Config</a>
       </li>
     
   </ul>

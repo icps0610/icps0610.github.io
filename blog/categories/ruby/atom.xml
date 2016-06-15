@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2016-06-15T13:19:00+08:00</updated>
+  <updated>2016-06-15T22:59:09+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -14,247 +14,246 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Live_cd]]></title>
+    <link href="http://icps0610.github.io/blog/2016/06/15/live-cd/"/>
+    <updated>2016-06-15T22:09:51+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/06/15/live-cd</id>
+    <content type="html"><![CDATA[<pre><code class="ruby">#!/usr/bin/env ruby
+# encoding: utf-8
+`apt-get install squashfs-tools` if `dpkg-query -W | grep squashfs-tools` == ""
+
+class Live
+
+  def initialize
+    iso_list
+    puts "1.解壓縮#{@iso_name}.#{@iso_name_ext}的filesystem.squashfs 到 #{@filesystem}"
+    puts "2.chroot #{@filesystem}"
+    puts "3.將#{@filesystem}壓縮檔案製成光碟/tmp/#{@iso_name}.#{@iso_name_ext}"
+    puts "4.將.\/#{@iso_name} 製作光碟"
+    puts "-------------"
+    choice=gets.chomp
+    if choice == "1"
+      extract
+    elsif choice =="2"
+      mount_system
+    elsif choice =="3"
+      zip_file
+    elsif choice =="4"
+      iso
+    else
+      initialize
+    end
+  end
+
+  def iso_list
+    @iso_name_ext="iso"
+    list = `ls | grep #{@iso_name_ext}`.split("\n")
+    if list.count &gt; 1
+      puts "請選擇iso"
+      list.each_index do |i|
+        puts "#{i+1}. #{list[i]}"
+      end
+      puts "--------------"
+      choice=gets.chomp
+      if not choice == ""
+        @iso_name=File.basename(list[choice.to_i-1],"."+@iso_name_ext)
+      else
+        iso_list
+      end
+    else
+      @iso_name=File.basename(list[0],"."+@iso_name_ext)
+    end
+    @filesystem="#{@iso_name}_filesystem"
+  end
+
+  def iso_extract
+    if File.exist?("#{@iso_name}")
+      printf "\n是否移除舊 #{@iso_name}(y/n) : "
+      `umout #{@iso_name} &amp;&amp; rm -rf #{@iso_name}` if gets.downcase.chomp == "y"
+    end
+    puts "將光碟#{@iso_name}.#{@iso_name_ext}掛載到.\/#{@iso_name}.."
+    system("mkdir #{@iso_name} 2&gt; /dev/null")
+    system("mount -o loop #{@iso_name}.#{@iso_name_ext} #{@iso_name}")
+
+  end
+
+  def extract
+    iso_extract
+    puts "解壓縮 filesystem.squashfs 到 #{@filesystem}"
+    if File.exist?("#{@filesystem}")
+      printf "\n是否移除舊  #{@filesystem}(y/n) : "
+      `rm -rf #{@filesystem}` if gets.downcase.chomp == "y"
+    end
+    system("mount -o loop -t squashfs #{@iso_name}/casper/filesystem.squashfs /mnt/ ")
+    system("rsync -aAXv /mnt/* #{@filesystem} | pv -ls `find /mnt|wc -l` &gt;/dev/null")
+  end
+
+  def mount_system
+    puts "開始掛載..."
+    system("umount /mnt/  2&gt;/dev/null")
+    system("mount -o bind /dev/ #{@filesystem}/dev/ 2&gt;/dev/null")
+    system("mount --bind /dev/pts #{@filesystem}/dev/pts 2&gt;/dev/null")
+    system("mount -t proc procfs #{@filesystem}/proc/  2&gt;/dev/null")
+    system("cp /etc/resolv.conf #{@filesystem}/etc/")
+    system("chroot #{@filesystem}/ /bin/bash")
+    system("umount #{@filesystem}/dev/pts")
+    system("umount #{@filesystem}/proc/")
+    system("umount #{@filesystem}/dev/")
+  end
+
+  def zip_file
+    puts "開始壓縮檔案.."
+    if not File.exist?("/tmp/#{@iso_name}")
+      iso_extract
+      system("rsync -a --exclude 'filesystem.squashfs' #{@iso_name} /tmp/  | pv -les $(df -i #{@iso_name} | perl -ane 'print $F[2] if $F[5] =~ m:^/:') &gt;/dev/null")
+    end
+    system("umount #{@filesystem}/dev/pts 2&gt;/dev/null")
+    system("umount #{@filesystem}/proc/ 2&gt;/dev/null")
+    system("umount #{@filesystem}/dev/ 2&gt;/dev/null")
+
+    system("chroot #{@filesystem} dpkg-query -W --showformat='${Package} ${Version}\n' &gt; /tmp/#{@iso_name}/casper/filesystem.manifest")
+    system("rm /tmp/#{@iso_name}/casper/filesystem.squashfs 2&gt;/dev/null")
+    system("mksquashfs #{@filesystem} /tmp/#{@iso_name}/casper/filesystem.squashfs -comp xz")
+    system("printf $( du -sx --block-size=1 #{@filesystem} | cut -f1) &gt; /tmp/#{@iso_name}/casper/filesystem.size")
+    Dir.chdir("/tmp/#{@iso_name}")
+    system("rm MD5SUMS")
+    system("find -type f -print0 |  xargs -0 md5sum | grep -v isolinux/boot.cat |  tee MD5SUMS")
+    system("mkisofs -input-charset iso8859-1 -r -D -V '/#{@iso_name}-icps' -cache-inodes -J -l -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -graft-point -o /tmp/#{@iso_name}.#{@iso_name_ext} ../#{@iso_name}")
+  end
+
+  def iso
+    puts "開始打包光碟.."
+    #system("cp setup.rb /tmp/#{@iso_name}")
+    #system("printf $( du -sx --block-size=1 #{@filesystem} | cut -f1) &gt; /tmp/#{@iso_name}/casper/filesystem.size")
+    Dir.chdir("/tmp/#{@iso_name}")
+    #system("rm MD5SUMS")
+    #system("find -type f -print0 |  xargs -0 md5sum | grep -v isolinux/boot.cat |  tee MD5SUMS")
+    system("mkisofs -input-charset iso8859-1 -r -D -V '/#{@iso_name}-icps' -cache-inodes -J -l -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -graft-point -o /tmp/#{@iso_name}.#{@iso_name_ext} ../#{@iso_name}")
+  end
+end
+Live.new
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Ssh_autologin]]></title>
     <link href="http://icps0610.github.io/blog/2016/06/14/ssh-autologin/"/>
     <updated>2016-06-14T12:50:31+08:00</updated>
     <id>http://icps0610.github.io/blog/2016/06/14/ssh-autologin</id>
-    <content type="html"><![CDATA[<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-<span class='line-number'>41</span>
-<span class='line-number'>42</span>
-<span class='line-number'>43</span>
-<span class='line-number'>44</span>
-<span class='line-number'>45</span>
-<span class='line-number'>46</span>
-<span class='line-number'>47</span>
-<span class='line-number'>48</span>
-<span class='line-number'>49</span>
-<span class='line-number'>50</span>
-<span class='line-number'>51</span>
-<span class='line-number'>52</span>
-<span class='line-number'>53</span>
-<span class='line-number'>54</span>
-<span class='line-number'>55</span>
-<span class='line-number'>56</span>
-<span class='line-number'>57</span>
-<span class='line-number'>58</span>
-<span class='line-number'>59</span>
-<span class='line-number'>60</span>
-<span class='line-number'>61</span>
-<span class='line-number'>62</span>
-<span class='line-number'>63</span>
-<span class='line-number'>64</span>
-<span class='line-number'>65</span>
-<span class='line-number'>66</span>
-<span class='line-number'>67</span>
-<span class='line-number'>68</span>
-<span class='line-number'>69</span>
-<span class='line-number'>70</span>
-<span class='line-number'>71</span>
-<span class='line-number'>72</span>
-<span class='line-number'>73</span>
-<span class='line-number'>74</span>
-<span class='line-number'>75</span>
-<span class='line-number'>76</span>
-<span class='line-number'>77</span>
-<span class='line-number'>78</span>
-<span class='line-number'>79</span>
-<span class='line-number'>80</span>
-<span class='line-number'>81</span>
-<span class='line-number'>82</span>
-<span class='line-number'>83</span>
-<span class='line-number'>84</span>
-<span class='line-number'>85</span>
-<span class='line-number'>86</span>
-<span class='line-number'>87</span>
-<span class='line-number'>88</span>
-<span class='line-number'>89</span>
-<span class='line-number'>90</span>
-<span class='line-number'>91</span>
-<span class='line-number'>92</span>
-<span class='line-number'>93</span>
-<span class='line-number'>94</span>
-<span class='line-number'>95</span>
-<span class='line-number'>96</span>
-<span class='line-number'>97</span>
-<span class='line-number'>98</span>
-<span class='line-number'>99</span>
-<span class='line-number'>100</span>
-<span class='line-number'>101</span>
-<span class='line-number'>102</span>
-<span class='line-number'>103</span>
-<span class='line-number'>104</span>
-<span class='line-number'>105</span>
-<span class='line-number'>106</span>
-<span class='line-number'>107</span>
-<span class='line-number'>108</span>
-<span class='line-number'>109</span>
-<span class='line-number'>110</span>
-<span class='line-number'>111</span>
-<span class='line-number'>112</span>
-<span class='line-number'>113</span>
-<span class='line-number'>114</span>
-<span class='line-number'>115</span>
-<span class='line-number'>116</span>
-<span class='line-number'>117</span>
-<span class='line-number'>118</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">&lt;</span><span class="sr">/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="sr">&lt;h1&gt;encoding: utf-8&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span><span class="k">if</span> <span class="o">&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="n">gem</span> <span class="n">list</span> <span class="o">|</span> <span class="n">grep</span> <span class="n">net</span><span class="o">-</span><span class="n">ssh</span><span class="o">&lt;</span><span class="sr">/code&gt; == &amp;ldquo;&amp;rdquo;</span>
-</span><span class='line'><span class="sr">  puts &amp;ldquo;缺少套件net-ssh net-scp 準備安裝..&amp;rdquo;</span>
-</span><span class='line'><span class="sr">  &lt;code&gt;gem install net-ssh net-scp --no-ri --no-rdoc&lt;/</span><span class="n">code</span><span class="o">&gt;</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'><span class="nb">require</span> <span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="n">net</span><span class="o">/</span><span class="n">ssh</span><span class="o">&amp;</span><span class="n">rdquo</span><span class="p">;</span>
-</span><span class='line'><span class="nb">require</span> <span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="n">net</span><span class="o">/</span><span class="n">scp</span><span class="o">&amp;</span><span class="n">rdquo</span><span class="p">;</span>
-</span><span class='line'><span class="vg">$localip</span><span class="o">=&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="n">ifconfig</span> <span class="o">|</span> <span class="n">grep</span> <span class="no">Bcast</span> <span class="o">|</span> <span class="n">cut</span> <span class="o">-</span><span class="n">d</span> <span class="p">:</span>  <span class="o">-</span><span class="n">f</span> <span class="mi">2</span> <span class="o">|</span> <span class="n">cut</span> <span class="o">-</span><span class="n">d</span> <span class="s2">&quot; &quot;</span> <span class="o">-</span><span class="n">f</span> <span class="mi">1</span><span class="o">&lt;</span><span class="sr">/code&gt;.chomp</span>
-</span><span class='line'><span class="sr">$localuser=ENV[&amp;lsquo;USER&amp;rsquo;]</span>
-</span><span class='line'><span class="sr">$ip=[]</span>
-</span><span class='line'><span class="sr">$ip &amp;lt;&amp;lt; [&amp;ldquo;192.168.1.100&amp;rdquo;,&amp;ldquo;test&amp;rdquo;,&amp;ldquo;test&amp;rdquo;]&lt;/</span><span class="nb">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span><span class="k">class</span> <span class="nc">SSH_n_1</span><span class="o">&lt;</span><span class="sr">/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="sr">&lt;p&gt;  def initialize</span>
-</span><span class='line'><span class="sr">    puts &amp;ldquo;本地端為SSH主機,</span><span class="si">#{</span><span class="vg">$localuser</span><span class="si">}</span><span class="sr">@</span><span class="si">#{</span><span class="vg">$localip</span><span class="si">}</span><span class="sr">&amp;rdquo;</span>
-</span><span class='line'><span class="sr">    puts</span>
-</span><span class='line'><span class="sr">    $ip.each do |host,user,passwd|</span>
-</span><span class='line'><span class="sr">      if system(&amp;ldquo;nc -nz -w 1 </span><span class="si">#{</span><span class="n">host</span><span class="si">}</span><span class="sr"> 22&amp;rdquo;) == true</span>
-</span><span class='line'><span class="sr">        puts &amp;ldquo;&gt;&gt; </span><span class="si">#{</span><span class="n">host</span><span class="si">}</span><span class="sr">連線正常&amp;rdquo;</span>
-</span><span class='line'><span class="sr">        puts &amp;ldquo;   </span><span class="si">#{</span><span class="n">host</span><span class="si">}</span><span class="sr">產生ssh key&amp;rdquo;</span>
-</span><span class='line'><span class="sr">        if user == &amp;ldquo;root&amp;rdquo;</span>
-</span><span class='line'><span class="sr">          @home=&amp;ldquo;/</span><span class="c1">#{user}&amp;rdquo;</span>
-</span><span class='line'>        <span class="k">else</span>
-</span><span class='line'>          <span class="vi">@home</span><span class="o">=&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="c1">#{user}&amp;rdquo;</span>
-</span><span class='line'>        <span class="k">end</span>
-</span><span class='line'>        <span class="n">script</span><span class="p">(</span><span class="n">host</span><span class="p">,</span><span class="n">user</span><span class="p">,</span><span class="n">passwd</span><span class="p">)</span>
-</span><span class='line'>        <span class="nb">puts</span> <span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span>   <span class="c1">#{host}下載ssh key&amp;rdquo;</span>
-</span><span class='line'>        <span class="n">download_key</span><span class="p">(</span><span class="n">host</span><span class="p">,</span><span class="n">user</span><span class="p">,</span><span class="n">passwd</span><span class="p">)</span>
-</span><span class='line'>        <span class="o">&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="n">mkdir</span> <span class="o">~</span><span class="sr">/.ssh 2&amp;gt; /</span><span class="n">dev</span><span class="o">/</span><span class="n">null</span><span class="o">&lt;</span><span class="sr">/code&gt;</span>
-</span><span class='line'><span class="sr">        &lt;code&gt;chmod go-w ~&lt;/</span><span class="n">code</span><span class="o">&gt;</span>
-</span><span class='line'>        <span class="o">&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="n">chmod</span> <span class="mi">700</span> <span class="o">~</span><span class="sr">/.ssh&lt;/</span><span class="n">code</span><span class="o">&gt;</span>
-</span><span class='line'>        <span class="o">&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="n">chmod</span> <span class="mi">600</span> <span class="o">~</span><span class="sr">/.ssh/</span><span class="n">authorized_keys</span><span class="o">&lt;</span><span class="sr">/code&gt;</span>
-</span><span class='line'><span class="sr">        &lt;code&gt;sed -i /</span><span class="c1">#{user}@#{@hostname}/d ~/.ssh/authorized_keys&lt;/code&gt;</span>
-</span><span class='line'>        <span class="o">&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="n">cat</span> <span class="c1">#{$localip}.pub &amp;gt;&amp;gt; ~/.ssh/authorized_keys&lt;/code&gt;&lt;/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span>    <span class="nb">puts</span> <span class="s2">&quot;   USER: </span><span class="si">#{</span><span class="n">user</span><span class="si">}</span><span class="s2"> 已完成&quot;</span>
-</span><span class='line'>  <span class="k">else</span>
-</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;&amp;gt;&amp;gt; </span><span class="si">#{</span><span class="n">host</span><span class="si">}</span><span class="s2"> 沒有回應&quot;</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'>  <span class="nb">puts</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'><span class="o">&lt;</span><span class="sr">/code&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>  <span class="k">end</span><span class="o">&lt;</span><span class="sr">/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="sr">&lt;p&gt;  def download_key(host,user,passwd)</span>
-</span><span class='line'><span class="sr">    Net::SCP.download!(host,user, &amp;ldquo;</span><span class="si">#{</span><span class="vi">@home</span><span class="si">}</span><span class="sr">/</span><span class="o">.</span><span class="n">ssh</span><span class="o">/</span><span class="c1">#{$localip}.pub&amp;rdquo;, &amp;ldquo;#{$localip}.pub&amp;rdquo;,  :ssh =&gt; { :password =&gt; passwd })</span>
-</span><span class='line'>  <span class="k">end</span><span class="o">&lt;</span><span class="sr">/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="sr">&lt;p&gt;  def script(host,user,passwd)</span>
-</span><span class='line'><span class="sr">    Net::SSH.start(host,user, :password =&gt; passwd ) do |ssh|</span>
-</span><span class='line'><span class="sr">      @hostname=ssh.exec!(&amp;ldquo;hostname&amp;rdquo;).chomp</span>
-</span><span class='line'><span class="sr">      ssh.exec!(&amp;ldquo;mkdir ~/</span><span class="o">.</span><span class="n">ssh</span><span class="o">&amp;</span><span class="n">rdquo</span><span class="p">;)</span>
-</span><span class='line'>      <span class="n">ssh</span><span class="o">.</span><span class="n">exec!</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="n">chmod</span> <span class="mi">700</span> <span class="o">~</span><span class="sr">/.ssh&amp;rdquo;)</span>
-</span><span class='line'><span class="sr">      ssh.exec!(&amp;ldquo;rm </span><span class="si">#{</span><span class="vi">@home</span><span class="si">}</span><span class="sr">/</span><span class="o">.</span><span class="n">ssh</span><span class="o">/</span><span class="c1">#{$localip}&amp;rdquo;)</span>
-</span><span class='line'>      <span class="n">ssh</span><span class="o">.</span><span class="n">exec!</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="n">rm</span> <span class="c1">#{@home}/.ssh/#{$localip}.pub&amp;rdquo;)</span>
-</span><span class='line'>      <span class="n">ssh</span><span class="o">.</span><span class="n">exec!</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="n">ssh</span><span class="o">-</span><span class="n">keygen</span> <span class="o">-</span><span class="n">t</span> <span class="n">rsa</span> <span class="o">-</span><span class="n">f</span> <span class="c1">#{@home}/.ssh/#{$localip} -N &amp;lsquo;&amp;rsquo; -q&amp;rdquo;)</span>
-</span><span class='line'>      <span class="n">ssh</span><span class="o">.</span><span class="n">exec!</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="n">sed</span> <span class="o">-</span><span class="n">i</span> <span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="o">/</span><span class="no">HOST</span> <span class="c1">#{$localip}/,+1d&amp;rsquo; #{@home}/.ssh/config&amp;rdquo;)</span>
-</span><span class='line'>      <span class="n">ssh</span><span class="o">.</span><span class="n">exec!</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="n">echo</span> <span class="no">HOST</span> <span class="c1">#{$localip} &gt;&gt; #{@home}/.ssh/config&amp;rdquo;)</span>
-</span><span class='line'>      <span class="n">ssh</span><span class="o">.</span><span class="n">exec!</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="n">echo</span> <span class="no">IdentityFile</span> <span class="o">~</span><span class="sr">/.ssh/</span><span class="c1">#{$localip} &gt;&gt; #{@home}/.ssh/config&amp;rdquo;)</span>
-</span><span class='line'>    <span class="k">end</span>
-</span><span class='line'>  <span class="k">end</span><span class="o">&lt;</span><span class="sr">/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="sr">&lt;p&gt;end&lt;/</span><span class="nb">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span><span class="k">class</span> <span class="nc">SSH_1_n</span><span class="o">&lt;</span><span class="sr">/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="sr">&lt;p&gt;  def initialize</span>
-</span><span class='line'><span class="sr">    puts &amp;ldquo;IP列表為SSH主機, 使用者: </span><span class="si">#{</span><span class="vg">$localuser</span><span class="si">}</span><span class="sr">&amp;rdquo;</span>
-</span><span class='line'><span class="sr">    @hostname=&lt;code&gt;hostname&lt;/</span><span class="n">code</span><span class="o">&gt;.</span><span class="n">chomp</span>
-</span><span class='line'>    <span class="nb">puts</span> <span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="err">產生</span><span class="n">ssh</span> <span class="n">key</span><span class="o">&amp;</span><span class="n">hellip</span><span class="p">;</span><span class="o">&amp;</span><span class="n">rdquo</span><span class="p">;</span>
-</span><span class='line'>    <span class="n">ssh_keygen</span><span class="o">&lt;</span><span class="sr">/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="sr">&lt;pre&gt;&lt;code&gt;$ip.each do |host,user,passwd|</span>
-</span><span class='line'><span class="sr">  if system(&quot;nc -nz -w 1 </span><span class="si">#{</span><span class="n">host</span><span class="si">}</span><span class="sr"> 22&quot;) == true</span>
-</span><span class='line'><span class="sr">    puts &quot;&amp;gt;&amp;gt; </span><span class="si">#{</span><span class="n">host</span><span class="si">}</span><span class="sr">連線正常&quot;</span>
-</span><span class='line'><span class="sr">    puts &quot;   上傳key到 </span><span class="si">#{</span><span class="n">host</span><span class="si">}</span><span class="sr">&quot;</span>
-</span><span class='line'><span class="sr">    upload_key(host,user,passwd)</span>
-</span><span class='line'><span class="sr">    puts &quot;   </span><span class="si">#{</span><span class="n">host</span><span class="si">}</span><span class="sr"> 執行指令&quot;</span>
-</span><span class='line'><span class="sr">    script(host,user,passwd)</span>
-</span><span class='line'><span class="sr">    `sed -i &#39;/</span><span class="no">HOST</span> <span class="c1">#{host}/,+1d&#39; ~/.ssh/config 2&amp;gt;/dev/null`</span>
-</span><span class='line'>    <span class="sb">`echo HOST </span><span class="si">#{</span><span class="n">host</span><span class="si">}</span><span class="sb"> &amp;gt;&amp;gt; </span><span class="si">#{</span><span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;HOME&#39;</span><span class="o">]</span><span class="si">}</span><span class="sb">/.ssh/config`</span>
-</span><span class='line'>    <span class="sb">`echo IdentityFile </span><span class="si">#{</span><span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;HOME&#39;</span><span class="o">]</span><span class="si">}</span><span class="sb">/.ssh/</span><span class="si">#{</span><span class="vg">$localip</span><span class="si">}</span><span class="sb"> &amp;gt;&amp;gt; </span><span class="si">#{</span><span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;HOME&#39;</span><span class="o">]</span><span class="si">}</span><span class="sb">/.ssh/config`</span>
-</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;   &amp;gt;&amp;gt; </span><span class="si">#{</span><span class="n">user</span><span class="si">}</span><span class="s2">@</span><span class="si">#{</span><span class="n">host</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span class='line'>  <span class="k">else</span>
-</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;&amp;gt;&amp;gt; </span><span class="si">#{</span><span class="n">host</span><span class="si">}</span><span class="s2"> 沒有回應&quot;</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'>  <span class="nb">puts</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'><span class="o">&lt;</span><span class="sr">/code&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span>  <span class="k">end</span><span class="o">&lt;</span><span class="sr">/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="sr">&lt;p&gt;  def upload_key(host,user,passwd)</span>
-</span><span class='line'><span class="sr">    Net::SCP.upload!(host,user, &amp;ldquo;</span><span class="si">#{</span><span class="no">ENV</span><span class="o">[&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="no">HOME</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;</span><span class="o">]</span><span class="si">}</span><span class="sr">/</span><span class="o">.</span><span class="n">ssh</span><span class="o">/</span><span class="c1">#{$localip}.pub&amp;rdquo;, &amp;ldquo;id_rsa.pub&amp;rdquo;,  :ssh =&gt; { :password =&gt; passwd })</span>
-</span><span class='line'>  <span class="k">end</span><span class="o">&lt;</span><span class="sr">/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="sr">&lt;p&gt;  def script(host,user,passwd)</span>
-</span><span class='line'><span class="sr">    Net::SSH.start(host,user, :password =&gt; passwd ) do |ssh|</span>
-</span><span class='line'><span class="sr">      ssh.exec!(&amp;ldquo;sed -i /</span><span class="c1">#{ENV[&amp;lsquo;USER&amp;rsquo;]}@#{@hostname}/d ~/.ssh/authorized_keys&amp;rdquo;)</span>
-</span><span class='line'>      <span class="n">ssh</span><span class="o">.</span><span class="n">exec!</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="n">mkdir</span> <span class="o">~</span><span class="sr">/.ssh&amp;rdquo;)</span>
-</span><span class='line'><span class="sr">      ssh.exec!(&amp;ldquo;cat id_rsa.pub &gt;&gt; ~/</span><span class="o">.</span><span class="n">ssh</span><span class="o">/</span><span class="n">authorized_keys</span><span class="o">&amp;</span><span class="n">rdquo</span><span class="p">;)</span>
-</span><span class='line'>      <span class="n">ssh</span><span class="o">.</span><span class="n">exec!</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="n">chmod</span> <span class="n">go</span><span class="o">-</span><span class="n">w</span> <span class="o">~&amp;</span><span class="n">rdquo</span><span class="p">;)</span>
-</span><span class='line'>      <span class="n">ssh</span><span class="o">.</span><span class="n">exec!</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="n">chmod</span> <span class="mi">700</span> <span class="o">~</span><span class="sr">/.ssh&amp;rdquo;)</span>
-</span><span class='line'><span class="sr">      ssh.exec!(&amp;ldquo;chmod 600 ~/</span><span class="o">.</span><span class="n">ssh</span><span class="o">/</span><span class="n">authorized_keys</span><span class="o">&amp;</span><span class="n">rdquo</span><span class="p">;)</span>
-</span><span class='line'>    <span class="k">end</span>
-</span><span class='line'>  <span class="k">end</span><span class="o">&lt;</span><span class="sr">/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="sr">&lt;p&gt;  def ssh_keygen</span>
-</span><span class='line'><span class="sr">    if not File.exist?(&amp;ldquo;</span><span class="si">#{</span><span class="no">ENV</span><span class="o">[&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="no">HOME</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;</span><span class="o">]</span><span class="si">}</span><span class="sr">/</span><span class="o">.</span><span class="n">ssh</span><span class="o">/</span><span class="c1">#{$localip}&amp;rdquo;)</span>
-</span><span class='line'>      <span class="nb">system</span><span class="p">(</span><span class="o">&amp;</span><span class="n">ldquo</span><span class="p">;</span><span class="n">ssh</span><span class="o">-</span><span class="n">keygen</span> <span class="o">-</span><span class="n">t</span> <span class="n">rsa</span> <span class="o">-</span><span class="n">f</span> <span class="c1">#{ENV[&amp;lsquo;HOME&amp;rsquo;]}/.ssh/#{$localip} -N &amp;lsquo;&amp;rsquo; -q&amp;rdquo;)</span>
-</span><span class='line'>    <span class="k">end</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure></p>
+    <content type="html"><![CDATA[<pre><code class="ruby"># encoding: utf-8
+if `gem list | grep net-ssh` == ""
+  puts "缺少套件net-ssh net-scp 準備安裝.."
+  `gem install net-ssh net-scp --no-ri --no-rdoc`
+end
+require "net/ssh"
+require "net/scp"
+$localip=`ifconfig | grep Bcast | cut -d :  -f 2 | cut -d " " -f 1`.chomp
+$localuser=ENV['USER']
+$ip=[]
+$ip &lt;&lt; ["192.168.1.100","test","test"]
+
+class SSH_n_1
+
+  def initialize
+    puts "本地端為SSH主機,#{$localuser}@#{$localip}"
+    puts
+    $ip.each do |host,user,passwd|
+      if system("nc -nz -w 1 #{host} 22") == true
+        puts "&gt;&gt; #{host}連線正常"
+        puts "   #{host}產生ssh key"
+        if user == "root"
+          @home="/#{user}"
+        else
+          @home="/home/#{user}"
+        end
+        script(host,user,passwd)
+        puts "   #{host}下載ssh key"
+        download_key(host,user,passwd)
+        `mkdir ~/.ssh 2&gt; /dev/null`
+        `chmod go-w ~`
+        `chmod 700 ~/.ssh`
+        `chmod 600 ~/.ssh/authorized_keys`
+        `sed -i /#{user}@#{@hostname}/d ~/.ssh/authorized_keys`
+        `cat #{$localip}.pub &gt;&gt; ~/.ssh/authorized_keys`
+
+        puts "   USER: #{user} 已完成"
+      else
+        puts "&gt;&gt; #{host} 沒有回應"
+      end
+      puts
+    end
+  end
+
+  def download_key(host,user,passwd)
+    Net::SCP.download!(host,user, "#{@home}/.ssh/#{$localip}.pub", "#{$localip}.pub",  :ssh =&gt; { :password =&gt; passwd })
+  end
+
+  def script(host,user,passwd)
+    Net::SSH.start(host,user, :password =&gt; passwd ) do |ssh|
+      @hostname=ssh.exec!("hostname").chomp
+      ssh.exec!("mkdir ~/.ssh")
+      ssh.exec!("chmod 700 ~/.ssh")
+      ssh.exec!("rm #{@home}/.ssh/#{$localip}")
+      ssh.exec!("rm #{@home}/.ssh/#{$localip}.pub")
+      ssh.exec!("ssh-keygen -t rsa -f #{@home}/.ssh/#{$localip} -N '' -q")
+      ssh.exec!("sed -i '/HOST #{$localip}/,+1d' #{@home}/.ssh/config")
+      ssh.exec!("echo HOST #{$localip} &gt;&gt; #{@home}/.ssh/config")
+      ssh.exec!("echo IdentityFile ~/.ssh/#{$localip} &gt;&gt; #{@home}/.ssh/config")
+    end
+  end
+
+end
+
+class SSH_1_n
+
+  def initialize
+    puts "IP列表為SSH主機, 使用者: #{$localuser}"
+    @hostname=`hostname`.chomp
+    puts "產生ssh key..."
+    ssh_keygen
+
+    $ip.each do |host,user,passwd|
+      if system("nc -nz -w 1 #{host} 22") == true
+        puts "&gt;&gt; #{host}連線正常"
+        puts "   上傳key到 #{host}"
+        upload_key(host,user,passwd)
+        puts "   #{host} 執行指令"
+        script(host,user,passwd)
+        `sed -i '/HOST #{host}/,+1d' ~/.ssh/config 2&gt;/dev/null`
+        `echo HOST #{host} &gt;&gt; #{ENV['HOME']}/.ssh/config`
+        `echo IdentityFile #{ENV['HOME']}/.ssh/#{$localip} &gt;&gt; #{ENV['HOME']}/.ssh/config`
+        puts "   &gt;&gt; #{user}@#{host}"
+      else
+        puts "&gt;&gt; #{host} 沒有回應"
+      end
+      puts
+    end
+  end
+
+  def upload_key(host,user,passwd)
+    Net::SCP.upload!(host,user, "#{ENV['HOME']}/.ssh/#{$localip}.pub", "id_rsa.pub",  :ssh =&gt; { :password =&gt; passwd })
+  end
+
+  def script(host,user,passwd)
+    Net::SSH.start(host,user, :password =&gt; passwd ) do |ssh|
+      ssh.exec!("sed -i /#{ENV['USER']}@#{@hostname}/d ~/.ssh/authorized_keys")
+      ssh.exec!("mkdir ~/.ssh")
+      ssh.exec!("cat id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys")
+      ssh.exec!("chmod go-w ~")
+      ssh.exec!("chmod 700 ~/.ssh")
+      ssh.exec!("chmod 600 ~/.ssh/authorized_keys")
+    end
+  end
+
+  def ssh_keygen
+    if not File.exist?("#{ENV['HOME']}/.ssh/#{$localip}")
+      system("ssh-keygen -t rsa -f #{ENV['HOME']}/.ssh/#{$localip} -N '' -q")
+    end
+  end
+
+end
+</code></pre>
 ]]></content>
   </entry>
   

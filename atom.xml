@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2016-06-15T13:19:00+08:00</updated>
+  <updated>2016-06-15T22:59:09+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -14,11 +14,23 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Ping_lan]]></title>
-    <link href="http://icps0610.github.io/blog/2016/06/15/ping-lan/"/>
-    <updated>2016-06-15T13:09:26+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/06/15/ping-lan</id>
-    <content type="html"><![CDATA[<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+    <title type="html"><![CDATA[Exim4]]></title>
+    <link href="http://icps0610.github.io/blog/2016/06/15/exim4/"/>
+    <updated>2016-06-15T22:12:27+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/06/15/exim4</id>
+    <content type="html"><![CDATA[<h4>dpkg-reconfigure exim4-config</h4>
+
+<p><img src="http://icps0610.github.io/images/posts/exmi4-1.png" alt="exim4-1.png" />
+smtp.gmail.com::587</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Live_cd]]></title>
+    <link href="http://icps0610.github.io/blog/2016/06/15/live-cd/"/>
+    <updated>2016-06-15T22:09:51+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/06/15/live-cd</id>
+    <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -48,37 +60,348 @@
 <span class='line-number'>28</span>
 <span class='line-number'>29</span>
 <span class='line-number'>30</span>
-</pre></td><td class='code'><pre><code class='PowerShell'><span class='line'><span class="nv">@echo</span> <span class="n">off</span>
-</span><span class='line'><span class="n">del</span> <span class="n">ip</span><span class="p">.</span><span class="n">tmp</span> <span class="n">2</span><span class="p">&gt;</span> <span class="n">nul</span>
-</span><span class='line'><span class="n">del</span> <span class="n">tmp</span><span class="p">.</span><span class="n">txt</span> <span class="n">2</span><span class="p">&gt;</span><span class="n">nul</span>
-</span><span class='line'><span class="n">del</span> <span class="n">log</span><span class="p">.</span><span class="n">txt</span> <span class="n">2</span><span class="p">&gt;</span><span class="n">nul</span>
-</span><span class='line'><span class="n">SETLOCAL</span> <span class="n">ENABLEDELAYEDEXPANSION</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+<span class='line-number'>75</span>
+<span class='line-number'>76</span>
+<span class='line-number'>77</span>
+<span class='line-number'>78</span>
+<span class='line-number'>79</span>
+<span class='line-number'>80</span>
+<span class='line-number'>81</span>
+<span class='line-number'>82</span>
+<span class='line-number'>83</span>
+<span class='line-number'>84</span>
+<span class='line-number'>85</span>
+<span class='line-number'>86</span>
+<span class='line-number'>87</span>
+<span class='line-number'>88</span>
+<span class='line-number'>89</span>
+<span class='line-number'>90</span>
+<span class='line-number'>91</span>
+<span class='line-number'>92</span>
+<span class='line-number'>93</span>
+<span class='line-number'>94</span>
+<span class='line-number'>95</span>
+<span class='line-number'>96</span>
+<span class='line-number'>97</span>
+<span class='line-number'>98</span>
+<span class='line-number'>99</span>
+<span class='line-number'>100</span>
+<span class='line-number'>101</span>
+<span class='line-number'>102</span>
+<span class='line-number'>103</span>
+<span class='line-number'>104</span>
+<span class='line-number'>105</span>
+<span class='line-number'>106</span>
+<span class='line-number'>107</span>
+<span class='line-number'>108</span>
+<span class='line-number'>109</span>
+<span class='line-number'>110</span>
+<span class='line-number'>111</span>
+<span class='line-number'>112</span>
+<span class='line-number'>113</span>
+<span class='line-number'>114</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#!/usr/bin/env ruby</span>
+</span><span class='line'><span class="c1"># encoding: utf-8</span>
+</span><span class='line'><span class="sb">`apt-get install squashfs-tools`</span> <span class="k">if</span> <span class="sb">`dpkg-query -W | grep squashfs-tools`</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span>
 </span><span class='line'>
-</span><span class='line'><span class="k">for</span> <span class="p">/</span><span class="n">l</span> <span class="p">%</span><span class="k">%</span><span class="n">i</span> <span class="k">in</span> <span class="p">(</span><span class="n">1</span><span class="p">,</span><span class="n">1</span><span class="p">,</span><span class="n">254</span><span class="p">)</span> <span class="k">do</span> <span class="p">(</span>
-</span><span class='line'>   <span class="n">echo</span> <span class="p">^</span><span class="nv">@echo</span> <span class="n">off</span> <span class="p">&gt;</span> <span class="k">%</span><span class="n">SystemRoot</span><span class="p">%\</span><span class="n">TEMP</span><span class="p">\%</span><span class="k">%</span><span class="n">i</span><span class="p">.</span><span class="n">bat</span>
-</span><span class='line'>   <span class="n">echo</span> <span class="n">ping</span> <span class="n">-n</span> <span class="n">1</span> <span class="n">-w</span> <span class="n">1000</span> <span class="n">192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">1</span><span class="p">.%</span><span class="k">%</span><span class="n">i</span> <span class="p">^&gt;</span><span class="n">nul</span> <span class="p">&gt;&gt;</span> <span class="k">%</span><span class="n">SystemRoot</span><span class="p">%\</span><span class="n">TEMP</span><span class="p">\%</span><span class="k">%</span><span class="n">i</span><span class="p">.</span><span class="n">bat</span>
-</span><span class='line'>   <span class="n">echo</span> <span class="k">if</span> <span class="p">%</span><span class="k">%</span><span class="n">errorlevel</span><span class="p">%%</span> <span class="p">==</span> <span class="n">0</span> <span class="n">echo</span> <span class="n">192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">1</span><span class="p">.%</span><span class="k">%</span><span class="n">i</span> <span class="p">^&gt;^&gt;</span> <span class="n">ip</span><span class="p">.</span><span class="n">tmp</span> <span class="p">&gt;&gt;</span> <span class="k">%</span><span class="n">SystemRoot</span><span class="p">%\</span><span class="n">TEMP</span><span class="p">\%</span><span class="k">%</span><span class="n">i</span><span class="p">.</span><span class="n">bat</span>
-</span><span class='line'>   <span class="n">echo</span> <span class="n">exit</span> <span class="p">&gt;&gt;</span> <span class="k">%</span><span class="n">SystemRoot</span><span class="p">%\</span><span class="n">TEMP</span><span class="p">\%</span><span class="k">%</span><span class="n">i</span><span class="p">.</span><span class="n">bat</span>
-</span><span class='line'>   <span class="n">start</span> <span class="k">%</span><span class="n">SystemRoot</span><span class="p">%\</span><span class="n">TEMP</span><span class="p">\%</span><span class="k">%</span><span class="n">i</span><span class="p">.</span><span class="n">bat</span>
-</span><span class='line'><span class="p">)</span>
-</span><span class='line'><span class="n">echo</span> <span class="err">正在尋找有回應的主機</span>
-</span><span class='line'><span class="n">pause</span>
-</span><span class='line'><span class="n">echo</span> <span class="err">已找到有回應的主機</span>
-</span><span class='line'><span class="n">type</span> <span class="n">ip</span><span class="p">.</span><span class="n">tmp</span>
-</span><span class='line'><span class="n">echo</span> <span class="err">分析主機名稱中</span><span class="p">..</span>
-</span><span class='line'><span class="k">for</span> <span class="p">/</span><span class="n">l</span> <span class="p">%</span><span class="k">%</span><span class="n">i</span> <span class="k">in</span> <span class="p">(</span><span class="n">1</span><span class="p">,</span><span class="n">1</span><span class="p">,</span><span class="n">254</span><span class="p">)</span> <span class="k">do</span> <span class="n">del</span> <span class="k">%</span><span class="n">SystemRoot</span><span class="p">%\</span><span class="n">TEMP</span><span class="p">\%</span><span class="k">%</span><span class="n">i</span><span class="p">.</span><span class="n">bat</span>
-</span><span class='line'><span class="k">for</span> <span class="p">/</span><span class="n">f</span> <span class="p">%</span><span class="k">%</span><span class="n">i</span> <span class="k">in</span> <span class="p">(</span><span class="n">ip</span><span class="p">.</span><span class="n">tmp</span><span class="p">)</span> <span class="k">do</span> <span class="p">(</span>
-</span><span class='line'>   <span class="n">ping</span> <span class="n">-a</span> <span class="n">-n</span> <span class="n">1</span> <span class="n">-w</span> <span class="n">100</span> <span class="p">%</span><span class="k">%</span><span class="n">i</span> <span class="p">&gt;</span> <span class="n">tmp</span><span class="p">.</span><span class="n">txt</span>
-</span><span class='line'>   <span class="n">set</span> <span class="n">line</span><span class="p">=</span><span class="n">0</span>
-</span><span class='line'>   <span class="k">for</span> <span class="p">/</span><span class="n">f</span> <span class="s2">&quot;tokens=2 delims= &quot;</span> <span class="p">%</span><span class="k">%</span><span class="n">j</span> <span class="k">in</span> <span class="p">(</span><span class="n">tmp</span><span class="p">.</span><span class="n">txt</span><span class="p">)</span> <span class="k">do</span> <span class="p">(</span>
-</span><span class='line'>      <span class="n">set</span> <span class="p">/</span><span class="n">a</span> <span class="n">line</span><span class="p">=!</span><span class="n">line</span><span class="p">!+</span><span class="n">1</span>
-</span><span class='line'>      <span class="k">if</span> <span class="p">!</span><span class="n">line</span><span class="p">!</span> <span class="p">==</span> <span class="n">1</span> <span class="n">echo</span> <span class="p">%</span><span class="k">%</span><span class="n">i</span> <span class="p">%</span><span class="k">%</span><span class="n">j</span> <span class="p">&amp;</span> <span class="n">echo</span> <span class="p">%</span><span class="k">%</span><span class="n">i</span> <span class="p">%</span><span class="k">%</span><span class="n">j</span> <span class="p">&gt;&gt;</span><span class="n">log</span><span class="p">.</span><span class="n">txt</span>
-</span><span class='line'>   <span class="p">)</span>
-</span><span class='line'><span class="p">)</span>
-</span><span class='line'><span class="n">del</span> <span class="n">ip</span><span class="p">.</span><span class="n">tmp</span> <span class="n">2</span><span class="p">&gt;</span> <span class="n">nul</span>
-</span><span class='line'><span class="n">del</span> <span class="n">tmp</span><span class="p">.</span><span class="n">txt</span> <span class="n">2</span><span class="p">&gt;</span><span class="n">nul</span>
-</span><span class='line'><span class="n">pause</span>
+</span><span class='line'><span class="k">class</span> <span class="nc">Live</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">initialize</span>
+</span><span class='line'>    <span class="n">iso_list</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;1.解壓縮</span><span class="si">#{</span><span class="vi">@iso_name</span><span class="si">}</span><span class="s2">.</span><span class="si">#{</span><span class="vi">@iso_name_ext</span><span class="si">}</span><span class="s2">的filesystem.squashfs 到 </span><span class="si">#{</span><span class="vi">@filesystem</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;2.chroot </span><span class="si">#{</span><span class="vi">@filesystem</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;3.將</span><span class="si">#{</span><span class="vi">@filesystem</span><span class="si">}</span><span class="s2">壓縮檔案製成光碟/tmp/</span><span class="si">#{</span><span class="vi">@iso_name</span><span class="si">}</span><span class="s2">.</span><span class="si">#{</span><span class="vi">@iso_name_ext</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;4.將.\/</span><span class="si">#{</span><span class="vi">@iso_name</span><span class="si">}</span><span class="s2"> 製作光碟&quot;</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;-------------&quot;</span>
+</span><span class='line'>    <span class="n">choice</span><span class="o">=</span><span class="nb">gets</span><span class="o">.</span><span class="n">chomp</span>
+</span><span class='line'>    <span class="k">if</span> <span class="n">choice</span> <span class="o">==</span> <span class="s2">&quot;1&quot;</span>
+</span><span class='line'>      <span class="n">extract</span>
+</span><span class='line'>    <span class="k">elsif</span> <span class="n">choice</span> <span class="o">==</span><span class="s2">&quot;2&quot;</span>
+</span><span class='line'>      <span class="n">mount_system</span>
+</span><span class='line'>    <span class="k">elsif</span> <span class="n">choice</span> <span class="o">==</span><span class="s2">&quot;3&quot;</span>
+</span><span class='line'>      <span class="n">zip_file</span>
+</span><span class='line'>    <span class="k">elsif</span> <span class="n">choice</span> <span class="o">==</span><span class="s2">&quot;4&quot;</span>
+</span><span class='line'>      <span class="n">iso</span>
+</span><span class='line'>    <span class="k">else</span>
+</span><span class='line'>      <span class="kp">initialize</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">iso_list</span>
+</span><span class='line'>    <span class="vi">@iso_name_ext</span><span class="o">=</span><span class="s2">&quot;iso&quot;</span>
+</span><span class='line'>    <span class="n">list</span> <span class="o">=</span> <span class="sb">`ls | grep </span><span class="si">#{</span><span class="vi">@iso_name_ext</span><span class="si">}</span><span class="sb">`</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">if</span> <span class="n">list</span><span class="o">.</span><span class="n">count</span> <span class="o">&gt;</span> <span class="mi">1</span>
+</span><span class='line'>      <span class="nb">puts</span> <span class="s2">&quot;請選擇iso&quot;</span>
+</span><span class='line'>      <span class="n">list</span><span class="o">.</span><span class="n">each_index</span> <span class="k">do</span> <span class="o">|</span><span class="n">i</span><span class="o">|</span>
+</span><span class='line'>        <span class="nb">puts</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">. </span><span class="si">#{</span><span class="n">list</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>      <span class="nb">puts</span> <span class="s2">&quot;--------------&quot;</span>
+</span><span class='line'>      <span class="n">choice</span><span class="o">=</span><span class="nb">gets</span><span class="o">.</span><span class="n">chomp</span>
+</span><span class='line'>      <span class="k">if</span> <span class="ow">not</span> <span class="n">choice</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span>
+</span><span class='line'>        <span class="vi">@iso_name</span><span class="o">=</span><span class="no">File</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">list</span><span class="o">[</span><span class="n">choice</span><span class="o">.</span><span class="n">to_i</span><span class="o">-</span><span class="mi">1</span><span class="o">]</span><span class="p">,</span><span class="s2">&quot;.&quot;</span><span class="o">+</span><span class="vi">@iso_name_ext</span><span class="p">)</span>
+</span><span class='line'>      <span class="k">else</span>
+</span><span class='line'>        <span class="n">iso_list</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>    <span class="k">else</span>
+</span><span class='line'>      <span class="vi">@iso_name</span><span class="o">=</span><span class="no">File</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">list</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">,</span><span class="s2">&quot;.&quot;</span><span class="o">+</span><span class="vi">@iso_name_ext</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>    <span class="vi">@filesystem</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">#{</span><span class="vi">@iso_name</span><span class="si">}</span><span class="s2">_filesystem&quot;</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">iso_extract</span>
+</span><span class='line'>    <span class="k">if</span> <span class="no">File</span><span class="o">.</span><span class="n">exist?</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">#{</span><span class="vi">@iso_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span class='line'>      <span class="nb">printf</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">是否移除舊 </span><span class="si">#{</span><span class="vi">@iso_name</span><span class="si">}</span><span class="s2">(y/n) : &quot;</span>
+</span><span class='line'>      <span class="sb">`umout </span><span class="si">#{</span><span class="vi">@iso_name</span><span class="si">}</span><span class="sb"> &amp;&amp; rm -rf </span><span class="si">#{</span><span class="vi">@iso_name</span><span class="si">}</span><span class="sb">`</span> <span class="k">if</span> <span class="nb">gets</span><span class="o">.</span><span class="n">downcase</span><span class="o">.</span><span class="n">chomp</span> <span class="o">==</span> <span class="s2">&quot;y&quot;</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;將光碟</span><span class="si">#{</span><span class="vi">@iso_name</span><span class="si">}</span><span class="s2">.</span><span class="si">#{</span><span class="vi">@iso_name_ext</span><span class="si">}</span><span class="s2">掛載到.\/</span><span class="si">#{</span><span class="vi">@iso_name</span><span class="si">}</span><span class="s2">..&quot;</span>
+</span><span class='line'>    <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;mkdir </span><span class="si">#{</span><span class="vi">@iso_name</span><span class="si">}</span><span class="s2"> 2&gt; /dev/null&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;mount -o loop </span><span class="si">#{</span><span class="vi">@iso_name</span><span class="si">}</span><span class="s2">.</span><span class="si">#{</span><span class="vi">@iso_name_ext</span><span class="si">}</span><span class="s2"> </span><span class="si">#{</span><span class="vi">@iso_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">extract</span>
+</span><span class='line'>    <span class="n">iso_extract</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;解壓縮 filesystem.squashfs 到 </span><span class="si">#{</span><span class="vi">@filesystem</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>    <span class="k">if</span> <span class="no">File</span><span class="o">.</span><span class="n">exist?</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">#{</span><span class="vi">@filesystem</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span class='line'>      <span class="nb">printf</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">是否移除舊  </span><span class="si">#{</span><span class="vi">@filesystem</span><span class="si">}</span><span class="s2">(y/n) : &quot;</span>
+</span><span class='line'>      <span class="sb">`rm -rf </span><span class="si">#{</span><span class="vi">@filesystem</span><span class="si">}</span><span class="sb">`</span> <span class="k">if</span> <span class="nb">gets</span><span class="o">.</span><span class="n">downcase</span><span class="o">.</span><span class="n">chomp</span> <span class="o">==</span> <span class="s2">&quot;y&quot;</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>    <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;mount -o loop -t squashfs </span><span class="si">#{</span><span class="vi">@iso_name</span><span class="si">}</span><span class="s2">/casper/filesystem.squashfs /mnt/ &quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;rsync -aAXv /mnt/* </span><span class="si">#{</span><span class="vi">@filesystem</span><span class="si">}</span><span class="s2"> | pv -ls `find /mnt|wc -l` &gt;/dev/null&quot;</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">mount_system</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;開始掛載...&quot;</span>
+</span><span class='line'>    <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;umount /mnt/  2&gt;/dev/null&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;mount -o bind /dev/ </span><span class="si">#{</span><span class="vi">@filesystem</span><span class="si">}</span><span class="s2">/dev/ 2&gt;/dev/null&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;mount --bind /dev/pts </span><span class="si">#{</span><span class="vi">@filesystem</span><span class="si">}</span><span class="s2">/dev/pts 2&gt;/dev/null&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;mount -t proc procfs </span><span class="si">#{</span><span class="vi">@filesystem</span><span class="si">}</span><span class="s2">/proc/  2&gt;/dev/null&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;cp /etc/resolv.conf </span><span class="si">#{</span><span class="vi">@filesystem</span><span class="si">}</span><span class="s2">/etc/&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;chroot </span><span class="si">#{</span><span class="vi">@filesystem</span><span class="si">}</span><span class="s2">/ /bin/bash&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;umount </span><span class="si">#{</span><span class="vi">@filesystem</span><span class="si">}</span><span class="s2">/dev/pts&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;umount </span><span class="si">#{</span><span class="vi">@filesystem</span><span class="si">}</span><span class="s2">/proc/&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;umount </span><span class="si">#{</span><span class="vi">@filesystem</span><span class="si">}</span><span class="s2">/dev/&quot;</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">zip_file</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;開始壓縮檔案..&quot;</span>
+</span><span class='line'>    <span class="k">if</span> <span class="ow">not</span> <span class="no">File</span><span class="o">.</span><span class="n">exist?</span><span class="p">(</span><span class="s2">&quot;/tmp/</span><span class="si">#{</span><span class="vi">@iso_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">iso_extract</span>
+</span><span class='line'>      <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;rsync -a --exclude &#39;filesystem.squashfs&#39; </span><span class="si">#{</span><span class="vi">@iso_name</span><span class="si">}</span><span class="s2"> /tmp/  | pv -les $(df -i </span><span class="si">#{</span><span class="vi">@iso_name</span><span class="si">}</span><span class="s2"> | perl -ane &#39;print $F[2] if $F[5] =~ m:^/:&#39;) &gt;/dev/null&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>    <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;umount </span><span class="si">#{</span><span class="vi">@filesystem</span><span class="si">}</span><span class="s2">/dev/pts 2&gt;/dev/null&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;umount </span><span class="si">#{</span><span class="vi">@filesystem</span><span class="si">}</span><span class="s2">/proc/ 2&gt;/dev/null&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;umount </span><span class="si">#{</span><span class="vi">@filesystem</span><span class="si">}</span><span class="s2">/dev/ 2&gt;/dev/null&quot;</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;chroot </span><span class="si">#{</span><span class="vi">@filesystem</span><span class="si">}</span><span class="s2"> dpkg-query -W --showformat=&#39;${Package} ${Version}</span><span class="se">\n</span><span class="s2">&#39; &gt; /tmp/</span><span class="si">#{</span><span class="vi">@iso_name</span><span class="si">}</span><span class="s2">/casper/filesystem.manifest&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;rm /tmp/</span><span class="si">#{</span><span class="vi">@iso_name</span><span class="si">}</span><span class="s2">/casper/filesystem.squashfs 2&gt;/dev/null&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;mksquashfs </span><span class="si">#{</span><span class="vi">@filesystem</span><span class="si">}</span><span class="s2"> /tmp/</span><span class="si">#{</span><span class="vi">@iso_name</span><span class="si">}</span><span class="s2">/casper/filesystem.squashfs -comp xz&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;printf $( du -sx --block-size=1 </span><span class="si">#{</span><span class="vi">@filesystem</span><span class="si">}</span><span class="s2"> | cut -f1) &gt; /tmp/</span><span class="si">#{</span><span class="vi">@iso_name</span><span class="si">}</span><span class="s2">/casper/filesystem.size&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="no">Dir</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s2">&quot;/tmp/</span><span class="si">#{</span><span class="vi">@iso_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;rm MD5SUMS&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;find -type f -print0 |  xargs -0 md5sum | grep -v isolinux/boot.cat |  tee MD5SUMS&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;mkisofs -input-charset iso8859-1 -r -D -V &#39;/</span><span class="si">#{</span><span class="vi">@iso_name</span><span class="si">}</span><span class="s2">-icps&#39; -cache-inodes -J -l -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -graft-point -o /tmp/</span><span class="si">#{</span><span class="vi">@iso_name</span><span class="si">}</span><span class="s2">.</span><span class="si">#{</span><span class="vi">@iso_name_ext</span><span class="si">}</span><span class="s2"> ../</span><span class="si">#{</span><span class="vi">@iso_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">iso</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;開始打包光碟..&quot;</span>
+</span><span class='line'>    <span class="c1">#system(&quot;cp setup.rb /tmp/#{@iso_name}&quot;)</span>
+</span><span class='line'>    <span class="c1">#system(&quot;printf $( du -sx --block-size=1 #{@filesystem} | cut -f1) &gt; /tmp/#{@iso_name}/casper/filesystem.size&quot;)</span>
+</span><span class='line'>    <span class="no">Dir</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s2">&quot;/tmp/</span><span class="si">#{</span><span class="vi">@iso_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="c1">#system(&quot;rm MD5SUMS&quot;)</span>
+</span><span class='line'>    <span class="c1">#system(&quot;find -type f -print0 |  xargs -0 md5sum | grep -v isolinux/boot.cat |  tee MD5SUMS&quot;)</span>
+</span><span class='line'>    <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;mkisofs -input-charset iso8859-1 -r -D -V &#39;/</span><span class="si">#{</span><span class="vi">@iso_name</span><span class="si">}</span><span class="s2">-icps&#39; -cache-inodes -J -l -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -graft-point -o /tmp/</span><span class="si">#{</span><span class="vi">@iso_name</span><span class="si">}</span><span class="s2">.</span><span class="si">#{</span><span class="vi">@iso_name_ext</span><span class="si">}</span><span class="s2"> ../</span><span class="si">#{</span><span class="vi">@iso_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'><span class="no">Live</span><span class="o">.</span><span class="n">new</span>
 </span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Clean]]></title>
+    <link href="http://icps0610.github.io/blog/2016/06/15/clean/"/>
+    <updated>2016-06-15T22:06:00+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/06/15/clean</id>
+    <content type="html"><![CDATA[<pre><code>apt-get clean
+apt-get autoclean
+apt-get autoremove
+rm /var/cache/apt/archives/* 2>/dev/nul # Package (deb) cache
+rm /var/cache/apt/archives/partial/* 2>/dev/nul
+rm -R /var/log/* 2>/dev/nul
+rm -R /tmp/* 2>/dev/nul
+rm /root/.local/share/Trash/files/* 2>/dev/nul
+</code></pre>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Battery_check]]></title>
+    <link href="http://icps0610.github.io/blog/2016/06/15/battery-check/"/>
+    <updated>2016-06-15T22:04:43+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/06/15/battery-check</id>
+    <content type="html"><![CDATA[<pre><code>upower -i $(upower -e | grep 'BAT')| grep percentage:| awk '{print$2}'
+</code></pre>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Config]]></title>
+    <link href="http://icps0610.github.io/blog/2016/06/15/config/"/>
+    <updated>2016-06-15T20:16:01+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/06/15/config</id>
+    <content type="html"><![CDATA[<h4>ssd</h4>
+
+<h6>UUID</h6>
+
+<pre><code>blkid -s UUID</code></pre>
+
+
+<pre><code>#/etc/fstab
+UUID=XX / ext4 noatime,nodiratime,discard,defaults,errors=remount-ro 0 1
+tmpfs /tmp tmpfs defaults,noatime,mode=1777 0 0
+tmpfs /var/spool tmpfs defaults,noatime,mode=1777 0 0
+tmpfs /var/tmp tmpfs defaults,noatime,mode=1777 0 0
+tmpfs /var/log tmpfs defaults,noatime,mode=0755 0 0
+</code></pre>
+
+
+<h4>tab補完</h4>
+
+<pre><code>if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
+fi
+</code></pre>
+
+
+<h4>Repos</h4>
+
+<pre><code>#/etc/apt/sources.list
+#Kali
+deb http://ftp.tku.edu.tw/kali kali main contrib non-free
+deb http://ftp.tku.edu.tw/kali-security kali main contrib non-free
+#Ubuntu Main Repos
+deb http://free.nchc.org.tw/ubuntu/ trusty main restricted universe multiverse
+# Ubuntu Update Repos
+deb http://free.nchc.org.tw/ubuntu/ trusty-security main restricted universe multiverse
+deb http://free.nchc.org.tw/ubuntu/ trusty-updates main restricted universe multiverse
+</code></pre>
+
+
+<h4>sudo no passwd</h4>
+
+<pre><code>visudo
+username ALL=(ALL:ALL) ALL
+</code></pre>
+
+
+<h4>vbox sharefile</h4>
+
+<pre><code>mount -t vboxsf REKCAH /data/REKCAH
+</code></pre>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Get_real_ip]]></title>
+    <link href="http://icps0610.github.io/blog/2016/06/15/get-real-ip/"/>
+    <updated>2016-06-15T13:36:32+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/06/15/get-real-ip</id>
+    <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>curl -s checkip.dyndns.org <span class="p">|</span> sed -e <span class="s1">&#39;s/.*Current IP Address: //&#39;</span> -e <span class="s1">&#39;s/&lt;.*$//&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Ping_lan]]></title>
+    <link href="http://icps0610.github.io/blog/2016/06/15/ping-lan/"/>
+    <updated>2016-06-15T13:09:26+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/06/15/ping-lan</id>
+    <content type="html"><![CDATA[<pre><code>@echo off
+del ip.tmp 2> nul
+del tmp.txt 2>nul
+del log.txt 2>nul
+SETLOCAL ENABLEDELAYEDEXPANSION
+
+for /l %%i in (1,1,254) do (
+   echo ^@echo off > %SystemRoot%\TEMP\%%i.bat
+   echo ping -n 1 -w 1000 192.168.1.%%i ^>nul >> %SystemRoot%\TEMP\%%i.bat
+   echo if %%errorlevel%% == 0 echo 192.168.1.%%i ^>^> ip.tmp >> %SystemRoot%\TEMP\%%i.bat
+   echo exit >> %SystemRoot%\TEMP\%%i.bat
+   start %SystemRoot%\TEMP\%%i.bat
+)
+echo 正在尋找有回應的主機
+pause
+echo 已找到有回應的主機
+type ip.tmp
+echo 分析主機名稱中..
+for /l %%i in (1,1,254) do del %SystemRoot%\TEMP\%%i.bat
+for /f %%i in (ip.tmp) do (
+   ping -a -n 1 -w 100 %%i > tmp.txt
+   set line=0
+   for /f "tokens=2 delims= " %%j in (tmp.txt) do (
+      set /a line=!line!+1
+      if !line! == 1 echo %%i %%j & echo %%i %%j >>log.txt
+   )
+)
+del ip.tmp 2> nul
+del tmp.txt 2>nul
+pause
+</code></pre>
 
 ]]></content>
   </entry>
@@ -88,7 +411,7 @@
     <link href="http://icps0610.github.io/blog/2016/06/14/ssh-autologin/"/>
     <updated>2016-06-14T12:50:31+08:00</updated>
     <id>http://icps0610.github.io/blog/2016/06/14/ssh-autologin</id>
-    <content type="html"><![CDATA[<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+    <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -242,7 +565,6 @@
 </span><span class='line'>      <span class="k">end</span>
 </span><span class='line'>      <span class="nb">puts</span>
 </span><span class='line'>    <span class="k">end</span>
-</span><span class='line'>
 </span><span class='line'>  <span class="k">end</span>
 </span><span class='line'>
 </span><span class='line'>  <span class="k">def</span> <span class="nf">download_key</span><span class="p">(</span><span class="n">host</span><span class="p">,</span><span class="n">user</span><span class="p">,</span><span class="n">passwd</span><span class="p">)</span>
@@ -311,6 +633,7 @@
 </span><span class='line'>      <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;ssh-keygen -t rsa -f </span><span class="si">#{</span><span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;HOME&#39;</span><span class="o">]</span><span class="si">}</span><span class="s2">/.ssh/</span><span class="si">#{</span><span class="vg">$localip</span><span class="si">}</span><span class="s2"> -N &#39;&#39; -q&quot;</span><span class="p">)</span>
 </span><span class='line'>    <span class="k">end</span>
 </span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
 </span><span class='line'><span class="k">end</span>
 </span></code></pre></td></tr></table></div></figure>
 
@@ -332,7 +655,7 @@ for /f "delims=" %%i in (D:\passwd.txt) do (
    7z x -y -p"%%i" "%~1" -o"%~dp1" > nul
    if !errorlevel!== 0 (
    echo ===  %~nx1 已完成...
-   echo  &ping -n 2 127.0.0.1 >nul & echo 
+   echo &ping -n 2 127.0.0.1 >nul & echo
    ping -n 5 127.0.0.1 > nul
    exit
    )
@@ -340,7 +663,7 @@ for /f "delims=" %%i in (D:\passwd.txt) do (
  
 echo %~1 密碼庫沒有符合密碼或是rar損毀 
 echo %date:~5,5%%time:~,5%  %~1>> %USERPROFILE%\desktop\log.txt
-echo 
+echo
 ping -n 10 127.0.0.1 > nul
 </code></pre>
 
@@ -414,8 +737,336 @@ netsh wlan stop hostednetwork
 </ul>
 
 
-<figure class='code'><figcaption><span>BracketHighlighter#376 </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<pre><code>BracketHighlighter#376
+ 
+"bracket_styles": {
+ 
+"default": {
+ 
+"color": "entity.name.class",
+"style": "highlight",
+ 
+"quote_scope" : "bracket.quote",
+"curly_scope" : "bracket.curly",
+"round_scope" : "bracket.round",
+"square_scope": "bracket.square",
+"angle_scope" : "bracket.angle",
+"tag_scope"   : "bracket.tag",
+ 
+// 高亮樣式 (solid|outline|underline|none)
+"quote_style" : "solid",
+"curly_style" : "solid",
+"round_style" : "solid",
+"square_style": "solid",
+"angle_style" : "solid",
+"tag_style"   : "outline"
+}
+</code></pre>
+
+
+
+
+<pre><code>
+Emmt#settings
+
+{
+    "snippets":{
+        "html":{
+            "snippets":{
+            "ff" : "<%= form_for ${1:} %>\n<% end %>",
+            "sf" : "<%= simple_form_for ${1:} %>\n<% end %>",
+            "fl" : "<%= link_to ${1:} %>",
+            "fb" : "<%= button_to ${1:} %>",
+            "fe" : "<%= ${1:} %>",
+            "ee" : "<% ${1:} %>",
+            "eif" : "<% if ${1:} %>",
+            "ed" : "<% end %>",
+            "else" : "<% else %>",
+            "pre" : "<pre>${1:}</pre>",
+            }
+        }
+    }
+}
+</code></pre>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Link_to]]></title>
+    <link href="http://icps0610.github.io/blog/2016/06/13/link-to/"/>
+    <updated>2016-06-13T20:34:30+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/06/13/link-to</id>
+    <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#index.erb</span>
+</span><span class='line'><span class="o">&lt;</span><span class="sx">%= link_to &quot;Re&quot;, new_msg_path( :user =</span><span class="o">&gt;</span> <span class="n">msg</span><span class="o">.</span><span class="n">name</span> <span class="p">)</span> <span class="o">%&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4><a href="http://192.168.1.220/msgs/new?user=icps">http://192.168.1.220/msgs/new?user=icps</a></h4>
+
+<h4>user = params[:user]</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#new.erb</span>
+</span><span class='line'><span class="o">&lt;</span><span class="sx">%= f.input :name, input_html: { :value =</span><span class="o">&gt;</span> <span class="vi">@user</span> <span class="p">}</span> <span class="o">%&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Kaminari]]></title>
+    <link href="http://icps0610.github.io/blog/2016/06/13/kaminari/"/>
+    <updated>2016-06-13T15:39:41+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/06/13/kaminari</id>
+    <content type="html"><![CDATA[<p><a href="https://github.com/amatsuda/kaminari">kaminari</a></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># controller</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">index</span>
+</span><span class='line'>  <span class="vi">@groups</span> <span class="o">=</span> <span class="no">Group</span><span class="o">.</span><span class="n">page</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:page</span><span class="o">]</span><span class="p">)</span><span class="o">.</span><span class="n">per</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#view</span>
+</span><span class='line'><span class="o">&lt;%=</span> <span class="n">paginate</span> <span class="vi">@groups</span> <span class="o">%&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<pre><code>#config/locales/kaminari.yml
+zh:
+views:
+pagination:
+first: "« 首頁"
+last: "末頁 »"
+previous: "‹ 上一頁"
+next: "下一頁 ›"
+truncate: "…"
+</code></pre>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[FB_login]]></title>
+    <link href="http://icps0610.github.io/blog/2016/06/13/fb-login/"/>
+    <updated>2016-06-13T13:17:38+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/06/13/fb-login</id>
+    <content type="html"><![CDATA[<h3>使用devise</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#Gemfile</span>
+</span><span class='line'><span class="n">gem</span> <span class="s1">&#39;devise&#39;</span> <span class="c1">#使用者</span>
+</span><span class='line'><span class="n">gem</span> <span class="s2">&quot;settingslogic&quot;</span> <span class="c1">#密鑰隱藏功能</span>
+</span><span class='line'><span class="n">gem</span> <span class="s2">&quot;omniauth&quot;</span>
+</span><span class='line'><span class="n">gem</span> <span class="s2">&quot;omniauth-facebook&quot;</span>  <span class="c1">#fb認證</span>
+</span><span class='line'><span class="n">gem</span> <span class="s2">&quot;auto-facebook&quot;</span><span class="p">,</span> <span class="s2">&quot;0.42&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<blockquote><p>Could not find generator devise:install
+<code>gem "devise", "3.4.1"</code></p></blockquote>
+
+<pre><code>rails generate devise:install
+rails generate devise user
+rails generate devise:views
+rake db:migrate
+</code></pre>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#/config/initializers/devise.rb</span>
+</span><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">authentication_keys</span> <span class="o">=</span> <span class="o">[</span> <span class="ss">:name</span> <span class="o">]</span> <span class="c1">#32行 登入key</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># db/migrate/XXXXXX_devise_create_users.rb</span>
+</span><span class='line'><span class="n">t</span><span class="o">.</span><span class="n">string</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">null</span><span class="p">:</span> <span class="kp">false</span><span class="p">,</span> <span class="ss">default</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
+</span><span class='line'><span class="n">t</span><span class="o">.</span><span class="n">string</span> <span class="ss">:email</span><span class="p">,</span> <span class="ss">null</span><span class="p">:</span> <span class="kp">true</span><span class="p">,</span> <span class="ss">default</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="ss">unique</span><span class="p">:</span> <span class="kp">true</span>
+</span><span class='line'><span class="n">t</span><span class="o">.</span><span class="n">string</span> <span class="ss">:fb_id</span><span class="p">,</span> <span class="ss">:limit</span> <span class="o">=&gt;</span> <span class="mi">20</span>
+</span><span class='line'><span class="n">t</span><span class="o">.</span><span class="n">string</span> <span class="ss">:token</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">add_index</span> <span class="ss">:users</span><span class="p">,</span> <span class="ss">:name</span><span class="p">,</span>                <span class="ss">unique</span><span class="p">:</span> <span class="kp">true</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#NEW app/models/settings.rb</span>
+</span><span class='line'><span class="k">class</span> <span class="nc">Settings</span> <span class="o">&lt;</span> <span class="no">Settingslogic</span>
+</span><span class='line'>  <span class="n">source</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="no">Rails</span><span class="o">.</span><span class="n">root</span><span class="si">}</span><span class="s2">/config/application.yml&quot;</span>
+</span><span class='line'>  <span class="n">namespace</span> <span class="no">Rails</span><span class="o">.</span><span class="n">env</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3><a href="https://developers.facebook.com">https://developers.facebook.com</a> 開新的 app</h3>
+
+<pre><code>#NEW config/application.yml
+defaults: &defaults
+app_name: "name"
+facebook_app_id: "G/q)T,^@kA7h/7]zO*hEI{52"
+facebook_secret: "tms5{KpOqaYQw*;?9Uv^5X2wT+&)#{##;Ff9n2 jy^m^:u1m"
+
+development:
+<<: *defaults
+domain: "http://192.168.1.220"
+
+test:
+<<: *defaults
+
+production:
+<<: *defaults
+</code></pre>
+
+
+
+
+<pre><code>rails g auto_facebook:install
+</code></pre>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#config/initializers/devise.rb 233</span>
+</span><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">omniauth</span> <span class="ss">:facebook</span><span class="p">,</span> <span class="no">Settings</span><span class="o">.</span><span class="n">facebook_app_id</span><span class="p">,</span> <span class="no">Settings</span><span class="o">.</span><span class="n">facebook_secret</span><span class="p">,</span> <span class="ss">:scope</span> <span class="o">=&gt;</span> <span class="s1">&#39;email&#39;</span>
+</span><span class='line'><span class="no">Setting</span> <span class="o">===&gt;</span> <span class="no">Settings</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#app/model/user.rb</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">email_required?</span> <span class="c1">#email空白</span>
+</span><span class='line'>  <span class="kp">false</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">email_changed?</span>
+</span><span class='line'>  <span class="kp">false</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'><span class="c1">#驗證name email</span>
+</span><span class='line'><span class="n">validates</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">presence</span><span class="p">:</span> <span class="kp">true</span><span class="p">,</span> <span class="ss">uniqueness</span><span class="p">:</span> <span class="p">{</span> <span class="ss">case_sensitive</span><span class="p">:</span> <span class="kp">false</span> <span class="p">}</span>
+</span><span class='line'><span class="n">validates</span> <span class="ss">:email</span><span class="p">,</span> <span class="ss">allow_blank</span><span class="p">:</span> <span class="kp">true</span> <span class="p">,</span> <span class="ss">uniqueness</span><span class="p">:</span> <span class="p">{</span> <span class="ss">case_sensitive</span><span class="p">:</span> <span class="kp">false</span> <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">devise</span> <span class="ss">:database_authenticatable</span><span class="p">,</span> <span class="ss">:registerable</span><span class="p">,</span>
+</span><span class='line'><span class="ss">:recoverable</span><span class="p">,</span> <span class="ss">:rememberable</span><span class="p">,</span> <span class="ss">:trackable</span><span class="p">,</span> <span class="ss">:validatable</span><span class="p">,</span> <span class="ss">:omniauthable</span><span class="p">,</span> <span class="ss">:authentication_keys</span> <span class="o">=&gt;</span> <span class="o">[</span> <span class="ss">:name</span> <span class="o">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#view</span>
+</span><span class='line'><span class="o">&lt;</span><span class="sx">% if </span><span class="n">current_user</span> <span class="sx">%&gt;</span>
+</span><span class='line'><span class="sx">  &lt;%= current_user.name %&gt;</span>
+</span><span class='line'>   <span class="o">&lt;</span><span class="sx">%= link_to &quot;登出&quot;, destroy_user_session_path, method: :delete %&gt;&lt;/li&gt;</span>
+</span><span class='line'><span class="sx">&lt;% else %&gt;</span>
+</span><span class='line'><span class="sx">  &lt;%=</span> <span class="n">link_to</span> <span class="s2">&quot;註冊&quot;</span><span class="p">,</span> <span class="n">new_user_registration_path</span> <span class="sx">%&gt;&lt;/li&gt;</span>
+</span><span class='line'>  <span class="o">&lt;</span><span class="sx">%= link_to &quot;登入&quot;, new_user_session_path %&gt;&lt;/li&gt;</span>
+</span><span class='line'><span class="sx">  &lt;%=</span> <span class="n">link_to</span><span class="p">(</span><span class="s2">&quot;Facebook Login&quot;</span><span class="p">,</span> <span class="no">Settings</span><span class="o">.</span><span class="n">domain</span> <span class="o">+</span> <span class="n">user_omniauth_authorize_path</span><span class="p">(</span><span class="ss">:facebook</span><span class="p">))</span> <span class="sx">%&gt; &lt;/li&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="sx">% end </span><span class="o">%&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#fb image</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">user_image</span><span class="p">(</span><span class="n">user</span><span class="p">,</span><span class="n">size</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">if</span> <span class="ow">not</span> <span class="n">user</span><span class="o">.</span><span class="n">fb_id</span> <span class="o">==</span> <span class="kp">nil</span>
+</span><span class='line'>    <span class="n">link_to</span><span class="p">(</span><span class="n">image_tag</span><span class="p">(</span><span class="s2">&quot;http://graph.facebook.com/</span><span class="si">#{</span><span class="n">user</span><span class="o">.</span><span class="n">fb_id</span><span class="si">}</span><span class="s2">/picture&quot;</span><span class="p">,</span> <span class="ss">:size</span> <span class="o">=&gt;</span> <span class="n">size</span><span class="p">),</span> <span class="s2">&quot;https://www.facebook.com/</span><span class="si">#{</span><span class="n">user</span><span class="o">.</span><span class="n">fb_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Line-bot]]></title>
+    <link href="http://icps0610.github.io/blog/2016/06/13/line/"/>
+    <updated>2016-06-13T01:27:59+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/06/13/line</id>
+    <content type="html"><![CDATA[<p>:<a href="https://business.line.me/zh-hant/products/4/introduction">https://business.line.me/zh-hant/products/4/introduction</a><br />
+<a href="https://github.com/line/line-bot-sdk-ruby">https://github.com/line/line-bot-sdk-ruby</a><br />
+<a href="https://developers.line.me/bot-api/overview">https://developers.line.me/bot-api/overview</a><br />
+<a href="https://www.heroku.com/">https://www.heroku.com/</a><br /></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#routes.rb</span>
+</span><span class='line'><span class="no">Rails</span><span class="o">.</span><span class="n">application</span><span class="o">.</span><span class="n">routes</span><span class="o">.</span><span class="n">draw</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">root</span> <span class="ss">:to</span> <span class="o">=&gt;</span> <span class="s2">&quot;page#index&quot;</span>
+</span><span class='line'>  <span class="n">match</span> <span class="s1">&#39;/callback&#39;</span> <span class="o">=&gt;</span> <span class="s2">&quot;page#callback&quot;</span><span class="p">,</span> <span class="ss">:via</span> <span class="o">=&gt;</span> <span class="ss">:post</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -437,389 +1088,8 @@ netsh wlan stop hostednetwork
 <span class='line-number'>20</span>
 <span class='line-number'>21</span>
 <span class='line-number'>22</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>"bracket_styles": {
-</span><span class='line'> 
-</span><span class='line'>"default": {
-</span><span class='line'> 
-</span><span class='line'>"color": "entity.name.class",
-</span><span class='line'>"style": "highlight",
-</span><span class='line'> 
-</span><span class='line'>"quote_scope" : "bracket.quote",
-</span><span class='line'>"curly_scope" : "bracket.curly",
-</span><span class='line'>"round_scope" : "bracket.round",
-</span><span class='line'>"square_scope": "bracket.square",
-</span><span class='line'>"angle_scope" : "bracket.angle",
-</span><span class='line'>"tag_scope"   : "bracket.tag",
-</span><span class='line'> 
-</span><span class='line'>// 高亮樣式 (solid|outline|underline|none)
-</span><span class='line'>"quote_style" : "solid",
-</span><span class='line'>"curly_style" : "solid",
-</span><span class='line'>"round_style" : "solid",
-</span><span class='line'>"square_style": "solid",
-</span><span class='line'>"angle_style" : "solid",
-</span><span class='line'>"tag_style"   : "outline"
-</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span>emment#setting </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>{
-</span><span class='line'>  "snippets":{
-</span><span class='line'>      "html":{
-</span><span class='line'>          "snippets":{
-</span><span class='line'>          "ff" : "&lt;%= form_for ${1:} %>\n&lt;% end %>",
-</span><span class='line'>          "sf" : "&lt;%= simple_form_for ${1:} %>\n&lt;% end %>",
-</span><span class='line'>          "fl" : "&lt;%= link_to ${1:} %>",
-</span><span class='line'>          "fb" : "&lt;%= button_to ${1:} %>",
-</span><span class='line'>          "fe" : "&lt;%= ${1:} %>",
-</span><span class='line'>          "ee" : "&lt;% ${1:} %>",
-</span><span class='line'>          "eif" : "&lt;% if ${1:} %>",
-</span><span class='line'>          "ed" : "&lt;% end %>",
-</span><span class='line'>          "else" : "&lt;% else %>",
-</span><span class='line'>          "pre" : "&lt;pre>${1:}&lt;/pre>",
-</span><span class='line'>          }
-</span><span class='line'>      }
-</span><span class='line'>  }
-</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Link_to]]></title>
-    <link href="http://icps0610.github.io/blog/2016/06/13/link-to/"/>
-    <updated>2016-06-13T20:34:30+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/06/13/link-to</id>
-    <content type="html"><![CDATA[<!--more-->
-
-
-<figure class='code'><figcaption><span>index.erb </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='erb'><span class='line'><span class="cp">&lt;%=</span> <span class="n">link_to</span> <span class="s2">&quot;Re&quot;</span><span class="p">,</span> <span class="n">new_msg_path</span><span class="p">(</span> <span class="ss">:user</span> <span class="o">=&gt;</span> <span class="n">msg</span><span class="o">.</span><span class="n">name</span> <span class="p">)</span> <span class="cp">%&gt;</span><span class="x"></span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p><a href="http://192.168.1.220/msgs/new?user=icps">http://192.168.1.220/msgs/new?user=icps</a><br/>
-user = params[:user]</p>
-
-<figure class='code'><figcaption><span>new.erb </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='erb'><span class='line'><span class="cp">&lt;%=</span> <span class="n">f</span><span class="o">.</span><span class="n">input</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">input_html</span><span class="p">:</span> <span class="p">{</span> <span class="ss">:value</span> <span class="o">=&gt;</span> <span class="vi">@user</span> <span class="p">}</span> <span class="cp">%&gt;</span><span class="x"></span>
-</span></code></pre></td></tr></table></div></figure>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Kaminari]]></title>
-    <link href="http://icps0610.github.io/blog/2016/06/13/kaminari/"/>
-    <updated>2016-06-13T15:39:41+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/06/13/kaminari</id>
-    <content type="html"><![CDATA[<!--more-->
-
-
-<p><a href="https://github.com/amatsuda/kaminari">kaminari</a></p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">## controller</span>
-</span><span class='line'><span class="k">def</span> <span class="nf">index</span>
-</span><span class='line'>  <span class="vi">@groups</span> <span class="o">=</span> <span class="no">Group</span><span class="o">.</span><span class="n">page</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:page</span><span class="o">]</span><span class="p">)</span><span class="o">.</span><span class="n">per</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#view</span>
-</span><span class='line'> <span class="o">&lt;%=</span> <span class="n">paginate</span> <span class="vi">@groups</span> <span class="o">%&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#config/locales/kaminari.yml</span>
-</span><span class='line'><span class="ss">zh</span><span class="p">:</span>
-</span><span class='line'><span class="ss">views</span><span class="p">:</span>
-</span><span class='line'><span class="ss">pagination</span><span class="p">:</span>
-</span><span class='line'><span class="ss">first</span><span class="p">:</span> <span class="s2">&quot;« 首頁&quot;</span>
-</span><span class='line'><span class="ss">last</span><span class="p">:</span> <span class="s2">&quot;末頁 »&quot;</span>
-</span><span class='line'><span class="ss">previous</span><span class="p">:</span> <span class="s2">&quot;‹ 上一頁&quot;</span>
-</span><span class='line'><span class="k">next</span><span class="p">:</span> <span class="s2">&quot;下一頁 ›&quot;</span>
-</span><span class='line'><span class="ss">truncate</span><span class="p">:</span> <span class="s2">&quot;…&quot;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[FB_login]]></title>
-    <link href="http://icps0610.github.io/blog/2016/06/13/fb-login/"/>
-    <updated>2016-06-13T13:17:38+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/06/13/fb-login</id>
-    <content type="html"><![CDATA[<!--more-->
-
-
-<h3>使用devise</h3>
-
-<figure class='code'><figcaption><span>Gemfile </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>gem 'devise' #使用者
-</span><span class='line'>gem "settingslogic" #密鑰隱藏功能
-</span><span class='line'>gem "omniauth" #fb認證
-</span><span class='line'>gem "omniauth-facebook"
-</span><span class='line'>gem "auto-facebook", "0.42"</span></code></pre></td></tr></table></div></figure>
-
-
-<blockquote><p>Could not find generator devise:install
-<code>gem "devise", "3.4.1"</code></p></blockquote>
-
-<pre><code>rails generate devise:install
-rails generate devise user
-rails generate devise:views
-rake db:migrate
-</code></pre>
-
-<figure class='code'><figcaption><span>/config/initializers/devise.rb </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='rb'><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">authentication_keys</span> <span class="o">=</span> <span class="o">[</span> <span class="ss">:name</span> <span class="o">]</span> <span class="c1">#32行 登入key</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span>db/migrate/XXXXXX_devise_create_users.rb </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='rb'><span class='line'><span class="n">t</span><span class="o">.</span><span class="n">string</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">null</span><span class="p">:</span> <span class="kp">false</span><span class="p">,</span> <span class="ss">default</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
-</span><span class='line'><span class="n">t</span><span class="o">.</span><span class="n">string</span> <span class="ss">:email</span><span class="p">,</span> <span class="ss">null</span><span class="p">:</span> <span class="kp">true</span><span class="p">,</span> <span class="ss">default</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="ss">unique</span><span class="p">:</span> <span class="kp">true</span>
-</span><span class='line'><span class="n">t</span><span class="o">.</span><span class="n">string</span> <span class="ss">:fb_id</span><span class="p">,</span> <span class="ss">:limit</span> <span class="o">=&gt;</span> <span class="mi">20</span>
-</span><span class='line'><span class="n">t</span><span class="o">.</span><span class="n">string</span> <span class="ss">:token</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">add_index</span> <span class="ss">:users</span><span class="p">,</span> <span class="ss">:name</span><span class="p">,</span>                <span class="ss">unique</span><span class="p">:</span> <span class="kp">true</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span>NEW app/models/settings.rb </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='rb'><span class='line'><span class="k">class</span> <span class="nc">Settings</span> <span class="o">&lt;</span> <span class="no">Settingslogic</span>
-</span><span class='line'>  <span class="n">source</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="no">Rails</span><span class="o">.</span><span class="n">root</span><span class="si">}</span><span class="s2">/config/application.yml&quot;</span>
-</span><span class='line'>  <span class="n">namespace</span> <span class="no">Rails</span><span class="o">.</span><span class="n">env</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3><a href="https://developers.facebook.com">https://developers.facebook.com</a> 開新的 app</h3>
-
-<figure class='code'><figcaption><span>NEW config/application.yml </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="l-Scalar-Plain">defaults</span><span class="p-Indicator">:</span> <span class="nl">&amp;defaults</span>
-</span><span class='line'><span class="l-Scalar-Plain">app_name</span><span class="p-Indicator">:</span> <span class="s">&quot;name&quot;</span>
-</span><span class='line'><span class="l-Scalar-Plain">facebook_app_id</span><span class="p-Indicator">:</span> <span class="s">&quot;G/q)T,^@kA7h/7]zO*hEI{52&quot;</span>
-</span><span class='line'><span class="l-Scalar-Plain">facebook_secret</span><span class="p-Indicator">:</span> <span class="s">&quot;tms5{KpOqaYQw*;?9Uv^5X2wT+&amp;)#{##;Ff9n2</span><span class="nv"> </span><span class="s">jy^m^:u1m&quot;</span>
-</span><span class='line'>
-</span><span class='line'><span class="l-Scalar-Plain">development</span><span class="p-Indicator">:</span>
-</span><span class='line'><span class="l-Scalar-Plain">&lt;&lt;</span><span class="p-Indicator">:</span> <span class="nv">*defaults</span>
-</span><span class='line'><span class="l-Scalar-Plain">domain</span><span class="p-Indicator">:</span> <span class="s">&quot;http://192.168.1.220&quot;</span>
-</span><span class='line'>
-</span><span class='line'><span class="l-Scalar-Plain">test</span><span class="p-Indicator">:</span>
-</span><span class='line'><span class="l-Scalar-Plain">&lt;&lt;</span><span class="p-Indicator">:</span> <span class="nv">*defaults</span>
-</span><span class='line'>
-</span><span class='line'><span class="l-Scalar-Plain">production</span><span class="p-Indicator">:</span>
-</span><span class='line'><span class="l-Scalar-Plain">&lt;&lt;</span><span class="p-Indicator">:</span> <span class="nv">*defaults</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<pre><code>rails g auto_facebook:install
-</code></pre>
-
-<figure class='code'><figcaption><span>config/initializers/devise.rb 233 </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='rb'><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">omniauth</span> <span class="ss">:facebook</span><span class="p">,</span> <span class="no">Settings</span><span class="o">.</span><span class="n">facebook_app_id</span><span class="p">,</span> <span class="no">Settings</span><span class="o">.</span><span class="n">facebook_secret</span><span class="p">,</span> <span class="ss">:scope</span> <span class="o">=&gt;</span> <span class="s1">&#39;email&#39;</span>
-</span><span class='line'><span class="no">Setting</span> <span class="o">===&gt;</span> <span class="no">Settings</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span>app/model/user.rb </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-</pre></td><td class='code'><pre><code class='rb'><span class='line'><span class="k">def</span> <span class="nf">email_required?</span> <span class="c1">#email空白</span>
-</span><span class='line'>  <span class="kp">false</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">def</span> <span class="nf">email_changed?</span>
-</span><span class='line'>  <span class="kp">false</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'><span class="c1">#驗證name email</span>
-</span><span class='line'><span class="n">validates</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">presence</span><span class="p">:</span> <span class="kp">true</span><span class="p">,</span> <span class="ss">uniqueness</span><span class="p">:</span> <span class="p">{</span> <span class="ss">case_sensitive</span><span class="p">:</span> <span class="kp">false</span> <span class="p">}</span>
-</span><span class='line'><span class="n">validates</span> <span class="ss">:email</span><span class="p">,</span> <span class="ss">allow_blank</span><span class="p">:</span> <span class="kp">true</span> <span class="p">,</span> <span class="ss">uniqueness</span><span class="p">:</span> <span class="p">{</span> <span class="ss">case_sensitive</span><span class="p">:</span> <span class="kp">false</span> <span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">devise</span> <span class="ss">:database_authenticatable</span><span class="p">,</span> <span class="ss">:registerable</span><span class="p">,</span>
-</span><span class='line'><span class="ss">:recoverable</span><span class="p">,</span> <span class="ss">:rememberable</span><span class="p">,</span> <span class="ss">:trackable</span><span class="p">,</span> <span class="ss">:validatable</span><span class="p">,</span> <span class="ss">:omniauthable</span><span class="p">,</span> <span class="ss">:authentication_keys</span> <span class="o">=&gt;</span> <span class="o">[</span> <span class="ss">:name</span> <span class="o">]</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span>view </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;% if current_user %>
-</span><span class='line'>  &lt;%= current_user.name %>
-</span><span class='line'>   &lt;%= link_to "登出", destroy_user_session_path, method: :delete %>&lt;/li>
-</span><span class='line'>&lt;% else %>
-</span><span class='line'>  &lt;%= link_to "註冊", new_user_registration_path %>&lt;/li>
-</span><span class='line'>  &lt;%= link_to "登入", new_user_session_path %>&lt;/li>
-</span><span class='line'>  &lt;%= link_to("Facebook Login", Settings.domain + user_omniauth_authorize_path(:facebook)) %> &lt;/li>
-</span><span class='line'>&lt;% end %></span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span>fb image </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">user_image</span><span class="p">(</span><span class="n">user</span><span class="p">,</span><span class="n">size</span><span class="p">)</span>
-</span><span class='line'>  <span class="k">if</span> <span class="ow">not</span> <span class="n">user</span><span class="o">.</span><span class="n">fb_id</span> <span class="o">==</span> <span class="kp">nil</span>
-</span><span class='line'>    <span class="n">link_to</span><span class="p">(</span><span class="n">image_tag</span><span class="p">(</span><span class="s2">&quot;http://graph.facebook.com/</span><span class="si">#{</span><span class="n">user</span><span class="o">.</span><span class="n">fb_id</span><span class="si">}</span><span class="s2">/picture&quot;</span><span class="p">,</span> <span class="ss">:size</span> <span class="o">=&gt;</span> <span class="n">size</span><span class="p">),</span> <span class="s2">&quot;https://www.facebook.com/</span><span class="si">#{</span><span class="n">user</span><span class="o">.</span><span class="n">fb_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Line-bot]]></title>
-    <link href="http://icps0610.github.io/blog/2016/06/13/line/"/>
-    <updated>2016-06-13T01:27:59+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/06/13/line</id>
-    <content type="html"><![CDATA[<!--more-->
-
-
-<p>:<a href="https://business.line.me/zh-hant/products/4/introduction">https://business.line.me/zh-hant/products/4/introduction</a><br />
-<a href="https://github.com/line/line-bot-sdk-ruby">https://github.com/line/line-bot-sdk-ruby</a><br />
-<a href="https://developers.line.me/bot-api/overview">https://developers.line.me/bot-api/overview</a><br />
-<a href="https://www.heroku.com/">https://www.heroku.com/</a><br /></p>
-
-<figure class='code'><figcaption><span>routes.rb </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='rb'><span class='line'><span class="no">Rails</span><span class="o">.</span><span class="n">application</span><span class="o">.</span><span class="n">routes</span><span class="o">.</span><span class="n">draw</span> <span class="k">do</span>
-</span><span class='line'>  <span class="n">root</span> <span class="ss">:to</span> <span class="o">=&gt;</span> <span class="s2">&quot;page#index&quot;</span>
-</span><span class='line'>  <span class="n">match</span> <span class="s1">&#39;/callback&#39;</span> <span class="o">=&gt;</span> <span class="s2">&quot;page#callback&quot;</span><span class="p">,</span> <span class="ss">:via</span> <span class="o">=&gt;</span> <span class="ss">:post</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span>controller.rb </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-</pre></td><td class='code'><pre><code class='rb'><span class='line'><span class="k">class</span> <span class="nc">PageController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#controller.rb</span>
+</span><span class='line'><span class="k">class</span> <span class="nc">PageController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
 </span><span class='line'>  <span class="n">protect_from_forgery</span> <span class="ss">with</span><span class="p">:</span> <span class="ss">:null_session</span>
 </span><span class='line'>
 </span><span class='line'>  <span class="k">def</span> <span class="nf">index</span>

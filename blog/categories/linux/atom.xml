@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Linux | icps]]></title>
+  <link href="http://icps0610.github.io/blog/categories/linux/atom.xml" rel="self"/>
+  <link href="http://icps0610.github.io/"/>
+  <updated>2016-06-15T22:59:09+08:00</updated>
+  <id>http://icps0610.github.io/</id>
+  <author>
+    <name><![CDATA[icps]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Exim4]]></title>
+    <link href="http://icps0610.github.io/blog/2016/06/15/exim4/"/>
+    <updated>2016-06-15T22:12:27+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/06/15/exim4</id>
+    <content type="html"><![CDATA[<h4>dpkg-reconfigure exim4-config</h4>
+
+<p><img src="/images/posts/exmi4-1.png" alt="exim4-1.png" />
+smtp.gmail.com::587</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Clean]]></title>
+    <link href="http://icps0610.github.io/blog/2016/06/15/clean/"/>
+    <updated>2016-06-15T22:06:00+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/06/15/clean</id>
+    <content type="html"><![CDATA[<pre><code>apt-get clean
+apt-get autoclean
+apt-get autoremove
+rm /var/cache/apt/archives/* 2>/dev/nul # Package (deb) cache
+rm /var/cache/apt/archives/partial/* 2>/dev/nul
+rm -R /var/log/* 2>/dev/nul
+rm -R /tmp/* 2>/dev/nul
+rm /root/.local/share/Trash/files/* 2>/dev/nul
+</code></pre>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Battery_check]]></title>
+    <link href="http://icps0610.github.io/blog/2016/06/15/battery-check/"/>
+    <updated>2016-06-15T22:04:43+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/06/15/battery-check</id>
+    <content type="html"><![CDATA[<pre><code>upower -i $(upower -e | grep 'BAT')| grep percentage:| awk '{print$2}'
+</code></pre>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Config]]></title>
+    <link href="http://icps0610.github.io/blog/2016/06/15/config/"/>
+    <updated>2016-06-15T20:16:01+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/06/15/config</id>
+    <content type="html"><![CDATA[<h4>ssd</h4>
+
+<h6>UUID</h6>
+
+<pre><code>blkid -s UUID</code></pre>
+
+
+<pre><code>#/etc/fstab
+UUID=XX / ext4 noatime,nodiratime,discard,defaults,errors=remount-ro 0 1
+tmpfs /tmp tmpfs defaults,noatime,mode=1777 0 0
+tmpfs /var/spool tmpfs defaults,noatime,mode=1777 0 0
+tmpfs /var/tmp tmpfs defaults,noatime,mode=1777 0 0
+tmpfs /var/log tmpfs defaults,noatime,mode=0755 0 0
+</code></pre>
+
+
+<h4>tab補完</h4>
+
+<pre><code>if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
+fi
+</code></pre>
+
+
+<h4>Repos</h4>
+
+<pre><code>#/etc/apt/sources.list
+#Kali
+deb http://ftp.tku.edu.tw/kali kali main contrib non-free
+deb http://ftp.tku.edu.tw/kali-security kali main contrib non-free
+#Ubuntu Main Repos
+deb http://free.nchc.org.tw/ubuntu/ trusty main restricted universe multiverse
+# Ubuntu Update Repos
+deb http://free.nchc.org.tw/ubuntu/ trusty-security main restricted universe multiverse
+deb http://free.nchc.org.tw/ubuntu/ trusty-updates main restricted universe multiverse
+</code></pre>
+
+
+<h4>sudo no passwd</h4>
+
+<pre><code>visudo
+username ALL=(ALL:ALL) ALL
+</code></pre>
+
+
+<h4>vbox sharefile</h4>
+
+<pre><code>mount -t vboxsf REKCAH /data/REKCAH
+</code></pre>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Get_real_ip]]></title>
+    <link href="http://icps0610.github.io/blog/2016/06/15/get-real-ip/"/>
+    <updated>2016-06-15T13:36:32+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/06/15/get-real-ip</id>
+    <content type="html"><![CDATA[<pre><code class="bash">curl -s checkip.dyndns.org | sed -e 's/.*Current IP Address: //' -e 's/&lt;.*$//'
+</code></pre>
+]]></content>
+  </entry>
+  
+</feed>
