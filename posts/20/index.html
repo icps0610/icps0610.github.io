@@ -9,16 +9,9 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="kaminari 1
-2
-3
-4
-# controller
-def index @groups = Group.page(params[:page]).per(10)
-end 1
-2
-#view
-&lt;%= paginate @groups %&gt; #config/locales/ &hellip;">
+  <meta name="description" content="http://www.sublimetext.com/2 中文化 %APPDATA%\Sublime Text 2\Packages\Default
+安裝套件 https://sublime.wbond.net/installation
+ctrl +shit+p，然後輸入install &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,7 +74,7 @@ end 1
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2016/06/13/kaminari/">Kaminari</a></h1>
+      <h1 class="entry-title"><a href="/blog/2016/06/14/sublime-text/">Sublime Text</a></h1>
     
     
       <p class="meta">
@@ -90,44 +83,71 @@ end 1
 
 
 
-<time class='entry-date' datetime='2016-06-13T15:39:41+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>3:39 pm</span></time>
+<time class='entry-date' datetime='2016-06-14T01:02:30+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>1:02 am</span></time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p><a href="https://github.com/amatsuda/kaminari">kaminari</a></p>
+  <div class="entry-content"><p><a href="http://www.sublimetext.com/2">http://www.sublimetext.com/2</a></p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># controller</span>
-</span><span class='line'><span class="k">def</span> <span class="nf">index</span>
-</span><span class='line'>  <span class="vi">@groups</span> <span class="o">=</span> <span class="no">Group</span><span class="o">.</span><span class="n">page</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:page</span><span class="o">]</span><span class="p">)</span><span class="o">.</span><span class="n">per</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
+<ul>
+<li>中文化  %APPDATA%\Sublime Text 2\Packages\Default</li>
+<li>安裝套件 <a href="https://sublime.wbond.net/installation">https://sublime.wbond.net/installation</a></li>
+<li>ctrl +shit+p，然後輸入install Package <enter></li>
+</ul>
 
 
+<pre><code>BracketHighlighter#376
+ 
+"bracket_styles": {
+ 
+"default": {
+ 
+"color": "entity.name.class",
+"style": "highlight",
+ 
+"quote_scope" : "bracket.quote",
+"curly_scope" : "bracket.curly",
+"round_scope" : "bracket.round",
+"square_scope": "bracket.square",
+"angle_scope" : "bracket.angle",
+"tag_scope"   : "bracket.tag",
+ 
+// 高亮樣式 (solid|outline|underline|none)
+"quote_style" : "solid",
+"curly_style" : "solid",
+"round_style" : "solid",
+"square_style": "solid",
+"angle_style" : "solid",
+"tag_style"   : "outline"
+}
+</code></pre>
 
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#view</span>
-</span><span class='line'><span class="o">&lt;%=</span> <span class="n">paginate</span> <span class="vi">@groups</span> <span class="o">%&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
 
 
-<pre><code>#config/locales/kaminari.yml
-zh:
-views:
-pagination:
-first: "« 首頁"
-last: "末頁 »"
-previous: "‹ 上一頁"
-next: "下一頁 ›"
-truncate: "…"
+<pre><code>
+Emmt#settings
+
+{
+    "snippets":{
+        "html":{
+            "snippets":{
+            "ff" : "<%= form_for ${1:} %>\n<% end %>",
+            "sf" : "<%= simple_form_for ${1:} %>\n<% end %>",
+            "fl" : "<%= link_to ${1:} %>",
+            "fb" : "<%= button_to ${1:} %>",
+            "fe" : "<%= ${1:} %>",
+            "ee" : "<% ${1:} %>",
+            "eif" : "<% if ${1:} %>",
+            "ed" : "<% end %>",
+            "else" : "<% else %>"
+            }
+        }
+    }
+}
 </code></pre>
 
 </div>
@@ -155,14 +175,22 @@ truncate: "…"
     <li class='category'><a href='/blog/categories/app/'>app (3)</a></li>
 <li class='category'><a href='/blog/categories/bat/'>bat (6)</a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (5)</a></li>
-<li class='category'><a href='/blog/categories/ror/'>ror (5)</a></li>
-<li class='category'><a href='/blog/categories/ruby/'>ruby (3)</a></li>
+<li class='category'><a href='/blog/categories/ror/'>ror (6)</a></li>
+<li class='category'><a href='/blog/categories/ruby/'>ruby (4)</a></li>
 
   </ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2016/06/17/unlockpattern/">Unlockpattern</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/06/17/carrierwave/">Carrierwave</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2016/06/17/taskkill/">Taskkill</a>
@@ -174,14 +202,6 @@ truncate: "…"
     
       <li class="post">
         <a href="/blog/2016/06/16/motion/">Motion</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/06/16/octopress/">Octopress</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/06/16/file/">Ruby檔案操作</a>
       </li>
     
   </ul>

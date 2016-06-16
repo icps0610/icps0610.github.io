@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ror | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ror/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2016-06-17T00:25:06+08:00</updated>
+  <updated>2016-06-17T00:57:42+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,76 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Carrierwave]]></title>
+    <link href="http://icps0610.github.io/blog/2016/06/17/carrierwave/"/>
+    <updated>2016-06-17T00:31:49+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/06/17/carrierwave</id>
+    <content type="html"><![CDATA[<pre><code>#Gemfile
+gem 'carrierwave'
+gem 'rmagick'
+</code></pre>
+
+
+<p><code>apt-get imagemagick</code><br/>
+<code>rails g uploader image</code><br/>
+<code>rails g migration add_image_to_stores</code></p>
+
+<pre><code class="ruby">#app/uploaders/image_uploader.rb
+include CarrierWave::RMagick
+version :thumb do
+   process :convert =&gt; 'png'
+   process :resize_to_limit =&gt; [50, 50]
+end
+
+def extension_white_list
+   %w(jpg jpeg gif png)
+end
+
+def filename
+  "#{model.id}.png" if original_filename
+end
+</code></pre>
+
+<pre><code class="ruby">#public\uploads\store\image.rb
+def store_dir
+    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+end
+
+def default_url
+    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/" + [version_name, "default.png"].compact.join('_')
+end
+</code></pre>
+
+<pre><code class="ruby">#XXXXXXXXX_add_image_to_stores.rb
+class AddImageToStores &lt; ActiveRecord::Migration
+  def change
+    add_column :stores, :image, :string
+  end
+end
+</code></pre>
+
+<pre><code class="ruby">#model
+class Store &lt; ActiveRecord::Base
+    mount_uploader :image, ImageUploader
+end
+</code></pre>
+
+<pre><code class="ruby">#cotroller
+private
+
+def store_params
+  params.require(:store).permit(:name, :description,:image)
+end
+</code></pre>
+
+<pre><code class="ruby">#view
+&lt;%= image_tag @store.image_url.to_s %&gt;
+&lt;%= image_tag @store.image_url(:thumb).to_s %&gt;
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[MySQL_backup]]></title>
@@ -175,49 +245,6 @@ devise :database_authenticatable, :registerable,
 def user_image(user,size)
   if not user.fb_id == nil
     link_to(image_tag("http://graph.facebook.com/#{user.fb_id}/picture", :size =&gt; size), "https://www.facebook.com/#{user.fb_id}")
-  end
-end
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Line-bot]]></title>
-    <link href="http://icps0610.github.io/blog/2016/06/13/line/"/>
-    <updated>2016-06-13T01:27:59+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/06/13/line</id>
-    <content type="html"><![CDATA[<p>:<a href="https://business.line.me/zh-hant/products/4/introduction">https://business.line.me/zh-hant/products/4/introduction</a><br />
-<a href="https://github.com/line/line-bot-sdk-ruby">https://github.com/line/line-bot-sdk-ruby</a><br />
-<a href="https://developers.line.me/bot-api/overview">https://developers.line.me/bot-api/overview</a><br />
-<a href="https://www.heroku.com/">https://www.heroku.com/</a><br /></p>
-
-<pre><code class="ruby">#routes.rb
-Rails.application.routes.draw do
-  root :to =&gt; "page#index"
-  match '/callback' =&gt; "page#callback", :via =&gt; :post
-end
-</code></pre>
-
-<pre><code class="ruby">#controller.rb
-class PageController &lt; ApplicationController
-  protect_from_forgery with: :null_session
-
-  def index
-  end
-
-  def callback
-    line_msg = params[:result][0]
-    username = client.get_user_profile( line_msg["content"]["from"] ).contacts[0].display_name
-  end
-
-  private
-
-  def client
-    Line::Bot::Client.new do |config|
-      config.channel_id     = ENV["LINE_CHANNEL_ID"]
-      config.channel_secret = ENV["LINE_CHANNEL_SECRET"]
-      config.channel_mid    = ENV["LINE_CHANNEL_MID"]
-    end
   end
 end
 </code></pre>
