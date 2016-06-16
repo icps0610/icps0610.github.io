@@ -9,59 +9,9 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53 &hellip;">
+  <meta name="description" content="install https://github.com/imathis/octopress git clone https://github.com/imathis/octopress
+bundle install
+rake install 開新的repo，名稱打上 username.github. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -124,7 +74,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2016/06/14/ssh-autologin/">Ssh自動登入</a></h1>
+      <h1 class="entry-title"><a href="/blog/2016/06/16/octopress/">Octopress</a></h1>
     
     
       <p class="meta">
@@ -133,14 +83,53 @@
 
 
 
-<time class='entry-date' datetime='2016-06-14T12:50:31+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>12:50 pm</span></time>
+<time class='entry-date' datetime='2016-06-16T20:45:44+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>8:45 pm</span></time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+  <div class="entry-content"><h2>install</h2>
+
+<p><a href="https://github.com/imathis/octopress">https://github.com/imathis/octopress</a></p>
+
+<p><code>git clone https://github.com/imathis/octopress</code><br/>
+<code>bundle install</code><br/>
+<code>rake install</code></p>
+
+<h6>開新的repo，名稱打上 username.github.io</h6>
+
+<p><code>rake setup_github_pages</code></p>
+
+<h6>輸入: git@github.com:username/username.github.io.git</h6>
+
+<p><code>rake generate</code><br/>
+<code>rake deploy</code>　　　=>　　　<code>rake gen_deploy</code></p>
+
+<p><code>git add .</code><br/>
+<code>git commit -am "ok"</code><br/>
+<code>git push origin source</code></p>
+
+<blockquote><p>! [rejected]        master -> master (non-fast-forward)<br/>
+<code>cd _deploy</code><br/>
+<code>git pull origin master</code><br/>
+<code>cd ..</code><br/>
+<code>rake deploy</code></p></blockquote>
+
+<h2>command</h2>
+
+<p><code>rake new_page["about"]</code><br/>
+<code>rake new_post["title"]</code></p>
+
+<h2>Category</h2>
+
+<blockquote><p>ref  <a href="http://codemacro.com/2012/07/18/add-category-list-to-octopress/">http://codemacro.com/2012/07/18/add-category-list-to-octopress/</a> <br/>
+ref  <a href="https://github.com/shunnien/octopress-category-list">https://github.com/shunnien/octopress-category-list</a></p></blockquote>
+
+<h3>code</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -172,618 +161,42 @@
 <span class='line-number'>30</span>
 <span class='line-number'>31</span>
 <span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-<span class='line-number'>41</span>
-<span class='line-number'>42</span>
-<span class='line-number'>43</span>
-<span class='line-number'>44</span>
-<span class='line-number'>45</span>
-<span class='line-number'>46</span>
-<span class='line-number'>47</span>
-<span class='line-number'>48</span>
-<span class='line-number'>49</span>
-<span class='line-number'>50</span>
-<span class='line-number'>51</span>
-<span class='line-number'>52</span>
-<span class='line-number'>53</span>
-<span class='line-number'>54</span>
-<span class='line-number'>55</span>
-<span class='line-number'>56</span>
-<span class='line-number'>57</span>
-<span class='line-number'>58</span>
-<span class='line-number'>59</span>
-<span class='line-number'>60</span>
-<span class='line-number'>61</span>
-<span class='line-number'>62</span>
-<span class='line-number'>63</span>
-<span class='line-number'>64</span>
-<span class='line-number'>65</span>
-<span class='line-number'>66</span>
-<span class='line-number'>67</span>
-<span class='line-number'>68</span>
-<span class='line-number'>69</span>
-<span class='line-number'>70</span>
-<span class='line-number'>71</span>
-<span class='line-number'>72</span>
-<span class='line-number'>73</span>
-<span class='line-number'>74</span>
-<span class='line-number'>75</span>
-<span class='line-number'>76</span>
-<span class='line-number'>77</span>
-<span class='line-number'>78</span>
-<span class='line-number'>79</span>
-<span class='line-number'>80</span>
-<span class='line-number'>81</span>
-<span class='line-number'>82</span>
-<span class='line-number'>83</span>
-<span class='line-number'>84</span>
-<span class='line-number'>85</span>
-<span class='line-number'>86</span>
-<span class='line-number'>87</span>
-<span class='line-number'>88</span>
-<span class='line-number'>89</span>
-<span class='line-number'>90</span>
-<span class='line-number'>91</span>
-<span class='line-number'>92</span>
-<span class='line-number'>93</span>
-<span class='line-number'>94</span>
-<span class='line-number'>95</span>
-<span class='line-number'>96</span>
-<span class='line-number'>97</span>
-<span class='line-number'>98</span>
-<span class='line-number'>99</span>
-<span class='line-number'>100</span>
-<span class='line-number'>101</span>
-<span class='line-number'>102</span>
-<span class='line-number'>103</span>
-<span class='line-number'>104</span>
-<span class='line-number'>105</span>
-<span class='line-number'>106</span>
-<span class='line-number'>107</span>
-<span class='line-number'>108</span>
-<span class='line-number'>109</span>
-<span class='line-number'>110</span>
-<span class='line-number'>111</span>
-<span class='line-number'>112</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># encoding: utf-8</span>
-</span><span class='line'><span class="k">if</span> <span class="sb">`gem list | grep net-ssh`</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span>
-</span><span class='line'>  <span class="nb">puts</span> <span class="s2">&quot;缺少套件net-ssh net-scp 準備安裝..&quot;</span>
-</span><span class='line'>  <span class="sb">`gem install net-ssh net-scp --no-ri --no-rdoc`</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'><span class="nb">require</span> <span class="s2">&quot;net/ssh&quot;</span>
-</span><span class='line'><span class="nb">require</span> <span class="s2">&quot;net/scp&quot;</span>
-</span><span class='line'><span class="vg">$localip</span><span class="o">=</span><span class="sb">`ifconfig | grep Bcast | cut -d :  -f 2 | cut -d &quot; &quot; -f 1`</span><span class="o">.</span><span class="n">chomp</span>
-</span><span class='line'><span class="vg">$localuser</span><span class="o">=</span><span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;USER&#39;</span><span class="o">]</span>
-</span><span class='line'><span class="vg">$ip</span><span class="o">=[]</span>
-</span><span class='line'><span class="vg">$ip</span> <span class="o">&lt;&lt;</span> <span class="o">[</span><span class="s2">&quot;192.168.1.100&quot;</span><span class="p">,</span><span class="s2">&quot;test&quot;</span><span class="p">,</span><span class="s2">&quot;test&quot;</span><span class="o">]</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">class</span> <span class="nc">SSH_n_1</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">initialize</span>
-</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;本地端為SSH主機,</span><span class="si">#{</span><span class="vg">$localuser</span><span class="si">}</span><span class="s2">@</span><span class="si">#{</span><span class="vg">$localip</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span class='line'>    <span class="nb">puts</span>
-</span><span class='line'>    <span class="vg">$ip</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">host</span><span class="p">,</span><span class="n">user</span><span class="p">,</span><span class="n">passwd</span><span class="o">|</span>
-</span><span class='line'>      <span class="k">if</span> <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;nc -nz -w 1 </span><span class="si">#{</span><span class="n">host</span><span class="si">}</span><span class="s2"> 22&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="kp">true</span>
-</span><span class='line'>        <span class="nb">puts</span> <span class="s2">&quot;&gt;&gt; </span><span class="si">#{</span><span class="n">host</span><span class="si">}</span><span class="s2">連線正常&quot;</span>
-</span><span class='line'>        <span class="nb">puts</span> <span class="s2">&quot;   </span><span class="si">#{</span><span class="n">host</span><span class="si">}</span><span class="s2">產生ssh key&quot;</span>
-</span><span class='line'>        <span class="k">if</span> <span class="n">user</span> <span class="o">==</span> <span class="s2">&quot;root&quot;</span>
-</span><span class='line'>          <span class="vi">@home</span><span class="o">=</span><span class="s2">&quot;/</span><span class="si">#{</span><span class="n">user</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span class='line'>        <span class="k">else</span>
-</span><span class='line'>          <span class="vi">@home</span><span class="o">=</span><span class="s2">&quot;/home/</span><span class="si">#{</span><span class="n">user</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span class='line'>        <span class="k">end</span>
-</span><span class='line'>        <span class="n">script</span><span class="p">(</span><span class="n">host</span><span class="p">,</span><span class="n">user</span><span class="p">,</span><span class="n">passwd</span><span class="p">)</span>
-</span><span class='line'>        <span class="nb">puts</span> <span class="s2">&quot;   </span><span class="si">#{</span><span class="n">host</span><span class="si">}</span><span class="s2">下載ssh key&quot;</span>
-</span><span class='line'>        <span class="n">download_key</span><span class="p">(</span><span class="n">host</span><span class="p">,</span><span class="n">user</span><span class="p">,</span><span class="n">passwd</span><span class="p">)</span>
-</span><span class='line'>        <span class="sb">`mkdir ~/.ssh 2&gt; /dev/null`</span>
-</span><span class='line'>        <span class="sb">`chmod go-w ~`</span>
-</span><span class='line'>        <span class="sb">`chmod 700 ~/.ssh`</span>
-</span><span class='line'>        <span class="sb">`chmod 600 ~/.ssh/authorized_keys`</span>
-</span><span class='line'>        <span class="sb">`sed -i /</span><span class="si">#{</span><span class="n">user</span><span class="si">}</span><span class="sb">@</span><span class="si">#{</span><span class="vi">@hostname</span><span class="si">}</span><span class="sb">/d ~/.ssh/authorized_keys`</span>
-</span><span class='line'>        <span class="sb">`cat </span><span class="si">#{</span><span class="vg">$localip</span><span class="si">}</span><span class="sb">.pub &gt;&gt; ~/.ssh/authorized_keys`</span>
-</span><span class='line'>
-</span><span class='line'>        <span class="nb">puts</span> <span class="s2">&quot;   USER: </span><span class="si">#{</span><span class="n">user</span><span class="si">}</span><span class="s2"> 已完成&quot;</span>
-</span><span class='line'>      <span class="k">else</span>
-</span><span class='line'>        <span class="nb">puts</span> <span class="s2">&quot;&gt;&gt; </span><span class="si">#{</span><span class="n">host</span><span class="si">}</span><span class="s2"> 沒有回應&quot;</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#plugins/category_list_tag.rb</span>
+</span><span class='line'><span class="k">module</span> <span class="nn">Jekyll</span>
+</span><span class='line'>  <span class="k">class</span> <span class="nc">CategoryList</span> <span class="o">&lt;</span> <span class="no">Liquid</span><span class="o">::</span><span class="no">Tag</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">render</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">html</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+</span><span class='line'>      <span class="n">categories</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">registers</span><span class="o">[</span><span class="ss">:site</span><span class="o">].</span><span class="n">categories</span><span class="o">.</span><span class="n">keys</span>
+</span><span class='line'>      <span class="n">categories</span><span class="o">.</span><span class="n">sort</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">category</span><span class="o">|</span>
+</span><span class='line'>        <span class="n">posts_in_category</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">registers</span><span class="o">[</span><span class="ss">:site</span><span class="o">].</span><span class="n">categories</span><span class="o">[</span><span class="n">category</span><span class="o">].</span><span class="n">size</span>
+</span><span class='line'>        <span class="n">category_dir</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">registers</span><span class="o">[</span><span class="ss">:site</span><span class="o">].</span><span class="n">config</span><span class="o">[</span><span class="s1">&#39;category_dir&#39;</span><span class="o">]</span>
+</span><span class='line'>        <span class="n">category_url</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">category_dir</span><span class="p">,</span> <span class="n">category</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="sr">/_|\P{Word}/</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="sr">/-{2,}/</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">downcase</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">html</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;&lt;li class=&#39;category&#39;&gt;&lt;a href=&#39;/</span><span class="si">#{</span><span class="n">category_url</span><span class="si">}</span><span class="s2">/&#39;&gt;</span><span class="si">#{</span><span class="n">category</span><span class="si">}</span><span class="s2"> (</span><span class="si">#{</span><span class="n">posts_in_category</span><span class="si">}</span><span class="s2">)&lt;/a&gt;&lt;/li&gt;</span><span class="se">\n</span><span class="s2">&quot;</span>
 </span><span class='line'>      <span class="k">end</span>
-</span><span class='line'>      <span class="nb">puts</span>
+</span><span class='line'>      <span class="n">html</span>
 </span><span class='line'>    <span class="k">end</span>
 </span><span class='line'>  <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">download_key</span><span class="p">(</span><span class="n">host</span><span class="p">,</span><span class="n">user</span><span class="p">,</span><span class="n">passwd</span><span class="p">)</span>
-</span><span class='line'>    <span class="no">Net</span><span class="o">::</span><span class="no">SCP</span><span class="o">.</span><span class="n">download!</span><span class="p">(</span><span class="n">host</span><span class="p">,</span><span class="n">user</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="vi">@home</span><span class="si">}</span><span class="s2">/.ssh/</span><span class="si">#{</span><span class="vg">$localip</span><span class="si">}</span><span class="s2">.pub&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="vg">$localip</span><span class="si">}</span><span class="s2">.pub&quot;</span><span class="p">,</span>  <span class="ss">:ssh</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">:password</span> <span class="o">=&gt;</span> <span class="n">passwd</span> <span class="p">})</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">script</span><span class="p">(</span><span class="n">host</span><span class="p">,</span><span class="n">user</span><span class="p">,</span><span class="n">passwd</span><span class="p">)</span>
-</span><span class='line'>    <span class="no">Net</span><span class="o">::</span><span class="no">SSH</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">host</span><span class="p">,</span><span class="n">user</span><span class="p">,</span> <span class="ss">:password</span> <span class="o">=&gt;</span> <span class="n">passwd</span> <span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">ssh</span><span class="o">|</span>
-</span><span class='line'>      <span class="vi">@hostname</span><span class="o">=</span><span class="n">ssh</span><span class="o">.</span><span class="n">exec!</span><span class="p">(</span><span class="s2">&quot;hostname&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">chomp</span>
-</span><span class='line'>      <span class="n">ssh</span><span class="o">.</span><span class="n">exec!</span><span class="p">(</span><span class="s2">&quot;mkdir ~/.ssh&quot;</span><span class="p">)</span>
-</span><span class='line'>      <span class="n">ssh</span><span class="o">.</span><span class="n">exec!</span><span class="p">(</span><span class="s2">&quot;chmod 700 ~/.ssh&quot;</span><span class="p">)</span>
-</span><span class='line'>      <span class="n">ssh</span><span class="o">.</span><span class="n">exec!</span><span class="p">(</span><span class="s2">&quot;rm </span><span class="si">#{</span><span class="vi">@home</span><span class="si">}</span><span class="s2">/.ssh/</span><span class="si">#{</span><span class="vg">$localip</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span class='line'>      <span class="n">ssh</span><span class="o">.</span><span class="n">exec!</span><span class="p">(</span><span class="s2">&quot;rm </span><span class="si">#{</span><span class="vi">@home</span><span class="si">}</span><span class="s2">/.ssh/</span><span class="si">#{</span><span class="vg">$localip</span><span class="si">}</span><span class="s2">.pub&quot;</span><span class="p">)</span>
-</span><span class='line'>      <span class="n">ssh</span><span class="o">.</span><span class="n">exec!</span><span class="p">(</span><span class="s2">&quot;ssh-keygen -t rsa -f </span><span class="si">#{</span><span class="vi">@home</span><span class="si">}</span><span class="s2">/.ssh/</span><span class="si">#{</span><span class="vg">$localip</span><span class="si">}</span><span class="s2"> -N &#39;&#39; -q&quot;</span><span class="p">)</span>
-</span><span class='line'>      <span class="n">ssh</span><span class="o">.</span><span class="n">exec!</span><span class="p">(</span><span class="s2">&quot;sed -i &#39;/HOST </span><span class="si">#{</span><span class="vg">$localip</span><span class="si">}</span><span class="s2">/,+1d&#39; </span><span class="si">#{</span><span class="vi">@home</span><span class="si">}</span><span class="s2">/.ssh/config&quot;</span><span class="p">)</span>
-</span><span class='line'>      <span class="n">ssh</span><span class="o">.</span><span class="n">exec!</span><span class="p">(</span><span class="s2">&quot;echo HOST </span><span class="si">#{</span><span class="vg">$localip</span><span class="si">}</span><span class="s2"> &gt;&gt; </span><span class="si">#{</span><span class="vi">@home</span><span class="si">}</span><span class="s2">/.ssh/config&quot;</span><span class="p">)</span>
-</span><span class='line'>      <span class="n">ssh</span><span class="o">.</span><span class="n">exec!</span><span class="p">(</span><span class="s2">&quot;echo IdentityFile ~/.ssh/</span><span class="si">#{</span><span class="vg">$localip</span><span class="si">}</span><span class="s2"> &gt;&gt; </span><span class="si">#{</span><span class="vi">@home</span><span class="si">}</span><span class="s2">/.ssh/config&quot;</span><span class="p">)</span>
-</span><span class='line'>    <span class="k">end</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">class</span> <span class="nc">SSH_1_n</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">initialize</span>
-</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;IP列表為SSH主機, 使用者: </span><span class="si">#{</span><span class="vg">$localuser</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span class='line'>    <span class="vi">@hostname</span><span class="o">=</span><span class="sb">`hostname`</span><span class="o">.</span><span class="n">chomp</span>
-</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;產生ssh key...&quot;</span>
-</span><span class='line'>    <span class="n">ssh_keygen</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="vg">$ip</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">host</span><span class="p">,</span><span class="n">user</span><span class="p">,</span><span class="n">passwd</span><span class="o">|</span>
-</span><span class='line'>      <span class="k">if</span> <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;nc -nz -w 1 </span><span class="si">#{</span><span class="n">host</span><span class="si">}</span><span class="s2"> 22&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="kp">true</span>
-</span><span class='line'>        <span class="nb">puts</span> <span class="s2">&quot;&gt;&gt; </span><span class="si">#{</span><span class="n">host</span><span class="si">}</span><span class="s2">連線正常&quot;</span>
-</span><span class='line'>        <span class="nb">puts</span> <span class="s2">&quot;   上傳key到 </span><span class="si">#{</span><span class="n">host</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span class='line'>        <span class="n">upload_key</span><span class="p">(</span><span class="n">host</span><span class="p">,</span><span class="n">user</span><span class="p">,</span><span class="n">passwd</span><span class="p">)</span>
-</span><span class='line'>        <span class="nb">puts</span> <span class="s2">&quot;   </span><span class="si">#{</span><span class="n">host</span><span class="si">}</span><span class="s2"> 執行指令&quot;</span>
-</span><span class='line'>        <span class="n">script</span><span class="p">(</span><span class="n">host</span><span class="p">,</span><span class="n">user</span><span class="p">,</span><span class="n">passwd</span><span class="p">)</span>
-</span><span class='line'>        <span class="sb">`sed -i &#39;/HOST </span><span class="si">#{</span><span class="n">host</span><span class="si">}</span><span class="sb">/,+1d&#39; ~/.ssh/config 2&gt;/dev/null`</span>
-</span><span class='line'>        <span class="sb">`echo HOST </span><span class="si">#{</span><span class="n">host</span><span class="si">}</span><span class="sb"> &gt;&gt; </span><span class="si">#{</span><span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;HOME&#39;</span><span class="o">]</span><span class="si">}</span><span class="sb">/.ssh/config`</span>
-</span><span class='line'>        <span class="sb">`echo IdentityFile </span><span class="si">#{</span><span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;HOME&#39;</span><span class="o">]</span><span class="si">}</span><span class="sb">/.ssh/</span><span class="si">#{</span><span class="vg">$localip</span><span class="si">}</span><span class="sb"> &gt;&gt; </span><span class="si">#{</span><span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;HOME&#39;</span><span class="o">]</span><span class="si">}</span><span class="sb">/.ssh/config`</span>
-</span><span class='line'>        <span class="nb">puts</span> <span class="s2">&quot;   &gt;&gt; </span><span class="si">#{</span><span class="n">user</span><span class="si">}</span><span class="s2">@</span><span class="si">#{</span><span class="n">host</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span class='line'>      <span class="k">else</span>
-</span><span class='line'>        <span class="nb">puts</span> <span class="s2">&quot;&gt;&gt; </span><span class="si">#{</span><span class="n">host</span><span class="si">}</span><span class="s2"> 沒有回應&quot;</span>
+</span><span class='line'>  <span class="k">class</span> <span class="nc">CategoryListTop</span> <span class="o">&lt;</span> <span class="no">Liquid</span><span class="o">::</span><span class="no">Tag</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">render</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">html</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+</span><span class='line'>      <span class="n">categories</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">registers</span><span class="o">[</span><span class="ss">:site</span><span class="o">].</span><span class="n">categories</span><span class="o">.</span><span class="n">keys</span>
+</span><span class='line'>      <span class="n">categories</span><span class="o">.</span><span class="n">sort</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">category</span><span class="o">|</span>
+</span><span class='line'>        <span class="n">category_dir</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">registers</span><span class="o">[</span><span class="ss">:site</span><span class="o">].</span><span class="n">config</span><span class="o">[</span><span class="s1">&#39;category_dir&#39;</span><span class="o">]</span>
+</span><span class='line'>        <span class="n">category_url</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">category_dir</span><span class="p">,</span> <span class="n">category</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="sr">/_|\P{Word}/</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="sr">/-{2,}/</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">downcase</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">html</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;&lt;h2 class=&#39;entry-title&#39;&gt;&lt;a href=&#39;/</span><span class="si">#{</span><span class="n">category_url</span><span class="si">}</span><span class="s2">/&#39;&gt;</span><span class="si">#{</span><span class="n">category</span><span class="si">}</span><span class="s2">&lt;/a&gt;&lt;/h2&gt;&quot;</span>
 </span><span class='line'>      <span class="k">end</span>
-</span><span class='line'>      <span class="nb">puts</span>
+</span><span class='line'>      <span class="n">html</span>
+</span><span class='line'>
 </span><span class='line'>    <span class="k">end</span>
 </span><span class='line'>  <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">upload_key</span><span class="p">(</span><span class="n">host</span><span class="p">,</span><span class="n">user</span><span class="p">,</span><span class="n">passwd</span><span class="p">)</span>
-</span><span class='line'>    <span class="no">Net</span><span class="o">::</span><span class="no">SCP</span><span class="o">.</span><span class="n">upload!</span><span class="p">(</span><span class="n">host</span><span class="p">,</span><span class="n">user</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;HOME&#39;</span><span class="o">]</span><span class="si">}</span><span class="s2">/.ssh/</span><span class="si">#{</span><span class="vg">$localip</span><span class="si">}</span><span class="s2">.pub&quot;</span><span class="p">,</span> <span class="s2">&quot;id_rsa.pub&quot;</span><span class="p">,</span>  <span class="ss">:ssh</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">:password</span> <span class="o">=&gt;</span> <span class="n">passwd</span> <span class="p">})</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">script</span><span class="p">(</span><span class="n">host</span><span class="p">,</span><span class="n">user</span><span class="p">,</span><span class="n">passwd</span><span class="p">)</span>
-</span><span class='line'>    <span class="no">Net</span><span class="o">::</span><span class="no">SSH</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">host</span><span class="p">,</span><span class="n">user</span><span class="p">,</span> <span class="ss">:password</span> <span class="o">=&gt;</span> <span class="n">passwd</span> <span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">ssh</span><span class="o">|</span>
-</span><span class='line'>      <span class="n">ssh</span><span class="o">.</span><span class="n">exec!</span><span class="p">(</span><span class="s2">&quot;sed -i /</span><span class="si">#{</span><span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;USER&#39;</span><span class="o">]</span><span class="si">}</span><span class="s2">@</span><span class="si">#{</span><span class="vi">@hostname</span><span class="si">}</span><span class="s2">/d ~/.ssh/authorized_keys&quot;</span><span class="p">)</span>
-</span><span class='line'>      <span class="n">ssh</span><span class="o">.</span><span class="n">exec!</span><span class="p">(</span><span class="s2">&quot;mkdir ~/.ssh&quot;</span><span class="p">)</span>
-</span><span class='line'>      <span class="n">ssh</span><span class="o">.</span><span class="n">exec!</span><span class="p">(</span><span class="s2">&quot;cat id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys&quot;</span><span class="p">)</span>
-</span><span class='line'>      <span class="n">ssh</span><span class="o">.</span><span class="n">exec!</span><span class="p">(</span><span class="s2">&quot;chmod go-w ~&quot;</span><span class="p">)</span>
-</span><span class='line'>      <span class="n">ssh</span><span class="o">.</span><span class="n">exec!</span><span class="p">(</span><span class="s2">&quot;chmod 700 ~/.ssh&quot;</span><span class="p">)</span>
-</span><span class='line'>      <span class="n">ssh</span><span class="o">.</span><span class="n">exec!</span><span class="p">(</span><span class="s2">&quot;chmod 600 ~/.ssh/authorized_keys&quot;</span><span class="p">)</span>
-</span><span class='line'>    <span class="k">end</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">ssh_keygen</span>
-</span><span class='line'>    <span class="k">if</span> <span class="ow">not</span> <span class="no">File</span><span class="o">.</span><span class="n">exist?</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">#{</span><span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;HOME&#39;</span><span class="o">]</span><span class="si">}</span><span class="s2">/.ssh/</span><span class="si">#{</span><span class="vg">$localip</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span class='line'>      <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;ssh-keygen -t rsa -f </span><span class="si">#{</span><span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;HOME&#39;</span><span class="o">]</span><span class="si">}</span><span class="s2">/.ssh/</span><span class="si">#{</span><span class="vg">$localip</span><span class="si">}</span><span class="s2"> -N &#39;&#39; -q&quot;</span><span class="p">)</span>
-</span><span class='line'>    <span class="k">end</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'>
 </span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2016/06/14/extract/">Extract</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2016-06-14T01:38:36+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>1:38 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><pre><code>@echo off
-mode con cols=70 lines=10
-setlocal EnableDelayedExpansion
- 
-echo %~nx1 解壓縮中...
- 
-for /f "delims=" %%i in (D:\passwd.txt) do (
-   7z x -y -p"%%i" "%~1" -o"%~dp1" > nul
-   if !errorlevel!== 0 (
-   echo ===  %~nx1 已完成...
-   echo &ping -n 2 127.0.0.1 >nul & echo
-   ping -n 5 127.0.0.1 > nul
-   exit
-   )
-)
- 
-echo %~1 密碼庫沒有符合密碼或是rar損毀 
-echo %date:~5,5%%time:~,5%  %~1>> %USERPROFILE%\desktop\log.txt
-echo
-ping -n 10 127.0.0.1 > nul
-</code></pre>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2016/06/14/set-ip/">Set_ip</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2016-06-14T01:37:19+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>1:37 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><pre><code>@echo off
-netsh add helper ifmon.dll > nul
-netsh interface ip set address name="區域連線" source=static addr=192.168.1.150 mask=255.255.255.0 gateway=192.168.1.1 gwmetric=1 > nul
-ipconfig
-ping 127.0.0.1 -n 3 > nul
-</code></pre>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2016/06/14/check-os-bit/">Check Os Bit</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2016-06-14T01:34:10+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>1:34 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><pre><code>@echo off
-if %PROCESSOR_ARCHITECTURE% == AMD64 echo 64
-if %PROCESSOR_ARCHITECTURE% == x86 echo 32
-pause
-</code></pre>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2016/06/14/wifi/">Wifi</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2016-06-14T01:25:12+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>1:25 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3>把wifi網卡當作基地台</h3>
-
-<pre><code>@echo off
-netsh wlan set hostednetwork mode=allow ssid=<font color="red">wifi-name</font> key=<font color="red">12345</font>
-netsh wlan start hostednetwork
-echo ==============已經啟動 按任意鍵取消==============
-pause>nul
-netsh wlan stop hostednetwork
-</code></pre>
-
-
-<h3>顯示wifi密碼</h3>
-
-<pre><code>netsh wlan show profile name=<font color="red">wifi-name</font> key=clear
-</code></pre>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2016/06/14/sublime-text/">Sublime Text</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2016-06-14T01:02:30+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>1:02 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><a href="http://www.sublimetext.com/2">http://www.sublimetext.com/2</a></p>
-
-<ul>
-<li>中文化  %APPDATA%\Sublime Text 2\Packages\Default</li>
-<li>安裝套件 <a href="https://sublime.wbond.net/installation">https://sublime.wbond.net/installation</a></li>
-<li>ctrl +shit+p，然後輸入install Package <enter></li>
-</ul>
-
-
-<pre><code>BracketHighlighter#376
- 
-"bracket_styles": {
- 
-"default": {
- 
-"color": "entity.name.class",
-"style": "highlight",
- 
-"quote_scope" : "bracket.quote",
-"curly_scope" : "bracket.curly",
-"round_scope" : "bracket.round",
-"square_scope": "bracket.square",
-"angle_scope" : "bracket.angle",
-"tag_scope"   : "bracket.tag",
- 
-// 高亮樣式 (solid|outline|underline|none)
-"quote_style" : "solid",
-"curly_style" : "solid",
-"round_style" : "solid",
-"square_style": "solid",
-"angle_style" : "solid",
-"tag_style"   : "outline"
-}
-</code></pre>
-
-
-
-
-<pre><code>
-Emmt#settings
-
-{
-    "snippets":{
-        "html":{
-            "snippets":{
-            "ff" : "<%= form_for ${1:} %>\n<% end %>",
-            "sf" : "<%= simple_form_for ${1:} %>\n<% end %>",
-            "fl" : "<%= link_to ${1:} %>",
-            "fb" : "<%= button_to ${1:} %>",
-            "fe" : "<%= ${1:} %>",
-            "ee" : "<% ${1:} %>",
-            "eif" : "<% if ${1:} %>",
-            "ed" : "<% end %>",
-            "else" : "<% else %>"
-            }
-        }
-    }
-}
-</code></pre>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2016/06/13/link-to/">Link_to</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2016-06-13T20:34:30+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>8:34 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#index.erb</span>
-</span><span class='line'><span class="o">&lt;</span><span class="sx">%= link_to &quot;Re&quot;, new_msg_path( :user =</span><span class="o">&gt;</span> <span class="n">msg</span><span class="o">.</span><span class="n">name</span> <span class="p">)</span> <span class="o">%&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="no">Liquid</span><span class="o">::</span><span class="no">Template</span><span class="o">.</span><span class="n">register_tag</span><span class="p">(</span><span class="s1">&#39;category_list_top&#39;</span><span class="p">,</span> <span class="no">Jekyll</span><span class="o">::</span><span class="no">CategoryListTop</span><span class="p">)</span>
+</span><span class='line'><span class="no">Liquid</span><span class="o">::</span><span class="no">Template</span><span class="o">.</span><span class="n">register_tag</span><span class="p">(</span><span class="s1">&#39;category_list&#39;</span><span class="p">,</span> <span class="no">Jekyll</span><span class="o">::</span><span class="no">CategoryList</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<h4><a href="http://192.168.1.220/msgs/new?user=icps">http://192.168.1.220/msgs/new?user=icps</a></h4>
-
-<h4>user = params[:user]</h4>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#new.erb</span>
-</span><span class='line'><span class="o">&lt;</span><span class="sx">%= f.input :name, input_html: { :value =</span><span class="o">&gt;</span> <span class="vi">@user</span> <span class="p">}</span> <span class="o">%&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2016/06/13/kaminari/">Kaminari</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2016-06-13T15:39:41+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>3:39 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><a href="https://github.com/amatsuda/kaminari">kaminari</a></p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># controller</span>
-</span><span class='line'><span class="k">def</span> <span class="nf">index</span>
-</span><span class='line'>  <span class="vi">@groups</span> <span class="o">=</span> <span class="no">Group</span><span class="o">.</span><span class="n">page</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:page</span><span class="o">]</span><span class="p">)</span><span class="o">.</span><span class="n">per</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#view</span>
-</span><span class='line'><span class="o">&lt;%=</span> <span class="n">paginate</span> <span class="vi">@groups</span> <span class="o">%&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<pre><code>#config/locales/kaminari.yml
-zh:
-views:
-pagination:
-first: "« 首頁"
-last: "末頁 »"
-previous: "‹ 上一頁"
-next: "下一頁 ›"
-truncate: "…"
-</code></pre>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2016/06/13/fb-login/">FB_login</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2016-06-13T13:17:38+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>1:17 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3>使用devise</h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#Gemfile</span>
-</span><span class='line'><span class="n">gem</span> <span class="s1">&#39;devise&#39;</span> <span class="c1">#使用者</span>
-</span><span class='line'><span class="n">gem</span> <span class="s2">&quot;settingslogic&quot;</span> <span class="c1">#密鑰隱藏功能</span>
-</span><span class='line'><span class="n">gem</span> <span class="s2">&quot;omniauth&quot;</span>
-</span><span class='line'><span class="n">gem</span> <span class="s2">&quot;omniauth-facebook&quot;</span>  <span class="c1">#fb認證</span>
-</span><span class='line'><span class="n">gem</span> <span class="s2">&quot;auto-facebook&quot;</span><span class="p">,</span> <span class="s2">&quot;0.42&quot;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<blockquote><p>Could not find generator devise:install<br/>
-<code>gem "devise", "3.4.1"</code></p></blockquote>
-
-<p><code>rails generate devise:install</code><br/>
-<code>rails generate devise user</code><br/>
-<code>rails generate devise:views</code><br/>
-<code>rake db:migrate</code></p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#/config/initializers/devise.rb</span>
-</span><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">authentication_keys</span> <span class="o">=</span> <span class="o">[</span> <span class="ss">:name</span> <span class="o">]</span> <span class="c1">#32行 登入key</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
+<h3>asides</h3>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -792,61 +205,17 @@ truncate: "…"
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># db/migrate/XXXXXX_devise_create_users.rb</span>
-</span><span class='line'><span class="n">t</span><span class="o">.</span><span class="n">string</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">null</span><span class="p">:</span> <span class="kp">false</span><span class="p">,</span> <span class="ss">default</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
-</span><span class='line'><span class="n">t</span><span class="o">.</span><span class="n">string</span> <span class="ss">:email</span><span class="p">,</span> <span class="ss">null</span><span class="p">:</span> <span class="kp">true</span><span class="p">,</span> <span class="ss">default</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="ss">unique</span><span class="p">:</span> <span class="kp">true</span>
-</span><span class='line'><span class="n">t</span><span class="o">.</span><span class="n">string</span> <span class="ss">:fb_id</span><span class="p">,</span> <span class="ss">:limit</span> <span class="o">=&gt;</span> <span class="mi">20</span>
-</span><span class='line'><span class="n">t</span><span class="o">.</span><span class="n">string</span> <span class="ss">:token</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">add_index</span> <span class="ss">:users</span><span class="p">,</span> <span class="ss">:name</span><span class="p">,</span>                <span class="ss">unique</span><span class="p">:</span> <span class="kp">true</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>#source/_includes/asides/category_list.html
+</span><span class='line'><span class="nt">&lt;section&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;h1&gt;</span>Categories<span class="nt">&lt;/h1&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;ul</span> <span class="na">id=</span><span class="s">&quot;categories&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>       {% category_list %}
+</span><span class='line'>    <span class="nt">&lt;/ul&gt;</span>
+</span><span class='line'><span class="nt">&lt;/section&gt;</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#NEW app/models/settings.rb</span>
-</span><span class='line'><span class="k">class</span> <span class="nc">Settings</span> <span class="o">&lt;</span> <span class="no">Settingslogic</span>
-</span><span class='line'>  <span class="n">source</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="no">Rails</span><span class="o">.</span><span class="n">root</span><span class="si">}</span><span class="s2">/config/application.yml&quot;</span>
-</span><span class='line'>  <span class="n">namespace</span> <span class="no">Rails</span><span class="o">.</span><span class="n">env</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3><a href="https://developers.facebook.com">https://developers.facebook.com</a> 開新的 app</h3>
-
-<pre><code>#NEW config/application.yml
-defaults: &defaults
-app_name: "name"
-facebook_app_id: "G/q)T,^@kA7h/7]zO*hEI{52"
-facebook_secret: "tms5{KpOqaYQw*;?9Uv^5X2wT+&)#{##;Ff9n2 jy^m^:u1m"
-
-development:
-<<: *defaults
-domain: "http://192.168.1.220"
-
-test:
-<<: *defaults
-
-production:
-<<: *defaults
-</code></pre>
-
-
-<p><code>rails g auto_facebook:install</code></p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#config/initializers/devise.rb 233</span>
-</span><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">omniauth</span> <span class="ss">:facebook</span><span class="p">,</span> <span class="no">Settings</span><span class="o">.</span><span class="n">facebook_app_id</span><span class="p">,</span> <span class="no">Settings</span><span class="o">.</span><span class="n">facebook_secret</span><span class="p">,</span> <span class="ss">:scope</span> <span class="o">=&gt;</span> <span class="s1">&#39;email&#39;</span>
-</span><span class='line'><span class="no">Setting</span> <span class="o">===&gt;</span> <span class="no">Settings</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
+<h3>top</h3>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -862,24 +231,24 @@ production:
 <span class='line-number'>12</span>
 <span class='line-number'>13</span>
 <span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#app/model/user.rb</span>
-</span><span class='line'><span class="k">def</span> <span class="nf">email_required?</span> <span class="c1">#email空白</span>
-</span><span class='line'>  <span class="kp">false</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">def</span> <span class="nf">email_changed?</span>
-</span><span class='line'>  <span class="kp">false</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'><span class="c1">#驗證name email</span>
-</span><span class='line'><span class="n">validates</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">presence</span><span class="p">:</span> <span class="kp">true</span><span class="p">,</span> <span class="ss">uniqueness</span><span class="p">:</span> <span class="p">{</span> <span class="ss">case_sensitive</span><span class="p">:</span> <span class="kp">false</span> <span class="p">}</span>
-</span><span class='line'><span class="n">validates</span> <span class="ss">:email</span><span class="p">,</span> <span class="ss">allow_blank</span><span class="p">:</span> <span class="kp">true</span> <span class="p">,</span> <span class="ss">uniqueness</span><span class="p">:</span> <span class="p">{</span> <span class="ss">case_sensitive</span><span class="p">:</span> <span class="kp">false</span> <span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">devise</span> <span class="ss">:database_authenticatable</span><span class="p">,</span> <span class="ss">:registerable</span><span class="p">,</span>
-</span><span class='line'><span class="ss">:recoverable</span><span class="p">,</span> <span class="ss">:rememberable</span><span class="p">,</span> <span class="ss">:trackable</span><span class="p">,</span> <span class="ss">:validatable</span><span class="p">,</span> <span class="ss">:omniauthable</span><span class="p">,</span> <span class="ss">:authentication_keys</span> <span class="o">=&gt;</span> <span class="o">[</span> <span class="ss">:name</span> <span class="o">]</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>#source/blog/categories/index.html
+</span><span class='line'>---
+</span><span class='line'>layout: page
+</span><span class='line'>title: Categories
+</span><span class='line'>footer: false
+</span><span class='line'>---
+</span><span class='line'><span class="nt">&lt;style&gt;</span>
+</span><span class='line'><span class="nt">a</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">text-decoration</span><span class="o">:</span><span class="k">none</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="nt">&lt;/style&gt;</span>
+</span><span class='line'><span class="nt">&lt;article&gt;</span>
+</span><span class='line'>  {% category_list_top %}
+</span><span class='line'><span class="nt">&lt;/article&gt;</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-
+<h3>在上方加入連結</h3>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -887,128 +256,34 @@ production:
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#view</span>
-</span><span class='line'><span class="o">&lt;</span><span class="sx">% if </span><span class="n">current_user</span> <span class="sx">%&gt;</span>
-</span><span class='line'><span class="sx">  &lt;%= current_user.name %&gt;</span>
-</span><span class='line'>   <span class="o">&lt;</span><span class="sx">%= link_to &quot;登出&quot;, destroy_user_session_path, method: :delete %&gt;&lt;/li&gt;</span>
-</span><span class='line'><span class="sx">&lt;% else %&gt;</span>
-</span><span class='line'><span class="sx">  &lt;%=</span> <span class="n">link_to</span> <span class="s2">&quot;註冊&quot;</span><span class="p">,</span> <span class="n">new_user_registration_path</span> <span class="sx">%&gt;&lt;/li&gt;</span>
-</span><span class='line'>  <span class="o">&lt;</span><span class="sx">%= link_to &quot;登入&quot;, new_user_session_path %&gt;&lt;/li&gt;</span>
-</span><span class='line'><span class="sx">  &lt;%=</span> <span class="n">link_to</span><span class="p">(</span><span class="s2">&quot;Facebook Login&quot;</span><span class="p">,</span> <span class="no">Settings</span><span class="o">.</span><span class="n">domain</span> <span class="o">+</span> <span class="n">user_omniauth_authorize_path</span><span class="p">(</span><span class="ss">:facebook</span><span class="p">))</span> <span class="sx">%&gt; &lt;/li&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="sx">% end </span><span class="o">%&gt;</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>#source/_includes/custom/navigation.html
+</span><span class='line'><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;main-navigation&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;/&quot;</span><span class="nt">&gt;</span>Blog<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;/blog/archives&quot;</span><span class="nt">&gt;</span>Archives<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;/blog/categories&quot;</span><span class="nt">&gt;</span>Categories<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+</span><span class='line'><span class="nt">&lt;/ul&gt;</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#fb image</span>
-</span><span class='line'><span class="k">def</span> <span class="nf">user_image</span><span class="p">(</span><span class="n">user</span><span class="p">,</span><span class="n">size</span><span class="p">)</span>
-</span><span class='line'>  <span class="k">if</span> <span class="ow">not</span> <span class="n">user</span><span class="o">.</span><span class="n">fb_id</span> <span class="o">==</span> <span class="kp">nil</span>
-</span><span class='line'>    <span class="n">link_to</span><span class="p">(</span><span class="n">image_tag</span><span class="p">(</span><span class="s2">&quot;http://graph.facebook.com/</span><span class="si">#{</span><span class="n">user</span><span class="o">.</span><span class="n">fb_id</span><span class="si">}</span><span class="s2">/picture&quot;</span><span class="p">,</span> <span class="ss">:size</span> <span class="o">=&gt;</span> <span class="n">size</span><span class="p">),</span> <span class="s2">&quot;https://www.facebook.com/</span><span class="si">#{</span><span class="n">user</span><span class="o">.</span><span class="n">fb_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
+<h1>貼語法語法</h1>
 
-</div>
-  
-  
+<blockquote><p>ref  <a href="http://blog.slaks.net/2013-06-10/jekyll-endraw-in-code/">http://blog.slaks.net/2013-06-10/jekyll-endraw-in-code/</a></p></blockquote>
+
+<h3>若要顯示 {% category_list_top %}</h3>
+
+<pre><code>```
+    {% raw %}<font color='red'>{% category_list_top %}</font>{% endraw %}
+```
+</code></pre>
 
 
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2016/06/13/line/">Line-bot</a></h1>
-    
-    
-      <p class="meta">
-        
+<h3>若要顯示 {% raw %}{% endraw %}</h3>
 
-
-
-
-<time class='entry-date' datetime='2016-06-13T01:27:59+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>1:27 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>:<a href="https://business.line.me/zh-hant/products/4/introduction">https://business.line.me/zh-hant/products/4/introduction</a><br />
-<a href="https://github.com/line/line-bot-sdk-ruby">https://github.com/line/line-bot-sdk-ruby</a><br />
-<a href="https://developers.line.me/bot-api/overview">https://developers.line.me/bot-api/overview</a><br />
-<a href="https://www.heroku.com/">https://www.heroku.com/</a><br /></p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#routes.rb</span>
-</span><span class='line'><span class="no">Rails</span><span class="o">.</span><span class="n">application</span><span class="o">.</span><span class="n">routes</span><span class="o">.</span><span class="n">draw</span> <span class="k">do</span>
-</span><span class='line'>  <span class="n">root</span> <span class="ss">:to</span> <span class="o">=&gt;</span> <span class="s2">&quot;page#index&quot;</span>
-</span><span class='line'>  <span class="n">match</span> <span class="s1">&#39;/callback&#39;</span> <span class="o">=&gt;</span> <span class="s2">&quot;page#callback&quot;</span><span class="p">,</span> <span class="ss">:via</span> <span class="o">=&gt;</span> <span class="ss">:post</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#controller.rb</span>
-</span><span class='line'><span class="k">class</span> <span class="nc">PageController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
-</span><span class='line'>  <span class="n">protect_from_forgery</span> <span class="ss">with</span><span class="p">:</span> <span class="ss">:null_session</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">index</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">callback</span>
-</span><span class='line'>    <span class="n">line_msg</span> <span class="o">=</span> <span class="n">params</span><span class="o">[</span><span class="ss">:result</span><span class="o">][</span><span class="mi">0</span><span class="o">]</span>
-</span><span class='line'>    <span class="n">username</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_user_profile</span><span class="p">(</span> <span class="n">line_msg</span><span class="o">[</span><span class="s2">&quot;content&quot;</span><span class="o">][</span><span class="s2">&quot;from&quot;</span><span class="o">]</span> <span class="p">)</span><span class="o">.</span><span class="n">contacts</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">display_name</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="kp">private</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">client</span>
-</span><span class='line'>    <span class="no">Line</span><span class="o">::</span><span class="no">Bot</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
-</span><span class='line'>      <span class="n">config</span><span class="o">.</span><span class="n">channel_id</span>     <span class="o">=</span> <span class="no">ENV</span><span class="o">[</span><span class="s2">&quot;LINE_CHANNEL_ID&quot;</span><span class="o">]</span>
-</span><span class='line'>      <span class="n">config</span><span class="o">.</span><span class="n">channel_secret</span> <span class="o">=</span> <span class="no">ENV</span><span class="o">[</span><span class="s2">&quot;LINE_CHANNEL_SECRET&quot;</span><span class="o">]</span>
-</span><span class='line'>      <span class="n">config</span><span class="o">.</span><span class="n">channel_mid</span>    <span class="o">=</span> <span class="no">ENV</span><span class="o">[</span><span class="s2">&quot;LINE_CHANNEL_MID&quot;</span><span class="o">]</span>
-</span><span class='line'>    <span class="k">end</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
+<pre><code>{% assign <font color='green'>oTag</font> = '{%' %}
+# 然後在貼下半部
+<font color='green'>{{ oTag }}</font><font color='red'>raw %}{% endraw %}</font>
+<font color='green'>{{ oTag }}</font><font color='red'>endraw %}{% endraw %}</font>
+</code></pre>
 
 </div>
   
@@ -1018,6 +293,8 @@ production:
     </article>
   
   <div class="pagination">
+    
+      <a class="prev" href="/posts/3">&larr; Older</a>
     
     <a href="/blog/archives">Blog Archives</a>
     

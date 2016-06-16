@@ -9,10 +9,10 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="install apt-get install motion config #/etc/motion/motion.conf
-#306 ffmpeg_video_codec mpeg4 #418 target_dir /motion
-#503 webcontrol_localhost on
-# &hellip;">
+  <meta name="description" content="1
+2
+#index.erb
+&lt;%= link_to &quot;Re&quot;, new_msg_path( :user =&gt; msg.name ) %&gt; http://192.168.1.220/msgs/new?user=icps user = params[:user &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -21,7 +21,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://icps0610.github.io/">
+  <link rel="canonical" href="http://icps0610.github.io/posts/17/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="icps" type="application/atom+xml">
@@ -75,7 +75,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2016/06/16/motion/">Motion</a></h1>
+      <h1 class="entry-title"><a href="/blog/2016/06/13/link-to/">Link_to</a></h1>
     
     
       <p class="meta">
@@ -84,35 +84,29 @@
 
 
 
-<time class='entry-date' datetime='2016-06-16T23:49:41+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>11:49 pm</span></time>
+<time class='entry-date' datetime='2016-06-13T20:34:30+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>8:34 pm</span></time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><h2>install</h2>
-
-<p><code>apt-get install motion</code></p>
-
-<h2>config</h2>
-
-<pre><code>#/etc/motion/motion.conf
-#306    ffmpeg_video_codec mpeg4  
-#418    target_dir /motion
-#503    webcontrol_localhost on
-#628    on_movie_end ruby /motion/motion.rb %f
-</code></pre>
+  <div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#index.erb</span>
+</span><span class='line'><span class="o">&lt;</span><span class="sx">%= link_to &quot;Re&quot;, new_msg_path( :user =</span><span class="o">&gt;</span> <span class="n">msg</span><span class="o">.</span><span class="n">name</span> <span class="p">)</span> <span class="o">%&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
+<h4><a href="http://192.168.1.220/msgs/new?user=icps">http://192.168.1.220/msgs/new?user=icps</a></h4>
 
+<h4>user = params[:user]</h4>
 
-<pre><code>#/etc/default/motion 
-# set to 'yes' to enable the motion daemon
-start_motion_daemon=<font color='red'>yes</font>
-</code></pre>
-
-
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#new.erb</span>
+</span><span class='line'><span class="o">&lt;</span><span class="sx">%= f.input :name, input_html: { :value =</span><span class="o">&gt;</span> <span class="vi">@user</span> <span class="p">}</span> <span class="o">%&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 </div>
   
@@ -123,9 +117,11 @@ start_motion_daemon=<font color='red'>yes</font>
   
   <div class="pagination">
     
-      <a class="prev" href="/posts/2">&larr; Older</a>
+      <a class="prev" href="/posts/18">&larr; Older</a>
     
     <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/posts/16">Newer &rarr;</a>
     
   </div>
 </div>
