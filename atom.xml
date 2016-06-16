@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2016-06-16T14:01:21+08:00</updated>
+  <updated>2016-06-16T14:28:06+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -18,20 +18,21 @@
     <link href="http://icps0610.github.io/blog/2016/06/15/exim4/"/>
     <updated>2016-06-15T22:12:27+08:00</updated>
     <id>http://icps0610.github.io/blog/2016/06/15/exim4</id>
-    <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">dpkg</span><span class="o">-</span><span class="n">reconfigure</span> <span class="n">exim4</span><span class="o">-</span><span class="n">config</span>
-</span></code></pre></td></tr></table></div></figure>
+    <content type="html"><![CDATA[<pre><code>dpkg-reconfigure exim4-config
+</code></pre>
+
+
 
 
 <pre><code>#/etc/exim4/update-exim4.conf.conf 
-dc_eximconfig_configtype='internet'
+dc_eximconfig_configtype='<font color='red'>internet</font>'
 dc_other_hostnames='linux'
 dc_local_interfaces='127.0.0.1 ; ::1'
 dc_readhost='linux'
 dc_relay_domains=''
 dc_minimaldns='false'
 dc_relay_nets=''
-dc_smarthost='smtp.gmail.com::587'
+dc_smarthost='<font color='red'>smtp.gmail.com::587</font>'
 CFILEMODE='644'
 dc_use_split_config='false'
 dc_hide_mailname='true'
@@ -49,9 +50,8 @@ dc_localdelivery='mail_spool'
 
 
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">service</span> <span class="n">exim4</span> <span class="n">restart</span>
-</span></code></pre></td></tr></table></div></figure>
+<pre><code>service exim4 restart
+</code></pre>
 
 
 <blockquote><p>Permission denied:<br/>

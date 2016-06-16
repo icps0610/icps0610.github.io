@@ -9,10 +9,9 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="1
-dpkg-reconfigure exim4-config #/etc/exim4/update-exim4.conf.conf dc_eximconfig_configtype='internet'
+  <meta name="description" content="dpkg-reconfigure exim4-config #/etc/exim4/update-exim4.conf.conf dc_eximconfig_configtype='internet'
 dc_other_hostnames='linux'
-dc_local_interfaces &hellip;">
+dc_local_interfaces=' &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -87,20 +86,21 @@ dc_local_interfaces &hellip;">
   </header>
 
 
-<div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">dpkg</span><span class="o">-</span><span class="n">reconfigure</span> <span class="n">exim4</span><span class="o">-</span><span class="n">config</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="entry-content"><pre><code>dpkg-reconfigure exim4-config
+</code></pre>
+
+
 
 
 <pre><code>#/etc/exim4/update-exim4.conf.conf 
-dc_eximconfig_configtype='internet'
+dc_eximconfig_configtype='<font color='red'>internet</font>'
 dc_other_hostnames='linux'
 dc_local_interfaces='127.0.0.1 ; ::1'
 dc_readhost='linux'
 dc_relay_domains=''
 dc_minimaldns='false'
 dc_relay_nets=''
-dc_smarthost='smtp.gmail.com::587'
+dc_smarthost='<font color='red'>smtp.gmail.com::587</font>'
 CFILEMODE='644'
 dc_use_split_config='false'
 dc_hide_mailname='true'
@@ -118,9 +118,8 @@ dc_localdelivery='mail_spool'
 
 
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">service</span> <span class="n">exim4</span> <span class="n">restart</span>
-</span></code></pre></td></tr></table></div></figure>
+<pre><code>service exim4 restart
+</code></pre>
 
 
 <blockquote><p>Permission denied:<br/>
