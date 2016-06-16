@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2016-06-17T00:57:42+08:00</updated>
+  <updated>2016-06-17T01:03:10+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -112,13 +112,13 @@
 </span><span class='line'><span class="k">class</span> <span class="nc">Up</span>
 </span><span class='line'>
 </span><span class='line'>  <span class="k">def</span> <span class="nf">all_possible</span>
-</span><span class='line'>    <span class="n">ok</span> <span class="o">=</span> <span class="mi">0</span>
-</span><span class='line'>    <span class="p">(</span><span class="mi">4</span><span class="o">.</span><span class="n">.</span><span class="mi">9</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">i</span><span class="o">|</span>
+</span><span class='line'>    <span class="p">(</span><span class="mi">4</span><span class="o">.</span><span class="n">.</span><span class="mi">9</span><span class="p">)</span><span class="o">.</span><span class="n">map</span> <span class="k">do</span> <span class="o">|</span><span class="n">i</span><span class="o">|</span>
+</span><span class='line'>      <span class="vi">@ok</span> <span class="o">||=</span> <span class="mi">0</span>
 </span><span class='line'>      <span class="s2">&quot;123456789&quot;</span><span class="o">.</span><span class="n">scan</span><span class="p">(</span><span class="sr">/./</span><span class="p">)</span><span class="o">.</span><span class="n">permutation</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">.</span><span class="n">to_a</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">c</span><span class="o">|</span>
-</span><span class='line'>        <span class="n">ok</span><span class="o">+=</span><span class="mi">1</span> <span class="k">if</span> <span class="n">check</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">to_a</span><span class="o">.</span><span class="n">join</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="kp">true</span>
+</span><span class='line'>        <span class="vi">@ok</span><span class="o">+=</span><span class="mi">1</span> <span class="k">if</span> <span class="n">check</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">to_a</span><span class="o">.</span><span class="n">join</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="kp">true</span>
 </span><span class='line'>      <span class="k">end</span>
 </span><span class='line'>    <span class="k">end</span>
-</span><span class='line'>    <span class="k">return</span> <span class="n">ok</span>
+</span><span class='line'>    <span class="k">return</span> <span class="vi">@ok</span>
 </span><span class='line'>  <span class="k">end</span>
 </span><span class='line'>
 </span><span class='line'>  <span class="k">def</span> <span class="nf">rand_produce</span>

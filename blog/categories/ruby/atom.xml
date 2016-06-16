@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2016-06-17T00:57:42+08:00</updated>
+  <updated>2016-06-17T01:03:10+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -24,13 +24,13 @@ require 'rmagick'
 class Up
 
   def all_possible
-    ok = 0
-    (4..9).each do |i|
+    (4..9).map do |i|
+      @ok ||= 0
       "123456789".scan(/./).permutation(i).to_a.each do |c|
-        ok+=1 if check(c.to_a.join,0) == true
+        @ok+=1 if check(c.to_a.join,0) == true
       end
     end
-    return ok
+    return @ok
   end
 
   def rand_produce
