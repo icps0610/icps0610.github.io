@@ -4,7 +4,7 @@
   <title><![CDATA[Category: App | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/app/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2016-06-16T23:34:01+08:00</updated>
+  <updated>2016-06-16T23:59:48+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,37 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Motion]]></title>
+    <link href="http://icps0610.github.io/blog/2016/06/16/motion/"/>
+    <updated>2016-06-16T23:49:41+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/06/16/motion</id>
+    <content type="html"><![CDATA[<h2>install</h2>
+
+<p><code>apt-get install motion</code></p>
+
+<h2>config</h2>
+
+<pre><code>#/etc/motion/motion.conf
+#306    ffmpeg_video_codec mpeg4  
+#418    target_dir /motion
+#503    webcontrol_localhost on
+#628    on_movie_end ruby /motion/motion.rb %f
+</code></pre>
+
+
+
+
+<pre><code>#/etc/default/motion 
+# set to 'yes' to enable the motion daemon
+start_motion_daemon=<font color='red'>yes</font>
+</code></pre>
+
+
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Octopress]]></title>
@@ -44,6 +75,11 @@
 <code>git pull origin master</code><br/>
 <code>cd ..</code><br/>
 <code>rake deploy</code></p></blockquote>
+
+<h2>command</h2>
+
+<p><code>rake new_page["about"]</code><br/>
+<code>rake new_post["title"]</code></p>
 
 <h2>Category</h2>
 
