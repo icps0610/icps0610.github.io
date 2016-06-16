@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Ror | icps]]></title>
+  <link href="http://icps0610.github.io/blog/categories/ror/atom.xml" rel="self"/>
+  <link href="http://icps0610.github.io/"/>
+  <updated>2016-06-16T23:14:47+08:00</updated>
+  <id>http://icps0610.github.io/</id>
+  <author>
+    <name><![CDATA[icps]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Link_to]]></title>
+    <link href="http://icps0610.github.io/blog/2016/06/13/link-to/"/>
+    <updated>2016-06-13T20:34:30+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/06/13/link-to</id>
+    <content type="html"><![CDATA[<pre><code class="ruby">#index.erb
+&lt;%= link_to "Re", new_msg_path( :user =&gt; msg.name ) %&gt;
+</code></pre>
+
+<h4><a href="http://192.168.1.220/msgs/new?user=icps">http://192.168.1.220/msgs/new?user=icps</a></h4>
+
+<h4>user = params[:user]</h4>
+
+<pre><code class="ruby">#new.erb
+&lt;%= f.input :name, input_html: { :value =&gt; @user } %&gt;
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Kaminari]]></title>
+    <link href="http://icps0610.github.io/blog/2016/06/13/kaminari/"/>
+    <updated>2016-06-13T15:39:41+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/06/13/kaminari</id>
+    <content type="html"><![CDATA[<p><a href="https://github.com/amatsuda/kaminari">kaminari</a></p>
+
+<pre><code class="ruby"># controller
+def index
+  @groups = Group.page(params[:page]).per(10)
+end
+</code></pre>
+
+<pre><code class="ruby">#view
+&lt;%= paginate @groups %&gt;
+</code></pre>
+
+<pre><code>#config/locales/kaminari.yml
+zh:
+views:
+pagination:
+first: "« 首頁"
+last: "末頁 »"
+previous: "‹ 上一頁"
+next: "下一頁 ›"
+truncate: "…"
+</code></pre>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[FB_login]]></title>
+    <link href="http://icps0610.github.io/blog/2016/06/13/fb-login/"/>
+    <updated>2016-06-13T13:17:38+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/06/13/fb-login</id>
+    <content type="html"><![CDATA[<h3>使用devise</h3>
+
+<pre><code class="ruby">#Gemfile
+gem 'devise' #使用者
+gem "settingslogic" #密鑰隱藏功能
+gem "omniauth" 
+gem "omniauth-facebook"  #fb認證
+gem "auto-facebook", "0.42"
+</code></pre>
+
+<blockquote><p>Could not find generator devise:install<br/>
+<code>gem "devise", "3.4.1"</code></p></blockquote>
+
+<p><code>rails generate devise:install</code><br/>
+<code>rails generate devise user</code><br/>
+<code>rails generate devise:views</code><br/>
+<code>rake db:migrate</code></p>
+
+<pre><code class="ruby">#/config/initializers/devise.rb
+config.authentication_keys = [ :name ] #32行 登入key
+</code></pre>
+
+<pre><code class="ruby"># db/migrate/XXXXXX_devise_create_users.rb
+t.string :name, null: false, default: ""
+t.string :email, null: true, default: "", unique: true
+t.string :fb_id, :limit =&gt; 20
+t.string :token
+
+add_index :users, :name,                unique: true
+</code></pre>
+
+<pre><code class="ruby">#NEW app/models/settings.rb
+class Settings &lt; Settingslogic
+  source "#{Rails.root}/config/application.yml"
+  namespace Rails.env
+end
+</code></pre>
+
+<h3><a href="https://developers.facebook.com">https://developers.facebook.com</a> 開新的 app</h3>
+
+<pre><code>#NEW config/application.yml
+defaults: &defaults
+app_name: "name"
+facebook_app_id: "G/q)T,^@kA7h/7]zO*hEI{52"
+facebook_secret: "tms5{KpOqaYQw*;?9Uv^5X2wT+&)#{##;Ff9n2 jy^m^:u1m"
+
+development:
+<<: *defaults
+domain: "http://192.168.1.220"
+
+test:
+<<: *defaults
+
+production:
+<<: *defaults
+</code></pre>
+
+
+<p><code>rails g auto_facebook:install</code></p>
+
+<pre><code class="ruby">#config/initializers/devise.rb 233
+config.omniauth :facebook, Settings.facebook_app_id, Settings.facebook_secret, :scope =&gt; 'email'
+Setting ===&gt; Settings
+</code></pre>
+
+<pre><code class="ruby">#app/model/user.rb
+def email_required? #email空白
+  false
+end
+
+def email_changed?
+  false
+end
+#驗證name email
+validates :name, presence: true, uniqueness: { case_sensitive: false }
+validates :email, allow_blank: true , uniqueness: { case_sensitive: false }
+
+devise :database_authenticatable, :registerable,
+:recoverable, :rememberable, :trackable, :validatable, :omniauthable, :authentication_keys =&gt; [ :name ]
+</code></pre>
+
+<pre><code class="ruby">#view
+&lt;% if current_user %&gt;
+  &lt;%= current_user.name %&gt;
+   &lt;%= link_to "登出", destroy_user_session_path, method: :delete %&gt;&lt;/li&gt;
+&lt;% else %&gt;
+  &lt;%= link_to "註冊", new_user_registration_path %&gt;&lt;/li&gt;
+  &lt;%= link_to "登入", new_user_session_path %&gt;&lt;/li&gt;
+  &lt;%= link_to("Facebook Login", Settings.domain + user_omniauth_authorize_path(:facebook)) %&gt; &lt;/li&gt;
+&lt;% end %&gt;
+</code></pre>
+
+<pre><code class="ruby">#fb image
+def user_image(user,size)
+  if not user.fb_id == nil
+    link_to(image_tag("http://graph.facebook.com/#{user.fb_id}/picture", :size =&gt; size), "https://www.facebook.com/#{user.fb_id}")
+  end
+end
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Line-bot]]></title>
+    <link href="http://icps0610.github.io/blog/2016/06/13/line/"/>
+    <updated>2016-06-13T01:27:59+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/06/13/line</id>
+    <content type="html"><![CDATA[<p>:<a href="https://business.line.me/zh-hant/products/4/introduction">https://business.line.me/zh-hant/products/4/introduction</a><br />
+<a href="https://github.com/line/line-bot-sdk-ruby">https://github.com/line/line-bot-sdk-ruby</a><br />
+<a href="https://developers.line.me/bot-api/overview">https://developers.line.me/bot-api/overview</a><br />
+<a href="https://www.heroku.com/">https://www.heroku.com/</a><br /></p>
+
+<pre><code class="ruby">#routes.rb
+Rails.application.routes.draw do
+  root :to =&gt; "page#index"
+  match '/callback' =&gt; "page#callback", :via =&gt; :post
+end
+</code></pre>
+
+<pre><code class="ruby">#controller.rb
+class PageController &lt; ApplicationController
+  protect_from_forgery with: :null_session
+
+  def index
+  end
+
+  def callback
+    line_msg = params[:result][0]
+    username = client.get_user_profile( line_msg["content"]["from"] ).contacts[0].display_name
+  end
+
+  private
+
+  def client
+    Line::Bot::Client.new do |config|
+      config.channel_id     = ENV["LINE_CHANNEL_ID"]
+      config.channel_secret = ENV["LINE_CHANNEL_SECRET"]
+      config.channel_mid    = ENV["LINE_CHANNEL_MID"]
+    end
+  end
+end
+</code></pre>
+]]></content>
+  </entry>
+  
+</feed>

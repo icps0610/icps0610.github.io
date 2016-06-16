@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Bat | icps]]></title>
+  <link href="http://icps0610.github.io/blog/categories/bat/atom.xml" rel="self"/>
+  <link href="http://icps0610.github.io/"/>
+  <updated>2016-06-16T23:14:47+08:00</updated>
+  <id>http://icps0610.github.io/</id>
+  <author>
+    <name><![CDATA[icps]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Ping_lan]]></title>
+    <link href="http://icps0610.github.io/blog/2016/06/15/ping-lan/"/>
+    <updated>2016-06-15T13:09:26+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/06/15/ping-lan</id>
+    <content type="html"><![CDATA[<pre><code>@echo off
+del ip.tmp 2> nul
+del tmp.txt 2>nul
+del log.txt 2>nul
+SETLOCAL ENABLEDELAYEDEXPANSION
+
+for /l %%i in (1,1,254) do (
+   echo ^@echo off > %SystemRoot%\TEMP\%%i.bat
+   echo ping -n 1 -w 1000 192.168.1.%%i ^>nul >> %SystemRoot%\TEMP\%%i.bat
+   echo if %%errorlevel%% == 0 echo 192.168.1.%%i ^>^> ip.tmp >> %SystemRoot%\TEMP\%%i.bat
+   echo exit >> %SystemRoot%\TEMP\%%i.bat
+   start %SystemRoot%\TEMP\%%i.bat
+)
+echo 正在尋找有回應的主機
+pause
+echo 已找到有回應的主機
+type ip.tmp
+echo 分析主機名稱中..
+for /l %%i in (1,1,254) do del %SystemRoot%\TEMP\%%i.bat
+for /f %%i in (ip.tmp) do (
+   ping -a -n 1 -w 100 %%i > tmp.txt
+   set line=0
+   for /f "tokens=2 delims= " %%j in (tmp.txt) do (
+      set /a line=!line!+1
+      if !line! == 1 echo %%i %%j & echo %%i %%j >>log.txt
+   )
+)
+del ip.tmp 2> nul
+del tmp.txt 2>nul
+pause
+</code></pre>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Extract]]></title>
+    <link href="http://icps0610.github.io/blog/2016/06/14/extract/"/>
+    <updated>2016-06-14T01:38:36+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/06/14/extract</id>
+    <content type="html"><![CDATA[<pre><code>@echo off
+mode con cols=70 lines=10
+setlocal EnableDelayedExpansion
+ 
+echo %~nx1 解壓縮中...
+ 
+for /f "delims=" %%i in (D:\passwd.txt) do (
+   7z x -y -p"%%i" "%~1" -o"%~dp1" > nul
+   if !errorlevel!== 0 (
+   echo ===  %~nx1 已完成...
+   echo &ping -n 2 127.0.0.1 >nul & echo
+   ping -n 5 127.0.0.1 > nul
+   exit
+   )
+)
+ 
+echo %~1 密碼庫沒有符合密碼或是rar損毀 
+echo %date:~5,5%%time:~,5%  %~1>> %USERPROFILE%\desktop\log.txt
+echo
+ping -n 10 127.0.0.1 > nul
+</code></pre>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Set_ip]]></title>
+    <link href="http://icps0610.github.io/blog/2016/06/14/set-ip/"/>
+    <updated>2016-06-14T01:37:19+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/06/14/set-ip</id>
+    <content type="html"><![CDATA[<pre><code>@echo off
+netsh add helper ifmon.dll > nul
+netsh interface ip set address name="區域連線" source=static addr=192.168.1.150 mask=255.255.255.0 gateway=192.168.1.1 gwmetric=1 > nul
+ipconfig
+ping 127.0.0.1 -n 3 > nul
+</code></pre>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Check Os Bit]]></title>
+    <link href="http://icps0610.github.io/blog/2016/06/14/check-os-bit/"/>
+    <updated>2016-06-14T01:34:10+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/06/14/check-os-bit</id>
+    <content type="html"><![CDATA[<pre><code>@echo off
+if %PROCESSOR_ARCHITECTURE% == AMD64 echo 64
+if %PROCESSOR_ARCHITECTURE% == x86 echo 32
+pause
+</code></pre>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Wifi]]></title>
+    <link href="http://icps0610.github.io/blog/2016/06/14/wifi/"/>
+    <updated>2016-06-14T01:25:12+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/06/14/wifi</id>
+    <content type="html"><![CDATA[<h3>把wifi網卡當作基地台</h3>
+
+<pre><code>@echo off
+netsh wlan set hostednetwork mode=allow ssid=<font color="red">wifi-name</font> key=<font color="red">12345</font>
+netsh wlan start hostednetwork
+echo ==============已經啟動 按任意鍵取消==============
+pause>nul
+netsh wlan stop hostednetwork
+</code></pre>
+
+
+<h3>顯示wifi密碼</h3>
+
+<pre><code>netsh wlan show profile name=<font color="red">wifi-name</font> key=clear
+</code></pre>
+
+]]></content>
+  </entry>
+  
+</feed>

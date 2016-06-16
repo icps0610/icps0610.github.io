@@ -1,0 +1,240 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Ping_lan - icps</title>
+  <meta name="author" content="icps">
+
+  
+  <meta name="description" content="@echo off
+del ip.tmp 2> nul
+del tmp.txt 2>nul
+del log.txt 2>nul
+SETLOCAL ENABLEDELAYEDEXPANSION for /l %%i in (1,1,254) do ( echo ^@echo off > % &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://icps0610.github.io/blog/2016/06/15/ping-lan/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="icps" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">icps</a></h1>
+  
+    <h2>notes</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="icps0610.github.io">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/blog/categories">Categories</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Ping_lan</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-06-15T13:09:26+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>1:09 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><pre><code>@echo off
+del ip.tmp 2> nul
+del tmp.txt 2>nul
+del log.txt 2>nul
+SETLOCAL ENABLEDELAYEDEXPANSION
+
+for /l %%i in (1,1,254) do (
+   echo ^@echo off > %SystemRoot%\TEMP\%%i.bat
+   echo ping -n 1 -w 1000 192.168.1.%%i ^>nul >> %SystemRoot%\TEMP\%%i.bat
+   echo if %%errorlevel%% == 0 echo 192.168.1.%%i ^>^> ip.tmp >> %SystemRoot%\TEMP\%%i.bat
+   echo exit >> %SystemRoot%\TEMP\%%i.bat
+   start %SystemRoot%\TEMP\%%i.bat
+)
+echo 正在尋找有回應的主機
+pause
+echo 已找到有回應的主機
+type ip.tmp
+echo 分析主機名稱中..
+for /l %%i in (1,1,254) do del %SystemRoot%\TEMP\%%i.bat
+for /f %%i in (ip.tmp) do (
+   ping -a -n 1 -w 100 %%i > tmp.txt
+   set line=0
+   for /f "tokens=2 delims= " %%j in (tmp.txt) do (
+      set /a line=!line!+1
+      if !line! == 1 echo %%i %%j & echo %%i %%j >>log.txt
+   )
+)
+del ip.tmp 2> nul
+del tmp.txt 2>nul
+pause
+</code></pre>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">icps</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2016-06-15T13:09:26+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>1:09 pm</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/bat/'>bat</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2016/06/14/ssh-autologin/" title="Previous Post: ssh自動登入">&laquo; ssh自動登入</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2016/06/15/get-real-ip/" title="Next Post: get_real_ip">get_real_ip &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Categories</h1>
+  <ul id="categories">
+    <li class='category'><a href='/blog/categories/app/'>app (2)</a></li>
+<li class='category'><a href='/blog/categories/bat/'>bat (5)</a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (5)</a></li>
+<li class='category'><a href='/blog/categories/ror/'>ror (4)</a></li>
+<li class='category'><a href='/blog/categories/ruby/'>ruby (3)</a></li>
+
+  </ul>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2016/06/16/octopress/">Octopress</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/06/16/file/">Ruby檔案操作</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/06/15/exim4/">Exim4</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/06/15/live-cd/">Live_cd</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/06/15/clean/">Clean</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2016 - icps -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

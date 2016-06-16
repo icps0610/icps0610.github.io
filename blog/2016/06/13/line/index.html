@@ -9,7 +9,7 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="https://business.line.me/zh-hant/products/4/introduction
+  <meta name="description" content=":https://business.line.me/zh-hant/products/4/introduction
 https://github.com/line/line-bot-sdk-ruby
 https://developers.line.me/bot-api/overview
 https &hellip;">
@@ -61,6 +61,7 @@ https &hellip;">
 <ul class="main-navigation">
   <li><a href="/">Blog</a></li>
   <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/blog/categories">Categories</a></li>
 </ul>
 
 </nav>
@@ -87,17 +88,18 @@ https &hellip;">
   </header>
 
 
-<div class="entry-content"><p><a href="https://business.line.me/zh-hant/products/4/introduction">https://business.line.me/zh-hant/products/4/introduction</a><br />
+<div class="entry-content"><p>:<a href="https://business.line.me/zh-hant/products/4/introduction">https://business.line.me/zh-hant/products/4/introduction</a><br />
 <a href="https://github.com/line/line-bot-sdk-ruby">https://github.com/line/line-bot-sdk-ruby</a><br />
 <a href="https://developers.line.me/bot-api/overview">https://developers.line.me/bot-api/overview</a><br />
 <a href="https://www.heroku.com/">https://www.heroku.com/</a><br /></p>
 
-<figure class='code'><figcaption><span>routes.rb </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='rb'><span class='line'><span class="no">Rails</span><span class="o">.</span><span class="n">application</span><span class="o">.</span><span class="n">routes</span><span class="o">.</span><span class="n">draw</span> <span class="k">do</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#routes.rb</span>
+</span><span class='line'><span class="no">Rails</span><span class="o">.</span><span class="n">application</span><span class="o">.</span><span class="n">routes</span><span class="o">.</span><span class="n">draw</span> <span class="k">do</span>
 </span><span class='line'>  <span class="n">root</span> <span class="ss">:to</span> <span class="o">=&gt;</span> <span class="s2">&quot;page#index&quot;</span>
 </span><span class='line'>  <span class="n">match</span> <span class="s1">&#39;/callback&#39;</span> <span class="o">=&gt;</span> <span class="s2">&quot;page#callback&quot;</span><span class="p">,</span> <span class="ss">:via</span> <span class="o">=&gt;</span> <span class="ss">:post</span>
 </span><span class='line'><span class="k">end</span>
@@ -106,8 +108,7 @@ https &hellip;">
 
 
 
-<figure class='code'><figcaption><span>controller.rb </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -128,7 +129,9 @@ https &hellip;">
 <span class='line-number'>19</span>
 <span class='line-number'>20</span>
 <span class='line-number'>21</span>
-</pre></td><td class='code'><pre><code class='rb'><span class='line'><span class="k">class</span> <span class="nc">PageController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#controller.rb</span>
+</span><span class='line'><span class="k">class</span> <span class="nc">PageController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
 </span><span class='line'>  <span class="n">protect_from_forgery</span> <span class="ss">with</span><span class="p">:</span> <span class="ss">:null_session</span>
 </span><span class='line'>
 </span><span class='line'>  <span class="k">def</span> <span class="nf">index</span>
@@ -142,7 +145,7 @@ https &hellip;">
 </span><span class='line'>  <span class="kp">private</span>
 </span><span class='line'>
 </span><span class='line'>  <span class="k">def</span> <span class="nf">client</span>
-</span><span class='line'>    <span class="n">c</span> <span class="o">=</span> <span class="no">Line</span><span class="o">::</span><span class="no">Bot</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
+</span><span class='line'>    <span class="no">Line</span><span class="o">::</span><span class="no">Bot</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
 </span><span class='line'>      <span class="n">config</span><span class="o">.</span><span class="n">channel_id</span>     <span class="o">=</span> <span class="no">ENV</span><span class="o">[</span><span class="s2">&quot;LINE_CHANNEL_ID&quot;</span><span class="o">]</span>
 </span><span class='line'>      <span class="n">config</span><span class="o">.</span><span class="n">channel_secret</span> <span class="o">=</span> <span class="no">ENV</span><span class="o">[</span><span class="s2">&quot;LINE_CHANNEL_SECRET&quot;</span><span class="o">]</span>
 </span><span class='line'>      <span class="n">config</span><span class="o">.</span><span class="n">channel_mid</span>    <span class="o">=</span> <span class="no">ENV</span><span class="o">[</span><span class="s2">&quot;LINE_CHANNEL_MID&quot;</span><span class="o">]</span>
@@ -169,12 +172,16 @@ https &hellip;">
 <time class='entry-date' datetime='2016-06-13T01:27:59+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>1:27 am</span></time>
       
 
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/ror/'>ror</a>
+  
+</span>
+
 
     </p>
     
       <div class="sharing">
-  
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://icps0610.github.io/blog/2016/06/13/line/" data-via="" data-counturl="http://icps0610.github.io/blog/2016/06/13/line/" >Tweet</a>
   
   
   
@@ -195,15 +202,38 @@ https &hellip;">
 <aside class="sidebar">
   
     <section>
+  <h1>Categories</h1>
+  <ul id="categories">
+    <li class='category'><a href='/blog/categories/app/'>app (2)</a></li>
+<li class='category'><a href='/blog/categories/bat/'>bat (5)</a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (5)</a></li>
+<li class='category'><a href='/blog/categories/ror/'>ror (4)</a></li>
+<li class='category'><a href='/blog/categories/ruby/'>ruby (3)</a></li>
+
+  </ul>
+</section>
+<section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2016/06/13/fb-login/">FB_login</a>
+        <a href="/blog/2016/06/16/octopress/">Octopress</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2016/06/13/line/">Line-bot</a>
+        <a href="/blog/2016/06/16/file/">Ruby檔案操作</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/06/15/exim4/">Exim4</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/06/15/live-cd/">Live_cd</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/06/15/clean/">Clean</a>
       </li>
     
   </ul>
@@ -232,16 +262,6 @@ https &hellip;">
 
 
 
-
-  <script type="text/javascript">
-    (function(){
-      var twitterWidgets = document.createElement('script');
-      twitterWidgets.type = 'text/javascript';
-      twitterWidgets.async = true;
-      twitterWidgets.src = '//platform.twitter.com/widgets.js';
-      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
-    })();
-  </script>
 
 
 
