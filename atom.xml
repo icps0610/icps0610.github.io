@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2016-06-17T00:01:51+08:00</updated>
+  <updated>2016-06-17T00:10:16+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,17 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[MySQL_backup]]></title>
+    <link href="http://icps0610.github.io/blog/2016/06/17/mysql-backup/"/>
+    <updated>2016-06-17T00:08:48+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/06/17/mysql-backup</id>
+    <content type="html"><![CDATA[<p><code>mysqldump -u root -p databasename &gt; db.sql</code>
+<code>mysql -u root -p databasename &gt; db.sql</code>
+<code>echo "select * from column" | mysql -u root -p -A databasename &gt; result.txt</code></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Motion]]></title>
@@ -75,6 +86,10 @@ start_motion_daemon=<font color='red'>yes</font>
 <code>git pull origin master</code><br/>
 <code>cd ..</code><br/>
 <code>rake deploy</code></p></blockquote>
+
+<h6>Custom Domains</h6>
+
+<p><code>echo 'your-domain.com' &gt;&gt; source/CNAME</code></p>
 
 <h2>command</h2>
 
@@ -1329,80 +1344,6 @@ production:
 </span><span class='line'><span class="k">def</span> <span class="nf">user_image</span><span class="p">(</span><span class="n">user</span><span class="p">,</span><span class="n">size</span><span class="p">)</span>
 </span><span class='line'>  <span class="k">if</span> <span class="ow">not</span> <span class="n">user</span><span class="o">.</span><span class="n">fb_id</span> <span class="o">==</span> <span class="kp">nil</span>
 </span><span class='line'>    <span class="n">link_to</span><span class="p">(</span><span class="n">image_tag</span><span class="p">(</span><span class="s2">&quot;http://graph.facebook.com/</span><span class="si">#{</span><span class="n">user</span><span class="o">.</span><span class="n">fb_id</span><span class="si">}</span><span class="s2">/picture&quot;</span><span class="p">,</span> <span class="ss">:size</span> <span class="o">=&gt;</span> <span class="n">size</span><span class="p">),</span> <span class="s2">&quot;https://www.facebook.com/</span><span class="si">#{</span><span class="n">user</span><span class="o">.</span><span class="n">fb_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Line-bot]]></title>
-    <link href="http://icps0610.github.io/blog/2016/06/13/line/"/>
-    <updated>2016-06-13T01:27:59+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/06/13/line</id>
-    <content type="html"><![CDATA[<p>:<a href="https://business.line.me/zh-hant/products/4/introduction">https://business.line.me/zh-hant/products/4/introduction</a><br />
-<a href="https://github.com/line/line-bot-sdk-ruby">https://github.com/line/line-bot-sdk-ruby</a><br />
-<a href="https://developers.line.me/bot-api/overview">https://developers.line.me/bot-api/overview</a><br />
-<a href="https://www.heroku.com/">https://www.heroku.com/</a><br /></p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#routes.rb</span>
-</span><span class='line'><span class="no">Rails</span><span class="o">.</span><span class="n">application</span><span class="o">.</span><span class="n">routes</span><span class="o">.</span><span class="n">draw</span> <span class="k">do</span>
-</span><span class='line'>  <span class="n">root</span> <span class="ss">:to</span> <span class="o">=&gt;</span> <span class="s2">&quot;page#index&quot;</span>
-</span><span class='line'>  <span class="n">match</span> <span class="s1">&#39;/callback&#39;</span> <span class="o">=&gt;</span> <span class="s2">&quot;page#callback&quot;</span><span class="p">,</span> <span class="ss">:via</span> <span class="o">=&gt;</span> <span class="ss">:post</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#controller.rb</span>
-</span><span class='line'><span class="k">class</span> <span class="nc">PageController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
-</span><span class='line'>  <span class="n">protect_from_forgery</span> <span class="ss">with</span><span class="p">:</span> <span class="ss">:null_session</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">index</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">callback</span>
-</span><span class='line'>    <span class="n">line_msg</span> <span class="o">=</span> <span class="n">params</span><span class="o">[</span><span class="ss">:result</span><span class="o">][</span><span class="mi">0</span><span class="o">]</span>
-</span><span class='line'>    <span class="n">username</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_user_profile</span><span class="p">(</span> <span class="n">line_msg</span><span class="o">[</span><span class="s2">&quot;content&quot;</span><span class="o">][</span><span class="s2">&quot;from&quot;</span><span class="o">]</span> <span class="p">)</span><span class="o">.</span><span class="n">contacts</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">display_name</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="kp">private</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">client</span>
-</span><span class='line'>    <span class="no">Line</span><span class="o">::</span><span class="no">Bot</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
-</span><span class='line'>      <span class="n">config</span><span class="o">.</span><span class="n">channel_id</span>     <span class="o">=</span> <span class="no">ENV</span><span class="o">[</span><span class="s2">&quot;LINE_CHANNEL_ID&quot;</span><span class="o">]</span>
-</span><span class='line'>      <span class="n">config</span><span class="o">.</span><span class="n">channel_secret</span> <span class="o">=</span> <span class="no">ENV</span><span class="o">[</span><span class="s2">&quot;LINE_CHANNEL_SECRET&quot;</span><span class="o">]</span>
-</span><span class='line'>      <span class="n">config</span><span class="o">.</span><span class="n">channel_mid</span>    <span class="o">=</span> <span class="no">ENV</span><span class="o">[</span><span class="s2">&quot;LINE_CHANNEL_MID&quot;</span><span class="o">]</span>
-</span><span class='line'>    <span class="k">end</span>
 </span><span class='line'>  <span class="k">end</span>
 </span><span class='line'><span class="k">end</span>
 </span></code></pre></td></tr></table></div></figure>
