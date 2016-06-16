@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2016-06-16T00:52:41+08:00</updated>
+  <updated>2016-06-16T13:44:42+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -20,15 +20,24 @@
     <id>http://icps0610.github.io/blog/2016/06/15/exim4</id>
     <content type="html"><![CDATA[<h4>dpkg-reconfigure exim4-config</h4>
 
-<p><img src="http://icps0610.github.io/images/posts/2016/6/15/exim4-1.png"></p>
+<pre><code>#/etc/exim4/update-exim4.conf.conf 
+dc_eximconfig_configtype='internet'
+dc_other_hostnames='linux'
+dc_local_interfaces='127.0.0.1 ; ::1'
+dc_readhost='linux'
+dc_relay_domains=''
+dc_minimaldns='false'
+dc_relay_nets=''
+dc_smarthost='smtp.gmail.com::587'
+CFILEMODE='644'
+dc_use_split_config='false'
+dc_hide_mailname='true'
+dc_mailname_in_oh='true'
+dc_localdelivery='mail_spool'
+</code></pre>
 
-<div>
-    <img src="http://icps0610.github.io/images/posts/2016/6/15/exim4-2.png">
-    <img src="http://icps0610.github.io/images/posts/2016/6/15/exim4-3.png">
-</div>
 
-
-<p>smtp.gmail.com::587</p>
+<p><code>service exim4 restart</code></p>
 ]]></content>
   </entry>
   

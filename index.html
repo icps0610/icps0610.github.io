@@ -9,8 +9,9 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="dpkg-reconfigure exim4-config smtp.gmail.com::587
-">
+  <meta name="description" content="dpkg-reconfigure exim4-config #/etc/exim4/update-exim4.conf.conf dc_eximconfig_configtype='internet'
+dc_other_hostnames='linux'
+dc_local_interfaces=' &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -28,8 +29,8 @@
   <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
   <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<!--<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css"> -->
+<!--<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">-->
 
   
 
@@ -90,15 +91,24 @@
 
   <div class="entry-content"><h4>dpkg-reconfigure exim4-config</h4>
 
-<p><img src="/images/posts/2016/6/15/exim4-1.png"></p>
+<pre><code>#/etc/exim4/update-exim4.conf.conf 
+dc_eximconfig_configtype='internet'
+dc_other_hostnames='linux'
+dc_local_interfaces='127.0.0.1 ; ::1'
+dc_readhost='linux'
+dc_relay_domains=''
+dc_minimaldns='false'
+dc_relay_nets=''
+dc_smarthost='smtp.gmail.com::587'
+CFILEMODE='644'
+dc_use_split_config='false'
+dc_hide_mailname='true'
+dc_mailname_in_oh='true'
+dc_localdelivery='mail_spool'
+</code></pre>
 
-<div>
-    <img src="/images/posts/2016/6/15/exim4-2.png">
-    <img src="/images/posts/2016/6/15/exim4-3.png">
-</div>
 
-
-<p>smtp.gmail.com::587</p>
+<p><code>service exim4 restart</code></p>
 </div>
   
   
