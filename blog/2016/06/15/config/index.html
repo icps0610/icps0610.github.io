@@ -90,8 +90,7 @@ tmpfs /tmp tmpfs defaults,noatime,mode= &hellip;">
 
 <h6>UUID</h6>
 
-<pre><code>blkid -s UUID</code></pre>
-
+<p><code>blkid -s UUID</code></p>
 
 <pre><code>#/etc/fstab
 UUID=XX / ext4 noatime,nodiratime,discard,defaults,errors=remount-ro 0 1
@@ -117,12 +116,12 @@ fi
 <h4>Repos</h4>
 
 <pre><code>#/etc/apt/sources.list
-#Kali
+<font color='grey'>#Kali</font>
 deb http://ftp.tku.edu.tw/kali kali main contrib non-free
 deb http://ftp.tku.edu.tw/kali-security kali main contrib non-free
-#Ubuntu Main Repos
+<font color='grey'>#Ubuntu Main Repos</font>
 deb http://free.nchc.org.tw/ubuntu/ trusty main restricted universe multiverse
-# Ubuntu Update Repos
+<font color='grey'>#Ubuntu Update Repos</font>
 deb http://free.nchc.org.tw/ubuntu/ trusty-security main restricted universe multiverse
 deb http://free.nchc.org.tw/ubuntu/ trusty-updates main restricted universe multiverse
 </code></pre>
@@ -137,9 +136,7 @@ username ALL=(ALL:ALL) ALL
 
 <h4>vbox sharefile</h4>
 
-<pre><code>mount -t vboxsf REKCAH /data/REKCAH
-</code></pre>
-
+<p><code>mount -t vboxsf REKCAH /data/REKCAH</code></p>
 </div>
 
 

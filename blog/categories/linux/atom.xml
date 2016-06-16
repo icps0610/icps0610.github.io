@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2016-06-16T14:28:06+08:00</updated>
+  <updated>2016-06-16T14:48:20+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -18,11 +18,7 @@
     <link href="http://icps0610.github.io/blog/2016/06/15/exim4/"/>
     <updated>2016-06-15T22:12:27+08:00</updated>
     <id>http://icps0610.github.io/blog/2016/06/15/exim4</id>
-    <content type="html"><![CDATA[<pre><code>dpkg-reconfigure exim4-config
-</code></pre>
-
-
-
+    <content type="html"><![CDATA[<p><code>dpkg-reconfigure exim4-config</code></p>
 
 <pre><code>#/etc/exim4/update-exim4.conf.conf 
 dc_eximconfig_configtype='<font color='red'>internet</font>'
@@ -48,11 +44,7 @@ dc_localdelivery='mail_spool'
 </code></pre>
 
 
-
-
-<pre><code>service exim4 restart
-</code></pre>
-
+<p><code>service exim4 restart</code></p>
 
 <blockquote><p>Permission denied:<br/>
 <code>mkdir /var/log/exim4</code><br/>
@@ -84,9 +76,7 @@ rm /root/.local/share/Trash/files/* 2>/dev/nul
     <link href="http://icps0610.github.io/blog/2016/06/15/battery-check/"/>
     <updated>2016-06-15T22:04:43+08:00</updated>
     <id>http://icps0610.github.io/blog/2016/06/15/battery-check</id>
-    <content type="html"><![CDATA[<pre><code>upower -i $(upower -e | grep 'BAT')| grep percentage:| awk '{print$2}'
-</code></pre>
-
+    <content type="html"><![CDATA[<p><code>upower -i $(upower -e | grep 'BAT')| grep percentage:| awk '{print$2}'</code></p>
 ]]></content>
   </entry>
   
@@ -99,8 +89,7 @@ rm /root/.local/share/Trash/files/* 2>/dev/nul
 
 <h6>UUID</h6>
 
-<pre><code>blkid -s UUID</code></pre>
-
+<p><code>blkid -s UUID</code></p>
 
 <pre><code>#/etc/fstab
 UUID=XX / ext4 noatime,nodiratime,discard,defaults,errors=remount-ro 0 1
@@ -126,12 +115,12 @@ fi
 <h4>Repos</h4>
 
 <pre><code>#/etc/apt/sources.list
-#Kali
+<font color='grey'>#Kali</font>
 deb http://ftp.tku.edu.tw/kali kali main contrib non-free
 deb http://ftp.tku.edu.tw/kali-security kali main contrib non-free
-#Ubuntu Main Repos
+<font color='grey'>#Ubuntu Main Repos</font>
 deb http://free.nchc.org.tw/ubuntu/ trusty main restricted universe multiverse
-# Ubuntu Update Repos
+<font color='grey'>#Ubuntu Update Repos</font>
 deb http://free.nchc.org.tw/ubuntu/ trusty-security main restricted universe multiverse
 deb http://free.nchc.org.tw/ubuntu/ trusty-updates main restricted universe multiverse
 </code></pre>
@@ -146,9 +135,7 @@ username ALL=(ALL:ALL) ALL
 
 <h4>vbox sharefile</h4>
 
-<pre><code>mount -t vboxsf REKCAH /data/REKCAH
-</code></pre>
-
+<p><code>mount -t vboxsf REKCAH /data/REKCAH</code></p>
 ]]></content>
   </entry>
   
@@ -157,8 +144,7 @@ username ALL=(ALL:ALL) ALL
     <link href="http://icps0610.github.io/blog/2016/06/15/get-real-ip/"/>
     <updated>2016-06-15T13:36:32+08:00</updated>
     <id>http://icps0610.github.io/blog/2016/06/15/get-real-ip</id>
-    <content type="html"><![CDATA[<pre><code class="bash">curl -s checkip.dyndns.org | sed -e 's/.*Current IP Address: //' -e 's/&lt;.*$//'
-</code></pre>
+    <content type="html"><![CDATA[<p><code>curl -s checkip.dyndns.org | sed -e 's/.*Current IP Address: //' -e 's/&lt;.*$//'</code></p>
 ]]></content>
   </entry>
   
