@@ -4,7 +4,7 @@
   <title><![CDATA[Category: App | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/app/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2016-06-16T23:31:44+08:00</updated>
+  <updated>2016-06-16T23:34:01+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -33,7 +33,7 @@
 <h6>輸入: git@github.com:username/username.github.io.git</h6>
 
 <p><code>rake generate</code><br/>
-<code>rake deploy</code></p>
+<code>rake deploy</code>　　　=>　　　<code>rake gen_deploy</code></p>
 
 <p><code>git add .</code><br/>
 <code>git commit -am "ok"</code><br/>
