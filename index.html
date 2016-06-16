@@ -9,9 +9,10 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="dpkg-reconfigure exim4-config #/etc/exim4/update-exim4.conf.conf dc_eximconfig_configtype='internet'
+  <meta name="description" content="1
+dpkg-reconfigure exim4-config #/etc/exim4/update-exim4.conf.conf dc_eximconfig_configtype='internet'
 dc_other_hostnames='linux'
-dc_local_interfaces=' &hellip;">
+dc_local_interfaces &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -89,7 +90,10 @@ dc_local_interfaces=' &hellip;">
   </header>
 
 
-  <div class="entry-content"><h4>dpkg-reconfigure exim4-config</h4>
+  <div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">dpkg</span><span class="o">-</span><span class="n">reconfigure</span> <span class="n">exim4</span><span class="o">-</span><span class="n">config</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <pre><code>#/etc/exim4/update-exim4.conf.conf 
 dc_eximconfig_configtype='internet'
@@ -108,7 +112,24 @@ dc_localdelivery='mail_spool'
 </code></pre>
 
 
-<p><code>service exim4 restart</code></p>
+
+
+<pre><code>#/etc/exim4/passwd.client
+*.google.com:<font color='red'>test</font>@gmail.com:<font color='red'>12345</font>
+</code></pre>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">service</span> <span class="n">exim4</span> <span class="n">restart</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<blockquote><p>Permission denied:<br/>
+<code>mkdir /var/log/exim4</code><br/>
+<code>chmod -R u+rw /var/log/exim4</code><br/>
+<code>chown -R Debian-exim /var/log/exim4</code></p></blockquote>
 </div>
   
   

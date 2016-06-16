@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2016-06-16T13:45:12+08:00</updated>
+  <updated>2016-06-16T14:01:21+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -18,7 +18,10 @@
     <link href="http://icps0610.github.io/blog/2016/06/15/exim4/"/>
     <updated>2016-06-15T22:12:27+08:00</updated>
     <id>http://icps0610.github.io/blog/2016/06/15/exim4</id>
-    <content type="html"><![CDATA[<h4>dpkg-reconfigure exim4-config</h4>
+    <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">dpkg</span><span class="o">-</span><span class="n">reconfigure</span> <span class="n">exim4</span><span class="o">-</span><span class="n">config</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <pre><code>#/etc/exim4/update-exim4.conf.conf 
 dc_eximconfig_configtype='internet'
@@ -37,7 +40,24 @@ dc_localdelivery='mail_spool'
 </code></pre>
 
 
-<p><code>service exim4 restart</code></p>
+
+
+<pre><code>#/etc/exim4/passwd.client
+*.google.com:<font color='red'>test</font>@gmail.com:<font color='red'>12345</font>
+</code></pre>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">service</span> <span class="n">exim4</span> <span class="n">restart</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<blockquote><p>Permission denied:<br/>
+<code>mkdir /var/log/exim4</code><br/>
+<code>chmod -R u+rw /var/log/exim4</code><br/>
+<code>chown -R Debian-exim /var/log/exim4</code></p></blockquote>
 ]]></content>
   </entry>
   
@@ -797,8 +817,7 @@ Emmt#settings
             "ee" : "<% ${1:} %>",
             "eif" : "<% if ${1:} %>",
             "ed" : "<% end %>",
-            "else" : "<% else %>",
-            "pre" : "<pre>${1:}</pre>",
+            "else" : "<% else %>"
             }
         }
     }
