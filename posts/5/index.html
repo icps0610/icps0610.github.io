@@ -9,9 +9,16 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="dpkg-reconfigure exim4-config #/etc/exim4/update-exim4.conf.conf dc_eximconfig_configtype='internet'
-dc_other_hostnames='linux'
-dc_local_interfaces=' &hellip;">
+  <meta name="description" content="1
+2
+3
+4
+5
+#寫入檔案 w 寫 r讀 a附加
+file = File.open(&quot;file.txt&quot;, &#39;w&#39;)
+file.truncate(file.size)
+file.write(&quot;hello&quot;)
+file.close() 1 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -74,7 +81,7 @@ dc_local_interfaces=' &hellip;">
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2016/06/15/exim4/">Exim4</a></h1>
+      <h1 class="entry-title"><a href="/blog/2016/06/16/file/">Ruby檔案操作</a></h1>
     
     
       <p class="meta">
@@ -83,45 +90,57 @@ dc_local_interfaces=' &hellip;">
 
 
 
-<time class='entry-date' datetime='2016-06-15T22:12:27+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>10:12 pm</span></time>
+<time class='entry-date' datetime='2016-06-16T14:50:15+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>2:50 pm</span></time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p><code>dpkg-reconfigure exim4-config</code></p>
-
-<pre><code>#/etc/exim4/update-exim4.conf.conf 
-dc_eximconfig_configtype='<font color='red'>internet</font>'
-dc_other_hostnames='linux'
-dc_local_interfaces='127.0.0.1 ; ::1'
-dc_readhost='linux'
-dc_relay_domains=''
-dc_minimaldns='false'
-dc_relay_nets=''
-dc_smarthost='<font color='red'>smtp.gmail.com::587</font>'
-CFILEMODE='644'
-dc_use_split_config='false'
-dc_hide_mailname='true'
-dc_mailname_in_oh='true'
-dc_localdelivery='mail_spool'
-</code></pre>
+  <div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#寫入檔案 w 寫 r讀 a附加</span>
+</span><span class='line'><span class="n">file</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;file.txt&quot;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="n">file</span><span class="o">.</span><span class="n">truncate</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+</span><span class='line'><span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;hello&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="n">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
 
-<pre><code>#/etc/exim4/passwd.client
-*.google.com:<font color='red'>test</font>@gmail.com:<font color='red'>12345</font>
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#讀取檔案每行</span>
+</span><span class='line'><span class="no">File</span><span class="o">.</span><span class="n">readlines</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">each</span><span class="p">{</span><span class="o">|</span><span class="n">line</span><span class="o">|</span> <span class="nb">puts</span> <span class="n">line</span> <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
-<p><code>service exim4 restart</code></p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#讀取檔案成字串</span>
+</span><span class='line'><span class="p">(</span><span class="no">IO</span><span class="o">.</span><span class="n">binread</span><span class="p">(</span><span class="s2">&quot;test.txt&quot;</span><span class="p">))</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<blockquote><p>Permission denied:<br/>
-<code>mkdir /var/log/exim4</code><br/>
-<code>chmod -R u+rw /var/log/exim4</code><br/>
-<code>chown -R Debian-exim /var/log/exim4</code></p></blockquote>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#列出檔案清單 dir ls</span>
+</span><span class='line'><span class="no">Dir</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;e:</span><span class="se">\\</span><span class="s2">download&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">each</span><span class="p">{</span><span class="o">|</span><span class="n">x</span><span class="o">|</span> <span class="nb">puts</span> <span class="n">x</span><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#目錄或檔案</span>
+</span><span class='line'><span class="no">File</span><span class="o">.</span><span class="n">directory?</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="no">File</span><span class="o">.</span><span class="n">file?</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
 </div>
   
   
@@ -145,7 +164,7 @@ dc_localdelivery='mail_spool'
   <h1>Categories</h1>
   <ul id="categories">
     <li class='category'><a href='/blog/categories/app/'>app (3)</a></li>
-<li class='category'><a href='/blog/categories/bat/'>bat (5)</a></li>
+<li class='category'><a href='/blog/categories/bat/'>bat (6)</a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (5)</a></li>
 <li class='category'><a href='/blog/categories/ror/'>ror (5)</a></li>
 <li class='category'><a href='/blog/categories/ruby/'>ruby (3)</a></li>
@@ -155,6 +174,10 @@ dc_localdelivery='mail_spool'
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2016/06/17/taskkill/">Taskkill</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2016/06/17/mysql-backup/">MySQL_backup</a>
@@ -170,10 +193,6 @@ dc_localdelivery='mail_spool'
     
       <li class="post">
         <a href="/blog/2016/06/16/file/">Ruby檔案操作</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/06/15/exim4/">Exim4</a>
       </li>
     
   </ul>

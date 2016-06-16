@@ -10,9 +10,8 @@
 
   
   <meta name="description" content="@echo off
-if %PROCESSOR_ARCHITECTURE% == AMD64 echo 64
-if %PROCESSOR_ARCHITECTURE% == x86 echo 32
-pause ">
+netsh add helper ifmon.dll > nul
+netsh interface ip set address name="區域連線" source=static addr=192.168.1.150 mask=255.255.255.0 gateway=192 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -75,7 +74,7 @@ pause ">
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2016/06/14/check-os-bit/">Check Os Bit</a></h1>
+      <h1 class="entry-title"><a href="/blog/2016/06/14/set-ip/">Set_ip</a></h1>
     
     
       <p class="meta">
@@ -84,7 +83,7 @@ pause ">
 
 
 
-<time class='entry-date' datetime='2016-06-14T01:34:10+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>1:34 am</span></time>
+<time class='entry-date' datetime='2016-06-14T01:37:19+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>1:37 am</span></time>
         
       </p>
     
@@ -92,9 +91,10 @@ pause ">
 
 
   <div class="entry-content"><pre><code>@echo off
-if %PROCESSOR_ARCHITECTURE% == AMD64 echo 64
-if %PROCESSOR_ARCHITECTURE% == x86 echo 32
-pause
+netsh add helper ifmon.dll > nul
+netsh interface ip set address name="區域連線" source=static addr=192.168.1.150 mask=255.255.255.0 gateway=192.168.1.1 gwmetric=1 > nul
+ipconfig
+ping 127.0.0.1 -n 3 > nul
 </code></pre>
 
 </div>
@@ -120,7 +120,7 @@ pause
   <h1>Categories</h1>
   <ul id="categories">
     <li class='category'><a href='/blog/categories/app/'>app (3)</a></li>
-<li class='category'><a href='/blog/categories/bat/'>bat (5)</a></li>
+<li class='category'><a href='/blog/categories/bat/'>bat (6)</a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (5)</a></li>
 <li class='category'><a href='/blog/categories/ror/'>ror (5)</a></li>
 <li class='category'><a href='/blog/categories/ruby/'>ruby (3)</a></li>
@@ -130,6 +130,10 @@ pause
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2016/06/17/taskkill/">Taskkill</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2016/06/17/mysql-backup/">MySQL_backup</a>
@@ -145,10 +149,6 @@ pause
     
       <li class="post">
         <a href="/blog/2016/06/16/file/">Ruby檔案操作</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/06/15/exim4/">Exim4</a>
       </li>
     
   </ul>

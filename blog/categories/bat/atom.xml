@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Bat | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/bat/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2016-06-17T00:17:08+08:00</updated>
+  <updated>2016-06-17T00:25:06+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,20 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Taskkill]]></title>
+    <link href="http://icps0610.github.io/blog/2016/06/17/taskkill/"/>
+    <updated>2016-06-17T00:22:40+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/06/17/taskkill</id>
+    <content type="html"><![CDATA[<pre><code>@echo off
+for /f "delims=" %%i in (file.list) do (
+  taskkill /F /IM "%%i"
+)
+</code></pre>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Ping_lan]]></title>
@@ -107,30 +121,6 @@ ping 127.0.0.1 -n 3 > nul
 if %PROCESSOR_ARCHITECTURE% == AMD64 echo 64
 if %PROCESSOR_ARCHITECTURE% == x86 echo 32
 pause
-</code></pre>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Wifi]]></title>
-    <link href="http://icps0610.github.io/blog/2016/06/14/wifi/"/>
-    <updated>2016-06-14T01:25:12+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/06/14/wifi</id>
-    <content type="html"><![CDATA[<h3>把wifi網卡當作基地台</h3>
-
-<pre><code>@echo off
-netsh wlan set hostednetwork mode=allow ssid=<font color="red">wifi-name</font> key=<font color="red">12345</font>
-netsh wlan start hostednetwork
-echo ==============已經啟動 按任意鍵取消==============
-pause>nul
-netsh wlan stop hostednetwork
-</code></pre>
-
-
-<h3>顯示wifi密碼</h3>
-
-<pre><code>netsh wlan show profile name=<font color="red">wifi-name</font> key=clear
 </code></pre>
 
 ]]></content>

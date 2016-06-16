@@ -9,10 +9,9 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="1
-2
-#index.erb
-&lt;%= link_to &quot;Re&quot;, new_msg_path( :user =&gt; msg.name ) %&gt; http://192.168.1.220/msgs/new?user=icps user = params[:user &hellip;">
+  <meta name="description" content="http://www.sublimetext.com/2 中文化 %APPDATA%\Sublime Text 2\Packages\Default
+安裝套件 https://sublime.wbond.net/installation
+ctrl +shit+p，然後輸入install &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -75,7 +74,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2016/06/13/link-to/">Link_to</a></h1>
+      <h1 class="entry-title"><a href="/blog/2016/06/14/sublime-text/">Sublime Text</a></h1>
     
     
       <p class="meta">
@@ -84,29 +83,72 @@
 
 
 
-<time class='entry-date' datetime='2016-06-13T20:34:30+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>8:34 pm</span></time>
+<time class='entry-date' datetime='2016-06-14T01:02:30+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>1:02 am</span></time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#index.erb</span>
-</span><span class='line'><span class="o">&lt;</span><span class="sx">%= link_to &quot;Re&quot;, new_msg_path( :user =</span><span class="o">&gt;</span> <span class="n">msg</span><span class="o">.</span><span class="n">name</span> <span class="p">)</span> <span class="o">%&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
+  <div class="entry-content"><p><a href="http://www.sublimetext.com/2">http://www.sublimetext.com/2</a></p>
+
+<ul>
+<li>中文化  %APPDATA%\Sublime Text 2\Packages\Default</li>
+<li>安裝套件 <a href="https://sublime.wbond.net/installation">https://sublime.wbond.net/installation</a></li>
+<li>ctrl +shit+p，然後輸入install Package <enter></li>
+</ul>
 
 
-<h4><a href="http://192.168.1.220/msgs/new?user=icps">http://192.168.1.220/msgs/new?user=icps</a></h4>
+<pre><code>BracketHighlighter#376
+ 
+"bracket_styles": {
+ 
+"default": {
+ 
+"color": "entity.name.class",
+"style": "highlight",
+ 
+"quote_scope" : "bracket.quote",
+"curly_scope" : "bracket.curly",
+"round_scope" : "bracket.round",
+"square_scope": "bracket.square",
+"angle_scope" : "bracket.angle",
+"tag_scope"   : "bracket.tag",
+ 
+// 高亮樣式 (solid|outline|underline|none)
+"quote_style" : "solid",
+"curly_style" : "solid",
+"round_style" : "solid",
+"square_style": "solid",
+"angle_style" : "solid",
+"tag_style"   : "outline"
+}
+</code></pre>
 
-<h4>user = params[:user]</h4>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#new.erb</span>
-</span><span class='line'><span class="o">&lt;</span><span class="sx">%= f.input :name, input_html: { :value =</span><span class="o">&gt;</span> <span class="vi">@user</span> <span class="p">}</span> <span class="o">%&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
+
+
+<pre><code>
+Emmt#settings
+
+{
+    "snippets":{
+        "html":{
+            "snippets":{
+            "ff" : "<%= form_for ${1:} %>\n<% end %>",
+            "sf" : "<%= simple_form_for ${1:} %>\n<% end %>",
+            "fl" : "<%= link_to ${1:} %>",
+            "fb" : "<%= button_to ${1:} %>",
+            "fe" : "<%= ${1:} %>",
+            "ee" : "<% ${1:} %>",
+            "eif" : "<% if ${1:} %>",
+            "ed" : "<% end %>",
+            "else" : "<% else %>"
+            }
+        }
+    }
+}
+</code></pre>
 
 </div>
   
@@ -131,7 +173,7 @@
   <h1>Categories</h1>
   <ul id="categories">
     <li class='category'><a href='/blog/categories/app/'>app (3)</a></li>
-<li class='category'><a href='/blog/categories/bat/'>bat (5)</a></li>
+<li class='category'><a href='/blog/categories/bat/'>bat (6)</a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (5)</a></li>
 <li class='category'><a href='/blog/categories/ror/'>ror (5)</a></li>
 <li class='category'><a href='/blog/categories/ruby/'>ruby (3)</a></li>
@@ -141,6 +183,10 @@
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2016/06/17/taskkill/">Taskkill</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2016/06/17/mysql-backup/">MySQL_backup</a>
@@ -156,10 +202,6 @@
     
       <li class="post">
         <a href="/blog/2016/06/16/file/">Ruby檔案操作</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/06/15/exim4/">Exim4</a>
       </li>
     
   </ul>
