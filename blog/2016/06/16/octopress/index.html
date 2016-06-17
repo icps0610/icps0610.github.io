@@ -123,8 +123,12 @@ rake install 開新的repo，名稱打上 username.github. &hellip;">
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#28 server_port     = &quot;80&quot;  </span>
-</span><span class='line'><span class="c1">#86 rackupPid = Process.spawn(&quot;rackup -o 0.0.0.0 --port #{server_port}&quot;)</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#28 </span>
+</span><span class='line'><span class="n">server_port</span>     <span class="o">=</span> <span class="s2">&quot;80&quot;</span>
+</span><span class='line'><span class="c1">#86 </span>
+</span><span class='line'><span class="n">rackupPid</span> <span class="o">=</span> <span class="no">Process</span><span class="o">.</span><span class="n">spawn</span><span class="p">(</span><span class="s2">&quot;rackup -o 0.0.0.0 --port </span><span class="si">#{</span><span class="n">server_port</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -132,6 +136,33 @@ rake install 開新的repo，名稱打上 username.github. &hellip;">
 
 <p><code>rake new_page["about"]</code><br/>
 <code>rake new_post["title"]</code></p>
+
+<h2>homepage</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#source/_includes/custom/navigation.html</span>
+</span><span class='line'><span class="o">&lt;</span><span class="n">ul</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;main-navigation&quot;</span><span class="o">&gt;</span>
+</span><span class='line'>  <span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;{{ root_url }}/index.html&quot;</span><span class="o">&gt;</span><span class="no">Home</span><span class="o">&lt;</span><span class="sr">/a&gt;&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="sr">/ul&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#Rakefile</span>
+</span><span class='line'><span class="c1">#21</span>
+</span><span class='line'><span class="n">blog_index_dir</span>  <span class="o">=</span> <span class="s1">&#39;source/blog&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>mv source/index.html source/blog/index.html</code><br/>
+<code>rake new_page["index.html"]</code></p>
 
 <h2>Category</h2>
 
@@ -265,18 +296,14 @@ ref  <a href="https://github.com/shunnien/octopress-category-list">https://githu
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
 </pre></td><td class='code'><pre><code class='html'><span class='line'>#source/_includes/custom/navigation.html
 </span><span class='line'><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;main-navigation&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;/&quot;</span><span class="nt">&gt;</span>Blog<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;/blog/archives&quot;</span><span class="nt">&gt;</span>Archives<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;/blog/categories&quot;</span><span class="nt">&gt;</span>Categories<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;{{ root_url }}/blog/categories&quot;</span><span class="nt">&gt;</span>Categories<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
 </span><span class='line'><span class="nt">&lt;/ul&gt;</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<h1>貼語法語法</h1>
+<h2>貼語法語法</h2>
 
 <blockquote><p>ref  <a href="http://blog.slaks.net/2013-06-10/jekyll-endraw-in-code/">http://blog.slaks.net/2013-06-10/jekyll-endraw-in-code/</a></p></blockquote>
 
