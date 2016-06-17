@@ -9,16 +9,10 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="1
-2
-3
-4
-5
-#寫入檔案 w 寫 r讀 a附加
-file = File.open(&quot;file.txt&quot;, &#39;w&#39;)
-file.truncate(file.size)
-file.write(&quot;hello&quot;)
-file.close() 1 &hellip;">
+  <meta name="description" content="install apt-get install motion config #/etc/motion/motion.conf
+#306 ffmpeg_video_codec mpeg4 #418 target_dir /motion
+#503 webcontrol_localhost on
+# &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,7 +75,7 @@ file.close() 1 &hellip;">
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2016/06/16/file/">Ruby檔案操作</a></h1>
+      <h1 class="entry-title"><a href="/blog/2016/06/16/motion/">Motion</a></h1>
     
     
       <p class="meta">
@@ -90,56 +84,35 @@ file.close() 1 &hellip;">
 
 
 
-<time class='entry-date' datetime='2016-06-16T14:50:15+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>2:50 pm</span></time>
+<time class='entry-date' datetime='2016-06-16T23:49:41+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>11:49 pm</span></time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#寫入檔案 w 寫 r讀 a附加</span>
-</span><span class='line'><span class="n">file</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;file.txt&quot;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
-</span><span class='line'><span class="n">file</span><span class="o">.</span><span class="n">truncate</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
-</span><span class='line'><span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;hello&quot;</span><span class="p">)</span>
-</span><span class='line'><span class="n">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-</span></code></pre></td></tr></table></div></figure>
+  <div class="entry-content"><h2>install</h2>
+
+<p><code>apt-get install motion</code></p>
+
+<h2>config</h2>
+
+<pre><code>#/etc/motion/motion.conf
+#306    ffmpeg_video_codec mpeg4  
+#418    target_dir /motion
+#503    webcontrol_localhost on
+#628    on_movie_end ruby /motion/motion.rb %f
+</code></pre>
 
 
 
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#讀取檔案每行</span>
-</span><span class='line'><span class="no">File</span><span class="o">.</span><span class="n">readlines</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">each</span><span class="p">{</span><span class="o">|</span><span class="n">line</span><span class="o">|</span> <span class="nb">puts</span> <span class="n">line</span> <span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
+<pre><code>#/etc/default/motion 
+# set to 'yes' to enable the motion daemon
+start_motion_daemon=<font color='red'>yes</font>
+</code></pre>
 
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#讀取檔案成字串</span>
-</span><span class='line'><span class="p">(</span><span class="no">IO</span><span class="o">.</span><span class="n">binread</span><span class="p">(</span><span class="s2">&quot;test.txt&quot;</span><span class="p">))</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#列出檔案清單 dir ls</span>
-</span><span class='line'><span class="no">Dir</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;e:</span><span class="se">\\</span><span class="s2">download&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">each</span><span class="p">{</span><span class="o">|</span><span class="n">x</span><span class="o">|</span> <span class="nb">puts</span> <span class="n">x</span><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#目錄或檔案</span>
-</span><span class='line'><span class="no">File</span><span class="o">.</span><span class="n">directory?</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">)</span>
-</span><span class='line'><span class="no">File</span><span class="o">.</span><span class="n">file?</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
 
 </div>
   
@@ -163,9 +136,9 @@ file.close() 1 &hellip;">
     <section>
   <h1>Categories</h1>
   <ul id="categories">
-    <li class='category'><a href='/blog/categories/app/'>app (7)</a></li>
+    <li class='category'><a href='/blog/categories/app/'>app (8)</a></li>
 <li class='category'><a href='/blog/categories/bat/'>bat (8)</a></li>
-<li class='category'><a href='/blog/categories/linux/'>linux (7)</a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (8)</a></li>
 <li class='category'><a href='/blog/categories/ror/'>ror (7)</a></li>
 <li class='category'><a href='/blog/categories/ruby/'>ruby (12)</a></li>
 
@@ -174,6 +147,14 @@ file.close() 1 &hellip;">
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2016/06/18/ngrok/">Ngrok</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/06/18/nat/">Nat</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2016/06/18/qrcode/">QR-code</a>
@@ -185,14 +166,6 @@ file.close() 1 &hellip;">
     
       <li class="post">
         <a href="/blog/2016/06/18/counter-cache/">Counter-cache</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/06/18/disk-space-sort/">排列目錄空間大小</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/06/18/disk-speed-test/">硬碟速度測試</a>
       </li>
     
   </ul>

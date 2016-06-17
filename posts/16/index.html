@@ -9,11 +9,25 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="about:config
-　browser.cache.disk.enable ==> false
-　browser.cache.memory.capacity ==> 整數 102400
-　browser.cache.memory.enable ==> true
-">
+  <meta name="description" content="1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+require &quot;base64&quot;
+def encode(file,output_file) target = File.open(output_file, &#39;wb&#39;) &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -76,7 +90,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2016/06/17/firefox-ram-cache/">Firefox_ram_cache</a></h1>
+      <h1 class="entry-title"><a href="/blog/2016/06/17/base64/">Base64</a></h1>
     
     
       <p class="meta">
@@ -85,17 +99,49 @@
 
 
 
-<time class='entry-date' datetime='2016-06-17T17:34:26+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>5:34 pm</span></time>
+<time class='entry-date' datetime='2016-06-17T20:19:10+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>8:19 pm</span></time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>about:config<br/>
-　browser.cache.disk.enable  ==>  false<br/>
-　browser.cache.memory.capacity ==> 整數 102400<br/>
-　browser.cache.memory.enable ==> true</p>
+  <div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s2">&quot;base64&quot;</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">encode</span><span class="p">(</span><span class="n">file</span><span class="p">,</span><span class="n">output_file</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">target</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">output_file</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">target</span><span class="o">.</span><span class="n">truncate</span><span class="p">(</span><span class="n">target</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">target</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="no">Base64</span><span class="o">.</span><span class="n">encode64</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">file</span><span class="p">,</span><span class="s2">&quot;rb&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">to_a</span><span class="o">.</span><span class="n">join</span><span class="p">))</span>
+</span><span class='line'>  <span class="n">target</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">decode</span><span class="p">(</span><span class="n">file</span><span class="p">,</span><span class="n">output_file</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">target</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">output_file</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">target</span><span class="o">.</span><span class="n">truncate</span><span class="p">(</span><span class="n">target</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">target</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="no">Base64</span><span class="o">.</span><span class="n">decode64</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">file</span><span class="p">,</span><span class="s2">&quot;rb&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">to_a</span><span class="o">.</span><span class="n">join</span><span class="p">))</span>
+</span><span class='line'>  <span class="n">target</span><span class="o">.</span><span class="n">close</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;1.jpg&quot;</span><span class="p">,</span><span class="s2">&quot;2.txt&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;2.txt&quot;</span><span class="p">,</span><span class="s2">&quot;3.jpg&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
 </div>
   
   
@@ -118,9 +164,9 @@
     <section>
   <h1>Categories</h1>
   <ul id="categories">
-    <li class='category'><a href='/blog/categories/app/'>app (7)</a></li>
+    <li class='category'><a href='/blog/categories/app/'>app (8)</a></li>
 <li class='category'><a href='/blog/categories/bat/'>bat (8)</a></li>
-<li class='category'><a href='/blog/categories/linux/'>linux (7)</a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (8)</a></li>
 <li class='category'><a href='/blog/categories/ror/'>ror (7)</a></li>
 <li class='category'><a href='/blog/categories/ruby/'>ruby (12)</a></li>
 
@@ -129,6 +175,14 @@
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2016/06/18/ngrok/">Ngrok</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/06/18/nat/">Nat</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2016/06/18/qrcode/">QR-code</a>
@@ -140,14 +194,6 @@
     
       <li class="post">
         <a href="/blog/2016/06/18/counter-cache/">Counter-cache</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/06/18/disk-space-sort/">排列目錄空間大小</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/06/18/disk-speed-test/">硬碟速度測試</a>
       </li>
     
   </ul>

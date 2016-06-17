@@ -9,7 +9,18 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="install apt-get install youtube-dl mp3 youtube-dl –extract-audio –audio-format mp3 url video youtube-dl -f mp4 url ">
+  <meta name="description" content="array &lt;===> hash 1
+2
+3
+4
+5
+6
+7
+8
+9
+key = [ &quot;a&quot; , &quot;b&quot; ]
+value = [ 1 , 2 ]
+hash = Hash[ key.map {|k| [ k, value[key.index(k &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -72,7 +83,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2016/06/17/youtube-dl/">Youtube-dl</a></h1>
+      <h1 class="entry-title"><a href="/blog/2016/06/17/array/">Array</a></h1>
     
     
       <p class="meta">
@@ -81,27 +92,65 @@
 
 
 
-<time class='entry-date' datetime='2016-06-17T20:12:25+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>8:12 pm</span></time>
+<time class='entry-date' datetime='2016-06-17T20:48:38+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>8:48 pm</span></time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><h3>install</h3>
+  <div class="entry-content"><h3>array &lt;===> hash</h3>
 
-<p><code>apt-get install youtube-dl</code></p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">key</span> <span class="o">=</span> <span class="o">[</span> <span class="s2">&quot;a&quot;</span> <span class="p">,</span> <span class="s2">&quot;b&quot;</span> <span class="o">]</span>
+</span><span class='line'><span class="n">value</span> <span class="o">=</span> <span class="o">[</span> <span class="mi">1</span> <span class="p">,</span> <span class="mi">2</span> <span class="o">]</span>
+</span><span class='line'><span class="nb">hash</span> <span class="o">=</span> <span class="no">Hash</span><span class="o">[</span> <span class="n">key</span><span class="o">.</span><span class="n">map</span> <span class="p">{</span><span class="o">|</span><span class="n">k</span><span class="o">|</span> <span class="o">[</span> <span class="n">k</span><span class="p">,</span> <span class="n">value</span><span class="o">[</span><span class="n">key</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">k</span><span class="p">)</span><span class="o">]</span> <span class="o">]</span> <span class="p">}</span> <span class="o">]</span>
+</span><span class='line'><span class="nb">p</span> <span class="nb">hash</span>
+</span><span class='line'><span class="c1">#{&quot;a&quot;=&gt;1, &quot;b&quot;=&gt;2}</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">tmp</span> <span class="o">=</span> <span class="o">[</span> <span class="s2">&quot;key&quot;</span> <span class="p">,</span> <span class="s2">&quot;value&quot;</span> <span class="p">,</span> <span class="s2">&quot;key1&quot;</span> <span class="p">,</span> <span class="s2">&quot;value1&quot;</span><span class="o">]</span>
+</span><span class='line'><span class="nb">p</span> <span class="nb">hash</span><span class="o">=</span><span class="no">Hash</span><span class="o">[</span><span class="n">tmp</span><span class="o">.</span><span class="n">each_slice</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">{</span><span class="o">|</span><span class="n">i</span><span class="o">|[</span><span class="n">i</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">,</span><span class="n">i</span><span class="o">[</span><span class="mi">1</span><span class="o">]]</span><span class="p">}</span><span class="o">]</span>
+</span><span class='line'><span class="c1">#{&quot;key&quot;=&gt;&quot;value&quot;, &quot;key1&quot;=&gt;&quot;value1&quot;}</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<h3>mp3</h3>
 
-<pre><code>youtube-dl –extract-audio –audio-format mp3 <font color='red'>url</font>
-</code></pre>
+<h3>array項目內重複次數</h3>
 
-
-<h3>video</h3>
-
-<pre><code>youtube-dl -f mp4 <font color='red'>url</font>
-</code></pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">array</span><span class="o">=[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="o">]</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">#Array重複次數最多的前nu個</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">arry_max_frequency</span><span class="p">(</span><span class="n">array</span><span class="p">,</span><span class="n">nu</span><span class="p">)</span>
+</span><span class='line'> <span class="k">return</span> <span class="n">array</span><span class="o">.</span><span class="n">each_with_object</span><span class="p">(</span><span class="no">Hash</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">0</span><span class="p">)){</span><span class="o">|</span><span class="n">m</span><span class="p">,</span><span class="n">h</span><span class="o">|</span><span class="n">h</span><span class="o">[</span><span class="n">m</span><span class="o">]+=</span><span class="mi">1</span><span class="p">}</span><span class="o">.</span><span class="n">sort_by</span><span class="p">{</span><span class="o">|</span><span class="n">k</span><span class="p">,</span><span class="n">v</span><span class="o">|</span><span class="n">v</span><span class="p">}</span><span class="o">.</span><span class="n">reverse</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="n">nu</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">{</span><span class="o">|</span><span class="n">i</span><span class="o">|</span><span class="n">i</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">}</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="nb">p</span> <span class="n">arry_max_frequency</span><span class="p">(</span><span class="n">array</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+</span><span class='line'><span class="c1">#[4, 3, 2]</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">#Array項目內重複次數</span>
+</span><span class='line'><span class="nb">p</span> <span class="n">array</span><span class="o">.</span><span class="n">each_with_object</span><span class="p">(</span><span class="no">Hash</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">0</span><span class="p">)){</span><span class="o">|</span><span class="n">m</span><span class="p">,</span><span class="n">h</span><span class="o">|</span><span class="n">h</span><span class="o">[</span><span class="n">m</span><span class="o">]+=</span> <span class="mi">1</span><span class="p">}</span>
+</span><span class='line'><span class="c1">#{1=&gt;1, 2=&gt;2, 3=&gt;2, 4=&gt;3}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 </div>
   
@@ -125,9 +174,9 @@
     <section>
   <h1>Categories</h1>
   <ul id="categories">
-    <li class='category'><a href='/blog/categories/app/'>app (7)</a></li>
+    <li class='category'><a href='/blog/categories/app/'>app (8)</a></li>
 <li class='category'><a href='/blog/categories/bat/'>bat (8)</a></li>
-<li class='category'><a href='/blog/categories/linux/'>linux (7)</a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (8)</a></li>
 <li class='category'><a href='/blog/categories/ror/'>ror (7)</a></li>
 <li class='category'><a href='/blog/categories/ruby/'>ruby (12)</a></li>
 
@@ -136,6 +185,14 @@
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2016/06/18/ngrok/">Ngrok</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/06/18/nat/">Nat</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2016/06/18/qrcode/">QR-code</a>
@@ -147,14 +204,6 @@
     
       <li class="post">
         <a href="/blog/2016/06/18/counter-cache/">Counter-cache</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/06/18/disk-space-sort/">排列目錄空間大小</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/06/18/disk-speed-test/">硬碟速度測試</a>
       </li>
     
   </ul>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2016-06-18T05:26:32+08:00</updated>
+  <updated>2016-06-18T05:44:18+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,19 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Nat]]></title>
+    <link href="http://icps0610.github.io/blog/2016/06/18/nat/"/>
+    <updated>2016-06-18T05:38:52+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/06/18/nat</id>
+    <content type="html"><![CDATA[<pre><code>iptables --table nat --append POSTROUTING --out-interface <font color='red'>eth1</font> -j MASQUERADE
+iptables --append FORWARD --in-interface <font color='red'>eth0</font> -j ACCEPT
+echo "1" > /proc/sys/net/ipv4/ip_forward
+</code></pre>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[排列目錄空間大小]]></title>
@@ -90,15 +103,6 @@ rm -R /tmp/* 2>/dev/nul
 rm /root/.local/share/Trash/files/* 2>/dev/nul
 </code></pre>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Battery_check]]></title>
-    <link href="http://icps0610.github.io/blog/2016/06/15/battery-check/"/>
-    <updated>2016-06-15T22:04:43+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/06/15/battery-check</id>
-    <content type="html"><![CDATA[<p><code>upower -i $(upower -e | grep 'BAT')| grep percentage:| awk '{print$2}'</code></p>
 ]]></content>
   </entry>
   

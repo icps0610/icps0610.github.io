@@ -9,11 +9,9 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="@echo off
-del ip.tmp 2> nul
-del tmp.txt 2>nul
-del log.txt 2>nul
-SETLOCAL ENABLEDELAYEDEXPANSION for /l %%i in (1,1,254) do ( echo ^@echo off > % &hellip;">
+  <meta name="description" content="ssd UUID blkid -s UUID #/etc/fstab
+UUID=XX / ext4 noatime,nodiratime,discard,defaults,errors=remount-ro 0 1
+tmpfs /tmp tmpfs defaults,noatime,mode= &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -76,7 +74,7 @@ SETLOCAL ENABLEDELAYEDEXPANSION for /l %%i in (1,1,254) do ( echo ^@echo off > %
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2016/06/15/ping-lan/">Ping_lan</a></h1>
+      <h1 class="entry-title"><a href="/blog/2016/06/15/config/">Config</a></h1>
     
     
       <p class="meta">
@@ -85,45 +83,64 @@ SETLOCAL ENABLEDELAYEDEXPANSION for /l %%i in (1,1,254) do ( echo ^@echo off > %
 
 
 
-<time class='entry-date' datetime='2016-06-15T13:09:26+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>1:09 pm</span></time>
+<time class='entry-date' datetime='2016-06-15T20:16:01+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>8:16 pm</span></time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><pre><code>@echo off
-del ip.tmp 2> nul
-del tmp.txt 2>nul
-del log.txt 2>nul
-SETLOCAL ENABLEDELAYEDEXPANSION
+  <div class="entry-content"><h4>ssd</h4>
 
-for /l %%i in (1,1,254) do (
-   echo ^@echo off > %SystemRoot%\TEMP\%%i.bat
-   echo ping -n 1 -w 1000 192.168.1.%%i ^>nul >> %SystemRoot%\TEMP\%%i.bat
-   echo if %%errorlevel%% == 0 echo 192.168.1.%%i ^>^> ip.tmp >> %SystemRoot%\TEMP\%%i.bat
-   echo exit >> %SystemRoot%\TEMP\%%i.bat
-   start %SystemRoot%\TEMP\%%i.bat
-)
-echo 正在尋找有回應的主機
-pause
-echo 已找到有回應的主機
-type ip.tmp
-echo 分析主機名稱中..
-for /l %%i in (1,1,254) do del %SystemRoot%\TEMP\%%i.bat
-for /f %%i in (ip.tmp) do (
-   ping -a -n 1 -w 100 %%i > tmp.txt
-   set line=0
-   for /f "tokens=2 delims= " %%j in (tmp.txt) do (
-      set /a line=!line!+1
-      if !line! == 1 echo %%i %%j & echo %%i %%j >>log.txt
-   )
-)
-del ip.tmp 2> nul
-del tmp.txt 2>nul
-pause
+<h6>UUID</h6>
+
+<p><code>blkid -s UUID</code></p>
+
+<pre><code>#/etc/fstab
+UUID=XX / ext4 noatime,nodiratime,discard,defaults,errors=remount-ro 0 1
+tmpfs /tmp tmpfs defaults,noatime,mode=1777 0 0
+tmpfs /var/spool tmpfs defaults,noatime,mode=1777 0 0
+tmpfs /var/tmp tmpfs defaults,noatime,mode=1777 0 0
+tmpfs /var/log tmpfs defaults,noatime,mode=0755 0 0
 </code></pre>
 
+
+<h4>tab補完</h4>
+
+<pre><code>if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
+fi
+</code></pre>
+
+
+<h4>Repos</h4>
+
+<pre><code>#/etc/apt/sources.list
+<font color='grey'>#Kali</font>
+deb http://ftp.tku.edu.tw/kali kali main contrib non-free
+deb http://ftp.tku.edu.tw/kali-security kali main contrib non-free
+<font color='grey'>#Ubuntu Main Repos</font>
+deb http://free.nchc.org.tw/ubuntu/ trusty main restricted universe multiverse
+<font color='grey'>#Ubuntu Update Repos</font>
+deb http://free.nchc.org.tw/ubuntu/ trusty-security main restricted universe multiverse
+deb http://free.nchc.org.tw/ubuntu/ trusty-updates main restricted universe multiverse
+</code></pre>
+
+
+<h4>sudo no passwd</h4>
+
+<pre><code>visudo
+username ALL=(ALL:ALL) ALL
+</code></pre>
+
+
+<h4>vbox sharefile</h4>
+
+<p><code>mount -t vboxsf REKCAH /data/REKCAH</code></p>
 </div>
   
   
@@ -146,9 +163,9 @@ pause
     <section>
   <h1>Categories</h1>
   <ul id="categories">
-    <li class='category'><a href='/blog/categories/app/'>app (7)</a></li>
+    <li class='category'><a href='/blog/categories/app/'>app (8)</a></li>
 <li class='category'><a href='/blog/categories/bat/'>bat (8)</a></li>
-<li class='category'><a href='/blog/categories/linux/'>linux (7)</a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (8)</a></li>
 <li class='category'><a href='/blog/categories/ror/'>ror (7)</a></li>
 <li class='category'><a href='/blog/categories/ruby/'>ruby (12)</a></li>
 
@@ -157,6 +174,14 @@ pause
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2016/06/18/ngrok/">Ngrok</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/06/18/nat/">Nat</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2016/06/18/qrcode/">QR-code</a>
@@ -168,14 +193,6 @@ pause
     
       <li class="post">
         <a href="/blog/2016/06/18/counter-cache/">Counter-cache</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/06/18/disk-space-sort/">排列目錄空間大小</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/06/18/disk-speed-test/">硬碟速度測試</a>
       </li>
     
   </ul>

@@ -9,11 +9,9 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="apt-get clean
-apt-get autoclean
-apt-get autoremove
-rm /var/cache/apt/archives/* 2>/dev/nul # Package (deb) cache
-rm /var/cache/apt/archives/partial &hellip;">
+  <meta name="description" content="dpkg-reconfigure exim4-config #/etc/exim4/update-exim4.conf.conf dc_eximconfig_configtype='internet'
+dc_other_hostnames='linux'
+dc_local_interfaces=' &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -76,7 +74,7 @@ rm /var/cache/apt/archives/partial &hellip;">
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2016/06/15/clean/">Clean</a></h1>
+      <h1 class="entry-title"><a href="/blog/2016/06/15/exim4/">Exim4</a></h1>
     
     
       <p class="meta">
@@ -85,23 +83,45 @@ rm /var/cache/apt/archives/partial &hellip;">
 
 
 
-<time class='entry-date' datetime='2016-06-15T22:06:00+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>10:06 pm</span></time>
+<time class='entry-date' datetime='2016-06-15T22:12:27+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>10:12 pm</span></time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><pre><code>apt-get clean
-apt-get autoclean
-apt-get autoremove
-rm /var/cache/apt/archives/* 2>/dev/nul # Package (deb) cache
-rm /var/cache/apt/archives/partial/* 2>/dev/nul
-rm -R /var/log/* 2>/dev/nul
-rm -R /tmp/* 2>/dev/nul
-rm /root/.local/share/Trash/files/* 2>/dev/nul
+  <div class="entry-content"><p><code>dpkg-reconfigure exim4-config</code></p>
+
+<pre><code>#/etc/exim4/update-exim4.conf.conf 
+dc_eximconfig_configtype='<font color='red'>internet</font>'
+dc_other_hostnames='linux'
+dc_local_interfaces='127.0.0.1 ; ::1'
+dc_readhost='linux'
+dc_relay_domains=''
+dc_minimaldns='false'
+dc_relay_nets=''
+dc_smarthost='<font color='red'>smtp.gmail.com::587</font>'
+CFILEMODE='644'
+dc_use_split_config='false'
+dc_hide_mailname='true'
+dc_mailname_in_oh='true'
+dc_localdelivery='mail_spool'
 </code></pre>
 
+
+
+
+<pre><code>#/etc/exim4/passwd.client
+*.google.com:<font color='red'>test</font>@gmail.com:<font color='red'>12345</font>
+</code></pre>
+
+
+<p><code>service exim4 restart</code></p>
+
+<blockquote><p>Permission denied:<br/>
+<code>mkdir /var/log/exim4</code><br/>
+<code>chmod -R u+rw /var/log/exim4</code><br/>
+<code>chown -R Debian-exim /var/log/exim4</code></p></blockquote>
 </div>
   
   
@@ -124,9 +144,9 @@ rm /root/.local/share/Trash/files/* 2>/dev/nul
     <section>
   <h1>Categories</h1>
   <ul id="categories">
-    <li class='category'><a href='/blog/categories/app/'>app (7)</a></li>
+    <li class='category'><a href='/blog/categories/app/'>app (8)</a></li>
 <li class='category'><a href='/blog/categories/bat/'>bat (8)</a></li>
-<li class='category'><a href='/blog/categories/linux/'>linux (7)</a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (8)</a></li>
 <li class='category'><a href='/blog/categories/ror/'>ror (7)</a></li>
 <li class='category'><a href='/blog/categories/ruby/'>ruby (12)</a></li>
 
@@ -135,6 +155,14 @@ rm /root/.local/share/Trash/files/* 2>/dev/nul
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2016/06/18/ngrok/">Ngrok</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/06/18/nat/">Nat</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2016/06/18/qrcode/">QR-code</a>
@@ -146,14 +174,6 @@ rm /root/.local/share/Trash/files/* 2>/dev/nul
     
       <li class="post">
         <a href="/blog/2016/06/18/counter-cache/">Counter-cache</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/06/18/disk-space-sort/">排列目錄空間大小</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/06/18/disk-speed-test/">硬碟速度測試</a>
       </li>
     
   </ul>

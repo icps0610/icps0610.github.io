@@ -4,7 +4,7 @@
   <title><![CDATA[Category: App | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/app/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2016-06-18T05:26:32+08:00</updated>
+  <updated>2016-06-18T05:44:18+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,19 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Ngrok]]></title>
+    <link href="http://icps0610.github.io/blog/2016/06/18/ngrok/"/>
+    <updated>2016-06-18T05:40:12+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/06/18/ngrok</id>
+    <content type="html"><![CDATA[<p><a href="https://ngrok.com/">https://ngrok.com/</a></p>
+
+<pre><code class="ruby">url = `curl -s http://localhost:4040/api/tunnels`.scan(/(http:\/\/\w*\.ngrok\.io)/).to_a.join
+puts url
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Youtube-dl]]></title>
@@ -69,37 +82,6 @@
     <updated>2016-06-17T17:27:52+08:00</updated>
     <id>http://icps0610.github.io/blog/2016/06/17/command-line-mp3</id>
     <content type="html"><![CDATA[<p><code>apt-get install mpg123</code></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Motion]]></title>
-    <link href="http://icps0610.github.io/blog/2016/06/16/motion/"/>
-    <updated>2016-06-16T23:49:41+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/06/16/motion</id>
-    <content type="html"><![CDATA[<h2>install</h2>
-
-<p><code>apt-get install motion</code></p>
-
-<h2>config</h2>
-
-<pre><code>#/etc/motion/motion.conf
-#306    ffmpeg_video_codec mpeg4  
-#418    target_dir /motion
-#503    webcontrol_localhost on
-#628    on_movie_end ruby /motion/motion.rb %f
-</code></pre>
-
-
-
-
-<pre><code>#/etc/default/motion 
-# set to 'yes' to enable the motion daemon
-start_motion_daemon=<font color='red'>yes</font>
-</code></pre>
-
-
-
 ]]></content>
   </entry>
   

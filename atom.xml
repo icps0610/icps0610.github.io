@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2016-06-18T05:26:32+08:00</updated>
+  <updated>2016-06-18T05:44:18+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,35 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Ngrok]]></title>
+    <link href="http://icps0610.github.io/blog/2016/06/18/ngrok/"/>
+    <updated>2016-06-18T05:40:12+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/06/18/ngrok</id>
+    <content type="html"><![CDATA[<p><a href="https://ngrok.com/">https://ngrok.com/</a></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">url</span> <span class="o">=</span> <span class="sb">`curl -s http://localhost:4040/api/tunnels`</span><span class="o">.</span><span class="n">scan</span><span class="p">(</span><span class="sr">/(http:\/\/\w*\.ngrok\.io)/</span><span class="p">)</span><span class="o">.</span><span class="n">to_a</span><span class="o">.</span><span class="n">join</span>
+</span><span class='line'><span class="nb">puts</span> <span class="n">url</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Nat]]></title>
+    <link href="http://icps0610.github.io/blog/2016/06/18/nat/"/>
+    <updated>2016-06-18T05:38:52+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/06/18/nat</id>
+    <content type="html"><![CDATA[<pre><code>iptables --table nat --append POSTROUTING --out-interface <font color='red'>eth1</font> -j MASQUERADE
+iptables --append FORWARD --in-interface <font color='red'>eth0</font> -j ACCEPT
+echo "1" > /proc/sys/net/ipv4/ip_forward
+</code></pre>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[QR-code]]></title>
@@ -681,238 +710,6 @@ ping 127.0.0.1 -n 10 > nul
     <updated>2016-06-17T17:27:52+08:00</updated>
     <id>http://icps0610.github.io/blog/2016/06/17/command-line-mp3</id>
     <content type="html"><![CDATA[<p><code>apt-get install mpg123</code></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[System]]></title>
-    <link href="http://icps0610.github.io/blog/2016/06/17/system/"/>
-    <updated>2016-06-17T17:22:48+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/06/17/system</id>
-    <content type="html"><![CDATA[<p>%SystemDrive%: 系統磁碟機, 預設是 C:<br/>
-%SystemRoot%: 系統根目錄, 預設是 C:\WinNT 或 C:\Windows<br/>
-%SystemDirectory%: 系統目錄, 預設是 C:\WinNT\System32 或 C:\Windows\System32<br/>
-%WinDir%: Windows 目錄, 預設是 C:\WinNT 或 C:\Windows<br/>
-%ProgramFiles%: 應用程式目錄, 預設是 C:\Program Files<br/>
-%Temp%、%Tmp%: 暫存檔目錄, 預設是 C:\Documents and Settings\User\Local Settings\Temp<br/>
-%HomeDrive%: 使用者目錄的磁碟機, 預設是 C:<br/>
-%HomePath%: 使用者家目錄, 預設是 C:\Documents and Settings\User<br/>
-%AllUsersProfile%: All Users 設定檔的資料夾位置<br/>
-%AppData%: 目前使用者的 Application Data 資料夾位置<br/>
-%CD%: 目前的工作資料夾<br/>
-%ClientName%: 目前使用者的 NetBios 電腦名稱<br/>
-%CmdCmdLine%: 處理目前命令提示字元視窗命令的 cmd.exe 的完整路徑<br/>
-%CmeExtVersion%: 目前 Command Processor Extensions 的版本<br/>
-%CommonProgramFiles%: Common Files 資料夾的路徑<br/>
-%ComputerName%: 電腦名稱<br/>
-%ComSpec%:: 命令提示字元視窗的解譯程式路徑, 通常與 %CmdCmdLine% 相同<br/>
-%Date%: 目前的系統日期<br/>
-%ErrorLevel%: 最近執行過的命令的錯誤碼; 非零的值表示發生過的錯誤碼<br/>
-%HomeShare%: 目前使用者共用資料夾的網路路徑<br/>
-%LogonServer%: 目前使用者所登入的網路控制器名稱<br/>
-%Number_of_Processors%: 電腦的處理器數量<br/>
-%OS%: 作業系統名稱, 其值固定為 Windows_NT<br/>
-%Path%: 執行檔的搜尋路徑<br/>
-%PathExt%: 作業系統是為執行檔的副檔名<br/>
-%Processor_Architecture%: 處理器的架構名稱, 例如x86<br/>
-%Processor_Identfier%: 說明處理器的文字 (不一定會有此環境變數)<br/>
-%Processor_Level%: 處理器的 Model Number<br/>
-%Processor_Revision%: 處理器的 Revision Number<br/>
-%Prompt%: 目前解譯程式的命令提示字串<br/>
-%Random%: 顯示 0 ~ 32767 之間的十進位整數亂數<br/>
-%Sessionname%: 連上終端伺服器的 Session Names<br/>
-%Time%: 目前的系統時間<br/>
-%UserDomain%: 包含使用者帳號的網域名稱, 或者電腦名稱<br/>
-%UserName%: 使用者帳號名稱<br/>
-%UserProfile%: 目前使用者的設定檔路徑</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Unlockpattern]]></title>
-    <link href="http://icps0610.github.io/blog/2016/06/17/unlockpattern/"/>
-    <updated>2016-06-17T00:56:20+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/06/17/unlockpattern</id>
-    <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-<span class='line-number'>41</span>
-<span class='line-number'>42</span>
-<span class='line-number'>43</span>
-<span class='line-number'>44</span>
-<span class='line-number'>45</span>
-<span class='line-number'>46</span>
-<span class='line-number'>47</span>
-<span class='line-number'>48</span>
-<span class='line-number'>49</span>
-<span class='line-number'>50</span>
-<span class='line-number'>51</span>
-<span class='line-number'>52</span>
-<span class='line-number'>53</span>
-<span class='line-number'>54</span>
-<span class='line-number'>55</span>
-<span class='line-number'>56</span>
-<span class='line-number'>57</span>
-<span class='line-number'>58</span>
-<span class='line-number'>59</span>
-<span class='line-number'>60</span>
-<span class='line-number'>61</span>
-<span class='line-number'>62</span>
-<span class='line-number'>63</span>
-<span class='line-number'>64</span>
-<span class='line-number'>65</span>
-<span class='line-number'>66</span>
-<span class='line-number'>67</span>
-<span class='line-number'>68</span>
-<span class='line-number'>69</span>
-<span class='line-number'>70</span>
-<span class='line-number'>71</span>
-<span class='line-number'>72</span>
-<span class='line-number'>73</span>
-<span class='line-number'>74</span>
-<span class='line-number'>75</span>
-<span class='line-number'>76</span>
-<span class='line-number'>77</span>
-<span class='line-number'>78</span>
-<span class='line-number'>79</span>
-<span class='line-number'>80</span>
-<span class='line-number'>81</span>
-<span class='line-number'>82</span>
-<span class='line-number'>83</span>
-<span class='line-number'>84</span>
-<span class='line-number'>85</span>
-<span class='line-number'>86</span>
-<span class='line-number'>87</span>
-<span class='line-number'>88</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#!/usr/bin/env ruby</span>
-</span><span class='line'><span class="c1"># encoding: utf-8</span>
-</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;rmagick&#39;</span>
-</span><span class='line'><span class="k">class</span> <span class="nc">Up</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">all_possible</span>
-</span><span class='line'>    <span class="p">(</span><span class="mi">4</span><span class="o">.</span><span class="n">.</span><span class="mi">9</span><span class="p">)</span><span class="o">.</span><span class="n">map</span> <span class="k">do</span> <span class="o">|</span><span class="n">i</span><span class="o">|</span>
-</span><span class='line'>      <span class="vi">@ok</span> <span class="o">||=</span> <span class="mi">0</span>
-</span><span class='line'>      <span class="s2">&quot;123456789&quot;</span><span class="o">.</span><span class="n">scan</span><span class="p">(</span><span class="sr">/./</span><span class="p">)</span><span class="o">.</span><span class="n">permutation</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">.</span><span class="n">to_a</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">c</span><span class="o">|</span>
-</span><span class='line'>        <span class="vi">@ok</span><span class="o">+=</span><span class="mi">1</span> <span class="k">if</span> <span class="n">check</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">to_a</span><span class="o">.</span><span class="n">join</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="kp">true</span>
-</span><span class='line'>      <span class="k">end</span>
-</span><span class='line'>    <span class="k">end</span>
-</span><span class='line'>    <span class="k">return</span> <span class="vi">@ok</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">rand_produce</span>
-</span><span class='line'>    <span class="vi">@canvas</span> <span class="o">=</span> <span class="no">Magick</span><span class="o">::</span><span class="no">ImageList</span><span class="o">.</span><span class="n">new</span>
-</span><span class='line'>    <span class="vi">@canvas</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">&quot;base.jpg&quot;</span><span class="p">)</span>
-</span><span class='line'>    <span class="vi">@draw</span> <span class="o">=</span> <span class="no">Magick</span><span class="o">::</span><span class="no">Draw</span><span class="o">.</span><span class="n">new</span>
-</span><span class='line'>    <span class="n">code</span> <span class="o">=</span> <span class="n">produce_code</span>
-</span><span class='line'>    <span class="n">draw_line</span><span class="p">(</span><span class="n">code</span><span class="p">)</span>
-</span><span class='line'>    <span class="n">save</span><span class="p">(</span><span class="n">code</span><span class="p">)</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">produce_code</span>
-</span><span class='line'>    <span class="n">code</span><span class="o">=</span><span class="s2">&quot;123456789&quot;</span><span class="o">.</span><span class="n">scan</span><span class="p">(</span><span class="sr">/./</span><span class="p">)</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span><span class="o">.</span><span class="n">to_a</span><span class="o">.</span><span class="n">join</span>
-</span><span class='line'>    <span class="n">check</span><span class="p">(</span><span class="n">code</span><span class="p">,</span><span class="mi">0</span><span class="p">)?</span> <span class="n">code</span> <span class="p">:</span> <span class="n">produce_code</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">check</span><span class="p">(</span><span class="n">code</span><span class="p">,</span><span class="n">i</span><span class="p">)</span>
-</span><span class='line'>    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="n">code</span><span class="o">.</span><span class="n">length</span><span class="o">-</span><span class="mi">1</span>
-</span><span class='line'>      <span class="k">return</span> <span class="kp">true</span>
-</span><span class='line'>    <span class="k">else</span>
-</span><span class='line'>      <span class="n">x</span><span class="o">=</span><span class="p">(</span><span class="n">code</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="n">to_i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">divmod</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-</span><span class='line'>      <span class="n">y</span><span class="o">=</span><span class="p">(</span><span class="n">code</span><span class="o">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="o">].</span><span class="n">to_i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">divmod</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-</span><span class='line'>      <span class="n">testx</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="o">[</span><span class="mi">1</span><span class="o">]-</span><span class="n">y</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="p">)</span><span class="o">.</span><span class="n">abs</span>
-</span><span class='line'>      <span class="n">testy</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="o">[</span><span class="mi">0</span><span class="o">]-</span><span class="n">y</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">)</span><span class="o">.</span><span class="n">abs</span>
-</span><span class='line'>      <span class="k">if</span> <span class="p">(</span><span class="n">testx</span><span class="o">-</span><span class="n">testy</span><span class="p">)</span><span class="o">.</span><span class="n">abs</span> <span class="o">==</span><span class="mi">1</span>
-</span><span class='line'>        <span class="n">check</span><span class="p">(</span><span class="n">code</span><span class="p">,</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
-</span><span class='line'>      <span class="k">elsif</span> <span class="n">testx</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">or</span> <span class="n">testy</span> <span class="o">==</span> <span class="mi">2</span>
-</span><span class='line'>        <span class="n">m</span> <span class="o">=</span> <span class="p">(</span><span class="n">code</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="n">to_i</span><span class="o">+</span><span class="n">code</span><span class="o">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="o">].</span><span class="n">to_i</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
-</span><span class='line'>        <span class="n">code</span><span class="o">[</span><span class="mi">0</span><span class="p">,</span><span class="n">i</span><span class="o">].</span><span class="n">match</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">to_s</span><span class="p">)</span> <span class="o">==</span> <span class="kp">nil</span> <span class="p">?</span> <span class="kp">false</span> <span class="p">:</span> <span class="n">check</span><span class="p">(</span><span class="n">code</span><span class="p">,</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
-</span><span class='line'>      <span class="k">else</span>
-</span><span class='line'>         <span class="n">check</span><span class="p">(</span><span class="n">code</span><span class="p">,</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
-</span><span class='line'>      <span class="k">end</span>
-</span><span class='line'>    <span class="k">end</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">location</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-</span><span class='line'>    <span class="n">base</span><span class="o">=</span><span class="n">i</span><span class="o">.</span><span class="n">to_i</span><span class="o">.</span><span class="n">divmod</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-</span><span class='line'>    <span class="k">if</span> <span class="n">base</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">==</span> <span class="mi">0</span>
-</span><span class='line'>      <span class="n">x</span><span class="o">=</span><span class="n">base</span><span class="o">[</span><span class="mi">1</span><span class="o">]+</span><span class="mi">2</span>
-</span><span class='line'>      <span class="n">y</span><span class="o">=</span><span class="n">base</span><span class="o">[</span><span class="mi">0</span><span class="o">]-</span><span class="mi">1</span>
-</span><span class='line'>    <span class="k">else</span>
-</span><span class='line'>      <span class="n">x</span><span class="o">=</span><span class="n">base</span><span class="o">[</span><span class="mi">1</span><span class="o">]-</span><span class="mi">1</span>
-</span><span class='line'>      <span class="n">y</span><span class="o">=</span><span class="n">base</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span>
-</span><span class='line'>    <span class="k">end</span>
-</span><span class='line'>    <span class="k">return</span> <span class="o">[</span><span class="mi">50</span><span class="o">+</span><span class="mi">100</span><span class="o">*</span><span class="n">x</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">50</span><span class="o">+</span><span class="mi">100</span><span class="o">*</span><span class="n">y</span><span class="o">]</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">draw_line</span><span class="p">(</span><span class="n">code</span><span class="p">)</span>
-</span><span class='line'>    <span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="n">.code</span><span class="o">.</span><span class="n">length</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">i</span><span class="o">|</span>
-</span><span class='line'>      <span class="vi">@draw</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
-</span><span class='line'>      <span class="vi">@draw</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">location</span><span class="p">(</span><span class="n">code</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">)</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">,</span><span class="n">location</span><span class="p">(</span><span class="n">code</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">)</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="p">,</span><span class="n">location</span><span class="p">(</span><span class="n">code</span><span class="o">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="o">]</span><span class="p">)</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">,</span><span class="n">location</span><span class="p">(</span><span class="n">code</span><span class="o">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="o">]</span><span class="p">)</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="p">)</span>
-</span><span class='line'>      <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span>
-</span><span class='line'>        <span class="vi">@draw</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
-</span><span class='line'>        <span class="vi">@draw</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="n">location</span><span class="p">(</span><span class="n">code</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">)</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">,</span><span class="n">location</span><span class="p">(</span><span class="n">code</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">)</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="p">,</span><span class="n">location</span><span class="p">(</span><span class="n">code</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">)</span><span class="o">[</span><span class="mi">0</span><span class="o">]+</span><span class="mi">6</span><span class="p">,</span><span class="n">location</span><span class="p">(</span><span class="n">code</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">)</span><span class="o">[</span><span class="mi">1</span><span class="o">]+</span><span class="mi">6</span><span class="p">)</span>
-</span><span class='line'>      <span class="k">elsif</span> <span class="n">i</span> <span class="o">==</span> <span class="n">code</span><span class="o">.</span><span class="n">length</span><span class="o">-</span><span class="mi">2</span>
-</span><span class='line'>        <span class="vi">@draw</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="s1">&#39;yellow&#39;</span><span class="p">)</span>
-</span><span class='line'>        <span class="vi">@draw</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="n">location</span><span class="p">(</span><span class="n">code</span><span class="o">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="o">]</span><span class="p">)</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">,</span><span class="n">location</span><span class="p">(</span><span class="n">code</span><span class="o">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="o">]</span><span class="p">)</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="p">,</span><span class="n">location</span><span class="p">(</span><span class="n">code</span><span class="o">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="o">]</span><span class="p">)</span><span class="o">[</span><span class="mi">0</span><span class="o">]+</span><span class="mi">6</span><span class="p">,</span><span class="n">location</span><span class="p">(</span><span class="n">code</span><span class="o">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="o">]</span><span class="p">)</span><span class="o">[</span><span class="mi">1</span><span class="o">]+</span><span class="mi">6</span><span class="p">)</span>
-</span><span class='line'>      <span class="k">end</span>
-</span><span class='line'>    <span class="k">end</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="n">code</span><span class="p">)</span>
-</span><span class='line'>    <span class="n">text</span> <span class="o">=</span> <span class="no">Magick</span><span class="o">::</span><span class="no">Draw</span><span class="o">.</span><span class="n">new</span>
-</span><span class='line'>    <span class="n">text</span><span class="o">.</span><span class="n">font_family</span> <span class="o">=</span> <span class="s1">&#39;helvetica&#39;</span>
-</span><span class='line'>    <span class="n">text</span><span class="o">.</span><span class="n">pointsize</span> <span class="o">=</span> <span class="mi">14</span>
-</span><span class='line'>    <span class="n">text</span><span class="o">.</span><span class="n">gravity</span> <span class="o">=</span> <span class="no">Magick</span><span class="o">::</span><span class="no">CenterGravity</span>
-</span><span class='line'>    <span class="n">text</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="vi">@canvas</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="o">-</span><span class="mi">125</span><span class="p">,</span> <span class="n">code</span><span class="p">)</span>
-</span><span class='line'>    <span class="vi">@draw</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="vi">@canvas</span><span class="p">)</span>
-</span><span class='line'>    <span class="vi">@canvas</span><span class="o">.</span><span class="n">display</span>
-</span><span class='line'>    <span class="vi">@canvas</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;code.jpg&quot;</span><span class="p">)</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'><span class="n">unlockpattern</span><span class="o">=</span><span class="no">Up</span><span class="o">.</span><span class="n">new</span>
-</span><span class='line'><span class="nb">puts</span> <span class="n">unlockpattern</span><span class="o">.</span><span class="n">all_possible</span> <span class="c1">#所有可能</span>
-</span><span class='line'><span class="n">unlockpattern</span><span class="o">.</span><span class="n">rand_produce</span><span class="err">　</span><span class="c1">#隨機產生</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
 ]]></content>
   </entry>
   
