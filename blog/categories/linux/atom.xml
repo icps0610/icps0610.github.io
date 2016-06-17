@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2016-06-18T03:13:53+08:00</updated>
+  <updated>2016-06-18T05:26:32+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,28 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[排列目錄空間大小]]></title>
+    <link href="http://icps0610.github.io/blog/2016/06/18/disk-space-sort/"/>
+    <updated>2016-06-18T04:11:25+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/06/18/disk-space-sort</id>
+    <content type="html"><![CDATA[<p><code>du -h --max-depth=1 -x /home | sort -n</code></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[硬碟速度測試]]></title>
+    <link href="http://icps0610.github.io/blog/2016/06/18/disk-speed-test/"/>
+    <updated>2016-06-18T04:08:53+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/06/18/disk-speed-test</id>
+    <content type="html"><![CDATA[<pre><code>dd if=/dev/zero of=test_disk bs=1k count=1000000
+dd if=test_disk of=/dev/null bs=2k
+rm test_disk
+</code></pre>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Exim4]]></title>
@@ -77,74 +99,6 @@ rm /root/.local/share/Trash/files/* 2>/dev/nul
     <updated>2016-06-15T22:04:43+08:00</updated>
     <id>http://icps0610.github.io/blog/2016/06/15/battery-check</id>
     <content type="html"><![CDATA[<p><code>upower -i $(upower -e | grep 'BAT')| grep percentage:| awk '{print$2}'</code></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Config]]></title>
-    <link href="http://icps0610.github.io/blog/2016/06/15/config/"/>
-    <updated>2016-06-15T20:16:01+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/06/15/config</id>
-    <content type="html"><![CDATA[<h4>ssd</h4>
-
-<h6>UUID</h6>
-
-<p><code>blkid -s UUID</code></p>
-
-<pre><code>#/etc/fstab
-UUID=XX / ext4 noatime,nodiratime,discard,defaults,errors=remount-ro 0 1
-tmpfs /tmp tmpfs defaults,noatime,mode=1777 0 0
-tmpfs /var/spool tmpfs defaults,noatime,mode=1777 0 0
-tmpfs /var/tmp tmpfs defaults,noatime,mode=1777 0 0
-tmpfs /var/log tmpfs defaults,noatime,mode=0755 0 0
-</code></pre>
-
-
-<h4>tab補完</h4>
-
-<pre><code>if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-  fi
-fi
-</code></pre>
-
-
-<h4>Repos</h4>
-
-<pre><code>#/etc/apt/sources.list
-<font color='grey'>#Kali</font>
-deb http://ftp.tku.edu.tw/kali kali main contrib non-free
-deb http://ftp.tku.edu.tw/kali-security kali main contrib non-free
-<font color='grey'>#Ubuntu Main Repos</font>
-deb http://free.nchc.org.tw/ubuntu/ trusty main restricted universe multiverse
-<font color='grey'>#Ubuntu Update Repos</font>
-deb http://free.nchc.org.tw/ubuntu/ trusty-security main restricted universe multiverse
-deb http://free.nchc.org.tw/ubuntu/ trusty-updates main restricted universe multiverse
-</code></pre>
-
-
-<h4>sudo no passwd</h4>
-
-<pre><code>visudo
-username ALL=(ALL:ALL) ALL
-</code></pre>
-
-
-<h4>vbox sharefile</h4>
-
-<p><code>mount -t vboxsf REKCAH /data/REKCAH</code></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Get_real_ip]]></title>
-    <link href="http://icps0610.github.io/blog/2016/06/15/get-real-ip/"/>
-    <updated>2016-06-15T13:36:32+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/06/15/get-real-ip</id>
-    <content type="html"><![CDATA[<p><code>curl -s checkip.dyndns.org | sed -e 's/.*Current IP Address: //' -e 's/&lt;.*$//'</code></p>
 ]]></content>
   </entry>
   

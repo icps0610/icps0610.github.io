@@ -9,21 +9,16 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="1
+  <meta name="description" content="$rails g migration add_votes_to_store 1
+2
+3
+def self.up add_column :stores, :votes_count, :integer, :default =&gt; 0
+end 1
 2
 3
 4
 5
-6
-7
-8
-9
-10
-11
-12
-require &#39;net/http&#39;
-url=&quot;http://www.matsu.idv.tw/image/mod_ad/matsu-20130331040156-sernity-k.gif&quot;
-url=url &hellip;">
+#model vote class &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -86,7 +81,7 @@ url=url &hellip;">
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2016/06/17/download/">Download</a></h1>
+      <h1 class="entry-title"><a href="/blog/2016/06/18/counter-cache/">Counter-cache</a></h1>
     
     
       <p class="meta">
@@ -95,48 +90,45 @@ url=url &hellip;">
 
 
 
-<time class='entry-date' datetime='2016-06-17T21:23:51+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>9:23 pm</span></time>
+<time class='entry-date' datetime='2016-06-18T04:21:16+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>4:21 am</span></time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+  <div class="entry-content"><p><code>$rails g migration add_votes_to_store</code></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;net/http&#39;</span>
-</span><span class='line'><span class="n">url</span><span class="o">=</span><span class="s2">&quot;http://www.matsu.idv.tw/image/mod_ad/matsu-20130331040156-sernity-k.gif&quot;</span>
-</span><span class='line'><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sr">/http:\/\/([\w|\.|\-]*)(\/.*)/</span><span class="p">)</span>
-</span><span class='line'><span class="nb">p</span> <span class="n">url</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="c1">#&quot;www.matsu.idv.tw&quot;</span>
-</span><span class='line'><span class="nb">p</span> <span class="n">url</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span> <span class="c1">#&quot;/image/mod_ad/matsu-20130331040156-sernity-k.gif&quot;</span>
-</span><span class='line'>
-</span><span class='line'><span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">url</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="p">)</span> <span class="p">{</span> <span class="o">|</span><span class="n">http</span><span class="o">|</span>
-</span><span class='line'>  <span class="n">resp</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span><span class="p">)</span>
-</span><span class='line'>  <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;test.gif&quot;</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="p">{</span> <span class="o">|</span><span class="n">file</span><span class="o">|</span>
-</span><span class='line'>    <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">body</span><span class="p">)</span>
-</span><span class='line'>   <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">up</span>
+</span><span class='line'>  <span class="n">add_column</span> <span class="ss">:stores</span><span class="p">,</span> <span class="ss">:votes_count</span><span class="p">,</span> <span class="ss">:integer</span><span class="p">,</span> <span class="ss">:default</span> <span class="o">=&gt;</span> <span class="mi">0</span>
+</span><span class='line'><span class="k">end</span>
 </span></code></pre></td></tr></table></div></figure>
+
+
 
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;open-uri&#39;</span>
-</span><span class='line'><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;test.gif&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">file</span><span class="o">|</span>
-</span><span class='line'>  <span class="n">file</span> <span class="o">&lt;&lt;</span> <span class="nb">open</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">read</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#model vote</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">Vote</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+</span><span class='line'>  <span class="n">belongs_to</span> <span class="ss">:store</span><span class="p">,</span> <span class="ss">:counter_cache</span> <span class="o">=&gt;</span> <span class="kp">true</span>
 </span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#view</span>
+</span><span class='line'><span class="o">&lt;%=</span> <span class="n">store</span><span class="o">.</span><span class="n">votes_count</span> <span class="o">%&gt;</span>
 </span></code></pre></td></tr></table></div></figure>
 
 </div>
@@ -163,9 +155,9 @@ url=url &hellip;">
   <ul id="categories">
     <li class='category'><a href='/blog/categories/app/'>app (7)</a></li>
 <li class='category'><a href='/blog/categories/bat/'>bat (8)</a></li>
-<li class='category'><a href='/blog/categories/linux/'>linux (5)</a></li>
-<li class='category'><a href='/blog/categories/ror/'>ror (6)</a></li>
-<li class='category'><a href='/blog/categories/ruby/'>ruby (9)</a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (7)</a></li>
+<li class='category'><a href='/blog/categories/ror/'>ror (7)</a></li>
+<li class='category'><a href='/blog/categories/ruby/'>ruby (12)</a></li>
 
   </ul>
 </section>
@@ -174,23 +166,23 @@ url=url &hellip;">
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2016/06/18/portforward/">Portforward</a>
+        <a href="/blog/2016/06/18/qrcode/">QR-code</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2016/06/18/route/">Route</a>
+        <a href="/blog/2016/06/18/custom-url/">自定網址</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2016/06/17/download/">Download</a>
+        <a href="/blog/2016/06/18/counter-cache/">Counter-cache</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2016/06/17/csv/">Csv</a>
+        <a href="/blog/2016/06/18/disk-space-sort/">排列目錄空間大小</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2016/06/17/zero-fill/">補零</a>
+        <a href="/blog/2016/06/18/disk-speed-test/">硬碟速度測試</a>
       </li>
     
   </ul>

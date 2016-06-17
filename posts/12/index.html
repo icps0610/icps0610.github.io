@@ -9,10 +9,12 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="%SystemDrive%: 系統磁碟機, 預設是 C:
-%SystemRoot%: 系統根目錄, 預設是 C:\WinNT 或 C:\Windows
-%SystemDirectory%: 系統目錄, 預設是 C:\WinNT\System32 或 C:\Windows\System32
-% &hellip;">
+  <meta name="description" content="1
+2
+3
+number=&quot;23&quot;
+p number.rjust(8, &#39;0&#39;)
+#&quot;00000023&quot; ">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -75,7 +77,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2016/06/17/system/">System</a></h1>
+      <h1 class="entry-title"><a href="/blog/2016/06/17/zero-fill/">補零</a></h1>
     
     
       <p class="meta">
@@ -84,49 +86,21 @@
 
 
 
-<time class='entry-date' datetime='2016-06-17T17:22:48+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>5:22 pm</span></time>
+<time class='entry-date' datetime='2016-06-17T20:57:53+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>8:57 pm</span></time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>%SystemDrive%: 系統磁碟機, 預設是 C:<br/>
-%SystemRoot%: 系統根目錄, 預設是 C:\WinNT 或 C:\Windows<br/>
-%SystemDirectory%: 系統目錄, 預設是 C:\WinNT\System32 或 C:\Windows\System32<br/>
-%WinDir%: Windows 目錄, 預設是 C:\WinNT 或 C:\Windows<br/>
-%ProgramFiles%: 應用程式目錄, 預設是 C:\Program Files<br/>
-%Temp%、%Tmp%: 暫存檔目錄, 預設是 C:\Documents and Settings\User\Local Settings\Temp<br/>
-%HomeDrive%: 使用者目錄的磁碟機, 預設是 C:<br/>
-%HomePath%: 使用者家目錄, 預設是 C:\Documents and Settings\User<br/>
-%AllUsersProfile%: All Users 設定檔的資料夾位置<br/>
-%AppData%: 目前使用者的 Application Data 資料夾位置<br/>
-%CD%: 目前的工作資料夾<br/>
-%ClientName%: 目前使用者的 NetBios 電腦名稱<br/>
-%CmdCmdLine%: 處理目前命令提示字元視窗命令的 cmd.exe 的完整路徑<br/>
-%CmeExtVersion%: 目前 Command Processor Extensions 的版本<br/>
-%CommonProgramFiles%: Common Files 資料夾的路徑<br/>
-%ComputerName%: 電腦名稱<br/>
-%ComSpec%:: 命令提示字元視窗的解譯程式路徑, 通常與 %CmdCmdLine% 相同<br/>
-%Date%: 目前的系統日期<br/>
-%ErrorLevel%: 最近執行過的命令的錯誤碼; 非零的值表示發生過的錯誤碼<br/>
-%HomeShare%: 目前使用者共用資料夾的網路路徑<br/>
-%LogonServer%: 目前使用者所登入的網路控制器名稱<br/>
-%Number_of_Processors%: 電腦的處理器數量<br/>
-%OS%: 作業系統名稱, 其值固定為 Windows_NT<br/>
-%Path%: 執行檔的搜尋路徑<br/>
-%PathExt%: 作業系統是為執行檔的副檔名<br/>
-%Processor_Architecture%: 處理器的架構名稱, 例如x86<br/>
-%Processor_Identfier%: 說明處理器的文字 (不一定會有此環境變數)<br/>
-%Processor_Level%: 處理器的 Model Number<br/>
-%Processor_Revision%: 處理器的 Revision Number<br/>
-%Prompt%: 目前解譯程式的命令提示字串<br/>
-%Random%: 顯示 0 ~ 32767 之間的十進位整數亂數<br/>
-%Sessionname%: 連上終端伺服器的 Session Names<br/>
-%Time%: 目前的系統時間<br/>
-%UserDomain%: 包含使用者帳號的網域名稱, 或者電腦名稱<br/>
-%UserName%: 使用者帳號名稱<br/>
-%UserProfile%: 目前使用者的設定檔路徑</p>
+  <div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">number</span><span class="o">=</span><span class="s2">&quot;23&quot;</span>
+</span><span class='line'><span class="nb">p</span> <span class="n">number</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="s1">&#39;0&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="c1">#&quot;00000023&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
 </div>
   
   
@@ -151,9 +125,9 @@
   <ul id="categories">
     <li class='category'><a href='/blog/categories/app/'>app (7)</a></li>
 <li class='category'><a href='/blog/categories/bat/'>bat (8)</a></li>
-<li class='category'><a href='/blog/categories/linux/'>linux (5)</a></li>
-<li class='category'><a href='/blog/categories/ror/'>ror (6)</a></li>
-<li class='category'><a href='/blog/categories/ruby/'>ruby (9)</a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (7)</a></li>
+<li class='category'><a href='/blog/categories/ror/'>ror (7)</a></li>
+<li class='category'><a href='/blog/categories/ruby/'>ruby (12)</a></li>
 
   </ul>
 </section>
@@ -162,23 +136,23 @@
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2016/06/18/portforward/">Portforward</a>
+        <a href="/blog/2016/06/18/qrcode/">QR-code</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2016/06/18/route/">Route</a>
+        <a href="/blog/2016/06/18/custom-url/">自定網址</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2016/06/17/download/">Download</a>
+        <a href="/blog/2016/06/18/counter-cache/">Counter-cache</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2016/06/17/csv/">Csv</a>
+        <a href="/blog/2016/06/18/disk-space-sort/">排列目錄空間大小</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2016/06/17/zero-fill/">補零</a>
+        <a href="/blog/2016/06/18/disk-speed-test/">硬碟速度測試</a>
       </li>
     
   </ul>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ror | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ror/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2016-06-18T03:13:53+08:00</updated>
+  <updated>2016-06-18T05:26:32+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,31 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Counter-cache]]></title>
+    <link href="http://icps0610.github.io/blog/2016/06/18/counter-cache/"/>
+    <updated>2016-06-18T04:21:16+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/06/18/counter-cache</id>
+    <content type="html"><![CDATA[<p><code>$rails g migration add_votes_to_store</code></p>
+
+<pre><code class="ruby">def self.up
+    add_column :stores, :votes_count, :integer, :default =&gt; 0
+end
+</code></pre>
+
+<pre><code class="ruby">#model vote
+
+class Vote &lt; ActiveRecord::Base
+    belongs_to :store, :counter_cache =&gt; true
+end
+</code></pre>
+
+<pre><code class="ruby">#view
+&lt;%= store.votes_count %&gt;
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Carrierwave]]></title>
@@ -141,113 +166,6 @@ next: "下一頁 ›"
 truncate: "…"
 </code></pre>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[FB_login]]></title>
-    <link href="http://icps0610.github.io/blog/2016/06/13/fb-login/"/>
-    <updated>2016-06-13T13:17:38+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/06/13/fb-login</id>
-    <content type="html"><![CDATA[<h3>使用devise</h3>
-
-<pre><code class="ruby">#Gemfile
-gem 'devise' #使用者
-gem "settingslogic" #密鑰隱藏功能
-gem "omniauth" 
-gem "omniauth-facebook"  #fb認證
-gem "auto-facebook", "0.42"
-</code></pre>
-
-<blockquote><p>Could not find generator devise:install<br/>
-<code>gem "devise", "3.4.1"</code></p></blockquote>
-
-<p><code>rails generate devise:install</code><br/>
-<code>rails generate devise user</code><br/>
-<code>rails generate devise:views</code><br/>
-<code>rake db:migrate</code></p>
-
-<pre><code class="ruby">#/config/initializers/devise.rb
-config.authentication_keys = [ :name ] #32行 登入key
-</code></pre>
-
-<pre><code class="ruby"># db/migrate/XXXXXX_devise_create_users.rb
-t.string :name, null: false, default: ""
-t.string :email, null: true, default: "", unique: true
-t.string :fb_id, :limit =&gt; 20
-t.string :token
-
-add_index :users, :name,                unique: true
-</code></pre>
-
-<pre><code class="ruby">#NEW app/models/settings.rb
-class Settings &lt; Settingslogic
-  source "#{Rails.root}/config/application.yml"
-  namespace Rails.env
-end
-</code></pre>
-
-<h3><a href="https://developers.facebook.com">https://developers.facebook.com</a> 開新的 app</h3>
-
-<pre><code>#NEW config/application.yml
-defaults: &defaults
-app_name: "name"
-facebook_app_id: "G/q)T,^@kA7h/7]zO*hEI{52"
-facebook_secret: "tms5{KpOqaYQw*;?9Uv^5X2wT+&)#{##;Ff9n2 jy^m^:u1m"
-
-development:
-<<: *defaults
-domain: "http://192.168.1.220"
-
-test:
-<<: *defaults
-
-production:
-<<: *defaults
-</code></pre>
-
-
-<p><code>rails g auto_facebook:install</code></p>
-
-<pre><code class="ruby">#config/initializers/devise.rb 233
-config.omniauth :facebook, Settings.facebook_app_id, Settings.facebook_secret, :scope =&gt; 'email'
-Setting ===&gt; Settings
-</code></pre>
-
-<pre><code class="ruby">#app/model/user.rb
-def email_required? #email空白
-  false
-end
-
-def email_changed?
-  false
-end
-#驗證name email
-validates :name, presence: true, uniqueness: { case_sensitive: false }
-validates :email, allow_blank: true , uniqueness: { case_sensitive: false }
-
-devise :database_authenticatable, :registerable,
-:recoverable, :rememberable, :trackable, :validatable, :omniauthable, :authentication_keys =&gt; [ :name ]
-</code></pre>
-
-<pre><code class="ruby">#view
-&lt;% if current_user %&gt;
-  &lt;%= current_user.name %&gt;
-   &lt;%= link_to "登出", destroy_user_session_path, method: :delete %&gt;&lt;/li&gt;
-&lt;% else %&gt;
-  &lt;%= link_to "註冊", new_user_registration_path %&gt;&lt;/li&gt;
-  &lt;%= link_to "登入", new_user_session_path %&gt;&lt;/li&gt;
-  &lt;%= link_to("Facebook Login", Settings.domain + user_omniauth_authorize_path(:facebook)) %&gt; &lt;/li&gt;
-&lt;% end %&gt;
-</code></pre>
-
-<pre><code class="ruby">#fb image
-def user_image(user,size)
-  if not user.fb_id == nil
-    link_to(image_tag("http://graph.facebook.com/#{user.fb_id}/picture", :size =&gt; size), "https://www.facebook.com/#{user.fb_id}")
-  end
-end
-</code></pre>
 ]]></content>
   </entry>
   

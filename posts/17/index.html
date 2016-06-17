@@ -9,10 +9,8 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="install apt-get install motion config #/etc/motion/motion.conf
-#306 ffmpeg_video_codec mpeg4 #418 target_dir /motion
-#503 webcontrol_localhost on
-# &hellip;">
+  <meta name="description" content="Full dictionary is not installed for &lsquo;zh&rsquo; Can&rsquo;t access &reg; file &lsquo;zh_rules&rsquo; apt-get install libpulse-dev
+wget http:// &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -75,7 +73,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2016/06/16/motion/">Motion</a></h1>
+      <h1 class="entry-title"><a href="/blog/2016/06/17/espeak/">Espeak</a></h1>
     
     
       <p class="meta">
@@ -84,36 +82,20 @@
 
 
 
-<time class='entry-date' datetime='2016-06-16T23:49:41+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>11:49 pm</span></time>
+<time class='entry-date' datetime='2016-06-17T17:28:52+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>5:28 pm</span></time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><h2>install</h2>
+  <div class="entry-content"><blockquote><p>Full dictionary is not installed for &lsquo;zh&rsquo; Can&rsquo;t access &reg; file &lsquo;zh_rules&rsquo;</p></blockquote>
 
-<p><code>apt-get install motion</code></p>
-
-<h2>config</h2>
-
-<pre><code>#/etc/motion/motion.conf
-#306    ffmpeg_video_codec mpeg4  
-#418    target_dir /motion
-#503    webcontrol_localhost on
-#628    on_movie_end ruby /motion/motion.rb %f
-</code></pre>
-
-
-
-
-<pre><code>#/etc/default/motion 
-# set to 'yes' to enable the motion daemon
-start_motion_daemon=<font color='red'>yes</font>
-</code></pre>
-
-
-
+<p><code>apt-get install libpulse-dev</code><br/>
+<code>wget http://sourceforge.net/projects/e-guidedog/files/eSpeak-Chinese/1.47.11/espeak-1.47.11-source.tar.xz</code><br/>
+<code>tar xJvf espeak-1.47.11-source.tar.xz</code><br/>
+<code>espeak --compile=zh</code><br/>
+<code>espeak -vzh '你好'</code></p>
 </div>
   
   
@@ -138,9 +120,9 @@ start_motion_daemon=<font color='red'>yes</font>
   <ul id="categories">
     <li class='category'><a href='/blog/categories/app/'>app (7)</a></li>
 <li class='category'><a href='/blog/categories/bat/'>bat (8)</a></li>
-<li class='category'><a href='/blog/categories/linux/'>linux (5)</a></li>
-<li class='category'><a href='/blog/categories/ror/'>ror (6)</a></li>
-<li class='category'><a href='/blog/categories/ruby/'>ruby (9)</a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (7)</a></li>
+<li class='category'><a href='/blog/categories/ror/'>ror (7)</a></li>
+<li class='category'><a href='/blog/categories/ruby/'>ruby (12)</a></li>
 
   </ul>
 </section>
@@ -149,23 +131,23 @@ start_motion_daemon=<font color='red'>yes</font>
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2016/06/18/portforward/">Portforward</a>
+        <a href="/blog/2016/06/18/qrcode/">QR-code</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2016/06/18/route/">Route</a>
+        <a href="/blog/2016/06/18/custom-url/">自定網址</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2016/06/17/download/">Download</a>
+        <a href="/blog/2016/06/18/counter-cache/">Counter-cache</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2016/06/17/csv/">Csv</a>
+        <a href="/blog/2016/06/18/disk-space-sort/">排列目錄空間大小</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2016/06/17/zero-fill/">補零</a>
+        <a href="/blog/2016/06/18/disk-speed-test/">硬碟速度測試</a>
       </li>
     
   </ul>

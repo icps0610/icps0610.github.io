@@ -9,10 +9,11 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="1
-2
-#index.erb
-&lt;%= link_to &quot;Re&quot;, new_msg_path( :user =&gt; msg.name ) %&gt; http://192.168.1.220/msgs/new?user=icps user = params[:user &hellip;">
+  <meta name="description" content="@echo off
+del ip.tmp 2> nul
+del tmp.txt 2>nul
+del log.txt 2>nul
+SETLOCAL ENABLEDELAYEDEXPANSION for /l %%i in (1,1,254) do ( echo ^@echo off > % &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -75,7 +76,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2016/06/13/link-to/">Link_to</a></h1>
+      <h1 class="entry-title"><a href="/blog/2016/06/15/ping-lan/">Ping_lan</a></h1>
     
     
       <p class="meta">
@@ -84,29 +85,44 @@
 
 
 
-<time class='entry-date' datetime='2016-06-13T20:34:30+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>8:34 pm</span></time>
+<time class='entry-date' datetime='2016-06-15T13:09:26+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>1:09 pm</span></time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#index.erb</span>
-</span><span class='line'><span class="o">&lt;</span><span class="sx">%= link_to &quot;Re&quot;, new_msg_path( :user =</span><span class="o">&gt;</span> <span class="n">msg</span><span class="o">.</span><span class="n">name</span> <span class="p">)</span> <span class="o">%&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
+  <div class="entry-content"><pre><code>@echo off
+del ip.tmp 2> nul
+del tmp.txt 2>nul
+del log.txt 2>nul
+SETLOCAL ENABLEDELAYEDEXPANSION
 
-
-<h4><a href="http://192.168.1.220/msgs/new?user=icps">http://192.168.1.220/msgs/new?user=icps</a></h4>
-
-<h4>user = params[:user]</h4>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#new.erb</span>
-</span><span class='line'><span class="o">&lt;</span><span class="sx">%= f.input :name, input_html: { :value =</span><span class="o">&gt;</span> <span class="vi">@user</span> <span class="p">}</span> <span class="o">%&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
+for /l %%i in (1,1,254) do (
+   echo ^@echo off > %SystemRoot%\TEMP\%%i.bat
+   echo ping -n 1 -w 1000 192.168.1.%%i ^>nul >> %SystemRoot%\TEMP\%%i.bat
+   echo if %%errorlevel%% == 0 echo 192.168.1.%%i ^>^> ip.tmp >> %SystemRoot%\TEMP\%%i.bat
+   echo exit >> %SystemRoot%\TEMP\%%i.bat
+   start %SystemRoot%\TEMP\%%i.bat
+)
+echo 正在尋找有回應的主機
+pause
+echo 已找到有回應的主機
+type ip.tmp
+echo 分析主機名稱中..
+for /l %%i in (1,1,254) do del %SystemRoot%\TEMP\%%i.bat
+for /f %%i in (ip.tmp) do (
+   ping -a -n 1 -w 100 %%i > tmp.txt
+   set line=0
+   for /f "tokens=2 delims= " %%j in (tmp.txt) do (
+      set /a line=!line!+1
+      if !line! == 1 echo %%i %%j & echo %%i %%j >>log.txt
+   )
+)
+del ip.tmp 2> nul
+del tmp.txt 2>nul
+pause
+</code></pre>
 
 </div>
   
@@ -132,9 +148,9 @@
   <ul id="categories">
     <li class='category'><a href='/blog/categories/app/'>app (7)</a></li>
 <li class='category'><a href='/blog/categories/bat/'>bat (8)</a></li>
-<li class='category'><a href='/blog/categories/linux/'>linux (5)</a></li>
-<li class='category'><a href='/blog/categories/ror/'>ror (6)</a></li>
-<li class='category'><a href='/blog/categories/ruby/'>ruby (9)</a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (7)</a></li>
+<li class='category'><a href='/blog/categories/ror/'>ror (7)</a></li>
+<li class='category'><a href='/blog/categories/ruby/'>ruby (12)</a></li>
 
   </ul>
 </section>
@@ -143,23 +159,23 @@
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2016/06/18/portforward/">Portforward</a>
+        <a href="/blog/2016/06/18/qrcode/">QR-code</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2016/06/18/route/">Route</a>
+        <a href="/blog/2016/06/18/custom-url/">自定網址</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2016/06/17/download/">Download</a>
+        <a href="/blog/2016/06/18/counter-cache/">Counter-cache</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2016/06/17/csv/">Csv</a>
+        <a href="/blog/2016/06/18/disk-space-sort/">排列目錄空間大小</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2016/06/17/zero-fill/">補零</a>
+        <a href="/blog/2016/06/18/disk-speed-test/">硬碟速度測試</a>
       </li>
     
   </ul>

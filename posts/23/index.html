@@ -9,8 +9,9 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="upower -i $(upower -e | grep 'BAT')| grep percentage:| awk '{print$2}'
-">
+  <meta name="description" content="mysqldump -u root -p databasename &gt; db.sql
+mysql -u root -p databasename &gt; db.sql
+echo "select * from column" | mysql -u root -p -A &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -73,7 +74,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2016/06/15/battery-check/">Battery_check</a></h1>
+      <h1 class="entry-title"><a href="/blog/2016/06/17/mysql-backup/">MySQL_backup</a></h1>
     
     
       <p class="meta">
@@ -82,14 +83,16 @@
 
 
 
-<time class='entry-date' datetime='2016-06-15T22:04:43+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>10:04 pm</span></time>
+<time class='entry-date' datetime='2016-06-17T00:08:48+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>12:08 am</span></time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p><code>upower -i $(upower -e | grep 'BAT')| grep percentage:| awk '{print$2}'</code></p>
+  <div class="entry-content"><p><code>mysqldump -u root -p databasename &gt; db.sql</code>
+<code>mysql -u root -p databasename &gt; db.sql</code>
+<code>echo "select * from column" | mysql -u root -p -A databasename &gt; result.txt</code></p>
 </div>
   
   
@@ -114,9 +117,9 @@
   <ul id="categories">
     <li class='category'><a href='/blog/categories/app/'>app (7)</a></li>
 <li class='category'><a href='/blog/categories/bat/'>bat (8)</a></li>
-<li class='category'><a href='/blog/categories/linux/'>linux (5)</a></li>
-<li class='category'><a href='/blog/categories/ror/'>ror (6)</a></li>
-<li class='category'><a href='/blog/categories/ruby/'>ruby (9)</a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (7)</a></li>
+<li class='category'><a href='/blog/categories/ror/'>ror (7)</a></li>
+<li class='category'><a href='/blog/categories/ruby/'>ruby (12)</a></li>
 
   </ul>
 </section>
@@ -125,23 +128,23 @@
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2016/06/18/portforward/">Portforward</a>
+        <a href="/blog/2016/06/18/qrcode/">QR-code</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2016/06/18/route/">Route</a>
+        <a href="/blog/2016/06/18/custom-url/">自定網址</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2016/06/17/download/">Download</a>
+        <a href="/blog/2016/06/18/counter-cache/">Counter-cache</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2016/06/17/csv/">Csv</a>
+        <a href="/blog/2016/06/18/disk-space-sort/">排列目錄空間大小</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2016/06/17/zero-fill/">補零</a>
+        <a href="/blog/2016/06/18/disk-speed-test/">硬碟速度測試</a>
       </li>
     
   </ul>
