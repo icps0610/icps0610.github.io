@@ -9,8 +9,10 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="upower -i $(upower -e | grep 'BAT')| grep percentage:| awk '{print$2}'
-">
+  <meta name="description" content="install apt-get install motion config #/etc/motion/motion.conf
+#306 ffmpeg_video_codec mpeg4 #418 target_dir /motion
+#503 webcontrol_localhost on
+# &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -73,7 +75,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2016/06/15/battery-check/">Battery_check</a></h1>
+      <h1 class="entry-title"><a href="/blog/2016/06/16/motion/">Motion</a></h1>
     
     
       <p class="meta">
@@ -82,14 +84,36 @@
 
 
 
-<time class='entry-date' datetime='2016-06-15T22:04:43+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>10:04 pm</span></time>
+<time class='entry-date' datetime='2016-06-16T23:49:41+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>11:49 pm</span></time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p><code>upower -i $(upower -e | grep 'BAT')| grep percentage:| awk '{print$2}'</code></p>
+  <div class="entry-content"><h2>install</h2>
+
+<p><code>apt-get install motion</code></p>
+
+<h2>config</h2>
+
+<pre><code>#/etc/motion/motion.conf
+#306    ffmpeg_video_codec mpeg4  
+#418    target_dir /motion
+#503    webcontrol_localhost on
+#628    on_movie_end ruby /motion/motion.rb %f
+</code></pre>
+
+
+
+
+<pre><code>#/etc/default/motion 
+# set to 'yes' to enable the motion daemon
+start_motion_daemon=<font color='red'>yes</font>
+</code></pre>
+
+
+
 </div>
   
   
@@ -112,11 +136,11 @@
     <section>
   <h1>Categories</h1>
   <ul id="categories">
-    <li class='category'><a href='/blog/categories/app/'>app (3)</a></li>
-<li class='category'><a href='/blog/categories/bat/'>bat (6)</a></li>
+    <li class='category'><a href='/blog/categories/app/'>app (7)</a></li>
+<li class='category'><a href='/blog/categories/bat/'>bat (7)</a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (5)</a></li>
 <li class='category'><a href='/blog/categories/ror/'>ror (6)</a></li>
-<li class='category'><a href='/blog/categories/ruby/'>ruby (4)</a></li>
+<li class='category'><a href='/blog/categories/ruby/'>ruby (5)</a></li>
 
   </ul>
 </section>
@@ -125,23 +149,23 @@
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2016/06/17/unlockpattern/">Unlockpattern</a>
+        <a href="/blog/2016/06/17/base64/">Base64</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2016/06/17/carrierwave/">Carrierwave</a>
+        <a href="/blog/2016/06/17/youtube-dl/">Youtube-dl</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2016/06/17/taskkill/">Taskkill</a>
+        <a href="/blog/2016/06/17/firefox-ram-cache/">Firefox_ram_cache</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2016/06/17/mysql-backup/">MySQL_backup</a>
+        <a href="/blog/2016/06/17/espeak/">Espeak</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2016/06/16/motion/">Motion</a>
+        <a href="/blog/2016/06/17/command-line-mp3/">Command_line_mp3</a>
       </li>
     
   </ul>

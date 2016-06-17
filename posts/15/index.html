@@ -124,7 +124,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2016/06/14/ssh-autologin/">Ssh自動登入</a></h1>
+      <h1 class="entry-title"><a href="/blog/2016/06/15/live-cd/">Live_cd</a></h1>
     
     
       <p class="meta">
@@ -133,7 +133,7 @@
 
 
 
-<time class='entry-date' datetime='2016-06-14T12:50:31+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>12:50 pm</span></time>
+<time class='entry-date' datetime='2016-06-15T22:09:51+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>10:09 pm</span></time>
         
       </p>
     
@@ -252,118 +252,122 @@
 <span class='line-number'>110</span>
 <span class='line-number'>111</span>
 <span class='line-number'>112</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># encoding: utf-8</span>
-</span><span class='line'><span class="k">if</span> <span class="sb">`gem list | grep net-ssh`</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span>
-</span><span class='line'>  <span class="nb">puts</span> <span class="s2">&quot;缺少套件net-ssh net-scp 準備安裝..&quot;</span>
-</span><span class='line'>  <span class="sb">`gem install net-ssh net-scp --no-ri --no-rdoc`</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'><span class="nb">require</span> <span class="s2">&quot;net/ssh&quot;</span>
-</span><span class='line'><span class="nb">require</span> <span class="s2">&quot;net/scp&quot;</span>
-</span><span class='line'><span class="vg">$localip</span><span class="o">=</span><span class="sb">`ifconfig | grep Bcast | cut -d :  -f 2 | cut -d &quot; &quot; -f 1`</span><span class="o">.</span><span class="n">chomp</span>
-</span><span class='line'><span class="vg">$localuser</span><span class="o">=</span><span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;USER&#39;</span><span class="o">]</span>
-</span><span class='line'><span class="vg">$ip</span><span class="o">=[]</span>
-</span><span class='line'><span class="vg">$ip</span> <span class="o">&lt;&lt;</span> <span class="o">[</span><span class="s2">&quot;192.168.1.100&quot;</span><span class="p">,</span><span class="s2">&quot;test&quot;</span><span class="p">,</span><span class="s2">&quot;test&quot;</span><span class="o">]</span>
+<span class='line-number'>113</span>
+<span class='line-number'>114</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#!/usr/bin/env ruby</span>
+</span><span class='line'><span class="c1"># encoding: utf-8</span>
+</span><span class='line'><span class="sb">`apt-get install squashfs-tools`</span> <span class="k">if</span> <span class="sb">`dpkg-query -W | grep squashfs-tools`</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span>
 </span><span class='line'>
-</span><span class='line'><span class="k">class</span> <span class="nc">SSH_n_1</span>
+</span><span class='line'><span class="k">class</span> <span class="nc">Live</span>
 </span><span class='line'>
 </span><span class='line'>  <span class="k">def</span> <span class="nf">initialize</span>
-</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;本地端為SSH主機,</span><span class="si">#{</span><span class="vg">$localuser</span><span class="si">}</span><span class="s2">@</span><span class="si">#{</span><span class="vg">$localip</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span class='line'>    <span class="nb">puts</span>
-</span><span class='line'>    <span class="vg">$ip</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">host</span><span class="p">,</span><span class="n">user</span><span class="p">,</span><span class="n">passwd</span><span class="o">|</span>
-</span><span class='line'>      <span class="k">if</span> <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;nc -nz -w 1 </span><span class="si">#{</span><span class="n">host</span><span class="si">}</span><span class="s2"> 22&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="kp">true</span>
-</span><span class='line'>        <span class="nb">puts</span> <span class="s2">&quot;&gt;&gt; </span><span class="si">#{</span><span class="n">host</span><span class="si">}</span><span class="s2">連線正常&quot;</span>
-</span><span class='line'>        <span class="nb">puts</span> <span class="s2">&quot;   </span><span class="si">#{</span><span class="n">host</span><span class="si">}</span><span class="s2">產生ssh key&quot;</span>
-</span><span class='line'>        <span class="k">if</span> <span class="n">user</span> <span class="o">==</span> <span class="s2">&quot;root&quot;</span>
-</span><span class='line'>          <span class="vi">@home</span><span class="o">=</span><span class="s2">&quot;/</span><span class="si">#{</span><span class="n">user</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span class='line'>        <span class="k">else</span>
-</span><span class='line'>          <span class="vi">@home</span><span class="o">=</span><span class="s2">&quot;/home/</span><span class="si">#{</span><span class="n">user</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span class='line'>        <span class="k">end</span>
-</span><span class='line'>        <span class="n">script</span><span class="p">(</span><span class="n">host</span><span class="p">,</span><span class="n">user</span><span class="p">,</span><span class="n">passwd</span><span class="p">)</span>
-</span><span class='line'>        <span class="nb">puts</span> <span class="s2">&quot;   </span><span class="si">#{</span><span class="n">host</span><span class="si">}</span><span class="s2">下載ssh key&quot;</span>
-</span><span class='line'>        <span class="n">download_key</span><span class="p">(</span><span class="n">host</span><span class="p">,</span><span class="n">user</span><span class="p">,</span><span class="n">passwd</span><span class="p">)</span>
-</span><span class='line'>        <span class="sb">`mkdir ~/.ssh 2&gt; /dev/null`</span>
-</span><span class='line'>        <span class="sb">`chmod go-w ~`</span>
-</span><span class='line'>        <span class="sb">`chmod 700 ~/.ssh`</span>
-</span><span class='line'>        <span class="sb">`chmod 600 ~/.ssh/authorized_keys`</span>
-</span><span class='line'>        <span class="sb">`sed -i /</span><span class="si">#{</span><span class="n">user</span><span class="si">}</span><span class="sb">@</span><span class="si">#{</span><span class="vi">@hostname</span><span class="si">}</span><span class="sb">/d ~/.ssh/authorized_keys`</span>
-</span><span class='line'>        <span class="sb">`cat </span><span class="si">#{</span><span class="vg">$localip</span><span class="si">}</span><span class="sb">.pub &gt;&gt; ~/.ssh/authorized_keys`</span>
+</span><span class='line'>    <span class="n">iso_list</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;1.解壓縮</span><span class="si">#{</span><span class="vi">@iso_name</span><span class="si">}</span><span class="s2">.</span><span class="si">#{</span><span class="vi">@iso_name_ext</span><span class="si">}</span><span class="s2">的filesystem.squashfs 到 </span><span class="si">#{</span><span class="vi">@filesystem</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;2.chroot </span><span class="si">#{</span><span class="vi">@filesystem</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;3.將</span><span class="si">#{</span><span class="vi">@filesystem</span><span class="si">}</span><span class="s2">壓縮檔案製成光碟/tmp/</span><span class="si">#{</span><span class="vi">@iso_name</span><span class="si">}</span><span class="s2">.</span><span class="si">#{</span><span class="vi">@iso_name_ext</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;4.將.\/</span><span class="si">#{</span><span class="vi">@iso_name</span><span class="si">}</span><span class="s2"> 製作光碟&quot;</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;-------------&quot;</span>
+</span><span class='line'>    <span class="n">choice</span><span class="o">=</span><span class="nb">gets</span><span class="o">.</span><span class="n">chomp</span>
+</span><span class='line'>    <span class="k">if</span> <span class="n">choice</span> <span class="o">==</span> <span class="s2">&quot;1&quot;</span>
+</span><span class='line'>      <span class="n">extract</span>
+</span><span class='line'>    <span class="k">elsif</span> <span class="n">choice</span> <span class="o">==</span><span class="s2">&quot;2&quot;</span>
+</span><span class='line'>      <span class="n">mount_system</span>
+</span><span class='line'>    <span class="k">elsif</span> <span class="n">choice</span> <span class="o">==</span><span class="s2">&quot;3&quot;</span>
+</span><span class='line'>      <span class="n">zip_file</span>
+</span><span class='line'>    <span class="k">elsif</span> <span class="n">choice</span> <span class="o">==</span><span class="s2">&quot;4&quot;</span>
+</span><span class='line'>      <span class="n">iso</span>
+</span><span class='line'>    <span class="k">else</span>
+</span><span class='line'>      <span class="kp">initialize</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
 </span><span class='line'>
-</span><span class='line'>        <span class="nb">puts</span> <span class="s2">&quot;   USER: </span><span class="si">#{</span><span class="n">user</span><span class="si">}</span><span class="s2"> 已完成&quot;</span>
-</span><span class='line'>      <span class="k">else</span>
-</span><span class='line'>        <span class="nb">puts</span> <span class="s2">&quot;&gt;&gt; </span><span class="si">#{</span><span class="n">host</span><span class="si">}</span><span class="s2"> 沒有回應&quot;</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">iso_list</span>
+</span><span class='line'>    <span class="vi">@iso_name_ext</span><span class="o">=</span><span class="s2">&quot;iso&quot;</span>
+</span><span class='line'>    <span class="n">list</span> <span class="o">=</span> <span class="sb">`ls | grep </span><span class="si">#{</span><span class="vi">@iso_name_ext</span><span class="si">}</span><span class="sb">`</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">if</span> <span class="n">list</span><span class="o">.</span><span class="n">count</span> <span class="o">&gt;</span> <span class="mi">1</span>
+</span><span class='line'>      <span class="nb">puts</span> <span class="s2">&quot;請選擇iso&quot;</span>
+</span><span class='line'>      <span class="n">list</span><span class="o">.</span><span class="n">each_index</span> <span class="k">do</span> <span class="o">|</span><span class="n">i</span><span class="o">|</span>
+</span><span class='line'>        <span class="nb">puts</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">. </span><span class="si">#{</span><span class="n">list</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="si">}</span><span class="s2">&quot;</span>
 </span><span class='line'>      <span class="k">end</span>
-</span><span class='line'>      <span class="nb">puts</span>
-</span><span class='line'>    <span class="k">end</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">download_key</span><span class="p">(</span><span class="n">host</span><span class="p">,</span><span class="n">user</span><span class="p">,</span><span class="n">passwd</span><span class="p">)</span>
-</span><span class='line'>    <span class="no">Net</span><span class="o">::</span><span class="no">SCP</span><span class="o">.</span><span class="n">download!</span><span class="p">(</span><span class="n">host</span><span class="p">,</span><span class="n">user</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="vi">@home</span><span class="si">}</span><span class="s2">/.ssh/</span><span class="si">#{</span><span class="vg">$localip</span><span class="si">}</span><span class="s2">.pub&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="vg">$localip</span><span class="si">}</span><span class="s2">.pub&quot;</span><span class="p">,</span>  <span class="ss">:ssh</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">:password</span> <span class="o">=&gt;</span> <span class="n">passwd</span> <span class="p">})</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">script</span><span class="p">(</span><span class="n">host</span><span class="p">,</span><span class="n">user</span><span class="p">,</span><span class="n">passwd</span><span class="p">)</span>
-</span><span class='line'>    <span class="no">Net</span><span class="o">::</span><span class="no">SSH</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">host</span><span class="p">,</span><span class="n">user</span><span class="p">,</span> <span class="ss">:password</span> <span class="o">=&gt;</span> <span class="n">passwd</span> <span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">ssh</span><span class="o">|</span>
-</span><span class='line'>      <span class="vi">@hostname</span><span class="o">=</span><span class="n">ssh</span><span class="o">.</span><span class="n">exec!</span><span class="p">(</span><span class="s2">&quot;hostname&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">chomp</span>
-</span><span class='line'>      <span class="n">ssh</span><span class="o">.</span><span class="n">exec!</span><span class="p">(</span><span class="s2">&quot;mkdir ~/.ssh&quot;</span><span class="p">)</span>
-</span><span class='line'>      <span class="n">ssh</span><span class="o">.</span><span class="n">exec!</span><span class="p">(</span><span class="s2">&quot;chmod 700 ~/.ssh&quot;</span><span class="p">)</span>
-</span><span class='line'>      <span class="n">ssh</span><span class="o">.</span><span class="n">exec!</span><span class="p">(</span><span class="s2">&quot;rm </span><span class="si">#{</span><span class="vi">@home</span><span class="si">}</span><span class="s2">/.ssh/</span><span class="si">#{</span><span class="vg">$localip</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span class='line'>      <span class="n">ssh</span><span class="o">.</span><span class="n">exec!</span><span class="p">(</span><span class="s2">&quot;rm </span><span class="si">#{</span><span class="vi">@home</span><span class="si">}</span><span class="s2">/.ssh/</span><span class="si">#{</span><span class="vg">$localip</span><span class="si">}</span><span class="s2">.pub&quot;</span><span class="p">)</span>
-</span><span class='line'>      <span class="n">ssh</span><span class="o">.</span><span class="n">exec!</span><span class="p">(</span><span class="s2">&quot;ssh-keygen -t rsa -f </span><span class="si">#{</span><span class="vi">@home</span><span class="si">}</span><span class="s2">/.ssh/</span><span class="si">#{</span><span class="vg">$localip</span><span class="si">}</span><span class="s2"> -N &#39;&#39; -q&quot;</span><span class="p">)</span>
-</span><span class='line'>      <span class="n">ssh</span><span class="o">.</span><span class="n">exec!</span><span class="p">(</span><span class="s2">&quot;sed -i &#39;/HOST </span><span class="si">#{</span><span class="vg">$localip</span><span class="si">}</span><span class="s2">/,+1d&#39; </span><span class="si">#{</span><span class="vi">@home</span><span class="si">}</span><span class="s2">/.ssh/config&quot;</span><span class="p">)</span>
-</span><span class='line'>      <span class="n">ssh</span><span class="o">.</span><span class="n">exec!</span><span class="p">(</span><span class="s2">&quot;echo HOST </span><span class="si">#{</span><span class="vg">$localip</span><span class="si">}</span><span class="s2"> &gt;&gt; </span><span class="si">#{</span><span class="vi">@home</span><span class="si">}</span><span class="s2">/.ssh/config&quot;</span><span class="p">)</span>
-</span><span class='line'>      <span class="n">ssh</span><span class="o">.</span><span class="n">exec!</span><span class="p">(</span><span class="s2">&quot;echo IdentityFile ~/.ssh/</span><span class="si">#{</span><span class="vg">$localip</span><span class="si">}</span><span class="s2"> &gt;&gt; </span><span class="si">#{</span><span class="vi">@home</span><span class="si">}</span><span class="s2">/.ssh/config&quot;</span><span class="p">)</span>
-</span><span class='line'>    <span class="k">end</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">class</span> <span class="nc">SSH_1_n</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">initialize</span>
-</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;IP列表為SSH主機, 使用者: </span><span class="si">#{</span><span class="vg">$localuser</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span class='line'>    <span class="vi">@hostname</span><span class="o">=</span><span class="sb">`hostname`</span><span class="o">.</span><span class="n">chomp</span>
-</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;產生ssh key...&quot;</span>
-</span><span class='line'>    <span class="n">ssh_keygen</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="vg">$ip</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">host</span><span class="p">,</span><span class="n">user</span><span class="p">,</span><span class="n">passwd</span><span class="o">|</span>
-</span><span class='line'>      <span class="k">if</span> <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;nc -nz -w 1 </span><span class="si">#{</span><span class="n">host</span><span class="si">}</span><span class="s2"> 22&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="kp">true</span>
-</span><span class='line'>        <span class="nb">puts</span> <span class="s2">&quot;&gt;&gt; </span><span class="si">#{</span><span class="n">host</span><span class="si">}</span><span class="s2">連線正常&quot;</span>
-</span><span class='line'>        <span class="nb">puts</span> <span class="s2">&quot;   上傳key到 </span><span class="si">#{</span><span class="n">host</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span class='line'>        <span class="n">upload_key</span><span class="p">(</span><span class="n">host</span><span class="p">,</span><span class="n">user</span><span class="p">,</span><span class="n">passwd</span><span class="p">)</span>
-</span><span class='line'>        <span class="nb">puts</span> <span class="s2">&quot;   </span><span class="si">#{</span><span class="n">host</span><span class="si">}</span><span class="s2"> 執行指令&quot;</span>
-</span><span class='line'>        <span class="n">script</span><span class="p">(</span><span class="n">host</span><span class="p">,</span><span class="n">user</span><span class="p">,</span><span class="n">passwd</span><span class="p">)</span>
-</span><span class='line'>        <span class="sb">`sed -i &#39;/HOST </span><span class="si">#{</span><span class="n">host</span><span class="si">}</span><span class="sb">/,+1d&#39; ~/.ssh/config 2&gt;/dev/null`</span>
-</span><span class='line'>        <span class="sb">`echo HOST </span><span class="si">#{</span><span class="n">host</span><span class="si">}</span><span class="sb"> &gt;&gt; </span><span class="si">#{</span><span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;HOME&#39;</span><span class="o">]</span><span class="si">}</span><span class="sb">/.ssh/config`</span>
-</span><span class='line'>        <span class="sb">`echo IdentityFile </span><span class="si">#{</span><span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;HOME&#39;</span><span class="o">]</span><span class="si">}</span><span class="sb">/.ssh/</span><span class="si">#{</span><span class="vg">$localip</span><span class="si">}</span><span class="sb"> &gt;&gt; </span><span class="si">#{</span><span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;HOME&#39;</span><span class="o">]</span><span class="si">}</span><span class="sb">/.ssh/config`</span>
-</span><span class='line'>        <span class="nb">puts</span> <span class="s2">&quot;   &gt;&gt; </span><span class="si">#{</span><span class="n">user</span><span class="si">}</span><span class="s2">@</span><span class="si">#{</span><span class="n">host</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>      <span class="nb">puts</span> <span class="s2">&quot;--------------&quot;</span>
+</span><span class='line'>      <span class="n">choice</span><span class="o">=</span><span class="nb">gets</span><span class="o">.</span><span class="n">chomp</span>
+</span><span class='line'>      <span class="k">if</span> <span class="ow">not</span> <span class="n">choice</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span>
+</span><span class='line'>        <span class="vi">@iso_name</span><span class="o">=</span><span class="no">File</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">list</span><span class="o">[</span><span class="n">choice</span><span class="o">.</span><span class="n">to_i</span><span class="o">-</span><span class="mi">1</span><span class="o">]</span><span class="p">,</span><span class="s2">&quot;.&quot;</span><span class="o">+</span><span class="vi">@iso_name_ext</span><span class="p">)</span>
 </span><span class='line'>      <span class="k">else</span>
-</span><span class='line'>        <span class="nb">puts</span> <span class="s2">&quot;&gt;&gt; </span><span class="si">#{</span><span class="n">host</span><span class="si">}</span><span class="s2"> 沒有回應&quot;</span>
+</span><span class='line'>        <span class="n">iso_list</span>
 </span><span class='line'>      <span class="k">end</span>
-</span><span class='line'>      <span class="nb">puts</span>
+</span><span class='line'>    <span class="k">else</span>
+</span><span class='line'>      <span class="vi">@iso_name</span><span class="o">=</span><span class="no">File</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">list</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">,</span><span class="s2">&quot;.&quot;</span><span class="o">+</span><span class="vi">@iso_name_ext</span><span class="p">)</span>
 </span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>    <span class="vi">@filesystem</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">#{</span><span class="vi">@iso_name</span><span class="si">}</span><span class="s2">_filesystem&quot;</span>
 </span><span class='line'>  <span class="k">end</span>
 </span><span class='line'>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">upload_key</span><span class="p">(</span><span class="n">host</span><span class="p">,</span><span class="n">user</span><span class="p">,</span><span class="n">passwd</span><span class="p">)</span>
-</span><span class='line'>    <span class="no">Net</span><span class="o">::</span><span class="no">SCP</span><span class="o">.</span><span class="n">upload!</span><span class="p">(</span><span class="n">host</span><span class="p">,</span><span class="n">user</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;HOME&#39;</span><span class="o">]</span><span class="si">}</span><span class="s2">/.ssh/</span><span class="si">#{</span><span class="vg">$localip</span><span class="si">}</span><span class="s2">.pub&quot;</span><span class="p">,</span> <span class="s2">&quot;id_rsa.pub&quot;</span><span class="p">,</span>  <span class="ss">:ssh</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">:password</span> <span class="o">=&gt;</span> <span class="n">passwd</span> <span class="p">})</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">script</span><span class="p">(</span><span class="n">host</span><span class="p">,</span><span class="n">user</span><span class="p">,</span><span class="n">passwd</span><span class="p">)</span>
-</span><span class='line'>    <span class="no">Net</span><span class="o">::</span><span class="no">SSH</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">host</span><span class="p">,</span><span class="n">user</span><span class="p">,</span> <span class="ss">:password</span> <span class="o">=&gt;</span> <span class="n">passwd</span> <span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">ssh</span><span class="o">|</span>
-</span><span class='line'>      <span class="n">ssh</span><span class="o">.</span><span class="n">exec!</span><span class="p">(</span><span class="s2">&quot;sed -i /</span><span class="si">#{</span><span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;USER&#39;</span><span class="o">]</span><span class="si">}</span><span class="s2">@</span><span class="si">#{</span><span class="vi">@hostname</span><span class="si">}</span><span class="s2">/d ~/.ssh/authorized_keys&quot;</span><span class="p">)</span>
-</span><span class='line'>      <span class="n">ssh</span><span class="o">.</span><span class="n">exec!</span><span class="p">(</span><span class="s2">&quot;mkdir ~/.ssh&quot;</span><span class="p">)</span>
-</span><span class='line'>      <span class="n">ssh</span><span class="o">.</span><span class="n">exec!</span><span class="p">(</span><span class="s2">&quot;cat id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys&quot;</span><span class="p">)</span>
-</span><span class='line'>      <span class="n">ssh</span><span class="o">.</span><span class="n">exec!</span><span class="p">(</span><span class="s2">&quot;chmod go-w ~&quot;</span><span class="p">)</span>
-</span><span class='line'>      <span class="n">ssh</span><span class="o">.</span><span class="n">exec!</span><span class="p">(</span><span class="s2">&quot;chmod 700 ~/.ssh&quot;</span><span class="p">)</span>
-</span><span class='line'>      <span class="n">ssh</span><span class="o">.</span><span class="n">exec!</span><span class="p">(</span><span class="s2">&quot;chmod 600 ~/.ssh/authorized_keys&quot;</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">iso_extract</span>
+</span><span class='line'>    <span class="k">if</span> <span class="no">File</span><span class="o">.</span><span class="n">exist?</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">#{</span><span class="vi">@iso_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span class='line'>      <span class="nb">printf</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">是否移除舊 </span><span class="si">#{</span><span class="vi">@iso_name</span><span class="si">}</span><span class="s2">(y/n) : &quot;</span>
+</span><span class='line'>      <span class="sb">`umout </span><span class="si">#{</span><span class="vi">@iso_name</span><span class="si">}</span><span class="sb"> &amp;&amp; rm -rf </span><span class="si">#{</span><span class="vi">@iso_name</span><span class="si">}</span><span class="sb">`</span> <span class="k">if</span> <span class="nb">gets</span><span class="o">.</span><span class="n">downcase</span><span class="o">.</span><span class="n">chomp</span> <span class="o">==</span> <span class="s2">&quot;y&quot;</span>
 </span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;將光碟</span><span class="si">#{</span><span class="vi">@iso_name</span><span class="si">}</span><span class="s2">.</span><span class="si">#{</span><span class="vi">@iso_name_ext</span><span class="si">}</span><span class="s2">掛載到.\/</span><span class="si">#{</span><span class="vi">@iso_name</span><span class="si">}</span><span class="s2">..&quot;</span>
+</span><span class='line'>    <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;mkdir </span><span class="si">#{</span><span class="vi">@iso_name</span><span class="si">}</span><span class="s2"> 2&gt; /dev/null&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;mount -o loop </span><span class="si">#{</span><span class="vi">@iso_name</span><span class="si">}</span><span class="s2">.</span><span class="si">#{</span><span class="vi">@iso_name_ext</span><span class="si">}</span><span class="s2"> </span><span class="si">#{</span><span class="vi">@iso_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span class='line'>
 </span><span class='line'>  <span class="k">end</span>
 </span><span class='line'>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">ssh_keygen</span>
-</span><span class='line'>    <span class="k">if</span> <span class="ow">not</span> <span class="no">File</span><span class="o">.</span><span class="n">exist?</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">#{</span><span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;HOME&#39;</span><span class="o">]</span><span class="si">}</span><span class="s2">/.ssh/</span><span class="si">#{</span><span class="vg">$localip</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span class='line'>      <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;ssh-keygen -t rsa -f </span><span class="si">#{</span><span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;HOME&#39;</span><span class="o">]</span><span class="si">}</span><span class="s2">/.ssh/</span><span class="si">#{</span><span class="vg">$localip</span><span class="si">}</span><span class="s2"> -N &#39;&#39; -q&quot;</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">extract</span>
+</span><span class='line'>    <span class="n">iso_extract</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;解壓縮 filesystem.squashfs 到 </span><span class="si">#{</span><span class="vi">@filesystem</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>    <span class="k">if</span> <span class="no">File</span><span class="o">.</span><span class="n">exist?</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">#{</span><span class="vi">@filesystem</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span class='line'>      <span class="nb">printf</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">是否移除舊  </span><span class="si">#{</span><span class="vi">@filesystem</span><span class="si">}</span><span class="s2">(y/n) : &quot;</span>
+</span><span class='line'>      <span class="sb">`rm -rf </span><span class="si">#{</span><span class="vi">@filesystem</span><span class="si">}</span><span class="sb">`</span> <span class="k">if</span> <span class="nb">gets</span><span class="o">.</span><span class="n">downcase</span><span class="o">.</span><span class="n">chomp</span> <span class="o">==</span> <span class="s2">&quot;y&quot;</span>
 </span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>    <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;mount -o loop -t squashfs </span><span class="si">#{</span><span class="vi">@iso_name</span><span class="si">}</span><span class="s2">/casper/filesystem.squashfs /mnt/ &quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;rsync -aAXv /mnt/* </span><span class="si">#{</span><span class="vi">@filesystem</span><span class="si">}</span><span class="s2"> | pv -ls `find /mnt|wc -l` &gt;/dev/null&quot;</span><span class="p">)</span>
 </span><span class='line'>  <span class="k">end</span>
 </span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">mount_system</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;開始掛載...&quot;</span>
+</span><span class='line'>    <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;umount /mnt/  2&gt;/dev/null&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;mount -o bind /dev/ </span><span class="si">#{</span><span class="vi">@filesystem</span><span class="si">}</span><span class="s2">/dev/ 2&gt;/dev/null&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;mount --bind /dev/pts </span><span class="si">#{</span><span class="vi">@filesystem</span><span class="si">}</span><span class="s2">/dev/pts 2&gt;/dev/null&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;mount -t proc procfs </span><span class="si">#{</span><span class="vi">@filesystem</span><span class="si">}</span><span class="s2">/proc/  2&gt;/dev/null&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;cp /etc/resolv.conf </span><span class="si">#{</span><span class="vi">@filesystem</span><span class="si">}</span><span class="s2">/etc/&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;chroot </span><span class="si">#{</span><span class="vi">@filesystem</span><span class="si">}</span><span class="s2">/ /bin/bash&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;umount </span><span class="si">#{</span><span class="vi">@filesystem</span><span class="si">}</span><span class="s2">/dev/pts&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;umount </span><span class="si">#{</span><span class="vi">@filesystem</span><span class="si">}</span><span class="s2">/proc/&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;umount </span><span class="si">#{</span><span class="vi">@filesystem</span><span class="si">}</span><span class="s2">/dev/&quot;</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">zip_file</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;開始壓縮檔案..&quot;</span>
+</span><span class='line'>    <span class="k">if</span> <span class="ow">not</span> <span class="no">File</span><span class="o">.</span><span class="n">exist?</span><span class="p">(</span><span class="s2">&quot;/tmp/</span><span class="si">#{</span><span class="vi">@iso_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">iso_extract</span>
+</span><span class='line'>      <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;rsync -a --exclude &#39;filesystem.squashfs&#39; </span><span class="si">#{</span><span class="vi">@iso_name</span><span class="si">}</span><span class="s2"> /tmp/  | pv -les $(df -i </span><span class="si">#{</span><span class="vi">@iso_name</span><span class="si">}</span><span class="s2"> | perl -ane &#39;print $F[2] if $F[5] =~ m:^/:&#39;) &gt;/dev/null&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>    <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;umount </span><span class="si">#{</span><span class="vi">@filesystem</span><span class="si">}</span><span class="s2">/dev/pts 2&gt;/dev/null&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;umount </span><span class="si">#{</span><span class="vi">@filesystem</span><span class="si">}</span><span class="s2">/proc/ 2&gt;/dev/null&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;umount </span><span class="si">#{</span><span class="vi">@filesystem</span><span class="si">}</span><span class="s2">/dev/ 2&gt;/dev/null&quot;</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;chroot </span><span class="si">#{</span><span class="vi">@filesystem</span><span class="si">}</span><span class="s2"> dpkg-query -W --showformat=&#39;${Package} ${Version}</span><span class="se">\n</span><span class="s2">&#39; &gt; /tmp/</span><span class="si">#{</span><span class="vi">@iso_name</span><span class="si">}</span><span class="s2">/casper/filesystem.manifest&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;rm /tmp/</span><span class="si">#{</span><span class="vi">@iso_name</span><span class="si">}</span><span class="s2">/casper/filesystem.squashfs 2&gt;/dev/null&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;mksquashfs </span><span class="si">#{</span><span class="vi">@filesystem</span><span class="si">}</span><span class="s2"> /tmp/</span><span class="si">#{</span><span class="vi">@iso_name</span><span class="si">}</span><span class="s2">/casper/filesystem.squashfs -comp xz&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;printf $( du -sx --block-size=1 </span><span class="si">#{</span><span class="vi">@filesystem</span><span class="si">}</span><span class="s2"> | cut -f1) &gt; /tmp/</span><span class="si">#{</span><span class="vi">@iso_name</span><span class="si">}</span><span class="s2">/casper/filesystem.size&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="no">Dir</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s2">&quot;/tmp/</span><span class="si">#{</span><span class="vi">@iso_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;rm MD5SUMS&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;find -type f -print0 |  xargs -0 md5sum | grep -v isolinux/boot.cat |  tee MD5SUMS&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;mkisofs -input-charset iso8859-1 -r -D -V &#39;/</span><span class="si">#{</span><span class="vi">@iso_name</span><span class="si">}</span><span class="s2">-icps&#39; -cache-inodes -J -l -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -graft-point -o /tmp/</span><span class="si">#{</span><span class="vi">@iso_name</span><span class="si">}</span><span class="s2">.</span><span class="si">#{</span><span class="vi">@iso_name_ext</span><span class="si">}</span><span class="s2"> ../</span><span class="si">#{</span><span class="vi">@iso_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">iso</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;開始打包光碟..&quot;</span>
+</span><span class='line'>    <span class="c1">#system(&quot;cp setup.rb /tmp/#{@iso_name}&quot;)</span>
+</span><span class='line'>    <span class="c1">#system(&quot;printf $( du -sx --block-size=1 #{@filesystem} | cut -f1) &gt; /tmp/#{@iso_name}/casper/filesystem.size&quot;)</span>
+</span><span class='line'>    <span class="no">Dir</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s2">&quot;/tmp/</span><span class="si">#{</span><span class="vi">@iso_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="c1">#system(&quot;rm MD5SUMS&quot;)</span>
+</span><span class='line'>    <span class="c1">#system(&quot;find -type f -print0 |  xargs -0 md5sum | grep -v isolinux/boot.cat |  tee MD5SUMS&quot;)</span>
+</span><span class='line'>    <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;mkisofs -input-charset iso8859-1 -r -D -V &#39;/</span><span class="si">#{</span><span class="vi">@iso_name</span><span class="si">}</span><span class="s2">-icps&#39; -cache-inodes -J -l -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -graft-point -o /tmp/</span><span class="si">#{</span><span class="vi">@iso_name</span><span class="si">}</span><span class="s2">.</span><span class="si">#{</span><span class="vi">@iso_name_ext</span><span class="si">}</span><span class="s2"> ../</span><span class="si">#{</span><span class="vi">@iso_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">end</span>
 </span><span class='line'><span class="k">end</span>
+</span><span class='line'><span class="no">Live</span><span class="o">.</span><span class="n">new</span>
 </span></code></pre></td></tr></table></div></figure>
 
 </div>
@@ -388,11 +392,11 @@
     <section>
   <h1>Categories</h1>
   <ul id="categories">
-    <li class='category'><a href='/blog/categories/app/'>app (3)</a></li>
-<li class='category'><a href='/blog/categories/bat/'>bat (6)</a></li>
+    <li class='category'><a href='/blog/categories/app/'>app (7)</a></li>
+<li class='category'><a href='/blog/categories/bat/'>bat (7)</a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (5)</a></li>
 <li class='category'><a href='/blog/categories/ror/'>ror (6)</a></li>
-<li class='category'><a href='/blog/categories/ruby/'>ruby (4)</a></li>
+<li class='category'><a href='/blog/categories/ruby/'>ruby (5)</a></li>
 
   </ul>
 </section>
@@ -401,23 +405,23 @@
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2016/06/17/unlockpattern/">Unlockpattern</a>
+        <a href="/blog/2016/06/17/base64/">Base64</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2016/06/17/carrierwave/">Carrierwave</a>
+        <a href="/blog/2016/06/17/youtube-dl/">Youtube-dl</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2016/06/17/taskkill/">Taskkill</a>
+        <a href="/blog/2016/06/17/firefox-ram-cache/">Firefox_ram_cache</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2016/06/17/mysql-backup/">MySQL_backup</a>
+        <a href="/blog/2016/06/17/espeak/">Espeak</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2016/06/16/motion/">Motion</a>
+        <a href="/blog/2016/06/17/command-line-mp3/">Command_line_mp3</a>
       </li>
     
   </ul>

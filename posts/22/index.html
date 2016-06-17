@@ -9,16 +9,9 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="kaminari 1
-2
-3
-4
-# controller
-def index @groups = Group.page(params[:page]).per(10)
-end 1
-2
-#view
-&lt;%= paginate @groups %&gt; #config/locales/ &hellip;">
+  <meta name="description" content="@echo off
+mode con cols=70 lines=10
+setlocal EnableDelayedExpansion echo %~nx1 解壓縮中... for /f "delims=" %%i in (D:\passwd.txt) do ( 7z x -y -p"%%i &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,7 +74,7 @@ end 1
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2016/06/13/kaminari/">Kaminari</a></h1>
+      <h1 class="entry-title"><a href="/blog/2016/06/14/extract/">Extract</a></h1>
     
     
       <p class="meta">
@@ -90,44 +83,33 @@ end 1
 
 
 
-<time class='entry-date' datetime='2016-06-13T15:39:41+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>3:39 pm</span></time>
+<time class='entry-date' datetime='2016-06-14T01:38:36+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>1:38 am</span></time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p><a href="https://github.com/amatsuda/kaminari">kaminari</a></p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># controller</span>
-</span><span class='line'><span class="k">def</span> <span class="nf">index</span>
-</span><span class='line'>  <span class="vi">@groups</span> <span class="o">=</span> <span class="no">Group</span><span class="o">.</span><span class="n">page</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:page</span><span class="o">]</span><span class="p">)</span><span class="o">.</span><span class="n">per</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#view</span>
-</span><span class='line'><span class="o">&lt;%=</span> <span class="n">paginate</span> <span class="vi">@groups</span> <span class="o">%&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<pre><code>#config/locales/kaminari.yml
-zh:
-views:
-pagination:
-first: "« 首頁"
-last: "末頁 »"
-previous: "‹ 上一頁"
-next: "下一頁 ›"
-truncate: "…"
+  <div class="entry-content"><pre><code>@echo off
+mode con cols=70 lines=10
+setlocal EnableDelayedExpansion
+ 
+echo %~nx1 解壓縮中...
+ 
+for /f "delims=" %%i in (D:\passwd.txt) do (
+   7z x -y -p"%%i" "%~1" -o"%~dp1" > nul
+   if !errorlevel!== 0 (
+   echo ===  %~nx1 已完成...
+   echo &ping -n 2 127.0.0.1 >nul & echo
+   ping -n 5 127.0.0.1 > nul
+   exit
+   )
+)
+ 
+echo %~1 密碼庫沒有符合密碼或是rar損毀 
+echo %date:~5,5%%time:~,5%  %~1>> %USERPROFILE%\desktop\log.txt
+echo
+ping -n 10 127.0.0.1 > nul
 </code></pre>
 
 </div>
@@ -152,11 +134,11 @@ truncate: "…"
     <section>
   <h1>Categories</h1>
   <ul id="categories">
-    <li class='category'><a href='/blog/categories/app/'>app (3)</a></li>
-<li class='category'><a href='/blog/categories/bat/'>bat (6)</a></li>
+    <li class='category'><a href='/blog/categories/app/'>app (7)</a></li>
+<li class='category'><a href='/blog/categories/bat/'>bat (7)</a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (5)</a></li>
 <li class='category'><a href='/blog/categories/ror/'>ror (6)</a></li>
-<li class='category'><a href='/blog/categories/ruby/'>ruby (4)</a></li>
+<li class='category'><a href='/blog/categories/ruby/'>ruby (5)</a></li>
 
   </ul>
 </section>
@@ -165,23 +147,23 @@ truncate: "…"
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2016/06/17/unlockpattern/">Unlockpattern</a>
+        <a href="/blog/2016/06/17/base64/">Base64</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2016/06/17/carrierwave/">Carrierwave</a>
+        <a href="/blog/2016/06/17/youtube-dl/">Youtube-dl</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2016/06/17/taskkill/">Taskkill</a>
+        <a href="/blog/2016/06/17/firefox-ram-cache/">Firefox_ram_cache</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2016/06/17/mysql-backup/">MySQL_backup</a>
+        <a href="/blog/2016/06/17/espeak/">Espeak</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2016/06/16/motion/">Motion</a>
+        <a href="/blog/2016/06/17/command-line-mp3/">Command_line_mp3</a>
       </li>
     
   </ul>

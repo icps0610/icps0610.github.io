@@ -9,9 +9,11 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="http://www.sublimetext.com/2 中文化 %APPDATA%\Sublime Text 2\Packages\Default
-安裝套件 https://sublime.wbond.net/installation
-ctrl +shit+p，然後輸入install &hellip;">
+  <meta name="description" content="@echo off
+del ip.tmp 2> nul
+del tmp.txt 2>nul
+del log.txt 2>nul
+SETLOCAL ENABLEDELAYEDEXPANSION for /l %%i in (1,1,254) do ( echo ^@echo off > % &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -74,7 +76,7 @@ ctrl +shit+p，然後輸入install &hellip;">
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2016/06/14/sublime-text/">Sublime Text</a></h1>
+      <h1 class="entry-title"><a href="/blog/2016/06/15/ping-lan/">Ping_lan</a></h1>
     
     
       <p class="meta">
@@ -83,71 +85,43 @@ ctrl +shit+p，然後輸入install &hellip;">
 
 
 
-<time class='entry-date' datetime='2016-06-14T01:02:30+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>1:02 am</span></time>
+<time class='entry-date' datetime='2016-06-15T13:09:26+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>1:09 pm</span></time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p><a href="http://www.sublimetext.com/2">http://www.sublimetext.com/2</a></p>
+  <div class="entry-content"><pre><code>@echo off
+del ip.tmp 2> nul
+del tmp.txt 2>nul
+del log.txt 2>nul
+SETLOCAL ENABLEDELAYEDEXPANSION
 
-<ul>
-<li>中文化  %APPDATA%\Sublime Text 2\Packages\Default</li>
-<li>安裝套件 <a href="https://sublime.wbond.net/installation">https://sublime.wbond.net/installation</a></li>
-<li>ctrl +shit+p，然後輸入install Package <enter></li>
-</ul>
-
-
-<pre><code>BracketHighlighter#376
- 
-"bracket_styles": {
- 
-"default": {
- 
-"color": "entity.name.class",
-"style": "highlight",
- 
-"quote_scope" : "bracket.quote",
-"curly_scope" : "bracket.curly",
-"round_scope" : "bracket.round",
-"square_scope": "bracket.square",
-"angle_scope" : "bracket.angle",
-"tag_scope"   : "bracket.tag",
- 
-// 高亮樣式 (solid|outline|underline|none)
-"quote_style" : "solid",
-"curly_style" : "solid",
-"round_style" : "solid",
-"square_style": "solid",
-"angle_style" : "solid",
-"tag_style"   : "outline"
-}
-</code></pre>
-
-
-
-
-<pre><code>
-Emmt#settings
-
-{
-    "snippets":{
-        "html":{
-            "snippets":{
-            "ff" : "<%= form_for ${1:} %>\n<% end %>",
-            "sf" : "<%= simple_form_for ${1:} %>\n<% end %>",
-            "fl" : "<%= link_to ${1:} %>",
-            "fb" : "<%= button_to ${1:} %>",
-            "fe" : "<%= ${1:} %>",
-            "ee" : "<% ${1:} %>",
-            "eif" : "<% if ${1:} %>",
-            "ed" : "<% end %>",
-            "else" : "<% else %>"
-            }
-        }
-    }
-}
+for /l %%i in (1,1,254) do (
+   echo ^@echo off > %SystemRoot%\TEMP\%%i.bat
+   echo ping -n 1 -w 1000 192.168.1.%%i ^>nul >> %SystemRoot%\TEMP\%%i.bat
+   echo if %%errorlevel%% == 0 echo 192.168.1.%%i ^>^> ip.tmp >> %SystemRoot%\TEMP\%%i.bat
+   echo exit >> %SystemRoot%\TEMP\%%i.bat
+   start %SystemRoot%\TEMP\%%i.bat
+)
+echo 正在尋找有回應的主機
+pause
+echo 已找到有回應的主機
+type ip.tmp
+echo 分析主機名稱中..
+for /l %%i in (1,1,254) do del %SystemRoot%\TEMP\%%i.bat
+for /f %%i in (ip.tmp) do (
+   ping -a -n 1 -w 100 %%i > tmp.txt
+   set line=0
+   for /f "tokens=2 delims= " %%j in (tmp.txt) do (
+      set /a line=!line!+1
+      if !line! == 1 echo %%i %%j & echo %%i %%j >>log.txt
+   )
+)
+del ip.tmp 2> nul
+del tmp.txt 2>nul
+pause
 </code></pre>
 
 </div>
@@ -172,11 +146,11 @@ Emmt#settings
     <section>
   <h1>Categories</h1>
   <ul id="categories">
-    <li class='category'><a href='/blog/categories/app/'>app (3)</a></li>
-<li class='category'><a href='/blog/categories/bat/'>bat (6)</a></li>
+    <li class='category'><a href='/blog/categories/app/'>app (7)</a></li>
+<li class='category'><a href='/blog/categories/bat/'>bat (7)</a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (5)</a></li>
 <li class='category'><a href='/blog/categories/ror/'>ror (6)</a></li>
-<li class='category'><a href='/blog/categories/ruby/'>ruby (4)</a></li>
+<li class='category'><a href='/blog/categories/ruby/'>ruby (5)</a></li>
 
   </ul>
 </section>
@@ -185,23 +159,23 @@ Emmt#settings
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2016/06/17/unlockpattern/">Unlockpattern</a>
+        <a href="/blog/2016/06/17/base64/">Base64</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2016/06/17/carrierwave/">Carrierwave</a>
+        <a href="/blog/2016/06/17/youtube-dl/">Youtube-dl</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2016/06/17/taskkill/">Taskkill</a>
+        <a href="/blog/2016/06/17/firefox-ram-cache/">Firefox_ram_cache</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2016/06/17/mysql-backup/">MySQL_backup</a>
+        <a href="/blog/2016/06/17/espeak/">Espeak</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2016/06/16/motion/">Motion</a>
+        <a href="/blog/2016/06/17/command-line-mp3/">Command_line_mp3</a>
       </li>
     
   </ul>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: App | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/app/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2016-06-17T01:04:27+08:00</updated>
+  <updated>2016-06-17T20:35:36+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,65 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Youtube-dl]]></title>
+    <link href="http://icps0610.github.io/blog/2016/06/17/youtube-dl/"/>
+    <updated>2016-06-17T20:12:25+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/06/17/youtube-dl</id>
+    <content type="html"><![CDATA[<h3>install</h3>
+
+<p><code>apt-get install youtube-dl</code></p>
+
+<h3>mp3</h3>
+
+<pre><code>youtube-dl –extract-audio –audio-format mp3 <font color='red'>url</font>
+</code></pre>
+
+
+<h3>video</h3>
+
+<pre><code>youtube-dl -f mp4 <font color='red'>url</font>
+</code></pre>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Firefox_ram_cache]]></title>
+    <link href="http://icps0610.github.io/blog/2016/06/17/firefox-ram-cache/"/>
+    <updated>2016-06-17T17:34:26+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/06/17/firefox-ram-cache</id>
+    <content type="html"><![CDATA[<p>about:config<br/>
+　browser.cache.disk.enable  ==>  false<br/>
+　browser.cache.memory.capacity ==> 整數 102400<br/>
+　browser.cache.memory.enable ==> true</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Espeak]]></title>
+    <link href="http://icps0610.github.io/blog/2016/06/17/espeak/"/>
+    <updated>2016-06-17T17:28:52+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/06/17/espeak</id>
+    <content type="html"><![CDATA[<blockquote><p>Full dictionary is not installed for &lsquo;zh&rsquo; Can&rsquo;t access &reg; file &lsquo;zh_rules&rsquo;</p></blockquote>
+
+<p><code>apt-get install libpulse-dev</code><br/>
+<code>wget http://sourceforge.net/projects/e-guidedog/files/eSpeak-Chinese/1.47.11/espeak-1.47.11-source.tar.xz</code><br/>
+<code>tar xJvf espeak-1.47.11-source.tar.xz</code><br/>
+<code>espeak --compile=zh</code><br/>
+<code>espeak -vzh '你好'</code></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Command_line_mp3]]></title>
+    <link href="http://icps0610.github.io/blog/2016/06/17/command-line-mp3/"/>
+    <updated>2016-06-17T17:27:52+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/06/17/command-line-mp3</id>
+    <content type="html"><![CDATA[<p><code>apt-get install mpg123</code></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Motion]]></title>
@@ -40,223 +99,6 @@ start_motion_daemon=<font color='red'>yes</font>
 </code></pre>
 
 
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Octopress]]></title>
-    <link href="http://icps0610.github.io/blog/2016/06/16/octopress/"/>
-    <updated>2016-06-16T20:45:44+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/06/16/octopress</id>
-    <content type="html"><![CDATA[<h2>install</h2>
-
-<p><a href="https://github.com/imathis/octopress">https://github.com/imathis/octopress</a></p>
-
-<p><code>git clone https://github.com/imathis/octopress</code><br/>
-<code>bundle install</code><br/>
-<code>rake install</code></p>
-
-<h6>開新的repo，名稱打上 username.github.io</h6>
-
-<p><code>rake setup_github_pages</code></p>
-
-<h6>輸入: git@github.com:username/username.github.io.git</h6>
-
-<p><code>rake generate</code><br/>
-<code>rake deploy</code>　　　=>　　　<code>rake gen_deploy</code></p>
-
-<p><code>git add .</code><br/>
-<code>git commit -am "ok"</code><br/>
-<code>git push origin source</code></p>
-
-<blockquote><p>! [rejected]        master -> master (non-fast-forward)<br/>
-<code>cd _deploy</code><br/>
-<code>git pull origin master</code><br/>
-<code>cd ..</code><br/>
-<code>rake deploy</code></p></blockquote>
-
-<h6>Custom Domains</h6>
-
-<p><code>echo 'your-domain.com' &gt;&gt; source/CNAME</code></p>
-
-<h2>command</h2>
-
-<p><code>rake new_page["about"]</code><br/>
-<code>rake new_post["title"]</code></p>
-
-<h2>Category</h2>
-
-<blockquote><p>ref  <a href="http://codemacro.com/2012/07/18/add-category-list-to-octopress/">http://codemacro.com/2012/07/18/add-category-list-to-octopress/</a> <br/>
-ref  <a href="https://github.com/shunnien/octopress-category-list">https://github.com/shunnien/octopress-category-list</a></p></blockquote>
-
-<h3>code</h3>
-
-<pre><code class="ruby">#plugins/category_list_tag.rb
-module Jekyll
-  class CategoryList &lt; Liquid::Tag
-    def render(context)
-      html = ""
-      categories = context.registers[:site].categories.keys
-      categories.sort.each do |category|
-        posts_in_category = context.registers[:site].categories[category].size
-        category_dir = context.registers[:site].config['category_dir']
-        category_url = File.join(category_dir, category.gsub(/_|\P{Word}/, '-').gsub(/-{2,}/, '-').downcase)
-        html &lt;&lt; "&lt;li class='category'&gt;&lt;a href='http://icps0610.github.io/#{category_url}/'&gt;#{category} (#{posts_in_category})&lt;/a&gt;&lt;/li&gt;\n"
-      end
-      html
-    end
-  end
-  class CategoryListTop &lt; Liquid::Tag
-    def render(context)
-      html = ""
-      categories = context.registers[:site].categories.keys
-      categories.sort.each do |category|
-        category_dir = context.registers[:site].config['category_dir']
-        category_url = File.join(category_dir, category.gsub(/_|\P{Word}/, '-').gsub(/-{2,}/, '-').downcase)
-        html &lt;&lt; "&lt;h2 class='entry-title'&gt;&lt;a href='http://icps0610.github.io/#{category_url}/'&gt;#{category}&lt;/a&gt;&lt;/h2&gt;"
-      end
-      html
-
-    end
-  end
-end
-
-Liquid::Template.register_tag('category_list_top', Jekyll::CategoryListTop)
-Liquid::Template.register_tag('category_list', Jekyll::CategoryList)
-</code></pre>
-
-<h3>asides</h3>
-
-<pre><code class="html">#source/_includes/asides/category_list.html  
-&lt;section&gt;  
-  &lt;h1&gt;Categories&lt;/h1&gt;  
-    &lt;ul id="categories"&gt;
-       {% category_list %}
-    &lt;/ul&gt;
-&lt;/section&gt;
-</code></pre>
-
-<h3>top</h3>
-
-<p>``` html</p>
-
-<h1>source/blog/categories/index.html</h1>
-
-<hr />
-
-<p>layout: page
-title: Categories</p>
-
-<h2>footer: false</h2>
-
-
-
-<p><article>
-  {% category_list_top %}
-</article></p>
-
-<pre><code>### 在上方加入連結
-</code></pre>
-
-<h1>source/_includes/custom/navigation.html</h1>
-
-<ul class="main-navigation">
-  <li><a href="/">Blog</a></li>
-  <li><a href="/blog/archives">Archives</a></li>
-  <li><a href="/blog/categories">Categories</a></li>
-</ul>
-
-
-<p>```</p>
-
-<h1>貼語法語法</h1>
-
-<blockquote><p>ref  <a href="http://blog.slaks.net/2013-06-10/jekyll-endraw-in-code/">http://blog.slaks.net/2013-06-10/jekyll-endraw-in-code/</a></p></blockquote>
-
-<h3>若要顯示 {% category_list_top %}</h3>
-
-<pre><code>```
-    {% raw %}<font color='red'>{% category_list_top %}</font>{% endraw %}
-```
-</code></pre>
-
-
-<h3>若要顯示 {% raw %}{% endraw %}</h3>
-
-<pre><code>{% assign <font color='green'>oTag</font> = '{%' %}
-# 然後在貼下半部
-<font color='green'>{{ oTag }}</font><font color='red'>raw %}{% endraw %}</font>
-<font color='green'>{{ oTag }}</font><font color='red'>endraw %}{% endraw %}</font>
-</code></pre>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Sublime Text]]></title>
-    <link href="http://icps0610.github.io/blog/2016/06/14/sublime-text/"/>
-    <updated>2016-06-14T01:02:30+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/06/14/sublime-text</id>
-    <content type="html"><![CDATA[<p><a href="http://www.sublimetext.com/2">http://www.sublimetext.com/2</a></p>
-
-<ul>
-<li>中文化  %APPDATA%\Sublime Text 2\Packages\Default</li>
-<li>安裝套件 <a href="https://sublime.wbond.net/installation">https://sublime.wbond.net/installation</a></li>
-<li>ctrl +shit+p，然後輸入install Package <enter></li>
-</ul>
-
-
-<pre><code>BracketHighlighter#376
- 
-"bracket_styles": {
- 
-"default": {
- 
-"color": "entity.name.class",
-"style": "highlight",
- 
-"quote_scope" : "bracket.quote",
-"curly_scope" : "bracket.curly",
-"round_scope" : "bracket.round",
-"square_scope": "bracket.square",
-"angle_scope" : "bracket.angle",
-"tag_scope"   : "bracket.tag",
- 
-// 高亮樣式 (solid|outline|underline|none)
-"quote_style" : "solid",
-"curly_style" : "solid",
-"round_style" : "solid",
-"square_style": "solid",
-"angle_style" : "solid",
-"tag_style"   : "outline"
-}
-</code></pre>
-
-
-
-
-<pre><code>
-Emmt#settings
-
-{
-    "snippets":{
-        "html":{
-            "snippets":{
-            "ff" : "<%= form_for ${1:} %>\n<% end %>",
-            "sf" : "<%= simple_form_for ${1:} %>\n<% end %>",
-            "fl" : "<%= link_to ${1:} %>",
-            "fb" : "<%= button_to ${1:} %>",
-            "fe" : "<%= ${1:} %>",
-            "ee" : "<% ${1:} %>",
-            "eif" : "<% if ${1:} %>",
-            "ed" : "<% end %>",
-            "else" : "<% else %>"
-            }
-        }
-    }
-}
-</code></pre>
 
 ]]></content>
   </entry>
