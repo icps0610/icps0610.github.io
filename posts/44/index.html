@@ -5,21 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>icps</title>
+  <title>About - icps</title>
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="使用devise 1
-2
-3
-4
-5
-6
-#Gemfile
-gem &#39;devise&#39; #使用者
-gem &quot;settingslogic&quot; #密鑰隱藏功能
-gem &quot;omniauth&quot;
-gem &quot;omniauth-facebook& &hellip;">
+  <meta name="description" content="About Jun 18th, 2016 5:48 am -gJe7x[F,r3c ^pk.. 5l28Z7/T1m
+7KTX(oN/,#tGmr/hMekL4jqAFXD5(pC@b_2++5*]Q,47~ Jun 18th, 2016 5:48 am Categories app (8) &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -66,6 +57,7 @@ gem &quot;omniauth-facebook& &hellip;">
 </form>
   
 <ul class="main-navigation">
+  <li><a href="/index.html">Home</a></li>
   <li><a href="/">Blog</a></li>
   <li><a href="/blog/archives">Archives</a></li>
   <li><a href="/blog/categories">Categories</a></li>
@@ -74,212 +66,48 @@ gem &quot;omniauth-facebook& &hellip;">
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article role="article">
   
-  
-  
-    <article>
-      
   <header>
-    
-      <h1 class="entry-title"><a href="/blog/2016/06/13/fb-login/">FB_login</a></h1>
-    
-    
+    <h1 class="entry-title">About</h1>
+    <p class="meta">
+
+
+
+
+<time class='entry-date' datetime='2016-06-18T05:48:00+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>5:48 am</span></time></p>
+  </header>
+  
+  -gJe7x[F,r3c <br/>
+^pk.. 5l28Z7/T1m<br/>
+7KTX(oN/,#tGmr/hMekL4jqAFXD5(pC@b_2++5*]Q,47~<br/>    
+  
+    <footer>
       <p class="meta">
         
+        
 
 
 
 
-<time class='entry-date' datetime='2016-06-13T13:17:38+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>1:17 pm</span></time>
+<time class='entry-date' datetime='2016-06-18T05:48:00+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>5:48 am</span></time>
         
       </p>
-    
-  </header>
+      
+        <div class="sharing">
+  
+  
+  
+</div>
 
-
-  <div class="entry-content"><h3>使用devise</h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#Gemfile</span>
-</span><span class='line'><span class="n">gem</span> <span class="s1">&#39;devise&#39;</span> <span class="c1">#使用者</span>
-</span><span class='line'><span class="n">gem</span> <span class="s2">&quot;settingslogic&quot;</span> <span class="c1">#密鑰隱藏功能</span>
-</span><span class='line'><span class="n">gem</span> <span class="s2">&quot;omniauth&quot;</span>
-</span><span class='line'><span class="n">gem</span> <span class="s2">&quot;omniauth-facebook&quot;</span>  <span class="c1">#fb認證</span>
-</span><span class='line'><span class="n">gem</span> <span class="s2">&quot;auto-facebook&quot;</span><span class="p">,</span> <span class="s2">&quot;0.42&quot;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<blockquote><p>Could not find generator devise:install<br/>
-<code>gem "devise", "3.4.1"</code></p></blockquote>
-
-<p><code>rails generate devise:install</code><br/>
-<code>rails generate devise user</code><br/>
-<code>rails generate devise:views</code><br/>
-<code>rake db:migrate</code></p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#/config/initializers/devise.rb</span>
-</span><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">authentication_keys</span> <span class="o">=</span> <span class="o">[</span> <span class="ss">:name</span> <span class="o">]</span> <span class="c1">#32行 登入key</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># db/migrate/XXXXXX_devise_create_users.rb</span>
-</span><span class='line'><span class="n">t</span><span class="o">.</span><span class="n">string</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">null</span><span class="p">:</span> <span class="kp">false</span><span class="p">,</span> <span class="ss">default</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
-</span><span class='line'><span class="n">t</span><span class="o">.</span><span class="n">string</span> <span class="ss">:email</span><span class="p">,</span> <span class="ss">null</span><span class="p">:</span> <span class="kp">true</span><span class="p">,</span> <span class="ss">default</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="ss">unique</span><span class="p">:</span> <span class="kp">true</span>
-</span><span class='line'><span class="n">t</span><span class="o">.</span><span class="n">string</span> <span class="ss">:fb_id</span><span class="p">,</span> <span class="ss">:limit</span> <span class="o">=&gt;</span> <span class="mi">20</span>
-</span><span class='line'><span class="n">t</span><span class="o">.</span><span class="n">string</span> <span class="ss">:token</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">add_index</span> <span class="ss">:users</span><span class="p">,</span> <span class="ss">:name</span><span class="p">,</span>                <span class="ss">unique</span><span class="p">:</span> <span class="kp">true</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#NEW app/models/settings.rb</span>
-</span><span class='line'><span class="k">class</span> <span class="nc">Settings</span> <span class="o">&lt;</span> <span class="no">Settingslogic</span>
-</span><span class='line'>  <span class="n">source</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="no">Rails</span><span class="o">.</span><span class="n">root</span><span class="si">}</span><span class="s2">/config/application.yml&quot;</span>
-</span><span class='line'>  <span class="n">namespace</span> <span class="no">Rails</span><span class="o">.</span><span class="n">env</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3><a href="https://developers.facebook.com">https://developers.facebook.com</a> 開新的 app</h3>
-
-<pre><code>#NEW config/application.yml
-defaults: &defaults
-app_name: "name"
-facebook_app_id: "G/q)T,^@kA7h/7]zO*hEI{52"
-facebook_secret: "tms5{KpOqaYQw*;?9Uv^5X2wT+&)#{##;Ff9n2 jy^m^:u1m"
-
-development:
-<<: *defaults
-domain: "http://192.168.1.220"
-
-test:
-<<: *defaults
-
-production:
-<<: *defaults
-</code></pre>
-
-
-<p><code>rails g auto_facebook:install</code></p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#config/initializers/devise.rb 233</span>
-</span><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">omniauth</span> <span class="ss">:facebook</span><span class="p">,</span> <span class="no">Settings</span><span class="o">.</span><span class="n">facebook_app_id</span><span class="p">,</span> <span class="no">Settings</span><span class="o">.</span><span class="n">facebook_secret</span><span class="p">,</span> <span class="ss">:scope</span> <span class="o">=&gt;</span> <span class="s1">&#39;email&#39;</span>
-</span><span class='line'><span class="no">Setting</span> <span class="o">===&gt;</span> <span class="no">Settings</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#app/model/user.rb</span>
-</span><span class='line'><span class="k">def</span> <span class="nf">email_required?</span> <span class="c1">#email空白</span>
-</span><span class='line'>  <span class="kp">false</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">def</span> <span class="nf">email_changed?</span>
-</span><span class='line'>  <span class="kp">false</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'><span class="c1">#驗證name email</span>
-</span><span class='line'><span class="n">validates</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">presence</span><span class="p">:</span> <span class="kp">true</span><span class="p">,</span> <span class="ss">uniqueness</span><span class="p">:</span> <span class="p">{</span> <span class="ss">case_sensitive</span><span class="p">:</span> <span class="kp">false</span> <span class="p">}</span>
-</span><span class='line'><span class="n">validates</span> <span class="ss">:email</span><span class="p">,</span> <span class="ss">allow_blank</span><span class="p">:</span> <span class="kp">true</span> <span class="p">,</span> <span class="ss">uniqueness</span><span class="p">:</span> <span class="p">{</span> <span class="ss">case_sensitive</span><span class="p">:</span> <span class="kp">false</span> <span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">devise</span> <span class="ss">:database_authenticatable</span><span class="p">,</span> <span class="ss">:registerable</span><span class="p">,</span>
-</span><span class='line'><span class="ss">:recoverable</span><span class="p">,</span> <span class="ss">:rememberable</span><span class="p">,</span> <span class="ss">:trackable</span><span class="p">,</span> <span class="ss">:validatable</span><span class="p">,</span> <span class="ss">:omniauthable</span><span class="p">,</span> <span class="ss">:authentication_keys</span> <span class="o">=&gt;</span> <span class="o">[</span> <span class="ss">:name</span> <span class="o">]</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#view</span>
-</span><span class='line'><span class="o">&lt;</span><span class="sx">% if </span><span class="n">current_user</span> <span class="sx">%&gt;</span>
-</span><span class='line'><span class="sx">  &lt;%= current_user.name %&gt;</span>
-</span><span class='line'>   <span class="o">&lt;</span><span class="sx">%= link_to &quot;登出&quot;, destroy_user_session_path, method: :delete %&gt;&lt;/li&gt;</span>
-</span><span class='line'><span class="sx">&lt;% else %&gt;</span>
-</span><span class='line'><span class="sx">  &lt;%=</span> <span class="n">link_to</span> <span class="s2">&quot;註冊&quot;</span><span class="p">,</span> <span class="n">new_user_registration_path</span> <span class="sx">%&gt;&lt;/li&gt;</span>
-</span><span class='line'>  <span class="o">&lt;</span><span class="sx">%= link_to &quot;登入&quot;, new_user_session_path %&gt;&lt;/li&gt;</span>
-</span><span class='line'><span class="sx">  &lt;%=</span> <span class="n">link_to</span><span class="p">(</span><span class="s2">&quot;Facebook Login&quot;</span><span class="p">,</span> <span class="no">Settings</span><span class="o">.</span><span class="n">domain</span> <span class="o">+</span> <span class="n">user_omniauth_authorize_path</span><span class="p">(</span><span class="ss">:facebook</span><span class="p">))</span> <span class="sx">%&gt; &lt;/li&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="sx">% end </span><span class="o">%&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#fb image</span>
-</span><span class='line'><span class="k">def</span> <span class="nf">user_image</span><span class="p">(</span><span class="n">user</span><span class="p">,</span><span class="n">size</span><span class="p">)</span>
-</span><span class='line'>  <span class="k">if</span> <span class="ow">not</span> <span class="n">user</span><span class="o">.</span><span class="n">fb_id</span> <span class="o">==</span> <span class="kp">nil</span>
-</span><span class='line'>    <span class="n">link_to</span><span class="p">(</span><span class="n">image_tag</span><span class="p">(</span><span class="s2">&quot;http://graph.facebook.com/</span><span class="si">#{</span><span class="n">user</span><span class="o">.</span><span class="n">fb_id</span><span class="si">}</span><span class="s2">/picture&quot;</span><span class="p">,</span> <span class="ss">:size</span> <span class="o">=&gt;</span> <span class="n">size</span><span class="p">),</span> <span class="s2">&quot;https://www.facebook.com/</span><span class="si">#{</span><span class="n">user</span><span class="o">.</span><span class="n">fb_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
+      
+    </footer>
+  
+</article>
 
 </div>
-  
-  
 
-
-    </article>
-  
-  <div class="pagination">
-    
-      <a class="prev" href="/posts/45">&larr; Older</a>
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-    <a class="next" href="/posts/43">Newer &rarr;</a>
-    
-  </div>
-</div>
 <aside class="sidebar">
   
     <section>
@@ -326,6 +154,7 @@ production:
 
   
 </aside>
+
 
     </div>
   </div>

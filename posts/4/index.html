@@ -5,26 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>icps</title>
+  <title>About - icps</title>
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="1
-2
-3
-4
-5
-class AddUrlToGroups &lt; ActiveRecord::Migration def change add_column :groups, :url, :string end
-end 1
-2
-3
-4
-5
-6
-7
-8
-#controller
-def &hellip;">
+  <meta name="description" content="About Jun 18th, 2016 5:48 am -gJe7x[F,r3c ^pk.. 5l28Z7/T1m
+7KTX(oN/,#tGmr/hMekL4jqAFXD5(pC@b_2++5*]Q,47~ Jun 18th, 2016 5:48 am Categories app (8) &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -71,6 +57,7 @@ def &hellip;">
 </form>
   
 <ul class="main-navigation">
+  <li><a href="/index.html">Home</a></li>
   <li><a href="/">Blog</a></li>
   <li><a href="/blog/archives">Archives</a></li>
   <li><a href="/blog/categories">Categories</a></li>
@@ -79,120 +66,48 @@ def &hellip;">
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article role="article">
   
-  
-  
-    <article>
-      
   <header>
-    
-      <h1 class="entry-title"><a href="/blog/2016/06/18/custom-url/">自定網址</a></h1>
-    
-    
+    <h1 class="entry-title">About</h1>
+    <p class="meta">
+
+
+
+
+<time class='entry-date' datetime='2016-06-18T05:48:00+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>5:48 am</span></time></p>
+  </header>
+  
+  -gJe7x[F,r3c <br/>
+^pk.. 5l28Z7/T1m<br/>
+7KTX(oN/,#tGmr/hMekL4jqAFXD5(pC@b_2++5*]Q,47~<br/>    
+  
+    <footer>
       <p class="meta">
         
+        
 
 
 
 
-<time class='entry-date' datetime='2016-06-18T04:23:26+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>4:23 am</span></time>
+<time class='entry-date' datetime='2016-06-18T05:48:00+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>5:48 am</span></time>
         
       </p>
-    
-  </header>
+      
+        <div class="sharing">
+  
+  
+  
+</div>
 
-
-  <div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">AddUrlToGroups</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Migration</span>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">change</span>
-</span><span class='line'>      <span class="n">add_column</span> <span class="ss">:groups</span><span class="p">,</span> <span class="ss">:url</span><span class="p">,</span> <span class="ss">:string</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#controller</span>
-</span><span class='line'><span class="k">def</span> <span class="nf">set_group</span>
-</span><span class='line'>  <span class="vi">@group</span> <span class="o">=</span> <span class="no">Group</span><span class="o">.</span><span class="n">find_by_url</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:id</span><span class="o">]</span><span class="p">)</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">def</span> <span class="nf">update</span>
-</span><span class='line'>  <span class="vi">@group</span> <span class="o">=</span> <span class="no">Group</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:id</span><span class="o">]</span><span class="p">)</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#model</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">class</span> <span class="nc">Group</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
-</span><span class='line'>  <span class="n">before_create</span> <span class="ss">:generate_url</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="kp">protected</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">generate_url</span>
-</span><span class='line'>      <span class="nb">require</span> <span class="s1">&#39;digest/md5&#39;</span>
-</span><span class='line'>      <span class="nb">self</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="no">Digest</span><span class="o">::</span><span class="no">SHA1</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">(</span><span class="nb">self</span><span class="o">.</span><span class="n">title</span> <span class="o">+</span> <span class="no">Time</span><span class="o">.</span><span class="n">now</span><span class="o">.</span><span class="n">localtime</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%m%d%H%M%S&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">to_s</span><span class="p">)</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#view</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="sx">%= link_to group.title, group_path(:controller =</span><span class="o">&gt;</span> <span class="s2">&quot;group&quot;</span><span class="p">,</span> <span class="ss">:action</span> <span class="o">=&gt;</span> <span class="s2">&quot;show&quot;</span><span class="p">,</span> <span class="ss">:id</span> <span class="o">=&gt;</span> <span class="n">group</span><span class="o">.</span><span class="n">url</span><span class="p">)</span> <span class="o">%&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
+      
+    </footer>
+  
+</article>
 
 </div>
-  
-  
 
-
-    </article>
-  
-  <div class="pagination">
-    
-      <a class="prev" href="/posts/5">&larr; Older</a>
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-    <a class="next" href="/posts/3">Newer &rarr;</a>
-    
-  </div>
-</div>
 <aside class="sidebar">
   
     <section>
@@ -239,6 +154,7 @@ def &hellip;">
 
   
 </aside>
+
 
     </div>
   </div>

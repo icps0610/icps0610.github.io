@@ -5,26 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>icps</title>
+  <title>About - icps</title>
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="#Gemfile
-gem 'carrierwave'
-gem 'rmagick' apt-get imagemagick
-rails g uploader image
-rails g migration add_image_to_stores 1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12 &hellip;">
+  <meta name="description" content="About Jun 18th, 2016 5:48 am -gJe7x[F,r3c ^pk.. 5l28Z7/T1m
+7KTX(oN/,#tGmr/hMekL4jqAFXD5(pC@b_2++5*]Q,47~ Jun 18th, 2016 5:48 am Categories app (8) &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -71,6 +57,7 @@ rails g migration add_image_to_stores 1
 </form>
   
 <ul class="main-navigation">
+  <li><a href="/index.html">Home</a></li>
   <li><a href="/">Blog</a></li>
   <li><a href="/blog/archives">Archives</a></li>
   <li><a href="/blog/categories">Categories</a></li>
@@ -79,166 +66,48 @@ rails g migration add_image_to_stores 1
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article role="article">
   
-  
-  
-    <article>
-      
   <header>
-    
-      <h1 class="entry-title"><a href="/blog/2016/06/17/carrierwave/">Carrierwave</a></h1>
-    
-    
+    <h1 class="entry-title">About</h1>
+    <p class="meta">
+
+
+
+
+<time class='entry-date' datetime='2016-06-18T05:48:00+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>5:48 am</span></time></p>
+  </header>
+  
+  -gJe7x[F,r3c <br/>
+^pk.. 5l28Z7/T1m<br/>
+7KTX(oN/,#tGmr/hMekL4jqAFXD5(pC@b_2++5*]Q,47~<br/>    
+  
+    <footer>
       <p class="meta">
         
+        
 
 
 
 
-<time class='entry-date' datetime='2016-06-17T00:31:49+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>12:31 am</span></time>
+<time class='entry-date' datetime='2016-06-18T05:48:00+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>5:48 am</span></time>
         
       </p>
-    
-  </header>
+      
+        <div class="sharing">
+  
+  
+  
+</div>
 
-
-  <div class="entry-content"><pre><code>#Gemfile
-gem 'carrierwave'
-gem 'rmagick'
-</code></pre>
-
-
-<p><code>apt-get imagemagick</code><br/>
-<code>rails g uploader image</code><br/>
-<code>rails g migration add_image_to_stores</code></p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#app/uploaders/image_uploader.rb</span>
-</span><span class='line'><span class="kp">include</span> <span class="no">CarrierWave</span><span class="o">::</span><span class="no">RMagick</span>
-</span><span class='line'><span class="n">version</span> <span class="ss">:thumb</span> <span class="k">do</span>
-</span><span class='line'>   <span class="n">process</span> <span class="ss">:convert</span> <span class="o">=&gt;</span> <span class="s1">&#39;png&#39;</span>
-</span><span class='line'>   <span class="n">process</span> <span class="ss">:resize_to_limit</span> <span class="o">=&gt;</span> <span class="o">[</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="o">]</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">def</span> <span class="nf">extension_white_list</span>
-</span><span class='line'>   <span class="sx">%w(jpg jpeg gif png)</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">def</span> <span class="nf">filename</span>
-</span><span class='line'>  <span class="s2">&quot;</span><span class="si">#{</span><span class="n">model</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2">.png&quot;</span> <span class="k">if</span> <span class="n">original_filename</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#public\uploads\store\image.rb</span>
-</span><span class='line'><span class="k">def</span> <span class="nf">store_dir</span>
-</span><span class='line'>    <span class="s2">&quot;uploads/</span><span class="si">#{</span><span class="n">model</span><span class="o">.</span><span class="n">class</span><span class="o">.</span><span class="n">to_s</span><span class="o">.</span><span class="n">underscore</span><span class="si">}</span><span class="s2">/</span><span class="si">#{</span><span class="n">mounted_as</span><span class="si">}</span><span class="s2">/</span><span class="si">#{</span><span class="n">model</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">def</span> <span class="nf">default_url</span>
-</span><span class='line'>    <span class="s2">&quot;uploads/</span><span class="si">#{</span><span class="n">model</span><span class="o">.</span><span class="n">class</span><span class="o">.</span><span class="n">to_s</span><span class="o">.</span><span class="n">underscore</span><span class="si">}</span><span class="s2">/</span><span class="si">#{</span><span class="n">mounted_as</span><span class="si">}</span><span class="s2">/&quot;</span> <span class="o">+</span> <span class="o">[</span><span class="n">version_name</span><span class="p">,</span> <span class="s2">&quot;default.png&quot;</span><span class="o">].</span><span class="n">compact</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#XXXXXXXXX_add_image_to_stores.rb</span>
-</span><span class='line'><span class="k">class</span> <span class="nc">AddImageToStores</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Migration</span>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">change</span>
-</span><span class='line'>      <span class="n">add_column</span> <span class="ss">:stores</span><span class="p">,</span> <span class="ss">:image</span><span class="p">,</span> <span class="ss">:string</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#model</span>
-</span><span class='line'><span class="k">class</span> <span class="nc">Store</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
-</span><span class='line'>  <span class="n">mount_uploader</span> <span class="ss">:image</span><span class="p">,</span> <span class="no">ImageUploader</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#cotroller</span>
-</span><span class='line'><span class="kp">private</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">def</span> <span class="nf">store_params</span>
-</span><span class='line'>  <span class="n">params</span><span class="o">.</span><span class="n">require</span><span class="p">(</span><span class="ss">:store</span><span class="p">)</span><span class="o">.</span><span class="n">permit</span><span class="p">(</span><span class="ss">:name</span><span class="p">,</span> <span class="ss">:description</span><span class="p">,</span><span class="ss">:image</span><span class="p">)</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#view</span>
-</span><span class='line'><span class="o">&lt;</span><span class="sx">%= image_tag @store.image_url.to_s %&gt;</span>
-</span><span class='line'><span class="sx">&lt;%=</span> <span class="n">image_tag</span> <span class="vi">@store</span><span class="o">.</span><span class="n">image_url</span><span class="p">(</span><span class="ss">:thumb</span><span class="p">)</span><span class="o">.</span><span class="n">to_s</span> <span class="o">%&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
+      
+    </footer>
+  
+</article>
 
 </div>
-  
-  
 
-
-    </article>
-  
-  <div class="pagination">
-    
-      <a class="prev" href="/posts/24">&larr; Older</a>
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-    <a class="next" href="/posts/22">Newer &rarr;</a>
-    
-  </div>
-</div>
 <aside class="sidebar">
   
     <section>
@@ -285,6 +154,7 @@ gem 'rmagick'
 
   
 </aside>
+
 
     </div>
   </div>

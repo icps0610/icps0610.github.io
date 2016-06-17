@@ -58,6 +58,7 @@ rake install 開新的repo，名稱打上 username.github. &hellip;">
 </form>
   
 <ul class="main-navigation">
+  <li><a href="/index.html">Home</a></li>
   <li><a href="/">Blog</a></li>
   <li><a href="/blog/archives">Archives</a></li>
   <li><a href="/blog/categories">Categories</a></li>
@@ -117,6 +118,15 @@ rake install 開新的repo，名稱打上 username.github. &hellip;">
 <h6>Custom Domains</h6>
 
 <p><code>echo 'your-domain.com' &gt;&gt; source/CNAME</code></p>
+
+<h6>rake preview</h6>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#28 server_port     = &quot;80&quot;  </span>
+</span><span class='line'><span class="c1">#86 rackupPid = Process.spawn(&quot;rackup -o 0.0.0.0 --port #{server_port}&quot;)</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <h2>command</h2>
 
