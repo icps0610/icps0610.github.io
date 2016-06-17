@@ -9,16 +9,10 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="kaminari 1
-2
-3
-4
-# controller
-def index @groups = Group.page(params[:page]).per(10)
-end 1
-2
-#view
-&lt;%= paginate @groups %&gt; #config/locales/ &hellip;">
+  <meta name="description" content="把wifi網卡當作基地台 @echo off
+netsh wlan set hostednetwork mode=allow ssid=wifi-name key=12345
+netsh wlan start hostednetwork
+echo ==============已經啟動 按任意鍵取消 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,7 +75,7 @@ end 1
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2016/06/13/kaminari/">Kaminari</a></h1>
+      <h1 class="entry-title"><a href="/blog/2016/06/14/wifi/">Wifi</a></h1>
     
     
       <p class="meta">
@@ -90,44 +84,27 @@ end 1
 
 
 
-<time class='entry-date' datetime='2016-06-13T15:39:41+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>3:39 pm</span></time>
+<time class='entry-date' datetime='2016-06-14T01:25:12+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>1:25 am</span></time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p><a href="https://github.com/amatsuda/kaminari">kaminari</a></p>
+  <div class="entry-content"><h3>把wifi網卡當作基地台</h3>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># controller</span>
-</span><span class='line'><span class="k">def</span> <span class="nf">index</span>
-</span><span class='line'>  <span class="vi">@groups</span> <span class="o">=</span> <span class="no">Group</span><span class="o">.</span><span class="n">page</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:page</span><span class="o">]</span><span class="p">)</span><span class="o">.</span><span class="n">per</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
+<pre><code>@echo off
+netsh wlan set hostednetwork mode=allow ssid=<font color="red">wifi-name</font> key=<font color="red">12345</font>
+netsh wlan start hostednetwork
+echo ==============已經啟動 按任意鍵取消==============
+pause>nul
+netsh wlan stop hostednetwork
+</code></pre>
 
 
+<h3>顯示wifi密碼</h3>
 
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#view</span>
-</span><span class='line'><span class="o">&lt;%=</span> <span class="n">paginate</span> <span class="vi">@groups</span> <span class="o">%&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<pre><code>#config/locales/kaminari.yml
-zh:
-views:
-pagination:
-first: "« 首頁"
-last: "末頁 »"
-previous: "‹ 上一頁"
-next: "下一頁 ›"
-truncate: "…"
+<pre><code>netsh wlan show profile name=<font color="red">wifi-name</font> key=clear
 </code></pre>
 
 </div>
@@ -156,7 +133,7 @@ truncate: "…"
 <li class='category'><a href='/blog/categories/bat/'>bat (7)</a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (5)</a></li>
 <li class='category'><a href='/blog/categories/ror/'>ror (6)</a></li>
-<li class='category'><a href='/blog/categories/ruby/'>ruby (5)</a></li>
+<li class='category'><a href='/blog/categories/ruby/'>ruby (8)</a></li>
 
   </ul>
 </section>
@@ -165,23 +142,23 @@ truncate: "…"
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2016/06/17/csv/">Csv</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/06/17/zero-fill/">補零</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/06/17/array/">Array</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2016/06/17/base64/">Base64</a>
       </li>
     
       <li class="post">
         <a href="/blog/2016/06/17/youtube-dl/">Youtube-dl</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/06/17/firefox-ram-cache/">Firefox_ram_cache</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/06/17/espeak/">Espeak</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/06/17/command-line-mp3/">Command_line_mp3</a>
       </li>
     
   </ul>

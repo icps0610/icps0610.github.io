@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2016-06-17T20:35:36+08:00</updated>
+  <updated>2016-06-17T21:15:48+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,145 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Csv]]></title>
+    <link href="http://icps0610.github.io/blog/2016/06/17/csv/"/>
+    <updated>2016-06-17T21:00:27+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/06/17/csv</id>
+    <content type="html"><![CDATA[<blockquote><p>ref 中文亂碼 <a href="https://cnodejs.org/topic/516e0ab46d382773067a5473">https://cnodejs.org/topic/516e0ab46d382773067a5473</a></p></blockquote>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#encoding: UTF-8</span>
+</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;csv&#39;</span>
+</span><span class='line'><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;test.csv&#39;</span>
+</span><span class='line'><span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="s2">&quot;wb&quot;</span><span class="p">){</span><span class="o">|</span><span class="n">f</span><span class="o">|</span> <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\xEF\xBB\xBF</span><span class="s2">&quot;</span><span class="p">)</span> <span class="p">}</span> <span class="c1">#解決中文亂碼 加入&quot;\xEF\xBB\xBF&quot;</span>
+</span><span class='line'><span class="vi">@csv</span><span class="o">=[[</span><span class="s2">&quot;麵包&quot;</span><span class="p">,</span> <span class="s2">&quot;15&quot;</span><span class="o">]</span><span class="p">,</span> <span class="o">[</span><span class="s2">&quot;吐司&quot;</span><span class="p">,</span> <span class="s2">&quot;50&quot;</span><span class="o">]</span><span class="p">,</span> <span class="o">[</span><span class="s2">&quot;牛奶&quot;</span><span class="p">,</span> <span class="s2">&quot;70&quot;</span><span class="o">]]</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">#save </span>
+</span><span class='line'><span class="no">CSV</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">csv</span><span class="o">|</span>
+</span><span class='line'>    <span class="vi">@csv</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">data</span><span class="o">|</span> <span class="n">csv</span> <span class="o">&lt;&lt;</span> <span class="n">data</span> <span class="p">}</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">#讀取每行</span>
+</span><span class='line'><span class="no">CSV</span><span class="o">.</span><span class="n">foreach</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span><span class="k">do</span> <span class="o">|</span><span class="n">row</span><span class="o">|</span>
+</span><span class='line'>    <span class="n">row</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">column</span><span class="o">|</span>
+</span><span class='line'>      <span class="nb">print</span> <span class="n">column</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>    <span class="nb">puts</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'><span class="c1">#麵包15</span>
+</span><span class='line'><span class="c1">#吐司50</span>
+</span><span class='line'><span class="c1">#牛奶70</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">#讀取</span>
+</span><span class='line'><span class="nb">p</span> <span class="no">CSV</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="p">{</span> <span class="ss">col_sep</span><span class="p">:</span> <span class="s1">&#39;,&#39;</span> <span class="p">})</span> <span class="c1"># col_sep: &#39;;&#39; 使用;分割 預設,可省略</span>
+</span><span class='line'><span class="c1">#[[&quot;﻿麵包&quot;, &quot;15&quot;], [&quot;吐司&quot;, &quot;50&quot;], [&quot;牛奶&quot;, &quot;70&quot;]]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[補零]]></title>
+    <link href="http://icps0610.github.io/blog/2016/06/17/zero-fill/"/>
+    <updated>2016-06-17T20:57:53+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/06/17/zero-fill</id>
+    <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">number</span><span class="o">=</span><span class="s2">&quot;23&quot;</span>
+</span><span class='line'><span class="nb">p</span> <span class="n">number</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="s1">&#39;0&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="c1">#&quot;00000023&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Array]]></title>
+    <link href="http://icps0610.github.io/blog/2016/06/17/array/"/>
+    <updated>2016-06-17T20:48:38+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/06/17/array</id>
+    <content type="html"><![CDATA[<h3>array &lt;===> hash</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">key</span> <span class="o">=</span> <span class="o">[</span> <span class="s2">&quot;a&quot;</span> <span class="p">,</span> <span class="s2">&quot;b&quot;</span> <span class="o">]</span>
+</span><span class='line'><span class="n">value</span> <span class="o">=</span> <span class="o">[</span> <span class="mi">1</span> <span class="p">,</span> <span class="mi">2</span> <span class="o">]</span>
+</span><span class='line'><span class="nb">hash</span> <span class="o">=</span> <span class="no">Hash</span><span class="o">[</span> <span class="n">key</span><span class="o">.</span><span class="n">map</span> <span class="p">{</span><span class="o">|</span><span class="n">k</span><span class="o">|</span> <span class="o">[</span> <span class="n">k</span><span class="p">,</span> <span class="n">value</span><span class="o">[</span><span class="n">key</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">k</span><span class="p">)</span><span class="o">]</span> <span class="o">]</span> <span class="p">}</span> <span class="o">]</span>
+</span><span class='line'><span class="nb">p</span> <span class="nb">hash</span>
+</span><span class='line'><span class="c1">#{&quot;a&quot;=&gt;1, &quot;b&quot;=&gt;2}</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">tmp</span> <span class="o">=</span> <span class="o">[</span> <span class="s2">&quot;key&quot;</span> <span class="p">,</span> <span class="s2">&quot;value&quot;</span> <span class="p">,</span> <span class="s2">&quot;key1&quot;</span> <span class="p">,</span> <span class="s2">&quot;value1&quot;</span><span class="o">]</span>
+</span><span class='line'><span class="nb">p</span> <span class="nb">hash</span><span class="o">=</span><span class="no">Hash</span><span class="o">[</span><span class="n">tmp</span><span class="o">.</span><span class="n">each_slice</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">{</span><span class="o">|</span><span class="n">i</span><span class="o">|[</span><span class="n">i</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">,</span><span class="n">i</span><span class="o">[</span><span class="mi">1</span><span class="o">]]</span><span class="p">}</span><span class="o">]</span>
+</span><span class='line'><span class="c1">#{&quot;key&quot;=&gt;&quot;value&quot;, &quot;key1&quot;=&gt;&quot;value1&quot;}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>array項目內重複次數</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">array</span><span class="o">=[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="o">]</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">#Array重複次數最多的前nu個</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">arry_max_frequency</span><span class="p">(</span><span class="n">array</span><span class="p">,</span><span class="n">nu</span><span class="p">)</span>
+</span><span class='line'> <span class="k">return</span> <span class="n">array</span><span class="o">.</span><span class="n">each_with_object</span><span class="p">(</span><span class="no">Hash</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">0</span><span class="p">)){</span><span class="o">|</span><span class="n">m</span><span class="p">,</span><span class="n">h</span><span class="o">|</span><span class="n">h</span><span class="o">[</span><span class="n">m</span><span class="o">]+=</span><span class="mi">1</span><span class="p">}</span><span class="o">.</span><span class="n">sort_by</span><span class="p">{</span><span class="o">|</span><span class="n">k</span><span class="p">,</span><span class="n">v</span><span class="o">|</span><span class="n">v</span><span class="p">}</span><span class="o">.</span><span class="n">reverse</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="n">nu</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">{</span><span class="o">|</span><span class="n">i</span><span class="o">|</span><span class="n">i</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">}</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="nb">p</span> <span class="n">arry_max_frequency</span><span class="p">(</span><span class="n">array</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+</span><span class='line'><span class="c1">#[4, 3, 2]</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">#Array項目內重複次數</span>
+</span><span class='line'><span class="nb">p</span> <span class="n">array</span><span class="o">.</span><span class="n">each_with_object</span><span class="p">(</span><span class="no">Hash</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">0</span><span class="p">)){</span><span class="o">|</span><span class="n">m</span><span class="p">,</span><span class="n">h</span><span class="o">|</span><span class="n">h</span><span class="o">[</span><span class="n">m</span><span class="o">]+=</span> <span class="mi">1</span><span class="p">}</span>
+</span><span class='line'><span class="c1">#{1=&gt;1, 2=&gt;2, 3=&gt;2, 4=&gt;3}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Base64]]></title>
@@ -1092,114 +1231,6 @@ rm /root/.local/share/Trash/files/* 2>/dev/nul
     <updated>2016-06-15T22:04:43+08:00</updated>
     <id>http://icps0610.github.io/blog/2016/06/15/battery-check</id>
     <content type="html"><![CDATA[<p><code>upower -i $(upower -e | grep 'BAT')| grep percentage:| awk '{print$2}'</code></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Config]]></title>
-    <link href="http://icps0610.github.io/blog/2016/06/15/config/"/>
-    <updated>2016-06-15T20:16:01+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/06/15/config</id>
-    <content type="html"><![CDATA[<h4>ssd</h4>
-
-<h6>UUID</h6>
-
-<p><code>blkid -s UUID</code></p>
-
-<pre><code>#/etc/fstab
-UUID=XX / ext4 noatime,nodiratime,discard,defaults,errors=remount-ro 0 1
-tmpfs /tmp tmpfs defaults,noatime,mode=1777 0 0
-tmpfs /var/spool tmpfs defaults,noatime,mode=1777 0 0
-tmpfs /var/tmp tmpfs defaults,noatime,mode=1777 0 0
-tmpfs /var/log tmpfs defaults,noatime,mode=0755 0 0
-</code></pre>
-
-
-<h4>tab補完</h4>
-
-<pre><code>if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-  fi
-fi
-</code></pre>
-
-
-<h4>Repos</h4>
-
-<pre><code>#/etc/apt/sources.list
-<font color='grey'>#Kali</font>
-deb http://ftp.tku.edu.tw/kali kali main contrib non-free
-deb http://ftp.tku.edu.tw/kali-security kali main contrib non-free
-<font color='grey'>#Ubuntu Main Repos</font>
-deb http://free.nchc.org.tw/ubuntu/ trusty main restricted universe multiverse
-<font color='grey'>#Ubuntu Update Repos</font>
-deb http://free.nchc.org.tw/ubuntu/ trusty-security main restricted universe multiverse
-deb http://free.nchc.org.tw/ubuntu/ trusty-updates main restricted universe multiverse
-</code></pre>
-
-
-<h4>sudo no passwd</h4>
-
-<pre><code>visudo
-username ALL=(ALL:ALL) ALL
-</code></pre>
-
-
-<h4>vbox sharefile</h4>
-
-<p><code>mount -t vboxsf REKCAH /data/REKCAH</code></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Get_real_ip]]></title>
-    <link href="http://icps0610.github.io/blog/2016/06/15/get-real-ip/"/>
-    <updated>2016-06-15T13:36:32+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/06/15/get-real-ip</id>
-    <content type="html"><![CDATA[<p><code>curl -s checkip.dyndns.org | sed -e 's/.*Current IP Address: //' -e 's/&lt;.*$//'</code></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Ping_lan]]></title>
-    <link href="http://icps0610.github.io/blog/2016/06/15/ping-lan/"/>
-    <updated>2016-06-15T13:09:26+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/06/15/ping-lan</id>
-    <content type="html"><![CDATA[<pre><code>@echo off
-del ip.tmp 2> nul
-del tmp.txt 2>nul
-del log.txt 2>nul
-SETLOCAL ENABLEDELAYEDEXPANSION
-
-for /l %%i in (1,1,254) do (
-   echo ^@echo off > %SystemRoot%\TEMP\%%i.bat
-   echo ping -n 1 -w 1000 192.168.1.%%i ^>nul >> %SystemRoot%\TEMP\%%i.bat
-   echo if %%errorlevel%% == 0 echo 192.168.1.%%i ^>^> ip.tmp >> %SystemRoot%\TEMP\%%i.bat
-   echo exit >> %SystemRoot%\TEMP\%%i.bat
-   start %SystemRoot%\TEMP\%%i.bat
-)
-echo 正在尋找有回應的主機
-pause
-echo 已找到有回應的主機
-type ip.tmp
-echo 分析主機名稱中..
-for /l %%i in (1,1,254) do del %SystemRoot%\TEMP\%%i.bat
-for /f %%i in (ip.tmp) do (
-   ping -a -n 1 -w 100 %%i > tmp.txt
-   set line=0
-   for /f "tokens=2 delims= " %%j in (tmp.txt) do (
-      set /a line=!line!+1
-      if !line! == 1 echo %%i %%j & echo %%i %%j >>log.txt
-   )
-)
-del ip.tmp 2> nul
-del tmp.txt 2>nul
-pause
-</code></pre>
-
 ]]></content>
   </entry>
   

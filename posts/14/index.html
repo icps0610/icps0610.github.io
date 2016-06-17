@@ -9,9 +9,10 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="dpkg-reconfigure exim4-config #/etc/exim4/update-exim4.conf.conf dc_eximconfig_configtype='internet'
-dc_other_hostnames='linux'
-dc_local_interfaces=' &hellip;">
+  <meta name="description" content="install apt-get install motion config #/etc/motion/motion.conf
+#306 ffmpeg_video_codec mpeg4 #418 target_dir /motion
+#503 webcontrol_localhost on
+# &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -74,7 +75,7 @@ dc_local_interfaces=' &hellip;">
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2016/06/15/exim4/">Exim4</a></h1>
+      <h1 class="entry-title"><a href="/blog/2016/06/16/motion/">Motion</a></h1>
     
     
       <p class="meta">
@@ -83,45 +84,36 @@ dc_local_interfaces=' &hellip;">
 
 
 
-<time class='entry-date' datetime='2016-06-15T22:12:27+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>10:12 pm</span></time>
+<time class='entry-date' datetime='2016-06-16T23:49:41+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>11:49 pm</span></time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p><code>dpkg-reconfigure exim4-config</code></p>
+  <div class="entry-content"><h2>install</h2>
 
-<pre><code>#/etc/exim4/update-exim4.conf.conf 
-dc_eximconfig_configtype='<font color='red'>internet</font>'
-dc_other_hostnames='linux'
-dc_local_interfaces='127.0.0.1 ; ::1'
-dc_readhost='linux'
-dc_relay_domains=''
-dc_minimaldns='false'
-dc_relay_nets=''
-dc_smarthost='<font color='red'>smtp.gmail.com::587</font>'
-CFILEMODE='644'
-dc_use_split_config='false'
-dc_hide_mailname='true'
-dc_mailname_in_oh='true'
-dc_localdelivery='mail_spool'
+<p><code>apt-get install motion</code></p>
+
+<h2>config</h2>
+
+<pre><code>#/etc/motion/motion.conf
+#306    ffmpeg_video_codec mpeg4  
+#418    target_dir /motion
+#503    webcontrol_localhost on
+#628    on_movie_end ruby /motion/motion.rb %f
 </code></pre>
 
 
 
 
-<pre><code>#/etc/exim4/passwd.client
-*.google.com:<font color='red'>test</font>@gmail.com:<font color='red'>12345</font>
+<pre><code>#/etc/default/motion 
+# set to 'yes' to enable the motion daemon
+start_motion_daemon=<font color='red'>yes</font>
 </code></pre>
 
 
-<p><code>service exim4 restart</code></p>
 
-<blockquote><p>Permission denied:<br/>
-<code>mkdir /var/log/exim4</code><br/>
-<code>chmod -R u+rw /var/log/exim4</code><br/>
-<code>chown -R Debian-exim /var/log/exim4</code></p></blockquote>
 </div>
   
   
@@ -148,7 +140,7 @@ dc_localdelivery='mail_spool'
 <li class='category'><a href='/blog/categories/bat/'>bat (7)</a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (5)</a></li>
 <li class='category'><a href='/blog/categories/ror/'>ror (6)</a></li>
-<li class='category'><a href='/blog/categories/ruby/'>ruby (5)</a></li>
+<li class='category'><a href='/blog/categories/ruby/'>ruby (8)</a></li>
 
   </ul>
 </section>
@@ -157,23 +149,23 @@ dc_localdelivery='mail_spool'
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2016/06/17/csv/">Csv</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/06/17/zero-fill/">補零</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/06/17/array/">Array</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2016/06/17/base64/">Base64</a>
       </li>
     
       <li class="post">
         <a href="/blog/2016/06/17/youtube-dl/">Youtube-dl</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/06/17/firefox-ram-cache/">Firefox_ram_cache</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/06/17/espeak/">Espeak</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/06/17/command-line-mp3/">Command_line_mp3</a>
       </li>
     
   </ul>

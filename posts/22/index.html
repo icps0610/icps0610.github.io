@@ -9,9 +9,8 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="@echo off
-mode con cols=70 lines=10
-setlocal EnableDelayedExpansion echo %~nx1 解壓縮中... for /f "delims=" %%i in (D:\passwd.txt) do ( 7z x -y -p"%%i &hellip;">
+  <meta name="description" content="curl -s checkip.dyndns.org | sed -e 's/.*Current IP Address: //' -e 's/&lt;.*$//'
+">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -74,7 +73,7 @@ setlocal EnableDelayedExpansion echo %~nx1 解壓縮中... for /f "delims=" %%i 
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2016/06/14/extract/">Extract</a></h1>
+      <h1 class="entry-title"><a href="/blog/2016/06/15/get-real-ip/">Get_real_ip</a></h1>
     
     
       <p class="meta">
@@ -83,35 +82,14 @@ setlocal EnableDelayedExpansion echo %~nx1 解壓縮中... for /f "delims=" %%i 
 
 
 
-<time class='entry-date' datetime='2016-06-14T01:38:36+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>1:38 am</span></time>
+<time class='entry-date' datetime='2016-06-15T13:36:32+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>1:36 pm</span></time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><pre><code>@echo off
-mode con cols=70 lines=10
-setlocal EnableDelayedExpansion
- 
-echo %~nx1 解壓縮中...
- 
-for /f "delims=" %%i in (D:\passwd.txt) do (
-   7z x -y -p"%%i" "%~1" -o"%~dp1" > nul
-   if !errorlevel!== 0 (
-   echo ===  %~nx1 已完成...
-   echo &ping -n 2 127.0.0.1 >nul & echo
-   ping -n 5 127.0.0.1 > nul
-   exit
-   )
-)
- 
-echo %~1 密碼庫沒有符合密碼或是rar損毀 
-echo %date:~5,5%%time:~,5%  %~1>> %USERPROFILE%\desktop\log.txt
-echo
-ping -n 10 127.0.0.1 > nul
-</code></pre>
-
+  <div class="entry-content"><p><code>curl -s checkip.dyndns.org | sed -e 's/.*Current IP Address: //' -e 's/&lt;.*$//'</code></p>
 </div>
   
   
@@ -138,7 +116,7 @@ ping -n 10 127.0.0.1 > nul
 <li class='category'><a href='/blog/categories/bat/'>bat (7)</a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (5)</a></li>
 <li class='category'><a href='/blog/categories/ror/'>ror (6)</a></li>
-<li class='category'><a href='/blog/categories/ruby/'>ruby (5)</a></li>
+<li class='category'><a href='/blog/categories/ruby/'>ruby (8)</a></li>
 
   </ul>
 </section>
@@ -147,23 +125,23 @@ ping -n 10 127.0.0.1 > nul
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2016/06/17/csv/">Csv</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/06/17/zero-fill/">補零</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/06/17/array/">Array</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2016/06/17/base64/">Base64</a>
       </li>
     
       <li class="post">
         <a href="/blog/2016/06/17/youtube-dl/">Youtube-dl</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/06/17/firefox-ram-cache/">Firefox_ram_cache</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/06/17/espeak/">Espeak</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/06/17/command-line-mp3/">Command_line_mp3</a>
       </li>
     
   </ul>

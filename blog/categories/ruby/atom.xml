@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2016-06-17T20:35:36+08:00</updated>
+  <updated>2016-06-17T21:15:48+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,101 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Csv]]></title>
+    <link href="http://icps0610.github.io/blog/2016/06/17/csv/"/>
+    <updated>2016-06-17T21:00:27+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/06/17/csv</id>
+    <content type="html"><![CDATA[<blockquote><p>ref 中文亂碼 <a href="https://cnodejs.org/topic/516e0ab46d382773067a5473">https://cnodejs.org/topic/516e0ab46d382773067a5473</a>
+``` ruby</p>
+
+<h1>encoding: UTF-8</h1>
+
+<p>require &lsquo;csv&rsquo;
+filename=&lsquo;test.csv&rsquo;
+File.open(filename,&ldquo;wb&rdquo;){|f| f.write(&ldquo;\xEF\xBB\xBF&rdquo;) } #解決中文亂碼 加入"\xEF\xBB\xBF"
+@csv=[[&ldquo;麵包&rdquo;, &ldquo;15&rdquo;], [&ldquo;吐司&rdquo;, &ldquo;50&rdquo;], [&ldquo;牛奶&rdquo;, &ldquo;70&rdquo;]]</p></blockquote>
+
+<h1>save</h1>
+
+<p>CSV.open(filename, &lsquo;a&rsquo;) do |csv|
+    @csv.each { |data| csv &lt;&lt; data }
+end</p>
+
+<h1>讀取每行</h1>
+
+<p>CSV.foreach(filename)do |row|
+    row.each do |column|
+        print column
+    end
+    puts
+end</p>
+
+<h1>麵包15</h1>
+
+<h1>吐司50</h1>
+
+<h1>牛奶70</h1>
+
+<h1>讀取</h1>
+
+<p>p CSV.read(filename, { col_sep: &lsquo;,&rsquo; }) # col_sep: &lsquo;;&rsquo; 使用;分割 預設,可省略</p>
+
+<h1>[[&ldquo;﻿麵包&rdquo;, &ldquo;15&rdquo;], [&ldquo;吐司&rdquo;, &ldquo;50&rdquo;], [&ldquo;牛奶&rdquo;, &ldquo;70&rdquo;]]</h1>
+
+<p>```</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[補零]]></title>
+    <link href="http://icps0610.github.io/blog/2016/06/17/zero-fill/"/>
+    <updated>2016-06-17T20:57:53+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/06/17/zero-fill</id>
+    <content type="html"><![CDATA[<pre><code class="ruby">number="23"
+p number.rjust(8, '0')
+#"00000023"
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Array]]></title>
+    <link href="http://icps0610.github.io/blog/2016/06/17/array/"/>
+    <updated>2016-06-17T20:48:38+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/06/17/array</id>
+    <content type="html"><![CDATA[<h3>array &lt;===> hash</h3>
+
+<pre><code class="ruby">key = [ "a" , "b" ]
+value = [ 1 , 2 ]
+hash = Hash[ key.map {|k| [ k, value[key.index(k)] ] } ]
+p hash
+#{"a"=&gt;1, "b"=&gt;2}
+
+tmp = [ "key" , "value" , "key1" , "value1"]
+p hash=Hash[tmp.each_slice(2).map{|i|[i[0],i[1]]}]
+#{"key"=&gt;"value", "key1"=&gt;"value1"}
+</code></pre>
+
+<h3>array項目內重複次數</h3>
+
+<pre><code class="ruby">array=[1,2,2,3,3,4,4,4,]
+
+#Array重複次數最多的前nu個
+def arry_max_frequency(array,nu)
+ return array.each_with_object(Hash.new(0)){|m,h|h[m]+=1}.sort_by{|k,v|v}.reverse.take(nu).map{|i|i[0]}
+end
+
+p arry_max_frequency(array,3)
+#[4, 3, 2]
+
+#Array項目內重複次數
+p array.each_with_object(Hash.new(0)){|m,h|h[m]+= 1}
+#{1=&gt;1, 2=&gt;2, 3=&gt;2, 4=&gt;3}
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Base64]]></title>
@@ -132,281 +227,6 @@ end
 unlockpattern=Up.new
 puts unlockpattern.all_possible #所有可能
 unlockpattern.rand_produce　#隨機產生
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Ruby檔案操作]]></title>
-    <link href="http://icps0610.github.io/blog/2016/06/16/file/"/>
-    <updated>2016-06-16T14:50:15+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/06/16/file</id>
-    <content type="html"><![CDATA[<pre><code class="ruby">#寫入檔案 w 寫 r讀 a附加
-file = File.open("file.txt", 'w')
-file.truncate(file.size)
-file.write("hello")
-file.close()
-</code></pre>
-
-<pre><code class="ruby">#讀取檔案每行
-File.readlines('foo').each{|line| puts line }
-</code></pre>
-
-<pre><code class="ruby">#讀取檔案成字串
-(IO.binread("test.txt"))
-</code></pre>
-
-<pre><code class="ruby">#列出檔案清單 dir ls
-Dir.new("e:\\download").each{|x| puts x}
-</code></pre>
-
-<pre><code class="ruby">#目錄或檔案
-File.directory?("name")
-File.file?("name")
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Live_cd]]></title>
-    <link href="http://icps0610.github.io/blog/2016/06/15/live-cd/"/>
-    <updated>2016-06-15T22:09:51+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/06/15/live-cd</id>
-    <content type="html"><![CDATA[<pre><code class="ruby">#!/usr/bin/env ruby
-# encoding: utf-8
-`apt-get install squashfs-tools` if `dpkg-query -W | grep squashfs-tools` == ""
-
-class Live
-
-  def initialize
-    iso_list
-    puts "1.解壓縮#{@iso_name}.#{@iso_name_ext}的filesystem.squashfs 到 #{@filesystem}"
-    puts "2.chroot #{@filesystem}"
-    puts "3.將#{@filesystem}壓縮檔案製成光碟/tmp/#{@iso_name}.#{@iso_name_ext}"
-    puts "4.將.\/#{@iso_name} 製作光碟"
-    puts "-------------"
-    choice=gets.chomp
-    if choice == "1"
-      extract
-    elsif choice =="2"
-      mount_system
-    elsif choice =="3"
-      zip_file
-    elsif choice =="4"
-      iso
-    else
-      initialize
-    end
-  end
-
-  def iso_list
-    @iso_name_ext="iso"
-    list = `ls | grep #{@iso_name_ext}`.split("\n")
-    if list.count &gt; 1
-      puts "請選擇iso"
-      list.each_index do |i|
-        puts "#{i+1}. #{list[i]}"
-      end
-      puts "--------------"
-      choice=gets.chomp
-      if not choice == ""
-        @iso_name=File.basename(list[choice.to_i-1],"."+@iso_name_ext)
-      else
-        iso_list
-      end
-    else
-      @iso_name=File.basename(list[0],"."+@iso_name_ext)
-    end
-    @filesystem="#{@iso_name}_filesystem"
-  end
-
-  def iso_extract
-    if File.exist?("#{@iso_name}")
-      printf "\n是否移除舊 #{@iso_name}(y/n) : "
-      `umout #{@iso_name} &amp;&amp; rm -rf #{@iso_name}` if gets.downcase.chomp == "y"
-    end
-    puts "將光碟#{@iso_name}.#{@iso_name_ext}掛載到.\/#{@iso_name}.."
-    system("mkdir #{@iso_name} 2&gt; /dev/null")
-    system("mount -o loop #{@iso_name}.#{@iso_name_ext} #{@iso_name}")
-
-  end
-
-  def extract
-    iso_extract
-    puts "解壓縮 filesystem.squashfs 到 #{@filesystem}"
-    if File.exist?("#{@filesystem}")
-      printf "\n是否移除舊  #{@filesystem}(y/n) : "
-      `rm -rf #{@filesystem}` if gets.downcase.chomp == "y"
-    end
-    system("mount -o loop -t squashfs #{@iso_name}/casper/filesystem.squashfs /mnt/ ")
-    system("rsync -aAXv /mnt/* #{@filesystem} | pv -ls `find /mnt|wc -l` &gt;/dev/null")
-  end
-
-  def mount_system
-    puts "開始掛載..."
-    system("umount /mnt/  2&gt;/dev/null")
-    system("mount -o bind /dev/ #{@filesystem}/dev/ 2&gt;/dev/null")
-    system("mount --bind /dev/pts #{@filesystem}/dev/pts 2&gt;/dev/null")
-    system("mount -t proc procfs #{@filesystem}/proc/  2&gt;/dev/null")
-    system("cp /etc/resolv.conf #{@filesystem}/etc/")
-    system("chroot #{@filesystem}/ /bin/bash")
-    system("umount #{@filesystem}/dev/pts")
-    system("umount #{@filesystem}/proc/")
-    system("umount #{@filesystem}/dev/")
-  end
-
-  def zip_file
-    puts "開始壓縮檔案.."
-    if not File.exist?("/tmp/#{@iso_name}")
-      iso_extract
-      system("rsync -a --exclude 'filesystem.squashfs' #{@iso_name} /tmp/  | pv -les $(df -i #{@iso_name} | perl -ane 'print $F[2] if $F[5] =~ m:^/:') &gt;/dev/null")
-    end
-    system("umount #{@filesystem}/dev/pts 2&gt;/dev/null")
-    system("umount #{@filesystem}/proc/ 2&gt;/dev/null")
-    system("umount #{@filesystem}/dev/ 2&gt;/dev/null")
-
-    system("chroot #{@filesystem} dpkg-query -W --showformat='${Package} ${Version}\n' &gt; /tmp/#{@iso_name}/casper/filesystem.manifest")
-    system("rm /tmp/#{@iso_name}/casper/filesystem.squashfs 2&gt;/dev/null")
-    system("mksquashfs #{@filesystem} /tmp/#{@iso_name}/casper/filesystem.squashfs -comp xz")
-    system("printf $( du -sx --block-size=1 #{@filesystem} | cut -f1) &gt; /tmp/#{@iso_name}/casper/filesystem.size")
-    Dir.chdir("/tmp/#{@iso_name}")
-    system("rm MD5SUMS")
-    system("find -type f -print0 |  xargs -0 md5sum | grep -v isolinux/boot.cat |  tee MD5SUMS")
-    system("mkisofs -input-charset iso8859-1 -r -D -V '/#{@iso_name}-icps' -cache-inodes -J -l -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -graft-point -o /tmp/#{@iso_name}.#{@iso_name_ext} ../#{@iso_name}")
-  end
-
-  def iso
-    puts "開始打包光碟.."
-    #system("cp setup.rb /tmp/#{@iso_name}")
-    #system("printf $( du -sx --block-size=1 #{@filesystem} | cut -f1) &gt; /tmp/#{@iso_name}/casper/filesystem.size")
-    Dir.chdir("/tmp/#{@iso_name}")
-    #system("rm MD5SUMS")
-    #system("find -type f -print0 |  xargs -0 md5sum | grep -v isolinux/boot.cat |  tee MD5SUMS")
-    system("mkisofs -input-charset iso8859-1 -r -D -V '/#{@iso_name}-icps' -cache-inodes -J -l -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -graft-point -o /tmp/#{@iso_name}.#{@iso_name_ext} ../#{@iso_name}")
-  end
-end
-Live.new
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Ssh自動登入]]></title>
-    <link href="http://icps0610.github.io/blog/2016/06/14/ssh-autologin/"/>
-    <updated>2016-06-14T12:50:31+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/06/14/ssh-autologin</id>
-    <content type="html"><![CDATA[<pre><code class="ruby"># encoding: utf-8
-if `gem list | grep net-ssh` == ""
-  puts "缺少套件net-ssh net-scp 準備安裝.."
-  `gem install net-ssh net-scp --no-ri --no-rdoc`
-end
-require "net/ssh"
-require "net/scp"
-$localip=`ifconfig | grep Bcast | cut -d :  -f 2 | cut -d " " -f 1`.chomp
-$localuser=ENV['USER']
-$ip=[]
-$ip &lt;&lt; ["192.168.1.100","test","test"]
-
-class SSH_n_1
-
-  def initialize
-    puts "本地端為SSH主機,#{$localuser}@#{$localip}"
-    puts
-    $ip.each do |host,user,passwd|
-      if system("nc -nz -w 1 #{host} 22") == true
-        puts "&gt;&gt; #{host}連線正常"
-        puts "   #{host}產生ssh key"
-        if user == "root"
-          @home="/#{user}"
-        else
-          @home="/home/#{user}"
-        end
-        script(host,user,passwd)
-        puts "   #{host}下載ssh key"
-        download_key(host,user,passwd)
-        `mkdir ~/.ssh 2&gt; /dev/null`
-        `chmod go-w ~`
-        `chmod 700 ~/.ssh`
-        `chmod 600 ~/.ssh/authorized_keys`
-        `sed -i /#{user}@#{@hostname}/d ~/.ssh/authorized_keys`
-        `cat #{$localip}.pub &gt;&gt; ~/.ssh/authorized_keys`
-
-        puts "   USER: #{user} 已完成"
-      else
-        puts "&gt;&gt; #{host} 沒有回應"
-      end
-      puts
-    end
-  end
-
-  def download_key(host,user,passwd)
-    Net::SCP.download!(host,user, "#{@home}/.ssh/#{$localip}.pub", "#{$localip}.pub",  :ssh =&gt; { :password =&gt; passwd })
-  end
-
-  def script(host,user,passwd)
-    Net::SSH.start(host,user, :password =&gt; passwd ) do |ssh|
-      @hostname=ssh.exec!("hostname").chomp
-      ssh.exec!("mkdir ~/.ssh")
-      ssh.exec!("chmod 700 ~/.ssh")
-      ssh.exec!("rm #{@home}/.ssh/#{$localip}")
-      ssh.exec!("rm #{@home}/.ssh/#{$localip}.pub")
-      ssh.exec!("ssh-keygen -t rsa -f #{@home}/.ssh/#{$localip} -N '' -q")
-      ssh.exec!("sed -i '/HOST #{$localip}/,+1d' #{@home}/.ssh/config")
-      ssh.exec!("echo HOST #{$localip} &gt;&gt; #{@home}/.ssh/config")
-      ssh.exec!("echo IdentityFile ~/.ssh/#{$localip} &gt;&gt; #{@home}/.ssh/config")
-    end
-  end
-
-end
-
-class SSH_1_n
-
-  def initialize
-    puts "IP列表為SSH主機, 使用者: #{$localuser}"
-    @hostname=`hostname`.chomp
-    puts "產生ssh key..."
-    ssh_keygen
-
-    $ip.each do |host,user,passwd|
-      if system("nc -nz -w 1 #{host} 22") == true
-        puts "&gt;&gt; #{host}連線正常"
-        puts "   上傳key到 #{host}"
-        upload_key(host,user,passwd)
-        puts "   #{host} 執行指令"
-        script(host,user,passwd)
-        `sed -i '/HOST #{host}/,+1d' ~/.ssh/config 2&gt;/dev/null`
-        `echo HOST #{host} &gt;&gt; #{ENV['HOME']}/.ssh/config`
-        `echo IdentityFile #{ENV['HOME']}/.ssh/#{$localip} &gt;&gt; #{ENV['HOME']}/.ssh/config`
-        puts "   &gt;&gt; #{user}@#{host}"
-      else
-        puts "&gt;&gt; #{host} 沒有回應"
-      end
-      puts
-    end
-  end
-
-  def upload_key(host,user,passwd)
-    Net::SCP.upload!(host,user, "#{ENV['HOME']}/.ssh/#{$localip}.pub", "id_rsa.pub",  :ssh =&gt; { :password =&gt; passwd })
-  end
-
-  def script(host,user,passwd)
-    Net::SSH.start(host,user, :password =&gt; passwd ) do |ssh|
-      ssh.exec!("sed -i /#{ENV['USER']}@#{@hostname}/d ~/.ssh/authorized_keys")
-      ssh.exec!("mkdir ~/.ssh")
-      ssh.exec!("cat id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys")
-      ssh.exec!("chmod go-w ~")
-      ssh.exec!("chmod 700 ~/.ssh")
-      ssh.exec!("chmod 600 ~/.ssh/authorized_keys")
-    end
-  end
-
-  def ssh_keygen
-    if not File.exist?("#{ENV['HOME']}/.ssh/#{$localip}")
-      system("ssh-keygen -t rsa -f #{ENV['HOME']}/.ssh/#{$localip} -N '' -q")
-    end
-  end
-
-end
 </code></pre>
 ]]></content>
   </entry>
