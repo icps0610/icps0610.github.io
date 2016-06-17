@@ -9,7 +9,7 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="ref 中文亂碼 https://cnodejs.org/topic/516e0ab46d382773067a5473 1
+  <meta name="description" content="ref http://itszero-blog.tumblr.com/post/947845820/port-forwarding-in-ruby 1
 2
 3
 4
@@ -31,10 +31,7 @@
 20
 21
 22
-23
-24
-25
-#encoding: UTF-8 &hellip;">
+#!/usr/bin/env &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -97,7 +94,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2016/06/17/csv/">Csv</a></h1>
+      <h1 class="entry-title"><a href="/blog/2016/06/18/portforward/">Portforward</a></h1>
     
     
       <p class="meta">
@@ -106,14 +103,14 @@
 
 
 
-<time class='entry-date' datetime='2016-06-17T21:00:27+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>9:00 pm</span></time>
+<time class='entry-date' datetime='2016-06-18T03:09:35+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>3:09 am</span></time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><blockquote><p>ref 中文亂碼 <a href="https://cnodejs.org/topic/516e0ab46d382773067a5473">https://cnodejs.org/topic/516e0ab46d382773067a5473</a></p></blockquote>
+  <div class="entry-content"><blockquote><p>ref <a href="http://itszero-blog.tumblr.com/post/947845820/port-forwarding-in-ruby">http://itszero-blog.tumblr.com/post/947845820/port-forwarding-in-ruby</a></p></blockquote>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -137,34 +134,28 @@
 <span class='line-number'>20</span>
 <span class='line-number'>21</span>
 <span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#encoding: UTF-8</span>
-</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;csv&#39;</span>
-</span><span class='line'><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;test.csv&#39;</span>
-</span><span class='line'><span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="s2">&quot;wb&quot;</span><span class="p">){</span><span class="o">|</span><span class="n">f</span><span class="o">|</span> <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\xEF\xBB\xBF</span><span class="s2">&quot;</span><span class="p">)</span> <span class="p">}</span> <span class="c1">#解決中文亂碼 加入&quot;\xEF\xBB\xBF&quot;</span>
-</span><span class='line'><span class="vi">@csv</span><span class="o">=[[</span><span class="s2">&quot;麵包&quot;</span><span class="p">,</span> <span class="s2">&quot;15&quot;</span><span class="o">]</span><span class="p">,</span> <span class="o">[</span><span class="s2">&quot;吐司&quot;</span><span class="p">,</span> <span class="s2">&quot;50&quot;</span><span class="o">]</span><span class="p">,</span> <span class="o">[</span><span class="s2">&quot;牛奶&quot;</span><span class="p">,</span> <span class="s2">&quot;70&quot;</span><span class="o">]]</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1">#save </span>
-</span><span class='line'><span class="no">CSV</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">csv</span><span class="o">|</span>
-</span><span class='line'>    <span class="vi">@csv</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">data</span><span class="o">|</span> <span class="n">csv</span> <span class="o">&lt;&lt;</span> <span class="n">data</span> <span class="p">}</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1">#讀取每行</span>
-</span><span class='line'><span class="no">CSV</span><span class="o">.</span><span class="n">foreach</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span><span class="k">do</span> <span class="o">|</span><span class="n">row</span><span class="o">|</span>
-</span><span class='line'>    <span class="n">row</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">column</span><span class="o">|</span>
-</span><span class='line'>      <span class="nb">print</span> <span class="n">column</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#!/usr/bin/env ruby</span>
+</span><span class='line'><span class="c1"># encoding: utf-8</span>
+</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;socket&#39;</span>
+</span><span class='line'><span class="n">listen_port</span><span class="o">=</span><span class="mi">80</span>
+</span><span class='line'><span class="n">forward_host</span><span class="o">=</span><span class="s2">&quot;127.0.0.1&quot;</span>
+</span><span class='line'><span class="n">forward_port</span><span class="o">=</span><span class="mi">4000</span>
+</span><span class='line'><span class="n">server</span> <span class="o">=</span> <span class="no">TCPServer</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">listen_port</span><span class="p">)</span>
+</span><span class='line'><span class="kp">loop</span> <span class="k">do</span>
+</span><span class='line'>  <span class="no">Thread</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">server</span><span class="o">.</span><span class="n">accept</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">client</span><span class="o">|</span>
+</span><span class='line'>    <span class="n">remote</span> <span class="o">=</span> <span class="no">TCPSocket</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">forward_host</span><span class="p">,</span> <span class="n">forward_port</span> <span class="p">)</span>
+</span><span class='line'>    <span class="kp">loop</span> <span class="k">do</span>
+</span><span class='line'>      <span class="n">r</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">e</span> <span class="o">=</span> <span class="no">IO</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="o">[</span><span class="n">client</span><span class="p">,</span> <span class="n">remote</span><span class="o">]</span><span class="p">,</span> <span class="kp">nil</span><span class="p">,</span> <span class="kp">nil</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</span><span class='line'>      <span class="p">(</span><span class="n">r</span> <span class="o">||</span> <span class="o">[]</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">f</span><span class="o">|</span>
+</span><span class='line'>        <span class="k">if</span> <span class="n">f</span> <span class="o">==</span> <span class="n">remote</span>
+</span><span class='line'>          <span class="n">client</span><span class="o">.</span><span class="n">write</span> <span class="n">remote</span><span class="o">.</span><span class="n">getc</span><span class="o">.</span><span class="n">chr</span>
+</span><span class='line'>        <span class="k">else</span>
+</span><span class='line'>          <span class="n">remote</span><span class="o">.</span><span class="n">write</span> <span class="n">client</span><span class="o">.</span><span class="n">getc</span><span class="o">.</span><span class="n">chr</span>
+</span><span class='line'>        <span class="k">end</span>
+</span><span class='line'>      <span class="k">end</span>
 </span><span class='line'>    <span class="k">end</span>
-</span><span class='line'>    <span class="nb">puts</span>
+</span><span class='line'>  <span class="k">end</span>
 </span><span class='line'><span class="k">end</span>
-</span><span class='line'><span class="c1">#麵包15</span>
-</span><span class='line'><span class="c1">#吐司50</span>
-</span><span class='line'><span class="c1">#牛奶70</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1">#讀取</span>
-</span><span class='line'><span class="nb">p</span> <span class="no">CSV</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="p">{</span> <span class="ss">col_sep</span><span class="p">:</span> <span class="s1">&#39;,&#39;</span> <span class="p">})</span> <span class="c1"># col_sep: &#39;;&#39; 使用;分割 預設,可省略</span>
-</span><span class='line'><span class="c1">#[[&quot;﻿麵包&quot;, &quot;15&quot;], [&quot;吐司&quot;, &quot;50&quot;], [&quot;牛奶&quot;, &quot;70&quot;]]</span>
 </span></code></pre></td></tr></table></div></figure>
 
 </div>
@@ -188,10 +179,10 @@
   <h1>Categories</h1>
   <ul id="categories">
     <li class='category'><a href='/blog/categories/app/'>app (7)</a></li>
-<li class='category'><a href='/blog/categories/bat/'>bat (7)</a></li>
+<li class='category'><a href='/blog/categories/bat/'>bat (8)</a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (5)</a></li>
 <li class='category'><a href='/blog/categories/ror/'>ror (6)</a></li>
-<li class='category'><a href='/blog/categories/ruby/'>ruby (8)</a></li>
+<li class='category'><a href='/blog/categories/ruby/'>ruby (9)</a></li>
 
   </ul>
 </section>
@@ -200,23 +191,23 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2016/06/18/portforward/">Portforward</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/06/18/route/">Route</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/06/17/download/">Download</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2016/06/17/csv/">Csv</a>
       </li>
     
       <li class="post">
         <a href="/blog/2016/06/17/zero-fill/">補零</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/06/17/array/">Array</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/06/17/base64/">Base64</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/06/17/youtube-dl/">Youtube-dl</a>
       </li>
     
   </ul>

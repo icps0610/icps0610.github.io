@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Bat | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/bat/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2016-06-17T21:15:48+08:00</updated>
+  <updated>2016-06-18T03:13:53+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,21 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Route]]></title>
+    <link href="http://icps0610.github.io/blog/2016/06/18/route/"/>
+    <updated>2016-06-18T01:41:14+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/06/18/route</id>
+    <content type="html"><![CDATA[<pre><code>@echo off
+route delete 0.0.0.0
+route add 0.0.0.0 192.168.43.1 mask 0.0.0.0
+route print | find "0.0.0.0"
+ping 127.0.0.1 -n 10 > nul
+</code></pre>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[System]]></title>
@@ -136,21 +151,6 @@ echo %~1 密碼庫沒有符合密碼或是rar損毀
 echo %date:~5,5%%time:~,5%  %~1>> %USERPROFILE%\desktop\log.txt
 echo
 ping -n 10 127.0.0.1 > nul
-</code></pre>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Set_ip]]></title>
-    <link href="http://icps0610.github.io/blog/2016/06/14/set-ip/"/>
-    <updated>2016-06-14T01:37:19+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/06/14/set-ip</id>
-    <content type="html"><![CDATA[<pre><code>@echo off
-netsh add helper ifmon.dll > nul
-netsh interface ip set address name="區域連線" source=static addr=192.168.1.150 mask=255.255.255.0 gateway=192.168.1.1 gwmetric=1 > nul
-ipconfig
-ping 127.0.0.1 -n 3 > nul
 </code></pre>
 
 ]]></content>
