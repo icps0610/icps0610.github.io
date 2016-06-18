@@ -9,7 +9,7 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="encoding: utf-8 1
+  <meta name="description" content="1
 2
 3
 4
@@ -30,7 +30,9 @@
 19
 20
 21
-require &quot;base64&quot; def aes_encrypt(data) cipher = OpenSSL::Cipher:: &hellip;">
+22
+# encoding: utf-8
+require &quot;base64&quot; def aes_encrypt(data) cipher = OpenSSL::Cipher &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -107,9 +109,7 @@ require &quot;base64&quot; def aes_encrypt(data) cipher = OpenSSL::Cipher:: &hel
   </header>
 
 
-<div class="entry-content"><h1>encoding: utf-8</h1>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -130,7 +130,9 @@ require &quot;base64&quot; def aes_encrypt(data) cipher = OpenSSL::Cipher:: &hel
 <span class='line-number'>19</span>
 <span class='line-number'>20</span>
 <span class='line-number'>21</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s2">&quot;base64&quot;</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># encoding: utf-8</span>
+</span><span class='line'><span class="nb">require</span> <span class="s2">&quot;base64&quot;</span>
 </span><span class='line'>
 </span><span class='line'><span class="k">def</span> <span class="nf">aes_encrypt</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </span><span class='line'>  <span class="n">cipher</span> <span class="o">=</span> <span class="no">OpenSSL</span><span class="o">::</span><span class="no">Cipher</span><span class="o">::</span><span class="no">AES256</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">:CBC</span><span class="p">)</span>
@@ -192,6 +194,8 @@ require &quot;base64&quot; def aes_encrypt(data) cipher = OpenSSL::Cipher:: &hel
         <a class="basic-alignment left" href="/blog/2016/06/18/bettercap/" title="Previous Post: bettercap">&laquo; bettercap</a>
       
       
+        <a class="basic-alignment right" href="/blog/2016/06/18/rss/" title="Next Post: RSS">RSS &raquo;</a>
+      
     </p>
   </footer>
 </article>
@@ -207,13 +211,17 @@ require &quot;base64&quot; def aes_encrypt(data) cipher = OpenSSL::Cipher:: &hel
 <li class='category'><a href='/blog/categories/bat/'>bat (8)</a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (9)</a></li>
 <li class='category'><a href='/blog/categories/ror/'>ror (7)</a></li>
-<li class='category'><a href='/blog/categories/ruby/'>ruby (13)</a></li>
+<li class='category'><a href='/blog/categories/ruby/'>ruby (14)</a></li>
 
     </ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2016/06/18/rss/">RSS</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2016/06/18/openssl-aes256/">OpenSSL-AES256</a>
@@ -249,10 +257,6 @@ require &quot;base64&quot; def aes_encrypt(data) cipher = OpenSSL::Cipher:: &hel
     
       <li class="post">
         <a href="/blog/2016/06/18/disk-speed-test/">硬碟速度測試</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/06/18/matsu/">Matsu</a>
       </li>
     
   </ul>

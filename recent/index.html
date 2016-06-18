@@ -9,7 +9,7 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="encoding: utf-8 1
+  <meta name="description" content="1
 2
 3
 4
@@ -19,18 +19,8 @@
 8
 9
 10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-require &quot;base64&quot; def aes_encrypt(data) cipher = OpenSSL::Cipher:: &hellip;">
+require &#39;rss&#39;
+require &#39;open-uri&#39; url = &#39;http://www.appledaily.com.tw/rss/newcreate/kind/rnews/type/new&#39; &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -94,6 +84,56 @@ require &quot;base64&quot; def aes_encrypt(data) cipher = OpenSSL::Cipher:: &hel
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2016/06/18/rss/">RSS</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-06-18T20:18:58+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>8:18 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;rss&#39;</span>
+</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;open-uri&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://www.appledaily.com.tw/rss/newcreate/kind/rnews/type/new&#39;</span>
+</span><span class='line'><span class="nb">open</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">rss</span><span class="o">|</span>
+</span><span class='line'>  <span class="n">feed</span> <span class="o">=</span> <span class="no">RSS</span><span class="o">::</span><span class="no">Parser</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">rss</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">feed</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">item</span><span class="o">|</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;Title: </span><span class="si">#{</span><span class="n">item</span><span class="o">.</span><span class="n">title</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2016/06/18/openssl-aes256/">OpenSSL-AES256</a></h1>
     
     
@@ -110,9 +150,7 @@ require &quot;base64&quot; def aes_encrypt(data) cipher = OpenSSL::Cipher:: &hel
   </header>
 
 
-  <div class="entry-content"><h1>encoding: utf-8</h1>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+  <div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -133,7 +171,9 @@ require &quot;base64&quot; def aes_encrypt(data) cipher = OpenSSL::Cipher:: &hel
 <span class='line-number'>19</span>
 <span class='line-number'>20</span>
 <span class='line-number'>21</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s2">&quot;base64&quot;</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># encoding: utf-8</span>
+</span><span class='line'><span class="nb">require</span> <span class="s2">&quot;base64&quot;</span>
 </span><span class='line'>
 </span><span class='line'><span class="k">def</span> <span class="nf">aes_encrypt</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </span><span class='line'>  <span class="n">cipher</span> <span class="o">=</span> <span class="no">OpenSSL</span><span class="o">::</span><span class="no">Cipher</span><span class="o">::</span><span class="no">AES256</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">:CBC</span><span class="p">)</span>
@@ -524,145 +564,6 @@ rm test_disk
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2016/06/18/matsu/">Matsu</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2016-06-18T03:43:48+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>3:43 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h4>airport</h4>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;nokogiri&#39;</span>
-</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;net/http&#39;</span>
-</span><span class='line'><span class="k">def</span> <span class="nf">airport</span>
-</span><span class='line'>  <span class="n">url</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="no">URI</span><span class="o">.</span><span class="n">parse</span> <span class="s2">&quot;http://www.matsu-news.gov.tw/&quot;</span><span class="p">)</span>
-</span><span class='line'>  <span class="n">doc</span> <span class="o">=</span> <span class="no">Nokogiri</span><span class="o">::</span><span class="no">HTML</span><span class="p">(</span> <span class="n">url</span><span class="p">,</span> <span class="kp">nil</span><span class="p">,</span> <span class="s1">&#39;big5&#39;</span> <span class="p">)</span>
-</span><span class='line'>  <span class="n">array</span><span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s2">&quot;//td&quot;</span><span class="p">)</span><span class="o">[</span><span class="mi">28</span><span class="o">].</span><span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-</span><span class='line'>  <span class="n">array</span><span class="o">.</span><span class="n">map</span> <span class="k">do</span> <span class="o">|</span><span class="n">x</span><span class="o">|</span>
-</span><span class='line'>    <span class="ow">not</span> <span class="n">x</span> <span class="o">=~</span> <span class="sr">/◎/</span> <span class="p">?</span> <span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">{</span><span class="o">|</span><span class="n">i</span><span class="o">|</span><span class="n">i</span><span class="p">}</span> <span class="p">:</span> <span class="n">x</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'>  <span class="n">array</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="n">array</span><span class="o">.</span><span class="n">count</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">{</span><span class="o">|</span><span class="n">i</span><span class="o">|</span><span class="n">i</span><span class="o">+</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">}</span><span class="o">.</span><span class="n">to_a</span><span class="o">.</span><span class="n">join</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>matsu</h2>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;nokogiri&#39;</span>
-</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;net/http&#39;</span>
-</span><span class='line'><span class="n">url</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="no">URI</span><span class="o">.</span><span class="n">parse</span> <span class="s2">&quot;http://www.matsu.idv.tw/index_main.php&quot;</span><span class="p">)</span>
-</span><span class='line'><span class="vi">@doc</span> <span class="o">=</span> <span class="no">Nokogiri</span><span class="o">::</span><span class="no">HTML</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="kp">nil</span><span class="p">,</span> <span class="kp">nil</span> <span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">def</span> <span class="nf">matsu_ship</span>
-</span><span class='line'>  <span class="n">all_title</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
-</span><span class='line'>  <span class="n">board</span><span class="o">=</span><span class="vi">@doc</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s2">&quot;//table[contains(@width, &#39;100%&#39;) and contains(@border, &#39;0&#39;) and contains(@cellspacing, &#39;0&#39;) and contains(@cellpadding, &#39;4&#39;)]&quot;</span><span class="p">)</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2"> 航班公告</span><span class="se">\n\n\n</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">to_a</span><span class="o">.</span><span class="n">join</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;  &quot;</span><span class="p">)</span>
-</span><span class='line'>  <span class="k">if</span> <span class="ow">not</span> <span class="n">board</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">scan</span><span class="p">(</span><span class="sr">/.*無航班資料.*/</span><span class="p">)</span><span class="o">.</span><span class="n">count</span> <span class="o">==</span> <span class="mi">1</span>
-</span><span class='line'>    <span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="n">.board</span><span class="o">.</span><span class="n">count</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">i</span><span class="o">|</span>
-</span><span class='line'>      <span class="n">link</span><span class="o">=</span><span class="vi">@doc</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s2">&quot;//table[contains(@width, &#39;100%&#39;) and contains(@border, &#39;0&#39;) and contains(@cellspacing, &#39;0&#39;) and contains(@cellpadding, &#39;4&#39;)]//a&quot;</span><span class="p">)</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="s1">&#39;href&#39;</span><span class="o">]</span>
-</span><span class='line'>      <span class="n">all_title</span><span class="o">+=</span><span class="n">board</span><span class="o">[</span><span class="n">i</span><span class="o">]+</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">+</span><span class="s2">&quot;http://www.matsu.idv.tw/&quot;</span><span class="o">+</span><span class="n">link</span><span class="o">+</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
-</span><span class='line'>    <span class="k">end</span>
-</span><span class='line'>  <span class="k">else</span>
-</span><span class='line'>    <span class="k">return</span> <span class="s2">&quot;今日無航班資料&quot;</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'>  <span class="k">return</span> <span class="n">all_title</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">def</span> <span class="nf">matsu_news_list</span>
-</span><span class='line'>  <span class="n">title</span><span class="o">=</span> <span class="vi">@doc</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s2">&quot;//ul[@id=&#39;news_list&#39;]&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">delete_if</span> <span class="p">{</span><span class="o">|</span><span class="n">i</span><span class="o">|</span><span class="n">i</span><span class="o">==</span><span class="s2">&quot;&quot;</span><span class="p">}</span><span class="o">.</span><span class="n">map</span><span class="p">{</span><span class="o">|</span><span class="n">i</span><span class="o">|</span><span class="n">i</span><span class="o">.</span><span class="n">strip</span><span class="o">+</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">}</span>
-</span><span class='line'>  <span class="n">link</span><span class="o">=</span><span class="vi">@doc</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s2">&quot;//ul[@id=&#39;news_list&#39;]//a&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">{</span><span class="o">|</span><span class="n">i</span><span class="o">|</span><span class="n">i</span><span class="o">[</span><span class="s1">&#39;href&#39;</span><span class="o">]</span><span class="p">}</span><span class="o">.</span><span class="n">uniq</span>
-</span><span class='line'>  <span class="n">title_link</span><span class="p">(</span><span class="n">title</span><span class="p">,</span><span class="n">link</span><span class="p">)</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'><span class="k">def</span> <span class="nf">matsu_talk</span>
-</span><span class='line'>  <span class="n">link</span> <span class="o">=</span><span class="vi">@doc</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s2">&quot;//td[@height=&#39;22&#39; and @class=&#39;largetext&#39;]//a&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">{</span><span class="o">|</span><span class="n">i</span><span class="o">|</span><span class="n">i</span><span class="o">[</span><span class="s1">&#39;href&#39;</span><span class="o">]</span><span class="p">}</span><span class="o">.</span><span class="n">uniq</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
-</span><span class='line'>  <span class="n">title</span><span class="o">=</span><span class="vi">@doc</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s2">&quot;//td[@height=&#39;22&#39; and @class=&#39;largetext&#39;]&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">{</span><span class="o">|</span><span class="n">i</span><span class="o">|</span><span class="n">i</span><span class="o">+</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">}</span>
-</span><span class='line'>  <span class="n">title_link</span><span class="p">(</span><span class="n">title</span><span class="p">,</span><span class="n">link</span><span class="p">)</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'><span class="k">def</span> <span class="nf">title_link</span><span class="p">(</span><span class="n">title</span><span class="p">,</span><span class="n">link</span><span class="p">)</span>
-</span><span class='line'>  <span class="n">result</span><span class="o">=[]</span>
-</span><span class='line'>  <span class="n">title</span><span class="o">.</span><span class="n">each_index</span> <span class="k">do</span> <span class="o">|</span><span class="n">i</span><span class="o">|</span>
-</span><span class='line'>    <span class="n">result</span> <span class="o">&lt;&lt;</span> <span class="n">title</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="n">strip</span><span class="o">+</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
-</span><span class='line'>    <span class="n">result</span> <span class="o">&lt;&lt;</span> <span class="s1">&#39;http://www.matsu.idv.tw/&#39;</span><span class="o">+</span><span class="n">link</span><span class="o">[</span><span class="n">i</span><span class="o">]+</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'>  <span class="n">result</span><span class="o">.</span><span class="n">to_a</span><span class="o">.</span><span class="n">join</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'><span class="nb">puts</span> <span class="n">matsu_ship</span>
-</span><span class='line'><span class="nb">puts</span> <span class="n">matsu_news_list</span>
-</span><span class='line'><span class="nb">puts</span> <span class="n">matsu_talk</span>
-</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
     <a href="/blog/archives">Blog Archives</a>
@@ -678,13 +579,17 @@ rm test_disk
 <li class='category'><a href='/blog/categories/bat/'>bat (8)</a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (9)</a></li>
 <li class='category'><a href='/blog/categories/ror/'>ror (7)</a></li>
-<li class='category'><a href='/blog/categories/ruby/'>ruby (13)</a></li>
+<li class='category'><a href='/blog/categories/ruby/'>ruby (14)</a></li>
 
     </ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2016/06/18/rss/">RSS</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2016/06/18/openssl-aes256/">OpenSSL-AES256</a>
@@ -720,10 +625,6 @@ rm test_disk
     
       <li class="post">
         <a href="/blog/2016/06/18/disk-speed-test/">硬碟速度測試</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/06/18/matsu/">Matsu</a>
       </li>
     
   </ul>

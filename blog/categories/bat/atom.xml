@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Bat | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/bat/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2016-06-18T20:18:10+08:00</updated>
+  <updated>2016-06-18T20:46:13+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -156,4 +156,4 @@ ping -n 10 127.0.0.1 > nul
 ]]></content>
   </entry>
   
-</feed>
+ </feed>

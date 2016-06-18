@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2016-06-18T20:18:10+08:00</updated>
+  <updated>2016-06-18T20:46:13+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -14,13 +14,31 @@
 
   
   <entry>
+    <title type="html"><![CDATA[RSS]]></title>
+    <link href="http://icps0610.github.io/blog/2016/06/18/rss/"/>
+    <updated>2016-06-18T20:18:58+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/06/18/rss</id>
+    <content type="html"><![CDATA[<pre><code class="ruby">require 'rss'
+require 'open-uri'
+
+url = 'http://www.appledaily.com.tw/rss/newcreate/kind/rnews/type/new'
+open(url) do |rss|
+  feed = RSS::Parser.parse(rss)
+  feed.items.each do |item|
+    puts "Title: #{item.title}"
+  end
+end
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[OpenSSL-AES256]]></title>
     <link href="http://icps0610.github.io/blog/2016/06/18/openssl-aes256/"/>
     <updated>2016-06-18T20:10:17+08:00</updated>
     <id>http://icps0610.github.io/blog/2016/06/18/openssl-aes256</id>
-    <content type="html"><![CDATA[<h1>encoding: utf-8</h1>
-
-<pre><code class="ruby">require "base64"
+    <content type="html"><![CDATA[<pre><code class="ruby"># encoding: utf-8
+require "base64"
 
 def aes_encrypt(data)
   cipher = OpenSSL::Cipher::AES256.new(:CBC)
@@ -164,31 +182,4 @@ end
 ]]></content>
   </entry>
   
-  <entry>
-    <title type="html"><![CDATA[Download]]></title>
-    <link href="http://icps0610.github.io/blog/2016/06/17/download/"/>
-    <updated>2016-06-17T21:23:51+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/06/17/download</id>
-    <content type="html"><![CDATA[<pre><code class="ruby">require 'net/http'
-url="http://www.matsu.idv.tw/image/mod_ad/matsu-20130331040156-sernity-k.gif"
-url=url.match(/http:\/\/([\w|\.|\-]*)(\/.*)/)
-p url[1] #"www.matsu.idv.tw"
-p url[2] #"/image/mod_ad/matsu-20130331040156-sernity-k.gif"
-
-Net::HTTP.start(url[1]) { |http|
-  resp = http.get(url[2])
-  open("test.gif", "wb") { |file|
-    file.write(resp.body)
-   }
-}
-</code></pre>
-
-<pre><code class="ruby">require 'open-uri'
-open('test.gif', 'wb') do |file|
-  file &lt;&lt; open(url).read
-end
-</code></pre>
-]]></content>
-  </entry>
-  
-</feed>
+ </feed>

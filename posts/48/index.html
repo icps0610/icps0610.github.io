@@ -5,15 +5,13 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Ping_lan - icps</title>
+  <title>About - icps</title>
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="@echo off
-del ip.tmp 2> nul
-del tmp.txt 2>nul
-del log.txt 2>nul
-SETLOCAL ENABLEDELAYEDEXPANSION for /l %%i in (1,1,254) do ( echo ^@echo off > % &hellip;">
+  <meta name="description" content="About Jun 18th, 2016 5:45 pm -gJe7x[F,r3c
+^pk.. 5l28Z7/T1m
+7KTX(oN/,#tGmr/hMekL4jqAFXD5(pC@b_2++5*]Q,47~ Jun 18th, 2016 5:45 pm Categories app (8) &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -22,7 +20,7 @@ SETLOCAL ENABLEDELAYEDEXPANSION for /l %%i in (1,1,254) do ( echo ^@echo off > %
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://icps0610.github.io/blog/2016/06/15/ping-lan/">
+  <link rel="canonical" href="http://icps0610.github.io/posts/48/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="icps" type="application/atom+xml">
@@ -70,101 +68,43 @@ SETLOCAL ENABLEDELAYEDEXPANSION for /l %%i in (1,1,254) do ( echo ^@echo off > %
   <div id="main">
     <div id="content">
       <div>
-<article class="hentry" role="article">
+<article role="article">
   
   <header>
-    
-      <h1 class="entry-title">Ping_lan</h1>
-    
-    
+    <h1 class="entry-title">About</h1>
+    <p class="meta">
+
+
+
+
+<time class='entry-date' datetime='2016-06-18T17:45:00+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>5:45 pm</span></time></p>
+  </header>
+  
+  -gJe7x[F,r3c<br />
+^pk.. 5l28Z7/T1m<br />
+7KTX(oN/,#tGmr/hMekL4jqAFXD5(pC@b_2++5*]Q,47~<br />
+  
+    <footer>
       <p class="meta">
         
+        
 
 
 
 
-<time class='entry-date' datetime='2016-06-15T13:09:26+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>1:09 pm</span></time>
+<time class='entry-date' datetime='2016-06-18T17:45:00+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>5:45 pm</span></time>
         
       </p>
-    
-  </header>
-
-
-<div class="entry-content"><pre><code>@echo off
-del ip.tmp 2> nul
-del tmp.txt 2>nul
-del log.txt 2>nul
-SETLOCAL ENABLEDELAYEDEXPANSION
-
-for /l %%i in (1,1,254) do (
-   echo ^@echo off > %SystemRoot%\TEMP\%%i.bat
-   echo ping -n 1 -w 1000 192.168.1.%%i ^>nul >> %SystemRoot%\TEMP\%%i.bat
-   echo if %%errorlevel%% == 0 echo 192.168.1.%%i ^>^> ip.tmp >> %SystemRoot%\TEMP\%%i.bat
-   echo exit >> %SystemRoot%\TEMP\%%i.bat
-   start %SystemRoot%\TEMP\%%i.bat
-)
-echo 正在尋找有回應的主機
-pause
-echo 已找到有回應的主機
-type ip.tmp
-echo 分析主機名稱中..
-for /l %%i in (1,1,254) do del %SystemRoot%\TEMP\%%i.bat
-for /f %%i in (ip.tmp) do (
-   ping -a -n 1 -w 100 %%i > tmp.txt
-   set line=0
-   for /f "tokens=2 delims= " %%j in (tmp.txt) do (
-      set /a line=!line!+1
-      if !line! == 1 echo %%i %%j & echo %%i %%j >>log.txt
-   )
-)
-del ip.tmp 2> nul
-del tmp.txt 2>nul
-pause
-</code></pre>
-
-</div>
-
-
-  <footer>
-    <p class="meta">
       
-  
-
-<span class="byline author vcard">Posted by <span class="fn">icps</span></span>
-
-      
-
-
-
-
-<time class='entry-date' datetime='2016-06-15T13:09:26+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>1:09 pm</span></time>
-      
-
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/bat/'>bat</a>
-  
-</span>
-
-
-    </p>
-    
-      <div class="sharing">
+        <div class="sharing">
   
   
   
 </div>
 
-    
-    <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2016/06/14/ssh-autologin/" title="Previous Post: ssh自動登入">&laquo; ssh自動登入</a>
-      
-      
-        <a class="basic-alignment right" href="/blog/2016/06/15/get-real-ip/" title="Next Post: get_real_ip">get_real_ip &raquo;</a>
-      
-    </p>
-  </footer>
+    </footer>
+  
 </article>
 
 </div>

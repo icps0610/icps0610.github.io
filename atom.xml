@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2016-06-18T20:18:10+08:00</updated>
+  <updated>2016-06-18T20:46:13+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -14,13 +14,41 @@
 
   
   <entry>
+    <title type="html"><![CDATA[RSS]]></title>
+    <link href="http://icps0610.github.io/blog/2016/06/18/rss/"/>
+    <updated>2016-06-18T20:18:58+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/06/18/rss</id>
+    <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;rss&#39;</span>
+</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;open-uri&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://www.appledaily.com.tw/rss/newcreate/kind/rnews/type/new&#39;</span>
+</span><span class='line'><span class="nb">open</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">rss</span><span class="o">|</span>
+</span><span class='line'>  <span class="n">feed</span> <span class="o">=</span> <span class="no">RSS</span><span class="o">::</span><span class="no">Parser</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">rss</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">feed</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">item</span><span class="o">|</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;Title: </span><span class="si">#{</span><span class="n">item</span><span class="o">.</span><span class="n">title</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[OpenSSL-AES256]]></title>
     <link href="http://icps0610.github.io/blog/2016/06/18/openssl-aes256/"/>
     <updated>2016-06-18T20:10:17+08:00</updated>
     <id>http://icps0610.github.io/blog/2016/06/18/openssl-aes256</id>
-    <content type="html"><![CDATA[<h1>encoding: utf-8</h1>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+    <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -41,7 +69,9 @@
 <span class='line-number'>19</span>
 <span class='line-number'>20</span>
 <span class='line-number'>21</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s2">&quot;base64&quot;</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># encoding: utf-8</span>
+</span><span class='line'><span class="nb">require</span> <span class="s2">&quot;base64&quot;</span>
 </span><span class='line'>
 </span><span class='line'><span class="k">def</span> <span class="nf">aes_encrypt</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </span><span class='line'>  <span class="n">cipher</span> <span class="o">=</span> <span class="no">OpenSSL</span><span class="o">::</span><span class="no">Cipher</span><span class="o">::</span><span class="no">AES256</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">:CBC</span><span class="p">)</span>
@@ -738,18 +768,6 @@ ping 127.0.0.1 -n 10 > nul
 <pre><code>youtube-dl -f mp4 <font color='red'>url</font>
 </code></pre>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Firefox_ram_cache]]></title>
-    <link href="http://icps0610.github.io/blog/2016/06/17/firefox-ram-cache/"/>
-    <updated>2016-06-17T17:34:26+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/06/17/firefox-ram-cache</id>
-    <content type="html"><![CDATA[<p>about:config<br/>
-　browser.cache.disk.enable  ==>  false<br/>
-　browser.cache.memory.capacity ==> 整數 102400<br/>
-　browser.cache.memory.enable ==> true</p>
 ]]></content>
   </entry>
   
