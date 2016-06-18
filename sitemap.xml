@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://icps0610.github.io/blog/2016/06/18/hexo/</loc>
+<lastmod>2016-06-18T21:27:11+08:00</lastmod>
+</url>
+<url>
+<loc>http://icps0610.github.io/blog/2016/06/18/test/</loc>
+<lastmod>2016-06-18T21:18:10+08:00</lastmod>
+</url>
+<url>
 <loc>http://icps0610.github.io/blog/2016/06/18/rss/</loc>
 <lastmod>2016-06-18T20:18:58+08:00</lastmod>
 </url>
@@ -220,6 +228,9 @@
 <loc>http://icps0610.github.io/blog/categories/linux/</loc>
 </url>
 <url>
+<loc>http://icps0610.github.io/blog/categories/uncategorized/</loc>
+</url>
+<url>
 <loc>http://icps0610.github.io/posts/2/</loc>
 </url>
 <url>
@@ -359,5 +370,11 @@
 </url>
 <url>
 <loc>http://icps0610.github.io/posts/48/</loc>
+</url>
+<url>
+<loc>http://icps0610.github.io/posts/49/</loc>
+</url>
+<url>
+<loc>http://icps0610.github.io/posts/50/</loc>
 </url>
 </urlset>
