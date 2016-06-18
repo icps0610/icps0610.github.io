@@ -1,8 +1,0 @@
----
-layout: post
-title: "test"
-date: 2016-06-18 21:18:10 +0800
-comments: true
-categories: uncategorized
----
-test

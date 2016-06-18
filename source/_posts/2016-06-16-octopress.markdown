@@ -39,6 +39,12 @@ server_port     = "80"
 #86 
 rackupPid = Process.spawn("rackup -o 0.0.0.0 --port #{server_port}")
 ```
+## debug
+`jekyll serve --trace`
+
+> jekyll 2.5.3 | Error:  user bg.UAS doesn't exist
+> rm source/images/~bg.UAS
+
 
 ## command
 
@@ -95,7 +101,7 @@ blog_index_dir  = 'source/blog'
 > ref  http://codemacro.com/2012/07/18/add-category-list-to-octopress/   
 > ref  https://github.com/shunnien/octopress-category-list 
 
-### code  
+###### code  
 ``` ruby
 #plugins/category_list_tag.rb
 module Jekyll
@@ -134,7 +140,7 @@ Liquid::Template.register_tag('category_list', Jekyll::CategoryList)
 
 
 
-### asides
+###### asides
 
 ``` html
 #source/_includes/asides/category_list.html  
@@ -145,13 +151,13 @@ Liquid::Template.register_tag('category_list', Jekyll::CategoryList)
     </ul>
 </section>
 ```
-### 在側邊加入連結
+###### 在側邊加入連結
 ``` ruby
 #_config.yml
 #56 
 default_asides: [asides/category_list.html]
 ```
-### top
+###### top
 
 ``` html
 #source/blog/categories/index.html
@@ -170,14 +176,26 @@ a {
 </article>
 
 ```
-### 在上方加入連結
+###### 在上方加入連結
 ``` 
 #source/_includes/custom/navigation.html
 <ul class="main-navigation">
   <li><a href="{% raw %}{{ root_url }}{% endraw %}/blog/categories">Categories</a></li>
 </ul>
 ```
-### 新產生的文章給予 uncategorized  
+## Background image in header  
+> ref https://github.com/imathis/octopress/issues/356
+
+``` ruby
+#sass/custom/_styles.scss
+header[role="banner"] {
+     background-image: url(/images/bg.png);
+     background-repeat: no-repeat;
+}
+```
+
+
+## 新產生的文章給予 uncategorized  
 ``` ruby
 #Rackfile
 #117
@@ -188,25 +206,20 @@ post.puts "categories: uncategorized"
 
 > ref  http://blog.slaks.net/2013-06-10/jekyll-endraw-in-code/  
 
-### 若要顯示 {% raw %}{% category_list_top %}{% endraw %}
+###### 若要顯示 {% raw %}{% category_list_top %}{% endraw %}
 <pre><code>```
   {% assign oTag = '{%' %}{{ oTag }}{% raw %} raw %}{% endraw %}<font color='red'>{% raw %}{% category_list_top %}{% endraw %}</font>{{ oTag }}{% raw %} endraw %}{% endraw %}
 ```
 </code></pre>
 
-### 若要顯示 {{ oTag }}{% raw %} raw %}{% endraw %}{{ oTag }}{% raw %} endraw %}{% endraw %}
+###### 若要顯示 {{ oTag }}{% raw %} raw %}{% endraw %}{{ oTag }}{% raw %} endraw %}{% endraw %}
 <pre><code>{% raw %}{% assign <font color='green'>oTag</font> = '{%' %}{% endraw %}
 # 然後在貼下半部
 <font color='green'>{% raw %}{{ oTag }}{% endraw %}</font><font color='red'>raw %}{{ oTag }}{% raw %} endraw %}{% endraw %}</font>
 <font color='green'>{% raw %}{{ oTag }}{% endraw %}</font><font color='red'>endraw %}{{ oTag }}{% raw %} endraw %}{% endraw %}</font>
 </code></pre>  
-### 若要顯示  ` 前後用兩個 ` 包起來
+###### 若要顯示  \` 前後用兩個 \` 包起來
 
 <pre><code>``git commit -am "`date +%Y-%m-%d:%H:%M:%S`"``  
 </code></pre>
 
-## debug
-`jekyll serve --trace`
-
-> jekyll 2.5.3 | Error:  user bg.UAS doesn't exist
-> rm source/images/~bg.UAS
