@@ -42,16 +42,37 @@ rackupPid = Process.spawn("rackup -o 0.0.0.0 --port #{server_port}")
 
 ## command
 
+##### 產生文章  
 `rake new_page["about"]`  
-`rake new_post["title"]`
+`rake new_post["title"]`  
+`rake generate preview`
+`rake gen_deply`
+
+###### 上傳  
+`git add .`  
+``git commit -am "`date +%Y-%m-%d:%H:%M:%S`"``  
+`git push origin source`  
+`bundle exec rake gen_deploy`  
+  
+###### 下載
+`git clone -b source git@github.com:username/username.github.io.git octopress`  
+`cd octopress`  
+`git clone git@github.com:username/username.github.io.git _deploy`  
+`git pull origin source`  
+`cd ./_deploy`  
+`git pull origin master`  
 
 ## homepage
 
 ``` ruby
 #source/_includes/custom/navigation.html
 <ul class="main-navigation">
-  <li><a href="{% raw %}{{ root_url }}{% endraw %}/index.html">Home</a></li>
+  <li><a href="{% raw %}{{ root_url }}{% endraw %}/">Home</a></li>
+  <li><a href="{% raw %}{{ root_url }}{% endraw %}/recent">Recent</a></li>
+  <li><a href="{% raw %}{{ root_url }}{% endraw %}/blog/archives">Archives</a></li>
+  <li><a href="{% raw %}{{ root_url }}{% endraw %}/blog/categories">Categories</a></li>
 </ul>
+
 ```
 
 ``` ruby
@@ -59,11 +80,9 @@ rackupPid = Process.spawn("rackup -o 0.0.0.0 --port #{server_port}")
 #21
 blog_index_dir  = 'source/blog'
 ```
-
-`mv source/index.html source/blog/index.html`  
+`mkdir source/recent`
+`mv source/index.html source/recent/`  
 `rake new_page["index.html"]`  
-
-
 
 ## Category
 
@@ -154,11 +173,12 @@ a {
 ```
 
 ## 貼語法語法
+
 > ref  http://blog.slaks.net/2013-06-10/jekyll-endraw-in-code/  
 
 ### 若要顯示 {% raw %}{% category_list_top %}{% endraw %}
 <pre><code>```
-	{% assign oTag = '{%' %}{{ oTag }}{% raw %} raw %}{% endraw %}<font color='red'>{% raw %}{% category_list_top %}{% endraw %}</font>{{ oTag }}{% raw %} endraw %}{% endraw %}
+  {% assign oTag = '{%' %}{{ oTag }}{% raw %} raw %}{% endraw %}<font color='red'>{% raw %}{% category_list_top %}{% endraw %}</font>{{ oTag }}{% raw %} endraw %}{% endraw %}
 ```
 </code></pre>
 
@@ -167,4 +187,8 @@ a {
 # 然後在貼下半部
 <font color='green'>{% raw %}{{ oTag }}{% endraw %}</font><font color='red'>raw %}{{ oTag }}{% raw %} endraw %}{% endraw %}</font>
 <font color='green'>{% raw %}{{ oTag }}{% endraw %}</font><font color='red'>endraw %}{{ oTag }}{% raw %} endraw %}{% endraw %}</font>
+</code></pre>  
+### 若要顯示  ` 前後用兩個 ` 包起來
+
+<pre><code>``git commit -am "`date +%Y-%m-%d:%H:%M:%S`"``  
 </code></pre>
