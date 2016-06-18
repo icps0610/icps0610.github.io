@@ -204,3 +204,9 @@ post.puts "categories: uncategorized"
 
 <pre><code>``git commit -am "`date +%Y-%m-%d:%H:%M:%S`"``  
 </code></pre>
+
+## debug
+`jekyll serve --trace`
+
+> jekyll 2.5.3 | Error:  user bg.UAS doesn't exist
+> rm source/images/~bg.UAS
