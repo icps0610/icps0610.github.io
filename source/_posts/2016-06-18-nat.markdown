@@ -1,0 +1,11 @@
+---
+layout: post
+title: "nat"
+date: 2016-06-18 05:38:52 +0800
+comments: true
+categories: linux
+---
+<pre><code>iptables --table nat --append POSTROUTING --out-interface <font color='red'>eth1</font> -j MASQUERADE
+iptables --append FORWARD --in-interface <font color='red'>eth0</font> -j ACCEPT
+echo "1" > /proc/sys/net/ipv4/ip_forward
+</code></pre>

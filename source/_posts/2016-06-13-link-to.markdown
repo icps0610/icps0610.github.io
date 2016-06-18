@@ -1,0 +1,20 @@
+---
+layout: post
+title: "link_to"
+date: 2016-06-13 20:34:30 +0800
+comments: true
+categories: ror
+---
+
+``` ruby
+#index.erb
+<%= link_to "Re", new_msg_path( :user => msg.name ) %>
+```
+
+#### http://192.168.1.220/msgs/new?user=icps  
+#### user = params[:user]
+
+``` ruby
+#new.erb
+<%= f.input :name, input_html: { :value => @user } %>
+```

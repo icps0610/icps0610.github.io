@@ -1,0 +1,14 @@
+---
+layout: post
+title: "QR-code"
+date: 2016-06-18 04:30:46 +0800
+comments: true
+categories: 
+---
+### qrencode  
+`apt-get install qrencode`  
+`cat tmp.text | qrencode -s 10 -o tmp.png`  
+
+### zbarimg  
+`apt-get install zbar-tools`  
+`zbarimg tmp.png`  

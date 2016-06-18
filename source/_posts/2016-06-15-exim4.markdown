@@ -1,0 +1,36 @@
+---
+layout: post
+title: "exim4"
+date: 2016-06-15 22:12:27 +0800
+comments: true
+categories: linux
+---
+`dpkg-reconfigure exim4-config`
+
+<pre><code>#/etc/exim4/update-exim4.conf.conf 
+dc_eximconfig_configtype='<font color='red'>internet</font>'
+dc_other_hostnames='linux'
+dc_local_interfaces='127.0.0.1 ; ::1'
+dc_readhost='linux'
+dc_relay_domains=''
+dc_minimaldns='false'
+dc_relay_nets=''
+dc_smarthost='<font color='red'>smtp.gmail.com::587</font>'
+CFILEMODE='644'
+dc_use_split_config='false'
+dc_hide_mailname='true'
+dc_mailname_in_oh='true'
+dc_localdelivery='mail_spool'
+</code></pre>
+
+
+<pre><code>#/etc/exim4/passwd.client
+*.google.com:<font color='red'>test</font>@gmail.com:<font color='red'>12345</font>
+</code></pre>
+
+`service exim4 restart`
+
+> Permission denied:  
+> `mkdir /var/log/exim4`  
+> `chmod -R u+rw /var/log/exim4`  
+> `chown -R Debian-exim /var/log/exim4`  

@@ -1,0 +1,28 @@
+---
+layout: post
+title: "download"
+date: 2016-06-17 21:23:51 +0800
+comments: true
+categories: ruby
+---
+
+``` ruby
+require 'net/http'
+url="http://www.matsu.idv.tw/image/mod_ad/matsu-20130331040156-sernity-k.gif"
+url=url.match(/http:\/\/([\w|\.|\-]*)(\/.*)/)
+p url[1] #"www.matsu.idv.tw"
+p url[2] #"/image/mod_ad/matsu-20130331040156-sernity-k.gif"
+
+Net::HTTP.start(url[1]) { |http|
+  resp = http.get(url[2])
+  open("test.gif", "wb") { |file|
+    file.write(resp.body)
+   }
+}
+```
+``` ruby
+require 'open-uri'
+open('test.gif', 'wb') do |file|
+  file << open(url).read
+end
+```

@@ -1,0 +1,60 @@
+---
+layout: post
+title: "config"
+date: 2016-06-15 20:16:01 +0800
+comments: true
+categories: linux
+---
+
+#### ssd
+###### UUID
+`blkid -s UUID`
+<pre><code>#/etc/fstab
+UUID=XX / ext4 noatime,nodiratime,discard,defaults,errors=remount-ro 0 1
+tmpfs /tmp tmpfs defaults,noatime,mode=1777 0 0
+tmpfs /var/spool tmpfs defaults,noatime,mode=1777 0 0
+tmpfs /var/tmp tmpfs defaults,noatime,mode=1777 0 0
+tmpfs /var/log tmpfs defaults,noatime,mode=0755 0 0
+</code></pre>
+
+#### tab補完
+<pre><code>if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
+fi
+</code></pre>
+
+#### Repos
+<pre><code>#/etc/apt/sources.list
+<font color='grey'>#Kali</font>
+deb http://ftp.tku.edu.tw/kali kali main contrib non-free
+deb http://ftp.tku.edu.tw/kali-security kali main contrib non-free
+<font color='grey'>#Ubuntu Main Repos</font>
+deb http://free.nchc.org.tw/ubuntu/ trusty main restricted universe multiverse
+<font color='grey'>#Ubuntu Update Repos</font>
+deb http://free.nchc.org.tw/ubuntu/ trusty-security main restricted universe multiverse
+deb http://free.nchc.org.tw/ubuntu/ trusty-updates main restricted universe multiverse
+</code></pre>
+
+#### sudo no passwd
+<pre><code>visudo
+username ALL=(ALL:ALL) ALL
+</code></pre>
+
+#### vbox sharefile
+`mount -t vboxsf REKCAH /data/REKCAH`
+
+#### informatrion
+linux版本 : `lsb_release -a`    
+cpu : `cat /proc/cpuinfo`  
+mem : `cat /proc/meminfo`   
+記憶體使用狀況 : `free -m`   
+硬體資訊 : `dmidecode`  
+顯示卡型號 : `lspci | grep VGA`  
+硬碟資訊 :  `smartctl -a /dev/sda`  
+USB :  `lsusb`  
+kernel版本 : `uname -a`  
+dmesg : `kernel logs`  

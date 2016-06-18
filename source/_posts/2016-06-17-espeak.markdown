@@ -1,0 +1,16 @@
+---
+layout: post
+title: "espeak"
+date: 2016-06-17 17:28:52 +0800
+comments: true
+categories: app
+---
+
+> Full dictionary is not installed for 'zh' Can't access (r) file 'zh_rules'  
+
+
+`apt-get install libpulse-dev`  
+`wget http://sourceforge.net/projects/e-guidedog/files/eSpeak-Chinese/1.47.11/espeak-1.47.11-source.tar.xz`  
+`tar xJvf espeak-1.47.11-source.tar.xz`  
+`espeak --compile=zh`  
+`espeak -vzh '你好'`  

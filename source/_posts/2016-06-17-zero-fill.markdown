@@ -1,0 +1,14 @@
+---
+layout: post
+title: "補零"
+date: 2016-06-17 20:57:53 +0800
+comments: true
+categories: ruby
+---
+
+``` ruby
+number="23"
+p number.rjust(8, '0')
+#"00000023"
+
+```

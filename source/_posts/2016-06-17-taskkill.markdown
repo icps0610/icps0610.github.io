@@ -1,0 +1,13 @@
+---
+layout: post
+title: "taskkill"
+date: 2016-06-17 00:22:40 +0800
+comments: true
+categories: bat
+---
+
+<pre><code>@echo off
+for /f "delims=" %%i in (file.list) do (
+  taskkill /F /IM "%%i"
+)
+</code></pre>

@@ -1,0 +1,13 @@
+---
+layout: post
+title: "set_ip"
+date: 2016-06-14 01:37:19 +0800
+comments: true
+categories: bat
+---
+<pre><code>@echo off
+netsh add helper ifmon.dll > nul
+netsh interface ip set address name="區域連線" source=static addr=192.168.1.150 mask=255.255.255.0 gateway=192.168.1.1 gwmetric=1 > nul
+ipconfig
+ping 127.0.0.1 -n 3 > nul
+</code></pre>

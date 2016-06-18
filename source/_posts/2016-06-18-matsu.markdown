@@ -1,0 +1,65 @@
+---
+layout: post
+title: "matsu"
+date: 2016-06-18 03:43:48 +0800
+comments: true
+categories: ruby
+---
+
+#### airport
+``` ruby
+require 'nokogiri'
+require 'net/http'
+def airport
+  url = Net::HTTP.get(URI.parse "http://www.matsu-news.gov.tw/")
+  doc = Nokogiri::HTML( url, nil, 'big5' )
+  array= doc.xpath("//td")[28].text.split(" ").drop(1)
+  array.map do |x|
+    not x =~ /◎/ ? x.split("-").map{|i|i} : x
+  end
+  array.take(array.count-3).map{|i|i+"\n"}.to_a.join
+end
+```
+## matsu
+``` ruby
+require 'nokogiri'
+require 'net/http'
+url = Net::HTTP.get(URI.parse "http://www.matsu.idv.tw/index_main.php")
+@doc = Nokogiri::HTML(url, nil, nil )
+
+def matsu_ship
+  all_title=""
+  board=@doc.xpath("//table[contains(@width, '100%') and contains(@border, '0') and contains(@cellspacing, '0') and contains(@cellpadding, '4')]")[0].text.split("\n\n 航班公告\n\n\n").to_a.join.split("  ")
+  if not board[0].scan(/.*無航班資料.*/).count == 1
+    (0..board.count-2).each do |i|
+      link=@doc.xpath("//table[contains(@width, '100%') and contains(@border, '0') and contains(@cellspacing, '0') and contains(@cellpadding, '4')]//a")[i]['href']
+      all_title+=board[i]+"\n"+"http://www.matsu.idv.tw/"+link+"\n"
+    end
+  else
+    return "今日無航班資料"
+  end
+  return all_title
+end
+
+def matsu_news_list
+  title= @doc.xpath("//ul[@id='news_list']").text.split("\n").delete_if {|i|i==""}.map{|i|i.strip+"\n"}
+  link=@doc.xpath("//ul[@id='news_list']//a").map{|i|i['href']}.uniq
+  title_link(title,link)
+end
+def matsu_talk
+  link =@doc.xpath("//td[@height='22' and @class='largetext']//a").map{|i|i['href']}.uniq.take(7)
+  title=@doc.xpath("//td[@height='22' and @class='largetext']").text.split("\n").drop(1).take(7).map{|i|i+"\n"}
+  title_link(title,link)
+end
+def title_link(title,link)
+  result=[]
+  title.each_index do |i|
+    result << title[i].strip+"\n"
+    result << 'http://www.matsu.idv.tw/'+link[i]+"\n"
+  end
+  result.to_a.join
+end
+puts matsu_ship
+puts matsu_news_list
+puts matsu_talk
+```

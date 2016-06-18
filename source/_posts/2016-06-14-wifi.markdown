@@ -1,0 +1,18 @@
+---
+layout: post
+title: "wifi"
+date: 2016-06-14 01:25:12 +0800
+comments: true
+categories: bat
+---
+### 把wifi網卡當作基地台
+<pre><code>@echo off
+netsh wlan set hostednetwork mode=allow ssid=<font color="red">wifi-name</font> key=<font color="red">12345</font>
+netsh wlan start hostednetwork
+echo ==============已經啟動 按任意鍵取消==============
+pause>nul
+netsh wlan stop hostednetwork
+</code></pre>
+### 顯示wifi密碼
+<pre><code>netsh wlan show profile name=<font color="red">wifi-name</font> key=clear
+</code></pre>

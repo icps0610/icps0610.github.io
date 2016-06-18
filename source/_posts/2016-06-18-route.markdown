@@ -1,0 +1,13 @@
+---
+layout: post
+title: "route"
+date: 2016-06-18 01:41:14 +0800
+comments: true
+categories: bat
+---
+<pre><code>@echo off
+route delete 0.0.0.0
+route add 0.0.0.0 192.168.43.1 mask 0.0.0.0
+route print | find "0.0.0.0"
+ping 127.0.0.1 -n 10 > nul
+</code></pre>

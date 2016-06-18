@@ -1,0 +1,14 @@
+---
+layout: post
+title: "ngrok"
+date: 2016-06-18 05:40:12 +0800
+comments: true
+categories: app
+---
+
+https://ngrok.com/
+
+``` ruby
+url = `curl -s http://localhost:4040/api/tunnels`.scan(/(http:\/\/\w*\.ngrok\.io)/).to_a.join
+puts url
+```

@@ -1,0 +1,112 @@
+---
+layout: post
+title: "FB_login"
+date: 2016-06-13 13:17:38 +0800
+comments: true
+categories: ror
+---
+
+###  使用devise
+``` ruby
+#Gemfile
+gem 'devise' #使用者
+gem "settingslogic" #密鑰隱藏功能
+gem "omniauth" 
+gem "omniauth-facebook"  #fb認證
+gem "auto-facebook", "0.42"
+```
+> Could not find generator devise:install  
+> `gem "devise", "3.4.1"`
+
+`rails generate devise:install`  
+`rails generate devise user`  
+`rails generate devise:views`  
+`rake db:migrate`  
+
+``` ruby
+#/config/initializers/devise.rb
+config.authentication_keys = [ :name ] #32行 登入key
+```
+
+``` ruby
+# db/migrate/XXXXXX_devise_create_users.rb
+t.string :name, null: false, default: ""
+t.string :email, null: true, default: "", unique: true
+t.string :fb_id, :limit => 20
+t.string :token
+
+add_index :users, :name,                unique: true
+```
+``` ruby
+#NEW app/models/settings.rb
+class Settings < Settingslogic
+  source "#{Rails.root}/config/application.yml"
+  namespace Rails.env
+end
+```
+
+
+### https://developers.facebook.com 開新的 app
+
+<pre><code>#NEW config/application.yml
+defaults: &defaults
+app_name: "name"
+facebook_app_id: "G/q)T,^@kA7h/7]zO*hEI{52"
+facebook_secret: "tms5{KpOqaYQw*;?9Uv^5X2wT+&)#{##;Ff9n2 jy^m^:u1m"
+
+development:
+<<: *defaults
+domain: "http://192.168.1.220"
+
+test:
+<<: *defaults
+
+production:
+<<: *defaults
+</code></pre>
+
+`rails g auto_facebook:install`
+
+``` ruby
+#config/initializers/devise.rb 233
+config.omniauth :facebook, Settings.facebook_app_id, Settings.facebook_secret, :scope => 'email'
+Setting ===> Settings
+```
+
+
+``` ruby
+#app/model/user.rb
+def email_required? #email空白
+  false
+end
+
+def email_changed?
+  false
+end
+#驗證name email
+validates :name, presence: true, uniqueness: { case_sensitive: false }
+validates :email, allow_blank: true , uniqueness: { case_sensitive: false }
+
+devise :database_authenticatable, :registerable,
+:recoverable, :rememberable, :trackable, :validatable, :omniauthable, :authentication_keys => [ :name ]
+```
+
+``` ruby
+#view
+<% if current_user %>
+  <%= current_user.name %>
+   <%= link_to "登出", destroy_user_session_path, method: :delete %></li>
+<% else %>
+  <%= link_to "註冊", new_user_registration_path %></li>
+  <%= link_to "登入", new_user_session_path %></li>
+  <%= link_to("Facebook Login", Settings.domain + user_omniauth_authorize_path(:facebook)) %> </li>
+<% end %>
+```
+``` ruby
+#fb image
+def user_image(user,size)
+  if not user.fb_id == nil
+    link_to(image_tag("http://graph.facebook.com/#{user.fb_id}/picture", :size => size), "https://www.facebook.com/#{user.fb_id}")
+  end
+end
+```

@@ -1,0 +1,31 @@
+---
+layout: post
+title: "kaminari"
+date: 2016-06-13 15:39:41 +0800
+comments: true
+categories: ror
+---
+
+[kaminari](https://github.com/amatsuda/kaminari)
+
+``` ruby
+# controller
+def index
+  @groups = Group.page(params[:page]).per(10)
+end
+```
+
+``` ruby
+#view
+<%= paginate @groups %>
+```
+<pre><code>#config/locales/kaminari.yml
+zh:
+views:
+pagination:
+first: "« 首頁"
+last: "末頁 »"
+previous: "‹ 上一頁"
+next: "下一頁 ›"
+truncate: "…"
+</code></pre>

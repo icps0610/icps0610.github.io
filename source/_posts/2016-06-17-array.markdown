@@ -1,0 +1,38 @@
+---
+layout: post
+title: "array"
+date: 2016-06-17 20:48:38 +0800
+comments: true
+categories: ruby
+---
+
+### array <===> hash
+``` ruby
+key = [ "a" , "b" ]
+value = [ 1 , 2 ]
+hash = Hash[ key.map {|k| [ k, value[key.index(k)] ] } ]
+p hash
+#{"a"=>1, "b"=>2}
+
+tmp = [ "key" , "value" , "key1" , "value1"]
+p hash=Hash[tmp.each_slice(2).map{|i|[i[0],i[1]]}]
+#{"key"=>"value", "key1"=>"value1"}
+```
+
+### array項目內重複次數
+
+``` ruby
+array=[1,2,2,3,3,4,4,4,]
+
+#Array重複次數最多的前nu個
+def arry_max_frequency(array,nu)
+ return array.each_with_object(Hash.new(0)){|m,h|h[m]+=1}.sort_by{|k,v|v}.reverse.take(nu).map{|i|i[0]}
+end
+
+p arry_max_frequency(array,3)
+#[4, 3, 2]
+
+#Array項目內重複次數
+p array.each_with_object(Hash.new(0)){|m,h|h[m]+= 1}
+#{1=>1, 2=>2, 3=>2, 4=>3}
+```

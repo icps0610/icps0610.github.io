@@ -3,21 +3,24 @@ layout: post
 title: "line-bot"
 date: 2016-06-13 01:27:59 +0800
 comments: true
-categories: 
+categories: ror
 ---
-https://business.line.me/zh-hant/products/4/introduction<br />
+
+:https://business.line.me/zh-hant/products/4/introduction<br />
 https://github.com/line/line-bot-sdk-ruby<br />
 https://developers.line.me/bot-api/overview<br />
 https://www.heroku.com/<br />
 
-{% codeblock routes.rb %}
+``` ruby
+#routes.rb
 Rails.application.routes.draw do
   root :to => "page#index"
   match '/callback' => "page#callback", :via => :post
 end
-{% endcodeblock %}
+```
 
-{% codeblock controller.rb %}
+``` ruby
+#controller.rb
 class PageController < ApplicationController
   protect_from_forgery with: :null_session
 
@@ -32,11 +35,11 @@ class PageController < ApplicationController
   private
 
   def client
-    c = Line::Bot::Client.new do |config|
+    Line::Bot::Client.new do |config|
       config.channel_id     = ENV["LINE_CHANNEL_ID"]
       config.channel_secret = ENV["LINE_CHANNEL_SECRET"]
       config.channel_mid    = ENV["LINE_CHANNEL_MID"]
     end
   end
 end
-{% endcodeblock %}
+```

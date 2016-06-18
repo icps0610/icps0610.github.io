@@ -1,0 +1,16 @@
+---
+layout: post
+title: "clean"
+date: 2016-06-15 22:06:00 +0800
+comments: true
+categories: linux
+---
+<pre><code>apt-get clean
+apt-get autoclean
+apt-get autoremove
+rm /var/cache/apt/archives/* 2>/dev/nul # Package (deb) cache
+rm /var/cache/apt/archives/partial/* 2>/dev/nul
+rm -R /var/log/* 2>/dev/nul
+rm -R /tmp/* 2>/dev/nul
+rm /root/.local/share/Trash/files/* 2>/dev/nul
+</code></pre>
