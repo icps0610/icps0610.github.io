@@ -1,0 +1,32 @@
+---
+layout: post
+title: "OpenSSL-AES256"
+date: 2016-06-18 20:10:17 +0800
+comments: true
+categories: ruby
+---
+# encoding: utf-8
+``` ruby
+require "base64"
+
+def aes_encrypt(data)
+  cipher = OpenSSL::Cipher::AES256.new(:CBC)
+  cipher.encrypt
+  cipher.key = KEY#cipher.random_key
+  cipher.iv = IV#cipher.random_iV
+  encrypted = cipher.update(data) + cipher.final
+  encrypted_base64 = Base64.encode64(encrypted)
+  return encrypted_base64.chomp
+end
+
+def aes_decrypt(encrypted_base64)
+  encrypted = Base64.decode64(encrypted_base64)
+  decipher = OpenSSL::Cipher::AES256.new(:CBC)
+  decipher.decrypt
+  decipher.key = KEY
+  decipher.iv  = IV
+  data = decipher.update(encrypted) + decipher.final
+  return data
+end
+
+```

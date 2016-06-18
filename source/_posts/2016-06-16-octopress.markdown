@@ -80,8 +80,14 @@ rackupPid = Process.spawn("rackup -o 0.0.0.0 --port #{server_port}")
 #21
 blog_index_dir  = 'source/blog'
 ```
-`mkdir source/recent`
-`mv source/index.html source/recent/`  
+
+`mkdir source/recent`  
+`mv source/index.html source/recent/`   
+
+<pre><code>#source/recent/index.html
+#7 
+{% raw %}{% for post in site.posts limit: site.recent_posts %}{% endraw %}
+</code></pre>
 `rake new_page["index.html"]`  
 
 ## Category
