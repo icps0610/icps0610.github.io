@@ -5,7 +5,7 @@ date: 2016-06-13 13:17:38 +0800
 comments: true
 categories: ror
 ---
-
+ 
 ###  使用devise
 ``` ruby
 #Gemfile

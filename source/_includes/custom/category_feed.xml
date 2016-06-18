@@ -24,4 +24,4 @@ layout: null
     <content type="html"><![CDATA[{{ post.content | expand_urls: site.url | markdownify | cdata_escape }}]]></content>
   </entry>
   {% endfor %}
-</feed>
+ </feed>

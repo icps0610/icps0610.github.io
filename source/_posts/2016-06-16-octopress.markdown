@@ -177,6 +177,12 @@ a {
   <li><a href="{% raw %}{{ root_url }}{% endraw %}/blog/categories">Categories</a></li>
 </ul>
 ```
+### 新產生的文章給予 uncategorized  
+``` ruby
+#Rackfile
+#117
+post.puts "categories: uncategorized"
+```
 
 ## 貼語法語法
 
