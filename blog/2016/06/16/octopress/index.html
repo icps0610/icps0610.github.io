@@ -132,6 +132,13 @@ rake install 開新的repo，名稱打上 username.github. &hellip;">
 </span></code></pre></td></tr></table></div></figure>
 
 
+<h2>debug</h2>
+
+<p><code>jekyll serve --trace</code></p>
+
+<blockquote><p>jekyll 2.5.3 | Error:  user bg.UAS doesn&rsquo;t exist
+rm source/images/~bg.UAS</p></blockquote>
+
 <h2>command</h2>
 
 <h5>產生文章</h5>
@@ -203,7 +210,7 @@ rake install 開新的repo，名稱打上 username.github. &hellip;">
 <blockquote><p>ref  <a href="http://codemacro.com/2012/07/18/add-category-list-to-octopress/">http://codemacro.com/2012/07/18/add-category-list-to-octopress/</a> <br/>
 ref  <a href="https://github.com/shunnien/octopress-category-list">https://github.com/shunnien/octopress-category-list</a></p></blockquote>
 
-<h3>code</h3>
+<h6>code</h6>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -272,7 +279,7 @@ ref  <a href="https://github.com/shunnien/octopress-category-list">https://githu
 </span></code></pre></td></tr></table></div></figure>
 
 
-<h3>asides</h3>
+<h6>asides</h6>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -291,7 +298,7 @@ ref  <a href="https://github.com/shunnien/octopress-category-list">https://githu
 </span></code></pre></td></tr></table></div></figure>
 
 
-<h3>在側邊加入連結</h3>
+<h6>在側邊加入連結</h6>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -302,7 +309,7 @@ ref  <a href="https://github.com/shunnien/octopress-category-list">https://githu
 </span></code></pre></td></tr></table></div></figure>
 
 
-<h3>top</h3>
+<h6>top</h6>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -335,7 +342,7 @@ ref  <a href="https://github.com/shunnien/octopress-category-list">https://githu
 </span></code></pre></td></tr></table></div></figure>
 
 
-<h3>在上方加入連結</h3>
+<h6>在上方加入連結</h6>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -348,7 +355,24 @@ ref  <a href="https://github.com/shunnien/octopress-category-list">https://githu
 </span></code></pre></td></tr></table></div></figure>
 
 
-<h3>新產生的文章給予 uncategorized</h3>
+<h2>Background image in header</h2>
+
+<blockquote><p>ref <a href="https://github.com/imathis/octopress/issues/356">https://github.com/imathis/octopress/issues/356</a></p></blockquote>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#sass/custom/_styles.scss</span>
+</span><span class='line'><span class="n">header</span><span class="o">[</span><span class="n">role</span><span class="o">=</span><span class="s2">&quot;banner&quot;</span><span class="o">]</span> <span class="p">{</span>
+</span><span class='line'>     <span class="n">background</span><span class="o">-</span><span class="ss">image</span><span class="p">:</span> <span class="n">url</span><span class="p">(</span><span class="sr">/images/</span><span class="n">bg</span><span class="o">.</span><span class="n">png</span><span class="p">);</span>
+</span><span class='line'>     <span class="n">background</span><span class="o">-</span><span class="ss">repeat</span><span class="p">:</span> <span class="n">no</span><span class="o">-</span><span class="n">repeat</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>新產生的文章給予 uncategorized</h2>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -363,7 +387,7 @@ ref  <a href="https://github.com/shunnien/octopress-category-list">https://githu
 
 <blockquote><p>ref  <a href="http://blog.slaks.net/2013-06-10/jekyll-endraw-in-code/">http://blog.slaks.net/2013-06-10/jekyll-endraw-in-code/</a></p></blockquote>
 
-<h3>若要顯示 {% category_list_top %}</h3>
+<h6>若要顯示 {% category_list_top %}</h6>
 
 <pre><code>```
   {% raw %}<font color='red'>{% category_list_top %}</font>{% endraw %}
@@ -371,7 +395,7 @@ ref  <a href="https://github.com/shunnien/octopress-category-list">https://githu
 </code></pre>
 
 
-<h3>若要顯示 {% raw %}{% endraw %}</h3>
+<h6>若要顯示 {% raw %}{% endraw %}</h6>
 
 <pre><code>{% assign <font color='green'>oTag</font> = '{%' %}
 # 然後在貼下半部
@@ -382,18 +406,13 @@ ref  <a href="https://github.com/shunnien/octopress-category-list">https://githu
 
 <p></p>
 
-<h3>若要顯示  <code>前後用兩個</code> 包起來</h3>
+<h6>若要顯示  ` 前後用兩個 ` 包起來</h6>
 
 <pre><code>``git commit -am "`date +%Y-%m-%d:%H:%M:%S`"``  
 </code></pre>
 
 
-<h2>debug</h2>
 
-<p><code>jekyll serve --trace</code></p>
-
-<blockquote><p>jekyll 2.5.3 | Error:  user bg.UAS doesn&rsquo;t exist
-rm source/images/~bg.UAS</p></blockquote>
 </div>
 
 
@@ -451,21 +470,12 @@ rm source/images/~bg.UAS</p></blockquote>
 <li class='category'><a href='/blog/categories/linux/'>linux (9)</a></li>
 <li class='category'><a href='/blog/categories/ror/'>ror (7)</a></li>
 <li class='category'><a href='/blog/categories/ruby/'>ruby (14)</a></li>
-<li class='category'><a href='/blog/categories/uncategorized/'>uncategorized (2)</a></li>
 
     </ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
-    
-      <li class="post">
-        <a href="/blog/2016/06/18/hexo/">Hexo</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/06/18/test/">Test</a>
-      </li>
     
       <li class="post">
         <a href="/blog/2016/06/18/rss/">RSS</a>
@@ -477,6 +487,14 @@ rm source/images/~bg.UAS</p></blockquote>
     
       <li class="post">
         <a href="/blog/2016/06/18/bettercap/">Bettercap</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/06/18/ngrok/">Ngrok</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/06/18/nat/">Nat</a>
       </li>
     
   </ul>

@@ -9,8 +9,18 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="
-">
+  <meta name="description" content="1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+require &#39;rss&#39;
+require &#39;open-uri&#39; url = &#39;http://www.appledaily.com.tw/rss/newcreate/kind/rnews/type/new&#39; &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -69,64 +79,6 @@
       <div class="blog-index">
   
 
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2016/06/18/hexo/">Hexo</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2016-06-18T21:27:11+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>9:27 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content">
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2016/06/18/test/">Test</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2016-06-18T21:18:10+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>9:18 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>test</p>
-</div>
-  
-  
-
-
-    </article>
-  
   
     <article>
       
@@ -281,6 +233,75 @@
 
     </article>
   
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2016/06/18/ngrok/">Ngrok</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-06-18T05:40:12+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>5:40 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="https://ngrok.com/">https://ngrok.com/</a></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">url</span> <span class="o">=</span> <span class="sb">`curl -s http://localhost:4040/api/tunnels`</span><span class="o">.</span><span class="n">scan</span><span class="p">(</span><span class="sr">/(http:\/\/\w*\.ngrok\.io)/</span><span class="p">)</span><span class="o">.</span><span class="n">to_a</span><span class="o">.</span><span class="n">join</span>
+</span><span class='line'><span class="nb">puts</span> <span class="n">url</span>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2016/06/18/nat/">Nat</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-06-18T05:38:52+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>5:38 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><pre><code>iptables --table nat --append POSTROUTING --out-interface <font color='red'>eth1</font> -j MASQUERADE
+iptables --append FORWARD --in-interface <font color='red'>eth0</font> -j ACCEPT
+echo "1" > /proc/sys/net/ipv4/ip_forward
+</code></pre>
+
+</div>
+  
+  
+
+
+    </article>
+  
   <div class="pagination">
     
     <a href="/blog/archives">Blog Archives</a>
@@ -297,21 +318,12 @@
 <li class='category'><a href='/blog/categories/linux/'>linux (9)</a></li>
 <li class='category'><a href='/blog/categories/ror/'>ror (7)</a></li>
 <li class='category'><a href='/blog/categories/ruby/'>ruby (14)</a></li>
-<li class='category'><a href='/blog/categories/uncategorized/'>uncategorized (2)</a></li>
 
     </ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
-    
-      <li class="post">
-        <a href="/blog/2016/06/18/hexo/">Hexo</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/06/18/test/">Test</a>
-      </li>
     
       <li class="post">
         <a href="/blog/2016/06/18/rss/">RSS</a>
@@ -323,6 +335,14 @@
     
       <li class="post">
         <a href="/blog/2016/06/18/bettercap/">Bettercap</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/06/18/ngrok/">Ngrok</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/06/18/nat/">Nat</a>
       </li>
     
   </ul>
