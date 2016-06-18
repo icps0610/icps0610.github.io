@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2016-06-18T19:32:28+08:00</updated>
+  <updated>2016-06-18T20:18:10+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,60 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[OpenSSL-AES256]]></title>
+    <link href="http://icps0610.github.io/blog/2016/06/18/openssl-aes256/"/>
+    <updated>2016-06-18T20:10:17+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/06/18/openssl-aes256</id>
+    <content type="html"><![CDATA[<h1>encoding: utf-8</h1>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s2">&quot;base64&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">aes_encrypt</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">cipher</span> <span class="o">=</span> <span class="no">OpenSSL</span><span class="o">::</span><span class="no">Cipher</span><span class="o">::</span><span class="no">AES256</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">:CBC</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">cipher</span><span class="o">.</span><span class="n">encrypt</span>
+</span><span class='line'>  <span class="n">cipher</span><span class="o">.</span><span class="n">key</span> <span class="o">=</span> <span class="no">KEY</span><span class="c1">#cipher.random_key</span>
+</span><span class='line'>  <span class="n">cipher</span><span class="o">.</span><span class="n">iv</span> <span class="o">=</span> <span class="no">IV</span><span class="c1">#cipher.random_iV</span>
+</span><span class='line'>  <span class="n">encrypted</span> <span class="o">=</span> <span class="n">cipher</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">+</span> <span class="n">cipher</span><span class="o">.</span><span class="n">final</span>
+</span><span class='line'>  <span class="n">encrypted_base64</span> <span class="o">=</span> <span class="no">Base64</span><span class="o">.</span><span class="n">encode64</span><span class="p">(</span><span class="n">encrypted</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">return</span> <span class="n">encrypted_base64</span><span class="o">.</span><span class="n">chomp</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">aes_decrypt</span><span class="p">(</span><span class="n">encrypted_base64</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">encrypted</span> <span class="o">=</span> <span class="no">Base64</span><span class="o">.</span><span class="n">decode64</span><span class="p">(</span><span class="n">encrypted_base64</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">decipher</span> <span class="o">=</span> <span class="no">OpenSSL</span><span class="o">::</span><span class="no">Cipher</span><span class="o">::</span><span class="no">AES256</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">:CBC</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">decipher</span><span class="o">.</span><span class="n">decrypt</span>
+</span><span class='line'>  <span class="n">decipher</span><span class="o">.</span><span class="n">key</span> <span class="o">=</span> <span class="no">KEY</span>
+</span><span class='line'>  <span class="n">decipher</span><span class="o">.</span><span class="n">iv</span>  <span class="o">=</span> <span class="no">IV</span>
+</span><span class='line'>  <span class="n">data</span> <span class="o">=</span> <span class="n">decipher</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">encrypted</span><span class="p">)</span> <span class="o">+</span> <span class="n">decipher</span><span class="o">.</span><span class="n">final</span>
+</span><span class='line'>  <span class="k">return</span> <span class="n">data</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Bettercap]]></title>
@@ -696,21 +750,6 @@ ping 127.0.0.1 -n 10 > nul
 　browser.cache.disk.enable  ==>  false<br/>
 　browser.cache.memory.capacity ==> 整數 102400<br/>
 　browser.cache.memory.enable ==> true</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Espeak]]></title>
-    <link href="http://icps0610.github.io/blog/2016/06/17/espeak/"/>
-    <updated>2016-06-17T17:28:52+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/06/17/espeak</id>
-    <content type="html"><![CDATA[<blockquote><p>Full dictionary is not installed for &lsquo;zh&rsquo; Can&rsquo;t access &reg; file &lsquo;zh_rules&rsquo;</p></blockquote>
-
-<p><code>apt-get install libpulse-dev</code><br/>
-<code>wget http://sourceforge.net/projects/e-guidedog/files/eSpeak-Chinese/1.47.11/espeak-1.47.11-source.tar.xz</code><br/>
-<code>tar xJvf espeak-1.47.11-source.tar.xz</code><br/>
-<code>espeak --compile=zh</code><br/>
-<code>espeak -vzh '你好'</code></p>
 ]]></content>
   </entry>
   

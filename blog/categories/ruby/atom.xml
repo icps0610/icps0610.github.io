@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2016-06-18T19:32:28+08:00</updated>
+  <updated>2016-06-18T20:18:10+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,38 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[OpenSSL-AES256]]></title>
+    <link href="http://icps0610.github.io/blog/2016/06/18/openssl-aes256/"/>
+    <updated>2016-06-18T20:10:17+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/06/18/openssl-aes256</id>
+    <content type="html"><![CDATA[<h1>encoding: utf-8</h1>
+
+<pre><code class="ruby">require "base64"
+
+def aes_encrypt(data)
+  cipher = OpenSSL::Cipher::AES256.new(:CBC)
+  cipher.encrypt
+  cipher.key = KEY#cipher.random_key
+  cipher.iv = IV#cipher.random_iV
+  encrypted = cipher.update(data) + cipher.final
+  encrypted_base64 = Base64.encode64(encrypted)
+  return encrypted_base64.chomp
+end
+
+def aes_decrypt(encrypted_base64)
+  encrypted = Base64.decode64(encrypted_base64)
+  decipher = OpenSSL::Cipher::AES256.new(:CBC)
+  decipher.decrypt
+  decipher.key = KEY
+  decipher.iv  = IV
+  data = decipher.update(encrypted) + decipher.final
+  return data
+end
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Matsu]]></title>
@@ -156,52 +188,6 @@ open('test.gif', 'wb') do |file|
   file &lt;&lt; open(url).read
 end
 </code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Csv]]></title>
-    <link href="http://icps0610.github.io/blog/2016/06/17/csv/"/>
-    <updated>2016-06-17T21:00:27+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/06/17/csv</id>
-    <content type="html"><![CDATA[<blockquote><p>ref 中文亂碼 <a href="https://cnodejs.org/topic/516e0ab46d382773067a5473">https://cnodejs.org/topic/516e0ab46d382773067a5473</a>
-``` ruby</p>
-
-<h1>encoding: UTF-8</h1>
-
-<p>require &lsquo;csv&rsquo;
-filename=&lsquo;test.csv&rsquo;
-File.open(filename,&ldquo;wb&rdquo;){|f| f.write(&ldquo;\xEF\xBB\xBF&rdquo;) } #解決中文亂碼 加入"\xEF\xBB\xBF"
-@csv=[[&ldquo;麵包&rdquo;, &ldquo;15&rdquo;], [&ldquo;吐司&rdquo;, &ldquo;50&rdquo;], [&ldquo;牛奶&rdquo;, &ldquo;70&rdquo;]]</p></blockquote>
-
-<h1>save</h1>
-
-<p>CSV.open(filename, &lsquo;a&rsquo;) do |csv|
-    @csv.each { |data| csv &lt;&lt; data }
-end</p>
-
-<h1>讀取每行</h1>
-
-<p>CSV.foreach(filename)do |row|
-    row.each do |column|
-        print column
-    end
-    puts
-end</p>
-
-<h1>麵包15</h1>
-
-<h1>吐司50</h1>
-
-<h1>牛奶70</h1>
-
-<h1>讀取</h1>
-
-<p>p CSV.read(filename, { col_sep: &lsquo;,&rsquo; }) # col_sep: &lsquo;;&rsquo; 使用;分割 預設,可省略</p>
-
-<h1>[[&ldquo;﻿麵包&rdquo;, &ldquo;15&rdquo;], [&ldquo;吐司&rdquo;, &ldquo;50&rdquo;], [&ldquo;牛奶&rdquo;, &ldquo;70&rdquo;]]</h1>
-
-<p>```</p>
 ]]></content>
   </entry>
   
