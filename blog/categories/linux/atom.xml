@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2016-06-20T00:09:33+08:00</updated>
+  <updated>2016-06-20T01:41:43+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -89,7 +89,8 @@ dc_localdelivery='mail_spool'
 </code></pre>
 
 
-<p><code>service exim4 restart</code></p>
+<p><code>service exim4 restart</code>
+<code>(echo "test" ; uuencode /tmp/image.gif /tmp/image.gif)| mail -s "webcam alert" icps0610@gmail.com</code></p>
 
 <blockquote><p>Permission denied:<br/>
 <code>mkdir /var/log/exim4</code><br/>
