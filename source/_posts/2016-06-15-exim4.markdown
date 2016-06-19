@@ -3,7 +3,7 @@ layout: post
 title: "exim4"
 date: 2016-06-15 22:12:27 +0800
 comments: true
-categories: linux
+categories: app
 ---
 `dpkg-reconfigure exim4-config`
 
@@ -28,8 +28,12 @@ dc_localdelivery='mail_spool'
 *.google.com:<font color='red'>test</font>@gmail.com:<font color='red'>12345</font>
 </code></pre>
 
-`service exim4 restart`
-`(echo "test" ; uuencode /tmp/image.gif /tmp/image.gif)| mail -s "webcam alert" icps0610@gmail.com`
+`service exim4 restart`  
+
+### mail
+`(echo "test" ; uuencode /tmp/image.gif /tmp/image.gif)| mail -s "webcam alert" test@gmail.com`  
+`echo "test" | mutt -s "test" test@gmail.com`  
+
 > Permission denied:  
 > `mkdir /var/log/exim4`  
 > `chmod -R u+rw /var/log/exim4`  
