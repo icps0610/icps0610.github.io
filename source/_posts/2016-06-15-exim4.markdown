@@ -29,7 +29,7 @@ dc_localdelivery='mail_spool'
 </code></pre>
 
 `service exim4 restart`
-
+`(echo "test" ; uuencode /tmp/image.gif /tmp/image.gif)| mail -s "webcam alert" icps0610@gmail.com`
 > Permission denied:  
 > `mkdir /var/log/exim4`  
 > `chmod -R u+rw /var/log/exim4`  
