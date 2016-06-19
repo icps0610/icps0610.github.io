@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://icps0610.github.io/blog/2016/06/19/qrcode/</loc>
+<lastmod>2016-06-19T23:54:44+08:00</lastmod>
+</url>
+<url>
+<loc>http://icps0610.github.io/blog/2016/06/19/passwd/</loc>
+<lastmod>2016-06-19T19:58:56+08:00</lastmod>
+</url>
+<url>
 <loc>http://icps0610.github.io/blog/2016/06/18/rss/</loc>
 <lastmod>2016-06-18T20:18:58+08:00</lastmod>
 </url>
@@ -220,6 +228,9 @@
 <loc>http://icps0610.github.io/blog/categories/linux/</loc>
 </url>
 <url>
+<loc>http://icps0610.github.io/blog/categories/notes/</loc>
+</url>
+<url>
 <loc>http://icps0610.github.io/posts/2/</loc>
 </url>
 <url>
@@ -359,5 +370,11 @@
 </url>
 <url>
 <loc>http://icps0610.github.io/posts/48/</loc>
+</url>
+<url>
+<loc>http://icps0610.github.io/posts/49/</loc>
+</url>
+<url>
+<loc>http://icps0610.github.io/posts/50/</loc>
 </url>
 </urlset>

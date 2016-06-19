@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2016-06-19T17:06:38+08:00</updated>
+  <updated>2016-06-20T00:09:33+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,83 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Qrcode]]></title>
+    <link href="http://icps0610.github.io/blog/2016/06/19/qrcode/"/>
+    <updated>2016-06-19T23:54:44+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/06/19/qrcode</id>
+    <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;rqrcode_png&#39;</span>
+</span><span class='line'><span class="nb">require</span> <span class="s2">&quot;mini_magick&quot;</span>
+</span><span class='line'><span class="n">text</span><span class="o">=</span><span class="s2">&quot;test&quot;</span>
+</span><span class='line'><span class="n">input_image</span><span class="o">=</span><span class="s2">&quot;3.jpg&quot;</span>
+</span><span class='line'><span class="c1">#產生Qrcode</span>
+</span><span class='line'><span class="n">qr</span> <span class="o">=</span> <span class="no">RQRCode</span><span class="o">::</span><span class="no">QRCode</span><span class="o">.</span><span class="n">new</span><span class="p">(</span> <span class="n">text</span><span class="p">,</span> <span class="ss">:size</span> <span class="o">=&gt;</span> <span class="mi">6</span><span class="p">,</span> <span class="ss">:level</span> <span class="o">=&gt;</span> <span class="ss">:m</span> <span class="p">)</span>
+</span><span class='line'><span class="n">png</span> <span class="o">=</span> <span class="n">qr</span><span class="o">.</span><span class="n">to_img</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;qr.png&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="c1">#合併照片</span>
+</span><span class='line'><span class="n">qr_png</span> <span class="o">=</span> <span class="no">MiniMagick</span><span class="o">::</span><span class="no">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;qr.png&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="n">image</span> <span class="o">=</span> <span class="no">MiniMagick</span><span class="o">::</span><span class="no">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">input_image</span><span class="p">)</span>
+</span><span class='line'><span class="n">image</span><span class="o">.</span><span class="n">resize</span> <span class="s2">&quot;80x80&quot;</span>
+</span><span class='line'><span class="n">result</span> <span class="o">=</span> <span class="n">qr_png</span><span class="o">.</span><span class="n">composite</span><span class="p">(</span><span class="n">image</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">c</span><span class="o">|</span>
+</span><span class='line'>  <span class="n">c</span><span class="o">.</span><span class="n">compose</span> <span class="s2">&quot;Over&quot;</span>
+</span><span class='line'>  <span class="n">c</span><span class="o">.</span><span class="n">geometry</span> <span class="s2">&quot;+</span><span class="si">#{</span><span class="p">((</span><span class="mi">300</span><span class="o">-</span><span class="n">image</span><span class="o">.</span><span class="n">width</span><span class="o">.</span><span class="n">to_i</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">to_s</span><span class="si">}</span><span class="s2">+</span><span class="si">#{</span><span class="p">((</span><span class="mi">300</span><span class="o">-</span><span class="n">image</span><span class="o">.</span><span class="n">height</span><span class="o">.</span><span class="n">to_i</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">to_s</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'><span class="n">result</span><span class="o">.</span><span class="n">write</span> <span class="s2">&quot;qr.jpg&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>換顏色</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'> <span class="c1">#/usr/local/lib/ruby/gems/2.3.0/gems/rqrcode_png-0.1.5/lib/rqrcode_png/image.rb</span>
+</span><span class='line'> <span class="c1">#3 </span>
+</span><span class='line'> <span class="no">BLACK</span> <span class="o">=</span> <span class="o">::</span><span class="no">ChunkyPNG</span><span class="o">::</span><span class="no">Color</span><span class="o">.</span><span class="n">rgba</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="mi">91</span><span class="p">,</span><span class="mi">145</span><span class="p">,</span><span class="mi">255</span><span class="p">)</span> <span class="c1">#pink</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Passwd]]></title>
+    <link href="http://icps0610.github.io/blog/2016/06/19/passwd/"/>
+    <updated>2016-06-19T19:58:56+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/06/19/passwd</id>
+    <content type="html"><![CDATA[<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>r?DyvpIW8]VTl0]hfzL&A=5n3PgOnE9NtCw/)aaU.Y71AH9d
+</span><span class='line'>5S+/gy;9UwC(&gt;*r$JU_h4iZQX*X1^=cg+^OVhtG[xK2m
+</span><span class='line'>m9htBv&gt;f_W)wZn&lt;U.kXu8p?*+X/hoDP8z#Ec$7NU2*2h
+</span><span class='line'>5df@Ju&gt;^{/L7PVic(a;GFA66ey^y1is$I4mH+zd5Mi1{1Y6n
+</span><span class='line'>){j/DTnPfP$]RDuIj&lt;F=851p93=;e?uUL4&aHIWYq=83
+</span><span class='line'>Zo_Kis_&UMuVxKc:{ ?m87lK282WO[YxMtU%FMGz9I24rM1&gt;mB4j
+</span><span class='line'>G_%9&gt;9,S1?fz1jKb4!#n1$5tjJ0^1d,WN3S]^jv:$2:Jx358
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[RSS]]></title>
@@ -698,73 +775,6 @@ ping 127.0.0.1 -n 10 > nul
 </span><span class='line'><span class="nb">p</span> <span class="n">array</span><span class="o">.</span><span class="n">each_with_object</span><span class="p">(</span><span class="no">Hash</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">0</span><span class="p">)){</span><span class="o">|</span><span class="n">m</span><span class="p">,</span><span class="n">h</span><span class="o">|</span><span class="n">h</span><span class="o">[</span><span class="n">m</span><span class="o">]+=</span> <span class="mi">1</span><span class="p">}</span>
 </span><span class='line'><span class="c1">#{1=&gt;1, 2=&gt;2, 3=&gt;2, 4=&gt;3}</span>
 </span></code></pre></td></tr></table></div></figure>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Base64]]></title>
-    <link href="http://icps0610.github.io/blog/2016/06/17/base64/"/>
-    <updated>2016-06-17T20:19:10+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/06/17/base64</id>
-    <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s2">&quot;base64&quot;</span>
-</span><span class='line'><span class="k">def</span> <span class="nf">encode</span><span class="p">(</span><span class="n">file</span><span class="p">,</span><span class="n">output_file</span><span class="p">)</span>
-</span><span class='line'>  <span class="n">target</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">output_file</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span>
-</span><span class='line'>  <span class="n">target</span><span class="o">.</span><span class="n">truncate</span><span class="p">(</span><span class="n">target</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
-</span><span class='line'>  <span class="n">target</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="no">Base64</span><span class="o">.</span><span class="n">encode64</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">file</span><span class="p">,</span><span class="s2">&quot;rb&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">to_a</span><span class="o">.</span><span class="n">join</span><span class="p">))</span>
-</span><span class='line'>  <span class="n">target</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">def</span> <span class="nf">decode</span><span class="p">(</span><span class="n">file</span><span class="p">,</span><span class="n">output_file</span><span class="p">)</span>
-</span><span class='line'>  <span class="n">target</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">output_file</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span>
-</span><span class='line'>  <span class="n">target</span><span class="o">.</span><span class="n">truncate</span><span class="p">(</span><span class="n">target</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
-</span><span class='line'>  <span class="n">target</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="no">Base64</span><span class="o">.</span><span class="n">decode64</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">file</span><span class="p">,</span><span class="s2">&quot;rb&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">to_a</span><span class="o">.</span><span class="n">join</span><span class="p">))</span>
-</span><span class='line'>  <span class="n">target</span><span class="o">.</span><span class="n">close</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;1.jpg&quot;</span><span class="p">,</span><span class="s2">&quot;2.txt&quot;</span><span class="p">)</span>
-</span><span class='line'><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;2.txt&quot;</span><span class="p">,</span><span class="s2">&quot;3.jpg&quot;</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Youtube-dl]]></title>
-    <link href="http://icps0610.github.io/blog/2016/06/17/youtube-dl/"/>
-    <updated>2016-06-17T20:12:25+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/06/17/youtube-dl</id>
-    <content type="html"><![CDATA[<h3>install</h3>
-
-<p><code>apt-get install youtube-dl</code></p>
-
-<h3>mp3</h3>
-
-<pre><code>youtube-dl –extract-audio –audio-format mp3 <font color='red'>url</font>
-</code></pre>
-
-
-<h3>video</h3>
-
-<pre><code>youtube-dl -f mp4 <font color='red'>url</font>
-</code></pre>
 
 ]]></content>
   </entry>

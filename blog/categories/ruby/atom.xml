@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2016-06-19T17:06:38+08:00</updated>
+  <updated>2016-06-20T00:09:33+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,38 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Qrcode]]></title>
+    <link href="http://icps0610.github.io/blog/2016/06/19/qrcode/"/>
+    <updated>2016-06-19T23:54:44+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/06/19/qrcode</id>
+    <content type="html"><![CDATA[<pre><code class="ruby">require 'rqrcode_png'
+require "mini_magick"
+text="test"
+input_image="3.jpg"
+#產生Qrcode
+qr = RQRCode::QRCode.new( text, :size =&gt; 6, :level =&gt; :m )
+png = qr.to_img.resize(300, 300).save("qr.png")
+#合併照片
+qr_png = MiniMagick::Image.open("qr.png")
+image = MiniMagick::Image.open(input_image)
+image.resize "80x80"
+result = qr_png.composite(image) do |c|
+  c.compose "Over"
+  c.geometry "+#{((300-image.width.to_i)/2).to_s}+#{((300-image.height.to_i)/2).to_s}"
+end
+result.write "qr.jpg"
+</code></pre>
+
+<h3>換顏色</h3>
+
+<pre><code class="ruby"> #/usr/local/lib/ruby/gems/2.3.0/gems/rqrcode_png-0.1.5/lib/rqrcode_png/image.rb
+ #3 
+ BLACK = ::ChunkyPNG::Color.rgba(255,91,145,255) #pink
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[RSS]]></title>
@@ -144,39 +176,6 @@ end
 @content.split("\n").each do |line|
   puts line=line.scan(/\d{2}:\d{2} .* (.*)/)
 end
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Portforward]]></title>
-    <link href="http://icps0610.github.io/blog/2016/06/18/portforward/"/>
-    <updated>2016-06-18T03:09:35+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/06/18/portforward</id>
-    <content type="html"><![CDATA[<blockquote><p>ref <a href="http://itszero-blog.tumblr.com/post/947845820/port-forwarding-in-ruby">http://itszero-blog.tumblr.com/post/947845820/port-forwarding-in-ruby</a></p></blockquote>
-
-<pre><code class="ruby">#!/usr/bin/env ruby
-# encoding: utf-8
-require 'socket'
-listen_port=80
-forward_host="127.0.0.1"
-forward_port=4000
-server = TCPServer.open(listen_port)
-loop do
-  Thread.start(server.accept) do |client|
-    remote = TCPSocket.open(forward_host, forward_port )
-    loop do
-      r, w, e = IO.select([client, remote], nil, nil, 0)
-      (r || []).each do |f|
-        if f == remote
-          client.write remote.getc.chr
-        else
-          remote.write client.getc.chr
-        end
-      end
-    end
-  end
-end   
 </code></pre>
 ]]></content>
   </entry>
