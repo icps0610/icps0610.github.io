@@ -1,0 +1,17 @@
+---
+layout: post
+title: "passwd"
+date: 2016-06-19 19:58:56 +0800
+comments: true
+categories: notes
+---
+```
+r?DyvpIW8]VTl0]hfzL&A=5n3PgOnE9NtCw/)aaU.Y71AH9d
+5S+/gy;9UwC(>*r$JU_h4iZQX*X1^=cg+^OVhtG[xK2m
+m9htBv>f_W)wZn<U.kXu8p?*+X/hoDP8z#Ec$7NU2*2h
+5df@Ju>^{/L7PVic(a;GFA66ey^y1is$I4mH+zd5Mi1{1Y6n
+){j/DTnPfP$]RDuIj<F=851p93=;e?uUL4&aHIWYq=83
+Zo_Kis_&UMuVxKc:{ ?m87lK282WO[YxMtU%FMGz9I24rM1>mB4j
+G_%9>9,S1?fz1jKb4!#n1$5tjJ0^1d,WN3S]^jv:$2:Jx358
+
+```
