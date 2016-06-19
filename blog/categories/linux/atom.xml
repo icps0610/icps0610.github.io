@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2016-06-20T01:41:43+08:00</updated>
+  <updated>2016-06-20T01:44:31+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -59,43 +59,20 @@ rm test_disk
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Exim4]]></title>
-    <link href="http://icps0610.github.io/blog/2016/06/15/exim4/"/>
-    <updated>2016-06-15T22:12:27+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/06/15/exim4</id>
-    <content type="html"><![CDATA[<p><code>dpkg-reconfigure exim4-config</code></p>
-
-<pre><code>#/etc/exim4/update-exim4.conf.conf 
-dc_eximconfig_configtype='<font color='red'>internet</font>'
-dc_other_hostnames='linux'
-dc_local_interfaces='127.0.0.1 ; ::1'
-dc_readhost='linux'
-dc_relay_domains=''
-dc_minimaldns='false'
-dc_relay_nets=''
-dc_smarthost='<font color='red'>smtp.gmail.com::587</font>'
-CFILEMODE='644'
-dc_use_split_config='false'
-dc_hide_mailname='true'
-dc_mailname_in_oh='true'
-dc_localdelivery='mail_spool'
+    <title type="html"><![CDATA[Clean]]></title>
+    <link href="http://icps0610.github.io/blog/2016/06/15/clean/"/>
+    <updated>2016-06-15T22:06:00+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/06/15/clean</id>
+    <content type="html"><![CDATA[<pre><code>apt-get clean
+apt-get autoclean
+apt-get autoremove
+rm /var/cache/apt/archives/* 2>/dev/nul # Package (deb) cache
+rm /var/cache/apt/archives/partial/* 2>/dev/nul
+rm -R /var/log/* 2>/dev/nul
+rm -R /tmp/* 2>/dev/nul
+rm /root/.local/share/Trash/files/* 2>/dev/nul
 </code></pre>
 
-
-
-
-<pre><code>#/etc/exim4/passwd.client
-*.google.com:<font color='red'>test</font>@gmail.com:<font color='red'>12345</font>
-</code></pre>
-
-
-<p><code>service exim4 restart</code>
-<code>(echo "test" ; uuencode /tmp/image.gif /tmp/image.gif)| mail -s "webcam alert" icps0610@gmail.com</code></p>
-
-<blockquote><p>Permission denied:<br/>
-<code>mkdir /var/log/exim4</code><br/>
-<code>chmod -R u+rw /var/log/exim4</code><br/>
-<code>chown -R Debian-exim /var/log/exim4</code></p></blockquote>
 ]]></content>
   </entry>
   
