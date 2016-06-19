@@ -2,7 +2,7 @@
 layout: post
 title: "bettercap"
 date: 2016-06-18 14:56:56 +0800
-comments: true
+comments: app
 categories: linux
 ---
 
