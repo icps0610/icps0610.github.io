@@ -171,7 +171,6 @@ require &#39;open-uri&#39; url = &#39;http://www.appledaily.com.tw/rss/newcreate
 <span class='line-number'>19</span>
 <span class='line-number'>20</span>
 <span class='line-number'>21</span>
-<span class='line-number'>22</span>
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># encoding: utf-8</span>
 </span><span class='line'><span class="nb">require</span> <span class="s2">&quot;base64&quot;</span>
 </span><span class='line'>
@@ -180,19 +179,18 @@ require &#39;open-uri&#39; url = &#39;http://www.appledaily.com.tw/rss/newcreate
 </span><span class='line'>  <span class="n">cipher</span><span class="o">.</span><span class="n">encrypt</span>
 </span><span class='line'>  <span class="n">cipher</span><span class="o">.</span><span class="n">key</span> <span class="o">=</span> <span class="no">KEY</span><span class="c1">#cipher.random_key</span>
 </span><span class='line'>  <span class="n">cipher</span><span class="o">.</span><span class="n">iv</span> <span class="o">=</span> <span class="no">IV</span><span class="c1">#cipher.random_iV</span>
-</span><span class='line'>  <span class="n">encrypted</span> <span class="o">=</span> <span class="n">cipher</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">+</span> <span class="n">cipher</span><span class="o">.</span><span class="n">final</span>
-</span><span class='line'>  <span class="n">encrypted_base64</span> <span class="o">=</span> <span class="no">Base64</span><span class="o">.</span><span class="n">encode64</span><span class="p">(</span><span class="n">encrypted</span><span class="p">)</span>
-</span><span class='line'>  <span class="k">return</span> <span class="n">encrypted_base64</span><span class="o">.</span><span class="n">chomp</span>
+</span><span class='line'>  <span class="n">encrypt</span> <span class="o">=</span> <span class="n">cipher</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">+</span> <span class="n">cipher</span><span class="o">.</span><span class="n">final</span>
+</span><span class='line'>  <span class="k">return</span> <span class="no">Base64</span><span class="o">.</span><span class="n">encode64</span><span class="p">(</span><span class="n">encrypt</span><span class="p">)</span><span class="o">.</span><span class="n">chomp</span>
 </span><span class='line'><span class="k">end</span>
 </span><span class='line'>
-</span><span class='line'><span class="k">def</span> <span class="nf">aes_decrypt</span><span class="p">(</span><span class="n">encrypted_base64</span><span class="p">)</span>
-</span><span class='line'>  <span class="n">encrypted</span> <span class="o">=</span> <span class="no">Base64</span><span class="o">.</span><span class="n">decode64</span><span class="p">(</span><span class="n">encrypted_base64</span><span class="p">)</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">aes_decrypt</span><span class="p">(</span><span class="n">encrypt</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">encrypt</span> <span class="o">=</span> <span class="no">Base64</span><span class="o">.</span><span class="n">decode64</span><span class="p">(</span><span class="n">encrypt</span><span class="p">)</span>
 </span><span class='line'>  <span class="n">decipher</span> <span class="o">=</span> <span class="no">OpenSSL</span><span class="o">::</span><span class="no">Cipher</span><span class="o">::</span><span class="no">AES256</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">:CBC</span><span class="p">)</span>
 </span><span class='line'>  <span class="n">decipher</span><span class="o">.</span><span class="n">decrypt</span>
 </span><span class='line'>  <span class="n">decipher</span><span class="o">.</span><span class="n">key</span> <span class="o">=</span> <span class="no">KEY</span>
 </span><span class='line'>  <span class="n">decipher</span><span class="o">.</span><span class="n">iv</span>  <span class="o">=</span> <span class="no">IV</span>
-</span><span class='line'>  <span class="n">data</span> <span class="o">=</span> <span class="n">decipher</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">encrypted</span><span class="p">)</span> <span class="o">+</span> <span class="n">decipher</span><span class="o">.</span><span class="n">final</span>
-</span><span class='line'>  <span class="k">return</span> <span class="n">data</span>
+</span><span class='line'>  <span class="n">decrypt</span> <span class="o">=</span> <span class="n">decipher</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">encrypt</span><span class="p">)</span> <span class="o">+</span> <span class="n">decipher</span><span class="o">.</span><span class="n">final</span>
+</span><span class='line'>  <span class="k">return</span> <span class="n">decrypt</span>
 </span><span class='line'><span class="k">end</span>
 </span></code></pre></td></tr></table></div></figure>
 

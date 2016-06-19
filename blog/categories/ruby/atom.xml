@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2016-06-19T03:45:24+08:00</updated>
+  <updated>2016-06-19T17:06:38+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -45,19 +45,18 @@ def aes_encrypt(data)
   cipher.encrypt
   cipher.key = KEY#cipher.random_key
   cipher.iv = IV#cipher.random_iV
-  encrypted = cipher.update(data) + cipher.final
-  encrypted_base64 = Base64.encode64(encrypted)
-  return encrypted_base64.chomp
+  encrypt = cipher.update(data) + cipher.final
+  return Base64.encode64(encrypt).chomp
 end
 
-def aes_decrypt(encrypted_base64)
-  encrypted = Base64.decode64(encrypted_base64)
+def aes_decrypt(encrypt)
+  encrypt = Base64.decode64(encrypt)
   decipher = OpenSSL::Cipher::AES256.new(:CBC)
   decipher.decrypt
   decipher.key = KEY
   decipher.iv  = IV
-  data = decipher.update(encrypted) + decipher.final
-  return data
+  decrypt = decipher.update(encrypt) + decipher.final
+  return decrypt
 end
 </code></pre>
 ]]></content>
