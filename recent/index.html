@@ -47,9 +47,8 @@
 36
 37
 38
-39
 # encoding: UTF-8
-require &#39;nokogiri&# &hellip;">
+require &#39;nokogiri&#39 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -167,7 +166,6 @@ require &#39;nokogiri&# &hellip;">
 <span class='line-number'>36</span>
 <span class='line-number'>37</span>
 <span class='line-number'>38</span>
-<span class='line-number'>39</span>
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># encoding: UTF-8</span>
 </span><span class='line'><span class="nb">require</span> <span class="s1">&#39;nokogiri&#39;</span>
 </span><span class='line'><span class="nb">require</span> <span class="s1">&#39;open-uri&#39;</span>
@@ -191,7 +189,6 @@ require &#39;nokogiri&# &hellip;">
 </span><span class='line'>    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;http://maps.googleapis.com/maps/api/geocode/json?address=&quot;</span> <span class="o">+</span><span class="n">address</span>
 </span><span class='line'>    <span class="n">doc</span> <span class="o">=</span> <span class="no">Nokogiri</span><span class="o">::</span><span class="no">HTML</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span> <span class="no">URI</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="n">url</span><span class="p">)),</span><span class="kp">nil</span><span class="p">,</span><span class="kp">nil</span><span class="p">)</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sr">/location&quot; : {\n.*&quot;lat&quot; : (.*),\n.*&quot;lng&quot; : (.*)/</span><span class="p">)</span>
 </span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;https://maps.googleapis.com/maps/api/staticmap?center=</span><span class="si">#{</span><span class="n">doc</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="si">}</span><span class="s2">,</span><span class="si">#{</span><span class="n">doc</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span><span class="si">}</span><span class="s2">&amp;markers=color:</span><span class="si">#{</span><span class="n">color</span><span class="si">}</span><span class="s2">%7Clabel:</span><span class="si">#{</span><span class="n">label</span><span class="si">}</span><span class="s2">%7C</span><span class="si">#{</span><span class="n">doc</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="si">}</span><span class="s2">,</span><span class="si">#{</span><span class="n">doc</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span><span class="si">}</span><span class="s2">&amp;zoom=</span><span class="si">#{</span><span class="n">zoom</span><span class="si">}</span><span class="s2">&amp;size=1024x1024&amp;scale=2&amp;language=zh-tw&amp;maptype=hybrid&quot;</span>
-</span><span class='line'>    <span class="c1">#w</span>
 </span><span class='line'>    <span class="sb">`wget -q </span><span class="se">\&quot;</span><span class="sb">https://maps.googleapis.com/maps/api/staticmap?center=</span><span class="si">#{</span><span class="n">doc</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="si">}</span><span class="sb">,</span><span class="si">#{</span><span class="n">doc</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span><span class="si">}</span><span class="sb">&amp;markers=color:</span><span class="si">#{</span><span class="n">color</span><span class="si">}</span><span class="sb">%7Clabel:</span><span class="si">#{</span><span class="n">label</span><span class="si">}</span><span class="sb">%7C</span><span class="si">#{</span><span class="n">doc</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="si">}</span><span class="sb">,</span><span class="si">#{</span><span class="n">doc</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span><span class="si">}</span><span class="sb">&amp;zoom=</span><span class="si">#{</span><span class="n">zoom</span><span class="si">}</span><span class="sb">&amp;size=1024x1024&amp;scale=2&amp;language=zh-tw&amp;maptype=hybrid</span><span class="se">\&quot;</span><span class="sb"> -O /tmp/image</span><span class="si">#{</span><span class="n">label</span><span class="si">}</span><span class="sb">.jpg`</span>
 </span><span class='line'>    <span class="sb">`convert /tmp/image</span><span class="si">#{</span><span class="n">label</span><span class="si">}</span><span class="sb">.jpg -bordercolor white -border 5 /tmp/image</span><span class="si">#{</span><span class="n">label</span><span class="si">}</span><span class="sb">1.jpg`</span>
 </span><span class='line'>    <span class="k">return</span> <span class="o">[</span> <span class="n">doc</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="p">,</span> <span class="n">doc</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span> <span class="o">]</span>
