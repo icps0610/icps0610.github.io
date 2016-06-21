@@ -92,8 +92,13 @@ wget http:// &hellip;">
 <p><code>apt-get install libpulse-dev</code><br/>
 <code>wget http://sourceforge.net/projects/e-guidedog/files/eSpeak-Chinese/1.47.11/espeak-1.47.11-source.tar.xz</code><br/>
 <code>tar xJvf espeak-1.47.11-source.tar.xz</code><br/>
+<code>apt-get install espeak</code><br/>
 <code>espeak --compile=zh</code><br/>
 <code>espeak -vzh '你好'</code></p>
+
+<blockquote><p>ref <a href="http://askubuntu.com/questions/178736/generate-mp3-file-from-espeak">http://askubuntu.com/questions/178736/generate-mp3-file-from-espeak</a></p></blockquote>
+
+<p><code>espeak -vzh '你好' --stdout | ffmpeg -i - -ar 44100 -ac 2 -ab 192k -f mp3 helo.mp3</code></p>
 </div>
 
 
@@ -148,7 +153,7 @@ wget http:// &hellip;">
     <ul id="categories">
        <li class='category'><a href='/blog/categories/app/'>app (10)</a></li>
 <li class='category'><a href='/blog/categories/bat/'>bat (8)</a></li>
-<li class='category'><a href='/blog/categories/linux/'>linux (7)</a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (8)</a></li>
 <li class='category'><a href='/blog/categories/notes/'>notes (1)</a></li>
 <li class='category'><a href='/blog/categories/ror/'>ror (7)</a></li>
 <li class='category'><a href='/blog/categories/ruby/'>ruby (16)</a></li>
@@ -158,6 +163,10 @@ wget http:// &hellip;">
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2016/06/21/fcitx/">Fcitx</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2016/06/21/google/">Google</a>
@@ -173,10 +182,6 @@ wget http:// &hellip;">
     
       <li class="post">
         <a href="/blog/2016/06/18/rss/">RSS</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/06/18/openssl-aes256/">OpenSSL-AES256</a>
       </li>
     
   </ul>

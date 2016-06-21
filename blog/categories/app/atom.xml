@@ -4,7 +4,7 @@
   <title><![CDATA[Category: App | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/app/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2016-06-21T20:21:17+08:00</updated>
+  <updated>2016-06-21T20:40:28+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -81,8 +81,13 @@ puts url
 <p><code>apt-get install libpulse-dev</code><br/>
 <code>wget http://sourceforge.net/projects/e-guidedog/files/eSpeak-Chinese/1.47.11/espeak-1.47.11-source.tar.xz</code><br/>
 <code>tar xJvf espeak-1.47.11-source.tar.xz</code><br/>
+<code>apt-get install espeak</code><br/>
 <code>espeak --compile=zh</code><br/>
 <code>espeak -vzh '你好'</code></p>
+
+<blockquote><p>ref <a href="http://askubuntu.com/questions/178736/generate-mp3-file-from-espeak">http://askubuntu.com/questions/178736/generate-mp3-file-from-espeak</a></p></blockquote>
+
+<p><code>espeak -vzh '你好' --stdout | ffmpeg -i - -ar 44100 -ac 2 -ab 192k -f mp3 helo.mp3</code></p>
 ]]></content>
   </entry>
   
