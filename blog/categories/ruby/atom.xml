@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2016-06-21T13:32:25+08:00</updated>
+  <updated>2016-06-21T18:58:17+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -36,11 +36,13 @@ class Gmap
     end
   end
 
-  def find(address , label , color , zoom )
+ def find(address , label , color , zoom )
     puts "downloading.."+ address
     url = "http://maps.googleapis.com/maps/api/geocode/json?address=" +address
     doc = Nokogiri::HTML(open( URI.escape(url)),nil,nil).text.match(/location" : {\n.*"lat" : (.*),\n.*"lng" : (.*)/)
-    puts "https://maps.googleapis.com/maps/api/staticmap?center=#{doc[1]},#{doc[2]}&amp;markers=color:#{color}%7Clabel:#{label}%7C#{doc[1]},#{doc[2]}&amp;zoom=#{zoom}&amp;size=1024x1024&amp;scale=2&amp;language=zh-tw&amp;maptype=hybrid"
+    #doc = JSON.parse(Nokogiri::HTML(open( URI.escape(url)),nil,nil).text)["results"][0]["geometry"]["location"]
+    #lat = doc["lat"]
+    #lng = doc["lng"]
     `wget -q \"https://maps.googleapis.com/maps/api/staticmap?center=#{doc[1]},#{doc[2]}&amp;markers=color:#{color}%7Clabel:#{label}%7C#{doc[1]},#{doc[2]}&amp;zoom=#{zoom}&amp;size=1024x1024&amp;scale=2&amp;language=zh-tw&amp;maptype=hybrid\" -O /tmp/image#{label}.jpg`
     `convert /tmp/image#{label}.jpg -bordercolor white -border 5 /tmp/image#{label}1.jpg`
     return [ doc[1] , doc[2] ]
