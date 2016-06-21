@@ -12,5 +12,10 @@ categories: app
 `apt-get install libpulse-dev`  
 `wget http://sourceforge.net/projects/e-guidedog/files/eSpeak-Chinese/1.47.11/espeak-1.47.11-source.tar.xz`  
 `tar xJvf espeak-1.47.11-source.tar.xz`  
+`apt-get install espeak`  
 `espeak --compile=zh`  
-`espeak -vzh '你好'`  
+`espeak -vzh '你好'`   
+
+> ref http://askubuntu.com/questions/178736/generate-mp3-file-from-espeak  
+
+`espeak -vzh '你好' --stdout | ffmpeg -i - -ar 44100 -ac 2 -ab 192k -f mp3 helo.mp3`  
