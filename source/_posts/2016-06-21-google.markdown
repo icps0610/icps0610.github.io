@@ -24,11 +24,13 @@ class Gmap
     end
   end
 
-  def find(address , label , color , zoom )
+ def find(address , label , color , zoom )
     puts "downloading.."+ address
     url = "http://maps.googleapis.com/maps/api/geocode/json?address=" +address
     doc = Nokogiri::HTML(open( URI.escape(url)),nil,nil).text.match(/location" : {\n.*"lat" : (.*),\n.*"lng" : (.*)/)
-    puts "https://maps.googleapis.com/maps/api/staticmap?center=#{doc[1]},#{doc[2]}&markers=color:#{color}%7Clabel:#{label}%7C#{doc[1]},#{doc[2]}&zoom=#{zoom}&size=1024x1024&scale=2&language=zh-tw&maptype=hybrid"
+    #doc = JSON.parse(Nokogiri::HTML(open( URI.escape(url)),nil,nil).text)["results"][0]["geometry"]["location"]
+    #lat = doc["lat"]
+    #lng = doc["lng"]
     `wget -q \"https://maps.googleapis.com/maps/api/staticmap?center=#{doc[1]},#{doc[2]}&markers=color:#{color}%7Clabel:#{label}%7C#{doc[1]},#{doc[2]}&zoom=#{zoom}&size=1024x1024&scale=2&language=zh-tw&maptype=hybrid\" -O /tmp/image#{label}.jpg`
     `convert /tmp/image#{label}.jpg -bordercolor white -border 5 /tmp/image#{label}1.jpg`
     return [ doc[1] , doc[2] ]
