@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2016-06-20T01:58:42+08:00</updated>
+  <updated>2016-06-21T13:19:57+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,54 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Google]]></title>
+    <link href="http://icps0610.github.io/blog/2016/06/21/google/"/>
+    <updated>2016-06-21T13:16:48+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/06/21/google</id>
+    <content type="html"><![CDATA[<pre><code class="ruby"># encoding: UTF-8
+require 'nokogiri'
+require 'open-uri'
+require 'json'
+class Gmap
+
+  def initialize
+    if ARGV.count == 2
+      find_A_B( find( ARGV[0] , "A" , "red" , 18) , find( ARGV[1] , "B" , "blue" , 18 ) )
+    elsif ARGV.count == 1
+      find( ARGV[0] , "A" , "red" , 18)
+      find( ARGV[0] , "AA" , "red" , 16)
+      `montage /tmp/imageA1.jpg /tmp/imageAA1.jpg -geometry +0+0 all.jpg`
+    else
+      puts 'input one or two address'
+    end
+  end
+
+  def find(address , label , color , zoom )
+    puts "downloading.."+ address
+    url = "http://maps.googleapis.com/maps/api/geocode/json?address=" +address
+    doc = Nokogiri::HTML(open( URI.escape(url)),nil,nil).text.match(/location" : {\n.*"lat" : (.*),\n.*"lng" : (.*)/)
+    puts "https://maps.googleapis.com/maps/api/staticmap?center=#{doc[1]},#{doc[2]}&amp;markers=color:#{color}%7Clabel:#{label}%7C#{doc[1]},#{doc[2]}&amp;zoom=#{zoom}&amp;size=1024x1024&amp;scale=2&amp;language=zh-tw&amp;maptype=hybrid"
+    #w
+    `wget -q \"https://maps.googleapis.com/maps/api/staticmap?center=#{doc[1]},#{doc[2]}&amp;markers=color:#{color}%7Clabel:#{label}%7C#{doc[1]},#{doc[2]}&amp;zoom=#{zoom}&amp;size=1024x1024&amp;scale=2&amp;language=zh-tw&amp;maptype=hybrid\" -O /tmp/image#{label}.jpg`
+    `convert /tmp/image#{label}.jpg -bordercolor white -border 5 /tmp/image#{label}1.jpg`
+    return [ doc[1] , doc[2] ]
+  end
+
+  def find_A_B( a , b )
+    puts "downloading..two place"
+    cen = [ (a[0].to_f+b[0].to_f)/2 , (a[1].to_f+b[1].to_f)/2 ]
+    `wget -q \"https://maps.googleapis.com/maps/api/staticmap?center=#{cen[0]},#{cen[1]}&amp;markers=color:red%7Clabel:A%7C#{a[0]},#{a[1]}&amp;markers=color:blue%7Clabel:B%7C#{b[0]},#{b[1]}&amp;size=1024x1024&amp;scale=2&amp;language=zh-tw&amp;maptype=hybrid\" -O /tmp/imageAB.jpg`
+    `convert /tmp/imageAB.jpg -bordercolor white -border 5 /tmp/imageAB1.jpg`
+    `montage /tmp/imageA1.jpg /tmp/imageB1.jpg -tile 1x2 -geometry +0+0 -resize 640x640 /tmp/output.jpg`
+    `montage /tmp/imageAB1.jpg /tmp/output.jpg -geometry +0+0 all.jpg`
+  end
+end
+Gmap.new
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Qrcode]]></title>
@@ -156,26 +204,6 @@ end
 puts matsu_ship
 puts matsu_news_list
 puts matsu_talk
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Line-message]]></title>
-    <link href="http://icps0610.github.io/blog/2016/06/18/line-message/"/>
-    <updated>2016-06-18T03:35:29+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/06/18/line-message</id>
-    <content type="html"><![CDATA[<pre><code class="ruby">#!/usr/bin/env ruby
-# encoding: utf-8
-loop do
-  @content||=""
-  printf "&gt;&gt;"
-  text = gets
-  text  == "@q\n" ? break : @content+=text
-end
-@content.split("\n").each do |line|
-  puts line=line.scan(/\d{2}:\d{2} .* (.*)/)
-end
 </code></pre>
 ]]></content>
   </entry>
