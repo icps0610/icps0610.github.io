@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2016-06-21T20:10:07+08:00</updated>
+  <updated>2016-06-21T20:21:17+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,16 +12,6 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
-  
-  <entry>
-    <title type="html"><![CDATA[Bettercap]]></title>
-    <link href="http://icps0610.github.io/blog/2016/06/18/bettercap/"/>
-    <updated>2016-06-18T14:56:56+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/06/18/bettercap</id>
-    <content type="html"><![CDATA[<p><a href="https://www.bettercap.org/">https://www.bettercap.org/</a>  <br/>
-<code>apt-get install libpcap0.8-dev</code></p>
-]]></content>
-  </entry>
   
   <entry>
     <title type="html"><![CDATA[Nat]]></title>
@@ -73,6 +63,15 @@ rm -R /tmp/* 2>/dev/nul
 rm /root/.local/share/Trash/files/* 2>/dev/nul
 </code></pre>
 
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Battery_check]]></title>
+    <link href="http://icps0610.github.io/blog/2016/06/15/battery-check/"/>
+    <updated>2016-06-15T22:04:43+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/06/15/battery-check</id>
+    <content type="html"><![CDATA[<p><code>upower -i $(upower -e | grep 'BAT')| grep percentage:| awk '{print$2}'</code></p>
 ]]></content>
   </entry>
   
