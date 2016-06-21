@@ -1,0 +1,49 @@
+---
+layout: post
+title: "google"
+date: 2016-06-21 13:16:48 +0800
+comments: true
+categories: ruby
+---
+``` ruby
+# encoding: UTF-8
+require 'nokogiri'
+require 'open-uri'
+require 'json'
+class Gmap
+
+  def initialize
+    if ARGV.count == 2
+      find_A_B( find( ARGV[0] , "A" , "red" , 18) , find( ARGV[1] , "B" , "blue" , 18 ) )
+    elsif ARGV.count == 1
+      find( ARGV[0] , "A" , "red" , 18)
+      find( ARGV[0] , "AA" , "red" , 16)
+      `montage /tmp/imageA1.jpg /tmp/imageAA1.jpg -geometry +0+0 all.jpg`
+    else
+      puts 'input one or two address'
+    end
+  end
+
+  def find(address , label , color , zoom )
+    puts "downloading.."+ address
+    url = "http://maps.googleapis.com/maps/api/geocode/json?address=" +address
+    doc = Nokogiri::HTML(open( URI.escape(url)),nil,nil).text.match(/location" : {\n.*"lat" : (.*),\n.*"lng" : (.*)/)
+    puts "https://maps.googleapis.com/maps/api/staticmap?center=#{doc[1]},#{doc[2]}&markers=color:#{color}%7Clabel:#{label}%7C#{doc[1]},#{doc[2]}&zoom=#{zoom}&size=1024x1024&scale=2&language=zh-tw&maptype=hybrid"
+    #w
+    `wget -q \"https://maps.googleapis.com/maps/api/staticmap?center=#{doc[1]},#{doc[2]}&markers=color:#{color}%7Clabel:#{label}%7C#{doc[1]},#{doc[2]}&zoom=#{zoom}&size=1024x1024&scale=2&language=zh-tw&maptype=hybrid\" -O /tmp/image#{label}.jpg`
+    `convert /tmp/image#{label}.jpg -bordercolor white -border 5 /tmp/image#{label}1.jpg`
+    return [ doc[1] , doc[2] ]
+  end
+
+  def find_A_B( a , b )
+    puts "downloading..two place"
+    cen = [ (a[0].to_f+b[0].to_f)/2 , (a[1].to_f+b[1].to_f)/2 ]
+    `wget -q \"https://maps.googleapis.com/maps/api/staticmap?center=#{cen[0]},#{cen[1]}&markers=color:red%7Clabel:A%7C#{a[0]},#{a[1]}&markers=color:blue%7Clabel:B%7C#{b[0]},#{b[1]}&size=1024x1024&scale=2&language=zh-tw&maptype=hybrid\" -O /tmp/imageAB.jpg`
+    `convert /tmp/imageAB.jpg -bordercolor white -border 5 /tmp/imageAB1.jpg`
+    `montage /tmp/imageA1.jpg /tmp/imageB1.jpg -tile 1x2 -geometry +0+0 -resize 640x640 /tmp/output.jpg`
+    `montage /tmp/imageAB1.jpg /tmp/output.jpg -geometry +0+0 all.jpg`
+  end
+end
+Gmap.new
+
+```
