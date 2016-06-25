@@ -1,0 +1,13 @@
+---
+layout: post
+title: "atom"
+date: 2016-06-25 01:00:23 +0800
+comments: true
+categories: app
+---
+highlight-line 選取那行高亮
+activate-power-mode 打字特效
+atom-beautify ruby排版
+> Could not find 'rubocop'. The program may not be installed.
+> gem install rubocop
+> atom-beautify -> settings -> ruby -> path C:\Ruby23\bin\rubocop

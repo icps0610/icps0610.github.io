@@ -22,3 +22,30 @@ categories: app
 start_motion_daemon=<font color='red'>yes</font>
 </code></pre>
 
+``` ruby
+#!/usr/bin/env ruby
+require "net/scp"
+require 'line/bot'
+
+def upload(host,user,passwd,file)
+  Net::SCP.upload!(host,user, file,file,  :ssh => { :password => passwd })
+end
+
+client = Line::Bot::Client.new do |config|
+    config.channel_id     = channel_id 
+    config.channel_secret = channel_secret
+    config.channel_mid    = channel_mid 
+end
+
+file = ARGV[0].split("/motion/")[1]
+
+begin
+  client.send_text(to_mid:to_mid,text: "Alert!" )
+rescue
+  `echo #{file} >> /motion/alert`
+  upload(host,user,passwd,"alert")
+end
+sleep 5
+`ffmpeg -y -i #{ARGV[0]} /tmp/#{file}.gif`
+`rm /tmp/#{file}.gif`
+```
