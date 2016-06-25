@@ -4,7 +4,7 @@
   <title><![CDATA[Category: App | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/app/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2016-06-25T11:38:52+08:00</updated>
+  <updated>2016-06-25T12:32:24+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -18,12 +18,16 @@
     <link href="http://icps0610.github.io/blog/2016/06/25/atom/"/>
     <updated>2016-06-25T01:00:23+08:00</updated>
     <id>http://icps0610.github.io/blog/2016/06/25/atom</id>
-    <content type="html"><![CDATA[<p>highlight-line 選取那行高亮
-activate-power-mode 打字特效
-atom-beautify ruby排版</p>
+    <content type="html"><![CDATA[<h3>package</h3>
 
-<blockquote><p>Could not find &lsquo;rubocop&rsquo;. The program may not be installed.
-gem install rubocop
+<h6>highlight-line 選取那行高亮</h6>
+
+<h6>activate-power-mode 打字特效</h6>
+
+<h6>atom-beautify ruby排版</h6>
+
+<blockquote><p>Could not find &lsquo;rubocop&rsquo;. The program may not be installed.<br/>
+gem install rubocop<br/>
 atom-beautify -> settings -> ruby -> path C:\Ruby23\bin\rubocop</p></blockquote>
 ]]></content>
   </entry>
