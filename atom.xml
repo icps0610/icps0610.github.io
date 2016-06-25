@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2016-06-21T20:40:28+08:00</updated>
+  <updated>2016-06-25T11:38:52+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,21 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Atom]]></title>
+    <link href="http://icps0610.github.io/blog/2016/06/25/atom/"/>
+    <updated>2016-06-25T01:00:23+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/06/25/atom</id>
+    <content type="html"><![CDATA[<p>highlight-line 選取那行高亮
+activate-power-mode 打字特效
+atom-beautify ruby排版</p>
+
+<blockquote><p>Could not find &lsquo;rubocop&rsquo;. The program may not be installed.
+gem install rubocop
+atom-beautify -> settings -> ruby -> path C:\Ruby23\bin\rubocop</p></blockquote>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Fcitx]]></title>
@@ -736,68 +751,6 @@ ping 127.0.0.1 -n 10 > nul
 </span><span class='line'><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;test.gif&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">file</span><span class="o">|</span>
 </span><span class='line'>  <span class="n">file</span> <span class="o">&lt;&lt;</span> <span class="nb">open</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">read</span>
 </span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Csv]]></title>
-    <link href="http://icps0610.github.io/blog/2016/06/17/csv/"/>
-    <updated>2016-06-17T21:00:27+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/06/17/csv</id>
-    <content type="html"><![CDATA[<blockquote><p>ref 中文亂碼 <a href="https://cnodejs.org/topic/516e0ab46d382773067a5473">https://cnodejs.org/topic/516e0ab46d382773067a5473</a></p></blockquote>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#encoding: UTF-8</span>
-</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;csv&#39;</span>
-</span><span class='line'><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;test.csv&#39;</span>
-</span><span class='line'><span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="s2">&quot;wb&quot;</span><span class="p">){</span><span class="o">|</span><span class="n">f</span><span class="o">|</span> <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\xEF\xBB\xBF</span><span class="s2">&quot;</span><span class="p">)</span> <span class="p">}</span> <span class="c1">#解決中文亂碼 加入&quot;\xEF\xBB\xBF&quot;</span>
-</span><span class='line'><span class="vi">@csv</span><span class="o">=[[</span><span class="s2">&quot;麵包&quot;</span><span class="p">,</span> <span class="s2">&quot;15&quot;</span><span class="o">]</span><span class="p">,</span> <span class="o">[</span><span class="s2">&quot;吐司&quot;</span><span class="p">,</span> <span class="s2">&quot;50&quot;</span><span class="o">]</span><span class="p">,</span> <span class="o">[</span><span class="s2">&quot;牛奶&quot;</span><span class="p">,</span> <span class="s2">&quot;70&quot;</span><span class="o">]]</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1">#save </span>
-</span><span class='line'><span class="no">CSV</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">csv</span><span class="o">|</span>
-</span><span class='line'>    <span class="vi">@csv</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">data</span><span class="o">|</span> <span class="n">csv</span> <span class="o">&lt;&lt;</span> <span class="n">data</span> <span class="p">}</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1">#讀取每行</span>
-</span><span class='line'><span class="no">CSV</span><span class="o">.</span><span class="n">foreach</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span><span class="k">do</span> <span class="o">|</span><span class="n">row</span><span class="o">|</span>
-</span><span class='line'>    <span class="n">row</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">column</span><span class="o">|</span>
-</span><span class='line'>      <span class="nb">print</span> <span class="n">column</span>
-</span><span class='line'>    <span class="k">end</span>
-</span><span class='line'>    <span class="nb">puts</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'><span class="c1">#麵包15</span>
-</span><span class='line'><span class="c1">#吐司50</span>
-</span><span class='line'><span class="c1">#牛奶70</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1">#讀取</span>
-</span><span class='line'><span class="nb">p</span> <span class="no">CSV</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="p">{</span> <span class="ss">col_sep</span><span class="p">:</span> <span class="s1">&#39;,&#39;</span> <span class="p">})</span> <span class="c1"># col_sep: &#39;;&#39; 使用;分割 預設,可省略</span>
-</span><span class='line'><span class="c1">#[[&quot;﻿麵包&quot;, &quot;15&quot;], [&quot;吐司&quot;, &quot;50&quot;], [&quot;牛奶&quot;, &quot;70&quot;]]</span>
 </span></code></pre></td></tr></table></div></figure>
 
 ]]></content>
