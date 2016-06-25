@@ -10,5 +10,5 @@ categories: app
 ###### activate-power-mode 打字特效   
 ###### atom-beautify ruby排版   
 > Could not find 'rubocop'. The program may not be installed.  
-> gem install rubocop  
+> `gem install rubocop`  
 > atom-beautify -> settings -> ruby -> path C:\Ruby23\bin\rubocop  
