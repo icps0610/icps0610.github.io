@@ -12,6 +12,8 @@ categories: app
 `apt-get install libpulse-dev`  
 `wget http://sourceforge.net/projects/e-guidedog/files/eSpeak-Chinese/1.47.11/espeak-1.47.11-source.tar.xz`  
 `tar xJvf espeak-1.47.11-source.tar.xz`  
+`cd espeak-1.47.11-source/dictsource`  
+`espeak --compile=zh`  
 `apt-get install espeak`  
 `espeak --compile=zh`  
 `espeak -vzh '你好'`   
