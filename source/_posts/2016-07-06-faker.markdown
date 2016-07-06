@@ -1,0 +1,15 @@
+---
+layout: post
+title: "產生隨機資料"
+date: 2016-07-06 11:56:35 +0800
+comments: true
+categories: ruby
+---
+
+https://github.com/stympy/faker   
+
+`gem install faker`
+``` ruby
+Faker::Name.first_name    
+Faker::Internet.email
+```
