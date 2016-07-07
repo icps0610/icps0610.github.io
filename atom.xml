@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2016-07-06T12:01:42+08:00</updated>
+  <updated>2016-07-07T17:17:51+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,15 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[中文字形]]></title>
+    <link href="http://icps0610.github.io/blog/2016/07/06/tw-font/"/>
+    <updated>2016-07-06T19:45:51+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/07/06/tw-font</id>
+    <content type="html"><![CDATA[<p><code>fc-list :lang=zh</code></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[產生隨機資料]]></title>
@@ -720,21 +729,6 @@ rm test_disk
 </span><span class='line'>  <span class="k">end</span>
 </span><span class='line'><span class="k">end</span>
 </span></code></pre></td></tr></table></div></figure>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Route]]></title>
-    <link href="http://icps0610.github.io/blog/2016/06/18/route/"/>
-    <updated>2016-06-18T01:41:14+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/06/18/route</id>
-    <content type="html"><![CDATA[<pre><code>@echo off
-route delete 0.0.0.0
-route add 0.0.0.0 192.168.43.1 mask 0.0.0.0
-route print | find "0.0.0.0"
-ping 127.0.0.1 -n 10 > nul
-</code></pre>
 
 ]]></content>
   </entry>

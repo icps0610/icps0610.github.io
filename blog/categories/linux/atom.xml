@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2016-07-06T12:01:42+08:00</updated>
+  <updated>2016-07-07T17:17:51+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,15 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[中文字形]]></title>
+    <link href="http://icps0610.github.io/blog/2016/07/06/tw-font/"/>
+    <updated>2016-07-06T19:45:51+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/07/06/tw-font</id>
+    <content type="html"><![CDATA[<p><code>fc-list :lang=zh</code></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Fcitx]]></title>
@@ -54,24 +63,6 @@ echo "1" > /proc/sys/net/ipv4/ip_forward
     <content type="html"><![CDATA[<pre><code>dd if=/dev/zero of=test_disk bs=1k count=1000000
 dd if=test_disk of=/dev/null bs=2k
 rm test_disk
-</code></pre>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Clean]]></title>
-    <link href="http://icps0610.github.io/blog/2016/06/15/clean/"/>
-    <updated>2016-06-15T22:06:00+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/06/15/clean</id>
-    <content type="html"><![CDATA[<pre><code>apt-get clean
-apt-get autoclean
-apt-get autoremove
-rm /var/cache/apt/archives/* 2>/dev/nul # Package (deb) cache
-rm /var/cache/apt/archives/partial/* 2>/dev/nul
-rm -R /var/log/* 2>/dev/nul
-rm -R /tmp/* 2>/dev/nul
-rm /root/.local/share/Trash/files/* 2>/dev/nul
 </code></pre>
 
 ]]></content>

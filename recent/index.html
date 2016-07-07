@@ -9,10 +9,8 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="https://github.com/stympy/faker gem install faker 1
-2
-Faker::Name.first_name
-Faker::Internet.email ">
+  <meta name="description" content="fc-list :lang=zh
+">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -71,6 +69,35 @@ Faker::Internet.email ">
       <div class="blog-index">
   
 
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2016/07/06/tw-font/">中文字形</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-07-06T19:45:51+08:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>7:45 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><code>fc-list :lang=zh</code></p>
+</div>
+  
+  
+
+
+    </article>
+  
   
     <article>
       
@@ -289,79 +316,6 @@ atom-beautify -> settings -> ruby -> path C:\Ruby23\bin\rubocop</p></blockquote>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2016/06/19/qrcode/">Qrcode</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2016-06-19T23:54:44+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>19</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>11:54 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;rqrcode_png&#39;</span>
-</span><span class='line'><span class="nb">require</span> <span class="s2">&quot;mini_magick&quot;</span>
-</span><span class='line'><span class="n">text</span><span class="o">=</span><span class="s2">&quot;test&quot;</span>
-</span><span class='line'><span class="n">input_image</span><span class="o">=</span><span class="s2">&quot;3.jpg&quot;</span>
-</span><span class='line'><span class="c1">#產生Qrcode</span>
-</span><span class='line'><span class="n">qr</span> <span class="o">=</span> <span class="no">RQRCode</span><span class="o">::</span><span class="no">QRCode</span><span class="o">.</span><span class="n">new</span><span class="p">(</span> <span class="n">text</span><span class="p">,</span> <span class="ss">:size</span> <span class="o">=&gt;</span> <span class="mi">6</span><span class="p">,</span> <span class="ss">:level</span> <span class="o">=&gt;</span> <span class="ss">:m</span> <span class="p">)</span>
-</span><span class='line'><span class="n">png</span> <span class="o">=</span> <span class="n">qr</span><span class="o">.</span><span class="n">to_img</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;qr.png&quot;</span><span class="p">)</span>
-</span><span class='line'><span class="c1">#合併照片</span>
-</span><span class='line'><span class="n">qr_png</span> <span class="o">=</span> <span class="no">MiniMagick</span><span class="o">::</span><span class="no">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;qr.png&quot;</span><span class="p">)</span>
-</span><span class='line'><span class="n">image</span> <span class="o">=</span> <span class="no">MiniMagick</span><span class="o">::</span><span class="no">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">input_image</span><span class="p">)</span>
-</span><span class='line'><span class="n">image</span><span class="o">.</span><span class="n">resize</span> <span class="s2">&quot;80x80&quot;</span>
-</span><span class='line'><span class="n">result</span> <span class="o">=</span> <span class="n">qr_png</span><span class="o">.</span><span class="n">composite</span><span class="p">(</span><span class="n">image</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">c</span><span class="o">|</span>
-</span><span class='line'>  <span class="n">c</span><span class="o">.</span><span class="n">compose</span> <span class="s2">&quot;Over&quot;</span>
-</span><span class='line'>  <span class="n">c</span><span class="o">.</span><span class="n">geometry</span> <span class="s2">&quot;+</span><span class="si">#{</span><span class="p">((</span><span class="mi">300</span><span class="o">-</span><span class="n">image</span><span class="o">.</span><span class="n">width</span><span class="o">.</span><span class="n">to_i</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">to_s</span><span class="si">}</span><span class="s2">+</span><span class="si">#{</span><span class="p">((</span><span class="mi">300</span><span class="o">-</span><span class="n">image</span><span class="o">.</span><span class="n">height</span><span class="o">.</span><span class="n">to_i</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">to_s</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'><span class="n">result</span><span class="o">.</span><span class="n">write</span> <span class="s2">&quot;qr.jpg&quot;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>換顏色</h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'> <span class="c1">#/usr/local/lib/ruby/gems/2.3.0/gems/rqrcode_png-0.1.5/lib/rqrcode_png/image.rb</span>
-</span><span class='line'> <span class="c1">#3 </span>
-</span><span class='line'> <span class="no">BLACK</span> <span class="o">=</span> <span class="o">::</span><span class="no">ChunkyPNG</span><span class="o">::</span><span class="no">Color</span><span class="o">.</span><span class="n">rgba</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="mi">91</span><span class="p">,</span><span class="mi">145</span><span class="p">,</span><span class="mi">255</span><span class="p">)</span> <span class="c1">#pink</span>
-</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
     <a href="/blog/archives">Blog Archives</a>
@@ -375,7 +329,7 @@ atom-beautify -> settings -> ruby -> path C:\Ruby23\bin\rubocop</p></blockquote>
     <ul id="categories">
        <li class='category'><a href='/blog/categories/app/'>app (11)</a></li>
 <li class='category'><a href='/blog/categories/bat/'>bat (8)</a></li>
-<li class='category'><a href='/blog/categories/linux/'>linux (8)</a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (9)</a></li>
 <li class='category'><a href='/blog/categories/notes/'>notes (1)</a></li>
 <li class='category'><a href='/blog/categories/ror/'>ror (7)</a></li>
 <li class='category'><a href='/blog/categories/ruby/'>ruby (17)</a></li>
@@ -385,6 +339,10 @@ atom-beautify -> settings -> ruby -> path C:\Ruby23\bin\rubocop</p></blockquote>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2016/07/06/tw-font/">中文字形</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2016/07/06/faker/">產生隨機資料</a>
@@ -400,10 +358,6 @@ atom-beautify -> settings -> ruby -> path C:\Ruby23\bin\rubocop</p></blockquote>
     
       <li class="post">
         <a href="/blog/2016/06/21/google/">Google</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/06/19/qrcode/">Qrcode</a>
       </li>
     
   </ul>
