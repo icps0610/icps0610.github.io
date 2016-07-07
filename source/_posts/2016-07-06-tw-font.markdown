@@ -1,0 +1,8 @@
+---
+layout: post
+title: "中文字形"
+date: 2016-07-06 19:45:51 +0800
+comments: true
+categories: linux
+---
+`fc-list :lang=zh`
