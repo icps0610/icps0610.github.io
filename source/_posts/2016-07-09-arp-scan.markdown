@@ -1,0 +1,10 @@
+---
+layout: post
+title: "LAN掃描"
+date: 2016-07-09 02:52:13 +0800
+comments: true
+categories: app
+---
+`netdiscover`
+
+`arp-scan 192.168.1.0/24`
