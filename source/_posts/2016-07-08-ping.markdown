@@ -1,0 +1,88 @@
+---
+layout: post
+title: "ping.rb"
+date: 2016-07-08 16:10:15 +0800
+comments: true
+categories: ruby
+---
+
+#### 語音
+`espeak -vzh '測試'`
+
+#### 繪圖
+`gnuplot`
+
+
+``` ruby
+#!/usr/bin/env ruby
+# encoding: utf-8
+require 'colorize'
+require '/data/ruby/chinese_num/chinese_num.rb'
+
+def restore(where)
+  if @break == 1
+    `espeak -vzh '#{where}恢復' -s 250`
+    @break = 0
+  end
+end
+
+def record(time)
+  `echo #{Time.now.strftime("%H:%M:%S")}, #{time} >> /tmp/ping.log`
+end
+
+def delay(ip,where,alert)
+  time = `ping #{ip} -c 1 | awk '{print $7}' | grep time`.scan(/time=(.*)/).join.to_f
+  if time == 0.0
+    `espeak -vzh '#{where}斷線' -s 250`
+    record(-10000.0)
+    @break=1
+  else
+    puts time.to_s.blue+"   "+ip
+    record(time)
+    restore(where)
+    if time > alert
+      `espeak -vzh '#{where}延遲#{Chinese_num.transform(time.to_i)}秒' -s 250`
+    end
+  end
+end
+
+def gnuplot
+  tmp = IO.binread("/tmp/ping.log")
+  count = tmp.split("\n").count
+  count = 256 if count < 256
+
+  log_start = tmp.split("\n").first.scan(/(.*),.*/).join
+  log_end = tmp.split("\n").last.scan(/(.*),.*/).join
+
+  file = []
+  file << "set grid y"
+  file << "set yrange [0:]"
+  file << "set ylabel 'ms'"
+  file << "set xdata time"
+  file << "set timefmt '%H:%M:%S'"
+  file << "set xrange ['#{log_start}':'#{log_end}']"
+  file << "set format x '%H:%M:%S'"
+  file << "set xlabel '#{log_start} ~ #{log_end}'"
+  file << "set xtics 3600"
+  file << "set terminal png size #{count*5},480"
+  file << "set output '/tmp/ping.png'"
+  file << "set border 0"
+  file << "set style data lines"
+  file << "set style line 1 linecolor rgb '#0060ad' linetype 1 linewidth 1"
+  file << "plot '/tmp/ping.log' using 1:2 notitle linestyle 1"
+  
+  IO.binwrite('/tmp/ping.p',file.map{|i|i+"\r\n"}.join)
+  system "gnuplot < /tmp/ping.p"
+  system "kill `ps aux | grep /usr/bin/display.im6 | awk '{print $2}'`"
+end
+
+@break = 0
+@count = 0
+loop do
+  gnuplot if @count%120 == 0
+  delay("168.95.1.1","中華電信",1000)
+  sleep 5
+  @count+=1
+end
+
+```
