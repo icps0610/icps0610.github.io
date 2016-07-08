@@ -4,7 +4,7 @@
   <title><![CDATA[Category: App | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/app/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2016-07-07T17:17:51+08:00</updated>
+  <updated>2016-07-09T02:54:11+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,17 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[LAN掃描]]></title>
+    <link href="http://icps0610.github.io/blog/2016/07/09/arp-scan/"/>
+    <updated>2016-07-09T02:52:13+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/07/09/arp-scan</id>
+    <content type="html"><![CDATA[<p><code>netdiscover</code></p>
+
+<p><code>arp-scan 192.168.1.0/24</code></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Atom]]></title>
@@ -75,18 +86,6 @@ puts url
 <pre><code>youtube-dl -f mp4 <font color='red'>url</font>
 </code></pre>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Firefox_ram_cache]]></title>
-    <link href="http://icps0610.github.io/blog/2016/06/17/firefox-ram-cache/"/>
-    <updated>2016-06-17T17:34:26+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/06/17/firefox-ram-cache</id>
-    <content type="html"><![CDATA[<p>about:config<br/>
-　browser.cache.disk.enable  ==>  false<br/>
-　browser.cache.memory.capacity ==> 整數 102400<br/>
-　browser.cache.memory.enable ==> true</p>
 ]]></content>
   </entry>
   
