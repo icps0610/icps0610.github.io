@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2016-07-09T02:54:11+08:00</updated>
+  <updated>2016-07-09T03:28:56+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,93 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[ping.rb]]></title>
+    <link href="http://icps0610.github.io/blog/2016/07/08/ping/"/>
+    <updated>2016-07-08T16:10:15+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/07/08/ping</id>
+    <content type="html"><![CDATA[<h4>語音</h4>
+
+<p><code>espeak -vzh '測試'</code></p>
+
+<h4>繪圖</h4>
+
+<p><code>gnuplot</code></p>
+
+<pre><code class="ruby">#!/usr/bin/env ruby
+# encoding: utf-8
+require 'colorize'
+require '/data/ruby/chinese_num/chinese_num.rb'
+
+def restore(where)
+  if @break == 1
+    `espeak -vzh '#{where}恢復' -s 250`
+    @break = 0
+  end
+end
+
+def record(time)
+  `echo #{Time.now.strftime("%H:%M:%S")}, #{time} &gt;&gt; /tmp/ping.log`
+end
+
+def delay(ip,where,alert)
+  time = `ping #{ip} -c 1 | awk '{print $7}' | grep time`.scan(/time=(.*)/).join.to_f
+  if time == 0.0
+    `espeak -vzh '#{where}斷線' -s 250`
+    record(-10000.0)
+    @break=1
+  else
+    puts time.to_s.blue+"   "+ip
+    record(time)
+    restore(where)
+    if time &gt; alert
+      `espeak -vzh '#{where}延遲#{Chinese_num.transform(time.to_i)}秒' -s 250`
+    end
+  end
+end
+
+def gnuplot
+  tmp = IO.binread("/tmp/ping.log")
+  count = tmp.split("\n").count
+  count = 256 if count &lt; 256
+
+  log_start = tmp.split("\n").first.scan(/(.*),.*/).join
+  log_end = tmp.split("\n").last.scan(/(.*),.*/).join
+
+  file = []
+  file &lt;&lt; "set grid y"
+  file &lt;&lt; "set yrange [0:]"
+  file &lt;&lt; "set ylabel 'ms'"
+  file &lt;&lt; "set xdata time"
+  file &lt;&lt; "set timefmt '%H:%M:%S'"
+  file &lt;&lt; "set xrange ['#{log_start}':'#{log_end}']"
+  file &lt;&lt; "set format x '%H:%M:%S'"
+  file &lt;&lt; "set xlabel '#{log_start} ~ #{log_end}'"
+  file &lt;&lt; "set xtics 3600"
+  file &lt;&lt; "set terminal png size #{count*5},480"
+  file &lt;&lt; "set output '/tmp/ping.png'"
+  file &lt;&lt; "set border 0"
+  file &lt;&lt; "set style data lines"
+  file &lt;&lt; "set style line 1 linecolor rgb '#0060ad' linetype 1 linewidth 1"
+  file &lt;&lt; "plot '/tmp/ping.log' using 1:2 notitle linestyle 1"
+
+  IO.binwrite('/tmp/ping.p',file.map{|i|i+"\r\n"}.join)
+  system "gnuplot &lt; /tmp/ping.p"
+  system "kill `ps aux | grep /usr/bin/display.im6 | awk '{print $2}'`"
+end
+
+@break = 0
+@count = 0
+loop do
+  gnuplot if @count%120 == 0
+  delay("168.95.1.1","中華電信",1000)
+  sleep 5
+  @count+=1
+end
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[產生隨機資料]]></title>
@@ -123,36 +210,6 @@ open(url) do |rss|
   feed.items.each do |item|
     puts "Title: #{item.title}"
   end
-end
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[OpenSSL-AES256]]></title>
-    <link href="http://icps0610.github.io/blog/2016/06/18/openssl-aes256/"/>
-    <updated>2016-06-18T20:10:17+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/06/18/openssl-aes256</id>
-    <content type="html"><![CDATA[<pre><code class="ruby"># encoding: utf-8
-require "base64"
-
-def aes_encrypt(data)
-  cipher = OpenSSL::Cipher::AES256.new(:CBC)
-  cipher.encrypt
-  cipher.key = KEY#cipher.random_key
-  cipher.iv = IV#cipher.random_iV
-  encrypt = cipher.update(data) + cipher.final
-  return Base64.encode64(encrypt).chomp
-end
-
-def aes_decrypt(encrypt)
-  encrypt = Base64.decode64(encrypt)
-  decipher = OpenSSL::Cipher::AES256.new(:CBC)
-  decipher.decrypt
-  decipher.key = KEY
-  decipher.iv  = IV
-  decrypt = decipher.update(encrypt) + decipher.final
-  return decrypt
 end
 </code></pre>
 ]]></content>
