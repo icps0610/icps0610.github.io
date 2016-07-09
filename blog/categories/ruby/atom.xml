@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2016-07-09T03:28:56+08:00</updated>
+  <updated>2016-07-09T11:58:54+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -14,17 +14,11 @@
 
   
   <entry>
-    <title type="html"><![CDATA[ping.rb]]></title>
+    <title type="html"><![CDATA[Ping_log]]></title>
     <link href="http://icps0610.github.io/blog/2016/07/08/ping/"/>
     <updated>2016-07-08T16:10:15+08:00</updated>
     <id>http://icps0610.github.io/blog/2016/07/08/ping</id>
-    <content type="html"><![CDATA[<h4>語音</h4>
-
-<p><code>espeak -vzh '測試'</code></p>
-
-<h4>繪圖</h4>
-
-<p><code>gnuplot</code></p>
+    <content type="html"><![CDATA[<p><img src="/images/ping.png" alt="ping.png" /></p>
 
 <pre><code class="ruby">#!/usr/bin/env ruby
 # encoding: utf-8
@@ -97,6 +91,14 @@ loop do
   @count+=1
 end
 </code></pre>
+
+<h4>語音</h4>
+
+<p><code>espeak -vzh '測試'</code>  <a href="/blog/2016/06/17/espeak/">espeak</a></p>
+
+<h4>繪圖</h4>
+
+<p><code>gnuplot</code></p>
 ]]></content>
   </entry>
   
