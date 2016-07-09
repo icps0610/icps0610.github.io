@@ -1,17 +1,11 @@
 ---
 layout: post
-title: "ping.rb"
+title: "ping_log"
 date: 2016-07-08 16:10:15 +0800
 comments: true
 categories: ruby
 ---
-
-#### 語音
-`espeak -vzh '測試'`
-
-#### 繪圖
-`gnuplot`
-
+![ping.png](/images/ping.png)
 
 ``` ruby
 #!/usr/bin/env ruby
@@ -86,3 +80,8 @@ loop do
 end
 
 ```
+#### 語音  
+`espeak -vzh '測試'`  [espeak](/blog/2016/06/17/espeak/)
+  
+#### 繪圖  
+`gnuplot`  

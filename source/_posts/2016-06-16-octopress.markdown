@@ -223,3 +223,12 @@ post.puts "categories: uncategorized"
 <pre><code>``git commit -am "`date +%Y-%m-%d:%H:%M:%S`"``  
 </code></pre>
 
+## 圖片
+<pre>
+  ![ping.png](/images/ping.png)
+</pre>
+
+## 連結
+<pre>
+  [Google](https://www.google.com.tw/)
+</pre>
