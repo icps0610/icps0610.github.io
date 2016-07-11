@@ -1,0 +1,32 @@
+---
+layout: post
+title: "因數分解"
+date: 2016-07-11 13:09:39 +0800
+comments: true
+categories: ruby
+---
+``` ruby
+def factor(n,f=2,result="")
+  if n == 1 and (not result == "" and f >= n/2)
+    return result.chop
+  elsif n%f == 0
+    result+=f.to_s+"×"
+    (n/f)%f == 0 ? factor(n/f,f,result) : factor(n/f,f+1,result)
+  else
+    factor(n,f+1,result)
+  end
+end
+
+def reorganize(n)
+  #Array項目內重複次數
+  repeat=n.split("×").each_with_object(Hash.new(0)){|m,h|h[m]+= 1}
+  return repeat.to_a.map{|x,y| "#{x}**#{y} × " }.join.chop.chop.chop
+end
+num = 29475
+puts factor(num)
+puts reorganize(factor(num))
+
+# 3×3×5×5×131
+# 3**2 × 5**2 × 131**1
+
+```
