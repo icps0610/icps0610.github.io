@@ -58,3 +58,6 @@ mem : `cat /proc/meminfo`
 USB :  `lsusb`  
 kernel版本 : `uname -a`  
 dmesg : `kernel logs`  
+
+#### TimeZone
+`cp /usr/share/zoneinfo/Asia/Taipei /etc/localtime`
