@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2016-07-26T19:26:51+08:00</updated>
+  <updated>2016-07-26T21:04:39+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -18,7 +18,8 @@
     <link href="http://icps0610.github.io/blog/2016/07/26/file-list/"/>
     <updated>2016-07-26T19:20:57+08:00</updated>
     <id>http://icps0610.github.io/blog/2016/07/26/file-list</id>
-    <content type="html"><![CDATA[<pre><code class="ruby">def dir(file)
+    <content type="html"><![CDATA[<pre><code class="ruby"># `find test  -type f | xargs ls`.split("\n")
+def dir(file)
   file.each do |f|
     if File.directory?(f) == true
       file=`ls #{f}`.split("\n").map{|i|f+"\\"+i}
