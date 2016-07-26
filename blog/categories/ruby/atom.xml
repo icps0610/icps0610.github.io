@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2016-07-26T19:21:51+08:00</updated>
+  <updated>2016-07-26T19:26:51+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -24,8 +24,7 @@
       file=`ls #{f}`.split("\n").map{|i|f+"\\"+i}
       dir(file)
     else
-      file = `ls #{f}`.split("\n").each do |i|
-        puts i
+      `ls #{f}`.split("\n").each do |i|
         system "rm #{i}"
         system "touch #{i}"
       end
