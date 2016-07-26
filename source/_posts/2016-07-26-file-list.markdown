@@ -1,0 +1,27 @@
+---
+layout: post
+title: "file_list"
+date: 2016-07-26 19:20:57 +0800
+comments: true
+categories: ruby
+---
+``` ruby
+def dir(file)
+  file.each do |f|
+    if File.directory?(f) == true
+      file=`ls #{f}`.split("\n").map{|i|f+"\\"+i}
+      dir(file)
+    else
+      file = `ls #{f}`.split("\n").each do |i|
+        puts i
+        system "rm #{i}"
+        system "touch #{i}"
+      end
+    end
+  end
+end
+target="D:\\Thunder\\XLGameBox\\"
+file=`ls #{target}`.split("\n").map{|i|target+i}
+dir(file)
+```
+

@@ -61,3 +61,6 @@ dmesg : `kernel logs`
 
 #### TimeZone
 `cp /usr/share/zoneinfo/Asia/Taipei /etc/localtime`
+
+####
+`find $PWD/test | xargs ls -d1`
