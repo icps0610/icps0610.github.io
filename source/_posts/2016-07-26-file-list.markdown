@@ -6,6 +6,7 @@ comments: true
 categories: ruby
 ---
 ``` ruby
+# `find test  -type f | xargs ls`.split("\n")
 def dir(file)
   file.each do |f|
     if File.directory?(f) == true
