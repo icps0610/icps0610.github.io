@@ -1,0 +1,23 @@
+---
+layout: post
+title: "ping_lan2"
+date: 2016-08-24 00:36:40 +0800
+comments: true
+categories: bat
+---
+``` bat
+@echo off
+SETLOCAL ENABLEDELAYEDEXPANSION
+for /l %%i in (1,1,254) do (
+   ping -n 1 -w 1 192.168.0.%%i > nul & if !errorlevel! == 0 echo 192.168.0.%%i
+)
+```
+
+``` bat
+@echo off
+SETLOCAL ENABLEDELAYEDEXPANSION
+FOR /F %%i in (ip.txt) do (
+	ping -n 1 -w 1 %%i > nul & if !errorlevel! == 0 echo %%i
+)
+
+```
