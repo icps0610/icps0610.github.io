@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2016-07-30T21:05:35+08:00</updated>
+  <updated>2016-08-24T00:38:13+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,41 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Ping_lan2]]></title>
+    <link href="http://icps0610.github.io/blog/2016/08/24/ping-lan2/"/>
+    <updated>2016-08-24T00:36:40+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/08/24/ping-lan2</id>
+    <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='bat'><span class='line'><span class="p">@</span><span class="k">echo</span> <span class="k">off</span>
+</span><span class='line'><span class="k">SETLOCAL</span> ENABLEDELAYEDEXPANSION
+</span><span class='line'><span class="k">for</span> <span class="n">/l</span> <span class="nv">%%i</span> in (<span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">254</span>) <span class="k">do</span> (
+</span><span class='line'>   ping -n <span class="m">1</span> -w <span class="m">1</span> <span class="m">192</span>.<span class="m">168</span>.<span class="m">0</span>.<span class="nv">%%i</span> <span class="p">&gt;</span> <span class="n">nul</span> &amp; <span class="k">if</span> !<span class="k">errorlevel</span>! <span class="o">==</span> <span class="m">0</span> <span class="k">echo</span> <span class="m">192</span>.<span class="m">168</span>.<span class="m">0</span>.<span class="nv">%%i</span>
+</span><span class='line'>)
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='bat'><span class='line'><span class="p">@</span><span class="k">echo</span> <span class="k">off</span>
+</span><span class='line'><span class="k">SETLOCAL</span> ENABLEDELAYEDEXPANSION
+</span><span class='line'><span class="k">FOR</span> <span class="n">/F</span> <span class="nv">%%i</span> in (ip.txt) <span class="k">do</span> (
+</span><span class='line'>  ping -n <span class="m">1</span> -w <span class="m">1</span> <span class="nv">%%i</span> <span class="p">&gt;</span> <span class="n">nul</span> &amp; <span class="k">if</span> !<span class="k">errorlevel</span>! <span class="o">==</span> <span class="m">0</span> <span class="k">echo</span> <span class="nv">%%i</span>
+</span><span class='line'>)
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Stack_level_too_deep]]></title>
@@ -739,48 +774,6 @@ echo "1" > /proc/sys/net/ipv4/ip_forward
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#view</span>
 </span><span class='line'>
 </span><span class='line'><span class="o">&lt;</span><span class="sx">%= link_to group.title, group_path(:controller =</span><span class="o">&gt;</span> <span class="s2">&quot;group&quot;</span><span class="p">,</span> <span class="ss">:action</span> <span class="o">=&gt;</span> <span class="s2">&quot;show&quot;</span><span class="p">,</span> <span class="ss">:id</span> <span class="o">=&gt;</span> <span class="n">group</span><span class="o">.</span><span class="n">url</span><span class="p">)</span> <span class="o">%&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Counter-cache]]></title>
-    <link href="http://icps0610.github.io/blog/2016/06/18/counter-cache/"/>
-    <updated>2016-06-18T04:21:16+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/06/18/counter-cache</id>
-    <content type="html"><![CDATA[<p><code>$rails g migration add_votes_to_store</code></p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">up</span>
-</span><span class='line'>  <span class="n">add_column</span> <span class="ss">:stores</span><span class="p">,</span> <span class="ss">:votes_count</span><span class="p">,</span> <span class="ss">:integer</span><span class="p">,</span> <span class="ss">:default</span> <span class="o">=&gt;</span> <span class="mi">0</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#model vote</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">class</span> <span class="nc">Vote</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
-</span><span class='line'>  <span class="n">belongs_to</span> <span class="ss">:store</span><span class="p">,</span> <span class="ss">:counter_cache</span> <span class="o">=&gt;</span> <span class="kp">true</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#view</span>
-</span><span class='line'><span class="o">&lt;%=</span> <span class="n">store</span><span class="o">.</span><span class="n">votes_count</span> <span class="o">%&gt;</span>
 </span></code></pre></td></tr></table></div></figure>
 
 ]]></content>
