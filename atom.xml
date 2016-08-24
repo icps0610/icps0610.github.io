@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2016-08-24T00:40:48+08:00</updated>
+  <updated>2016-08-24T21:37:03+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -23,10 +23,20 @@
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
 </pre></td><td class='code'><pre><code class='bat'><span class='line'><span class="p">@</span><span class="k">echo</span> <span class="k">off</span>
 </span><span class='line'><span class="k">SETLOCAL</span> ENABLEDELAYEDEXPANSION
 </span><span class='line'><span class="k">for</span> <span class="n">/l</span> <span class="nv">%%i</span> in (<span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">254</span>) <span class="k">do</span> (
-</span><span class='line'>   ping -n <span class="m">1</span> -w <span class="m">1</span> <span class="m">192</span>.<span class="m">168</span>.<span class="m">0</span>.<span class="nv">%%i</span> <span class="p">&gt;</span> <span class="n">nul</span> &amp; <span class="k">if</span> !<span class="k">errorlevel</span>! <span class="o">==</span> <span class="m">0</span> <span class="k">echo</span> <span class="m">192</span>.<span class="m">168</span>.<span class="m">0</span>.<span class="nv">%%i</span>
+</span><span class='line'>   ping -n <span class="m">1</span> -w <span class="m">1</span> <span class="m">192</span>.<span class="m">168</span>.<span class="m">0</span>.<span class="nv">%%i</span> <span class="p">&gt;</span> <span class="n">nul</span>
+</span><span class='line'>  <span class="k">if</span> !<span class="k">errorlevel</span>! <span class="o">==</span> <span class="m">0</span> (
+</span><span class='line'>      <span class="k">echo</span> <span class="m">192</span>.<span class="m">168</span>.<span class="m">0</span>.<span class="nv">%%i</span> O
+</span><span class='line'>  ) <span class="k">else</span> (
+</span><span class='line'>      <span class="k">echo</span> <span class="m">192</span>.<span class="m">168</span>.<span class="m">0</span>.<span class="nv">%%i</span> X
+</span><span class='line'>  )
 </span><span class='line'>)
 </span></code></pre></td></tr></table></div></figure>
 
@@ -38,10 +48,20 @@
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
 </pre></td><td class='code'><pre><code class='bat'><span class='line'><span class="p">@</span><span class="k">echo</span> <span class="k">off</span>
 </span><span class='line'><span class="k">SETLOCAL</span> ENABLEDELAYEDEXPANSION
 </span><span class='line'><span class="k">FOR</span> <span class="n">/F</span> <span class="nv">%%i</span> in (ip.txt) <span class="k">do</span> (
-</span><span class='line'>  ping -n <span class="m">1</span> -w <span class="m">1</span> <span class="nv">%%i</span> <span class="p">&gt;</span> <span class="n">nul</span> &amp; <span class="k">if</span> !<span class="k">errorlevel</span>! <span class="o">==</span> <span class="m">0</span> <span class="k">echo</span> <span class="nv">%%i</span>
+</span><span class='line'>   ping -n <span class="m">1</span> -w <span class="m">1</span> <span class="nv">%%i</span> <span class="p">&gt;</span> <span class="n">nul</span>
+</span><span class='line'>  <span class="k">if</span> !<span class="k">errorlevel</span>! <span class="o">==</span> <span class="m">0</span> (
+</span><span class='line'>      <span class="k">echo</span> <span class="nv">%%i</span> O
+</span><span class='line'>  ) <span class="k">else</span> (
+</span><span class='line'>      <span class="k">echo</span> <span class="nv">%%i</span> X
+</span><span class='line'>  )
 </span><span class='line'>)
 </span></code></pre></td></tr></table></div></figure>
 

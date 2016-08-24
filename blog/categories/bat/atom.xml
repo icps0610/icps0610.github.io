@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Bat | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/bat/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2016-08-24T00:40:48+08:00</updated>
+  <updated>2016-08-24T21:37:03+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -21,14 +21,24 @@
     <content type="html"><![CDATA[<pre><code class="bat">@echo off
 SETLOCAL ENABLEDELAYEDEXPANSION
 for /l %%i in (1,1,254) do (
-   ping -n 1 -w 1 192.168.0.%%i &gt; nul &amp; if !errorlevel! == 0 echo 192.168.0.%%i
+   ping -n 1 -w 1 192.168.0.%%i &gt; nul
+    if !errorlevel! == 0 (
+        echo 192.168.0.%%i O
+    ) else (
+        echo 192.168.0.%%i X 
+    )
 )
 </code></pre>
 
 <pre><code class="bat">@echo off
 SETLOCAL ENABLEDELAYEDEXPANSION
 FOR /F %%i in (ip.txt) do (
-    ping -n 1 -w 1 %%i &gt; nul &amp; if !errorlevel! == 0 echo %%i
+   ping -n 1 -w 1 %%i &gt; nul
+    if !errorlevel! == 0 (
+        echo %%i O
+    ) else (
+        echo %%i X 
+    )
 )
 </code></pre>
 ]]></content>
