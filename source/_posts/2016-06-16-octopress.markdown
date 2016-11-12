@@ -34,6 +34,7 @@ https://github.com/imathis/octopress
 
 ###### rake preview
 ``` ruby
+#Rakefile
 #28 
 server_port     = "80"  
 #86 
