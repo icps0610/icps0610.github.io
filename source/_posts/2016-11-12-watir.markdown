@@ -1,0 +1,18 @@
+---
+layout: post
+title: "watir"
+date: 2016-11-12 16:06:53 +0800
+comments: true
+categories: ror
+---
+
+#### msg
+<pre><code>/var/lib/gems/2.3.0/gems/selenium-webdriver-3.0.1/lib/selenium/webdriver/firefox.rb:58:in `driver_path':     
+Unable to find Mozilla geckodriver. Please download the server from        https://github.com/mozilla/geckodriver/releases and place it
+somewhere on your PATH. More info at https://developer.mozilla.org/en-US/docs/Mozilla/QA/Marionette/WebDriver. (Selenium::WebDriver::Error::WebDriverError)
+</pre></code>
+
+```
+download https://github.com/mozilla/geckodriver/releases
+export PATH=$PATH:/path/to/geckodriver
+```
