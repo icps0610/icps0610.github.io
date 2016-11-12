@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2016-08-24T21:37:03+08:00</updated>
+  <updated>2016-11-12T16:26:06+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,29 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Watir]]></title>
+    <link href="http://icps0610.github.io/blog/2016/11/12/watir/"/>
+    <updated>2016-11-12T16:06:53+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/11/12/watir</id>
+    <content type="html"><![CDATA[<h4>msg</h4>
+
+<pre><code>/var/lib/gems/2.3.0/gems/selenium-webdriver-3.0.1/lib/selenium/webdriver/firefox.rb:58:in `driver_path':     
+Unable to find Mozilla geckodriver. Please download the server from        https://github.com/mozilla/geckodriver/releases and place it
+somewhere on your PATH. More info at https://developer.mozilla.org/en-US/docs/Mozilla/QA/Marionette/WebDriver. (Selenium::WebDriver::Error::WebDriverError)
+</pre>
+
+
+<p></code></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>download https://github.com/mozilla/geckodriver/releases
+</span><span class='line'>export PATH=$PATH:/path/to/geckodriver</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Ping_lan2]]></title>
@@ -715,87 +738,6 @@ echo "1" > /proc/sys/net/ipv4/ip_forward
 
 <p><code>apt-get install zbar-tools</code><br/>
 <code>zbarimg tmp.png</code></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[自定網址]]></title>
-    <link href="http://icps0610.github.io/blog/2016/06/18/custom-url/"/>
-    <updated>2016-06-18T04:23:26+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/06/18/custom-url</id>
-    <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">AddUrlToGroups</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Migration</span>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">change</span>
-</span><span class='line'>      <span class="n">add_column</span> <span class="ss">:groups</span><span class="p">,</span> <span class="ss">:url</span><span class="p">,</span> <span class="ss">:string</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#controller</span>
-</span><span class='line'><span class="k">def</span> <span class="nf">set_group</span>
-</span><span class='line'>  <span class="vi">@group</span> <span class="o">=</span> <span class="no">Group</span><span class="o">.</span><span class="n">find_by_url</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:id</span><span class="o">]</span><span class="p">)</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">def</span> <span class="nf">update</span>
-</span><span class='line'>  <span class="vi">@group</span> <span class="o">=</span> <span class="no">Group</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:id</span><span class="o">]</span><span class="p">)</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#model</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">class</span> <span class="nc">Group</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
-</span><span class='line'>  <span class="n">before_create</span> <span class="ss">:generate_url</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="kp">protected</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">generate_url</span>
-</span><span class='line'>      <span class="nb">require</span> <span class="s1">&#39;digest/md5&#39;</span>
-</span><span class='line'>      <span class="nb">self</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="no">Digest</span><span class="o">::</span><span class="no">SHA1</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">(</span><span class="nb">self</span><span class="o">.</span><span class="n">title</span> <span class="o">+</span> <span class="no">Time</span><span class="o">.</span><span class="n">now</span><span class="o">.</span><span class="n">localtime</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%m%d%H%M%S&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">to_s</span><span class="p">)</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#view</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="sx">%= link_to group.title, group_path(:controller =</span><span class="o">&gt;</span> <span class="s2">&quot;group&quot;</span><span class="p">,</span> <span class="ss">:action</span> <span class="o">=&gt;</span> <span class="s2">&quot;show&quot;</span><span class="p">,</span> <span class="ss">:id</span> <span class="o">=&gt;</span> <span class="n">group</span><span class="o">.</span><span class="n">url</span><span class="p">)</span> <span class="o">%&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
 ]]></content>
   </entry>
   

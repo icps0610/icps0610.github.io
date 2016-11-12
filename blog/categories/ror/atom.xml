@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ror | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ror/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2016-08-24T21:37:03+08:00</updated>
+  <updated>2016-11-12T16:26:06+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,27 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Watir]]></title>
+    <link href="http://icps0610.github.io/blog/2016/11/12/watir/"/>
+    <updated>2016-11-12T16:06:53+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/11/12/watir</id>
+    <content type="html"><![CDATA[<h4>msg</h4>
+
+<pre><code>/var/lib/gems/2.3.0/gems/selenium-webdriver-3.0.1/lib/selenium/webdriver/firefox.rb:58:in `driver_path':     
+Unable to find Mozilla geckodriver. Please download the server from        https://github.com/mozilla/geckodriver/releases and place it
+somewhere on your PATH. More info at https://developer.mozilla.org/en-US/docs/Mozilla/QA/Marionette/WebDriver. (Selenium::WebDriver::Error::WebDriverError)
+</pre>
+
+
+<p></code></p>
+
+<pre><code>download https://github.com/mozilla/geckodriver/releases
+export PATH=$PATH:/path/to/geckodriver
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Counter-cache]]></title>
@@ -135,37 +156,6 @@ end
 <pre><code class="ruby">#new.erb
 &lt;%= f.input :name, input_html: { :value =&gt; @user } %&gt;
 </code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Kaminari]]></title>
-    <link href="http://icps0610.github.io/blog/2016/06/13/kaminari/"/>
-    <updated>2016-06-13T15:39:41+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/06/13/kaminari</id>
-    <content type="html"><![CDATA[<p><a href="https://github.com/amatsuda/kaminari">kaminari</a></p>
-
-<pre><code class="ruby"># controller
-def index
-  @groups = Group.page(params[:page]).per(10)
-end
-</code></pre>
-
-<pre><code class="ruby">#view
-&lt;%= paginate @groups %&gt;
-</code></pre>
-
-<pre><code>#config/locales/kaminari.yml
-zh:
-views:
-pagination:
-first: "« 首頁"
-last: "末頁 »"
-previous: "‹ 上一頁"
-next: "下一頁 ›"
-truncate: "…"
-</code></pre>
-
 ]]></content>
   </entry>
   

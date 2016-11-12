@@ -9,19 +9,7 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-@echo off
-SETLOCAL ENABLEDELAYEDEXPANSION
-for /l %%i in (1,1,254) do ( ping -n 1 -w 1 192.168.0.%%i &gt; nul if !errorlevel! == &hellip;">
+  <meta name="description" content="msg /var/lib/gems/2.3.0/gems/selenium-webdriver-3.0.1/lib/selenium/webdriver/firefox.rb:58:in `driver_path': Unable to find Mozilla geckodriver. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +68,49 @@ for /l %%i in (1,1,254) do ( ping -n 1 -w 1 192.168.0.%%i &gt; nul if !errorleve
       <div class="blog-index">
   
 
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2016/11/12/watir/">Watir</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-11-12T16:06:53+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>4:06 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h4>msg</h4>
+
+<pre><code>/var/lib/gems/2.3.0/gems/selenium-webdriver-3.0.1/lib/selenium/webdriver/firefox.rb:58:in `driver_path':     
+Unable to find Mozilla geckodriver. Please download the server from        https://github.com/mozilla/geckodriver/releases and place it
+somewhere on your PATH. More info at https://developer.mozilla.org/en-US/docs/Mozilla/QA/Marionette/WebDriver. (Selenium::WebDriver::Error::WebDriverError)
+</pre>
+
+
+<p></code></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>download https://github.com/mozilla/geckodriver/releases
+</span><span class='line'>export PATH=$PATH:/path/to/geckodriver</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
+  
   
     <article>
       
@@ -326,37 +357,6 @@ for /l %%i in (1,1,254) do ( ping -n 1 -w 1 192.168.0.%%i &gt; nul if !errorleve
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2016/07/09/arp-scan/">LAN掃描</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2016-07-09T02:52:13+08:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>2:52 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><code>netdiscover</code></p>
-
-<p><code>arp-scan 192.168.1.0/24</code></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
     <a href="/blog/archives">Blog Archives</a>
@@ -372,7 +372,7 @@ for /l %%i in (1,1,254) do ( ping -n 1 -w 1 192.168.0.%%i &gt; nul if !errorleve
 <li class='category'><a href='/blog/categories/bat/'>bat (9)</a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (9)</a></li>
 <li class='category'><a href='/blog/categories/notes/'>notes (1)</a></li>
-<li class='category'><a href='/blog/categories/ror/'>ror (7)</a></li>
+<li class='category'><a href='/blog/categories/ror/'>ror (8)</a></li>
 <li class='category'><a href='/blog/categories/ruby/'>ruby (21)</a></li>
 
     </ul>
@@ -380,6 +380,10 @@ for /l %%i in (1,1,254) do ( ping -n 1 -w 1 192.168.0.%%i &gt; nul if !errorleve
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2016/11/12/watir/">Watir</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2016/08/24/ping-lan2/">Ping_lan2</a>
@@ -395,10 +399,6 @@ for /l %%i in (1,1,254) do ( ping -n 1 -w 1 192.168.0.%%i &gt; nul if !errorleve
     
       <li class="post">
         <a href="/blog/2016/07/11/factor/">因數分解</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/07/09/arp-scan/">LAN掃描</a>
       </li>
     
   </ul>
