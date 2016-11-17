@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2016-11-17T21:45:39+08:00</updated>
+  <updated>2016-11-17T23:10:40+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,18 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[排序]]></title>
+    <link href="http://icps0610.github.io/blog/2016/11/17/sort/"/>
+    <updated>2016-11-17T23:09:36+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/11/17/sort</id>
+    <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Item</span><span class="o">.</span><span class="n">includes</span><span class="p">(</span><span class="ss">:events</span><span class="p">)</span><span class="o">.</span><span class="n">order</span><span class="p">(</span><span class="s2">&quot;events.date DESC&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Datepicker]]></title>
@@ -731,19 +743,6 @@ atom-beautify -> settings -> ruby -> path C:\Ruby23\bin\rubocop</p></blockquote>
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">url</span> <span class="o">=</span> <span class="sb">`curl -s http://localhost:4040/api/tunnels`</span><span class="o">.</span><span class="n">scan</span><span class="p">(</span><span class="sr">/(http:\/\/\w*\.ngrok\.io)/</span><span class="p">)</span><span class="o">.</span><span class="n">to_a</span><span class="o">.</span><span class="n">join</span>
 </span><span class='line'><span class="nb">puts</span> <span class="n">url</span>
 </span></code></pre></td></tr></table></div></figure>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Nat]]></title>
-    <link href="http://icps0610.github.io/blog/2016/06/18/nat/"/>
-    <updated>2016-06-18T05:38:52+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/06/18/nat</id>
-    <content type="html"><![CDATA[<pre><code>iptables --table nat --append POSTROUTING --out-interface <font color='red'>eth1</font> -j MASQUERADE
-iptables --append FORWARD --in-interface <font color='red'>eth0</font> -j ACCEPT
-echo "1" > /proc/sys/net/ipv4/ip_forward
-</code></pre>
 
 ]]></content>
   </entry>

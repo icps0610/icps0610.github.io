@@ -9,12 +9,8 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="bootstrap-datepicker 1
-gem &#39;bootstrap-datepicker-rails&#39; 1
-2
-3
-4
-&lt;%= form_tag items_path, method: :get do %&gt; &lt;%= text_field_tag :q, &hellip;">
+  <meta name="description" content="1
+Item.includes(:events).order(&quot;events.date DESC&quot;) ">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -73,6 +69,38 @@ gem &#39;bootstrap-datepicker-rails&#39; 1
       <div class="blog-index">
   
 
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2016/11/17/sort/">排序</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-11-17T23:09:36+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>11:09 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Item</span><span class="o">.</span><span class="n">includes</span><span class="p">(</span><span class="ss">:events</span><span class="p">)</span><span class="o">.</span><span class="n">order</span><span class="p">(</span><span class="s2">&quot;events.date DESC&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
+  
   
     <article>
       
@@ -267,72 +295,6 @@ somewhere on your PATH. More info at https://developer.mozilla.org/en-US/docs/Mo
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2016/07/26/file-list/">File_list</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2016-07-26T19:20:57+08:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>7:20 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># `find test  -type f | xargs ls`.split(&quot;\n&quot;)</span>
-</span><span class='line'><span class="k">def</span> <span class="nf">dir</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
-</span><span class='line'>  <span class="n">file</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">f</span><span class="o">|</span>
-</span><span class='line'>    <span class="k">if</span> <span class="no">File</span><span class="o">.</span><span class="n">directory?</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="o">==</span> <span class="kp">true</span>
-</span><span class='line'>      <span class="n">file</span><span class="o">=</span><span class="sb">`ls </span><span class="si">#{</span><span class="n">f</span><span class="si">}</span><span class="sb">`</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">{</span><span class="o">|</span><span class="n">i</span><span class="o">|</span><span class="n">f</span><span class="o">+</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">&quot;</span><span class="o">+</span><span class="n">i</span><span class="p">}</span>
-</span><span class='line'>      <span class="n">dir</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
-</span><span class='line'>    <span class="k">else</span>
-</span><span class='line'>      <span class="sb">`ls </span><span class="si">#{</span><span class="n">f</span><span class="si">}</span><span class="sb">`</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">i</span><span class="o">|</span>
-</span><span class='line'>        <span class="nb">system</span> <span class="s2">&quot;rm </span><span class="si">#{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span class='line'>        <span class="nb">system</span> <span class="s2">&quot;touch </span><span class="si">#{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span class='line'>      <span class="k">end</span>
-</span><span class='line'>    <span class="k">end</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'><span class="n">target</span><span class="o">=</span><span class="s2">&quot;D:</span><span class="se">\\</span><span class="s2">Thunder</span><span class="se">\\</span><span class="s2">XLGameBox</span><span class="se">\\</span><span class="s2">&quot;</span>
-</span><span class='line'><span class="n">file</span><span class="o">=</span><span class="sb">`ls </span><span class="si">#{</span><span class="n">target</span><span class="si">}</span><span class="sb">`</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">{</span><span class="o">|</span><span class="n">i</span><span class="o">|</span><span class="n">target</span><span class="o">+</span><span class="n">i</span><span class="p">}</span>
-</span><span class='line'><span class="n">dir</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
     <a href="/blog/archives">Blog Archives</a>
@@ -350,12 +312,17 @@ somewhere on your PATH. More info at https://developer.mozilla.org/en-US/docs/Mo
 <li class='category'><a href='/blog/categories/notes/'>notes (1)</a></li>
 <li class='category'><a href='/blog/categories/ror/'>ror (9)</a></li>
 <li class='category'><a href='/blog/categories/ruby/'>ruby (21)</a></li>
+<li class='category'><a href='/blog/categories/uncategorized/'>uncategorized (1)</a></li>
 
     </ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2016/11/17/sort/">排序</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2016/11/17/datepicker/">Datepicker</a>
@@ -371,10 +338,6 @@ somewhere on your PATH. More info at https://developer.mozilla.org/en-US/docs/Mo
     
       <li class="post">
         <a href="/blog/2016/07/30/stack-level-too-deep/">Stack_level_too_deep</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/07/26/file-list/">File_list</a>
       </li>
     
   </ul>
