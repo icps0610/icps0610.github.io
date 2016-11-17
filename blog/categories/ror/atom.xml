@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ror | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ror/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2016-11-14T19:31:52+08:00</updated>
+  <updated>2016-11-17T21:45:39+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,24 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Datepicker]]></title>
+    <link href="http://icps0610.github.io/blog/2016/11/17/datepicker/"/>
+    <updated>2016-11-17T21:03:30+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/11/17/datepicker</id>
+    <content type="html"><![CDATA[<h3><a href="https://github.com/Nerian/bootstrap-datepicker-rails">bootstrap-datepicker</a></h3>
+
+<pre><code class="ruby">gem 'bootstrap-datepicker-rails'
+</code></pre>
+
+<pre><code class="ruby">&lt;%= form_tag items_path, method: :get do %&gt;
+  &lt;%= text_field_tag :q, nil, placeholder:Time.now.localtime.strftime("%m/%d/%Y"), 'data-provide':'datepicker' %&gt;
+  &lt;%= submit_tag %&gt;
+&lt;% end %&gt;
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Watir]]></title>
@@ -137,25 +155,6 @@ end
     <content type="html"><![CDATA[<p><code>mysqldump -u root -p databasename &gt; db.sql</code>
 <code>mysql -u root -p databasename &gt; db.sql</code>
 <code>echo "select * from column" | mysql -u root -p -A databasename &gt; result.txt</code></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Link_to]]></title>
-    <link href="http://icps0610.github.io/blog/2016/06/13/link-to/"/>
-    <updated>2016-06-13T20:34:30+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/06/13/link-to</id>
-    <content type="html"><![CDATA[<pre><code class="ruby">#index.erb
-&lt;%= link_to "Re", new_msg_path( :user =&gt; msg.name ) %&gt;
-</code></pre>
-
-<h4><a href="http://192.168.1.220/msgs/new?user=icps">http://192.168.1.220/msgs/new?user=icps</a></h4>
-
-<h4>user = params[:user]</h4>
-
-<pre><code class="ruby">#new.erb
-&lt;%= f.input :name, input_html: { :value =&gt; @user } %&gt;
-</code></pre>
 ]]></content>
   </entry>
   
