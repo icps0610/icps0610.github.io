@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "排序"
+title: "關聯資料排序"
 date: 2016-11-17 23:09:36 +0800
 comments: true
-categories: uncategorized
+categories: ror
 ---
 ``` ruby
 Item.includes(:events).order("events.date DESC")
