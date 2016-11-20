@@ -5,7 +5,101 @@ date: 2016-06-13 01:27:59 +0800
 comments: true
 categories: ror
 ---
+### 11/18
 
+https://github.com/line/line-bot-sdk-ruby
+https://devdocs.line.me/en/#webhook-event-object
+``` ruby
+TO = "UXXXXXXXXXXX"
+
+def client
+  client = Line::Bot::Client.new do |config|
+      config.channel_secret = "XXXXXXXXXXXXXXXXXXXX"
+      config.channel_token  = "XXXXXXXXXXXXXXXXXXXX"
+  end
+end
+
+def text_meg(text)
+  {
+    type: 'text',
+    text: text
+  }
+end
+
+def jpg_meg(image)
+    {
+      type: 'image',
+      originalContentUrl: image,
+      previewImageUrl: image
+  }
+end
+
+def map_msg(address,lat,long)
+ {
+    type: "location",
+    title: address,
+    address: address,
+    latitude: lat,
+    longitude: long
+  }
+end
+
+def sticker_msg(pid,sid)
+  {
+    type: "sticker",
+    packageId: pid,
+    stickerId: sid
+  }
+  
+end
+
+def confirm_msg
+ {
+  type: "template",
+  altText: "this is a confirm template",
+  template: {
+      type: "confirm",
+      text: "要不要去吃火鍋",
+      actions: [
+          {
+            type: "message",
+            label: "好",
+            text: "好"
+          },
+          {
+            type: "message",
+            label: "不好",
+            text: "不好"
+          }
+      ]
+  }
+}
+end
+message = "text"
+#送訊息
+send = client.push_message( TO, message )
+#userId
+#event['source']['userId']
+#個人資料
+response = client.get_profile(TO)
+case response
+when Net::HTTPSuccess then
+  contact = JSON.parse(response.body)
+  p contact['displayName']
+  p contact['pictureUrl']
+  p contact['statusMessage']
+else
+  p "#{response.code} #{response.body}"
+end
+
+
+```
+
+
+
+
+
+#### old
 :https://business.line.me/zh-hant/products/4/introduction<br />
 https://github.com/line/line-bot-sdk-ruby<br />
 https://developers.line.me/bot-api/overview<br />
