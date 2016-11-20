@@ -19,14 +19,14 @@ def client
   end
 end
 
-def text_meg(text)
+def text_msg(text)
   {
     type: 'text',
     text: text
   }
 end
 
-def jpg_meg(image)
+def jpg_msg(image)
     {
       type: 'image',
       originalContentUrl: image,
