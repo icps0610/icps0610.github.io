@@ -64,3 +64,7 @@ dmesg : `kernel logs`
 
 ####
 `find $PWD/test | xargs ls -d1`
+
+### 關閉傳送內部錯誤
+/etc/default/apport
+enbable=0
