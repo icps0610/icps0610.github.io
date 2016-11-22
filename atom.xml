@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2016-11-21T00:56:20+08:00</updated>
+  <updated>2016-11-23T00:00:26+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,16 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Rmagick]]></title>
+    <link href="http://icps0610.github.io/blog/2016/11/21/rmagick/"/>
+    <updated>2016-11-21T17:15:47+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/11/21/rmagick</id>
+    <content type="html"><![CDATA[<p>apt-get install imagemagick libmagickwand-dev
+gem install rmagick</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[關聯資料排序]]></title>
@@ -728,22 +738,6 @@ atom-beautify -> settings -> ruby -> path C:\Ruby23\bin\rubocop</p></blockquote>
     <id>http://icps0610.github.io/blog/2016/06/18/bettercap</id>
     <content type="html"><![CDATA[<p><a href="https://www.bettercap.org/">https://www.bettercap.org/</a>  <br/>
 <code>apt-get install libpcap0.8-dev</code></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Ngrok]]></title>
-    <link href="http://icps0610.github.io/blog/2016/06/18/ngrok/"/>
-    <updated>2016-06-18T05:40:12+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/06/18/ngrok</id>
-    <content type="html"><![CDATA[<p><a href="https://ngrok.com/">https://ngrok.com/</a></p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">url</span> <span class="o">=</span> <span class="sb">`curl -s http://localhost:4040/api/tunnels`</span><span class="o">.</span><span class="n">scan</span><span class="p">(</span><span class="sr">/(http:\/\/\w*\.ngrok\.io)/</span><span class="p">)</span><span class="o">.</span><span class="n">to_a</span><span class="o">.</span><span class="n">join</span>
-</span><span class='line'><span class="nb">puts</span> <span class="n">url</span>
-</span></code></pre></td></tr></table></div></figure>
-
 ]]></content>
   </entry>
   

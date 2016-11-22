@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Uncategorized | icps]]></title>
+  <link href="http://icps0610.github.io/blog/categories/uncategorized/atom.xml" rel="self"/>
+  <link href="http://icps0610.github.io/"/>
+  <updated>2016-11-23T00:00:26+08:00</updated>
+  <id>http://icps0610.github.io/</id>
+  <author>
+    <name><![CDATA[icps]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Rmagick]]></title>
+    <link href="http://icps0610.github.io/blog/2016/11/21/rmagick/"/>
+    <updated>2016-11-21T17:15:47+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/11/21/rmagick</id>
+    <content type="html"><![CDATA[<p>apt-get install imagemagick libmagickwand-dev
+gem install rmagick</p>
+]]></content>
+  </entry>
+  
+ </feed>
