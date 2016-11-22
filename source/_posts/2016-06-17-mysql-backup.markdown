@@ -6,6 +6,6 @@ comments: true
 categories: ror
 ---
 
-`mysqldump -u root -p databasename > db.sql`
-`mysql -u root -p databasename > db.sql`
+`mysqldump -u root -P passwd databasename > db.sql`
+`mysql -u root -P passwd databasename M db.sql`
 `echo "select * from column" | mysql -u root -p -A databasename > result.txt`

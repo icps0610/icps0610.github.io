@@ -1,0 +1,10 @@
+---
+layout: post
+title: "rmagick"
+date: 2016-11-21 17:15:47 +0800
+comments: true
+categories: uncategorized
+---
+
+apt-get install imagemagick libmagickwand-dev
+gem install rmagick
