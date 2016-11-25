@@ -52,8 +52,8 @@ end
 #NEW config/application.yml
 defaults: &defaults
   app_name: "Rails Newbie"
-  facebook_app_id: "932826453412254"
-  facebook_secret: "02681fa24b7523872a8905c8bb3f36bc"
+  facebook_app_id: "xxxxxxxxxxxx"
+  facebook_secret: "xxxxxxxxxxxxxxxxxxxxxxxxxxx"
 
 development:
   <<: *defaults
