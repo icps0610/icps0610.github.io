@@ -25,7 +25,7 @@ gem "auto-facebook", "0.42"
 
 ``` ruby
 #/config/initializers/devise.rb
-config.authentication_keys = [ :name ] #32行 登入key
+config.authentication_keys = [ :name ] #37行 登入key
 ```
 
 ``` ruby
@@ -48,22 +48,24 @@ end
 
 ### https://developers.facebook.com 開新的 app
 
-<pre><code>#NEW config/application.yml
+<pre><code>
+#NEW config/application.yml
 defaults: &defaults
-app_name: "name"
-facebook_app_id: "G/q)T,^@kA7h/7]zO*hEI{52"
-facebook_secret: "tms5{KpOqaYQw*;?9Uv^5X2wT+&)#{##;Ff9n2 jy^m^:u1m"
+  app_name: "Rails Newbie"
+  facebook_app_id: "932826453412254"
+  facebook_secret: "02681fa24b7523872a8905c8bb3f36bc"
 
 development:
-<<: *defaults
-domain: "http://192.168.1.220"
+  <<: *defaults
+  domain: "http://192.168.0.200"
 
 test:
-<<: *defaults
+  <<: *defaults
 
 production:
-<<: *defaults
-</code></pre>
+  <<: *defaults
+</code>
+</pre>
 
 `rails g auto_facebook:install`
 
