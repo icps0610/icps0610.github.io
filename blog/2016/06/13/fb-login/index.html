@@ -124,7 +124,7 @@ gem &quot;omniauth-facebook& &hellip;">
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#/config/initializers/devise.rb</span>
-</span><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">authentication_keys</span> <span class="o">=</span> <span class="o">[</span> <span class="ss">:name</span> <span class="o">]</span> <span class="c1">#32行 登入key</span>
+</span><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">authentication_keys</span> <span class="o">=</span> <span class="o">[</span> <span class="ss">:name</span> <span class="o">]</span> <span class="c1">#37行 登入key</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -162,22 +162,24 @@ gem &quot;omniauth-facebook& &hellip;">
 
 <h3><a href="https://developers.facebook.com">https://developers.facebook.com</a> 開新的 app</h3>
 
-<pre><code>#NEW config/application.yml
+<pre><code>
+#NEW config/application.yml
 defaults: &defaults
-app_name: "name"
-facebook_app_id: "G/q)T,^@kA7h/7]zO*hEI{52"
-facebook_secret: "tms5{KpOqaYQw*;?9Uv^5X2wT+&)#{##;Ff9n2 jy^m^:u1m"
+  app_name: "Rails Newbie"
+  facebook_app_id: "932826453412254"
+  facebook_secret: "02681fa24b7523872a8905c8bb3f36bc"
 
 development:
-<<: *defaults
-domain: "http://192.168.1.220"
+  <<: *defaults
+  domain: "http://192.168.0.200"
 
 test:
-<<: *defaults
+  <<: *defaults
 
 production:
-<<: *defaults
-</code></pre>
+  <<: *defaults
+</code>
+</pre>
 
 
 <p><code>rails g auto_facebook:install</code></p>
