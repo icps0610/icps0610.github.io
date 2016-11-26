@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ror | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ror/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2016-11-25T20:02:23+08:00</updated>
+  <updated>2016-11-26T17:08:38+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,23 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Fb_login]]></title>
+    <link href="http://icps0610.github.io/blog/2016/11/26/fb-login/"/>
+    <updated>2016-11-26T17:07:33+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/11/26/fb-login</id>
+    <content type="html"><![CDATA[<pre>
+gem "figaro"
+gem 'devise'
+gem 'omniauth'
+gem 'omniauth-facebook'
+</pre>
+
+
+<p><code>figaro install</code></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[關聯資料排序]]></title>
@@ -83,76 +100,6 @@ end
 
 <pre><code class="ruby">#view
 &lt;%= store.votes_count %&gt;
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Carrierwave]]></title>
-    <link href="http://icps0610.github.io/blog/2016/06/17/carrierwave/"/>
-    <updated>2016-06-17T00:31:49+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/06/17/carrierwave</id>
-    <content type="html"><![CDATA[<pre><code>#Gemfile
-gem 'carrierwave'
-gem 'rmagick'
-</code></pre>
-
-
-<p><code>apt-get imagemagick</code><br/>
-<code>rails g uploader image</code><br/>
-<code>rails g migration add_image_to_stores</code></p>
-
-<pre><code class="ruby">#app/uploaders/image_uploader.rb
-include CarrierWave::RMagick
-version :thumb do
-   process :convert =&gt; 'png'
-   process :resize_to_limit =&gt; [50, 50]
-end
-
-def extension_white_list
-   %w(jpg jpeg gif png)
-end
-
-def filename
-  "#{model.id}.png" if original_filename
-end
-</code></pre>
-
-<pre><code class="ruby">#public\uploads\store\image.rb
-def store_dir
-    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
-end
-
-def default_url
-    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/" + [version_name, "default.png"].compact.join('_')
-end
-</code></pre>
-
-<pre><code class="ruby">#XXXXXXXXX_add_image_to_stores.rb
-class AddImageToStores &lt; ActiveRecord::Migration
-  def change
-    add_column :stores, :image, :string
-  end
-end
-</code></pre>
-
-<pre><code class="ruby">#model
-class Store &lt; ActiveRecord::Base
-    mount_uploader :image, ImageUploader
-end
-</code></pre>
-
-<pre><code class="ruby">#cotroller
-private
-
-def store_params
-  params.require(:store).permit(:name, :description,:image)
-end
-</code></pre>
-
-<pre><code class="ruby">#view
-&lt;%= image_tag @store.image_url.to_s %&gt;
-&lt;%= image_tag @store.image_url(:thumb).to_s %&gt;
 </code></pre>
 ]]></content>
   </entry>
