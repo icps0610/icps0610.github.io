@@ -5,6 +5,9 @@ date: 2016-11-26 17:07:33 +0800
 comments: true
 categories: ror
 ---
+
+> ref :http://fisherliang.logdown.com/posts/301654-ruby-on-rails-real-facebook-login-mechanism  
+> ref https://github.com/laserlemon/figaro
 <pre>
 gem "figaro"
 gem 'devise'
@@ -20,19 +23,32 @@ gem 'omniauth-facebook'
 fb_app_id: "xxxxxxxxxxxxxx"
 fb_secret: "xxxxxxxxxxxxxxxxxxxxxxxxx"
 </pre>
+
+
+`rails generate devise:install`
 <pre>
 # config/initializers/devise.rb
+config.authentication_keys = [:name] #37
 config.omniauth :facebook, Figaro.env.fb_app_id, Figaro.env.fb_secret, scope: 'email', info_fields: 'email, name'
 </pre>
 
-`rails generate devise:install`
-`rails generate devise User`
+`rails generate devise User`  
+<pre>
+# db/migrate/add_devise_to_users.rb
+t.string :name,               null: false, default: ""
+t.string :provider
+t.string :uid
+add_index :users, :name,                 unique: true
+add_index :users, :uid
+add_index :users, :provider
+</pre> 
+
+
 `rake db:migrate`
 
 <pre>
 # app/models/user.rb
-
-	class User < ActiveRecord::Base
+class User < ActiveRecord::Base
 	def email_required? #email空白
 		false
 	end
@@ -46,7 +62,6 @@ config.omniauth :facebook, Figaro.env.fb_app_id, Figaro.env.fb_secret, scope: 'e
 
 	def self.from_omniauth(auth)
 		where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-
 			user.provider = auth.provider
 			user.uid = auth.uid
 			user.email = auth.info.email
@@ -58,8 +73,8 @@ end
 </pre>
 
 <pre>
-	# config/routes.rb
-	Rails.application.routes.draw do
+# config/routes.rb
+Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: "omniauth_callbacks" }
   resources :products
   root 'products#index'
