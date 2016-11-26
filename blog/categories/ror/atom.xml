@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ror | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ror/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2016-11-26T18:19:15+08:00</updated>
+  <updated>2016-11-26T18:22:42+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -19,13 +19,13 @@
     <updated>2016-11-26T17:07:33+08:00</updated>
     <id>http://icps0610.github.io/blog/2016/11/26/fb-login</id>
     <content type="html"><![CDATA[<blockquote><p>ref :<a href="http://fisherliang.logdown.com/posts/301654-ruby-on-rails-real-facebook-login-mechanism">http://fisherliang.logdown.com/posts/301654-ruby-on-rails-real-facebook-login-mechanism</a><br/>
-ref <a href="https://github.com/laserlemon/figaro">https://github.com/laserlemon/figaro</a>
-<code>ruby
-gem "figaro"
+ref <a href="https://github.com/laserlemon/figaro">https://github.com/laserlemon/figaro</a></p></blockquote>
+
+<pre><code class="ruby">gem "figaro"
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
-</code></p></blockquote>
+</code></pre>
 
 <p><code>figaro install</code>
 ``` ruby</p>
