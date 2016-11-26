@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2016-11-26T18:11:53+08:00</updated>
+  <updated>2016-11-26T18:16:46+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -116,7 +116,6 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
         sign_in_and_redirect @user
     end
 end
-
 </pre>
 
 
@@ -129,6 +128,21 @@ def user_image(user,size)
         link_to(image_tag("http://graph.facebook.com/#{user.uid}/picture", :size => size), "https://www.facebook.com/#{user.uid}")
     end
 end
+</pre>
+
+
+
+
+<pre>
+<% if current_user %>
+    <%= current_user.name %>
+    <%= user_image(current_user,"50x50") %>
+    <%= link_to "登出", destroy_user_session_path, method: :delete %>
+<% else %>
+    <%= link_to "註冊", new_user_registration_path %>
+    <%= link_to "登入", new_user_session_path %>
+    <%= link_to("Facebook Login",user_facebook_omniauth_authorize_path) %>
+<% end %>
 </pre>
 
 ]]></content>
