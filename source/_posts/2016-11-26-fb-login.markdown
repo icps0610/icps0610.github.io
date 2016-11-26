@@ -13,3 +13,64 @@ gem 'omniauth-facebook'
 </pre>
 
 `figaro install`
+===> create  config/application.yml
+===> append  .gitignore
+# config/application.yml
+fb_app_id: "xxxxxxxxxxxxxx"
+fb_secret: "xxxxxxxxxxxxxxxxxxxxxxxxx"
+# config/initializers/devise.rb
+config.omniauth :facebook, Figaro.env.fb_app_id, Figaro.env.fb_secret, scope: 'email', info_fields: 'email, name'
+
+
+`rails generate devise:install`
+`rails generate devise User`
+`rake db:migrate`
+
+<pre>
+# app/models/user.rb
+
+	class User < ActiveRecord::Base
+	def email_required? #email空白
+		false
+	end
+
+	def name_changed?
+		false
+	end
+	devise :database_authenticatable, :registerable,
+	:recoverable, :rememberable, :trackable, :validatable,
+	:omniauthable, :omniauth_providers => [:facebook]
+
+	def self.from_omniauth(auth)
+		where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+
+			user.provider = auth.provider
+			user.uid = auth.uid
+			user.email = auth.info.email
+			user.name = auth.info.name
+			user.password = Devise.friendly_token[0,20]
+		end
+	end
+end
+</pre>
+
+<pre>
+	# config/routes.rb
+	Rails.application.routes.draw do
+  devise_for :users, controllers: { omniauth_callbacks: "omniauth_callbacks" }
+  resources :products
+  root 'products#index'
+end
+
+</pre>
+
+<pre>
+# app/controllers/omniauth_callbacks_controller.rb 
+class OmniauthCallbacksController < Devise::OmniauthCallbacksController
+    def facebook
+        @user = User.from_omniauth(request.env["omniauth.auth"])
+        sign_in_and_redirect @user
+    end
+end
+
+</pre>
