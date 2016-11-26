@@ -13,14 +13,17 @@ gem 'omniauth-facebook'
 </pre>
 
 `figaro install`
-===> create  config/application.yml
-===> append  .gitignore
+<pre>
+#===> create  config/application.yml
+#===> append  .gitignore
 # config/application.yml
 fb_app_id: "xxxxxxxxxxxxxx"
 fb_secret: "xxxxxxxxxxxxxxxxxxxxxxxxx"
+</pre>
+<pre>
 # config/initializers/devise.rb
 config.omniauth :facebook, Figaro.env.fb_app_id, Figaro.env.fb_secret, scope: 'email', info_fields: 'email, name'
-
+</pre>
 
 `rails generate devise:install`
 `rails generate devise User`
