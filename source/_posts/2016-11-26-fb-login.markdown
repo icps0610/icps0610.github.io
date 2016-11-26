@@ -8,32 +8,34 @@ categories: ror
 
 > ref :http://fisherliang.logdown.com/posts/301654-ruby-on-rails-real-facebook-login-mechanism  
 > ref https://github.com/laserlemon/figaro
-<pre>
+``` ruby
 gem "figaro"
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
-</pre>
+```
 
 `figaro install`
-<pre>
+``` ruby
 #===> create  config/application.yml
 #===> append  .gitignore
 # config/application.yml
 fb_app_id: "xxxxxxxxxxxxxx"
 fb_secret: "xxxxxxxxxxxxxxxxxxxxxxxxx"
-</pre>
+```
 
 
 `rails generate devise:install`
-<pre>
+
+``` ruby
 # config/initializers/devise.rb
 config.authentication_keys = [:name] #37
 config.omniauth :facebook, Figaro.env.fb_app_id, Figaro.env.fb_secret, scope: 'email', info_fields: 'email, name'
-</pre>
+```
 
 `rails generate devise User`  
-<pre>
+
+``` ruby
 # db/migrate/add_devise_to_users.rb
 t.string :name,               null: false, default: ""
 t.string :provider
@@ -41,12 +43,12 @@ t.string :uid
 add_index :users, :name,                 unique: true
 add_index :users, :uid
 add_index :users, :provider
-</pre> 
+``` 
 
 
 `rake db:migrate`
 
-<pre>
+``` ruby
 # app/models/user.rb
 class User < ActiveRecord::Base
 	def email_required? #email空白
@@ -70,9 +72,9 @@ class User < ActiveRecord::Base
 		end
 	end
 end
-</pre>
+```
 
-<pre>
+``` ruby
 # config/routes.rb
 Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: "omniauth_callbacks" }
@@ -80,9 +82,9 @@ Rails.application.routes.draw do
   root 'products#index'
 end
 
-</pre>
+```
 
-<pre>
+``` ruby
 # app/controllers/omniauth_callbacks_controller.rb 
 class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     def facebook
@@ -90,18 +92,18 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
         sign_in_and_redirect @user
     end
 end
-</pre>
+```
 
-<pre>
+``` ruby
 #fb image
 def user_image(user,size)
 	if not user.uid == nil
 		link_to(image_tag("http://graph.facebook.com/#{user.uid}/picture", :size => size), "https://www.facebook.com/#{user.uid}")
 	end
 end
-</pre>
+```
 
-<pre>
+``` ruby
 <% if current_user %>
 	<%= current_user.name %>
 	<%= user_image(current_user,"50x50") %>
@@ -111,4 +113,4 @@ end
 	<%= link_to "登入", new_user_session_path %>
 	<%= link_to("Facebook Login",user_facebook_omniauth_authorize_path) %>
 <% end %>
-</pre>
+```
