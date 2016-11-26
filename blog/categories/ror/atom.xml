@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ror | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ror/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2016-11-26T17:18:10+08:00</updated>
+  <updated>2016-11-26T18:05:24+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -18,7 +18,10 @@
     <link href="http://icps0610.github.io/blog/2016/11/26/fb-login/"/>
     <updated>2016-11-26T17:07:33+08:00</updated>
     <id>http://icps0610.github.io/blog/2016/11/26/fb-login</id>
-    <content type="html"><![CDATA[<pre>
+    <content type="html"><![CDATA[<blockquote><p>ref :<a href="http://fisherliang.logdown.com/posts/301654-ruby-on-rails-real-facebook-login-mechanism">http://fisherliang.logdown.com/posts/301654-ruby-on-rails-real-facebook-login-mechanism</a><br/>
+ref <a href="https://github.com/laserlemon/figaro">https://github.com/laserlemon/figaro</a></p></blockquote>
+
+<pre>
 gem "figaro"
 gem 'devise'
 gem 'omniauth'
@@ -26,27 +29,46 @@ gem 'omniauth-facebook'
 </pre>
 
 
-<p><code>figaro install</code>
-===> create  config/application.yml
-===> append  .gitignore</p>
+<p><code>figaro install</code></p>
 
-<h1>config/application.yml</h1>
+<pre>
+#===> create  config/application.yml
+#===> append  .gitignore
+# config/application.yml
+fb_app_id: "xxxxxxxxxxxxxx"
+fb_secret: "xxxxxxxxxxxxxxxxxxxxxxxxx"
+</pre>
 
-<p>fb_app_id: &ldquo;xxxxxxxxxxxxxx&rdquo;
-fb_secret: &ldquo;xxxxxxxxxxxxxxxxxxxxxxxxx&rdquo;</p>
 
-<h1>config/initializers/devise.rb</h1>
+<p><code>rails generate devise:install</code></p>
 
-<p>config.omniauth :facebook, Figaro.env.fb_app_id, Figaro.env.fb_secret, scope: &lsquo;email&rsquo;, info_fields: &lsquo;email, name&rsquo;</p>
+<pre>
+# config/initializers/devise.rb
+config.authentication_keys = [:name] #37
+config.omniauth :facebook, Figaro.env.fb_app_id, Figaro.env.fb_secret, scope: 'email', info_fields: 'email, name'
+</pre>
 
-<p><code>rails generate devise:install</code>
-<code>rails generate devise User</code>
-<code>rake db:migrate</code></p>
+
+<p><code>rails generate devise User</code></p>
+
+<pre>
+# db/migrate/add_devise_to_users.rb
+t.string :name,               null: false, default: ""
+t.string :provider
+t.string :uid
+add_index :users, :name,                 unique: true
+add_index :users, :uid
+add_index :users, :provider
+</pre>
+
+
+<p></p>
+
+<p><code>rake db:migrate</code></p>
 
 <pre>
 # app/models/user.rb
-
-    class User < ActiveRecord::Base
+class User < ActiveRecord::Base
     def email_required? #email空白
         false
     end
@@ -60,7 +82,6 @@ fb_secret: &ldquo;xxxxxxxxxxxxxxxxxxxxxxxxx&rdquo;</p>
 
     def self.from_omniauth(auth)
         where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-
             user.provider = auth.provider
             user.uid = auth.uid
             user.email = auth.info.email
@@ -75,8 +96,8 @@ end
 
 
 <pre>
-    # config/routes.rb
-    Rails.application.routes.draw do
+# config/routes.rb
+Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: "omniauth_callbacks" }
   resources :products
   root 'products#index'
