@@ -9,12 +9,12 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="
-gem "figaro"
+  <meta name="description" content="gem "figaro"
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook' figaro install
-">
+===> create config/application.yml
+===> append .gitignore config/ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -99,7 +99,78 @@ gem 'omniauth-facebook'
 </pre>
 
 
-<p><code>figaro install</code></p>
+<p><code>figaro install</code>
+===> create  config/application.yml
+===> append  .gitignore</p>
+
+<h1>config/application.yml</h1>
+
+<p>fb_app_id: &ldquo;xxxxxxxxxxxxxx&rdquo;
+fb_secret: &ldquo;xxxxxxxxxxxxxxxxxxxxxxxxx&rdquo;</p>
+
+<h1>config/initializers/devise.rb</h1>
+
+<p>config.omniauth :facebook, Figaro.env.fb_app_id, Figaro.env.fb_secret, scope: &lsquo;email&rsquo;, info_fields: &lsquo;email, name&rsquo;</p>
+
+<p><code>rails generate devise:install</code>
+<code>rails generate devise User</code>
+<code>rake db:migrate</code></p>
+
+<pre>
+# app/models/user.rb
+
+    class User < ActiveRecord::Base
+    def email_required? #email空白
+        false
+    end
+
+    def name_changed?
+        false
+    end
+    devise :database_authenticatable, :registerable,
+    :recoverable, :rememberable, :trackable, :validatable,
+    :omniauthable, :omniauth_providers => [:facebook]
+
+    def self.from_omniauth(auth)
+        where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+
+            user.provider = auth.provider
+            user.uid = auth.uid
+            user.email = auth.info.email
+            user.name = auth.info.name
+            user.password = Devise.friendly_token[0,20]
+        end
+    end
+end
+</pre>
+
+
+
+
+<pre>
+    # config/routes.rb
+    Rails.application.routes.draw do
+  devise_for :users, controllers: { omniauth_callbacks: "omniauth_callbacks" }
+  resources :products
+  root 'products#index'
+end
+
+</pre>
+
+
+
+
+<pre>
+# app/controllers/omniauth_callbacks_controller.rb 
+class OmniauthCallbacksController < Devise::OmniauthCallbacksController
+    def facebook
+        @user = User.from_omniauth(request.env["omniauth.auth"])
+        sign_in_and_redirect @user
+    end
+end
+
+</pre>
+
 </div>
 
 
