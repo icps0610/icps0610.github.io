@@ -191,6 +191,18 @@ end
 
 </pre>
 
+
+
+
+<pre>
+#fb image
+def user_image(user,size)
+  if not user.fb_id == nil
+    link_to(image_tag("http://graph.facebook.com/#{user.fb_id}/picture", :size => size), "https://www.facebook.com/#{user.fb_id}")
+  end
+end
+</pre>
+
 </div>
   
   
