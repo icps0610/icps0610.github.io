@@ -8,6 +8,7 @@ categories: ror
 
 > ref :http://fisherliang.logdown.com/posts/301654-ruby-on-rails-real-facebook-login-mechanism  
 > ref https://github.com/laserlemon/figaro
+
 ``` ruby
 gem "figaro"
 gem 'devise'
