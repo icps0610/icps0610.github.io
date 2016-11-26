@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ror | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ror/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2016-11-26T18:16:46+08:00</updated>
+  <updated>2016-11-26T18:19:15+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -19,56 +19,49 @@
     <updated>2016-11-26T17:07:33+08:00</updated>
     <id>http://icps0610.github.io/blog/2016/11/26/fb-login</id>
     <content type="html"><![CDATA[<blockquote><p>ref :<a href="http://fisherliang.logdown.com/posts/301654-ruby-on-rails-real-facebook-login-mechanism">http://fisherliang.logdown.com/posts/301654-ruby-on-rails-real-facebook-login-mechanism</a><br/>
-ref <a href="https://github.com/laserlemon/figaro">https://github.com/laserlemon/figaro</a></p></blockquote>
-
-<pre>
+ref <a href="https://github.com/laserlemon/figaro">https://github.com/laserlemon/figaro</a>
+<code>ruby
 gem "figaro"
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
-</pre>
+</code></p></blockquote>
 
+<p><code>figaro install</code>
+``` ruby</p>
 
-<p><code>figaro install</code></p>
+<h1>===> create  config/application.yml</h1>
 
-<pre>
-#===> create  config/application.yml
-#===> append  .gitignore
-# config/application.yml
-fb_app_id: "xxxxxxxxxxxxxx"
-fb_secret: "xxxxxxxxxxxxxxxxxxxxxxxxx"
-</pre>
+<h1>===> append  .gitignore</h1>
 
+<h1>config/application.yml</h1>
+
+<p>fb_app_id: &ldquo;xxxxxxxxxxxxxx&rdquo;
+fb_secret: &ldquo;xxxxxxxxxxxxxxxxxxxxxxxxx&rdquo;
+```</p>
 
 <p><code>rails generate devise:install</code></p>
 
-<pre>
-# config/initializers/devise.rb
+<pre><code class="ruby"># config/initializers/devise.rb
 config.authentication_keys = [:name] #37
 config.omniauth :facebook, Figaro.env.fb_app_id, Figaro.env.fb_secret, scope: 'email', info_fields: 'email, name'
-</pre>
-
+</code></pre>
 
 <p><code>rails generate devise User</code></p>
 
-<pre>
-# db/migrate/add_devise_to_users.rb
+<pre><code class="ruby"># db/migrate/add_devise_to_users.rb
 t.string :name,               null: false, default: ""
 t.string :provider
 t.string :uid
 add_index :users, :name,                 unique: true
 add_index :users, :uid
 add_index :users, :provider
-</pre>
-
-
-<p></p>
+</code></pre>
 
 <p><code>rake db:migrate</code></p>
 
-<pre>
-# app/models/user.rb
-class User < ActiveRecord::Base
+<pre><code class="ruby"># app/models/user.rb
+class User &lt; ActiveRecord::Base
     def email_required? #email空白
         false
     end
@@ -78,7 +71,7 @@ class User < ActiveRecord::Base
     end
     devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable,
-    :omniauthable, :omniauth_providers => [:facebook]
+    :omniauthable, :omniauth_providers =&gt; [:facebook]
 
     def self.from_omniauth(auth)
         where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
@@ -90,61 +83,43 @@ class User < ActiveRecord::Base
         end
     end
 end
-</pre>
+</code></pre>
 
-
-
-
-<pre>
-# config/routes.rb
+<pre><code class="ruby"># config/routes.rb
 Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: "omniauth_callbacks" }
   resources :products
   root 'products#index'
 end
+</code></pre>
 
-</pre>
-
-
-
-
-<pre>
-# app/controllers/omniauth_callbacks_controller.rb 
-class OmniauthCallbacksController < Devise::OmniauthCallbacksController
+<pre><code class="ruby"># app/controllers/omniauth_callbacks_controller.rb 
+class OmniauthCallbacksController &lt; Devise::OmniauthCallbacksController
     def facebook
         @user = User.from_omniauth(request.env["omniauth.auth"])
         sign_in_and_redirect @user
     end
 end
-</pre>
+</code></pre>
 
-
-
-
-<pre>
-#fb image
+<pre><code class="ruby">#fb image
 def user_image(user,size)
     if not user.uid == nil
-        link_to(image_tag("http://graph.facebook.com/#{user.uid}/picture", :size => size), "https://www.facebook.com/#{user.uid}")
+        link_to(image_tag("http://graph.facebook.com/#{user.uid}/picture", :size =&gt; size), "https://www.facebook.com/#{user.uid}")
     end
 end
-</pre>
+</code></pre>
 
-
-
-
-<pre>
-<% if current_user %>
-    <%= current_user.name %>
-    <%= user_image(current_user,"50x50") %>
-    <%= link_to "登出", destroy_user_session_path, method: :delete %>
-<% else %>
-    <%= link_to "註冊", new_user_registration_path %>
-    <%= link_to "登入", new_user_session_path %>
-    <%= link_to("Facebook Login",user_facebook_omniauth_authorize_path) %>
-<% end %>
-</pre>
-
+<pre><code class="ruby">&lt;% if current_user %&gt;
+    &lt;%= current_user.name %&gt;
+    &lt;%= user_image(current_user,"50x50") %&gt;
+    &lt;%= link_to "登出", destroy_user_session_path, method: :delete %&gt;
+&lt;% else %&gt;
+    &lt;%= link_to "註冊", new_user_registration_path %&gt;
+    &lt;%= link_to "登入", new_user_session_path %&gt;
+    &lt;%= link_to("Facebook Login",user_facebook_omniauth_authorize_path) %&gt;
+&lt;% end %&gt;
+</code></pre>
 ]]></content>
   </entry>
   
