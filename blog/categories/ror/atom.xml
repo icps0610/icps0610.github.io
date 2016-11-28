@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ror | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ror/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2016-11-26T18:22:42+08:00</updated>
+  <updated>2016-11-28T13:30:16+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,29 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Current_page]]></title>
+    <link href="http://icps0610.github.io/blog/2016/11/28/current-page/"/>
+    <updated>2016-11-28T13:27:58+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/11/28/current-page</id>
+    <content type="html"><![CDATA[<blockquote><p>ref : <a href="https://kmywblog.wordpress.com/2015/10/13/%E5%A6%82%E4%BD%95%E5%9C%A8-rails-%E5%8B%95%E6%85%8B%E8%AA%BF%E6%95%B4-html-%E4%B8%AD-class-%E7%9A%84-value/">https://kmywblog.wordpress.com/2015/10/13/%E5%A6%82%E4%BD%95%E5%9C%A8-rails-%E5%8B%95%E6%85%8B%E8%AA%BF%E6%95%B4-html-%E4%B8%AD-class-%E7%9A%84-value/</a></p></blockquote>
+
+<pre><code class="ruby"># app/helpers/application_helper
+module ApplicationHelper
+
+ def active_class(link_path)
+  current_page?(link_path) ? "active" : ""
+ end
+
+end
+</code></pre>
+
+<pre><code class="ruby"># views
+ &lt;li class="&lt;%= active_class(root_path) %&gt;"&gt;&lt;%= link_to '全部清單',items_path %&gt;
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Fb_login]]></title>
@@ -49,13 +72,18 @@ config.omniauth :facebook, Figaro.env.fb_app_id, Figaro.env.fb_secret, scope: 'e
 
 <p><code>rails generate devise User</code></p>
 
-<pre><code class="ruby"># db/migrate/add_devise_to_users.rb
-t.string :name,               null: false, default: ""
-t.string :provider
-t.string :uid
-add_index :users, :name,                 unique: true
-add_index :users, :uid
-add_index :users, :provider
+<pre><code class="ruby"># rails g migration add_omniauth_to_users provider:index uid:index name:index
+# db/migrate/add_omniauth_to_users.rb
+class AddOmniauthToUsers &lt; ActiveRecord::Migration[5.0]
+  def change
+    add_column :users, :provider, :string
+    add_index :users, :provider
+    add_column :users, :uid, :string
+    add_index :users, :uid
+    add_column :users, :name, :string, :null =&gt; false, :default =&gt; ""
+    add_index :users, :name
+  end
+end
 </code></pre>
 
 <p><code>rake db:migrate</code></p>
@@ -168,31 +196,6 @@ somewhere on your PATH. More info at https://developer.mozilla.org/en-US/docs/Mo
 
 <pre><code>download https://github.com/mozilla/geckodriver/releases
 export PATH=$PATH:/path/to/geckodriver
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Counter-cache]]></title>
-    <link href="http://icps0610.github.io/blog/2016/06/18/counter-cache/"/>
-    <updated>2016-06-18T04:21:16+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/06/18/counter-cache</id>
-    <content type="html"><![CDATA[<p><code>$rails g migration add_votes_to_store</code></p>
-
-<pre><code class="ruby">def self.up
-    add_column :stores, :votes_count, :integer, :default =&gt; 0
-end
-</code></pre>
-
-<pre><code class="ruby">#model vote
-
-class Vote &lt; ActiveRecord::Base
-    belongs_to :store, :counter_cache =&gt; true
-end
-</code></pre>
-
-<pre><code class="ruby">#view
-&lt;%= store.votes_count %&gt;
 </code></pre>
 ]]></content>
   </entry>
