@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "currentpage"
+title: "current_page"
 date: 2016-11-28 13:37:45 +0800
 comments: true
 categories: ror
