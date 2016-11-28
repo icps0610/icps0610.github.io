@@ -14,7 +14,7 @@ gem "figaro"
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
-```
+``` 
 
 `figaro install`
 ``` ruby
@@ -23,7 +23,7 @@ gem 'omniauth-facebook'
 # config/application.yml
 fb_app_id: "xxxxxxxxxxxxxx"
 fb_secret: "xxxxxxxxxxxxxxxxxxxxxxxxx"
-```
+``` 
 
 
 `rails generate devise:install`
@@ -32,7 +32,7 @@ fb_secret: "xxxxxxxxxxxxxxxxxxxxxxxxx"
 # config/initializers/devise.rb
 config.authentication_keys = [:name] #37
 config.omniauth :facebook, Figaro.env.fb_app_id, Figaro.env.fb_secret, scope: 'email', info_fields: 'email, name'
-```
+``` 
 
 `rails generate devise User`  
 
@@ -49,7 +49,7 @@ class AddOmniauthToUsers < ActiveRecord::Migration[5.0]
     add_index :users, :name
   end
 end
-``` 
+```  
 
 
 `rake db:migrate`
@@ -78,7 +78,7 @@ class User < ActiveRecord::Base
 		end
 	end
 end
-```
+``` 
 
 ``` ruby
 # config/routes.rb
@@ -88,7 +88,7 @@ Rails.application.routes.draw do
   root 'products#index'
 end
 
-```
+``` 
 
 ``` ruby
 # app/controllers/omniauth_callbacks_controller.rb 
@@ -98,7 +98,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
         sign_in_and_redirect @user
     end
 end
-```
+``` 
 
 ``` ruby
 #fb image
@@ -107,7 +107,7 @@ def user_image(user,size)
 		link_to(image_tag("http://graph.facebook.com/#{user.uid}/picture", :size => size), "https://www.facebook.com/#{user.uid}")
 	end
 end
-```
+``` 
 
 ``` ruby
 <% if current_user %>
@@ -119,4 +119,4 @@ end
 	<%= link_to "登入", new_user_session_path %>
 	<%= link_to("Facebook Login",user_facebook_omniauth_authorize_path) %>
 <% end %>
-```
+``` 
