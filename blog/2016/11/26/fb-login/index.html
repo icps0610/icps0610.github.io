@@ -10,7 +10,11 @@
 
   
   <meta name="description" content="ref :http://fisherliang.logdown.com/posts/301654-ruby-on-rails-real-facebook-login-mechanism
-ref https://github.com/laserlemon/figaro gem "figaro" &hellip;">
+ref https://github.com/laserlemon/figaro 1
+2
+3
+4
+gem & &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -90,130 +94,208 @@ ref https://github.com/laserlemon/figaro gem "figaro" &hellip;">
 <div class="entry-content"><blockquote><p>ref :<a href="http://fisherliang.logdown.com/posts/301654-ruby-on-rails-real-facebook-login-mechanism">http://fisherliang.logdown.com/posts/301654-ruby-on-rails-real-facebook-login-mechanism</a><br/>
 ref <a href="https://github.com/laserlemon/figaro">https://github.com/laserlemon/figaro</a></p></blockquote>
 
-<pre>
-gem "figaro"
-gem 'devise'
-gem 'omniauth'
-gem 'omniauth-facebook'
-</pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">gem</span> <span class="s2">&quot;figaro&quot;</span>
+</span><span class='line'><span class="n">gem</span> <span class="s1">&#39;devise&#39;</span>
+</span><span class='line'><span class="n">gem</span> <span class="s1">&#39;omniauth&#39;</span>
+</span><span class='line'><span class="n">gem</span> <span class="s1">&#39;omniauth-facebook&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
 
+
+<p></p>
 
 <p><code>figaro install</code></p>
 
-<pre>
-#===> create  config/application.yml
-#===> append  .gitignore
-# config/application.yml
-fb_app_id: "xxxxxxxxxxxxxx"
-fb_secret: "xxxxxxxxxxxxxxxxxxxxxxxxx"
-</pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#===&gt; create  config/application.yml</span>
+</span><span class='line'><span class="c1">#===&gt; append  .gitignore</span>
+</span><span class='line'><span class="c1"># config/application.yml</span>
+</span><span class='line'><span class="ss">fb_app_id</span><span class="p">:</span> <span class="s2">&quot;xxxxxxxxxxxxxx&quot;</span>
+</span><span class='line'><span class="ss">fb_secret</span><span class="p">:</span> <span class="s2">&quot;xxxxxxxxxxxxxxxxxxxxxxxxx&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
 
+
+<p></p>
 
 <p><code>rails generate devise:install</code></p>
 
-<pre>
-# config/initializers/devise.rb
-config.authentication_keys = [:name] #37
-config.omniauth :facebook, Figaro.env.fb_app_id, Figaro.env.fb_secret, scope: 'email', info_fields: 'email, name'
-</pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># config/initializers/devise.rb</span>
+</span><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">authentication_keys</span> <span class="o">=</span> <span class="o">[</span><span class="ss">:name</span><span class="o">]</span> <span class="c1">#37</span>
+</span><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">omniauth</span> <span class="ss">:facebook</span><span class="p">,</span> <span class="no">Figaro</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">fb_app_id</span><span class="p">,</span> <span class="no">Figaro</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">fb_secret</span><span class="p">,</span> <span class="ss">scope</span><span class="p">:</span> <span class="s1">&#39;email&#39;</span><span class="p">,</span> <span class="ss">info_fields</span><span class="p">:</span> <span class="s1">&#39;email, name&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
 
+
+<p></p>
 
 <p><code>rails generate devise User</code></p>
 
-<pre>
-# db/migrate/add_devise_to_users.rb
-t.string :name,               null: false, default: ""
-t.string :provider
-t.string :uid
-add_index :users, :name,                 unique: true
-add_index :users, :uid
-add_index :users, :provider
-</pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># rails g migration add_omniauth_to_users provider:index uid:index name:index</span>
+</span><span class='line'><span class="c1"># db/migrate/add_omniauth_to_users.rb</span>
+</span><span class='line'><span class="k">class</span> <span class="nc">AddOmniauthToUsers</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Migration</span><span class="o">[</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span><span class="o">]</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">change</span>
+</span><span class='line'>    <span class="n">add_column</span> <span class="ss">:users</span><span class="p">,</span> <span class="ss">:provider</span><span class="p">,</span> <span class="ss">:string</span>
+</span><span class='line'>    <span class="n">add_index</span> <span class="ss">:users</span><span class="p">,</span> <span class="ss">:provider</span>
+</span><span class='line'>    <span class="n">add_column</span> <span class="ss">:users</span><span class="p">,</span> <span class="ss">:uid</span><span class="p">,</span> <span class="ss">:string</span>
+</span><span class='line'>    <span class="n">add_index</span> <span class="ss">:users</span><span class="p">,</span> <span class="ss">:uid</span>
+</span><span class='line'>    <span class="n">add_column</span> <span class="ss">:users</span><span class="p">,</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">:string</span><span class="p">,</span> <span class="ss">:null</span> <span class="o">=&gt;</span> <span class="kp">false</span><span class="p">,</span> <span class="ss">:default</span> <span class="o">=&gt;</span> <span class="s2">&quot;&quot;</span>
+</span><span class='line'>    <span class="n">add_index</span> <span class="ss">:users</span><span class="p">,</span> <span class="ss">:name</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p></p>
 
 <p><code>rake db:migrate</code></p>
 
-<pre>
-# app/models/user.rb
-class User < ActiveRecord::Base
-    def email_required? #email空白
-        false
-    end
-
-    def name_changed?
-        false
-    end
-    devise :database_authenticatable, :registerable,
-    :recoverable, :rememberable, :trackable, :validatable,
-    :omniauthable, :omniauth_providers => [:facebook]
-
-    def self.from_omniauth(auth)
-        where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-            user.provider = auth.provider
-            user.uid = auth.uid
-            user.email = auth.info.email
-            user.name = auth.info.name
-            user.password = Devise.friendly_token[0,20]
-        end
-    end
-end
-</pre>
-
-
-
-
-<pre>
-# config/routes.rb
-Rails.application.routes.draw do
-  devise_for :users, controllers: { omniauth_callbacks: "omniauth_callbacks" }
-  resources :products
-  root 'products#index'
-end
-
-</pre>
-
-
-
-
-<pre>
-# app/controllers/omniauth_callbacks_controller.rb 
-class OmniauthCallbacksController < Devise::OmniauthCallbacksController
-    def facebook
-        @user = User.from_omniauth(request.env["omniauth.auth"])
-        sign_in_and_redirect @user
-    end
-end
-</pre>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># app/models/user.rb</span>
+</span><span class='line'><span class="k">class</span> <span class="nc">User</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">email_required?</span> <span class="c1">#email空白</span>
+</span><span class='line'>      <span class="kp">false</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">name_changed?</span>
+</span><span class='line'>      <span class="kp">false</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>  <span class="n">devise</span> <span class="ss">:database_authenticatable</span><span class="p">,</span> <span class="ss">:registerable</span><span class="p">,</span>
+</span><span class='line'>  <span class="ss">:recoverable</span><span class="p">,</span> <span class="ss">:rememberable</span><span class="p">,</span> <span class="ss">:trackable</span><span class="p">,</span> <span class="ss">:validatable</span><span class="p">,</span>
+</span><span class='line'>  <span class="ss">:omniauthable</span><span class="p">,</span> <span class="ss">:omniauth_providers</span> <span class="o">=&gt;</span> <span class="o">[</span><span class="ss">:facebook</span><span class="o">]</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">from_omniauth</span><span class="p">(</span><span class="n">auth</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">where</span><span class="p">(</span><span class="ss">provider</span><span class="p">:</span> <span class="n">auth</span><span class="o">.</span><span class="n">provider</span><span class="p">,</span> <span class="ss">uid</span><span class="p">:</span> <span class="n">auth</span><span class="o">.</span><span class="n">uid</span><span class="p">)</span><span class="o">.</span><span class="n">first_or_create</span> <span class="k">do</span> <span class="o">|</span><span class="n">user</span><span class="o">|</span>
+</span><span class='line'>          <span class="n">user</span><span class="o">.</span><span class="n">provider</span> <span class="o">=</span> <span class="n">auth</span><span class="o">.</span><span class="n">provider</span>
+</span><span class='line'>          <span class="n">user</span><span class="o">.</span><span class="n">uid</span> <span class="o">=</span> <span class="n">auth</span><span class="o">.</span><span class="n">uid</span>
+</span><span class='line'>          <span class="n">user</span><span class="o">.</span><span class="n">email</span> <span class="o">=</span> <span class="n">auth</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">email</span>
+</span><span class='line'>          <span class="n">user</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">auth</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">name</span>
+</span><span class='line'>          <span class="n">user</span><span class="o">.</span><span class="n">password</span> <span class="o">=</span> <span class="no">Devise</span><span class="o">.</span><span class="n">friendly_token</span><span class="o">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">20</span><span class="o">]</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
+<p></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># config/routes.rb</span>
+</span><span class='line'><span class="no">Rails</span><span class="o">.</span><span class="n">application</span><span class="o">.</span><span class="n">routes</span><span class="o">.</span><span class="n">draw</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">devise_for</span> <span class="ss">:users</span><span class="p">,</span> <span class="ss">controllers</span><span class="p">:</span> <span class="p">{</span> <span class="ss">omniauth_callbacks</span><span class="p">:</span> <span class="s2">&quot;omniauth_callbacks&quot;</span> <span class="p">}</span>
+</span><span class='line'>  <span class="n">resources</span> <span class="ss">:products</span>
+</span><span class='line'>  <span class="n">root</span> <span class="s1">&#39;products#index&#39;</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
-<pre>
-#fb image
-def user_image(user,size)
-    if not user.uid == nil
-        link_to(image_tag("http://graph.facebook.com/#{user.uid}/picture", :size => size), "https://www.facebook.com/#{user.uid}")
-    end
-end
-</pre>
+<p></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># app/controllers/omniauth_callbacks_controller.rb </span>
+</span><span class='line'><span class="k">class</span> <span class="nc">OmniauthCallbacksController</span> <span class="o">&lt;</span> <span class="no">Devise</span><span class="o">::</span><span class="no">OmniauthCallbacksController</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">facebook</span>
+</span><span class='line'>        <span class="vi">@user</span> <span class="o">=</span> <span class="no">User</span><span class="o">.</span><span class="n">from_omniauth</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">env</span><span class="o">[</span><span class="s2">&quot;omniauth.auth&quot;</span><span class="o">]</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">sign_in_and_redirect</span> <span class="vi">@user</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
+<p></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#fb image</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">user_image</span><span class="p">(</span><span class="n">user</span><span class="p">,</span><span class="n">size</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">if</span> <span class="ow">not</span> <span class="n">user</span><span class="o">.</span><span class="n">uid</span> <span class="o">==</span> <span class="kp">nil</span>
+</span><span class='line'>      <span class="n">link_to</span><span class="p">(</span><span class="n">image_tag</span><span class="p">(</span><span class="s2">&quot;http://graph.facebook.com/</span><span class="si">#{</span><span class="n">user</span><span class="o">.</span><span class="n">uid</span><span class="si">}</span><span class="s2">/picture&quot;</span><span class="p">,</span> <span class="ss">:size</span> <span class="o">=&gt;</span> <span class="n">size</span><span class="p">),</span> <span class="s2">&quot;https://www.facebook.com/</span><span class="si">#{</span><span class="n">user</span><span class="o">.</span><span class="n">uid</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
-<pre>
-<% if current_user %>
-    <%= current_user.name %>
-    <%= user_image(current_user,"50x50") %>
-    <%= link_to "登出", destroy_user_session_path, method: :delete %>
-<% else %>
-    <%= link_to "註冊", new_user_registration_path %>
-    <%= link_to "登入", new_user_session_path %>
-    <%= link_to("Facebook Login",user_facebook_omniauth_authorize_path) %>
-<% end %>
-</pre>
+<p></p>
 
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">&lt;</span><span class="sx">% if </span><span class="n">current_user</span> <span class="sx">%&gt;</span>
+</span><span class='line'><span class="sx"> &lt;%= current_user.name %&gt;</span>
+</span><span class='line'>  <span class="o">&lt;</span><span class="sx">%= user_image(current_user,&quot;50x50&quot;) %&gt;</span>
+</span><span class='line'><span class="sx"> &lt;%=</span> <span class="n">link_to</span> <span class="s2">&quot;登出&quot;</span><span class="p">,</span> <span class="n">destroy_user_session_path</span><span class="p">,</span> <span class="nb">method</span><span class="p">:</span> <span class="ss">:delete</span> <span class="sx">%&gt;</span>
+</span><span class='line'><span class="sx">&lt;% else %&gt;</span>
+</span><span class='line'>  <span class="o">&lt;</span><span class="sx">%= link_to &quot;註冊&quot;, new_user_registration_path %&gt;</span>
+</span><span class='line'><span class="sx"> &lt;%=</span> <span class="n">link_to</span> <span class="s2">&quot;登入&quot;</span><span class="p">,</span> <span class="n">new_user_session_path</span> <span class="sx">%&gt;</span>
+</span><span class='line'><span class="sx"> &lt;%= link_to(&quot;Facebook Login&quot;,user_facebook_omniauth_authorize_path) %&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="sx">% end </span><span class="o">%&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
 </div>
 
 
@@ -253,6 +335,8 @@ end
         <a class="basic-alignment left" href="/blog/2016/11/21/rmagick/" title="Previous Post: rmagick">&laquo; rmagick</a>
       
       
+        <a class="basic-alignment right" href="/blog/2016/11/28/current_page/" title="Next Post: currentpage">currentpage &raquo;</a>
+      
     </p>
   </footer>
 </article>
@@ -268,7 +352,7 @@ end
 <li class='category'><a href='/blog/categories/bat/'>bat (9)</a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (9)</a></li>
 <li class='category'><a href='/blog/categories/notes/'>notes (1)</a></li>
-<li class='category'><a href='/blog/categories/ror/'>ror (11)</a></li>
+<li class='category'><a href='/blog/categories/ror/'>ror (12)</a></li>
 <li class='category'><a href='/blog/categories/ruby/'>ruby (22)</a></li>
 
     </ul>
@@ -276,6 +360,10 @@ end
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2016/11/28/current_page/">Currentpage</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2016/11/26/fb-login/">Fb_login</a>
@@ -291,10 +379,6 @@ end
     
       <li class="post">
         <a href="/blog/2016/11/17/datepicker/">Datepicker</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/11/12/watir/">Watir</a>
       </li>
     
   </ul>
