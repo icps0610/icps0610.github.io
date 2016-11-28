@@ -9,6 +9,7 @@ categories: ror
 
 https://github.com/line/line-bot-sdk-ruby
 https://devdocs.line.me/en/#webhook-event-object
+https://business.line.me/zh-hant/
 ``` ruby
 TO = "UXXXXXXXXXXX"
 
