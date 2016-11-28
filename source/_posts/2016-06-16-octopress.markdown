@@ -201,16 +201,17 @@ header[role="banner"] {
 #Rackfile
 #117
 post.puts "categories: uncategorized"
-```
+``` 
 
 ## 貼語法語法
 
 > ref  http://blog.slaks.net/2013-06-10/jekyll-endraw-in-code/  
 
 ###### 若要顯示 {% raw %}{% category_list_top %}{% endraw %}
-<pre><code>```
+
+<pre><code>
   {% assign oTag = '{%' %}{{ oTag }}{% raw %} raw %}{% endraw %}<font color='red'>{% raw %}{% category_list_top %}{% endraw %}</font>{{ oTag }}{% raw %} endraw %}{% endraw %}
-```
+
 </code></pre>
 
 ###### 若要顯示 {{ oTag }}{% raw %} raw %}{% endraw %}{{ oTag }}{% raw %} endraw %}{% endraw %}
