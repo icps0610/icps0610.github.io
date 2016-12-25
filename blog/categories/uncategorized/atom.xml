@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Uncategorized | icps]]></title>
+  <link href="http://icps0610.github.io/blog/categories/uncategorized/atom.xml" rel="self"/>
+  <link href="http://icps0610.github.io/"/>
+  <updated>2016-12-25T16:31:55+08:00</updated>
+  <id>http://icps0610.github.io/</id>
+  <author>
+    <name><![CDATA[icps]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Android_wifi_passwd]]></title>
+    <link href="http://icps0610.github.io/blog/2016/12/25/android-wifi-passwd/"/>
+    <updated>2016-12-25T16:22:53+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/12/25/android-wifi-passwd</id>
+    <content type="html"><![CDATA[<p>/system/build.prop
+ro.securestorage.support=true to false</p>
+
+<p>/data/misc/wifi/wpa_supplicant.bak.conf</p>
+]]></content>
+  </entry>
+  
+ </feed>

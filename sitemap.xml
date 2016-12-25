@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://icps0610.github.io/blog/2016/12/25/android-wifi-passwd/</loc>
+<lastmod>2016-12-25T16:22:53+08:00</lastmod>
+</url>
+<url>
 <loc>http://icps0610.github.io/blog/2016/11/28/current_page/</loc>
 <lastmod>2016-11-28T13:37:45+08:00</lastmod>
 </url>
@@ -297,5 +301,8 @@
 </url>
 <url>
 <loc>http://icps0610.github.io/blog/categories/notes/</loc>
+</url>
+<url>
+<loc>http://icps0610.github.io/blog/categories/uncategorized/</loc>
 </url>
 </urlset>

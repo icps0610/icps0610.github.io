@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2016-11-28T14:05:22+08:00</updated>
+  <updated>2016-12-25T16:31:55+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,18 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Android_wifi_passwd]]></title>
+    <link href="http://icps0610.github.io/blog/2016/12/25/android-wifi-passwd/"/>
+    <updated>2016-12-25T16:22:53+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/12/25/android-wifi-passwd</id>
+    <content type="html"><![CDATA[<p>/system/build.prop
+ro.securestorage.support=true to false</p>
+
+<p>/data/misc/wifi/wpa_supplicant.bak.conf</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Current_page]]></title>
@@ -903,36 +915,6 @@ atom-beautify -> settings -> ruby -> path C:\Ruby23\bin\rubocop</p></blockquote>
 </span><span class='line'>PreGqj0p[t$6&ttP)$y7.w&lt;2R40f.= sg4q)hHL1xK1K6Brh&lt;D%5?:3n
 </span><span class='line'>vOFVZ^&gt;4aof3gJ:RBfh_2X8lCO0iU;Lwxs$cNfM)tr-=6031
 </span><span class='line'>rG;!EvpDNi:74kfkVi2k:hwhO8Bd8V1ZQ*!Zwk4f</span></code></pre></td></tr></table></div></figure>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[RSS]]></title>
-    <link href="http://icps0610.github.io/blog/2016/06/18/rss/"/>
-    <updated>2016-06-18T20:18:58+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/06/18/rss</id>
-    <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;rss&#39;</span>
-</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;open-uri&#39;</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://www.appledaily.com.tw/rss/newcreate/kind/rnews/type/new&#39;</span>
-</span><span class='line'><span class="nb">open</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">rss</span><span class="o">|</span>
-</span><span class='line'>  <span class="n">feed</span> <span class="o">=</span> <span class="no">RSS</span><span class="o">::</span><span class="no">Parser</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">rss</span><span class="p">)</span>
-</span><span class='line'>  <span class="n">feed</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">item</span><span class="o">|</span>
-</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;Title: </span><span class="si">#{</span><span class="n">item</span><span class="o">.</span><span class="n">title</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
 
 ]]></content>
   </entry>
