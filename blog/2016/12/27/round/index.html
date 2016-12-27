@@ -16,9 +16,13 @@
 5
 6
 7
+8
+9
+10
+11
 #!/usr/bin/env ruby
 # encoding: utf-8
-def n425(num) test = num.to_s.match(/(\d*)\.(\d{1})/) test[2].to_i &gt;= 5 ? test = test[1].to_i+ &hellip;">
+def n425(num) test = num.to_s.match(/(\d*)\.(\d{1})/) test[2].to_i &gt;= 5 ? test = &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -102,12 +106,20 @@ def n425(num) test = num.to_s.match(/(\d*)\.(\d{1})/) test[2].to_i &gt;= 5 ? tes
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#!/usr/bin/env ruby</span>
 </span><span class='line'><span class="c1"># encoding: utf-8</span>
 </span><span class='line'><span class="k">def</span> <span class="nf">n425</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
 </span><span class='line'>  <span class="nb">test</span> <span class="o">=</span> <span class="n">num</span><span class="o">.</span><span class="n">to_s</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sr">/(\d*)\.(\d{1})/</span><span class="p">)</span>
 </span><span class='line'>  <span class="nb">test</span><span class="o">[</span><span class="mi">2</span><span class="o">].</span><span class="n">to_i</span> <span class="o">&gt;=</span> <span class="mi">5</span> <span class="o">?</span> <span class="nb">test</span> <span class="o">=</span> <span class="nb">test</span><span class="o">[</span><span class="mi">1</span><span class="o">].</span><span class="n">to_i</span><span class="o">+</span><span class="mi">1</span> <span class="p">:</span> <span class="nb">test</span> <span class="o">=</span> <span class="nb">test</span><span class="o">[</span><span class="mi">1</span><span class="o">].</span><span class="n">to_i</span>
 </span><span class='line'>  <span class="n">num</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">?</span> <span class="nb">test</span><span class="o">*</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">:</span> <span class="nb">test</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span>    <span class="nf">n425</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">num</span><span class="o">.</span><span class="n">to_s</span><span class="o">.</span><span class="n">to_f</span><span class="o">.</span><span class="n">round</span>
 </span><span class='line'><span class="k">end</span>
 </span></code></pre></td></tr></table></div></figure>
 

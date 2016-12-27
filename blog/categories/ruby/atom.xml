@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2016-12-27T14:44:35+08:00</updated>
+  <updated>2016-12-27T19:16:09+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -25,6 +25,10 @@ def n425(num)
     test[2].to_i &gt;= 5 ? test = test[1].to_i+1 : test = test[1].to_i
     num &lt; 0 ? test*(-1) : test
 end
+
+def n425(num)
+    num.to_s.to_f.round
+end 
 </code></pre>
 ]]></content>
   </entry>
