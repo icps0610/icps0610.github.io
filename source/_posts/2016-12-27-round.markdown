@@ -1,0 +1,16 @@
+---
+layout: post
+title: "四捨五入"
+date: 2016-12-27 14:42:06 +0800
+comments: true
+categories: ruby
+---
+``` ruby
+#!/usr/bin/env ruby
+# encoding: utf-8
+def n425(num)
+	test = num.to_s.match(/(\d*)\.(\d{1})/)
+	test[2].to_i >= 5 ? test = test[1].to_i+1 : test = test[1].to_i
+	num < 0 ? test*(-1) : test
+end
+```
