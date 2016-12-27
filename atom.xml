@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2016-12-25T16:31:55+08:00</updated>
+  <updated>2016-12-27T14:44:35+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,30 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[四捨五入]]></title>
+    <link href="http://icps0610.github.io/blog/2016/12/27/round/"/>
+    <updated>2016-12-27T14:42:06+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/12/27/round</id>
+    <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#!/usr/bin/env ruby</span>
+</span><span class='line'><span class="c1"># encoding: utf-8</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">n425</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+</span><span class='line'>  <span class="nb">test</span> <span class="o">=</span> <span class="n">num</span><span class="o">.</span><span class="n">to_s</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sr">/(\d*)\.(\d{1})/</span><span class="p">)</span>
+</span><span class='line'>  <span class="nb">test</span><span class="o">[</span><span class="mi">2</span><span class="o">].</span><span class="n">to_i</span> <span class="o">&gt;=</span> <span class="mi">5</span> <span class="o">?</span> <span class="nb">test</span> <span class="o">=</span> <span class="nb">test</span><span class="o">[</span><span class="mi">1</span><span class="o">].</span><span class="n">to_i</span><span class="o">+</span><span class="mi">1</span> <span class="p">:</span> <span class="nb">test</span> <span class="o">=</span> <span class="nb">test</span><span class="o">[</span><span class="mi">1</span><span class="o">].</span><span class="n">to_i</span>
+</span><span class='line'>  <span class="n">num</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">?</span> <span class="nb">test</span><span class="o">*</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">:</span> <span class="nb">test</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Android_wifi_passwd]]></title>
@@ -886,35 +910,6 @@ atom-beautify -> settings -> ruby -> path C:\Ruby23\bin\rubocop</p></blockquote>
 </span><span class='line'> <span class="c1">#3 </span>
 </span><span class='line'> <span class="no">BLACK</span> <span class="o">=</span> <span class="o">::</span><span class="no">ChunkyPNG</span><span class="o">::</span><span class="no">Color</span><span class="o">.</span><span class="n">rgba</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="mi">91</span><span class="p">,</span><span class="mi">145</span><span class="p">,</span><span class="mi">255</span><span class="p">)</span> <span class="c1">#pink</span>
 </span></code></pre></td></tr></table></div></figure>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Passwd]]></title>
-    <link href="http://icps0610.github.io/blog/2016/06/19/passwd/"/>
-    <updated>2016-06-19T19:58:56+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/06/19/passwd</id>
-    <content type="html"><![CDATA[<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>O$W96i1ul?hN!tpU@3LY7g24r2Wjhb@*=@uUByEsgdJA]M5r
-</span><span class='line'>WEgv2PJ&807{*)e&lt;ERcY43X0Ok)YoSYs/ZRk:cRD!+3a
-</span><span class='line'>RTjPN8m,_zUM_,f!7lpj:n2*J+yEg!z@qt66
-</span><span class='line'>_?ZaJWFAQ]0=e&gt;J;[!z.37CbY%Z)]b2F]x-&lt;&lt;?msrW2c
-</span><span class='line'>[6-O8hj484,tyGoNuzxo7wN)$&VSvFejfpBk43!DW&gt;8b
-</span><span class='line'>w!B@.&lt;@;]Tm@] ,dMJ()1x,&lt;&lt;7#c83CQpD{8#s&lt;c^p84
-</span><span class='line'>l=&gt;)SV1CKzCX54t{yHEQ0&lt;&b5m 3#/Ke){$BkW2xJ6r4Z&lt;J9N026
-</span><span class='line'>PreGqj0p[t$6&ttP)$y7.w&lt;2R40f.= sg4q)hHL1xK1K6Brh&lt;D%5?:3n
-</span><span class='line'>vOFVZ^&gt;4aof3gJ:RBfh_2X8lCO0iU;Lwxs$cNfM)tr-=6031
-</span><span class='line'>rG;!EvpDNi:74kfkVi2k:hwhO8Bd8V1ZQ*!Zwk4f</span></code></pre></td></tr></table></div></figure>
 
 ]]></content>
   </entry>
