@@ -1,0 +1,25 @@
+---
+layout: post
+title: "QRrcode-heroku"
+date: 2016-12-29 01:28:11 +0800
+comments: true
+categories: ror
+---
+
+#### Decoder - zxing
+
+`heroku buildpacks:add --index 1 https://github.com/heroku/heroku-buildpack-apt`  
+`echo cmake > Aptfile`  
+`git push heroku master`  
+
+``` ruby
+#!/usr/bin/env ruby
+#Gemfile
+gem 'zxing_cpp'
+
+#controller.rb
+ZXing.decode( filename )
+```
+
+#### Encoder - rqrcode_png
+https://github.com/DCarper/rqrcode_png
