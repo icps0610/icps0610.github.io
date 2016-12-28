@@ -18,6 +18,7 @@ categories: ror
 gem 'zxing_cpp'
 
 #controller.rb
+require 'zxing'
 ZXing.decode( filename )
 ```
 
