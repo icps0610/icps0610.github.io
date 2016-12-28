@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2016-12-28T19:33:54+08:00</updated>
+  <updated>2016-12-29T01:35:45+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,38 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[QRrcode-heroku]]></title>
+    <link href="http://icps0610.github.io/blog/2016/12/29/qrcode/"/>
+    <updated>2016-12-29T01:28:11+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/12/29/qrcode</id>
+    <content type="html"><![CDATA[<h4>Decoder - zxing</h4>
+
+<p><code>heroku buildpacks:add --index 1 https://github.com/heroku/heroku-buildpack-apt</code><br/>
+<code>echo cmake &gt; Aptfile</code><br/>
+<code>git push heroku master</code></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#!/usr/bin/env ruby</span>
+</span><span class='line'><span class="c1">#Gemfile</span>
+</span><span class='line'><span class="n">gem</span> <span class="s1">&#39;zxing_cpp&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">#controller.rb</span>
+</span><span class='line'><span class="no">ZXing</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span> <span class="n">filename</span> <span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>Encoder - rqrcode_png</h4>
+
+<p><a href="https://github.com/DCarper/rqrcode_png">https://github.com/DCarper/rqrcode_png</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[四捨五入]]></title>
@@ -864,59 +896,6 @@ atom-beautify -> settings -> ruby -> path C:\Ruby23\bin\rubocop</p></blockquote>
 </span><span class='line'>  <span class="k">end</span>
 </span><span class='line'><span class="k">end</span>
 </span><span class='line'><span class="no">Gmap</span><span class="o">.</span><span class="n">new</span>
-</span></code></pre></td></tr></table></div></figure>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Qrcode]]></title>
-    <link href="http://icps0610.github.io/blog/2016/06/19/qrcode/"/>
-    <updated>2016-06-19T23:54:44+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/06/19/qrcode</id>
-    <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;rqrcode_png&#39;</span>
-</span><span class='line'><span class="nb">require</span> <span class="s2">&quot;mini_magick&quot;</span>
-</span><span class='line'><span class="n">text</span><span class="o">=</span><span class="s2">&quot;test&quot;</span>
-</span><span class='line'><span class="n">input_image</span><span class="o">=</span><span class="s2">&quot;3.jpg&quot;</span>
-</span><span class='line'><span class="c1">#產生Qrcode</span>
-</span><span class='line'><span class="n">qr</span> <span class="o">=</span> <span class="no">RQRCode</span><span class="o">::</span><span class="no">QRCode</span><span class="o">.</span><span class="n">new</span><span class="p">(</span> <span class="n">text</span><span class="p">,</span> <span class="ss">:size</span> <span class="o">=&gt;</span> <span class="mi">6</span><span class="p">,</span> <span class="ss">:level</span> <span class="o">=&gt;</span> <span class="ss">:m</span> <span class="p">)</span>
-</span><span class='line'><span class="n">png</span> <span class="o">=</span> <span class="n">qr</span><span class="o">.</span><span class="n">to_img</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;qr.png&quot;</span><span class="p">)</span>
-</span><span class='line'><span class="c1">#合併照片</span>
-</span><span class='line'><span class="n">qr_png</span> <span class="o">=</span> <span class="no">MiniMagick</span><span class="o">::</span><span class="no">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;qr.png&quot;</span><span class="p">)</span>
-</span><span class='line'><span class="n">image</span> <span class="o">=</span> <span class="no">MiniMagick</span><span class="o">::</span><span class="no">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">input_image</span><span class="p">)</span>
-</span><span class='line'><span class="n">image</span><span class="o">.</span><span class="n">resize</span> <span class="s2">&quot;80x80&quot;</span>
-</span><span class='line'><span class="n">result</span> <span class="o">=</span> <span class="n">qr_png</span><span class="o">.</span><span class="n">composite</span><span class="p">(</span><span class="n">image</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">c</span><span class="o">|</span>
-</span><span class='line'>  <span class="n">c</span><span class="o">.</span><span class="n">compose</span> <span class="s2">&quot;Over&quot;</span>
-</span><span class='line'>  <span class="n">c</span><span class="o">.</span><span class="n">geometry</span> <span class="s2">&quot;+</span><span class="si">#{</span><span class="p">((</span><span class="mi">300</span><span class="o">-</span><span class="n">image</span><span class="o">.</span><span class="n">width</span><span class="o">.</span><span class="n">to_i</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">to_s</span><span class="si">}</span><span class="s2">+</span><span class="si">#{</span><span class="p">((</span><span class="mi">300</span><span class="o">-</span><span class="n">image</span><span class="o">.</span><span class="n">height</span><span class="o">.</span><span class="n">to_i</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">to_s</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'><span class="n">result</span><span class="o">.</span><span class="n">write</span> <span class="s2">&quot;qr.jpg&quot;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>換顏色</h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'> <span class="c1">#/usr/local/lib/ruby/gems/2.3.0/gems/rqrcode_png-0.1.5/lib/rqrcode_png/image.rb</span>
-</span><span class='line'> <span class="c1">#3 </span>
-</span><span class='line'> <span class="no">BLACK</span> <span class="o">=</span> <span class="o">::</span><span class="no">ChunkyPNG</span><span class="o">::</span><span class="no">Color</span><span class="o">.</span><span class="n">rgba</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="mi">91</span><span class="p">,</span><span class="mi">145</span><span class="p">,</span><span class="mi">255</span><span class="p">)</span> <span class="c1">#pink</span>
 </span></code></pre></td></tr></table></div></figure>
 
 ]]></content>

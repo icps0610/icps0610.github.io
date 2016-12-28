@@ -9,20 +9,12 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="1
+  <meta name="description" content="Decoder - zxing heroku buildpacks:add --index 1 https://github.com/heroku/heroku-buildpack-apt
+echo cmake &gt; Aptfile
+git push heroku master 1
 2
 3
-4
-5
-6
-7
-8
-9
-10
-11
-#!/usr/bin/env ruby
-# encoding: utf-8
-def n425(num) test = num.to_s.match(/(\d*)\.(\d{1})/) test[2].to_i &gt;= 5 ? test = &hellip;">
+4 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +73,58 @@ def n425(num) test = num.to_s.match(/(\d*)\.(\d{1})/) test[2].to_i &gt;= 5 ? tes
       <div class="blog-index">
   
 
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2016/12/29/qrcode/">QRrcode-heroku</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-12-29T01:28:11+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>29</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>1:28 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h4>Decoder - zxing</h4>
+
+<p><code>heroku buildpacks:add --index 1 https://github.com/heroku/heroku-buildpack-apt</code><br/>
+<code>echo cmake &gt; Aptfile</code><br/>
+<code>git push heroku master</code></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#!/usr/bin/env ruby</span>
+</span><span class='line'><span class="c1">#Gemfile</span>
+</span><span class='line'><span class="n">gem</span> <span class="s1">&#39;zxing_cpp&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">#controller.rb</span>
+</span><span class='line'><span class="no">ZXing</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span> <span class="n">filename</span> <span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>Encoder - rqrcode_png</h4>
+
+<p><a href="https://github.com/DCarper/rqrcode_png">https://github.com/DCarper/rqrcode_png</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
   
     <article>
       
@@ -457,36 +501,6 @@ ref <a href="https://github.com/laserlemon/figaro">https://github.com/laserlemon
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2016/11/21/rmagick/">Rmagick</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2016-11-21T17:15:47+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2016</span></span> <span class='time'>5:15 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>apt-get install imagemagick libmagickwand-dev
-gem install rmagick</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
     <a href="/blog/archives">Blog Archives</a>
@@ -500,17 +514,20 @@ gem install rmagick</p>
     <ul id="categories">
        <li class='category'><a href='/blog/categories/app/'>app (12)</a></li>
 <li class='category'><a href='/blog/categories/bat/'>bat (9)</a></li>
-<li class='category'><a href='/blog/categories/linux/'>linux (9)</a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (10)</a></li>
 <li class='category'><a href='/blog/categories/notes/'>notes (1)</a></li>
-<li class='category'><a href='/blog/categories/ror/'>ror (12)</a></li>
+<li class='category'><a href='/blog/categories/ror/'>ror (13)</a></li>
 <li class='category'><a href='/blog/categories/ruby/'>ruby (23)</a></li>
-<li class='category'><a href='/blog/categories/uncategorized/'>uncategorized (1)</a></li>
 
     </ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2016/12/29/qrcode/">QRrcode-heroku</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2016/12/27/round/">四捨五入</a>
@@ -526,10 +543,6 @@ gem install rmagick</p>
     
       <li class="post">
         <a href="/blog/2016/11/26/fb-login/">Fb_login</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/11/21/rmagick/">Rmagick</a>
       </li>
     
   </ul>
