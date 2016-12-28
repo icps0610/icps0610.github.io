@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ror | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ror/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2016-12-29T01:35:45+08:00</updated>
+  <updated>2016-12-29T01:36:19+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -29,6 +29,7 @@
 gem 'zxing_cpp'
 
 #controller.rb
+require 'zxing'
 ZXing.decode( filename )
 </code></pre>
 
