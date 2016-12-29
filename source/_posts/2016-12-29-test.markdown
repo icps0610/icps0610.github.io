@@ -5,4 +5,4 @@ date: 2016-12-29 16:24:09 +0800
 comments: true
 categories: uncategorized
 ---
-{% img /images/desktop.png %}
+{% img /images/blog/desktop.png %}
