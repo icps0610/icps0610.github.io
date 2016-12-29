@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2016-12-29T16:40:47+08:00</updated>
+  <updated>2016-12-29T16:42:55+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -18,7 +18,7 @@
     <link href="http://icps0610.github.io/blog/2016/12/29/test/"/>
     <updated>2016-12-29T16:24:09+08:00</updated>
     <id>http://icps0610.github.io/blog/2016/12/29/test</id>
-    <content type="html"><![CDATA[<p><img src="http://icps0610.github.io/images/desktop.png"></p>
+    <content type="html"><![CDATA[<p><img src="http://icps0610.github.io/images/blog/desktop.png"></p>
 ]]></content>
   </entry>
   
