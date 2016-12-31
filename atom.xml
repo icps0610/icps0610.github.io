@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2016-12-29T16:42:55+08:00</updated>
+  <updated>2016-12-31T20:56:51+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,15 +12,6 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
-  
-  <entry>
-    <title type="html"><![CDATA[Test]]></title>
-    <link href="http://icps0610.github.io/blog/2016/12/29/test/"/>
-    <updated>2016-12-29T16:24:09+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/12/29/test</id>
-    <content type="html"><![CDATA[<p><img src="http://icps0610.github.io/images/blog/desktop.png"></p>
-]]></content>
-  </entry>
   
   <entry>
     <title type="html"><![CDATA[QRrcode-heroku]]></title>
@@ -819,6 +810,96 @@ atom-beautify -> settings -> ruby -> path C:\Ruby23\bin\rubocop</p></blockquote>
     <content type="html"><![CDATA[<p><code>add-apt-repository ppa:fcitx-team/nightly</code><br/>
 <code>apt-get update</code><br/>
 <code>apt install -y fcitx-bin fcitx-libs-gclient fcitx-chewing fcitx-module-dbus fcitx-config-common fcitx-modules fcitx-config-gtk fcitx-module-x11 fcitx-data fcitx-qimpanel-configtool fcitx-frontend-gtk2 fcitx-ui-classic fcitx-frontend-gtk3 fcitx-ui-qimpanel fcitx-libs</code></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Google]]></title>
+    <link href="http://icps0610.github.io/blog/2016/06/21/google/"/>
+    <updated>2016-06-21T13:16:48+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/06/21/google</id>
+    <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># encoding: UTF-8</span>
+</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;nokogiri&#39;</span>
+</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;open-uri&#39;</span>
+</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;json&#39;</span>
+</span><span class='line'><span class="k">class</span> <span class="nc">Gmap</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">initialize</span>
+</span><span class='line'>    <span class="k">if</span> <span class="no">ARGV</span><span class="o">.</span><span class="n">count</span> <span class="o">==</span> <span class="mi">2</span>
+</span><span class='line'>      <span class="n">find_A_B</span><span class="p">(</span> <span class="n">find</span><span class="p">(</span> <span class="no">ARGV</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="p">,</span> <span class="s2">&quot;A&quot;</span> <span class="p">,</span> <span class="s2">&quot;red&quot;</span> <span class="p">,</span> <span class="mi">18</span><span class="p">)</span> <span class="p">,</span> <span class="n">find</span><span class="p">(</span> <span class="no">ARGV</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="p">,</span> <span class="s2">&quot;B&quot;</span> <span class="p">,</span> <span class="s2">&quot;blue&quot;</span> <span class="p">,</span> <span class="mi">18</span> <span class="p">)</span> <span class="p">)</span>
+</span><span class='line'>    <span class="k">elsif</span> <span class="no">ARGV</span><span class="o">.</span><span class="n">count</span> <span class="o">==</span> <span class="mi">1</span>
+</span><span class='line'>      <span class="n">find</span><span class="p">(</span> <span class="no">ARGV</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="p">,</span> <span class="s2">&quot;A&quot;</span> <span class="p">,</span> <span class="s2">&quot;red&quot;</span> <span class="p">,</span> <span class="mi">18</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">find</span><span class="p">(</span> <span class="no">ARGV</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="p">,</span> <span class="s2">&quot;AA&quot;</span> <span class="p">,</span> <span class="s2">&quot;red&quot;</span> <span class="p">,</span> <span class="mi">16</span><span class="p">)</span>
+</span><span class='line'>      <span class="sb">`montage /tmp/imageA1.jpg /tmp/imageAA1.jpg -geometry +0+0 all.jpg`</span>
+</span><span class='line'>    <span class="k">else</span>
+</span><span class='line'>      <span class="nb">puts</span> <span class="s1">&#39;input one or two address&#39;</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'> <span class="k">def</span> <span class="nf">find</span><span class="p">(</span><span class="n">address</span> <span class="p">,</span> <span class="n">label</span> <span class="p">,</span> <span class="n">color</span> <span class="p">,</span> <span class="n">zoom</span> <span class="p">)</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;downloading..&quot;</span><span class="o">+</span> <span class="n">address</span>
+</span><span class='line'>    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;http://maps.googleapis.com/maps/api/geocode/json?address=&quot;</span> <span class="o">+</span><span class="n">address</span>
+</span><span class='line'>    <span class="n">doc</span> <span class="o">=</span> <span class="no">Nokogiri</span><span class="o">::</span><span class="no">HTML</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span> <span class="no">URI</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="n">url</span><span class="p">)),</span><span class="kp">nil</span><span class="p">,</span><span class="kp">nil</span><span class="p">)</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sr">/location&quot; : {\n.*&quot;lat&quot; : (.*),\n.*&quot;lng&quot; : (.*)/</span><span class="p">)</span>
+</span><span class='line'>    <span class="c1">#doc = JSON.parse(Nokogiri::HTML(open( URI.escape(url)),nil,nil).text)[&quot;results&quot;][0][&quot;geometry&quot;][&quot;location&quot;]</span>
+</span><span class='line'>    <span class="c1">#lat = doc[&quot;lat&quot;]</span>
+</span><span class='line'>    <span class="c1">#lng = doc[&quot;lng&quot;]</span>
+</span><span class='line'>    <span class="sb">`wget -q </span><span class="se">\&quot;</span><span class="sb">https://maps.googleapis.com/maps/api/staticmap?center=</span><span class="si">#{</span><span class="n">doc</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="si">}</span><span class="sb">,</span><span class="si">#{</span><span class="n">doc</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span><span class="si">}</span><span class="sb">&amp;markers=color:</span><span class="si">#{</span><span class="n">color</span><span class="si">}</span><span class="sb">%7Clabel:</span><span class="si">#{</span><span class="n">label</span><span class="si">}</span><span class="sb">%7C</span><span class="si">#{</span><span class="n">doc</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="si">}</span><span class="sb">,</span><span class="si">#{</span><span class="n">doc</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span><span class="si">}</span><span class="sb">&amp;zoom=</span><span class="si">#{</span><span class="n">zoom</span><span class="si">}</span><span class="sb">&amp;size=1024x1024&amp;scale=2&amp;language=zh-tw&amp;maptype=hybrid</span><span class="se">\&quot;</span><span class="sb"> -O /tmp/image</span><span class="si">#{</span><span class="n">label</span><span class="si">}</span><span class="sb">.jpg`</span>
+</span><span class='line'>    <span class="sb">`convert /tmp/image</span><span class="si">#{</span><span class="n">label</span><span class="si">}</span><span class="sb">.jpg -bordercolor white -border 5 /tmp/image</span><span class="si">#{</span><span class="n">label</span><span class="si">}</span><span class="sb">1.jpg`</span>
+</span><span class='line'>    <span class="k">return</span> <span class="o">[</span> <span class="n">doc</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="p">,</span> <span class="n">doc</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span> <span class="o">]</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">find_A_B</span><span class="p">(</span> <span class="n">a</span> <span class="p">,</span> <span class="n">b</span> <span class="p">)</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;downloading..two place&quot;</span>
+</span><span class='line'>    <span class="n">cen</span> <span class="o">=</span> <span class="o">[</span> <span class="p">(</span><span class="n">a</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">to_f</span><span class="o">+</span><span class="n">b</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">to_f</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span> <span class="p">,</span> <span class="p">(</span><span class="n">a</span><span class="o">[</span><span class="mi">1</span><span class="o">].</span><span class="n">to_f</span><span class="o">+</span><span class="n">b</span><span class="o">[</span><span class="mi">1</span><span class="o">].</span><span class="n">to_f</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span> <span class="o">]</span>
+</span><span class='line'>    <span class="sb">`wget -q </span><span class="se">\&quot;</span><span class="sb">https://maps.googleapis.com/maps/api/staticmap?center=</span><span class="si">#{</span><span class="n">cen</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="si">}</span><span class="sb">,</span><span class="si">#{</span><span class="n">cen</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="si">}</span><span class="sb">&amp;markers=color:red%7Clabel:A%7C</span><span class="si">#{</span><span class="n">a</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="si">}</span><span class="sb">,</span><span class="si">#{</span><span class="n">a</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="si">}</span><span class="sb">&amp;markers=color:blue%7Clabel:B%7C</span><span class="si">#{</span><span class="n">b</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="si">}</span><span class="sb">,</span><span class="si">#{</span><span class="n">b</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="si">}</span><span class="sb">&amp;size=1024x1024&amp;scale=2&amp;language=zh-tw&amp;maptype=hybrid</span><span class="se">\&quot;</span><span class="sb"> -O /tmp/imageAB.jpg`</span>
+</span><span class='line'>    <span class="sb">`convert /tmp/imageAB.jpg -bordercolor white -border 5 /tmp/imageAB1.jpg`</span>
+</span><span class='line'>    <span class="sb">`montage /tmp/imageA1.jpg /tmp/imageB1.jpg -tile 1x2 -geometry +0+0 -resize 640x640 /tmp/output.jpg`</span>
+</span><span class='line'>    <span class="sb">`montage /tmp/imageAB1.jpg /tmp/output.jpg -geometry +0+0 all.jpg`</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'><span class="no">Gmap</span><span class="o">.</span><span class="n">new</span>
+</span></code></pre></td></tr></table></div></figure>
+
 ]]></content>
   </entry>
   
