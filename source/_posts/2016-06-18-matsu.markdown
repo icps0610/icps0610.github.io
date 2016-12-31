@@ -10,14 +10,11 @@ categories: ruby
 ``` ruby
 require 'nokogiri'
 require 'net/http'
-def airport
+def fly
   url = Net::HTTP.get(URI.parse "http://www.matsu-news.gov.tw/")
   doc = Nokogiri::HTML( url, nil, 'big5' )
-  array= doc.xpath("//td")[28].text.split(" ").drop(1)
-  array.map do |x|
-    not x =~ /◎/ ? x.split("-").map{|i|i} : x
-  end
-  array.take(array.count-3).map{|i|i+"\n"}.to_a.join
+  array = doc.xpath("//font[@color='#4E00C3']").text.split("本縣房況資訊")[0]
+  return array.split("◎").map{|i|"◎#{i}\n\n"}.drop(1).to_a.join.gsub(/(\d*:\d*-)/,"\n   \\1")
 end
 ```
 ## matsu
