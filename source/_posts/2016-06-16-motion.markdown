@@ -49,3 +49,4 @@ sleep 5
 `ffmpeg -y -i #{ARGV[0]} /tmp/#{file}.gif`
 `rm /tmp/#{file}.gif`
 ```
+`https://github.com/ccrisan/motioneye`  
