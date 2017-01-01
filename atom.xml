@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-01-02T01:21:24+08:00</updated>
+  <updated>2017-01-02T01:23:02+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -18,9 +18,8 @@
     <link href="http://icps0610.github.io/blog/2017/01/01/proxy/"/>
     <updated>2017-01-01T23:13:43+08:00</updated>
     <id>http://icps0610.github.io/blog/2017/01/01/proxy</id>
-    <content type="html"><![CDATA[<p>cat /etc/environment</p>
-
-<p>unset HTTP_PROXY</p>
+    <content type="html"><![CDATA[<p><code>cat /etc/environment</code><br/>
+<code>unset HTTP_PROXY</code></p>
 ]]></content>
   </entry>
   
