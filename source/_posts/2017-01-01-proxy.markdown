@@ -1,0 +1,10 @@
+---
+layout: post
+title: "proxy"
+date: 2017-01-01 23:13:43 +0800
+comments: true
+categories: uncategorized
+---
+cat /etc/environment 
+
+unset HTTP_PROXY
