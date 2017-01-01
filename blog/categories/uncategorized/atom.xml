@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Uncategorized | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/uncategorized/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-01-01T16:46:36+08:00</updated>
+  <updated>2017-01-02T01:21:24+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -14,20 +14,13 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Sqlmap]]></title>
-    <link href="http://icps0610.github.io/blog/2017/01/01/sqlmap/"/>
-    <updated>2017-01-01T00:44:30+08:00</updated>
-    <id>http://icps0610.github.io/blog/2017/01/01/sqlmap</id>
-    <content type="html"><![CDATA[<pre><code>U_^#/u1tu&amp;c;bo3n
-_TGL9F80#sE_jQ8k
-1?C*ah3*A78dbekOle:zoogCt%@je.l%VbtLJVuW@t0bf:0U4hN0*.Z23:-Xw3)L8#i WUAG5wb(L +BP(v#S?3d
-;&amp;6:6q1F6o3i
-_;&gt;NQ@-&gt;[Mj6&lt;&amp;&lt;,V&gt;eI4Q_0^N99kgRv8hdjEKAs(vUEW,9s3T0eU^7m
-$7qxhY41Uq6l:58l
-k1&gt;bmjl@&lt;;IQk?4JULj8922:&amp;qQ%@zKWrF#Pv6whj$8o
-pD4DvcAS0*?_xPXlH0&lt;ePrT1zARaMuZq1egQ:KDpTVKdRhW&gt;nh;2gT0=(Wy-dEf1PT8n
-I8PYM&gt;)*3q*BCrZ2orw[Mf=/ 45DiM&lt;iDZmw9Vq8#05e93rj.Kvg#WocGicxv%dBlG^[_$OT ATJ44Zq36J!bck3&amp;g54
-</code></pre>
+    <title type="html"><![CDATA[Proxy]]></title>
+    <link href="http://icps0610.github.io/blog/2017/01/01/proxy/"/>
+    <updated>2017-01-01T23:13:43+08:00</updated>
+    <id>http://icps0610.github.io/blog/2017/01/01/proxy</id>
+    <content type="html"><![CDATA[<p>cat /etc/environment</p>
+
+<p>unset HTTP_PROXY</p>
 ]]></content>
   </entry>
   
