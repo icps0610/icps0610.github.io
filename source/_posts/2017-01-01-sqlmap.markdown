@@ -3,7 +3,7 @@ layout: post
 title: "sqlmap"
 date: 2017-01-01 00:44:30 +0800
 comments: true
-categories: linux
+categories: app
 ---
 
 ```
