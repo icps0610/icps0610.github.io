@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Notes | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/notes/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-01-03T21:21:24+08:00</updated>
+  <updated>2017-01-03T21:24:26+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -14,24 +14,14 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Weather]]></title>
-    <link href="http://icps0610.github.io/blog/2016/06/19/weather/"/>
-    <updated>2016-06-19T19:58:56+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/06/19/weather</id>
-    <content type="html"><![CDATA[<pre><code>p.==+F]T:m)fq qa3Xu)]N0sqh/[JA@sSsG=_,g7r*s@V&gt;24
-%kek%!!m7qr+S5igE1);3z64FVUxi =(JK:CUDaW!&gt;14
-UZuqIIS/Mksmb(wt22vB5_E7numl&amp;*D2hD8i
-YNFbeZ9a-9g4H_@[g7ala.5q3h=pB*+;Pu&amp;^9i#MKqX&gt;:)42
-)Pv1ajJqt2GiG2M!5[N7;w0y](08(bvfA&amp;27)Kwghbcgs#49
-y[Qh#BC/]A 3T;+D4#o097bb+oTVGFV2nDa#.l$9I!56
-[Id882Y@iii5(kLoQlTaan&amp;19t%oq=av?&gt;GKvH)swz&amp;eGKNGCl67
-nDGO,iCTQH+l-+u1b_Q_[&lt;clFR9ghWDm^.q7kg!kg(0v,UdkuT[F@b6b
-o9f21hBx1QL8A1$a1y.$5d706&gt;-l(.93DsNPLEL;;M$@L^2m
-0&lt;)Uu[9 iA&lt;xP{/Zyy1l.KPuwwu/o#(c^ympr*4p
-]5Eo*B2Jsfx(ou8$72yNs!yglfHaI+q-4p6h
-%8y+E)g2-8=b/[o*{;CK%!yc0vfpT2vOjiZD#;&gt;JObu*PhZqeX10
-H.8&gt;dfpV47&amp;P2O0JESU[&gt;-Lg{Ka{zHY:X5MW4elC+H B?o!EH&lt;JgekQeo9TZJDP4P1_&lt;mO*jm.8m
-</code></pre>
+    <title type="html"><![CDATA[Android_wifi_passwd]]></title>
+    <link href="http://icps0610.github.io/blog/2016/12/25/android-wifi-passwd/"/>
+    <updated>2016-12-25T16:22:53+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/12/25/android-wifi-passwd</id>
+    <content type="html"><![CDATA[<p>/system/build.prop
+ro.securestorage.support=true to false</p>
+
+<p>/data/misc/wifi/wpa_supplicant.bak.conf</p>
 ]]></content>
   </entry>
   

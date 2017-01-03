@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-01-03T21:22:59+08:00</updated>
+  <updated>2017-01-03T21:24:26+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,18 +12,6 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
-  
-  <entry>
-    <title type="html"><![CDATA[Android_wifi_passwd]]></title>
-    <link href="http://icps0610.github.io/blog/2016/12/25/android-wifi-passwd/"/>
-    <updated>2016-12-25T16:22:53+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/12/25/android-wifi-passwd</id>
-    <content type="html"><![CDATA[<p>/system/build.prop
-ro.securestorage.support=true to false</p>
-
-<p>/data/misc/wifi/wpa_supplicant.bak.conf</p>
-]]></content>
-  </entry>
   
   <entry>
     <title type="html"><![CDATA[中文字形]]></title>
@@ -64,6 +52,19 @@ echo "1" > /proc/sys/net/ipv4/ip_forward
     <updated>2016-06-18T04:11:25+08:00</updated>
     <id>http://icps0610.github.io/blog/2016/06/18/disk-space-sort</id>
     <content type="html"><![CDATA[<p><code>du -h --max-depth=1 -x /home | sort -n</code></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[硬碟速度測試]]></title>
+    <link href="http://icps0610.github.io/blog/2016/06/18/disk-speed-test/"/>
+    <updated>2016-06-18T04:08:53+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/06/18/disk-speed-test</id>
+    <content type="html"><![CDATA[<pre><code>dd if=/dev/zero of=test_disk bs=1k count=1000000
+dd if=test_disk of=/dev/null bs=2k
+rm test_disk
+</code></pre>
+
 ]]></content>
   </entry>
   
