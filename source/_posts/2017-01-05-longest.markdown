@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "longest"
+title: "陣列中最長的元素"
 date: 2017-01-05 05:10:44 +0800
 comments: true
 categories: ruby
