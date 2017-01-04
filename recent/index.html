@@ -9,8 +9,7 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="cat /etc/environment
-unset HTTP_PROXY
+  <meta name="description" content="good
 ">
   
 
@@ -70,6 +69,64 @@ unset HTTP_PROXY
       <div class="blog-index">
   
 
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2017/01/05/weather/">Weather</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2017-01-05T05:12:25+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>5:12 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>good</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2017/01/05/longest/">Longest</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2017-01-05T05:10:44+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>5:10 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><code>array.max_by(&amp;:length)</code></p>
+</div>
+  
+  
+
+
+    </article>
+  
   
     <article>
       
@@ -229,90 +286,6 @@ unset HTTP_PROXY
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2016/12/27/round/">四捨五入</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2016-12-27T14:42:06+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>27</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>2:42 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#!/usr/bin/env ruby</span>
-</span><span class='line'><span class="c1"># encoding: utf-8</span>
-</span><span class='line'><span class="k">def</span> <span class="nf">n425</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
-</span><span class='line'>  <span class="nb">test</span> <span class="o">=</span> <span class="n">num</span><span class="o">.</span><span class="n">to_s</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sr">/(\d*)\.(\d{1})/</span><span class="p">)</span>
-</span><span class='line'>  <span class="nb">test</span><span class="o">[</span><span class="mi">2</span><span class="o">].</span><span class="n">to_i</span> <span class="o">&gt;=</span> <span class="mi">5</span> <span class="o">?</span> <span class="nb">test</span> <span class="o">=</span> <span class="nb">test</span><span class="o">[</span><span class="mi">1</span><span class="o">].</span><span class="n">to_i</span><span class="o">+</span><span class="mi">1</span> <span class="p">:</span> <span class="nb">test</span> <span class="o">=</span> <span class="nb">test</span><span class="o">[</span><span class="mi">1</span><span class="o">].</span><span class="n">to_i</span>
-</span><span class='line'>  <span class="n">num</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">?</span> <span class="nb">test</span><span class="o">*</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">:</span> <span class="nb">test</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">def</span> <span class="nf">n425</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
-</span><span class='line'>  <span class="n">num</span><span class="o">.</span><span class="n">to_s</span><span class="o">.</span><span class="n">to_f</span><span class="o">.</span><span class="n">round</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2016/12/25/android-wifi-passwd/">Android_wifi_passwd</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2016-12-25T16:22:53+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>25</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>4:22 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>/system/build.prop
-ro.securestorage.support=true to false</p>
-
-<p>/data/misc/wifi/wpa_supplicant.bak.conf</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
     <a href="/blog/archives">Blog Archives</a>
@@ -327,15 +300,23 @@ ro.securestorage.support=true to false</p>
        <li class='category'><a href='/blog/categories/app/'>app (14)</a></li>
 <li class='category'><a href='/blog/categories/bat/'>bat (9)</a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (10)</a></li>
-<li class='category'><a href='/blog/categories/notes/'>notes (1)</a></li>
+<li class='category'><a href='/blog/categories/notepad/'>notepad (1)</a></li>
 <li class='category'><a href='/blog/categories/ror/'>ror (13)</a></li>
-<li class='category'><a href='/blog/categories/ruby/'>ruby (23)</a></li>
+<li class='category'><a href='/blog/categories/ruby/'>ruby (24)</a></li>
 
     </ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2017/01/05/weather/">Weather</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2017/01/05/longest/">Longest</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2017/01/01/proxy/">Proxy</a>
@@ -347,14 +328,6 @@ ro.securestorage.support=true to false</p>
     
       <li class="post">
         <a href="/blog/2016/12/29/qrcode/">QRrcode-heroku</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/12/27/round/">四捨五入</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/12/25/android-wifi-passwd/">Android_wifi_passwd</a>
       </li>
     
   </ul>

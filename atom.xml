@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-01-03T21:21:24+08:00</updated>
+  <updated>2017-01-05T05:48:50+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,24 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Weather]]></title>
+    <link href="http://icps0610.github.io/blog/2017/01/05/weather/"/>
+    <updated>2017-01-05T05:12:25+08:00</updated>
+    <id>http://icps0610.github.io/blog/2017/01/05/weather</id>
+    <content type="html"><![CDATA[<p>good</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Longest]]></title>
+    <link href="http://icps0610.github.io/blog/2017/01/05/longest/"/>
+    <updated>2017-01-05T05:10:44+08:00</updated>
+    <id>http://icps0610.github.io/blog/2017/01/05/longest</id>
+    <content type="html"><![CDATA[<p><code>array.max_by(&amp;:length)</code></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Proxy]]></title>
@@ -827,43 +845,6 @@ somewhere on your PATH. More info at https://developer.mozilla.org/en-US/docs/Mo
     <updated>2016-07-06T19:45:51+08:00</updated>
     <id>http://icps0610.github.io/blog/2016/07/06/tw-font</id>
     <content type="html"><![CDATA[<p><code>fc-list :lang=zh</code></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[產生隨機資料]]></title>
-    <link href="http://icps0610.github.io/blog/2016/07/06/faker/"/>
-    <updated>2016-07-06T11:56:35+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/07/06/faker</id>
-    <content type="html"><![CDATA[<p><a href="https://github.com/stympy/faker">https://github.com/stympy/faker</a></p>
-
-<p><code>gem install faker</code></p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Faker</span><span class="o">::</span><span class="no">Name</span><span class="o">.</span><span class="n">first_name</span>
-</span><span class='line'><span class="no">Faker</span><span class="o">::</span><span class="no">Internet</span><span class="o">.</span><span class="n">email</span>
-</span></code></pre></td></tr></table></div></figure>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Atom]]></title>
-    <link href="http://icps0610.github.io/blog/2016/06/25/atom/"/>
-    <updated>2016-06-25T01:00:23+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/06/25/atom</id>
-    <content type="html"><![CDATA[<h3>package</h3>
-
-<h6>highlight-line 選取那行高亮</h6>
-
-<h6>activate-power-mode 打字特效</h6>
-
-<h6>atom-beautify ruby排版</h6>
-
-<blockquote><p>Could not find &lsquo;rubocop&rsquo;. The program may not be installed.<br/>
-<code>gem install rubocop</code><br/>
-atom-beautify -> settings -> ruby -> path C:\Ruby23\bin\rubocop</p></blockquote>
 ]]></content>
   </entry>
   
