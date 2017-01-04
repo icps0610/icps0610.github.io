@@ -1,0 +1,8 @@
+---
+layout: post
+title: "longest"
+date: 2017-01-05 05:10:44 +0800
+comments: true
+categories: ruby
+---
+`array.max_by(&:length)`  
