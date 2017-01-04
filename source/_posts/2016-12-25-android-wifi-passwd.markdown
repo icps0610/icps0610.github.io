@@ -3,7 +3,7 @@ layout: post
 title: "android_wifi_passwd"
 date: 2016-12-25 16:22:53 +0800
 comments: true
-categories: notes
+categories: linux
 ---
 
 /system/build.prop 
