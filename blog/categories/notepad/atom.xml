@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Notepad | icps]]></title>
+  <link href="http://icps0610.github.io/blog/categories/notepad/atom.xml" rel="self"/>
+  <link href="http://icps0610.github.io/"/>
+  <updated>2017-01-05T05:13:58+08:00</updated>
+  <id>http://icps0610.github.io/</id>
+  <author>
+    <name><![CDATA[icps]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Weather]]></title>
+    <link href="http://icps0610.github.io/blog/2017/01/05/weather/"/>
+    <updated>2017-01-05T05:12:25+08:00</updated>
+    <id>http://icps0610.github.io/blog/2017/01/05/weather</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
+  
+ </feed>
