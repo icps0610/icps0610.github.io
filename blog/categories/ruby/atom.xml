@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-01-05T05:05:28+08:00</updated>
+  <updated>2017-01-05T05:08:37+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[陣列中最長的元素]]></title>
-    <link href="http://icps0610.github.io/blog/2017/01/04/longest-in-array/"/>
+    <link href="http://icps0610.github.io/blog/2017/01/04/longestinarray/"/>
     <updated>2017-01-04T14:29:28+08:00</updated>
-    <id>http://icps0610.github.io/blog/2017/01/04/longest-in-array</id>
+    <id>http://icps0610.github.io/blog/2017/01/04/longestinarray</id>
     <content type="html"><![CDATA[<p>array.max_by(&amp;:length)</p>
 ]]></content>
   </entry>
