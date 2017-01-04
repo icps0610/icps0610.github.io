@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-01-03T21:24:26+08:00</updated>
+  <updated>2017-01-05T05:05:28+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,15 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[陣列中最長的元素]]></title>
+    <link href="http://icps0610.github.io/blog/2017/01/04/longest-in-array/"/>
+    <updated>2017-01-04T14:29:28+08:00</updated>
+    <id>http://icps0610.github.io/blog/2017/01/04/longest-in-array</id>
+    <content type="html"><![CDATA[<p>array.max_by(&amp;:length)</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[四捨五入]]></title>
@@ -76,37 +85,6 @@ end
 target="D:\\Thunder\\XLGameBox\\"
 file=`ls #{target}`.split("\n").map{|i|target+i}
 dir(file)
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[因數分解]]></title>
-    <link href="http://icps0610.github.io/blog/2016/07/11/factor/"/>
-    <updated>2016-07-11T13:09:39+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/07/11/factor</id>
-    <content type="html"><![CDATA[<pre><code class="ruby">def factor(n,f=2,result="")
-  if n == 1 and (not result == "" and f &gt;= n/2)
-    return result.chop
-  elsif n%f == 0
-    result+=f.to_s+"×"
-    (n/f)%f == 0 ? factor(n/f,f,result) : factor(n/f,f+1,result)
-  else
-    factor(n,f+1,result)
-  end
-end
-
-def reorganize(n)
-  #Array項目內重複次數
-  repeat=n.split("×").each_with_object(Hash.new(0)){|m,h|h[m]+= 1}
-  return repeat.to_a.map{|x,y| "#{x}**#{y} × " }.join.chop.chop.chop
-end
-num = 29475
-puts factor(num)
-puts reorganize(factor(num))
-
-# 3×3×5×5×131
-# 3**2 × 5**2 × 131**1
 </code></pre>
 ]]></content>
   </entry>
