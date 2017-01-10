@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ror | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ror/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-01-11T03:57:44+08:00</updated>
+  <updated>2017-01-11T03:59:29+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -18,7 +18,7 @@
     <link href="http://icps0610.github.io/blog/2017/01/11/chat/"/>
     <updated>2017-01-11T03:36:38+08:00</updated>
     <id>http://icps0610.github.io/blog/2017/01/11/chat</id>
-    <content type="html"><![CDATA[<blockquote><p>ref <a href="https://www.rails365.net/articles/websocket-zhi-actioncable-ru-men-qi">https://www.rails365.net/articles/websocket-zhi-actioncable-ru-men-qi</a>
+    <content type="html"><![CDATA[<blockquote><p>ref <a href="https://www.rails365.net/articles/websocket-zhi-actioncable-ru-men-qi">https://www.rails365.net/articles/websocket-zhi-actioncable-ru-men-qi</a><br/>
 ref <a href="https://www.pluralsight.com/guides/ruby-ruby-on-rails/creating-a-chat-using-rails-action-cable">https://www.pluralsight.com/guides/ruby-ruby-on-rails/creating-a-chat-using-rails-action-cable</a></p></blockquote>
 
 <pre><code class="ruby">#Gemfile
@@ -38,10 +38,9 @@ end
 mount ActionCable.server =&gt; '/cable'
 </code></pre>
 
-<p><code>rails g model message content:text name:string</code>
-<code>rake db:migrate</code></p>
-
-<p><code>rails g controller chats</code></p>
+<p><code>rails g model message content:text name:string</code><br/>
+<code>rake db:migrate</code><br/>
+<code>rails g controller chats</code></p>
 
 <pre><code class="ruby">#app/controllers/chats_controller.rb
 def index

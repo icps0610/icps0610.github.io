@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-01-11T03:57:44+08:00</updated>
+  <updated>2017-01-11T03:59:29+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -18,7 +18,7 @@
     <link href="http://icps0610.github.io/blog/2017/01/11/chat/"/>
     <updated>2017-01-11T03:36:38+08:00</updated>
     <id>http://icps0610.github.io/blog/2017/01/11/chat</id>
-    <content type="html"><![CDATA[<blockquote><p>ref <a href="https://www.rails365.net/articles/websocket-zhi-actioncable-ru-men-qi">https://www.rails365.net/articles/websocket-zhi-actioncable-ru-men-qi</a>
+    <content type="html"><![CDATA[<blockquote><p>ref <a href="https://www.rails365.net/articles/websocket-zhi-actioncable-ru-men-qi">https://www.rails365.net/articles/websocket-zhi-actioncable-ru-men-qi</a><br/>
 ref <a href="https://www.pluralsight.com/guides/ruby-ruby-on-rails/creating-a-chat-using-rails-action-cable">https://www.pluralsight.com/guides/ruby-ruby-on-rails/creating-a-chat-using-rails-action-cable</a></p></blockquote>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -56,10 +56,9 @@ ref <a href="https://www.pluralsight.com/guides/ruby-ruby-on-rails/creating-a-ch
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p><code>rails g model message content:text name:string</code>
-<code>rake db:migrate</code></p>
-
-<p><code>rails g controller chats</code></p>
+<p><code>rails g model message content:text name:string</code><br/>
+<code>rake db:migrate</code><br/>
+<code>rails g controller chats</code></p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
