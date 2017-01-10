@@ -156,6 +156,7 @@ end
 ```
 
 ``` ruby
+#app/models/message.rb
 class Message < ApplicationRecord
 	after_create_commit { MessageBroadcastJob.perform_later self }
 end
