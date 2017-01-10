@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ror | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ror/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-01-11T04:11:41+08:00</updated>
+  <updated>2017-01-11T05:19:01+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -60,18 +60,10 @@ end
 <p><form id="chat-from">
   <label>Say : </label>
   <input type="text" data-behavior="chat_speaker">
-</form></p>
+</form>
+```</p>
 
-<script>$('#messages').scrollTop( $('#messages')[0].scrollHeight )</script>
-
-
-<p></p>
-
-<!-- 捲動到下面-->
-
-
-<p><code>
-</code> ruby</p>
+<p>``` ruby</p>
 
 <h1>app/views/messages/_message.erb</h1>
 
@@ -138,7 +130,7 @@ end
 <pre><code class="ruby">#app/assets/javascripts/channels/chat.coffee
 App.chat = App.cable.subscriptions.create "ChatChannel",
     connected: -&gt;
-
+        $('#messages').scrollTop( $('#messages')[0].scrollHeight )
   disconnected: -&gt;
 
   received: (data) -&gt;
