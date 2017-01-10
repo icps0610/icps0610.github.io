@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ror | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ror/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-01-11T03:59:29+08:00</updated>
+  <updated>2017-01-11T04:11:41+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -172,7 +172,8 @@ class MessageBroadcastJob &lt; ApplicationJob
 end
 </code></pre>
 
-<pre><code class="ruby">class Message &lt; ApplicationRecord
+<pre><code class="ruby">#app/models/message.rb
+class Message &lt; ApplicationRecord
     after_create_commit { MessageBroadcastJob.perform_later self }
 end
 </code></pre>
