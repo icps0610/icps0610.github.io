@@ -6,8 +6,8 @@ comments: true
 categories: ror
 ---
 
-> ref https://www.rails365.net/articles/websocket-zhi-actioncable-ru-men-qi
-> ref https://www.pluralsight.com/guides/ruby-ruby-on-rails/creating-a-chat-using-rails-action-cable
+> ref https://www.rails365.net/articles/websocket-zhi-actioncable-ru-men-qi  
+> ref https://www.pluralsight.com/guides/ruby-ruby-on-rails/creating-a-chat-using-rails-action-cable  
 
 ``` ruby
 #Gemfile
@@ -29,10 +29,9 @@ end
 mount ActionCable.server => '/cable'
 ```
 
-`rails g model message content:text name:string`
-`rake db:migrate`
-
-`rails g controller chats`
+`rails g model message content:text name:string`  
+`rake db:migrate`  
+`rails g controller chats`  
 
 ``` ruby
 #app/controllers/chats_controller.rb
