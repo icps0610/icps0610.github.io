@@ -1,0 +1,193 @@
+---
+layout: post
+title: "chat"
+date: 2017-01-11 03:36:38 +0800
+comments: true
+categories: ror
+---
+
+> ref https://www.rails365.net/articles/websocket-zhi-actioncable-ru-men-qi
+> ref https://www.pluralsight.com/guides/ruby-ruby-on-rails/creating-a-chat-using-rails-action-cable
+
+``` ruby
+#Gemfile
+gem 'redis'
+```
+
+``` ruby  
+#application.rb
+module Default
+  class Application < Rails::Application
+  	config.action_cable.disable_request_forgery_protection = true 
+  	# config.action_cable.allowed_request_origins = ['http://192.168.0.200]
+  end
+end
+```
+
+``` ruby 
+#config/routes.rb
+mount ActionCable.server => '/cable'
+```
+
+`rails g model message content:text name:string`
+`rake db:migrate`
+
+`rails g controller chats`
+
+``` ruby
+#app/controllers/chats_controller.rb
+def index
+	@messages = Message.all
+end
+```
+
+``` ruby
+#app/views/rooms/index.erb
+<div id="messages" class="messages">
+  <%= render @messages %>
+</div>
+
+<form id="chat-from">
+  <label>Say : </label>
+  <input type="text" data-behavior="chat_speaker">
+</form>
+<script>$('#messages').scrollTop( $('#messages')[0].scrollHeight )</script> 
+<!-- 捲動到下面-->
+```
+``` ruby
+#app/views/messages/_message.erb
+<p id='message'><b><%= message.name %></b> : <font id="content"><%= message.content %></font></p>
+```
+
+`rails g channel chat speak`
+
+``` ruby
+#app/assets/javascripts/cable.coffee
+//= require action_cable
+//= require_self
+//= require_tree ./channels
+@App ||= {}
+App.cable = ActionCable.createConsumer()
+```
+
+``` ruby
+#app/views/layouts/application.html.erb
+<%= action_cable_meta_tag %>
+``` 
+
+``` ruby
+#app/channels/application_cable/connection.rb
+module ApplicationCable
+	class Connection < ActionCable::Connection::Base
+		identified_by :current_user
+
+		def connect
+			self.current_user = find_verified_user
+			logger.add_tags 'ActionCable', current_user.email
+		end
+
+		protected
+
+		def find_verified_user # this checks whether a user is authenticated with devise
+			if verified_user = env['warden'].user
+				verified_user
+			else
+				reject_unauthorized_connection
+			end
+		end
+	end
+end
+```
+
+``` ruby 
+#app/channels/chat_channel.rb
+class ChatChannel < ApplicationCable::Channel
+	def subscribed
+		stream_from "chat_channel"
+	end
+
+	def unsubscribed
+	end
+
+	def speak(data)
+		if not data['message'] == ""
+			Message.create! content: data['message'], name: current_user.name
+		end
+	end
+end
+```
+
+``` ruby
+#app/assets/javascripts/channels/chat.coffee
+App.chat = App.cable.subscriptions.create "ChatChannel",
+ 	connected: ->
+
+  disconnected: ->
+
+  received: (data) ->
+    $('#messages').append(data['message'])
+    $('#messages').scrollTop( $('#messages')[0].scrollHeight )
+
+  speak: (message) ->
+    @perform 'speak', message: message
+
+$(document).on 'keypress', '[data-behavior~=chat_speaker]', (event) ->
+  if event.keyCode is 13
+    App.chat.speak event.target.value
+    event.target.value = ""
+    event.preventDefault()
+```
+
+`rails g job MessageBroadcast`
+
+``` ruby
+#app/jobs/message_broadcast_job.rb
+class MessageBroadcastJob < ApplicationJob
+	queue_as :default
+
+	def perform(message)
+		ActionCable.server.broadcast 'chat_channel', message: render_message(message)
+	end
+
+	private
+	def render_message(message)
+		ApplicationController.renderer.render(partial: 'messages/message', locals: { message: message })
+	end
+end
+```
+
+``` ruby
+class Message < ApplicationRecord
+	after_create_commit { MessageBroadcastJob.perform_later self }
+end
+```
+
+``` scss
+#scss
+#messages {
+  overflow: auto;
+  position: relative;
+  margin-left: 15px;
+  height: 75vh;
+  width: 90%;
+  margin-bottom: 2vh;
+}
+#message {
+  margin-left: 10%;
+  font-size: 25px;
+  line-height: 27px;
+  position: relative;
+
+}
+#content {
+  color: grey;
+  font-size: 25px;
+  line-height: 27px;
+}
+
+#chat-from {
+  margin-left: 10%;
+  margin-bottom:20px;
+  position: relative;
+}
+```
