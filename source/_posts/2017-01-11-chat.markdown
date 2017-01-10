@@ -50,9 +50,8 @@ end
   <label>Say : </label>
   <input type="text" data-behavior="chat_speaker">
 </form>
-<script>$('#messages').scrollTop( $('#messages')[0].scrollHeight )</script> 
-<!-- 捲動到下面-->
 ```
+
 ``` ruby
 #app/views/messages/_message.erb
 <p id='message'><b><%= message.name %></b> : <font id="content"><%= message.content %></font></p>
@@ -120,7 +119,7 @@ end
 #app/assets/javascripts/channels/chat.coffee
 App.chat = App.cable.subscriptions.create "ChatChannel",
  	connected: ->
-
+		$('#messages').scrollTop( $('#messages')[0].scrollHeight )
   disconnected: ->
 
   received: (data) ->
