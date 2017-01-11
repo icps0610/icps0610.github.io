@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-01-11T20:36:57+08:00</updated>
+  <updated>2017-01-11T21:03:18+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,20 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Check_value]]></title>
+    <link href="http://icps0610.github.io/blog/2017/01/11/check-value/"/>
+    <updated>2017-01-11T20:41:24+08:00</updated>
+    <id>http://icps0610.github.io/blog/2017/01/11/check-value</id>
+    <content type="html"><![CDATA[<pre><code class="ruby">if defined?(value) &amp;&amp; (value != '')
+    puts "yes"
+else
+    puts "nil"
+end
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[陣列中最長的元素]]></title>
@@ -60,32 +74,6 @@ gem install rmagick</p>
     <content type="html"><![CDATA[<p>stack level too deep</p>
 
 <p>export RUBY_THREAD_VM_STACK_SIZE=999999</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[File_list]]></title>
-    <link href="http://icps0610.github.io/blog/2016/07/26/file-list/"/>
-    <updated>2016-07-26T19:20:57+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/07/26/file-list</id>
-    <content type="html"><![CDATA[<pre><code class="ruby"># `find test  -type f | xargs ls`.split("\n")
-def dir(file)
-  file.each do |f|
-    if File.directory?(f) == true
-      file=`ls #{f}`.split("\n").map{|i|f+"\\"+i}
-      dir(file)
-    else
-      `ls #{f}`.split("\n").each do |i|
-        system "rm #{i}"
-        system "touch #{i}"
-      end
-    end
-  end
-end
-target="D:\\Thunder\\XLGameBox\\"
-file=`ls #{target}`.split("\n").map{|i|target+i}
-dir(file)
-</code></pre>
 ]]></content>
   </entry>
   
