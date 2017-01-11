@@ -151,8 +151,6 @@ ref <a href="https://www.pluralsight.com/guides/ruby-ruby-on-rails/creating-a-ch
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
 <span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#app/views/rooms/index.erb</span>
 </span><span class='line'><span class="o">&lt;</span><span class="n">div</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;messages&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;messages&quot;</span><span class="o">&gt;</span>
 </span><span class='line'>  <span class="o">&lt;</span><span class="sx">%= render @messages %&gt;</span>
@@ -162,17 +160,19 @@ ref <a href="https://www.pluralsight.com/guides/ruby-ruby-on-rails/creating-a-ch
 </span><span class='line'>  <span class="o">&lt;</span><span class="n">label</span><span class="o">&gt;</span><span class="no">Say</span> <span class="p">:</span> <span class="o">&lt;</span><span class="sr">/label&gt;</span>
 </span><span class='line'><span class="sr">  &lt;input type=&quot;text&quot; data-behavior=&quot;chat_speaker&quot;&gt;</span>
 </span><span class='line'><span class="sr">&lt;/</span><span class="n">form</span><span class="o">&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="n">script</span><span class="o">&gt;</span><span class="err">$</span><span class="p">(</span><span class="s1">&#39;#messages&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">scrollTop</span><span class="p">(</span> <span class="err">$</span><span class="p">(</span><span class="s1">&#39;#messages&#39;</span><span class="p">)</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">scrollHeight</span> <span class="p">)</span><span class="o">&lt;</span><span class="sr">/script&gt; </span>
-</span><span class='line'><span class="sr">&lt;!-- 捲動到下面--&gt;</span>
 </span></code></pre></td></tr></table></div></figure>
+
+
 
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#app/views/messages/_message.erb</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nb">p</span> <span class="nb">id</span><span class="o">=</span><span class="s1">&#39;message&#39;</span><span class="o">&gt;&lt;</span><span class="n">b</span><span class="o">&gt;&lt;</span><span class="sx">%= message.name %&gt;&lt;/b&gt; : &lt;font id=</span><span class="s2">&quot;content&quot;</span><span class="o">&gt;&lt;%=</span> <span class="n">message</span><span class="o">.</span><span class="n">content</span> <span class="sx">%&gt;&lt;/font&gt;</span><span class="o">&lt;</span><span class="sr">/p&gt;</span>
+</pre></td><td class='code'><pre><code class='erb'><span class='line'><span class="x">#app/views/messages/_message.erb  </span>
+</span><span class='line'><span class="x">&lt;front id=&#39;message&#39;&gt;&lt;b&gt;</span><span class="cp">&lt;%=</span> <span class="n">message</span><span class="o">.</span><span class="n">name</span> <span class="cp">%&gt;</span><span class="x">&lt;/b&gt; : &lt;font id=&quot;content&quot;&gt;</span><span class="cp">&lt;%=</span> <span class="n">message</span><span class="o">.</span><span class="n">content</span> <span class="cp">%&gt;</span><span class="x">&lt;/font&gt;&lt;/font&gt;</span>
 </span></code></pre></td></tr></table></div></figure>
 
+
+<p></p>
 
 <p><code>rails g channel chat speak</code></p>
 
@@ -305,7 +305,7 @@ ref <a href="https://www.pluralsight.com/guides/ruby-ruby-on-rails/creating-a-ch
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#app/assets/javascripts/channels/chat.coffee</span>
 </span><span class='line'><span class="no">App</span><span class="o">.</span><span class="n">chat</span> <span class="o">=</span> <span class="no">App</span><span class="o">.</span><span class="n">cable</span><span class="o">.</span><span class="n">subscriptions</span><span class="o">.</span><span class="n">create</span> <span class="s2">&quot;ChatChannel&quot;</span><span class="p">,</span>
 </span><span class='line'>  <span class="ss">connected</span><span class="p">:</span> <span class="o">-&gt;</span>
-</span><span class='line'>
+</span><span class='line'>      <span class="err">$</span><span class="p">(</span><span class="s1">&#39;#messages&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">scrollTop</span><span class="p">(</span> <span class="err">$</span><span class="p">(</span><span class="s1">&#39;#messages&#39;</span><span class="p">)</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">scrollHeight</span> <span class="p">)</span>
 </span><span class='line'>  <span class="ss">disconnected</span><span class="p">:</span> <span class="o">-&gt;</span>
 </span><span class='line'>
 </span><span class='line'>  <span class="ss">received</span><span class="p">:</span> <span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">-&gt;</span>
@@ -464,6 +464,8 @@ ref <a href="https://www.pluralsight.com/guides/ruby-ruby-on-rails/creating-a-ch
         <a class="basic-alignment left" href="/blog/2017/01/05/weather/" title="Previous Post: weather">&laquo; weather</a>
       
       
+        <a class="basic-alignment right" href="/blog/2017/01/11/rails-hang/" title="Next Post: rails-hang">rails-hang &raquo;</a>
+      
     </p>
   </footer>
 </article>
@@ -479,14 +481,22 @@ ref <a href="https://www.pluralsight.com/guides/ruby-ruby-on-rails/creating-a-ch
 <li class='category'><a href='/blog/categories/bat/'>bat (9)</a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (10)</a></li>
 <li class='category'><a href='/blog/categories/notepad/'>notepad (1)</a></li>
-<li class='category'><a href='/blog/categories/ror/'>ror (14)</a></li>
-<li class='category'><a href='/blog/categories/ruby/'>ruby (24)</a></li>
+<li class='category'><a href='/blog/categories/ror/'>ror (15)</a></li>
+<li class='category'><a href='/blog/categories/ruby/'>ruby (25)</a></li>
 
     </ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2017/01/11/check-value/">Check_value</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2017/01/11/rails-hang/">Rails-hang</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2017/01/11/chat/">Chat</a>
@@ -498,14 +508,6 @@ ref <a href="https://www.pluralsight.com/guides/ruby-ruby-on-rails/creating-a-ch
     
       <li class="post">
         <a href="/blog/2017/01/05/longest/">陣列中最長的元素</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2017/01/01/proxy/">Proxy</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2017/01/01/sqlmap/">Sqlmap</a>
       </li>
     
   </ul>

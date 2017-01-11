@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-01-11T04:11:41+08:00</updated>
+  <updated>2017-01-11T21:09:23+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,39 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Check_value]]></title>
+    <link href="http://icps0610.github.io/blog/2017/01/11/check-value/"/>
+    <updated>2017-01-11T20:41:24+08:00</updated>
+    <id>http://icps0610.github.io/blog/2017/01/11/check-value</id>
+    <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">if</span> <span class="n">defined?</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">value</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s2">&quot;yes&quot;</span>
+</span><span class='line'><span class="k">else</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s2">&quot;nil&quot;</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Rails-hang]]></title>
+    <link href="http://icps0610.github.io/blog/2017/01/11/rails-hang/"/>
+    <updated>2017-01-11T08:21:01+08:00</updated>
+    <id>http://icps0610.github.io/blog/2017/01/11/rails-hang</id>
+    <content type="html"><![CDATA[<blockquote><p>ref <a href="http://stackoverflow.com/questions/31857365/rails-generate-commands-hang-when-trying-to-create-a-model">http://stackoverflow.com/questions/31857365/rails-generate-commands-hang-when-trying-to-create-a-model</a></p></blockquote>
+
+<p><code>bundle install --binstubs</code></p>
+
+<p><code>bundle binstubs rake</code></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Chat]]></title>
@@ -82,8 +115,6 @@ ref <a href="https://www.pluralsight.com/guides/ruby-ruby-on-rails/creating-a-ch
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
 <span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#app/views/rooms/index.erb</span>
 </span><span class='line'><span class="o">&lt;</span><span class="n">div</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;messages&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;messages&quot;</span><span class="o">&gt;</span>
 </span><span class='line'>  <span class="o">&lt;</span><span class="sx">%= render @messages %&gt;</span>
@@ -93,17 +124,19 @@ ref <a href="https://www.pluralsight.com/guides/ruby-ruby-on-rails/creating-a-ch
 </span><span class='line'>  <span class="o">&lt;</span><span class="n">label</span><span class="o">&gt;</span><span class="no">Say</span> <span class="p">:</span> <span class="o">&lt;</span><span class="sr">/label&gt;</span>
 </span><span class='line'><span class="sr">  &lt;input type=&quot;text&quot; data-behavior=&quot;chat_speaker&quot;&gt;</span>
 </span><span class='line'><span class="sr">&lt;/</span><span class="n">form</span><span class="o">&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="n">script</span><span class="o">&gt;</span><span class="err">$</span><span class="p">(</span><span class="s1">&#39;#messages&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">scrollTop</span><span class="p">(</span> <span class="err">$</span><span class="p">(</span><span class="s1">&#39;#messages&#39;</span><span class="p">)</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">scrollHeight</span> <span class="p">)</span><span class="o">&lt;</span><span class="sr">/script&gt; </span>
-</span><span class='line'><span class="sr">&lt;!-- 捲動到下面--&gt;</span>
 </span></code></pre></td></tr></table></div></figure>
+
+
 
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#app/views/messages/_message.erb</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nb">p</span> <span class="nb">id</span><span class="o">=</span><span class="s1">&#39;message&#39;</span><span class="o">&gt;&lt;</span><span class="n">b</span><span class="o">&gt;&lt;</span><span class="sx">%= message.name %&gt;&lt;/b&gt; : &lt;font id=</span><span class="s2">&quot;content&quot;</span><span class="o">&gt;&lt;%=</span> <span class="n">message</span><span class="o">.</span><span class="n">content</span> <span class="sx">%&gt;&lt;/font&gt;</span><span class="o">&lt;</span><span class="sr">/p&gt;</span>
+</pre></td><td class='code'><pre><code class='erb'><span class='line'><span class="x">#app/views/messages/_message.erb  </span>
+</span><span class='line'><span class="x">&lt;front id=&#39;message&#39;&gt;&lt;b&gt;</span><span class="cp">&lt;%=</span> <span class="n">message</span><span class="o">.</span><span class="n">name</span> <span class="cp">%&gt;</span><span class="x">&lt;/b&gt; : &lt;font id=&quot;content&quot;&gt;</span><span class="cp">&lt;%=</span> <span class="n">message</span><span class="o">.</span><span class="n">content</span> <span class="cp">%&gt;</span><span class="x">&lt;/font&gt;&lt;/font&gt;</span>
 </span></code></pre></td></tr></table></div></figure>
 
+
+<p></p>
 
 <p><code>rails g channel chat speak</code></p>
 
@@ -236,7 +269,7 @@ ref <a href="https://www.pluralsight.com/guides/ruby-ruby-on-rails/creating-a-ch
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#app/assets/javascripts/channels/chat.coffee</span>
 </span><span class='line'><span class="no">App</span><span class="o">.</span><span class="n">chat</span> <span class="o">=</span> <span class="no">App</span><span class="o">.</span><span class="n">cable</span><span class="o">.</span><span class="n">subscriptions</span><span class="o">.</span><span class="n">create</span> <span class="s2">&quot;ChatChannel&quot;</span><span class="p">,</span>
 </span><span class='line'>  <span class="ss">connected</span><span class="p">:</span> <span class="o">-&gt;</span>
-</span><span class='line'>
+</span><span class='line'>      <span class="err">$</span><span class="p">(</span><span class="s1">&#39;#messages&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">scrollTop</span><span class="p">(</span> <span class="err">$</span><span class="p">(</span><span class="s1">&#39;#messages&#39;</span><span class="p">)</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">scrollHeight</span> <span class="p">)</span>
 </span><span class='line'>  <span class="ss">disconnected</span><span class="p">:</span> <span class="o">-&gt;</span>
 </span><span class='line'>
 </span><span class='line'>  <span class="ss">received</span><span class="p">:</span> <span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">-&gt;</span>
@@ -538,10 +571,10 @@ ro.securestorage.support=true to false</p>
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># app/helpers/application_helper</span>
 </span><span class='line'><span class="k">module</span> <span class="nn">ApplicationHelper</span>
 </span><span class='line'>
-</span><span class='line'> <span class="k">def</span> <span class="nf">active_class</span><span class="p">(</span><span class="n">link_path</span><span class="p">)</span>
-</span><span class='line'>  <span class="n">current_page?</span><span class="p">(</span><span class="n">link_path</span><span class="p">)</span> <span class="p">?</span> <span class="s2">&quot;active&quot;</span> <span class="p">:</span> <span class="s2">&quot;&quot;</span>
-</span><span class='line'> <span class="k">end</span>
-</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">render_active</span><span class="p">(</span><span class="n">title</span><span class="p">,</span><span class="n">path</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">c</span> <span class="o">=</span> <span class="n">current_page?</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="p">?</span> <span class="s2">&quot;active&quot;</span> <span class="p">:</span> <span class="s2">&quot;&quot;</span>
+</span><span class='line'>      <span class="n">content_tag</span><span class="p">(</span><span class="ss">:li</span><span class="p">,</span> <span class="n">link_to</span><span class="p">(</span> <span class="n">title</span><span class="p">,</span> <span class="n">path</span> <span class="p">),</span> <span class="ss">:class</span> <span class="o">=&gt;</span> <span class="n">c</span> <span class="p">)</span>
+</span><span class='line'>  <span class="k">end</span>
 </span><span class='line'><span class="k">end</span>
 </span></code></pre></td></tr></table></div></figure>
 
@@ -551,7 +584,7 @@ ro.securestorage.support=true to false</p>
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># views</span>
-</span><span class='line'> <span class="o">&lt;</span><span class="n">li</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;&lt;%= active_class(root_path) %&gt;&quot;</span><span class="o">&gt;&lt;%=</span> <span class="n">link_to</span> <span class="s1">&#39;全部清單&#39;</span><span class="p">,</span><span class="n">items_path</span> <span class="o">%&gt;</span>
+</span><span class='line'><span class="o">&lt;%=</span> <span class="n">render_active</span><span class="p">(</span> <span class="s1">&#39;Home&#39;</span><span class="p">,</span> <span class="n">root_path</span> <span class="p">)</span> <span class="o">%&gt;</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -1011,177 +1044,6 @@ somewhere on your PATH. More info at https://developer.mozilla.org/en-US/docs/Mo
 </span><span class='line'><span class="c1"># 3**2 × 5**2 × 131**1</span>
 </span></code></pre></td></tr></table></div></figure>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[LAN掃描]]></title>
-    <link href="http://icps0610.github.io/blog/2016/07/09/arp-scan/"/>
-    <updated>2016-07-09T02:52:13+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/07/09/arp-scan</id>
-    <content type="html"><![CDATA[<p><code>netdiscover</code></p>
-
-<p><code>arp-scan 192.168.1.0/24</code></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Ping_log]]></title>
-    <link href="http://icps0610.github.io/blog/2016/07/08/ping/"/>
-    <updated>2016-07-08T16:10:15+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/07/08/ping</id>
-    <content type="html"><![CDATA[<p><img src="http://icps0610.github.io/images/ping.png" alt="ping.png" /></p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-<span class='line-number'>41</span>
-<span class='line-number'>42</span>
-<span class='line-number'>43</span>
-<span class='line-number'>44</span>
-<span class='line-number'>45</span>
-<span class='line-number'>46</span>
-<span class='line-number'>47</span>
-<span class='line-number'>48</span>
-<span class='line-number'>49</span>
-<span class='line-number'>50</span>
-<span class='line-number'>51</span>
-<span class='line-number'>52</span>
-<span class='line-number'>53</span>
-<span class='line-number'>54</span>
-<span class='line-number'>55</span>
-<span class='line-number'>56</span>
-<span class='line-number'>57</span>
-<span class='line-number'>58</span>
-<span class='line-number'>59</span>
-<span class='line-number'>60</span>
-<span class='line-number'>61</span>
-<span class='line-number'>62</span>
-<span class='line-number'>63</span>
-<span class='line-number'>64</span>
-<span class='line-number'>65</span>
-<span class='line-number'>66</span>
-<span class='line-number'>67</span>
-<span class='line-number'>68</span>
-<span class='line-number'>69</span>
-<span class='line-number'>70</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#!/usr/bin/env ruby</span>
-</span><span class='line'><span class="c1"># encoding: utf-8</span>
-</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;colorize&#39;</span>
-</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;/data/ruby/chinese_num/chinese_num.rb&#39;</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">def</span> <span class="nf">restore</span><span class="p">(</span><span class="n">where</span><span class="p">)</span>
-</span><span class='line'>  <span class="k">if</span> <span class="vi">@break</span> <span class="o">==</span> <span class="mi">1</span>
-</span><span class='line'>    <span class="sb">`espeak -vzh &#39;</span><span class="si">#{</span><span class="n">where</span><span class="si">}</span><span class="sb">恢復&#39; -s 250`</span>
-</span><span class='line'>    <span class="vi">@break</span> <span class="o">=</span> <span class="mi">0</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">def</span> <span class="nf">record</span><span class="p">(</span><span class="n">time</span><span class="p">)</span>
-</span><span class='line'>  <span class="sb">`echo </span><span class="si">#{</span><span class="no">Time</span><span class="o">.</span><span class="n">now</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%H:%M:%S&quot;</span><span class="p">)</span><span class="si">}</span><span class="sb">, </span><span class="si">#{</span><span class="n">time</span><span class="si">}</span><span class="sb"> &gt;&gt; /tmp/ping.log`</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">def</span> <span class="nf">delay</span><span class="p">(</span><span class="n">ip</span><span class="p">,</span><span class="n">where</span><span class="p">,</span><span class="n">alert</span><span class="p">)</span>
-</span><span class='line'>  <span class="n">time</span> <span class="o">=</span> <span class="sb">`ping </span><span class="si">#{</span><span class="n">ip</span><span class="si">}</span><span class="sb"> -c 1 | awk &#39;{print $7}&#39; | grep time`</span><span class="o">.</span><span class="n">scan</span><span class="p">(</span><span class="sr">/time=(.*)/</span><span class="p">)</span><span class="o">.</span><span class="n">join</span><span class="o">.</span><span class="n">to_f</span>
-</span><span class='line'>  <span class="k">if</span> <span class="n">time</span> <span class="o">==</span> <span class="mi">0</span><span class="o">.</span><span class="mi">0</span>
-</span><span class='line'>    <span class="sb">`espeak -vzh &#39;</span><span class="si">#{</span><span class="n">where</span><span class="si">}</span><span class="sb">斷線&#39; -s 250`</span>
-</span><span class='line'>    <span class="n">record</span><span class="p">(</span><span class="o">-</span><span class="mi">10000</span><span class="o">.</span><span class="mi">0</span><span class="p">)</span>
-</span><span class='line'>    <span class="vi">@break</span><span class="o">=</span><span class="mi">1</span>
-</span><span class='line'>  <span class="k">else</span>
-</span><span class='line'>    <span class="nb">puts</span> <span class="n">time</span><span class="o">.</span><span class="n">to_s</span><span class="o">.</span><span class="n">blue</span><span class="o">+</span><span class="s2">&quot;   &quot;</span><span class="o">+</span><span class="n">ip</span>
-</span><span class='line'>    <span class="n">record</span><span class="p">(</span><span class="n">time</span><span class="p">)</span>
-</span><span class='line'>    <span class="n">restore</span><span class="p">(</span><span class="n">where</span><span class="p">)</span>
-</span><span class='line'>    <span class="k">if</span> <span class="n">time</span> <span class="o">&gt;</span> <span class="n">alert</span>
-</span><span class='line'>      <span class="sb">`espeak -vzh &#39;</span><span class="si">#{</span><span class="n">where</span><span class="si">}</span><span class="sb">延遲</span><span class="si">#{</span><span class="no">Chinese_num</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">to_i</span><span class="p">)</span><span class="si">}</span><span class="sb">秒&#39; -s 250`</span>
-</span><span class='line'>    <span class="k">end</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">def</span> <span class="nf">gnuplot</span>
-</span><span class='line'>  <span class="n">tmp</span> <span class="o">=</span> <span class="no">IO</span><span class="o">.</span><span class="n">binread</span><span class="p">(</span><span class="s2">&quot;/tmp/ping.log&quot;</span><span class="p">)</span>
-</span><span class='line'>  <span class="n">count</span> <span class="o">=</span> <span class="n">tmp</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span>
-</span><span class='line'>  <span class="n">count</span> <span class="o">=</span> <span class="mi">256</span> <span class="k">if</span> <span class="n">count</span> <span class="o">&lt;</span> <span class="mi">256</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="n">log_start</span> <span class="o">=</span> <span class="n">tmp</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="o">.</span><span class="n">scan</span><span class="p">(</span><span class="sr">/(.*),.*/</span><span class="p">)</span><span class="o">.</span><span class="n">join</span>
-</span><span class='line'>  <span class="n">log_end</span> <span class="o">=</span> <span class="n">tmp</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">last</span><span class="o">.</span><span class="n">scan</span><span class="p">(</span><span class="sr">/(.*),.*/</span><span class="p">)</span><span class="o">.</span><span class="n">join</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="n">file</span> <span class="o">=</span> <span class="o">[]</span>
-</span><span class='line'>  <span class="n">file</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;set grid y&quot;</span>
-</span><span class='line'>  <span class="n">file</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;set yrange [0:]&quot;</span>
-</span><span class='line'>  <span class="n">file</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;set ylabel &#39;ms&#39;&quot;</span>
-</span><span class='line'>  <span class="n">file</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;set xdata time&quot;</span>
-</span><span class='line'>  <span class="n">file</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;set timefmt &#39;%H:%M:%S&#39;&quot;</span>
-</span><span class='line'>  <span class="n">file</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;set xrange [&#39;</span><span class="si">#{</span><span class="n">log_start</span><span class="si">}</span><span class="s2">&#39;:&#39;</span><span class="si">#{</span><span class="n">log_end</span><span class="si">}</span><span class="s2">&#39;]&quot;</span>
-</span><span class='line'>  <span class="n">file</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;set format x &#39;%H:%M:%S&#39;&quot;</span>
-</span><span class='line'>  <span class="n">file</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;set xlabel &#39;</span><span class="si">#{</span><span class="n">log_start</span><span class="si">}</span><span class="s2"> ~ </span><span class="si">#{</span><span class="n">log_end</span><span class="si">}</span><span class="s2">&#39;&quot;</span>
-</span><span class='line'>  <span class="n">file</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;set xtics 3600&quot;</span>
-</span><span class='line'>  <span class="n">file</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;set terminal png size </span><span class="si">#{</span><span class="n">count</span><span class="o">*</span><span class="mi">5</span><span class="si">}</span><span class="s2">,480&quot;</span>
-</span><span class='line'>  <span class="n">file</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;set output &#39;/tmp/ping.png&#39;&quot;</span>
-</span><span class='line'>  <span class="n">file</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;set border 0&quot;</span>
-</span><span class='line'>  <span class="n">file</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;set style data lines&quot;</span>
-</span><span class='line'>  <span class="n">file</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;set style line 1 linecolor rgb &#39;#0060ad&#39; linetype 1 linewidth 1&quot;</span>
-</span><span class='line'>  <span class="n">file</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;plot &#39;/tmp/ping.log&#39; using 1:2 notitle linestyle 1&quot;</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="no">IO</span><span class="o">.</span><span class="n">binwrite</span><span class="p">(</span><span class="s1">&#39;/tmp/ping.p&#39;</span><span class="p">,</span><span class="n">file</span><span class="o">.</span><span class="n">map</span><span class="p">{</span><span class="o">|</span><span class="n">i</span><span class="o">|</span><span class="n">i</span><span class="o">+</span><span class="s2">&quot;</span><span class="se">\r\n</span><span class="s2">&quot;</span><span class="p">}</span><span class="o">.</span><span class="n">join</span><span class="p">)</span>
-</span><span class='line'>  <span class="nb">system</span> <span class="s2">&quot;gnuplot &lt; /tmp/ping.p&quot;</span>
-</span><span class='line'>  <span class="nb">system</span> <span class="s2">&quot;kill `ps aux | grep /usr/bin/display.im6 | awk &#39;{print $2}&#39;`&quot;</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="vi">@break</span> <span class="o">=</span> <span class="mi">0</span>
-</span><span class='line'><span class="vi">@count</span> <span class="o">=</span> <span class="mi">0</span>
-</span><span class='line'><span class="kp">loop</span> <span class="k">do</span>
-</span><span class='line'>  <span class="n">gnuplot</span> <span class="k">if</span> <span class="vi">@count</span><span class="o">%</span><span class="mi">120</span> <span class="o">==</span> <span class="mi">0</span>
-</span><span class='line'>  <span class="n">delay</span><span class="p">(</span><span class="s2">&quot;168.95.1.1&quot;</span><span class="p">,</span><span class="s2">&quot;中華電信&quot;</span><span class="p">,</span><span class="mi">1000</span><span class="p">)</span>
-</span><span class='line'>  <span class="nb">sleep</span> <span class="mi">5</span>
-</span><span class='line'>  <span class="vi">@count</span><span class="o">+=</span><span class="mi">1</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h4>語音</h4>
-
-<p><code>espeak -vzh '測試'</code>  <a href="http://icps0610.github.io/blog/2016/06/17/espeak/">espeak</a></p>
-
-<h4>繪圖</h4>
-
-<p><code>gnuplot</code></p>
 ]]></content>
   </entry>
   

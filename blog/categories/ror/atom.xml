@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ror | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ror/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-01-11T21:04:01+08:00</updated>
+  <updated>2017-01-11T21:09:23+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -76,27 +76,21 @@ end
 </form>
 ```</p>
 
-<p>``` ruby</p>
-
-<h1>app/views/messages/_message.erb</h1>
-
-<p id='message'><b><%= message.name %></b> : <font id="content"><%= message.content %></font></p>
-
-
-<pre><code>
-`rails g channel chat speak`
+<pre><code class="erb  ">#app/views/messages/_message.erb  
+&lt;front id='message'&gt;&lt;b&gt;&lt;%= message.name %&gt;&lt;/b&gt; : &lt;font id="content"&gt;&lt;%= message.content %&gt;&lt;/font&gt;&lt;/font&gt;
 </code></pre>
 
-<h1>app/assets/javascripts/cable.coffee</h1>
+<p><code>rails g channel chat speak</code></p>
 
-<p>//= require action_cable
+<pre><code class="ruby  ">#app/assets/javascripts/cable.coffee
+//= require action_cable
 //= require_self
 //= require_tree ./channels
 @App ||= {}
 App.cable = ActionCable.createConsumer()
-```</p>
+</code></pre>
 
-<pre><code class="ruby">#app/views/layouts/application.html.erb
+<pre><code class="ruby  ">#app/views/layouts/application.html.erb
 &lt;%= action_cable_meta_tag %&gt;
 </code></pre>
 
@@ -254,12 +248,10 @@ module ApplicationHelper
         c = current_page?(path) ? "active" : ""
         content_tag(:li, link_to( title, path ), :class =&gt; c )
     end
-
-
 end
 </code></pre>
 
-<pre><code class="ruby"># views
+<pre><code class="ruby "># views
 &lt;%= render_active( 'Home', root_path ) %&gt;
 </code></pre>
 ]]></content>

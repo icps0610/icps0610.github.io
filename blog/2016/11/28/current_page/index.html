@@ -18,7 +18,7 @@
 7
 8
 # app/helpers/application_helper
-module ApplicationHelper def active_class(link_path &hellip;">
+module ApplicationHelper def render_active(title, &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -108,10 +108,10 @@ module ApplicationHelper def active_class(link_path &hellip;">
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># app/helpers/application_helper</span>
 </span><span class='line'><span class="k">module</span> <span class="nn">ApplicationHelper</span>
 </span><span class='line'>
-</span><span class='line'> <span class="k">def</span> <span class="nf">active_class</span><span class="p">(</span><span class="n">link_path</span><span class="p">)</span>
-</span><span class='line'>  <span class="n">current_page?</span><span class="p">(</span><span class="n">link_path</span><span class="p">)</span> <span class="p">?</span> <span class="s2">&quot;active&quot;</span> <span class="p">:</span> <span class="s2">&quot;&quot;</span>
-</span><span class='line'> <span class="k">end</span>
-</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">render_active</span><span class="p">(</span><span class="n">title</span><span class="p">,</span><span class="n">path</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">c</span> <span class="o">=</span> <span class="n">current_page?</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="p">?</span> <span class="s2">&quot;active&quot;</span> <span class="p">:</span> <span class="s2">&quot;&quot;</span>
+</span><span class='line'>      <span class="n">content_tag</span><span class="p">(</span><span class="ss">:li</span><span class="p">,</span> <span class="n">link_to</span><span class="p">(</span> <span class="n">title</span><span class="p">,</span> <span class="n">path</span> <span class="p">),</span> <span class="ss">:class</span> <span class="o">=&gt;</span> <span class="n">c</span> <span class="p">)</span>
+</span><span class='line'>  <span class="k">end</span>
 </span><span class='line'><span class="k">end</span>
 </span></code></pre></td></tr></table></div></figure>
 
@@ -121,7 +121,7 @@ module ApplicationHelper def active_class(link_path &hellip;">
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># views</span>
-</span><span class='line'> <span class="o">&lt;</span><span class="n">li</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;&lt;%= active_class(root_path) %&gt;&quot;</span><span class="o">&gt;&lt;%=</span> <span class="n">link_to</span> <span class="s1">&#39;全部清單&#39;</span><span class="p">,</span><span class="n">items_path</span> <span class="o">%&gt;</span>
+</span><span class='line'><span class="o">&lt;%=</span> <span class="n">render_active</span><span class="p">(</span> <span class="s1">&#39;Home&#39;</span><span class="p">,</span> <span class="n">root_path</span> <span class="p">)</span> <span class="o">%&gt;</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -182,14 +182,22 @@ module ApplicationHelper def active_class(link_path &hellip;">
 <li class='category'><a href='/blog/categories/bat/'>bat (9)</a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (10)</a></li>
 <li class='category'><a href='/blog/categories/notepad/'>notepad (1)</a></li>
-<li class='category'><a href='/blog/categories/ror/'>ror (14)</a></li>
-<li class='category'><a href='/blog/categories/ruby/'>ruby (24)</a></li>
+<li class='category'><a href='/blog/categories/ror/'>ror (15)</a></li>
+<li class='category'><a href='/blog/categories/ruby/'>ruby (25)</a></li>
 
     </ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2017/01/11/check-value/">Check_value</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2017/01/11/rails-hang/">Rails-hang</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2017/01/11/chat/">Chat</a>
@@ -201,14 +209,6 @@ module ApplicationHelper def active_class(link_path &hellip;">
     
       <li class="post">
         <a href="/blog/2017/01/05/longest/">陣列中最長的元素</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2017/01/01/proxy/">Proxy</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2017/01/01/sqlmap/">Sqlmap</a>
       </li>
     
   </ul>

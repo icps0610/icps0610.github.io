@@ -9,8 +9,14 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="ref https://www.rails365.net/articles/websocket-zhi-actioncable-ru-men-qi
-ref https://www.pluralsight.com/guides/ruby-ruby-on-rails/creating-a-chat- &hellip;">
+  <meta name="description" content="1
+2
+3
+4
+5
+if defined?(value) &amp;&amp; (value != &#39;&#39;) puts &quot;yes&quot;
+else puts &quot;nil&quot;
+end ">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -69,6 +75,79 @@ ref https://www.pluralsight.com/guides/ruby-ruby-on-rails/creating-a-chat- &hell
       <div class="blog-index">
   
 
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2017/01/11/check-value/">Check_value</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2017-01-11T20:41:24+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>8:41 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">if</span> <span class="n">defined?</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">value</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s2">&quot;yes&quot;</span>
+</span><span class='line'><span class="k">else</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s2">&quot;nil&quot;</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2017/01/11/rails-hang/">Rails-hang</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2017-01-11T08:21:01+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>8:21 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><blockquote><p>ref <a href="http://stackoverflow.com/questions/31857365/rails-generate-commands-hang-when-trying-to-create-a-model">http://stackoverflow.com/questions/31857365/rails-generate-commands-hang-when-trying-to-create-a-model</a></p></blockquote>
+
+<p><code>bundle install --binstubs</code></p>
+
+<p><code>bundle binstubs rake</code></p>
+</div>
+  
+  
+
+
+    </article>
+  
   
     <article>
       
@@ -154,8 +233,6 @@ ref <a href="https://www.pluralsight.com/guides/ruby-ruby-on-rails/creating-a-ch
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
 <span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#app/views/rooms/index.erb</span>
 </span><span class='line'><span class="o">&lt;</span><span class="n">div</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;messages&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;messages&quot;</span><span class="o">&gt;</span>
 </span><span class='line'>  <span class="o">&lt;</span><span class="sx">%= render @messages %&gt;</span>
@@ -165,17 +242,19 @@ ref <a href="https://www.pluralsight.com/guides/ruby-ruby-on-rails/creating-a-ch
 </span><span class='line'>  <span class="o">&lt;</span><span class="n">label</span><span class="o">&gt;</span><span class="no">Say</span> <span class="p">:</span> <span class="o">&lt;</span><span class="sr">/label&gt;</span>
 </span><span class='line'><span class="sr">  &lt;input type=&quot;text&quot; data-behavior=&quot;chat_speaker&quot;&gt;</span>
 </span><span class='line'><span class="sr">&lt;/</span><span class="n">form</span><span class="o">&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="n">script</span><span class="o">&gt;</span><span class="err">$</span><span class="p">(</span><span class="s1">&#39;#messages&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">scrollTop</span><span class="p">(</span> <span class="err">$</span><span class="p">(</span><span class="s1">&#39;#messages&#39;</span><span class="p">)</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">scrollHeight</span> <span class="p">)</span><span class="o">&lt;</span><span class="sr">/script&gt; </span>
-</span><span class='line'><span class="sr">&lt;!-- 捲動到下面--&gt;</span>
 </span></code></pre></td></tr></table></div></figure>
+
+
 
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#app/views/messages/_message.erb</span>
-</span><span class='line'><span class="o">&lt;</span><span class="nb">p</span> <span class="nb">id</span><span class="o">=</span><span class="s1">&#39;message&#39;</span><span class="o">&gt;&lt;</span><span class="n">b</span><span class="o">&gt;&lt;</span><span class="sx">%= message.name %&gt;&lt;/b&gt; : &lt;font id=</span><span class="s2">&quot;content&quot;</span><span class="o">&gt;&lt;%=</span> <span class="n">message</span><span class="o">.</span><span class="n">content</span> <span class="sx">%&gt;&lt;/font&gt;</span><span class="o">&lt;</span><span class="sr">/p&gt;</span>
+</pre></td><td class='code'><pre><code class='erb'><span class='line'><span class="x">#app/views/messages/_message.erb  </span>
+</span><span class='line'><span class="x">&lt;front id=&#39;message&#39;&gt;&lt;b&gt;</span><span class="cp">&lt;%=</span> <span class="n">message</span><span class="o">.</span><span class="n">name</span> <span class="cp">%&gt;</span><span class="x">&lt;/b&gt; : &lt;font id=&quot;content&quot;&gt;</span><span class="cp">&lt;%=</span> <span class="n">message</span><span class="o">.</span><span class="n">content</span> <span class="cp">%&gt;</span><span class="x">&lt;/font&gt;&lt;/font&gt;</span>
 </span></code></pre></td></tr></table></div></figure>
 
+
+<p></p>
 
 <p><code>rails g channel chat speak</code></p>
 
@@ -308,7 +387,7 @@ ref <a href="https://www.pluralsight.com/guides/ruby-ruby-on-rails/creating-a-ch
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#app/assets/javascripts/channels/chat.coffee</span>
 </span><span class='line'><span class="no">App</span><span class="o">.</span><span class="n">chat</span> <span class="o">=</span> <span class="no">App</span><span class="o">.</span><span class="n">cable</span><span class="o">.</span><span class="n">subscriptions</span><span class="o">.</span><span class="n">create</span> <span class="s2">&quot;ChatChannel&quot;</span><span class="p">,</span>
 </span><span class='line'>  <span class="ss">connected</span><span class="p">:</span> <span class="o">-&gt;</span>
-</span><span class='line'>
+</span><span class='line'>      <span class="err">$</span><span class="p">(</span><span class="s1">&#39;#messages&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">scrollTop</span><span class="p">(</span> <span class="err">$</span><span class="p">(</span><span class="s1">&#39;#messages&#39;</span><span class="p">)</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">scrollHeight</span> <span class="p">)</span>
 </span><span class='line'>  <span class="ss">disconnected</span><span class="p">:</span> <span class="o">-&gt;</span>
 </span><span class='line'>
 </span><span class='line'>  <span class="ss">received</span><span class="p">:</span> <span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">-&gt;</span>
@@ -493,111 +572,6 @@ ref <a href="https://www.pluralsight.com/guides/ruby-ruby-on-rails/creating-a-ch
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2017/01/01/proxy/">Proxy</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2017-01-01T23:13:43+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2017</span></span> <span class='time'>11:13 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><code>cat /etc/environment</code><br/>
-<code>unset HTTP_PROXY</code></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2017/01/01/sqlmap/">Sqlmap</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2017-01-01T00:44:30+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2017</span></span> <span class='time'>12:44 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>+9#CAy76Q93[o[20
-</span><span class='line'>Po.[$fe#3cR;m=v:Un74
-</span><span class='line'>V:/6QZel?MovNnK*U&gt;euSQMM&h#SuzZfN.gq[dRc]Q63:d3EH9{(6sJg4fMR),5hD&gt; q5/AQ9a*&gt;;Fd#QYn{Ce96
-</span><span class='line'>jSsyQF7wWho^W#8e
-</span><span class='line'>HegE5Uq/dnsF4&lt;@0?]IkU/j52*4t{1F[7d NW4k3w+k1aRfkE[u$Jf5q
-</span><span class='line'>4MzV*RG.542&g_j@oj4m
-</span><span class='line'>h9[nLj;9&lt;;X&XgA_-VeC7[hqon%*]n728gR6mVV/_K[ml9KP]Pr!Ns3AV&gt;_zwM3d
-</span><span class='line'>S&rPo{!x[WZ;7$ZhnY6cC/0Z++1q$*M#f-q+y&,XfYaIXM:o&gt;3&g3c73
-</span><span class='line'>j%cP0!d9iEuGS9K$PlFw1d1va6i5;opi:7Eym9,+7uXE&gt;T71
-</span><span class='line'>XVV$@[J.2f3WH5#.:B6r
-</span><span class='line'>N83N!-R?X=trl2)&gt;%hX&gt;+F51vuA2N5PsX.6Z &gt;)Z[hl&lt;vV1p
-</span><span class='line'>frXVrPeu4sPrE)+1Jd3o
-</span><span class='line'>q,EC,!Y@4?e[8i3E;;^izAG:Zs7n
-</span><span class='line'>7J[oRL_h3!s90ylZ4yRAV93wNmiR :^]1T;RTsrJGLCAEP8j
-</span><span class='line'>s2zycv5t&6cu3I80
-</span><span class='line'>::]&gt;ce]JoL23vPLl?wAewT2e
-</span><span class='line'>-K0TcB#kBkGEL#{F)E8i&lt;vJ4yfhzWFCC7=pf]q1f
-</span><span class='line'>*Q0)Mh^YjU;/KCha3ksX9S$/%JB&ss&lt;zcx49
-</span><span class='line'> VYt7vD1z1*U3be4$vDfg5R$hh/sTl&lt;G79!rFK(z@1b&ai^8{ Z_7]W?ptG/G(/^Xl62
-</span><span class='line'>HFZWJbYW6w=w3cHuV^7m
-</span><span class='line'>mb/Xj3&o{&lt;!,D!ah%#1CHK))vmEsV7kkg:o.cU,U38pi)5h!:7b8{uUQlU8UycV)djcN8jmN^*i&gt;axl&_f9m
-</span><span class='line'>=MWAGWnJc$cDXu dXv7/@$ibD=2qT+^#Xu&;Qwt89:f6Rl93s0[-]Zi8GL2k=3&84&gt;]+My/@9(clKV h0_dryX&gt;n{ aaSx6i
-</span><span class='line'>+h^0pBPViwlQ#D1-:zeVJ&gt;^RREeykc]V;[WhkcKeDI&lt;Z7jd5ZI@6:+X5f]&g:Q9AJFFQH4??IWDyAiQ,g]Btn)$&d-7q</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
     <a href="/blog/archives">Blog Archives</a>
@@ -613,14 +587,22 @@ ref <a href="https://www.pluralsight.com/guides/ruby-ruby-on-rails/creating-a-ch
 <li class='category'><a href='/blog/categories/bat/'>bat (9)</a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (10)</a></li>
 <li class='category'><a href='/blog/categories/notepad/'>notepad (1)</a></li>
-<li class='category'><a href='/blog/categories/ror/'>ror (14)</a></li>
-<li class='category'><a href='/blog/categories/ruby/'>ruby (24)</a></li>
+<li class='category'><a href='/blog/categories/ror/'>ror (15)</a></li>
+<li class='category'><a href='/blog/categories/ruby/'>ruby (25)</a></li>
 
     </ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2017/01/11/check-value/">Check_value</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2017/01/11/rails-hang/">Rails-hang</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2017/01/11/chat/">Chat</a>
@@ -632,14 +614,6 @@ ref <a href="https://www.pluralsight.com/guides/ruby-ruby-on-rails/creating-a-ch
     
       <li class="post">
         <a href="/blog/2017/01/05/longest/">陣列中最長的元素</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2017/01/01/proxy/">Proxy</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2017/01/01/sqlmap/">Sqlmap</a>
       </li>
     
   </ul>
