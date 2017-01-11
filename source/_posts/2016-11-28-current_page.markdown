@@ -11,14 +11,16 @@ categories: ror
 # app/helpers/application_helper
 module ApplicationHelper
  
- def active_class(link_path)
-  current_page?(link_path) ? "active" : ""
- end
+	def render_active(title,path)
+		c = current_page?(path) ? "active" : ""
+		content_tag(:li, link_to( title, path ), :class => c )
+	end
  
+
 end
 ``` 
 
 ``` ruby
 # views
- <li class="<%= active_class(root_path) %>"><%= link_to '全部清單',items_path %>
+<%= render_active( 'Home', root_path ) %>
 ``` 
