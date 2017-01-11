@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://icps0610.github.io/blog/2017/01/11/rails-hang/</loc>
+<lastmod>2017-01-11T08:21:01+08:00</lastmod>
+</url>
+<url>
 <loc>http://icps0610.github.io/blog/2017/01/11/chat/</loc>
 <lastmod>2017-01-11T03:36:38+08:00</lastmod>
 </url>

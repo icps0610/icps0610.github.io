@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ror | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ror/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-01-11T05:19:01+08:00</updated>
+  <updated>2017-01-11T20:36:57+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,19 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Rails-hang]]></title>
+    <link href="http://icps0610.github.io/blog/2017/01/11/rails-hang/"/>
+    <updated>2017-01-11T08:21:01+08:00</updated>
+    <id>http://icps0610.github.io/blog/2017/01/11/rails-hang</id>
+    <content type="html"><![CDATA[<blockquote><p>ref <a href="http://stackoverflow.com/questions/31857365/rails-generate-commands-hang-when-trying-to-create-a-model">http://stackoverflow.com/questions/31857365/rails-generate-commands-hang-when-trying-to-create-a-model</a></p></blockquote>
+
+<p><code>bundle install --binstubs</code></p>
+
+<p><code>bundle binstubs rake</code></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Chat]]></title>
@@ -237,15 +250,17 @@ ZXing.decode( filename )
 <pre><code class="ruby"># app/helpers/application_helper
 module ApplicationHelper
 
- def active_class(link_path)
-  current_page?(link_path) ? "active" : ""
- end
+    def render_active(title,path)
+        c = current_page?(path) ? "active" : ""
+        content_tag(:li, link_to( title, path ), :class =&gt; c )
+    end
+
 
 end
 </code></pre>
 
 <pre><code class="ruby"># views
- &lt;li class="&lt;%= active_class(root_path) %&gt;"&gt;&lt;%= link_to '全部清單',items_path %&gt;
+&lt;%= render_active( 'Home', root_path ) %&gt;
 </code></pre>
 ]]></content>
   </entry>
@@ -357,16 +372,6 @@ end
     &lt;%= link_to "登入", new_user_session_path %&gt;
     &lt;%= link_to("Facebook Login",user_facebook_omniauth_authorize_path) %&gt;
 &lt;% end %&gt;
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[關聯資料排序]]></title>
-    <link href="http://icps0610.github.io/blog/2016/11/17/sort/"/>
-    <updated>2016-11-17T23:09:36+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/11/17/sort</id>
-    <content type="html"><![CDATA[<pre><code class="ruby">Item.includes(:events).order("events.date DESC")
 </code></pre>
 ]]></content>
   </entry>
