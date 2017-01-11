@@ -15,12 +15,10 @@ module ApplicationHelper
 		c = current_page?(path) ? "active" : ""
 		content_tag(:li, link_to( title, path ), :class => c )
 	end
- 
-
 end
 ``` 
 
-``` ruby
+``` ruby 
 # views
 <%= render_active( 'Home', root_path ) %>
 ``` 

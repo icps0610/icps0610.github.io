@@ -52,14 +52,14 @@ end
 </form>
 ```
 
-``` ruby
-#app/views/messages/_message.erb
-<p id='message'><b><%= message.name %></b> : <font id="content"><%= message.content %></font></p>
-```
+``` erb  
+#app/views/messages/_message.erb  
+<front id='message'><b><%= message.name %></b> : <font id="content"><%= message.content %></font></font>
+```  
 
 `rails g channel chat speak`
 
-``` ruby
+``` ruby  
 #app/assets/javascripts/cable.coffee
 //= require action_cable
 //= require_self
@@ -68,7 +68,7 @@ end
 App.cable = ActionCable.createConsumer()
 ```
 
-``` ruby
+``` ruby  
 #app/views/layouts/application.html.erb
 <%= action_cable_meta_tag %>
 ``` 
