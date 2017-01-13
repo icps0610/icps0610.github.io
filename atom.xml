@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-01-13T09:49:51+08:00</updated>
+  <updated>2017-01-13T20:09:53+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -18,7 +18,10 @@
     <link href="http://icps0610.github.io/blog/2017/01/13/link-img/"/>
     <updated>2017-01-13T09:48:39+08:00</updated>
     <id>http://icps0610.github.io/blog/2017/01/13/link-img</id>
-    <content type="html"><![CDATA[<p>&lt;%= link_to(image_tag(&ldquo;path/to/image.png&rdquo;), image_path) %></p>
+    <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='erb'><span class='line'><span class="cp">&lt;%=</span> <span class="n">link_to</span><span class="p">(</span><span class="n">image_tag</span><span class="p">(</span><span class="s2">&quot;path/to/image.png&quot;</span><span class="p">),</span> <span class="n">image_path</span><span class="p">)</span> <span class="cp">%&gt;</span><span class="x"></span>
+</span></code></pre></td></tr></table></div></figure>
+
 ]]></content>
   </entry>
   
