@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-01-13T22:31:22+08:00</updated>
+  <updated>2017-01-14T01:46:02+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,44 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Link_entire_table]]></title>
+    <link href="http://icps0610.github.io/blog/2017/01/14/link-entire-table/"/>
+    <updated>2017-01-14T01:44:58+08:00</updated>
+    <id>http://icps0610.github.io/blog/2017/01/14/link-entire-table</id>
+    <content type="html"><![CDATA[<p><a href="http://stackoverflow.com/questions/4904938/link-entire-table-row">http://stackoverflow.com/questions/4904938/link-entire-table-row</a></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='erb'><span class='line'><span class="x">&lt;script&gt;</span>
+</span><span class='line'><span class="x">  $(&#39;tr&#39;).click( function() {</span>
+</span><span class='line'><span class="x">    window.location = $(this).find(&#39;a&#39;).attr(&#39;href&#39;);</span>
+</span><span class='line'><span class="x">}).hover( function() {</span>
+</span><span class='line'><span class="x">    $(this).toggleClass(&#39;hover&#39;);</span>
+</span><span class='line'><span class="x">});</span>
+</span><span class='line'><span class="x">&lt;/script&gt;</span>
+</span><span class='line'><span class="x">&lt;style&gt;</span>
+</span><span class='line'><span class="x">  tr.hover {</span>
+</span><span class='line'><span class="x">   cursor: pointer;</span>
+</span><span class='line'><span class="x">   /* whatever other hover styles you want */</span>
+</span><span class='line'><span class="x">}</span>
+</span><span class='line'><span class="x">&lt;/style&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Bootstrap_notify]]></title>
@@ -999,61 +1037,6 @@ somewhere on your PATH. More info at https://developer.mozilla.org/en-US/docs/Mo
 <span class='line-number'>2</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>download https://github.com/mozilla/geckodriver/releases
 </span><span class='line'>export PATH=$PATH:/path/to/geckodriver</span></code></pre></td></tr></table></div></figure>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Ping_lan2]]></title>
-    <link href="http://icps0610.github.io/blog/2016/08/24/ping-lan2/"/>
-    <updated>2016-08-24T00:36:40+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/08/24/ping-lan2</id>
-    <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class='bat'><span class='line'><span class="p">@</span><span class="k">echo</span> <span class="k">off</span>
-</span><span class='line'><span class="k">SETLOCAL</span> ENABLEDELAYEDEXPANSION
-</span><span class='line'><span class="k">for</span> <span class="n">/l</span> <span class="nv">%%i</span> in (<span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">254</span>) <span class="k">do</span> (
-</span><span class='line'>   ping -n <span class="m">1</span> -w <span class="m">1</span> <span class="m">192</span>.<span class="m">168</span>.<span class="m">0</span>.<span class="nv">%%i</span> <span class="p">&gt;</span> <span class="n">nul</span>
-</span><span class='line'>  <span class="k">if</span> !<span class="k">errorlevel</span>! <span class="o">==</span> <span class="m">0</span> (
-</span><span class='line'>      <span class="k">echo</span> <span class="m">192</span>.<span class="m">168</span>.<span class="m">0</span>.<span class="nv">%%i</span> O
-</span><span class='line'>  ) <span class="k">else</span> (
-</span><span class='line'>      <span class="k">echo</span> <span class="m">192</span>.<span class="m">168</span>.<span class="m">0</span>.<span class="nv">%%i</span> X
-</span><span class='line'>  )
-</span><span class='line'>)
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class='bat'><span class='line'><span class="p">@</span><span class="k">echo</span> <span class="k">off</span>
-</span><span class='line'><span class="k">SETLOCAL</span> ENABLEDELAYEDEXPANSION
-</span><span class='line'><span class="k">FOR</span> <span class="n">/F</span> <span class="nv">%%i</span> in (ip.txt) <span class="k">do</span> (
-</span><span class='line'>   ping -n <span class="m">1</span> -w <span class="m">1</span> <span class="nv">%%i</span> <span class="p">&gt;</span> <span class="n">nul</span>
-</span><span class='line'>  <span class="k">if</span> !<span class="k">errorlevel</span>! <span class="o">==</span> <span class="m">0</span> (
-</span><span class='line'>      <span class="k">echo</span> <span class="nv">%%i</span> O
-</span><span class='line'>  ) <span class="k">else</span> (
-</span><span class='line'>      <span class="k">echo</span> <span class="nv">%%i</span> X
-</span><span class='line'>  )
-</span><span class='line'>)
-</span></code></pre></td></tr></table></div></figure>
 
 ]]></content>
   </entry>

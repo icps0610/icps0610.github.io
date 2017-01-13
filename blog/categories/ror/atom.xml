@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ror | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ror/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-01-13T22:31:22+08:00</updated>
+  <updated>2017-01-14T01:46:02+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,30 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Link_entire_table]]></title>
+    <link href="http://icps0610.github.io/blog/2017/01/14/link-entire-table/"/>
+    <updated>2017-01-14T01:44:58+08:00</updated>
+    <id>http://icps0610.github.io/blog/2017/01/14/link-entire-table</id>
+    <content type="html"><![CDATA[<p><a href="http://stackoverflow.com/questions/4904938/link-entire-table-row">http://stackoverflow.com/questions/4904938/link-entire-table-row</a></p>
+
+<p>``` erb</p>
+
+<script>
+  $('tr').click( function() {
+    window.location = $(this).find('a').attr('href');
+}).hover( function() {
+    $(this).toggleClass('hover');
+});
+</script>
+
+
+
+
+<p>```</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Bootstrap_notify]]></title>
@@ -267,32 +291,6 @@ end
   position: relative;
 }
 </code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[QRrcode-heroku]]></title>
-    <link href="http://icps0610.github.io/blog/2016/12/29/qrcode/"/>
-    <updated>2016-12-29T01:28:11+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/12/29/qrcode</id>
-    <content type="html"><![CDATA[<h4>Decoder - zxing</h4>
-
-<p><code>heroku buildpacks:add --index 1 https://github.com/heroku/heroku-buildpack-apt</code><br/>
-<code>echo cmake &gt; Aptfile</code><br/>
-<code>git push heroku master</code></p>
-
-<pre><code class="ruby">#!/usr/bin/env ruby
-#Gemfile
-gem 'zxing_cpp'
-
-#controller.rb
-require 'zxing'
-ZXing.decode( filename )
-</code></pre>
-
-<h4>Encoder - rqrcode_png</h4>
-
-<p><a href="https://github.com/DCarper/rqrcode_png">https://github.com/DCarper/rqrcode_png</a></p>
 ]]></content>
   </entry>
   

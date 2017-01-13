@@ -5,16 +5,24 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>補零 - icps</title>
+  <title>Link_entire_table - icps</title>
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="1
+  <meta name="description" content="http://stackoverflow.com/questions/4904938/link-entire-table-row 1
 2
 3
-number=&quot;23&quot;
-p number.rjust(8, &#39;0&#39;)
-#&quot;00000023&quot; ">
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+&lt;script&gt; $(&#39;tr&#39;).click( function() { &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -23,7 +31,7 @@ p number.rjust(8, &#39;0&#39;)
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://icps0610.github.io/blog/2016/06/17/zero-fill/">
+  <link rel="canonical" href="http://icps0610.github.io/blog/2017/01/14/link-entire-table/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="icps" type="application/atom+xml">
@@ -75,7 +83,7 @@ p number.rjust(8, &#39;0&#39;)
   
   <header>
     
-      <h1 class="entry-title">補零</h1>
+      <h1 class="entry-title">Link_entire_table</h1>
     
     
       <p class="meta">
@@ -84,19 +92,41 @@ p number.rjust(8, &#39;0&#39;)
 
 
 
-<time class='entry-date' datetime='2016-06-17T20:57:53+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>8:57 pm</span></time>
+<time class='entry-date' datetime='2017-01-14T01:44:58+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>1:44 am</span></time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<div class="entry-content"><p><a href="http://stackoverflow.com/questions/4904938/link-entire-table-row">http://stackoverflow.com/questions/4904938/link-entire-table-row</a></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">number</span><span class="o">=</span><span class="s2">&quot;23&quot;</span>
-</span><span class='line'><span class="nb">p</span> <span class="n">number</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="s1">&#39;0&#39;</span><span class="p">)</span>
-</span><span class='line'><span class="c1">#&quot;00000023&quot;</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='erb'><span class='line'><span class="x">&lt;script&gt;</span>
+</span><span class='line'><span class="x">  $(&#39;tr&#39;).click( function() {</span>
+</span><span class='line'><span class="x">    window.location = $(this).find(&#39;a&#39;).attr(&#39;href&#39;);</span>
+</span><span class='line'><span class="x">}).hover( function() {</span>
+</span><span class='line'><span class="x">    $(this).toggleClass(&#39;hover&#39;);</span>
+</span><span class='line'><span class="x">});</span>
+</span><span class='line'><span class="x">&lt;/script&gt;</span>
+</span><span class='line'><span class="x">&lt;style&gt;</span>
+</span><span class='line'><span class="x">  tr.hover {</span>
+</span><span class='line'><span class="x">   cursor: pointer;</span>
+</span><span class='line'><span class="x">   /* whatever other hover styles you want */</span>
+</span><span class='line'><span class="x">}</span>
+</span><span class='line'><span class="x">&lt;/style&gt;</span>
 </span></code></pre></td></tr></table></div></figure>
 
 </div>
@@ -114,12 +144,12 @@ p number.rjust(8, &#39;0&#39;)
 
 
 
-<time class='entry-date' datetime='2016-06-17T20:57:53+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>8:57 pm</span></time>
+<time class='entry-date' datetime='2017-01-14T01:44:58+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>1:44 am</span></time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/ruby/'>ruby</a>
+    <a class='category' href='/blog/categories/ror/'>ror</a>
   
 </span>
 
@@ -135,10 +165,8 @@ p number.rjust(8, &#39;0&#39;)
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2016/06/17/array/" title="Previous Post: array">&laquo; array</a>
+        <a class="basic-alignment left" href="/blog/2017/01/13/bootstrap-notify/" title="Previous Post: bootstrap_notify">&laquo; bootstrap_notify</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2016/06/17/csv/" title="Next Post: csv">csv &raquo;</a>
       
     </p>
   </footer>
