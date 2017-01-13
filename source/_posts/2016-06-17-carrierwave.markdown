@@ -73,3 +73,24 @@ end
 <%= image_tag @store.image_url.to_s %>
 <%= image_tag @store.image_url(:thumb).to_s %>
 ```
+
+### content_type
+
+``` ruby
+#app/models/share.rb
+class Share < ApplicationRecord
+  mount_uploader :image, ImageUploader
+
+  before_save :update_image_attributes
+
+  private
+
+  def update_image_attributes
+    if image.present? && image_changed?
+      self.content_type = image.file.content_type
+    end
+  end
+end
+
+#db  =>>> t.string :content_type
+```
