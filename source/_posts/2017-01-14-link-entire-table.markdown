@@ -6,9 +6,9 @@ comments: true
 categories: ror
 ---
 
-http://stackoverflow.com/questions/4904938/link-entire-table-row
+> ref http://stackoverflow.com/questions/4904938/link-entire-table-row
 
-``` erb
+``` html
 <script>
   $('tr').click( function() {
     window.location = $(this).find('a').attr('href');
