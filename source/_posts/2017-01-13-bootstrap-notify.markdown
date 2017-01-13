@@ -46,5 +46,5 @@ categories: ror
 
 ``` ruby
 #app/controllers/uploads_controller.rb
-flash[:success] = "uploaded"
+flash[:notice] = "uploaded"
 ```
