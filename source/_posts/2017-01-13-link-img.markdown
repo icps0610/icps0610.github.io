@@ -1,0 +1,9 @@
+---
+layout: post
+title: "link_img"
+date: 2017-01-13 09:48:39 +0800
+comments: true
+categories: ror
+---
+
+<%= link_to(image_tag("path/to/image.png"), image_path) %>
