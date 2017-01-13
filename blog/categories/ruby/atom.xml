@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-01-13T20:09:53+08:00</updated>
+  <updated>2017-01-13T22:31:22+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,25 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Ruby_mysql]]></title>
+    <link href="http://icps0610.github.io/blog/2017/01/13/ruby-mysql/"/>
+    <updated>2017-01-13T21:24:56+08:00</updated>
+    <id>http://icps0610.github.io/blog/2017/01/13/ruby-mysql</id>
+    <content type="html"><![CDATA[<pre><code class="ruby">require 'active_record'
+ActiveRecord::Base.establish_connection({
+  adapter: 'mysql2',
+  encoding: 'utf8',
+  database: 'report',
+  username: 'user',
+  password: 'passwd'
+})
+class Event &lt; ActiveRecord::Base
+end
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Check_value]]></title>
@@ -63,17 +82,6 @@ end
     <id>http://icps0610.github.io/blog/2016/11/21/rmagick</id>
     <content type="html"><![CDATA[<p>apt-get install imagemagick libmagickwand-dev
 gem install rmagick</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Stack_level_too_deep]]></title>
-    <link href="http://icps0610.github.io/blog/2016/07/30/stack-level-too-deep/"/>
-    <updated>2016-07-30T21:04:56+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/07/30/stack-level-too-deep</id>
-    <content type="html"><![CDATA[<p>stack level too deep</p>
-
-<p>export RUBY_THREAD_VM_STACK_SIZE=999999</p>
 ]]></content>
   </entry>
   

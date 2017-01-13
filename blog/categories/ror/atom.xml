@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ror | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ror/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-01-13T20:09:53+08:00</updated>
+  <updated>2017-01-13T22:31:22+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,58 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Bootstrap_notify]]></title>
+    <link href="http://icps0610.github.io/blog/2017/01/13/bootstrap-notify/"/>
+    <updated>2017-01-13T21:25:05+08:00</updated>
+    <id>http://icps0610.github.io/blog/2017/01/13/bootstrap-notify</id>
+    <content type="html"><![CDATA[<h3><a href="https://github.com/jclay/bootstrap-notify-gem">https://github.com/jclay/bootstrap-notify-gem</a></h3>
+
+<p><code>gem 'bootstrap_notify'</code></p>
+
+<pre><code>#application.js
+//= require jquery
+//= require jquery_ujs
+//= require bootstrap_notify
+</code></pre>
+
+
+
+
+<pre><code>#application.scss
+@import "bootstrap";
+@import "bootstrap_notify";
+</code></pre>
+
+
+<pre><code class="erb">#app/views/partials/_notify.erb
+&lt;% if !notice.blank? %&gt;
+    &lt;script&gt; 
+        $(document).ready(function () {
+            $('.top-left').notify({
+                &lt;% flash.each do |name, msg| %&gt;
+                    message: { text: "&lt;%= msg %&gt;" }
+                &lt;% end %&gt;  
+            }).show();
+        });
+    &lt;/script&gt;
+&lt;% end %&gt;
+</code></pre>
+
+<pre><code class="erb">#app/views/layouts/application.erb in head tag
+&lt;%= render(:partial =&gt; "partials/notify") %&gt;
+</code></pre>
+
+<pre><code class="erb">#app/views/layouts/application.erb in body tag
+#&lt;div class='notifications top-left'&gt;&lt;/div&gt;
+</code></pre>
+
+<pre><code class="ruby">#app/controllers/uploads_controller.rb
+flash[:success] = "uploaded"
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Link_img]]></title>
@@ -241,29 +293,6 @@ ZXing.decode( filename )
 <h4>Encoder - rqrcode_png</h4>
 
 <p><a href="https://github.com/DCarper/rqrcode_png">https://github.com/DCarper/rqrcode_png</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Current_page]]></title>
-    <link href="http://icps0610.github.io/blog/2016/11/28/current_page/"/>
-    <updated>2016-11-28T13:37:45+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/11/28/current_page</id>
-    <content type="html"><![CDATA[<blockquote><p>ref : <a href="https://kmywblog.wordpress.com/2015/10/13/">https://kmywblog.wordpress.com/2015/10/13/</a></p></blockquote>
-
-<pre><code class="ruby"># app/helpers/application_helper
-module ApplicationHelper
-
-    def render_active(title,path)
-        c = current_page?(path) ? "active" : ""
-        content_tag(:li, link_to( title, path ), :class =&gt; c )
-    end
-end
-</code></pre>
-
-<pre><code class="ruby "># views
-&lt;%= render_active( 'Home', root_path ) %&gt;
-</code></pre>
 ]]></content>
   </entry>
   
