@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ror | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ror/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-01-14T01:46:02+08:00</updated>
+  <updated>2017-01-14T01:47:26+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -18,9 +18,9 @@
     <link href="http://icps0610.github.io/blog/2017/01/14/link-entire-table/"/>
     <updated>2017-01-14T01:44:58+08:00</updated>
     <id>http://icps0610.github.io/blog/2017/01/14/link-entire-table</id>
-    <content type="html"><![CDATA[<p><a href="http://stackoverflow.com/questions/4904938/link-entire-table-row">http://stackoverflow.com/questions/4904938/link-entire-table-row</a></p>
+    <content type="html"><![CDATA[<blockquote><p>ref <a href="http://stackoverflow.com/questions/4904938/link-entire-table-row">http://stackoverflow.com/questions/4904938/link-entire-table-row</a></p></blockquote>
 
-<p>``` erb</p>
+<p>``` html</p>
 
 <script>
   $('tr').click( function() {

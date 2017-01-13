@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-01-14T01:46:02+08:00</updated>
+  <updated>2017-01-14T01:47:26+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -18,7 +18,7 @@
     <link href="http://icps0610.github.io/blog/2017/01/14/link-entire-table/"/>
     <updated>2017-01-14T01:44:58+08:00</updated>
     <id>http://icps0610.github.io/blog/2017/01/14/link-entire-table</id>
-    <content type="html"><![CDATA[<p><a href="http://stackoverflow.com/questions/4904938/link-entire-table-row">http://stackoverflow.com/questions/4904938/link-entire-table-row</a></p>
+    <content type="html"><![CDATA[<blockquote><p>ref <a href="http://stackoverflow.com/questions/4904938/link-entire-table-row">http://stackoverflow.com/questions/4904938/link-entire-table-row</a></p></blockquote>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -33,19 +33,19 @@
 <span class='line-number'>11</span>
 <span class='line-number'>12</span>
 <span class='line-number'>13</span>
-</pre></td><td class='code'><pre><code class='erb'><span class='line'><span class="x">&lt;script&gt;</span>
-</span><span class='line'><span class="x">  $(&#39;tr&#39;).click( function() {</span>
-</span><span class='line'><span class="x">    window.location = $(this).find(&#39;a&#39;).attr(&#39;href&#39;);</span>
-</span><span class='line'><span class="x">}).hover( function() {</span>
-</span><span class='line'><span class="x">    $(this).toggleClass(&#39;hover&#39;);</span>
-</span><span class='line'><span class="x">});</span>
-</span><span class='line'><span class="x">&lt;/script&gt;</span>
-</span><span class='line'><span class="x">&lt;style&gt;</span>
-</span><span class='line'><span class="x">  tr.hover {</span>
-</span><span class='line'><span class="x">   cursor: pointer;</span>
-</span><span class='line'><span class="x">   /* whatever other hover styles you want */</span>
-</span><span class='line'><span class="x">}</span>
-</span><span class='line'><span class="x">&lt;/style&gt;</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;script&gt;</span>
+</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;tr&#39;</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nb">window</span><span class="p">.</span><span class="nx">location</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;href&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="p">}).</span><span class="nx">hover</span><span class="p">(</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">toggleClass</span><span class="p">(</span><span class="s1">&#39;hover&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="p">});</span>
+</span><span class='line'><span class="nt">&lt;/script&gt;</span>
+</span><span class='line'><span class="nt">&lt;style&gt;</span>
+</span><span class='line'>  <span class="nt">tr</span><span class="nc">.hover</span> <span class="p">{</span>
+</span><span class='line'>   <span class="k">cursor</span><span class="o">:</span> <span class="k">pointer</span><span class="p">;</span>
+</span><span class='line'>   <span class="c">/* whatever other hover styles you want */</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="nt">&lt;/style&gt;</span>
 </span></code></pre></td></tr></table></div></figure>
 
 ]]></content>
