@@ -6,9 +6,11 @@ comments: true
 categories: ruby
 ---
 
+http://stackoverflow.com/questions/569694/count-duplicate-elements-in-ruby-array
+
 ``` ruby  
 array = ["aa","bb","cc","bb","bb","cc"]
-array.each_with_object(Hash.new(0)){|w,c| c[w]+=1}.each do |w,c|
+array.each_with_object(Hash.new(0)){|w,c|c[w]+=1}.each do |w,c|
 	puts "#{w} #{c} times"
 end
-```  
+```
