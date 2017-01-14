@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-01-14T17:14:39+08:00</updated>
+  <updated>2017-01-14T17:17:30+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -18,8 +18,10 @@
     <link href="http://icps0610.github.io/blog/2017/01/14/dupclicate-elements/"/>
     <updated>2017-01-14T17:11:55+08:00</updated>
     <id>http://icps0610.github.io/blog/2017/01/14/dupclicate-elements</id>
-    <content type="html"><![CDATA[<pre><code class="ruby  ">array = ["aa","bb","cc","bb","bb","cc"]
-array.each_with_object(Hash.new(0)){|w,c| c[w]+=1}.each do |w,c|
+    <content type="html"><![CDATA[<p><a href="http://stackoverflow.com/questions/569694/count-duplicate-elements-in-ruby-array">http://stackoverflow.com/questions/569694/count-duplicate-elements-in-ruby-array</a></p>
+
+<pre><code class="ruby  ">array = ["aa","bb","cc","bb","bb","cc"]
+array.each_with_object(Hash.new(0)){|w,c|c[w]+=1}.each do |w,c|
     puts "#{w} #{c} times"
 end
 </code></pre>

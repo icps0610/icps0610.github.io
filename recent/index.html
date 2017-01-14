@@ -9,12 +9,11 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="1
+  <meta name="description" content="http://stackoverflow.com/questions/569694/count-duplicate-elements-in-ruby-array 1
 2
 3
 4
-array = [&quot;aa&quot;,&quot;bb&quot;,&quot;cc&quot;,&quot;bb&quot;,&quot;bb&quot;,&quot;cc&quot;]
-array.each_with_object(Hash.new(0)){|w,c &hellip;">
+array = [&quot;aa&quot;,&quot;bb&quot;,&quot;cc&quot;,&quot; &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -94,18 +93,18 @@ array.each_with_object(Hash.new(0)){|w,c &hellip;">
   </header>
 
 
-  <div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+  <div class="entry-content"><p><a href="http://stackoverflow.com/questions/569694/count-duplicate-elements-in-ruby-array">http://stackoverflow.com/questions/569694/count-duplicate-elements-in-ruby-array</a></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">array</span> <span class="o">=</span> <span class="o">[</span><span class="s2">&quot;aa&quot;</span><span class="p">,</span><span class="s2">&quot;bb&quot;</span><span class="p">,</span><span class="s2">&quot;cc&quot;</span><span class="p">,</span><span class="s2">&quot;bb&quot;</span><span class="p">,</span><span class="s2">&quot;bb&quot;</span><span class="p">,</span><span class="s2">&quot;cc&quot;</span><span class="o">]</span>
-</span><span class='line'><span class="n">array</span><span class="o">.</span><span class="n">each_with_object</span><span class="p">(</span><span class="no">Hash</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">0</span><span class="p">)){</span><span class="o">|</span><span class="n">w</span><span class="p">,</span><span class="n">c</span><span class="o">|</span> <span class="n">c</span><span class="o">[</span><span class="n">w</span><span class="o">]+=</span><span class="mi">1</span><span class="p">}</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">w</span><span class="p">,</span><span class="n">c</span><span class="o">|</span>
+</span><span class='line'><span class="n">array</span><span class="o">.</span><span class="n">each_with_object</span><span class="p">(</span><span class="no">Hash</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">0</span><span class="p">)){</span><span class="o">|</span><span class="n">w</span><span class="p">,</span><span class="n">c</span><span class="o">|</span><span class="n">c</span><span class="o">[</span><span class="n">w</span><span class="o">]+=</span><span class="mi">1</span><span class="p">}</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">w</span><span class="p">,</span><span class="n">c</span><span class="o">|</span>
 </span><span class='line'>  <span class="nb">puts</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">w</span><span class="si">}</span><span class="s2"> </span><span class="si">#{</span><span class="n">c</span><span class="si">}</span><span class="s2"> times&quot;</span>
 </span><span class='line'><span class="k">end</span>
 </span></code></pre></td></tr></table></div></figure>
 
-
-<p></p>
 </div>
   
   
