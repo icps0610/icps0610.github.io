@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-01-14T02:13:28+08:00</updated>
+  <updated>2017-01-14T17:14:39+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,26 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Dupclicate_elements]]></title>
+    <link href="http://icps0610.github.io/blog/2017/01/14/dupclicate-elements/"/>
+    <updated>2017-01-14T17:11:55+08:00</updated>
+    <id>http://icps0610.github.io/blog/2017/01/14/dupclicate-elements</id>
+    <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">array</span> <span class="o">=</span> <span class="o">[</span><span class="s2">&quot;aa&quot;</span><span class="p">,</span><span class="s2">&quot;bb&quot;</span><span class="p">,</span><span class="s2">&quot;cc&quot;</span><span class="p">,</span><span class="s2">&quot;bb&quot;</span><span class="p">,</span><span class="s2">&quot;bb&quot;</span><span class="p">,</span><span class="s2">&quot;cc&quot;</span><span class="o">]</span>
+</span><span class='line'><span class="n">array</span><span class="o">.</span><span class="n">each_with_object</span><span class="p">(</span><span class="no">Hash</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">0</span><span class="p">)){</span><span class="o">|</span><span class="n">w</span><span class="p">,</span><span class="n">c</span><span class="o">|</span> <span class="n">c</span><span class="o">[</span><span class="n">w</span><span class="o">]+=</span><span class="mi">1</span><span class="p">}</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">w</span><span class="p">,</span><span class="n">c</span><span class="o">|</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">w</span><span class="si">}</span><span class="s2"> </span><span class="si">#{</span><span class="n">c</span><span class="si">}</span><span class="s2"> times&quot;</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Link_entire_table]]></title>
@@ -1015,29 +1035,6 @@ gem install rmagick</p>
 
 
 <p></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Watir]]></title>
-    <link href="http://icps0610.github.io/blog/2016/11/12/watir/"/>
-    <updated>2016-11-12T16:06:53+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/11/12/watir</id>
-    <content type="html"><![CDATA[<h4>msg</h4>
-
-<pre><code>/var/lib/gems/2.3.0/gems/selenium-webdriver-3.0.1/lib/selenium/webdriver/firefox.rb:58:in `driver_path':     
-Unable to find Mozilla geckodriver. Please download the server from        https://github.com/mozilla/geckodriver/releases and place it
-somewhere on your PATH. More info at https://developer.mozilla.org/en-US/docs/Mozilla/QA/Marionette/WebDriver. (Selenium::WebDriver::Error::WebDriverError)
-</pre>
-
-
-<p></code></p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>download https://github.com/mozilla/geckodriver/releases
-</span><span class='line'>export PATH=$PATH:/path/to/geckodriver</span></code></pre></td></tr></table></div></figure>
-
 ]]></content>
   </entry>
   

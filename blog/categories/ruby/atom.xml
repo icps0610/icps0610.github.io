@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-01-14T02:13:28+08:00</updated>
+  <updated>2017-01-14T17:14:39+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,19 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Dupclicate_elements]]></title>
+    <link href="http://icps0610.github.io/blog/2017/01/14/dupclicate-elements/"/>
+    <updated>2017-01-14T17:11:55+08:00</updated>
+    <id>http://icps0610.github.io/blog/2017/01/14/dupclicate-elements</id>
+    <content type="html"><![CDATA[<pre><code class="ruby  ">array = ["aa","bb","cc","bb","bb","cc"]
+array.each_with_object(Hash.new(0)){|w,c| c[w]+=1}.each do |w,c|
+    puts "#{w} #{c} times"
+end
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Ruby_mysql]]></title>
@@ -72,16 +85,6 @@ def n425(num)
     num.to_s.to_f.round
 end 
 </code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Rmagick]]></title>
-    <link href="http://icps0610.github.io/blog/2016/11/21/rmagick/"/>
-    <updated>2016-11-21T17:15:47+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/11/21/rmagick</id>
-    <content type="html"><![CDATA[<p>apt-get install imagemagick libmagickwand-dev
-gem install rmagick</p>
 ]]></content>
   </entry>
   
