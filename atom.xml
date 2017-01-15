@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-01-15T08:37:00+08:00</updated>
+  <updated>2017-01-15T08:37:46+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -597,8 +597,8 @@ ref <a href="https://www.pluralsight.com/guides/ruby-ruby-on-rails/creating-a-ch
     <id>http://icps0610.github.io/blog/2017/01/05/longest</id>
     <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">array</span> <span class="o">=</span> <span class="o">=[[</span><span class="s2">&quot;I&quot;</span><span class="p">,</span><span class="s2">&quot;sky&quot;</span><span class="o">]</span><span class="p">,</span><span class="o">[</span><span class="s2">&quot;love&quot;</span><span class="p">,</span><span class="s2">&quot;baby&quot;</span><span class="o">]</span><span class="p">,</span><span class="o">[</span><span class="s2">&quot;apple&quot;</span><span class="p">,</span><span class="s2">&quot;book&quot;</span><span class="o">]]</span>
-</span><span class='line'><span class="n">arraycollect</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:first</span><span class="p">)</span><span class="o">.</span><span class="n">max_by</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:length</span><span class="p">)</span><span class="o">.</span><span class="n">length</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">array</span> <span class="o">=</span> <span class="o">[[</span><span class="s2">&quot;I&quot;</span><span class="p">,</span><span class="s2">&quot;sky&quot;</span><span class="o">]</span><span class="p">,</span><span class="o">[</span><span class="s2">&quot;love&quot;</span><span class="p">,</span><span class="s2">&quot;baby&quot;</span><span class="o">]</span><span class="p">,</span><span class="o">[</span><span class="s2">&quot;apple&quot;</span><span class="p">,</span><span class="s2">&quot;book&quot;</span><span class="o">]]</span>
+</span><span class='line'><span class="n">arraycollect</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:first</span><span class="p">)</span><span class="o">.</span><span class="n">max_by</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:length</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure>
 
 ]]></content>
