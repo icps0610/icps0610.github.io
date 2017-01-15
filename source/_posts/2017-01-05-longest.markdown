@@ -5,4 +5,8 @@ date: 2017-01-05 05:10:44 +0800
 comments: true
 categories: ruby
 ---
-`array.max_by(&:length)`  
+
+``` ruby
+array = =[["I","sky"],["love","baby"],["apple","book"]]
+arraycollect(&:first).max_by(&:length).length
+```
