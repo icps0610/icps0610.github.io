@@ -7,5 +7,5 @@ categories: ror
 ---
 
 ` mysqldump -u root --password=passwd gmail_development > db.sql`
-`mysql -u root -P passwd databasename  db.sql`
+`mysql -u root --password=passwd databasename < db.sql`
 `echo "select * from column" | mysql -u root -p -A databasename > result.txt`
