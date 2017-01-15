@@ -7,6 +7,8 @@ categories: ruby
 ---
 
 ``` ruby
-array = [["I","sky"],["love","baby"],["apple","book"]]
-arraycollect(&:first).max_by(&:length)
+arr =[["I","block"],["love","wikipedia"],["apple","worst"]]
+
+arr.collect{|i| i[1]}.max_by(&:length).length
+arr.collect(&:first)
 ```
