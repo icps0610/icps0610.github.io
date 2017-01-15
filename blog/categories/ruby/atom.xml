@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-01-14T17:17:30+08:00</updated>
+  <updated>2017-01-15T08:37:00+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,15 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Sum_of_array]]></title>
+    <link href="http://icps0610.github.io/blog/2017/01/14/sum-of-array/"/>
+    <updated>2017-01-14T19:41:40+08:00</updated>
+    <id>http://icps0610.github.io/blog/2017/01/14/sum-of-array</id>
+    <content type="html"><![CDATA[<p><code>array.inject(0){|sum,x| sum + x[0] }</code></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Dupclicate_elements]]></title>
@@ -66,26 +75,8 @@ end
     <link href="http://icps0610.github.io/blog/2017/01/05/longest/"/>
     <updated>2017-01-05T05:10:44+08:00</updated>
     <id>http://icps0610.github.io/blog/2017/01/05/longest</id>
-    <content type="html"><![CDATA[<p><code>array.max_by(&amp;:length)</code></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[四捨五入]]></title>
-    <link href="http://icps0610.github.io/blog/2016/12/27/round/"/>
-    <updated>2016-12-27T14:42:06+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/12/27/round</id>
-    <content type="html"><![CDATA[<pre><code class="ruby">#!/usr/bin/env ruby
-# encoding: utf-8
-def n425(num)
-    test = num.to_s.match(/(\d*)\.(\d{1})/)
-    test[2].to_i &gt;= 5 ? test = test[1].to_i+1 : test = test[1].to_i
-    num &lt; 0 ? test*(-1) : test
-end
-
-def n425(num)
-    num.to_s.to_f.round
-end 
+    <content type="html"><![CDATA[<pre><code class="ruby">array = =[["I","sky"],["love","baby"],["apple","book"]]
+arraycollect(&amp;:first).max_by(&amp;:length).length
 </code></pre>
 ]]></content>
   </entry>
