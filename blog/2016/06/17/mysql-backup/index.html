@@ -9,9 +9,9 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="mysqldump -u root --password=passwd gmail_development &gt; db.sql
+  <meta name="description" content="mysqldump -u root --password=passwd databasename &gt; db.sql
 mysql -u root --password=passwd databasename &lt; db.sql
-echo "select * from column &hellip;">
+echo "select * from column" | &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -88,9 +88,22 @@ echo "select * from column &hellip;">
   </header>
 
 
-<div class="entry-content"><p><code>mysqldump -u root --password=passwd gmail_development &gt; db.sql</code>
+<div class="entry-content"><p><code>mysqldump -u root --password=passwd databasename &gt; db.sql</code>
 <code>mysql -u root --password=passwd databasename &lt; db.sql</code>
 <code>echo "select * from column" | mysql -u root -p -A databasename &gt; result.txt</code></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#backup_mysql.rb</span>
+</span><span class='line'><span class="n">dbs</span><span class="o">=</span><span class="sb">`mysql -u root --password=passwd -Bse &#39;show databases&#39;`</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="n">dbs</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">db</span><span class="o">|</span>
+</span><span class='line'>  <span class="sb">`mysqldump -u root --password=passwd </span><span class="si">#{</span><span class="n">db</span><span class="si">}</span><span class="sb"> &gt; </span><span class="si">#{</span><span class="n">db</span><span class="si">}</span><span class="sb">.sql`</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
 </div>
 
 
