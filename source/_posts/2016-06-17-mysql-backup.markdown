@@ -6,6 +6,14 @@ comments: true
 categories: ror
 ---
 
-` mysqldump -u root --password=passwd gmail_development > db.sql`
+` mysqldump -u root --password=passwd databasename > db.sql`
 `mysql -u root --password=passwd databasename < db.sql`
 `echo "select * from column" | mysql -u root -p -A databasename > result.txt`
+
+``` ruby
+#backup_mysql.rb
+dbs=`mysql -u root --password=passwd -Bse 'show databases'`.split("\n")
+dbs.each do |db|
+	`mysqldump -u root --password=passwd #{db} > #{db}.sql`
+end
+```
