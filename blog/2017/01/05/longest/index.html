@@ -11,8 +11,9 @@
   
   <meta name="description" content="1
 2
-array = [[&quot;I&quot;,&quot;sky&quot;],[&quot;love&quot;,&quot;baby&quot;],[&quot;apple&quot;,&quot;book&quot;]]
-arraycollect(&amp;:first). &hellip;">
+3
+4
+arr =[[&quot;I&quot;,&quot;block&quot;],[&quot;love&quot;,&quot;wikipedia&quot;],[&quot;apple&quot;,&quot;worst&quot;]] arr.collect{|i| i[1 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -91,8 +92,12 @@ arraycollect(&amp;:first). &hellip;">
 
 <div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">array</span> <span class="o">=</span> <span class="o">[[</span><span class="s2">&quot;I&quot;</span><span class="p">,</span><span class="s2">&quot;sky&quot;</span><span class="o">]</span><span class="p">,</span><span class="o">[</span><span class="s2">&quot;love&quot;</span><span class="p">,</span><span class="s2">&quot;baby&quot;</span><span class="o">]</span><span class="p">,</span><span class="o">[</span><span class="s2">&quot;apple&quot;</span><span class="p">,</span><span class="s2">&quot;book&quot;</span><span class="o">]]</span>
-</span><span class='line'><span class="n">arraycollect</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:first</span><span class="p">)</span><span class="o">.</span><span class="n">max_by</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:length</span><span class="p">)</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">arr</span> <span class="o">=[[</span><span class="s2">&quot;I&quot;</span><span class="p">,</span><span class="s2">&quot;block&quot;</span><span class="o">]</span><span class="p">,</span><span class="o">[</span><span class="s2">&quot;love&quot;</span><span class="p">,</span><span class="s2">&quot;wikipedia&quot;</span><span class="o">]</span><span class="p">,</span><span class="o">[</span><span class="s2">&quot;apple&quot;</span><span class="p">,</span><span class="s2">&quot;worst&quot;</span><span class="o">]]</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">arr</span><span class="o">.</span><span class="n">collect</span><span class="p">{</span><span class="o">|</span><span class="n">i</span><span class="o">|</span> <span class="n">i</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="p">}</span><span class="o">.</span><span class="n">max_by</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:length</span><span class="p">)</span><span class="o">.</span><span class="n">length</span>
+</span><span class='line'><span class="n">arr</span><span class="o">.</span><span class="n">collect</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:first</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure>
 
 </div>

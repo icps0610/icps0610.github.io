@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-01-15T08:37:46+08:00</updated>
+  <updated>2017-01-15T08:44:22+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -75,8 +75,10 @@ end
     <link href="http://icps0610.github.io/blog/2017/01/05/longest/"/>
     <updated>2017-01-05T05:10:44+08:00</updated>
     <id>http://icps0610.github.io/blog/2017/01/05/longest</id>
-    <content type="html"><![CDATA[<pre><code class="ruby">array = [["I","sky"],["love","baby"],["apple","book"]]
-arraycollect(&amp;:first).max_by(&amp;:length)
+    <content type="html"><![CDATA[<pre><code class="ruby">arr =[["I","block"],["love","wikipedia"],["apple","worst"]]
+
+arr.collect{|i| i[1]}.max_by(&amp;:length).length
+arr.collect(&amp;:first)
 </code></pre>
 ]]></content>
   </entry>
