@@ -8,10 +8,10 @@ categories: app
 `dpkg-reconfigure exim4-config`
 
 <pre><code>#/etc/exim4/update-exim4.conf.conf 
-dc_eximconfig_configtype='<font color='red'>internet</font>'
-dc_other_hostnames='linux'
+dc_eximconfig_configtype='<font color='red'>satellite</font>'
+dc_other_hostnames=''
 dc_local_interfaces='127.0.0.1 ; ::1'
-dc_readhost='linux'
+dc_readhost='localhost'
 dc_relay_domains=''
 dc_minimaldns='false'
 dc_relay_nets=''
