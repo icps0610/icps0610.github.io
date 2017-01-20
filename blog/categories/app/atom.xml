@@ -4,7 +4,7 @@
   <title><![CDATA[Category: App | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/app/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-01-15T20:29:52+08:00</updated>
+  <updated>2017-01-20T16:51:42+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,17 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Tesseract]]></title>
+    <link href="http://icps0610.github.io/blog/2017/01/20/tesseract/"/>
+    <updated>2017-01-20T11:10:53+08:00</updated>
+    <id>http://icps0610.github.io/blog/2017/01/20/tesseract</id>
+    <content type="html"><![CDATA[<p><code>apt-get install tesseract-ocr tesseract-ocr-chi-tra</code></p>
+
+<p><code>tesseract image.jpg out -l chi_tra</code></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Proxy]]></title>
@@ -82,16 +93,6 @@ mb/Xj3&amp;o{&lt;!,D!ah%#1CHK))vmEsV7kkg:o.cU,U38pi)5h!:7b8{uUQlU8UycV)djcN8jmN^
 <blockquote><p>Could not find &lsquo;rubocop&rsquo;. The program may not be installed.<br/>
 <code>gem install rubocop</code><br/>
 atom-beautify -> settings -> ruby -> path C:\Ruby23\bin\rubocop</p></blockquote>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Bettercap]]></title>
-    <link href="http://icps0610.github.io/blog/2016/06/18/bettercap/"/>
-    <updated>2016-06-18T14:56:56+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/06/18/bettercap</id>
-    <content type="html"><![CDATA[<p><a href="https://www.bettercap.org/">https://www.bettercap.org/</a>  <br/>
-<code>apt-get install libpcap0.8-dev</code></p>
 ]]></content>
   </entry>
   

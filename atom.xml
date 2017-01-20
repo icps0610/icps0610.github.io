@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-01-15T20:29:52+08:00</updated>
+  <updated>2017-01-20T16:51:42+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,17 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Tesseract]]></title>
+    <link href="http://icps0610.github.io/blog/2017/01/20/tesseract/"/>
+    <updated>2017-01-20T11:10:53+08:00</updated>
+    <id>http://icps0610.github.io/blog/2017/01/20/tesseract</id>
+    <content type="html"><![CDATA[<p><code>apt-get install tesseract-ocr tesseract-ocr-chi-tra</code></p>
+
+<p><code>tesseract image.jpg out -l chi_tra</code></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Sum_of_array]]></title>
@@ -1010,20 +1021,6 @@ ref <a href="https://github.com/laserlemon/figaro">https://github.com/laserlemon
     <id>http://icps0610.github.io/blog/2016/11/21/rmagick</id>
     <content type="html"><![CDATA[<p>apt-get install imagemagick libmagickwand-dev
 gem install rmagick</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[關聯資料排序]]></title>
-    <link href="http://icps0610.github.io/blog/2016/11/17/sort/"/>
-    <updated>2016-11-17T23:09:36+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/11/17/sort</id>
-    <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Item</span><span class="o">.</span><span class="n">includes</span><span class="p">(</span><span class="ss">:events</span><span class="p">)</span><span class="o">.</span><span class="n">order</span><span class="p">(</span><span class="s2">&quot;events.date DESC&quot;</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p></p>
 ]]></content>
   </entry>
   
