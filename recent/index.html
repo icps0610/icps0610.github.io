@@ -9,7 +9,7 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="apt-get install tesseract-ocr tesseract-ocr-chi-tra tesseract image.jpg out -l chi_tra
+  <meta name="description" content="mount -t cifs //192.168.0.106/XXXX /home/partimag -o username=&ldquo;abc&rdquo;,password=&ldquo;1234&rdquo;
 ">
   
 
@@ -69,6 +69,35 @@
       <div class="blog-index">
   
 
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2017/04/29/mount-smb/">Mount-smb</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2017-04-29T13:51:04+08:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>29</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>1:51 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>mount -t cifs //192.168.0.106/XXXX /home/partimag -o username=&ldquo;abc&rdquo;,password=&ldquo;1234&rdquo;</p>
+</div>
+  
+  
+
+
+    </article>
+  
   
     <article>
       
@@ -227,106 +256,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2017/01/13/bootstrap-notify/">Bootstrap_notify</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2017-01-13T21:25:05+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>9:25 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3><a href="https://github.com/jclay/bootstrap-notify-gem">https://github.com/jclay/bootstrap-notify-gem</a></h3>
-
-<p><code>gem 'bootstrap_notify'</code></p>
-
-<pre><code>#application.js
-//= require jquery
-//= require jquery_ujs
-//= require bootstrap_notify
-</code></pre>
-
-
-
-
-<pre><code>#application.scss
-@import "bootstrap";
-@import "bootstrap_notify";
-</code></pre>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class='erb'><span class='line'><span class="x">#app/views/partials/_notify.erb</span>
-</span><span class='line'><span class="cp">&lt;%</span> <span class="k">if</span> <span class="o">!</span><span class="n">notice</span><span class="o">.</span><span class="n">blank?</span> <span class="cp">%&gt;</span><span class="x"></span>
-</span><span class='line'><span class="x">  &lt;script&gt; </span>
-</span><span class='line'><span class="x">      $(document).ready(function () {</span>
-</span><span class='line'><span class="x">          $(&#39;.top-left&#39;).notify({</span>
-</span><span class='line'><span class="x">              </span><span class="cp">&lt;%</span> <span class="n">flash</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="nb">name</span><span class="p">,</span> <span class="n">msg</span><span class="o">|</span> <span class="cp">%&gt;</span><span class="x"></span>
-</span><span class='line'><span class="x">                  message: { text: &quot;</span><span class="cp">&lt;%=</span> <span class="n">msg</span> <span class="cp">%&gt;</span><span class="x">&quot; }</span>
-</span><span class='line'><span class="x">              </span><span class="cp">&lt;%</span> <span class="k">end</span> <span class="cp">%&gt;</span><span class="x">  </span>
-</span><span class='line'><span class="x">          }).show();</span>
-</span><span class='line'><span class="x">      });</span>
-</span><span class='line'><span class="x">  &lt;/script&gt;</span>
-</span><span class='line'><span class="cp">&lt;%</span> <span class="k">end</span> <span class="cp">%&gt;</span><span class="x"></span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='erb'><span class='line'><span class="x">#app/views/layouts/application.erb in head tag</span>
-</span><span class='line'><span class="cp">&lt;%=</span> <span class="n">render</span><span class="p">(</span><span class="ss">:partial</span> <span class="o">=&gt;</span> <span class="s2">&quot;partials/notify&quot;</span><span class="p">)</span> <span class="cp">%&gt;</span><span class="x"></span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='erb'><span class='line'><span class="x">#app/views/layouts/application.erb in body tag</span>
-</span><span class='line'><span class="x">#&lt;div class=&#39;notifications top-left&#39;&gt;&lt;/div&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#app/controllers/uploads_controller.rb</span>
-</span><span class='line'><span class="n">flash</span><span class="o">[</span><span class="ss">:notice</span><span class="o">]</span> <span class="o">=</span> <span class="s2">&quot;uploaded&quot;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
     <a href="/blog/archives">Blog Archives</a>
@@ -340,7 +269,7 @@
     <ul id="categories">
        <li class='category'><a href='/blog/categories/app/'>app (15)</a></li>
 <li class='category'><a href='/blog/categories/bat/'>bat (9)</a></li>
-<li class='category'><a href='/blog/categories/linux/'>linux (10)</a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (11)</a></li>
 <li class='category'><a href='/blog/categories/notepad/'>notepad (1)</a></li>
 <li class='category'><a href='/blog/categories/ror/'>ror (18)</a></li>
 <li class='category'><a href='/blog/categories/ruby/'>ruby (28)</a></li>
@@ -350,6 +279,10 @@
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2017/04/29/mount-smb/">Mount-smb</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2017/01/20/tesseract/">Tesseract</a>
@@ -365,10 +298,6 @@
     
       <li class="post">
         <a href="/blog/2017/01/14/link-entire-table/">Link_entire_table</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2017/01/13/bootstrap-notify/">Bootstrap_notify</a>
       </li>
     
   </ul>

@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-01-20T16:51:42+08:00</updated>
+  <updated>2017-04-29T13:52:46+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,15 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Mount-smb]]></title>
+    <link href="http://icps0610.github.io/blog/2017/04/29/mount-smb/"/>
+    <updated>2017-04-29T13:51:04+08:00</updated>
+    <id>http://icps0610.github.io/blog/2017/04/29/mount-smb</id>
+    <content type="html"><![CDATA[<p>mount -t cifs //192.168.0.106/XXXX /home/partimag -o username=&ldquo;abc&rdquo;,password=&ldquo;1234&rdquo;</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Tesseract]]></title>
@@ -1011,16 +1020,6 @@ ref <a href="https://github.com/laserlemon/figaro">https://github.com/laserlemon
 
 
 <p></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Rmagick]]></title>
-    <link href="http://icps0610.github.io/blog/2016/11/21/rmagick/"/>
-    <updated>2016-11-21T17:15:47+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/11/21/rmagick</id>
-    <content type="html"><![CDATA[<p>apt-get install imagemagick libmagickwand-dev
-gem install rmagick</p>
 ]]></content>
   </entry>
   
