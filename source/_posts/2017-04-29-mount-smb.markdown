@@ -6,4 +6,4 @@ comments: true
 categories: linux
 ---
 
-mount -t cifs //192.168.0.106/XXXX /home/partimag -o username="abc",password="1234"
+`mount -t cifs //192.168.0.106/form /to -o username="abc",password="1234"`
