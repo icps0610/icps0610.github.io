@@ -27,10 +27,10 @@ class Calendar
 	def text( color, text, fix )
 		@x_day||=0 ; 	@y_day||=-1
 		x, y = @x + @size*2*(@x_day) + fix, @y + @size*(@y_day + 1)
-	  @text.fill = 'black'
-	  @text.annotate(@canvas, 0, 0, x, y, "#{text}" )
-	  @text.fill = "#{color}"
-	  @text.annotate(@canvas, 0, 0, x-5, y, "#{text}" )
+		@text.fill = 'black'
+		@text.annotate(@canvas, 0, 0, x, y, "#{text}" )
+		@text.fill = "#{color}"
+		@text.annotate(@canvas, 0, 0, x-5, y, "#{text}" )
 	end
 
   def calendar_title
