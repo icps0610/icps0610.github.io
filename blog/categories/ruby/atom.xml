@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-05-06T04:15:46+08:00</updated>
+  <updated>2017-05-06T04:17:16+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -39,10 +39,10 @@ class Calendar
     def text( color, text, fix )
         @x_day||=0 ;    @y_day||=-1
         x, y = @x + @size*2*(@x_day) + fix, @y + @size*(@y_day + 1)
-      @text.fill = 'black'
-      @text.annotate(@canvas, 0, 0, x, y, "#{text}" )
-      @text.fill = "#{color}"
-      @text.annotate(@canvas, 0, 0, x-5, y, "#{text}" )
+        @text.fill = 'black'
+        @text.annotate(@canvas, 0, 0, x, y, "#{text}" )
+        @text.fill = "#{color}"
+        @text.annotate(@canvas, 0, 0, x-5, y, "#{text}" )
     end
 
   def calendar_title
