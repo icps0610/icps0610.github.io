@@ -13,65 +13,51 @@ require 'date'
 class Calendar
 	  
   def initialize
-  	year  = Time.now.year
-		month = Time.now.month
-		@day   = Time.now.day
+  	today = Time.now
+  	year, month  = today.year, today.month
+		@day  =  today.day
 		@wday =  Time.new( year, month, 1, 0, 0, 0, "+00:00").wday
 		@days =  Date.new( year, month, -1).day
 		#location
-		size = `identify base.jpg`.split(' ')[2].split('x')
-		@x,@y = size[0].to_i-720 , size[1].to_i-1100
-		#read
-		@canvas = Magick::ImageList.new
-		@canvas.read("base.jpg")
-		#text setting
-		@text_size = 32
-		@text = Magick::Draw.new
-		@text.pointsize = @text_size
+		jpg = `identify base.jpg`.split(' ')[2].split('x')
+		@x,@y = jpg[0].to_i-720 , jpg[1].to_i-1100
 		run
   end
 
+	def text( color, text, fix )
+		@x_day||=0 ; 	@y_day||=-1
+		x, y = @x + @size*2*(@x_day) + fix, @y + @size*(@y_day + 1)
+	  @text.fill = 'black'
+	  @text.annotate(@canvas, 0, 0, x, y, "#{text}" )
+	  @text.fill = "#{color}"
+	  @text.annotate(@canvas, 0, 0, x-5, y, "#{text}" )
+	end
+
   def calendar_title
-		title = %w(Su Mo Tu We Th Fr Sa)
+		title = %w(SU MO TU WE TH FR SA)
 		title.each do |t|
-			x = @x + @text_size*2*(title.index(t))
-			@text.fill = 'black'
-			@text.annotate(@canvas, 0,0, x, @y, t)
-			@text.fill = 'grey'
-			@text.annotate(@canvas, 0,0, x+5, @y, t)
+			fix =  @size*2*(title.index(t)) + @size/4
+			text( "grey", t, fix )
 		end
   end
 
-	def text_one( color, text )
-		x, y = @x + @text_size/2 + @text_size*2*(@x_day) , @y + @text_size*(@y_day + 1)
-	  @text.fill = 'black'
-	  @text.annotate(@canvas, 0, 0, x, y, "#{text}" )
-	  @text.fill = "#{color}"
-	  @text.annotate(@canvas, 0, 0, x+5, y, "#{text}" )
-	end
-
-	def text_two( color, text )
-		x, y = @x + @text_size*2*(@x_day), @y + @text_size*(@y_day + 1)
-	  @text.fill = 'black'
-	  @text.annotate(@canvas, 0, 0, x, y, "#{text}" )
-	  @text.fill = "#{color}"
-	  @text.annotate(@canvas, 0, 0, x+5, y, "#{text}" )
-	end
+  def calendar_days
+  	(0..@days-1).each do |d|
+		  @x_day = ( d + @wday ) % 7
+		  @y_day = ( d + @wday ) / 7
+		  d + 1 == @day ? color = "red" : color = "white"
+		  d > 8 ? fix = @size/2 : fix = @size
+			text( color, d+1, fix )
+		end
+  end
 
 	def run
+		@canvas = Magick::ImageList.new.read("base.jpg")
+		@text = Magick::Draw.new
+		@text.pointsize = @size = 32
+
 		calendar_title
-		(0..@days-1).each do |d|
-		  @x_day, @y_day = ( d + @wday ) % 7 , ( d + @wday ) / 7
-		  if d > 8 and d+1 == @day
-		    text_two( "red", d+1 )
-		  elsif d <= 8 and d+1 == @day
-		    text_one( "red", d+1 )
-		  elsif d > 8
-		    text_two( "white", d+1 )
-		  else
-		    text_one( "white", d+1 )
-		  end
-		end
+		calendar_days
 		#output
 		@canvas.write("cal.jpg")
 	end
