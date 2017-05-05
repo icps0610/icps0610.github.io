@@ -5,6 +5,7 @@ date: 2017-05-06 02:25:27 +0800
 comments: true
 categories: ruby
 ---
+
 ``` ruby
 #!/usr/bin/env ruby
 # encoding: utf-8
