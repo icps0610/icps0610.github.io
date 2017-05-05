@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-04-29T13:57:42+08:00</updated>
+  <updated>2017-05-06T04:15:46+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,15 +12,6 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
-  
-  <entry>
-    <title type="html"><![CDATA[Mount-smb]]></title>
-    <link href="http://icps0610.github.io/blog/2017/04/29/mount-smb/"/>
-    <updated>2017-04-29T13:51:04+08:00</updated>
-    <id>http://icps0610.github.io/blog/2017/04/29/mount-smb</id>
-    <content type="html"><![CDATA[<p><code>mount -t cifs //192.168.0.106/form /to -o username="abc",password="1234"</code></p>
-]]></content>
-  </entry>
   
   <entry>
     <title type="html"><![CDATA[Android_wifi_passwd]]></title>
@@ -64,6 +55,15 @@ iptables --append FORWARD --in-interface <font color='red'>eth0</font> -j ACCEPT
 echo "1" > /proc/sys/net/ipv4/ip_forward
 </code></pre>
 
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[排列目錄空間大小]]></title>
+    <link href="http://icps0610.github.io/blog/2016/06/18/disk-space-sort/"/>
+    <updated>2016-06-18T04:11:25+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/06/18/disk-space-sort</id>
+    <content type="html"><![CDATA[<p><code>du -h --max-depth=1 -x /home | sort -n</code></p>
 ]]></content>
   </entry>
   

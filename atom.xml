@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-04-29T13:57:42+08:00</updated>
+  <updated>2017-05-06T04:15:46+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -14,11 +14,149 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Mount-smb]]></title>
-    <link href="http://icps0610.github.io/blog/2017/04/29/mount-smb/"/>
-    <updated>2017-04-29T13:51:04+08:00</updated>
-    <id>http://icps0610.github.io/blog/2017/04/29/mount-smb</id>
-    <content type="html"><![CDATA[<p><code>mount -t cifs //192.168.0.106/form /to -o username="abc",password="1234"</code></p>
+    <title type="html"><![CDATA[Calendar]]></title>
+    <link href="http://icps0610.github.io/blog/2017/05/06/calendar/"/>
+    <updated>2017-05-06T02:25:27+08:00</updated>
+    <id>http://icps0610.github.io/blog/2017/05/06/calendar</id>
+    <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#!/usr/bin/env ruby</span>
+</span><span class='line'><span class="c1"># encoding: utf-8</span>
+</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;rmagick&#39;</span>
+</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;date&#39;</span>
+</span><span class='line'><span class="k">class</span> <span class="nc">Calendar</span>
+</span><span class='line'>  
+</span><span class='line'>  <span class="k">def</span> <span class="nf">initialize</span>
+</span><span class='line'>      <span class="n">today</span> <span class="o">=</span> <span class="no">Time</span><span class="o">.</span><span class="n">now</span>
+</span><span class='line'>      <span class="n">year</span><span class="p">,</span> <span class="n">month</span>  <span class="o">=</span> <span class="n">today</span><span class="o">.</span><span class="n">year</span><span class="p">,</span> <span class="n">today</span><span class="o">.</span><span class="n">month</span>
+</span><span class='line'>      <span class="vi">@day</span>  <span class="o">=</span>  <span class="n">today</span><span class="o">.</span><span class="n">day</span>
+</span><span class='line'>      <span class="vi">@wday</span> <span class="o">=</span>  <span class="no">Time</span><span class="o">.</span><span class="n">new</span><span class="p">(</span> <span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;+00:00&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">wday</span>
+</span><span class='line'>      <span class="vi">@days</span> <span class="o">=</span>  <span class="no">Date</span><span class="o">.</span><span class="n">new</span><span class="p">(</span> <span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">day</span>
+</span><span class='line'>      <span class="c1">#location</span>
+</span><span class='line'>      <span class="n">jpg</span> <span class="o">=</span> <span class="sb">`identify base.jpg`</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span><span class="o">[</span><span class="mi">2</span><span class="o">].</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+</span><span class='line'>      <span class="vi">@x</span><span class="p">,</span><span class="vi">@y</span> <span class="o">=</span> <span class="n">jpg</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">to_i</span><span class="o">-</span><span class="mi">720</span> <span class="p">,</span> <span class="n">jpg</span><span class="o">[</span><span class="mi">1</span><span class="o">].</span><span class="n">to_i</span><span class="o">-</span><span class="mi">1100</span>
+</span><span class='line'>      <span class="n">run</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">text</span><span class="p">(</span> <span class="n">color</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">fix</span> <span class="p">)</span>
+</span><span class='line'>      <span class="vi">@x_day</span><span class="o">||=</span><span class="mi">0</span> <span class="p">;</span>  <span class="vi">@y_day</span><span class="o">||=-</span><span class="mi">1</span>
+</span><span class='line'>      <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="vi">@x</span> <span class="o">+</span> <span class="vi">@size</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="vi">@x_day</span><span class="p">)</span> <span class="o">+</span> <span class="n">fix</span><span class="p">,</span> <span class="vi">@y</span> <span class="o">+</span> <span class="vi">@size</span><span class="o">*</span><span class="p">(</span><span class="vi">@y_day</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+</span><span class='line'>    <span class="vi">@text</span><span class="o">.</span><span class="n">fill</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span>
+</span><span class='line'>    <span class="vi">@text</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="vi">@canvas</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">text</span><span class="si">}</span><span class="s2">&quot;</span> <span class="p">)</span>
+</span><span class='line'>    <span class="vi">@text</span><span class="o">.</span><span class="n">fill</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">color</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>    <span class="vi">@text</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="vi">@canvas</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">x</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">text</span><span class="si">}</span><span class="s2">&quot;</span> <span class="p">)</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">calendar_title</span>
+</span><span class='line'>      <span class="n">title</span> <span class="o">=</span> <span class="sx">%w(SU MO TU WE TH FR SA)</span>
+</span><span class='line'>      <span class="n">title</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
+</span><span class='line'>          <span class="n">fix</span> <span class="o">=</span>  <span class="vi">@size</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">title</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">t</span><span class="p">))</span> <span class="o">+</span> <span class="vi">@size</span><span class="o">/</span><span class="mi">4</span>
+</span><span class='line'>          <span class="n">text</span><span class="p">(</span> <span class="s2">&quot;grey&quot;</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">fix</span> <span class="p">)</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">calendar_days</span>
+</span><span class='line'>      <span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="n">.</span><span class="vi">@days</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">d</span><span class="o">|</span>
+</span><span class='line'>        <span class="vi">@x_day</span> <span class="o">=</span> <span class="p">(</span> <span class="n">d</span> <span class="o">+</span> <span class="vi">@wday</span> <span class="p">)</span> <span class="o">%</span> <span class="mi">7</span>
+</span><span class='line'>        <span class="vi">@y_day</span> <span class="o">=</span> <span class="p">(</span> <span class="n">d</span> <span class="o">+</span> <span class="vi">@wday</span> <span class="p">)</span> <span class="o">/</span> <span class="mi">7</span>
+</span><span class='line'>        <span class="n">d</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">==</span> <span class="vi">@day</span> <span class="p">?</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;red&quot;</span> <span class="p">:</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;white&quot;</span>
+</span><span class='line'>        <span class="n">d</span> <span class="o">&gt;</span> <span class="mi">8</span> <span class="o">?</span> <span class="n">fix</span> <span class="o">=</span> <span class="vi">@size</span><span class="o">/</span><span class="mi">2</span> <span class="p">:</span> <span class="n">fix</span> <span class="o">=</span> <span class="vi">@size</span>
+</span><span class='line'>          <span class="n">text</span><span class="p">(</span> <span class="n">color</span><span class="p">,</span> <span class="n">d</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">fix</span> <span class="p">)</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">run</span>
+</span><span class='line'>      <span class="vi">@canvas</span> <span class="o">=</span> <span class="no">Magick</span><span class="o">::</span><span class="no">ImageList</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">&quot;base.jpg&quot;</span><span class="p">)</span>
+</span><span class='line'>      <span class="vi">@text</span> <span class="o">=</span> <span class="no">Magick</span><span class="o">::</span><span class="no">Draw</span><span class="o">.</span><span class="n">new</span>
+</span><span class='line'>      <span class="vi">@text</span><span class="o">.</span><span class="n">pointsize</span> <span class="o">=</span> <span class="vi">@size</span> <span class="o">=</span> <span class="mi">32</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="n">calendar_title</span>
+</span><span class='line'>      <span class="n">calendar_days</span>
+</span><span class='line'>      <span class="c1">#output</span>
+</span><span class='line'>      <span class="vi">@canvas</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;cal.jpg&quot;</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="no">Calendar</span><span class="o">.</span><span class="n">new</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Date]]></title>
+    <link href="http://icps0610.github.io/blog/2017/05/04/date/"/>
+    <updated>2017-05-04T19:52:52+08:00</updated>
+    <id>http://icps0610.github.io/blog/2017/05/04/date</id>
+    <content type="html"><![CDATA[<p>wday = Time.new( year, month, day, 00, 0, 0, &ldquo;+00:00&rdquo;).wday</p>
+
+<p>days_in_month = Date.new(Time.now.year, Time.now.month, -1).day</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[ubuntu.iso]]></title>
+    <link href="http://icps0610.github.io/blog/2017/04/30/ubuntu-dot-iso/"/>
+    <updated>2017-04-30T20:34:41+08:00</updated>
+    <id>http://icps0610.github.io/blog/2017/04/30/ubuntu-dot-iso</id>
+    <content type="html"><![CDATA[<p>/isolinux/txt.cfg   menu
+/isolinux/prompt.cfg boot timeout</p>
 ]]></content>
   </entry>
   
@@ -768,258 +906,6 @@ ref <a href="https://www.pluralsight.com/guides/ruby-ruby-on-rails/creating-a-ch
 ro.securestorage.support=true to false</p>
 
 <p>/data/misc/wifi/wpa_supplicant.bak.conf</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Current_page]]></title>
-    <link href="http://icps0610.github.io/blog/2016/11/28/current_page/"/>
-    <updated>2016-11-28T13:37:45+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/11/28/current_page</id>
-    <content type="html"><![CDATA[<blockquote><p>ref : <a href="https://kmywblog.wordpress.com/2015/10/13/">https://kmywblog.wordpress.com/2015/10/13/</a></p></blockquote>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># app/helpers/application_helper</span>
-</span><span class='line'><span class="k">module</span> <span class="nn">ApplicationHelper</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">render_active</span><span class="p">(</span><span class="n">title</span><span class="p">,</span><span class="n">path</span><span class="p">)</span>
-</span><span class='line'>      <span class="n">c</span> <span class="o">=</span> <span class="n">current_page?</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="p">?</span> <span class="s2">&quot;active&quot;</span> <span class="p">:</span> <span class="s2">&quot;&quot;</span>
-</span><span class='line'>      <span class="n">content_tag</span><span class="p">(</span><span class="ss">:li</span><span class="p">,</span> <span class="n">link_to</span><span class="p">(</span> <span class="n">title</span><span class="p">,</span> <span class="n">path</span> <span class="p">),</span> <span class="ss">:class</span> <span class="o">=&gt;</span> <span class="n">c</span> <span class="p">)</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p></p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># views</span>
-</span><span class='line'><span class="o">&lt;%=</span> <span class="n">render_active</span><span class="p">(</span> <span class="s1">&#39;Home&#39;</span><span class="p">,</span> <span class="n">root_path</span> <span class="p">)</span> <span class="o">%&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Fb_login]]></title>
-    <link href="http://icps0610.github.io/blog/2016/11/26/fb-login/"/>
-    <updated>2016-11-26T17:07:33+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/11/26/fb-login</id>
-    <content type="html"><![CDATA[<blockquote><p>ref :<a href="http://fisherliang.logdown.com/posts/301654-ruby-on-rails-real-facebook-login-mechanism">http://fisherliang.logdown.com/posts/301654-ruby-on-rails-real-facebook-login-mechanism</a><br/>
-ref <a href="https://github.com/laserlemon/figaro">https://github.com/laserlemon/figaro</a></p></blockquote>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">gem</span> <span class="s2">&quot;figaro&quot;</span>
-</span><span class='line'><span class="n">gem</span> <span class="s1">&#39;devise&#39;</span>
-</span><span class='line'><span class="n">gem</span> <span class="s1">&#39;omniauth&#39;</span>
-</span><span class='line'><span class="n">gem</span> <span class="s1">&#39;omniauth-facebook&#39;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p></p>
-
-<p><code>figaro install</code></p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#===&gt; create  config/application.yml</span>
-</span><span class='line'><span class="c1">#===&gt; append  .gitignore</span>
-</span><span class='line'><span class="c1"># config/application.yml</span>
-</span><span class='line'><span class="ss">fb_app_id</span><span class="p">:</span> <span class="s2">&quot;xxxxxxxxxxxxxx&quot;</span>
-</span><span class='line'><span class="ss">fb_secret</span><span class="p">:</span> <span class="s2">&quot;xxxxxxxxxxxxxxxxxxxxxxxxx&quot;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p></p>
-
-<p><code>rails generate devise:install</code></p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># config/initializers/devise.rb</span>
-</span><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">authentication_keys</span> <span class="o">=</span> <span class="o">[</span><span class="ss">:name</span><span class="o">]</span> <span class="c1">#37</span>
-</span><span class='line'><span class="n">config</span><span class="o">.</span><span class="n">omniauth</span> <span class="ss">:facebook</span><span class="p">,</span> <span class="no">Figaro</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">fb_app_id</span><span class="p">,</span> <span class="no">Figaro</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">fb_secret</span><span class="p">,</span> <span class="ss">scope</span><span class="p">:</span> <span class="s1">&#39;email&#39;</span><span class="p">,</span> <span class="ss">info_fields</span><span class="p">:</span> <span class="s1">&#39;email, name&#39;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p></p>
-
-<p><code>rails generate devise User</code></p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># rails g migration add_omniauth_to_users provider:index uid:index name:index</span>
-</span><span class='line'><span class="c1"># db/migrate/add_omniauth_to_users.rb</span>
-</span><span class='line'><span class="k">class</span> <span class="nc">AddOmniauthToUsers</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Migration</span><span class="o">[</span><span class="mi">5</span><span class="o">.</span><span class="mi">0</span><span class="o">]</span>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">change</span>
-</span><span class='line'>    <span class="n">add_column</span> <span class="ss">:users</span><span class="p">,</span> <span class="ss">:provider</span><span class="p">,</span> <span class="ss">:string</span>
-</span><span class='line'>    <span class="n">add_index</span> <span class="ss">:users</span><span class="p">,</span> <span class="ss">:provider</span>
-</span><span class='line'>    <span class="n">add_column</span> <span class="ss">:users</span><span class="p">,</span> <span class="ss">:uid</span><span class="p">,</span> <span class="ss">:string</span>
-</span><span class='line'>    <span class="n">add_index</span> <span class="ss">:users</span><span class="p">,</span> <span class="ss">:uid</span>
-</span><span class='line'>    <span class="n">add_column</span> <span class="ss">:users</span><span class="p">,</span> <span class="ss">:name</span><span class="p">,</span> <span class="ss">:string</span><span class="p">,</span> <span class="ss">:null</span> <span class="o">=&gt;</span> <span class="kp">false</span><span class="p">,</span> <span class="ss">:default</span> <span class="o">=&gt;</span> <span class="s2">&quot;&quot;</span>
-</span><span class='line'>    <span class="n">add_index</span> <span class="ss">:users</span><span class="p">,</span> <span class="ss">:name</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p></p>
-
-<p><code>rake db:migrate</code></p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># app/models/user.rb</span>
-</span><span class='line'><span class="k">class</span> <span class="nc">User</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">email_required?</span> <span class="c1">#email空白</span>
-</span><span class='line'>      <span class="kp">false</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">name_changed?</span>
-</span><span class='line'>      <span class="kp">false</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'>  <span class="n">devise</span> <span class="ss">:database_authenticatable</span><span class="p">,</span> <span class="ss">:registerable</span><span class="p">,</span>
-</span><span class='line'>  <span class="ss">:recoverable</span><span class="p">,</span> <span class="ss">:rememberable</span><span class="p">,</span> <span class="ss">:trackable</span><span class="p">,</span> <span class="ss">:validatable</span><span class="p">,</span>
-</span><span class='line'>  <span class="ss">:omniauthable</span><span class="p">,</span> <span class="ss">:omniauth_providers</span> <span class="o">=&gt;</span> <span class="o">[</span><span class="ss">:facebook</span><span class="o">]</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">from_omniauth</span><span class="p">(</span><span class="n">auth</span><span class="p">)</span>
-</span><span class='line'>      <span class="n">where</span><span class="p">(</span><span class="ss">provider</span><span class="p">:</span> <span class="n">auth</span><span class="o">.</span><span class="n">provider</span><span class="p">,</span> <span class="ss">uid</span><span class="p">:</span> <span class="n">auth</span><span class="o">.</span><span class="n">uid</span><span class="p">)</span><span class="o">.</span><span class="n">first_or_create</span> <span class="k">do</span> <span class="o">|</span><span class="n">user</span><span class="o">|</span>
-</span><span class='line'>          <span class="n">user</span><span class="o">.</span><span class="n">provider</span> <span class="o">=</span> <span class="n">auth</span><span class="o">.</span><span class="n">provider</span>
-</span><span class='line'>          <span class="n">user</span><span class="o">.</span><span class="n">uid</span> <span class="o">=</span> <span class="n">auth</span><span class="o">.</span><span class="n">uid</span>
-</span><span class='line'>          <span class="n">user</span><span class="o">.</span><span class="n">email</span> <span class="o">=</span> <span class="n">auth</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">email</span>
-</span><span class='line'>          <span class="n">user</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">auth</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">name</span>
-</span><span class='line'>          <span class="n">user</span><span class="o">.</span><span class="n">password</span> <span class="o">=</span> <span class="no">Devise</span><span class="o">.</span><span class="n">friendly_token</span><span class="o">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">20</span><span class="o">]</span>
-</span><span class='line'>      <span class="k">end</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p></p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># config/routes.rb</span>
-</span><span class='line'><span class="no">Rails</span><span class="o">.</span><span class="n">application</span><span class="o">.</span><span class="n">routes</span><span class="o">.</span><span class="n">draw</span> <span class="k">do</span>
-</span><span class='line'>  <span class="n">devise_for</span> <span class="ss">:users</span><span class="p">,</span> <span class="ss">controllers</span><span class="p">:</span> <span class="p">{</span> <span class="ss">omniauth_callbacks</span><span class="p">:</span> <span class="s2">&quot;omniauth_callbacks&quot;</span> <span class="p">}</span>
-</span><span class='line'>  <span class="n">resources</span> <span class="ss">:products</span>
-</span><span class='line'>  <span class="n">root</span> <span class="s1">&#39;products#index&#39;</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p></p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># app/controllers/omniauth_callbacks_controller.rb </span>
-</span><span class='line'><span class="k">class</span> <span class="nc">OmniauthCallbacksController</span> <span class="o">&lt;</span> <span class="no">Devise</span><span class="o">::</span><span class="no">OmniauthCallbacksController</span>
-</span><span class='line'>    <span class="k">def</span> <span class="nf">facebook</span>
-</span><span class='line'>        <span class="vi">@user</span> <span class="o">=</span> <span class="no">User</span><span class="o">.</span><span class="n">from_omniauth</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">env</span><span class="o">[</span><span class="s2">&quot;omniauth.auth&quot;</span><span class="o">]</span><span class="p">)</span>
-</span><span class='line'>        <span class="n">sign_in_and_redirect</span> <span class="vi">@user</span>
-</span><span class='line'>    <span class="k">end</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p></p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#fb image</span>
-</span><span class='line'><span class="k">def</span> <span class="nf">user_image</span><span class="p">(</span><span class="n">user</span><span class="p">,</span><span class="n">size</span><span class="p">)</span>
-</span><span class='line'>  <span class="k">if</span> <span class="ow">not</span> <span class="n">user</span><span class="o">.</span><span class="n">uid</span> <span class="o">==</span> <span class="kp">nil</span>
-</span><span class='line'>      <span class="n">link_to</span><span class="p">(</span><span class="n">image_tag</span><span class="p">(</span><span class="s2">&quot;http://graph.facebook.com/</span><span class="si">#{</span><span class="n">user</span><span class="o">.</span><span class="n">uid</span><span class="si">}</span><span class="s2">/picture&quot;</span><span class="p">,</span> <span class="ss">:size</span> <span class="o">=&gt;</span> <span class="n">size</span><span class="p">),</span> <span class="s2">&quot;https://www.facebook.com/</span><span class="si">#{</span><span class="n">user</span><span class="o">.</span><span class="n">uid</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p></p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">&lt;</span><span class="sx">% if </span><span class="n">current_user</span> <span class="sx">%&gt;</span>
-</span><span class='line'><span class="sx"> &lt;%= current_user.name %&gt;</span>
-</span><span class='line'>  <span class="o">&lt;</span><span class="sx">%= user_image(current_user,&quot;50x50&quot;) %&gt;</span>
-</span><span class='line'><span class="sx"> &lt;%=</span> <span class="n">link_to</span> <span class="s2">&quot;登出&quot;</span><span class="p">,</span> <span class="n">destroy_user_session_path</span><span class="p">,</span> <span class="nb">method</span><span class="p">:</span> <span class="ss">:delete</span> <span class="sx">%&gt;</span>
-</span><span class='line'><span class="sx">&lt;% else %&gt;</span>
-</span><span class='line'>  <span class="o">&lt;</span><span class="sx">%= link_to &quot;註冊&quot;, new_user_registration_path %&gt;</span>
-</span><span class='line'><span class="sx"> &lt;%=</span> <span class="n">link_to</span> <span class="s2">&quot;登入&quot;</span><span class="p">,</span> <span class="n">new_user_session_path</span> <span class="sx">%&gt;</span>
-</span><span class='line'><span class="sx"> &lt;%= link_to(&quot;Facebook Login&quot;,user_facebook_omniauth_authorize_path) %&gt;</span>
-</span><span class='line'><span class="o">&lt;</span><span class="sx">% end </span><span class="o">%&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p></p>
 ]]></content>
   </entry>
   

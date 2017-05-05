@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Uncategorized | icps]]></title>
+  <link href="http://icps0610.github.io/blog/categories/uncategorized/atom.xml" rel="self"/>
+  <link href="http://icps0610.github.io/"/>
+  <updated>2017-05-06T04:15:46+08:00</updated>
+  <id>http://icps0610.github.io/</id>
+  <author>
+    <name><![CDATA[icps]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[ubuntu.iso]]></title>
+    <link href="http://icps0610.github.io/blog/2017/04/30/ubuntu-dot-iso/"/>
+    <updated>2017-04-30T20:34:41+08:00</updated>
+    <id>http://icps0610.github.io/blog/2017/04/30/ubuntu-dot-iso</id>
+    <content type="html"><![CDATA[<p>/isolinux/txt.cfg   menu
+/isolinux/prompt.cfg boot timeout</p>
+]]></content>
+  </entry>
+  
+ </feed>
