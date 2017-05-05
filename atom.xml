@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-05-06T04:24:42+08:00</updated>
+  <updated>2017-05-06T04:26:01+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -147,6 +147,15 @@
     <content type="html"><![CDATA[<p>wday = Time.new( year, month, day, 00, 0, 0, &ldquo;+00:00&rdquo;).wday</p>
 
 <p>days_in_month = Date.new(Time.now.year, Time.now.month, -1).day</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Mount-smb]]></title>
+    <link href="http://icps0610.github.io/blog/2017/04/29/mount-smb/"/>
+    <updated>2017-04-29T13:51:04+08:00</updated>
+    <id>http://icps0610.github.io/blog/2017/04/29/mount-smb</id>
+    <content type="html"><![CDATA[<p><code>mount -t cifs //192.168.0.106/form /to -o username="abc",password="1234"</code></p>
 ]]></content>
   </entry>
   
@@ -896,45 +905,6 @@ ref <a href="https://www.pluralsight.com/guides/ruby-ruby-on-rails/creating-a-ch
 ro.securestorage.support=true to false</p>
 
 <p>/data/misc/wifi/wpa_supplicant.bak.conf</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Current_page]]></title>
-    <link href="http://icps0610.github.io/blog/2016/11/28/current_page/"/>
-    <updated>2016-11-28T13:37:45+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/11/28/current_page</id>
-    <content type="html"><![CDATA[<blockquote><p>ref : <a href="https://kmywblog.wordpress.com/2015/10/13/">https://kmywblog.wordpress.com/2015/10/13/</a></p></blockquote>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># app/helpers/application_helper</span>
-</span><span class='line'><span class="k">module</span> <span class="nn">ApplicationHelper</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">render_active</span><span class="p">(</span><span class="n">title</span><span class="p">,</span><span class="n">path</span><span class="p">)</span>
-</span><span class='line'>      <span class="n">c</span> <span class="o">=</span> <span class="n">current_page?</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="p">?</span> <span class="s2">&quot;active&quot;</span> <span class="p">:</span> <span class="s2">&quot;&quot;</span>
-</span><span class='line'>      <span class="n">content_tag</span><span class="p">(</span><span class="ss">:li</span><span class="p">,</span> <span class="n">link_to</span><span class="p">(</span> <span class="n">title</span><span class="p">,</span> <span class="n">path</span> <span class="p">),</span> <span class="ss">:class</span> <span class="o">=&gt;</span> <span class="n">c</span> <span class="p">)</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p></p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># views</span>
-</span><span class='line'><span class="o">&lt;%=</span> <span class="n">render_active</span><span class="p">(</span> <span class="s1">&#39;Home&#39;</span><span class="p">,</span> <span class="n">root_path</span> <span class="p">)</span> <span class="o">%&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p></p>
 ]]></content>
   </entry>
   
