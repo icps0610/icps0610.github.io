@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-05-07T02:36:40+08:00</updated>
+  <updated>2017-05-07T02:39:12+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -24,15 +24,18 @@
   
   <entry>
     <title type="html"><![CDATA[Desktop]]></title>
-    <link href="http://icps0610.github.io/blog/2017/05/06/exe-dot-desktop/"/>
-    <updated>2017-05-06T22:40:27+08:00</updated>
-    <id>http://icps0610.github.io/blog/2017/05/06/exe-dot-desktop</id>
-    <content type="html"><![CDATA[<p>[Desktop Entry]
-Type=Application
-Terminal=true
-Name=File
-Icon=icon.svg
-Exec=gnome-terminal -e &lsquo;ls&rsquo;</p>
+    <link href="http://icps0610.github.io/blog/2017/05/07/desktop/"/>
+    <updated>2017-05-07T02:14:55+08:00</updated>
+    <id>http://icps0610.github.io/blog/2017/05/07/desktop</id>
+    <content type="html"><![CDATA[<pre>
+[Desktop Entry]   
+Type=Application   
+Terminal=true   
+Name=File   
+Icon=icon.svg   
+Exec=gnome-terminal -e 'ls'  
+</pre>
+
 ]]></content>
   </entry>
   
@@ -159,17 +162,6 @@ Exec=gnome-terminal -e &lsquo;ls&rsquo;</p>
 </span><span class='line'><span class="no">Calendar</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="no">ARGV</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">,</span><span class="no">ARGV</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Date]]></title>
-    <link href="http://icps0610.github.io/blog/2017/05/04/date/"/>
-    <updated>2017-05-04T19:52:52+08:00</updated>
-    <id>http://icps0610.github.io/blog/2017/05/04/date</id>
-    <content type="html"><![CDATA[<p>wday = Time.new( year, month, day, 00, 0, 0, &ldquo;+00:00&rdquo;).wday</p>
-
-<p>days_in_month = Date.new(Time.now.year, Time.now.month, -1).day</p>
 ]]></content>
   </entry>
   
@@ -884,6 +876,38 @@ ref <a href="https://www.pluralsight.com/guides/ruby-ruby-on-rails/creating-a-ch
 <h4>Encoder - rqrcode_png</h4>
 
 <p><a href="https://github.com/DCarper/rqrcode_png">https://github.com/DCarper/rqrcode_png</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[四捨五入]]></title>
+    <link href="http://icps0610.github.io/blog/2016/12/27/round/"/>
+    <updated>2016-12-27T14:42:06+08:00</updated>
+    <id>http://icps0610.github.io/blog/2016/12/27/round</id>
+    <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#!/usr/bin/env ruby</span>
+</span><span class='line'><span class="c1"># encoding: utf-8</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">n425</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+</span><span class='line'>  <span class="nb">test</span> <span class="o">=</span> <span class="n">num</span><span class="o">.</span><span class="n">to_s</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sr">/(\d*)\.(\d{1})/</span><span class="p">)</span>
+</span><span class='line'>  <span class="nb">test</span><span class="o">[</span><span class="mi">2</span><span class="o">].</span><span class="n">to_i</span> <span class="o">&gt;=</span> <span class="mi">5</span> <span class="o">?</span> <span class="nb">test</span> <span class="o">=</span> <span class="nb">test</span><span class="o">[</span><span class="mi">1</span><span class="o">].</span><span class="n">to_i</span><span class="o">+</span><span class="mi">1</span> <span class="p">:</span> <span class="nb">test</span> <span class="o">=</span> <span class="nb">test</span><span class="o">[</span><span class="mi">1</span><span class="o">].</span><span class="n">to_i</span>
+</span><span class='line'>  <span class="n">num</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">?</span> <span class="nb">test</span><span class="o">*</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">:</span> <span class="nb">test</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">n425</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">num</span><span class="o">.</span><span class="n">to_s</span><span class="o">.</span><span class="n">to_f</span><span class="o">.</span><span class="n">round</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
 ]]></content>
   </entry>
   
