@@ -11,8 +11,9 @@ categories: app
 - 安裝套件 https://sublime.wbond.net/installation
 - ctrl +shit+p，然後輸入install Package <enter>
 - 多行編輯 ctrl + shift + L
+`beautifyruby`
 
-<pre><code>BracketHighlighter#376
+<pre><code>BracketHighlighter  #376
  
 "bracket_styles": {
  
@@ -39,7 +40,7 @@ categories: app
 </code></pre>
 
 <pre><code>
-Emmt#settings
+Emmt   #settings
 
 {
 	"snippets":{
