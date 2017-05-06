@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>icps</title>
+  <title>Calendar - icps</title>
   <meta name="author" content="icps">
 
   
@@ -37,7 +37,7 @@ days_in_month = Date.new(year, month, -1).day 1
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://icps0610.github.io/recent/">
+  <link rel="canonical" href="http://icps0610.github.io/blog/2017/05/07/calendar/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="icps" type="application/atom+xml">
@@ -84,15 +84,12 @@ days_in_month = Date.new(year, month, -1).day 1
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article class="hentry" role="article">
   
-
-  
-    <article>
-      
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2017/05/07/calendar/">Calendar</a></h1>
+      <h1 class="entry-title">Calendar</h1>
     
     
       <p class="meta">
@@ -108,7 +105,7 @@ days_in_month = Date.new(year, month, -1).day 1
   </header>
 
 
-  <div class="entry-content"><p><code>wday=Time.new(year, month, day, 0, 0, 0, "+00:00").wday</code>
+<div class="entry-content"><p><code>wday=Time.new(year, month, day, 0, 0, 0, "+00:00").wday</code>
 <code>days_in_month = Date.new(year, month, -1).day</code></p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -230,258 +227,50 @@ days_in_month = Date.new(year, month, -1).day 1
 </span></code></pre></td></tr></table></div></figure>
 
 </div>
-  
-  
 
 
-    </article>
-  
-  
-    <article>
+  <footer>
+    <p class="meta">
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2017/05/06/exe-dot-desktop/">Desktop</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2017-05-06T22:40:27+08:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>10:40 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>[Desktop Entry]
-Type=Application
-Terminal=true
-Name=File
-Icon=icon.svg
-Exec=gnome-terminal -e &lsquo;ls&rsquo;</p>
-</div>
-  
   
 
+<span class="byline author vcard">Posted by <span class="fn">icps</span></span>
 
-    </article>
-  
-  
-    <article>
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2017/05/06/calendar/">Calendar</a></h1>
-    
-    
-      <p class="meta">
-        
 
 
 
 
-<time class='entry-date' datetime='2017-05-06T02:25:27+08:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>2:25 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-<span class='line-number'>41</span>
-<span class='line-number'>42</span>
-<span class='line-number'>43</span>
-<span class='line-number'>44</span>
-<span class='line-number'>45</span>
-<span class='line-number'>46</span>
-<span class='line-number'>47</span>
-<span class='line-number'>48</span>
-<span class='line-number'>49</span>
-<span class='line-number'>50</span>
-<span class='line-number'>51</span>
-<span class='line-number'>52</span>
-<span class='line-number'>53</span>
-<span class='line-number'>54</span>
-<span class='line-number'>55</span>
-<span class='line-number'>56</span>
-<span class='line-number'>57</span>
-<span class='line-number'>58</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#!/usr/bin/env ruby</span>
-</span><span class='line'><span class="c1"># encoding: utf-8</span>
-</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;rmagick&#39;</span>
-</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;date&#39;</span>
-</span><span class='line'><span class="k">class</span> <span class="nc">Calendar</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">output</span><span class="p">)</span>
-</span><span class='line'>    <span class="n">today</span> <span class="o">=</span> <span class="no">Time</span><span class="o">.</span><span class="n">now</span>
-</span><span class='line'>    <span class="n">year</span><span class="p">,</span> <span class="n">month</span>  <span class="o">=</span> <span class="n">today</span><span class="o">.</span><span class="n">year</span><span class="p">,</span> <span class="n">today</span><span class="o">.</span><span class="n">month</span>
-</span><span class='line'>    <span class="vi">@day</span>  <span class="o">=</span>  <span class="n">today</span><span class="o">.</span><span class="n">day</span>
-</span><span class='line'>    <span class="vi">@wday</span> <span class="o">=</span>  <span class="no">Time</span><span class="o">.</span><span class="n">new</span><span class="p">(</span> <span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;+00:00&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">wday</span>
-</span><span class='line'>    <span class="vi">@days</span> <span class="o">=</span>  <span class="no">Date</span><span class="o">.</span><span class="n">new</span><span class="p">(</span> <span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">day</span>
-</span><span class='line'>    <span class="c1">#location</span>
-</span><span class='line'>    <span class="n">jpg</span> <span class="o">=</span> <span class="sb">`identify </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="sb">`</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span><span class="o">[</span><span class="mi">2</span><span class="o">].</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
-</span><span class='line'>    <span class="vi">@x</span><span class="p">,</span><span class="vi">@y</span> <span class="o">=</span> <span class="n">jpg</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">to_i</span><span class="o">-</span><span class="mi">720</span> <span class="p">,</span> <span class="n">jpg</span><span class="o">[</span><span class="mi">1</span><span class="o">].</span><span class="n">to_i</span><span class="o">-</span><span class="mi">1100</span>
-</span><span class='line'>    <span class="n">run</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">output</span><span class="p">)</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">text</span><span class="p">(</span> <span class="n">color</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">fixX</span> <span class="p">)</span>
-</span><span class='line'>    <span class="vi">@x_day</span><span class="o">||=</span><span class="mi">0</span> <span class="p">;</span>  <span class="vi">@y_day</span><span class="o">||=-</span><span class="mi">1</span>
-</span><span class='line'>    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="vi">@x</span> <span class="o">+</span> <span class="vi">@sizeX</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="vi">@x_day</span><span class="p">)</span> <span class="o">+</span> <span class="n">fixX</span><span class="p">,</span> <span class="vi">@y</span> <span class="o">+</span> <span class="vi">@sizeY</span><span class="o">*</span><span class="p">(</span><span class="vi">@y_day</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
-</span><span class='line'>    <span class="vi">@text</span><span class="o">.</span><span class="n">fill</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span>
-</span><span class='line'>    <span class="vi">@text</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="vi">@canvas</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">text</span><span class="si">}</span><span class="s2">&quot;</span> <span class="p">)</span>
-</span><span class='line'>    <span class="vi">@text</span><span class="o">.</span><span class="n">fill</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">color</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span class='line'>    <span class="vi">@text</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="vi">@canvas</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">x</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">text</span><span class="si">}</span><span class="s2">&quot;</span> <span class="p">)</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">calendar_title</span>
-</span><span class='line'>    <span class="n">title</span> <span class="o">=</span> <span class="sx">%w(SU MO TU WE TH FR SA)</span>
-</span><span class='line'>    <span class="n">title</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
-</span><span class='line'>      <span class="n">fix</span> <span class="o">=</span>  <span class="vi">@sizeX</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">title</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">t</span><span class="p">))</span> <span class="o">+</span> <span class="vi">@sizeX</span><span class="o">/</span><span class="mi">4</span>
-</span><span class='line'>      <span class="n">text</span><span class="p">(</span> <span class="s2">&quot;grey&quot;</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">fix</span> <span class="p">)</span>
-</span><span class='line'>    <span class="k">end</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">calendar_days</span>
-</span><span class='line'>    <span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="n">.</span><span class="vi">@days</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">d</span><span class="o">|</span>
-</span><span class='line'>      <span class="vi">@x_day</span> <span class="o">=</span> <span class="p">(</span> <span class="n">d</span> <span class="o">+</span> <span class="vi">@wday</span> <span class="p">)</span> <span class="o">%</span> <span class="mi">7</span>
-</span><span class='line'>      <span class="vi">@y_day</span> <span class="o">=</span> <span class="p">(</span> <span class="n">d</span> <span class="o">+</span> <span class="vi">@wday</span> <span class="p">)</span> <span class="o">/</span> <span class="mi">7</span>
-</span><span class='line'>      <span class="n">d</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">==</span> <span class="vi">@day</span> <span class="p">?</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;red&quot;</span> <span class="p">:</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;white&quot;</span>
-</span><span class='line'>      <span class="n">d</span> <span class="o">&gt;</span> <span class="mi">8</span> <span class="o">?</span> <span class="n">fix</span> <span class="o">=</span> <span class="vi">@sizeX</span><span class="o">/</span><span class="mi">2</span> <span class="p">:</span> <span class="n">fix</span> <span class="o">=</span> <span class="vi">@sizeX</span>
-</span><span class='line'>      <span class="n">text</span><span class="p">(</span> <span class="n">color</span><span class="p">,</span> <span class="n">d</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">fix</span> <span class="p">)</span>
-</span><span class='line'>    <span class="k">end</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">output</span><span class="p">)</span>
-</span><span class='line'>    <span class="vi">@canvas</span> <span class="o">=</span> <span class="no">Magick</span><span class="o">::</span><span class="no">ImageList</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
-</span><span class='line'>    <span class="vi">@text</span> <span class="o">=</span> <span class="no">Magick</span><span class="o">::</span><span class="no">Draw</span><span class="o">.</span><span class="n">new</span>
-</span><span class='line'>    <span class="vi">@text</span><span class="o">.</span><span class="n">pointsize</span> <span class="o">=</span> <span class="vi">@sizeX</span> <span class="o">=</span> <span class="mi">32</span>
-</span><span class='line'>    <span class="vi">@sizeY</span> <span class="o">=</span> <span class="mi">42</span>
-</span><span class='line'>    <span class="n">calendar_title</span>
-</span><span class='line'>    <span class="n">calendar_days</span>
-</span><span class='line'>    <span class="c1">#output</span>
-</span><span class='line'>    <span class="vi">@canvas</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="no">Calendar</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="no">ARGV</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">,</span><span class="no">ARGV</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
+<time class='entry-date' datetime='2017-05-07T02:14:01+08:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>2:14 am</span></time>
       
-  <header>
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/ruby/'>ruby</a>
+  
+</span>
+
+
+    </p>
     
-      <h1 class="entry-title"><a href="/blog/2017/05/04/date/">Date</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2017-05-04T19:52:52+08:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>7:52 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>wday = Time.new( year, month, day, 00, 0, 0, &ldquo;+00:00&rdquo;).wday</p>
-
-<p>days_in_month = Date.new(Time.now.year, Time.now.month, -1).day</p>
+      <div class="sharing">
+  
+  
+  
 </div>
-  
-  
 
-
-    </article>
-  
-  
-    <article>
+    
+    <p class="meta">
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2017/04/29/mount-smb/">Mount-smb</a></h1>
-    
-    
-      <p class="meta">
-        
+        <a class="basic-alignment left" href="/blog/2017/05/06/exe-dot-desktop/" title="Previous Post: desktop">&laquo; desktop</a>
+      
+      
+    </p>
+  </footer>
+</article>
 
-
-
-
-<time class='entry-date' datetime='2017-04-29T13:51:04+08:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>29</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>1:51 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><code>mount -t cifs //192.168.0.106/form /to -o username="abc",password="1234"</code></p>
 </div>
-  
-  
 
-
-    </article>
-  
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
-</div>
 <aside class="sidebar">
   
     <section>
@@ -529,6 +318,7 @@ Exec=gnome-terminal -e &lsquo;ls&rsquo;</p>
 
   
 </aside>
+
 
     </div>
   </div>
