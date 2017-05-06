@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-05-06T05:06:38+08:00</updated>
+  <updated>2017-05-06T22:46:35+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,20 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Desktop]]></title>
+    <link href="http://icps0610.github.io/blog/2017/05/06/exe-dot-desktop/"/>
+    <updated>2017-05-06T22:40:27+08:00</updated>
+    <id>http://icps0610.github.io/blog/2017/05/06/exe-dot-desktop</id>
+    <content type="html"><![CDATA[<p>[Desktop Entry]
+Type=Application
+Terminal=true
+Name=File
+Icon=icon.svg
+Exec=gnome-terminal -e &lsquo;ls&rsquo;</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Calendar]]></title>
@@ -98,9 +112,9 @@
 </span><span class='line'>      <span class="vi">@x_day</span><span class="o">||=</span><span class="mi">0</span> <span class="p">;</span>  <span class="vi">@y_day</span><span class="o">||=-</span><span class="mi">1</span>
 </span><span class='line'>      <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="vi">@x</span> <span class="o">+</span> <span class="vi">@sizeX</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="vi">@x_day</span><span class="p">)</span> <span class="o">+</span> <span class="n">fixX</span><span class="p">,</span> <span class="vi">@y</span> <span class="o">+</span> <span class="vi">@sizeY</span><span class="o">*</span><span class="p">(</span><span class="vi">@y_day</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
 </span><span class='line'>    <span class="vi">@text</span><span class="o">.</span><span class="n">fill</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span>
-</span><span class='line'>    <span class="vi">@text</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="vi">@canvas</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">text</span><span class="si">}</span><span class="s2">&quot;</span> <span class="p">)</span>
-</span><span class='line'>    <span class="vi">@text</span><span class="o">.</span><span class="n">fill</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">color</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span class='line'>    <span class="vi">@text</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="vi">@canvas</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">x</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">text</span><span class="si">}</span><span class="s2">&quot;</span> <span class="p">)</span>
+</span><span class='line'>      <span class="vi">@text</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="vi">@canvas</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">text</span><span class="si">}</span><span class="s2">&quot;</span> <span class="p">)</span>
+</span><span class='line'>      <span class="vi">@text</span><span class="o">.</span><span class="n">fill</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">color</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>      <span class="vi">@text</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="vi">@canvas</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">x</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">text</span><span class="si">}</span><span class="s2">&quot;</span> <span class="p">)</span>
 </span><span class='line'>  <span class="k">end</span>
 </span><span class='line'>
 </span><span class='line'>  <span class="k">def</span> <span class="nf">calendar_title</span>
@@ -893,18 +907,6 @@ ref <a href="https://www.pluralsight.com/guides/ruby-ruby-on-rails/creating-a-ch
 </span><span class='line'><span class="k">end</span>
 </span></code></pre></td></tr></table></div></figure>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Android_wifi_passwd]]></title>
-    <link href="http://icps0610.github.io/blog/2016/12/25/android-wifi-passwd/"/>
-    <updated>2016-12-25T16:22:53+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/12/25/android-wifi-passwd</id>
-    <content type="html"><![CDATA[<p>/system/build.prop
-ro.securestorage.support=true to false</p>
-
-<p>/data/misc/wifi/wpa_supplicant.bak.conf</p>
 ]]></content>
   </entry>
   
