@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-01-20T16:51:42+08:00</updated>
+  <updated>2017-05-07T02:17:29+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,76 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Calendar]]></title>
+    <link href="http://icps0610.github.io/blog/2017/05/07/calendar/"/>
+    <updated>2017-05-07T02:14:01+08:00</updated>
+    <id>http://icps0610.github.io/blog/2017/05/07/calendar</id>
+    <content type="html"><![CDATA[<p><code>wday = Time.new( year, month, day, 00, 0, 0, "+00:00").wday</code>
+<code>days_in_month = Date.new(Time.now.year, Time.now.month, -1).day</code></p>
+
+<pre><code class="ruby">#!/usr/bin/env ruby
+# encoding: utf-8
+require 'rmagick'
+require 'date'
+class Calendar
+
+  def initialize(file, output)
+    today = Time.now
+    year, month  = today.year, today.month
+    @day  =  today.day
+    @wday =  Time.new( year, month, 1, 0, 0, 0, "+00:00").wday
+    @days =  Date.new( year, month, -1).day
+    #location
+    jpg = `identify #{file}`.split(' ')[2].split('x')
+    @x,@y = jpg[0].to_i-720 , jpg[1].to_i-1100
+    run(file, output)
+  end
+
+  def text( color, text, fixX )
+    @x_day||=0 ;  @y_day||=-1
+    x, y = @x + @sizeX*2*(@x_day) + fixX, @y + @sizeY*(@y_day + 1)
+    @text.fill = 'black'
+    @text.annotate(@canvas, 0, 0, x, y, "#{text}" )
+    @text.fill = "#{color}"
+    @text.annotate(@canvas, 0, 0, x-5, y, "#{text}" )
+  end
+
+  def calendar_title
+    title = %w(SU MO TU WE TH FR SA)
+    title.each do |t|
+      fix =  @sizeX*2*(title.index(t)) + @sizeX/4
+      text( "grey", t, fix )
+    end
+  end
+
+  def calendar_days
+    (0..@days-1).each do |d|
+      @x_day = ( d + @wday ) % 7
+      @y_day = ( d + @wday ) / 7
+      d + 1 == @day ? color = "red" : color = "white"
+      d &gt; 8 ? fix = @sizeX/2 : fix = @sizeX
+      text( color, d+1, fix )
+    end
+  end
+
+  def run(file, output)
+    @canvas = Magick::ImageList.new.read(file)
+    @text = Magick::Draw.new
+    @text.pointsize = @sizeX = 32
+    @sizeY = 42
+    calendar_title
+    calendar_days
+    #output
+    @canvas.write(output)
+  end
+end
+
+Calendar.new(ARGV[0],ARGV[1])
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Sum_of_array]]></title>
@@ -66,19 +136,6 @@ end
 else
     puts "nil"
 end
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[陣列中最長的元素]]></title>
-    <link href="http://icps0610.github.io/blog/2017/01/05/longest/"/>
-    <updated>2017-01-05T05:10:44+08:00</updated>
-    <id>http://icps0610.github.io/blog/2017/01/05/longest</id>
-    <content type="html"><![CDATA[<pre><code class="ruby">arr =[["I","block"],["love","wikipedia"],["apple","worst"]]
-
-arr.collect{|i| i[1]}.max_by(&amp;:length).length
-arr.collect(&amp;:first)
 </code></pre>
 ]]></content>
   </entry>

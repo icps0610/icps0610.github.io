@@ -9,8 +9,8 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="apt-get install tesseract-ocr tesseract-ocr-chi-tra tesseract image.jpg out -l chi_tra
-">
+  <meta name="description" content="
+[Desktop Entry] Type=Application Terminal=true Name=File Icon=icon.svg Exec=gnome-terminal -e 'ls' ">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -69,6 +69,192 @@
       <div class="blog-index">
   
 
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2017/05/07/desktop/">Desktop</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2017-05-07T02:14:55+08:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>2:14 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><pre>
+[Desktop Entry]   
+Type=Application   
+Terminal=true   
+Name=File   
+Icon=icon.svg   
+Exec=gnome-terminal -e 'ls'  
+</pre>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2017/05/07/calendar/">Calendar</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2017-05-07T02:14:01+08:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>2:14 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><code>wday = Time.new( year, month, day, 00, 0, 0, "+00:00").wday</code>
+<code>days_in_month = Date.new(Time.now.year, Time.now.month, -1).day</code></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#!/usr/bin/env ruby</span>
+</span><span class='line'><span class="c1"># encoding: utf-8</span>
+</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;rmagick&#39;</span>
+</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;date&#39;</span>
+</span><span class='line'><span class="k">class</span> <span class="nc">Calendar</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">output</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">today</span> <span class="o">=</span> <span class="no">Time</span><span class="o">.</span><span class="n">now</span>
+</span><span class='line'>    <span class="n">year</span><span class="p">,</span> <span class="n">month</span>  <span class="o">=</span> <span class="n">today</span><span class="o">.</span><span class="n">year</span><span class="p">,</span> <span class="n">today</span><span class="o">.</span><span class="n">month</span>
+</span><span class='line'>    <span class="vi">@day</span>  <span class="o">=</span>  <span class="n">today</span><span class="o">.</span><span class="n">day</span>
+</span><span class='line'>    <span class="vi">@wday</span> <span class="o">=</span>  <span class="no">Time</span><span class="o">.</span><span class="n">new</span><span class="p">(</span> <span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;+00:00&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">wday</span>
+</span><span class='line'>    <span class="vi">@days</span> <span class="o">=</span>  <span class="no">Date</span><span class="o">.</span><span class="n">new</span><span class="p">(</span> <span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">day</span>
+</span><span class='line'>    <span class="c1">#location</span>
+</span><span class='line'>    <span class="n">jpg</span> <span class="o">=</span> <span class="sb">`identify </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="sb">`</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span><span class="o">[</span><span class="mi">2</span><span class="o">].</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+</span><span class='line'>    <span class="vi">@x</span><span class="p">,</span><span class="vi">@y</span> <span class="o">=</span> <span class="n">jpg</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">to_i</span><span class="o">-</span><span class="mi">720</span> <span class="p">,</span> <span class="n">jpg</span><span class="o">[</span><span class="mi">1</span><span class="o">].</span><span class="n">to_i</span><span class="o">-</span><span class="mi">1100</span>
+</span><span class='line'>    <span class="n">run</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">output</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">text</span><span class="p">(</span> <span class="n">color</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">fixX</span> <span class="p">)</span>
+</span><span class='line'>    <span class="vi">@x_day</span><span class="o">||=</span><span class="mi">0</span> <span class="p">;</span>  <span class="vi">@y_day</span><span class="o">||=-</span><span class="mi">1</span>
+</span><span class='line'>    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="vi">@x</span> <span class="o">+</span> <span class="vi">@sizeX</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="vi">@x_day</span><span class="p">)</span> <span class="o">+</span> <span class="n">fixX</span><span class="p">,</span> <span class="vi">@y</span> <span class="o">+</span> <span class="vi">@sizeY</span><span class="o">*</span><span class="p">(</span><span class="vi">@y_day</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+</span><span class='line'>    <span class="vi">@text</span><span class="o">.</span><span class="n">fill</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span>
+</span><span class='line'>    <span class="vi">@text</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="vi">@canvas</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">text</span><span class="si">}</span><span class="s2">&quot;</span> <span class="p">)</span>
+</span><span class='line'>    <span class="vi">@text</span><span class="o">.</span><span class="n">fill</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">color</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>    <span class="vi">@text</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="vi">@canvas</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">x</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">text</span><span class="si">}</span><span class="s2">&quot;</span> <span class="p">)</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">calendar_title</span>
+</span><span class='line'>    <span class="n">title</span> <span class="o">=</span> <span class="sx">%w(SU MO TU WE TH FR SA)</span>
+</span><span class='line'>    <span class="n">title</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
+</span><span class='line'>      <span class="n">fix</span> <span class="o">=</span>  <span class="vi">@sizeX</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">title</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">t</span><span class="p">))</span> <span class="o">+</span> <span class="vi">@sizeX</span><span class="o">/</span><span class="mi">4</span>
+</span><span class='line'>      <span class="n">text</span><span class="p">(</span> <span class="s2">&quot;grey&quot;</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">fix</span> <span class="p">)</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">calendar_days</span>
+</span><span class='line'>    <span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="n">.</span><span class="vi">@days</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">d</span><span class="o">|</span>
+</span><span class='line'>      <span class="vi">@x_day</span> <span class="o">=</span> <span class="p">(</span> <span class="n">d</span> <span class="o">+</span> <span class="vi">@wday</span> <span class="p">)</span> <span class="o">%</span> <span class="mi">7</span>
+</span><span class='line'>      <span class="vi">@y_day</span> <span class="o">=</span> <span class="p">(</span> <span class="n">d</span> <span class="o">+</span> <span class="vi">@wday</span> <span class="p">)</span> <span class="o">/</span> <span class="mi">7</span>
+</span><span class='line'>      <span class="n">d</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">==</span> <span class="vi">@day</span> <span class="p">?</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;red&quot;</span> <span class="p">:</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;white&quot;</span>
+</span><span class='line'>      <span class="n">d</span> <span class="o">&gt;</span> <span class="mi">8</span> <span class="o">?</span> <span class="n">fix</span> <span class="o">=</span> <span class="vi">@sizeX</span><span class="o">/</span><span class="mi">2</span> <span class="p">:</span> <span class="n">fix</span> <span class="o">=</span> <span class="vi">@sizeX</span>
+</span><span class='line'>      <span class="n">text</span><span class="p">(</span> <span class="n">color</span><span class="p">,</span> <span class="n">d</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">fix</span> <span class="p">)</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">output</span><span class="p">)</span>
+</span><span class='line'>    <span class="vi">@canvas</span> <span class="o">=</span> <span class="no">Magick</span><span class="o">::</span><span class="no">ImageList</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+</span><span class='line'>    <span class="vi">@text</span> <span class="o">=</span> <span class="no">Magick</span><span class="o">::</span><span class="no">Draw</span><span class="o">.</span><span class="n">new</span>
+</span><span class='line'>    <span class="vi">@text</span><span class="o">.</span><span class="n">pointsize</span> <span class="o">=</span> <span class="vi">@sizeX</span> <span class="o">=</span> <span class="mi">32</span>
+</span><span class='line'>    <span class="vi">@sizeY</span> <span class="o">=</span> <span class="mi">42</span>
+</span><span class='line'>    <span class="n">calendar_title</span>
+</span><span class='line'>    <span class="n">calendar_days</span>
+</span><span class='line'>    <span class="c1">#output</span>
+</span><span class='line'>    <span class="vi">@canvas</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="no">Calendar</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="no">ARGV</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">,</span><span class="no">ARGV</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
+  
   
     <article>
       
@@ -169,164 +355,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2017/01/14/link-entire-table/">Link_entire_table</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2017-01-14T01:44:58+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>1:44 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><blockquote><p>ref <a href="http://stackoverflow.com/questions/4904938/link-entire-table-row">http://stackoverflow.com/questions/4904938/link-entire-table-row</a></p></blockquote>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;script&gt;</span>
-</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;tr&#39;</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>    <span class="nb">window</span><span class="p">.</span><span class="nx">location</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;href&#39;</span><span class="p">);</span>
-</span><span class='line'><span class="p">}).</span><span class="nx">hover</span><span class="p">(</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>    <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">toggleClass</span><span class="p">(</span><span class="s1">&#39;hover&#39;</span><span class="p">);</span>
-</span><span class='line'><span class="p">});</span>
-</span><span class='line'><span class="nt">&lt;/script&gt;</span>
-</span><span class='line'><span class="nt">&lt;style&gt;</span>
-</span><span class='line'>  <span class="nt">tr</span><span class="nc">.hover</span> <span class="p">{</span>
-</span><span class='line'>   <span class="k">cursor</span><span class="o">:</span> <span class="k">pointer</span><span class="p">;</span>
-</span><span class='line'>   <span class="c">/* whatever other hover styles you want */</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'><span class="nt">&lt;/style&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2017/01/13/bootstrap-notify/">Bootstrap_notify</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2017-01-13T21:25:05+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>9:25 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3><a href="https://github.com/jclay/bootstrap-notify-gem">https://github.com/jclay/bootstrap-notify-gem</a></h3>
-
-<p><code>gem 'bootstrap_notify'</code></p>
-
-<pre><code>#application.js
-//= require jquery
-//= require jquery_ujs
-//= require bootstrap_notify
-</code></pre>
-
-
-
-
-<pre><code>#application.scss
-@import "bootstrap";
-@import "bootstrap_notify";
-</code></pre>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class='erb'><span class='line'><span class="x">#app/views/partials/_notify.erb</span>
-</span><span class='line'><span class="cp">&lt;%</span> <span class="k">if</span> <span class="o">!</span><span class="n">notice</span><span class="o">.</span><span class="n">blank?</span> <span class="cp">%&gt;</span><span class="x"></span>
-</span><span class='line'><span class="x">  &lt;script&gt; </span>
-</span><span class='line'><span class="x">      $(document).ready(function () {</span>
-</span><span class='line'><span class="x">          $(&#39;.top-left&#39;).notify({</span>
-</span><span class='line'><span class="x">              </span><span class="cp">&lt;%</span> <span class="n">flash</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="nb">name</span><span class="p">,</span> <span class="n">msg</span><span class="o">|</span> <span class="cp">%&gt;</span><span class="x"></span>
-</span><span class='line'><span class="x">                  message: { text: &quot;</span><span class="cp">&lt;%=</span> <span class="n">msg</span> <span class="cp">%&gt;</span><span class="x">&quot; }</span>
-</span><span class='line'><span class="x">              </span><span class="cp">&lt;%</span> <span class="k">end</span> <span class="cp">%&gt;</span><span class="x">  </span>
-</span><span class='line'><span class="x">          }).show();</span>
-</span><span class='line'><span class="x">      });</span>
-</span><span class='line'><span class="x">  &lt;/script&gt;</span>
-</span><span class='line'><span class="cp">&lt;%</span> <span class="k">end</span> <span class="cp">%&gt;</span><span class="x"></span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='erb'><span class='line'><span class="x">#app/views/layouts/application.erb in head tag</span>
-</span><span class='line'><span class="cp">&lt;%=</span> <span class="n">render</span><span class="p">(</span><span class="ss">:partial</span> <span class="o">=&gt;</span> <span class="s2">&quot;partials/notify&quot;</span><span class="p">)</span> <span class="cp">%&gt;</span><span class="x"></span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='erb'><span class='line'><span class="x">#app/views/layouts/application.erb in body tag</span>
-</span><span class='line'><span class="x">#&lt;div class=&#39;notifications top-left&#39;&gt;&lt;/div&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#app/controllers/uploads_controller.rb</span>
-</span><span class='line'><span class="n">flash</span><span class="o">[</span><span class="ss">:notice</span><span class="o">]</span> <span class="o">=</span> <span class="s2">&quot;uploaded&quot;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
     <a href="/blog/archives">Blog Archives</a>
@@ -340,16 +368,24 @@
     <ul id="categories">
        <li class='category'><a href='/blog/categories/app/'>app (15)</a></li>
 <li class='category'><a href='/blog/categories/bat/'>bat (9)</a></li>
-<li class='category'><a href='/blog/categories/linux/'>linux (10)</a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (11)</a></li>
 <li class='category'><a href='/blog/categories/notepad/'>notepad (1)</a></li>
 <li class='category'><a href='/blog/categories/ror/'>ror (18)</a></li>
-<li class='category'><a href='/blog/categories/ruby/'>ruby (28)</a></li>
+<li class='category'><a href='/blog/categories/ruby/'>ruby (29)</a></li>
 
     </ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2017/05/07/desktop/">Desktop</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2017/05/07/calendar/">Calendar</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2017/01/20/tesseract/">Tesseract</a>
@@ -361,14 +397,6 @@
     
       <li class="post">
         <a href="/blog/2017/01/14/dupclicate-elements/">Dupclicate_elements</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2017/01/14/link-entire-table/">Link_entire_table</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2017/01/13/bootstrap-notify/">Bootstrap_notify</a>
       </li>
     
   </ul>
