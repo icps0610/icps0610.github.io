@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-05-07T02:21:08+08:00</updated>
+  <updated>2017-05-07T02:22:25+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -15,18 +15,24 @@
   
   <entry>
     <title type="html"><![CDATA[Desktop]]></title>
-    <link href="http://icps0610.github.io/blog/2017/05/07/desktop/"/>
-    <updated>2017-05-07T02:14:55+08:00</updated>
-    <id>http://icps0610.github.io/blog/2017/05/07/desktop</id>
-    <content type="html"><![CDATA[<pre>
-[Desktop Entry]   
-Type=Application   
-Terminal=true   
-Name=File   
-Icon=icon.svg   
-Exec=gnome-terminal -e 'ls'  
-</pre>
-
+    <link href="http://icps0610.github.io/blog/2017/05/06/exe-dot-desktop/"/>
+    <updated>2017-05-06T22:40:27+08:00</updated>
+    <id>http://icps0610.github.io/blog/2017/05/06/exe-dot-desktop</id>
+    <content type="html"><![CDATA[<p>[Desktop Entry]
+Type=Application
+Terminal=true
+Name=File
+Icon=icon.svg
+Exec=gnome-terminal -e &lsquo;ls&rsquo;</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Mount-smb]]></title>
+    <link href="http://icps0610.github.io/blog/2017/04/29/mount-smb/"/>
+    <updated>2017-04-29T13:51:04+08:00</updated>
+    <id>http://icps0610.github.io/blog/2017/04/29/mount-smb</id>
+    <content type="html"><![CDATA[<p><code>mount -t cifs //192.168.0.106/form /to -o username="abc",password="1234"</code></p>
 ]]></content>
   </entry>
   
@@ -59,19 +65,6 @@ ro.securestorage.support=true to false</p>
     <content type="html"><![CDATA[<p><code>add-apt-repository ppa:fcitx-team/nightly</code><br/>
 <code>apt-get update</code><br/>
 <code>apt install -y fcitx-bin fcitx-libs-gclient fcitx-chewing fcitx-module-dbus fcitx-config-common fcitx-modules fcitx-config-gtk fcitx-module-x11 fcitx-data fcitx-qimpanel-configtool fcitx-frontend-gtk2 fcitx-ui-classic fcitx-frontend-gtk3 fcitx-ui-qimpanel fcitx-libs</code></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Nat]]></title>
-    <link href="http://icps0610.github.io/blog/2016/06/18/nat/"/>
-    <updated>2016-06-18T05:38:52+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/06/18/nat</id>
-    <content type="html"><![CDATA[<pre><code>iptables --table nat --append POSTROUTING --out-interface <font color='red'>eth1</font> -j MASQUERADE
-iptables --append FORWARD --in-interface <font color='red'>eth0</font> -j ACCEPT
-echo "1" > /proc/sys/net/ipv4/ip_forward
-</code></pre>
-
 ]]></content>
   </entry>
   

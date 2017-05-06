@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-05-07T02:21:08+08:00</updated>
+  <updated>2017-05-07T02:22:25+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -15,13 +15,10 @@
   
   <entry>
     <title type="html"><![CDATA[Calendar]]></title>
-    <link href="http://icps0610.github.io/blog/2017/05/07/calendar/"/>
-    <updated>2017-05-07T02:14:01+08:00</updated>
-    <id>http://icps0610.github.io/blog/2017/05/07/calendar</id>
-    <content type="html"><![CDATA[<p><code>wday = Time.new( year, month, day, 00, 0, 0, "+00:00").wday</code>
-<code>days_in_month = Date.new(Time.now.year, Time.now.month, -1).day</code></p>
-
-<pre><code class="ruby">#!/usr/bin/env ruby
+    <link href="http://icps0610.github.io/blog/2017/05/06/calendar/"/>
+    <updated>2017-05-06T02:25:27+08:00</updated>
+    <id>http://icps0610.github.io/blog/2017/05/06/calendar</id>
+    <content type="html"><![CDATA[<pre><code class="ruby">#!/usr/bin/env ruby
 # encoding: utf-8
 require 'rmagick'
 require 'date'
@@ -84,6 +81,17 @@ Calendar.new(ARGV[0],ARGV[1])
   </entry>
   
   <entry>
+    <title type="html"><![CDATA[Date]]></title>
+    <link href="http://icps0610.github.io/blog/2017/05/04/date/"/>
+    <updated>2017-05-04T19:52:52+08:00</updated>
+    <id>http://icps0610.github.io/blog/2017/05/04/date</id>
+    <content type="html"><![CDATA[<p>wday = Time.new( year, month, day, 00, 0, 0, &ldquo;+00:00&rdquo;).wday</p>
+
+<p>days_in_month = Date.new(Time.now.year, Time.now.month, -1).day</p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Sum_of_array]]></title>
     <link href="http://icps0610.github.io/blog/2017/01/14/sum-of-array/"/>
     <updated>2017-01-14T19:41:40+08:00</updated>
@@ -121,20 +129,6 @@ ActiveRecord::Base.establish_connection({
   password: 'passwd'
 })
 class Event &lt; ActiveRecord::Base
-end
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Check_value]]></title>
-    <link href="http://icps0610.github.io/blog/2017/01/11/check-value/"/>
-    <updated>2017-01-11T20:41:24+08:00</updated>
-    <id>http://icps0610.github.io/blog/2017/01/11/check-value</id>
-    <content type="html"><![CDATA[<pre><code class="ruby">if defined?(value) &amp;&amp; (value != '')
-    puts "yes"
-else
-    puts "nil"
 end
 </code></pre>
 ]]></content>
