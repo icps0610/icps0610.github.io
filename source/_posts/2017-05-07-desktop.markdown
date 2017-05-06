@@ -1,0 +1,16 @@
+---
+layout: post
+title: "desktop"
+date: 2017-05-07 02:14:55 +0800
+comments: true
+categories: linux
+---
+
+<pre>
+[Desktop Entry]   
+Type=Application   
+Terminal=true   
+Name=File   
+Icon=icon.svg   
+Exec=gnome-terminal -e 'ls'  
+</pre>
