@@ -10,7 +10,7 @@ categories: app
 - 中文化  %APPDATA%\Sublime Text 2\Packages\Default
 - 安裝套件 https://sublime.wbond.net/installation
 - ctrl +shit+p，然後輸入install Package <enter>
-- 多行編輯 ctrl + shift + L
+- 多行編輯 ctrl + shift + L  
 `beautifyruby`
 
 <pre><code>BracketHighlighter  #376
