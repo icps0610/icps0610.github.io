@@ -14,8 +14,8 @@ require 'date'
 class Calendar
 	  
   def initialize(file, output)
-  	today = Time.now
-  	year, month  = today.year, today.month
+		today = Time.now
+		year, month  = today.year, today.month
 		@day  =  today.day
 		@wday =  Time.new( year, month, 1, 0, 0, 0, "+00:00").wday
 		@days =  Date.new( year, month, -1).day
@@ -29,9 +29,9 @@ class Calendar
 		@x_day||=0 ; 	@y_day||=-1
 		x, y = @x + @sizeX*2*(@x_day) + fixX, @y + @sizeY*(@y_day + 1)
 	  @text.fill = 'black'
-	  @text.annotate(@canvas, 0, 0, x, y, "#{text}" )
-	  @text.fill = "#{color}"
-	  @text.annotate(@canvas, 0, 0, x-5, y, "#{text}" )
+		@text.annotate(@canvas, 0, 0, x, y, "#{text}" )
+		@text.fill = "#{color}"
+		@text.annotate(@canvas, 0, 0, x-5, y, "#{text}" )
 	end
 
   def calendar_title
