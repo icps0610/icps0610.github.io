@@ -1,0 +1,9 @@
+---
+layout: post
+title: "github"
+date: 2017-05-07 02:24:18 +0800
+comments: true
+categories: app
+---
+
+http://stackoverflow.com/questions/24114676/git-error-failed-to-push-some-refs-to
