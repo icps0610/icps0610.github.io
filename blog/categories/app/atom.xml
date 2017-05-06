@@ -4,7 +4,7 @@
   <title><![CDATA[Category: App | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/app/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-05-07T02:23:36+08:00</updated>
+  <updated>2017-05-07T02:29:44+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,15 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Github]]></title>
+    <link href="http://icps0610.github.io/blog/2017/05/07/github/"/>
+    <updated>2017-05-07T02:24:18+08:00</updated>
+    <id>http://icps0610.github.io/blog/2017/05/07/github</id>
+    <content type="html"><![CDATA[<p><a href="http://stackoverflow.com/questions/24114676/git-error-failed-to-push-some-refs-to">http://stackoverflow.com/questions/24114676/git-error-failed-to-push-some-refs-to</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Tesseract]]></title>
@@ -74,25 +83,6 @@ mb/Xj3&amp;o{&lt;!,D!ah%#1CHK))vmEsV7kkg:o.cU,U38pi)5h!:7b8{uUQlU8UycV)djcN8jmN^
     <content type="html"><![CDATA[<p><code>netdiscover</code></p>
 
 <p><code>arp-scan 192.168.1.0/24</code></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Atom]]></title>
-    <link href="http://icps0610.github.io/blog/2016/06/25/atom/"/>
-    <updated>2016-06-25T01:00:23+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/06/25/atom</id>
-    <content type="html"><![CDATA[<h3>package</h3>
-
-<h6>highlight-line 選取那行高亮</h6>
-
-<h6>activate-power-mode 打字特效</h6>
-
-<h6>atom-beautify ruby排版</h6>
-
-<blockquote><p>Could not find &lsquo;rubocop&rsquo;. The program may not be installed.<br/>
-<code>gem install rubocop</code><br/>
-atom-beautify -> settings -> ruby -> path C:\Ruby23\bin\rubocop</p></blockquote>
 ]]></content>
   </entry>
   
