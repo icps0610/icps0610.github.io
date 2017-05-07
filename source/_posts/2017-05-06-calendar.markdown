@@ -13,16 +13,16 @@ require 'rmagick'
 require 'date'
 class Calendar
 
-  def initialize(file, output)
+  def initialize(input, output)
     today = Time.now
     year, month  = today.year, today.month
     @day  =  today.day
     @wday =  Time.new( year, month, 1, 0, 0, 0, "+00:00").wday
     @days =  Date.new( year, month, -1).day
     #location
-    jpg = `identify #{file}`.split(' ')[2].split('x')
+    jpg = `identify #{input}`.split(' ')[2].split('x')
     @x,@y = jpg[0].to_i-720 , jpg[1].to_i-1100
-    run(file, output)
+    run(input, output)
   end
 
   def text( color, text, fixX )
@@ -34,15 +34,18 @@ class Calendar
     @text.annotate(@canvas, 0, 0, x-5, y, "#{text}" )
   end
 
-  def calendar_title
+  def run(input, output)
+    @canvas = Magick::ImageList.new.read(input)
+    @text = Magick::Draw.new
+    @text.pointsize = @sizeX = 32
+    @sizeY = 42
+    #title
     title = %w(SU MO TU WE TH FR SA)
-    title.each do |t|
-      fix =  @sizeX*2*(title.index(t)) + @sizeX/4
+    title.each_with_index do |t , index|
+      fix =  @sizeX*2*index + @sizeX/4
       text( "grey", t, fix )
     end
-  end
-
-  def calendar_days
+    #days
     (0..@days-1).each do |d|
       @x_day = ( d + @wday ) % 7
       @y_day = ( d + @wday ) / 7
@@ -50,15 +53,6 @@ class Calendar
       d > 8 ? fix = @sizeX/2 : fix = @sizeX
       text( color, d+1, fix )
     end
-  end
-
-  def run(file, output)
-    @canvas = Magick::ImageList.new.read(file)
-    @text = Magick::Draw.new
-    @text.pointsize = @sizeX = 32
-    @sizeY = 42
-    calendar_title
-    calendar_days
     #output
     @canvas.write(output)
   end
