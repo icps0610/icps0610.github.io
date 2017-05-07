@@ -208,28 +208,22 @@ Exec=gnome-terminal -e 'ls'
 <span class='line-number'>50</span>
 <span class='line-number'>51</span>
 <span class='line-number'>52</span>
-<span class='line-number'>53</span>
-<span class='line-number'>54</span>
-<span class='line-number'>55</span>
-<span class='line-number'>56</span>
-<span class='line-number'>57</span>
-<span class='line-number'>58</span>
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#!/usr/bin/env ruby</span>
 </span><span class='line'><span class="c1"># encoding: utf-8</span>
 </span><span class='line'><span class="nb">require</span> <span class="s1">&#39;rmagick&#39;</span>
 </span><span class='line'><span class="nb">require</span> <span class="s1">&#39;date&#39;</span>
 </span><span class='line'><span class="k">class</span> <span class="nc">Calendar</span>
 </span><span class='line'>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">output</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">input</span><span class="p">,</span> <span class="n">output</span><span class="p">)</span>
 </span><span class='line'>    <span class="n">today</span> <span class="o">=</span> <span class="no">Time</span><span class="o">.</span><span class="n">now</span>
 </span><span class='line'>    <span class="n">year</span><span class="p">,</span> <span class="n">month</span>  <span class="o">=</span> <span class="n">today</span><span class="o">.</span><span class="n">year</span><span class="p">,</span> <span class="n">today</span><span class="o">.</span><span class="n">month</span>
 </span><span class='line'>    <span class="vi">@day</span>  <span class="o">=</span>  <span class="n">today</span><span class="o">.</span><span class="n">day</span>
 </span><span class='line'>    <span class="vi">@wday</span> <span class="o">=</span>  <span class="no">Time</span><span class="o">.</span><span class="n">new</span><span class="p">(</span> <span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;+00:00&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">wday</span>
 </span><span class='line'>    <span class="vi">@days</span> <span class="o">=</span>  <span class="no">Date</span><span class="o">.</span><span class="n">new</span><span class="p">(</span> <span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">day</span>
 </span><span class='line'>    <span class="c1">#location</span>
-</span><span class='line'>    <span class="n">jpg</span> <span class="o">=</span> <span class="sb">`identify </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="sb">`</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span><span class="o">[</span><span class="mi">2</span><span class="o">].</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">jpg</span> <span class="o">=</span> <span class="sb">`identify </span><span class="si">#{</span><span class="n">input</span><span class="si">}</span><span class="sb">`</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span><span class="o">[</span><span class="mi">2</span><span class="o">].</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
 </span><span class='line'>    <span class="vi">@x</span><span class="p">,</span><span class="vi">@y</span> <span class="o">=</span> <span class="n">jpg</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">to_i</span><span class="o">-</span><span class="mi">720</span> <span class="p">,</span> <span class="n">jpg</span><span class="o">[</span><span class="mi">1</span><span class="o">].</span><span class="n">to_i</span><span class="o">-</span><span class="mi">1100</span>
-</span><span class='line'>    <span class="n">run</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">output</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">run</span><span class="p">(</span><span class="n">input</span><span class="p">,</span> <span class="n">output</span><span class="p">)</span>
 </span><span class='line'>  <span class="k">end</span>
 </span><span class='line'>
 </span><span class='line'>  <span class="k">def</span> <span class="nf">text</span><span class="p">(</span> <span class="n">color</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">fixX</span> <span class="p">)</span>
@@ -241,15 +235,18 @@ Exec=gnome-terminal -e 'ls'
 </span><span class='line'>    <span class="vi">@text</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="vi">@canvas</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">x</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">text</span><span class="si">}</span><span class="s2">&quot;</span> <span class="p">)</span>
 </span><span class='line'>  <span class="k">end</span>
 </span><span class='line'>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">calendar_title</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="n">input</span><span class="p">,</span> <span class="n">output</span><span class="p">)</span>
+</span><span class='line'>    <span class="vi">@canvas</span> <span class="o">=</span> <span class="no">Magick</span><span class="o">::</span><span class="no">ImageList</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">input</span><span class="p">)</span>
+</span><span class='line'>    <span class="vi">@text</span> <span class="o">=</span> <span class="no">Magick</span><span class="o">::</span><span class="no">Draw</span><span class="o">.</span><span class="n">new</span>
+</span><span class='line'>    <span class="vi">@text</span><span class="o">.</span><span class="n">pointsize</span> <span class="o">=</span> <span class="vi">@sizeX</span> <span class="o">=</span> <span class="mi">32</span>
+</span><span class='line'>    <span class="vi">@sizeY</span> <span class="o">=</span> <span class="mi">42</span>
+</span><span class='line'>    <span class="c1">#title</span>
 </span><span class='line'>    <span class="n">title</span> <span class="o">=</span> <span class="sx">%w(SU MO TU WE TH FR SA)</span>
-</span><span class='line'>    <span class="n">title</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span>
-</span><span class='line'>      <span class="n">fix</span> <span class="o">=</span>  <span class="vi">@sizeX</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">title</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">t</span><span class="p">))</span> <span class="o">+</span> <span class="vi">@sizeX</span><span class="o">/</span><span class="mi">4</span>
+</span><span class='line'>    <span class="n">title</span><span class="o">.</span><span class="n">each_with_index</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span> <span class="p">,</span> <span class="n">index</span><span class="o">|</span>
+</span><span class='line'>      <span class="n">fix</span> <span class="o">=</span>  <span class="vi">@sizeX</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="n">index</span> <span class="o">+</span> <span class="vi">@sizeX</span><span class="o">/</span><span class="mi">4</span>
 </span><span class='line'>      <span class="n">text</span><span class="p">(</span> <span class="s2">&quot;grey&quot;</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">fix</span> <span class="p">)</span>
 </span><span class='line'>    <span class="k">end</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">calendar_days</span>
+</span><span class='line'>    <span class="c1">#days</span>
 </span><span class='line'>    <span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="n">.</span><span class="vi">@days</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">d</span><span class="o">|</span>
 </span><span class='line'>      <span class="vi">@x_day</span> <span class="o">=</span> <span class="p">(</span> <span class="n">d</span> <span class="o">+</span> <span class="vi">@wday</span> <span class="p">)</span> <span class="o">%</span> <span class="mi">7</span>
 </span><span class='line'>      <span class="vi">@y_day</span> <span class="o">=</span> <span class="p">(</span> <span class="n">d</span> <span class="o">+</span> <span class="vi">@wday</span> <span class="p">)</span> <span class="o">/</span> <span class="mi">7</span>
@@ -257,15 +254,6 @@ Exec=gnome-terminal -e 'ls'
 </span><span class='line'>      <span class="n">d</span> <span class="o">&gt;</span> <span class="mi">8</span> <span class="o">?</span> <span class="n">fix</span> <span class="o">=</span> <span class="vi">@sizeX</span><span class="o">/</span><span class="mi">2</span> <span class="p">:</span> <span class="n">fix</span> <span class="o">=</span> <span class="vi">@sizeX</span>
 </span><span class='line'>      <span class="n">text</span><span class="p">(</span> <span class="n">color</span><span class="p">,</span> <span class="n">d</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">fix</span> <span class="p">)</span>
 </span><span class='line'>    <span class="k">end</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">output</span><span class="p">)</span>
-</span><span class='line'>    <span class="vi">@canvas</span> <span class="o">=</span> <span class="no">Magick</span><span class="o">::</span><span class="no">ImageList</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
-</span><span class='line'>    <span class="vi">@text</span> <span class="o">=</span> <span class="no">Magick</span><span class="o">::</span><span class="no">Draw</span><span class="o">.</span><span class="n">new</span>
-</span><span class='line'>    <span class="vi">@text</span><span class="o">.</span><span class="n">pointsize</span> <span class="o">=</span> <span class="vi">@sizeX</span> <span class="o">=</span> <span class="mi">32</span>
-</span><span class='line'>    <span class="vi">@sizeY</span> <span class="o">=</span> <span class="mi">42</span>
-</span><span class='line'>    <span class="n">calendar_title</span>
-</span><span class='line'>    <span class="n">calendar_days</span>
 </span><span class='line'>    <span class="c1">#output</span>
 </span><span class='line'>    <span class="vi">@canvas</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
 </span><span class='line'>  <span class="k">end</span>
