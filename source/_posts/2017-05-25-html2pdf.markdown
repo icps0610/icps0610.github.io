@@ -1,0 +1,21 @@
+---
+layout: post
+title: "html2pdf"
+date: 2017-05-25 03:56:46 +0800
+comments: true
+categories: python
+---
+`https://github.com/twtrubiks/python-pdfkit-example`
+<code>
+
+
+config = pdfkit.configuration(wkhtmltopdf='/opt/wkhtmltox/bin/wkhtmltopdf')
+options = {
+    'encoding': 'UTF-8',
+}
+pdfkit.from_url('/tmp/result.html', '/tmp/result.pdf', configuration=config, options=options)
+#os.system("/opt/wkhtmltox/bin/wkhtmltoimage /tmp/result.html /tmp/result.jpg") 
+
+
+#<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</code>
