@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Python | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-05-25T04:01:30+08:00</updated>
+  <updated>2017-05-25T04:09:02+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -18,20 +18,18 @@
     <link href="http://icps0610.github.io/blog/2017/05/25/html2pdf/"/>
     <updated>2017-05-25T03:56:46+08:00</updated>
     <id>http://icps0610.github.io/blog/2017/05/25/html2pdf</id>
-    <content type="html"><![CDATA[<p><code>https://github.com/twtrubiks/python-pdfkit-example</code>
-<code></p>
+    <content type="html"><![CDATA[<p><code>https://github.com/twtrubiks/python-pdfkit-example</code></p>
 
-<p>config = pdfkit.configuration(wkhtmltopdf=&lsquo;/opt/wkhtmltox/bin/wkhtmltopdf&rsquo;)
+<pre><code class="python">config = pdfkit.configuration(wkhtmltopdf='/opt/wkhtmltox/bin/wkhtmltopdf')
 options = {
-    &lsquo;encoding&rsquo;: &lsquo;UTF-8&rsquo;,
+    'encoding': 'UTF-8',
 }
-pdfkit.from_url(&lsquo;/tmp/result.html&rsquo;, &lsquo;/tmp/result.pdf&rsquo;, configuration=config, options=options)</p>
+pdfkit.from_url('/tmp/result.html', '/tmp/result.pdf', configuration=config, options=options)
+#os.system("/opt/wkhtmltox/bin/wkhtmltoimage /tmp/result.html /tmp/result.jpg") 
 
-<h1>os.system(&ldquo;/opt/wkhtmltox/bin/wkhtmltoimage /tmp/result.html /tmp/result.jpg&rdquo;)</h1>
 
-<h1><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></h1>
-
-<p></code></p>
+#&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8"&gt;
+</code></pre>
 ]]></content>
   </entry>
   
@@ -40,8 +38,25 @@ pdfkit.from_url(&lsquo;/tmp/result.html&rsquo;, &lsquo;/tmp/result.pdf&rsquo;, c
     <link href="http://icps0610.github.io/blog/2017/05/22/pip3/"/>
     <updated>2017-05-22T23:33:35+08:00</updated>
     <id>http://icps0610.github.io/blog/2017/05/22/pip3</id>
-    <content type="html"><![CDATA[<p>apt-get install python3-setuptools
-easy_install3 pip</p>
+    <content type="html"><![CDATA[<p><code>apt-get install python3-setuptools</code>
+<code>easy_install3 pip</code></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Zfill]]></title>
+    <link href="http://icps0610.github.io/blog/2017/05/21/zfill/"/>
+    <updated>2017-05-21T16:33:56+08:00</updated>
+    <id>http://icps0610.github.io/blog/2017/05/21/zfill</id>
+    <content type="html"><![CDATA[<pre><code class="python">"test".rjust(5)
+# "  test"
+"test".ljust(5)
+# "test  "
+"test".center(5)
+# " test "
+"test".zfill(5)
+# "0test"
+</code></pre>
 ]]></content>
   </entry>
   

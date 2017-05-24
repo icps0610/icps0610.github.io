@@ -9,8 +9,16 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="https://github.com/twtrubiks/python-pdfkit-example config = pdfkit.configuration(wkhtmltopdf=&lsquo;/opt/wkhtmltox/bin/wkhtmltopdf&rsquo;)
-options &hellip;">
+  <meta name="description" content="https://github.com/twtrubiks/python-pdfkit-example 1
+2
+3
+4
+5
+6
+7
+8
+9
+config = pdfkit.configuration(wkhtmltopdf=&#39;/opt/wkhtmltox/bin/wkhtmltopdf&# &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -90,20 +98,28 @@ options &hellip;">
   </header>
 
 
-  <div class="entry-content"><p><code>https://github.com/twtrubiks/python-pdfkit-example</code>
-<code></p>
+  <div class="entry-content"><p><code>https://github.com/twtrubiks/python-pdfkit-example</code></p>
 
-<p>config = pdfkit.configuration(wkhtmltopdf=&lsquo;/opt/wkhtmltox/bin/wkhtmltopdf&rsquo;)
-options = {
-    &lsquo;encoding&rsquo;: &lsquo;UTF-8&rsquo;,
-}
-pdfkit.from_url(&lsquo;/tmp/result.html&rsquo;, &lsquo;/tmp/result.pdf&rsquo;, configuration=config, options=options)</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">config</span> <span class="o">=</span> <span class="n">pdfkit</span><span class="o">.</span><span class="n">configuration</span><span class="p">(</span><span class="n">wkhtmltopdf</span><span class="o">=</span><span class="s">&#39;/opt/wkhtmltox/bin/wkhtmltopdf&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="n">options</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>    <span class="s">&#39;encoding&#39;</span><span class="p">:</span> <span class="s">&#39;UTF-8&#39;</span><span class="p">,</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="n">pdfkit</span><span class="o">.</span><span class="n">from_url</span><span class="p">(</span><span class="s">&#39;/tmp/result.html&#39;</span><span class="p">,</span> <span class="s">&#39;/tmp/result.pdf&#39;</span><span class="p">,</span> <span class="n">configuration</span><span class="o">=</span><span class="n">config</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="n">options</span><span class="p">)</span>
+</span><span class='line'><span class="c">#os.system(&quot;/opt/wkhtmltox/bin/wkhtmltoimage /tmp/result.html /tmp/result.jpg&quot;) </span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="c">#&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<h1>os.system(&ldquo;/opt/wkhtmltox/bin/wkhtmltoimage /tmp/result.html /tmp/result.jpg&rdquo;)</h1>
-
-<h1><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></h1>
-
-<p></code></p>
 </div>
   
   
@@ -132,8 +148,8 @@ pdfkit.from_url(&lsquo;/tmp/result.html&rsquo;, &lsquo;/tmp/result.pdf&rsquo;, c
   </header>
 
 
-  <div class="entry-content"><p>apt-get install python3-setuptools
-easy_install3 pip</p>
+  <div class="entry-content"><p><code>apt-get install python3-setuptools</code>
+<code>easy_install3 pip</code></p>
 </div>
   
   
@@ -162,7 +178,24 @@ easy_install3 pip</p>
   </header>
 
 
-  <div class="entry-content">
+  <div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="s">&quot;test&quot;</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</span><span class='line'><span class="c"># &quot;  test&quot;</span>
+</span><span class='line'><span class="s">&quot;test&quot;</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</span><span class='line'><span class="c"># &quot;test  &quot;</span>
+</span><span class='line'><span class="s">&quot;test&quot;</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</span><span class='line'><span class="c"># &quot; test &quot;</span>
+</span><span class='line'><span class="s">&quot;test&quot;</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</span><span class='line'><span class="c"># &quot;0test&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
 </div>
   
   
@@ -251,10 +284,9 @@ Exec=gnome-terminal -e 'ls'
 <li class='category'><a href='/blog/categories/bat/'>bat (9)</a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (12)</a></li>
 <li class='category'><a href='/blog/categories/notepad/'>notepad (1)</a></li>
-<li class='category'><a href='/blog/categories/python/'>python (2)</a></li>
+<li class='category'><a href='/blog/categories/python/'>python (3)</a></li>
 <li class='category'><a href='/blog/categories/ror/'>ror (18)</a></li>
 <li class='category'><a href='/blog/categories/ruby/'>ruby (29)</a></li>
-<li class='category'><a href='/blog/categories/uncategorized/'>uncategorized (1)</a></li>
 
     </ul>
 </section>
