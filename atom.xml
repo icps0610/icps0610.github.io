@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-05-08T06:45:36+08:00</updated>
+  <updated>2017-05-25T04:01:30+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,47 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Html2pdf]]></title>
+    <link href="http://icps0610.github.io/blog/2017/05/25/html2pdf/"/>
+    <updated>2017-05-25T03:56:46+08:00</updated>
+    <id>http://icps0610.github.io/blog/2017/05/25/html2pdf</id>
+    <content type="html"><![CDATA[<p><code>https://github.com/twtrubiks/python-pdfkit-example</code>
+<code></p>
+
+<p>config = pdfkit.configuration(wkhtmltopdf=&lsquo;/opt/wkhtmltox/bin/wkhtmltopdf&rsquo;)
+options = {
+    &lsquo;encoding&rsquo;: &lsquo;UTF-8&rsquo;,
+}
+pdfkit.from_url(&lsquo;/tmp/result.html&rsquo;, &lsquo;/tmp/result.pdf&rsquo;, configuration=config, options=options)</p>
+
+<h1>os.system(&ldquo;/opt/wkhtmltox/bin/wkhtmltoimage /tmp/result.html /tmp/result.jpg&rdquo;)</h1>
+
+<h1><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></h1>
+
+<p></code></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Pip3]]></title>
+    <link href="http://icps0610.github.io/blog/2017/05/22/pip3/"/>
+    <updated>2017-05-22T23:33:35+08:00</updated>
+    <id>http://icps0610.github.io/blog/2017/05/22/pip3</id>
+    <content type="html"><![CDATA[<p>apt-get install python3-setuptools
+easy_install3 pip</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Zfill]]></title>
+    <link href="http://icps0610.github.io/blog/2017/05/21/zfill/"/>
+    <updated>2017-05-21T16:33:56+08:00</updated>
+    <id>http://icps0610.github.io/blog/2017/05/21/zfill</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Github]]></title>
@@ -775,127 +816,6 @@ ref <a href="https://www.pluralsight.com/guides/ruby-ruby-on-rails/creating-a-ch
     <id>http://icps0610.github.io/blog/2017/01/01/proxy</id>
     <content type="html"><![CDATA[<p><code>cat /etc/environment</code><br/>
 <code>unset HTTP_PROXY</code></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Sqlmap]]></title>
-    <link href="http://icps0610.github.io/blog/2017/01/01/sqlmap/"/>
-    <updated>2017-01-01T00:44:30+08:00</updated>
-    <id>http://icps0610.github.io/blog/2017/01/01/sqlmap</id>
-    <content type="html"><![CDATA[<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>+9#CAy76Q93[o[20
-</span><span class='line'>Po.[$fe#3cR;m=v:Un74
-</span><span class='line'>V:/6QZel?MovNnK*U&gt;euSQMM&h#SuzZfN.gq[dRc]Q63:d3EH9{(6sJg4fMR),5hD&gt; q5/AQ9a*&gt;;Fd#QYn{Ce96
-</span><span class='line'>jSsyQF7wWho^W#8e
-</span><span class='line'>HegE5Uq/dnsF4&lt;@0?]IkU/j52*4t{1F[7d NW4k3w+k1aRfkE[u$Jf5q
-</span><span class='line'>4MzV*RG.542&g_j@oj4m
-</span><span class='line'>h9[nLj;9&lt;;X&XgA_-VeC7[hqon%*]n728gR6mVV/_K[ml9KP]Pr!Ns3AV&gt;_zwM3d
-</span><span class='line'>S&rPo{!x[WZ;7$ZhnY6cC/0Z++1q$*M#f-q+y&,XfYaIXM:o&gt;3&g3c73
-</span><span class='line'>j%cP0!d9iEuGS9K$PlFw1d1va6i5;opi:7Eym9,+7uXE&gt;T71
-</span><span class='line'>XVV$@[J.2f3WH5#.:B6r
-</span><span class='line'>N83N!-R?X=trl2)&gt;%hX&gt;+F51vuA2N5PsX.6Z &gt;)Z[hl&lt;vV1p
-</span><span class='line'>frXVrPeu4sPrE)+1Jd3o
-</span><span class='line'>q,EC,!Y@4?e[8i3E;;^izAG:Zs7n
-</span><span class='line'>7J[oRL_h3!s90ylZ4yRAV93wNmiR :^]1T;RTsrJGLCAEP8j
-</span><span class='line'>s2zycv5t&6cu3I80
-</span><span class='line'>::]&gt;ce]JoL23vPLl?wAewT2e
-</span><span class='line'>-K0TcB#kBkGEL#{F)E8i&lt;vJ4yfhzWFCC7=pf]q1f
-</span><span class='line'>*Q0)Mh^YjU;/KCha3ksX9S$/%JB&ss&lt;zcx49
-</span><span class='line'> VYt7vD1z1*U3be4$vDfg5R$hh/sTl&lt;G79!rFK(z@1b&ai^8{ Z_7]W?ptG/G(/^Xl62
-</span><span class='line'>HFZWJbYW6w=w3cHuV^7m
-</span><span class='line'>mb/Xj3&o{&lt;!,D!ah%#1CHK))vmEsV7kkg:o.cU,U38pi)5h!:7b8{uUQlU8UycV)djcN8jmN^*i&gt;axl&_f9m
-</span><span class='line'>=MWAGWnJc$cDXu dXv7/@$ibD=2qT+^#Xu&;Qwt89:f6Rl93s0[-]Zi8GL2k=3&84&gt;]+My/@9(clKV h0_dryX&gt;n{ aaSx6i
-</span><span class='line'>+h^0pBPViwlQ#D1-:zeVJ&gt;^RREeykc]V;[WhkcKeDI&lt;Z7jd5ZI@6:+X5f]&g:Q9AJFFQH4??IWDyAiQ,g]Btn)$&d-7q</span></code></pre></td></tr></table></div></figure>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[QRrcode-heroku]]></title>
-    <link href="http://icps0610.github.io/blog/2016/12/29/qrcode/"/>
-    <updated>2016-12-29T01:28:11+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/12/29/qrcode</id>
-    <content type="html"><![CDATA[<h4>Decoder - zxing</h4>
-
-<p><code>heroku buildpacks:add --index 1 https://github.com/heroku/heroku-buildpack-apt</code><br/>
-<code>echo cmake &gt; Aptfile</code><br/>
-<code>git push heroku master</code></p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#!/usr/bin/env ruby</span>
-</span><span class='line'><span class="c1">#Gemfile</span>
-</span><span class='line'><span class="n">gem</span> <span class="s1">&#39;zxing_cpp&#39;</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1">#controller.rb</span>
-</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;zxing&#39;</span>
-</span><span class='line'><span class="no">ZXing</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span> <span class="n">filename</span> <span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h4>Encoder - rqrcode_png</h4>
-
-<p><a href="https://github.com/DCarper/rqrcode_png">https://github.com/DCarper/rqrcode_png</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[四捨五入]]></title>
-    <link href="http://icps0610.github.io/blog/2016/12/27/round/"/>
-    <updated>2016-12-27T14:42:06+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/12/27/round</id>
-    <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#!/usr/bin/env ruby</span>
-</span><span class='line'><span class="c1"># encoding: utf-8</span>
-</span><span class='line'><span class="k">def</span> <span class="nf">n425</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
-</span><span class='line'>  <span class="nb">test</span> <span class="o">=</span> <span class="n">num</span><span class="o">.</span><span class="n">to_s</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sr">/(\d*)\.(\d{1})/</span><span class="p">)</span>
-</span><span class='line'>  <span class="nb">test</span><span class="o">[</span><span class="mi">2</span><span class="o">].</span><span class="n">to_i</span> <span class="o">&gt;=</span> <span class="mi">5</span> <span class="o">?</span> <span class="nb">test</span> <span class="o">=</span> <span class="nb">test</span><span class="o">[</span><span class="mi">1</span><span class="o">].</span><span class="n">to_i</span><span class="o">+</span><span class="mi">1</span> <span class="p">:</span> <span class="nb">test</span> <span class="o">=</span> <span class="nb">test</span><span class="o">[</span><span class="mi">1</span><span class="o">].</span><span class="n">to_i</span>
-</span><span class='line'>  <span class="n">num</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">?</span> <span class="nb">test</span><span class="o">*</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">:</span> <span class="nb">test</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">def</span> <span class="nf">n425</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
-</span><span class='line'>  <span class="n">num</span><span class="o">.</span><span class="n">to_s</span><span class="o">.</span><span class="n">to_f</span><span class="o">.</span><span class="n">round</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
 ]]></content>
   </entry>
   
