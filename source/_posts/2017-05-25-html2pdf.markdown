@@ -18,3 +18,11 @@ pdfkit.from_url('/tmp/result.html', '/tmp/result.pdf', configuration=config, opt
 
 #<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 ```
+
+>> ref  https://stackoverflow.com/questions/13516534/how-to-avoid-page-break-inside-table-row-for-wkhtmltopdf
+
+``` html
+<style>
+	tr { page-break-inside: avoid !important; }
+</style>
+```
