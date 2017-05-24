@@ -6,9 +6,8 @@ comments: true
 categories: python
 ---
 `https://github.com/twtrubiks/python-pdfkit-example`
-<code>
 
-
+``` python
 config = pdfkit.configuration(wkhtmltopdf='/opt/wkhtmltox/bin/wkhtmltopdf')
 options = {
     'encoding': 'UTF-8',
@@ -18,4 +17,4 @@ pdfkit.from_url('/tmp/result.html', '/tmp/result.pdf', configuration=config, opt
 
 
 #<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-</code>
+```

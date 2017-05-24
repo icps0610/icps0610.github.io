@@ -3,5 +3,18 @@ layout: post
 title: "zfill"
 date: 2017-05-21 16:33:56 +0800
 comments: true
-categories: uncategorized
+categories: python
 ---
+
+``` python
+"test".rjust(5)
+# "  test"
+"test".ljust(5)
+# "test  "
+"test".center(5)
+# " test "
+"test".zfill(5)
+# "0test"
+
+
+```
