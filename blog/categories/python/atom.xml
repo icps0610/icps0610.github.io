@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Python | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-05-25T04:09:02+08:00</updated>
+  <updated>2017-05-25T04:10:30+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -38,7 +38,7 @@ pdfkit.from_url('/tmp/result.html', '/tmp/result.pdf', configuration=config, opt
     <link href="http://icps0610.github.io/blog/2017/05/22/pip3/"/>
     <updated>2017-05-22T23:33:35+08:00</updated>
     <id>http://icps0610.github.io/blog/2017/05/22/pip3</id>
-    <content type="html"><![CDATA[<p><code>apt-get install python3-setuptools</code>
+    <content type="html"><![CDATA[<p><code>apt-get install python3-setuptools</code><br/>
 <code>easy_install3 pip</code></p>
 ]]></content>
   </entry>
