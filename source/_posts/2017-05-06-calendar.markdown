@@ -17,7 +17,7 @@ class Calendar
     today = Time.now
     year, month  = today.year, today.month
     @day  =  today.day
-    @wday =  Time.new( year, month, 1, 0, 0, 0, "+00:00").wday
+    @wday =  Date.new( year, month, 1 ).wday
     @days =  Date.new( year, month, -1).day
     #location
     jpg = `identify #{input}`.split(' ')[2].split('x')
