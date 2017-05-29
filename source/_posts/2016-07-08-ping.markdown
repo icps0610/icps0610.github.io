@@ -5,7 +5,7 @@ date: 2016-07-08 16:10:15 +0800
 comments: true
 categories: ruby
 ---
-![ping.png](/images/ping.png)
+![2016-07-08-ping.png](/images/blog/2016-07-08-ping.png)
 
 ``` ruby
 #!/usr/bin/env ruby
