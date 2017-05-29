@@ -4,7 +4,7 @@
   <title><![CDATA[Category: App | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/app/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-05-26T04:23:05+08:00</updated>
+  <updated>2017-05-29T22:24:15+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,15 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[SoundWire]]></title>
+    <link href="http://icps0610.github.io/blog/2017/05/29/soundwire/"/>
+    <updated>2017-05-29T21:57:37+08:00</updated>
+    <id>http://icps0610.github.io/blog/2017/05/29/soundwire</id>
+    <content type="html"><![CDATA[<p><code>http://soundwire-server.en.uptodown.com/windows</code></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Github]]></title>
@@ -72,17 +81,6 @@ mb/Xj3&amp;o{&lt;!,D!ah%#1CHK))vmEsV7kkg:o.cU,U38pi)5h!:7b8{uUQlU8UycV)djcN8jmN^
 =MWAGWnJc$cDXu dXv7/@$ibD=2qT+^#Xu&amp;;Qwt89:f6Rl93s0[-]Zi8GL2k=3&amp;84&gt;]+My/@9(clKV h0_dryX&gt;n{ aaSx6i
 +h^0pBPViwlQ#D1-:zeVJ&gt;^RREeykc]V;[WhkcKeDI&lt;Z7jd5ZI@6:+X5f]&amp;g:Q9AJFFQH4??IWDyAiQ,g]Btn)$&amp;d-7q
 </code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[LAN掃描]]></title>
-    <link href="http://icps0610.github.io/blog/2016/07/09/arp-scan/"/>
-    <updated>2016-07-09T02:52:13+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/07/09/arp-scan</id>
-    <content type="html"><![CDATA[<p><code>netdiscover</code></p>
-
-<p><code>arp-scan 192.168.1.0/24</code></p>
 ]]></content>
   </entry>
   

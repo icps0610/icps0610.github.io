@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-05-26T04:23:05+08:00</updated>
+  <updated>2017-05-29T22:24:15+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,41 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[SoundWire]]></title>
+    <link href="http://icps0610.github.io/blog/2017/05/29/soundwire/"/>
+    <updated>2017-05-29T21:57:37+08:00</updated>
+    <id>http://icps0610.github.io/blog/2017/05/29/soundwire</id>
+    <content type="html"><![CDATA[<p><code>http://soundwire-server.en.uptodown.com/windows</code></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Charts]]></title>
+    <link href="http://icps0610.github.io/blog/2017/05/26/charts/"/>
+    <updated>2017-05-26T20:54:03+08:00</updated>
+    <id>http://icps0610.github.io/blog/2017/05/26/charts</id>
+    <content type="html"><![CDATA[<p><code>http://pygal.org/en/stable/documentation/index.html</code></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">pygal</span>
+</span><span class='line'><span class="n">pie_chart</span> <span class="o">=</span> <span class="n">pygal</span><span class="o">.</span><span class="n">Pie</span><span class="p">()</span>
+</span><span class='line'><span class="n">pie_chart</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="s">&#39;PTT&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">result</span><span class="p">:</span>
+</span><span class='line'>    <span class="n">pie_chart</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="s">&#39;country&#39;</span><span class="p">],</span> <span class="n">r</span><span class="p">[</span><span class="s">&#39;number&#39;</span><span class="p">])</span>
+</span><span class='line'><span class="n">pie_chart</span><span class="o">.</span><span class="n">render_to_file</span><span class="p">(</span><span class="n">DIR_JSON</span><span class="o">+</span><span class="n">board</span><span class="o">+</span><span class="s">&#39;.svg&#39;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Html2pdf]]></title>
@@ -824,34 +859,6 @@ ref <a href="https://www.pluralsight.com/guides/ruby-ruby-on-rails/creating-a-ch
     <updated>2017-01-05T05:12:25+08:00</updated>
     <id>http://icps0610.github.io/blog/2017/01/05/weather</id>
     <content type="html"><![CDATA[<p>good</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[陣列中最長的元素]]></title>
-    <link href="http://icps0610.github.io/blog/2017/01/05/longest/"/>
-    <updated>2017-01-05T05:10:44+08:00</updated>
-    <id>http://icps0610.github.io/blog/2017/01/05/longest</id>
-    <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">arr</span> <span class="o">=[[</span><span class="s2">&quot;I&quot;</span><span class="p">,</span><span class="s2">&quot;block&quot;</span><span class="o">]</span><span class="p">,</span><span class="o">[</span><span class="s2">&quot;love&quot;</span><span class="p">,</span><span class="s2">&quot;wikipedia&quot;</span><span class="o">]</span><span class="p">,</span><span class="o">[</span><span class="s2">&quot;apple&quot;</span><span class="p">,</span><span class="s2">&quot;worst&quot;</span><span class="o">]]</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">arr</span><span class="o">.</span><span class="n">collect</span><span class="p">{</span><span class="o">|</span><span class="n">i</span><span class="o">|</span> <span class="n">i</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="p">}</span><span class="o">.</span><span class="n">max_by</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:length</span><span class="p">)</span><span class="o">.</span><span class="n">length</span>
-</span><span class='line'><span class="n">arr</span><span class="o">.</span><span class="n">collect</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:first</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Proxy]]></title>
-    <link href="http://icps0610.github.io/blog/2017/01/01/proxy/"/>
-    <updated>2017-01-01T23:13:43+08:00</updated>
-    <id>http://icps0610.github.io/blog/2017/01/01/proxy</id>
-    <content type="html"><![CDATA[<p><code>cat /etc/environment</code><br/>
-<code>unset HTTP_PROXY</code></p>
 ]]></content>
   </entry>
   
