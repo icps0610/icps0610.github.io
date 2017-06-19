@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-05-29T22:40:29+08:00</updated>
+  <updated>2017-06-19T19:52:55+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,23 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Json]]></title>
+    <link href="http://icps0610.github.io/blog/2017/06/19/json/"/>
+    <updated>2017-06-19T19:51:53+08:00</updated>
+    <id>http://icps0610.github.io/blog/2017/06/19/json</id>
+    <content type="html"><![CDATA[<pre><code class="ruby">require 'net/http'
+require 'uri'
+require 'json'
+
+uri = URI.parse('http://www.example.com/sample.json')
+json = Net::HTTP.get(uri)
+result = JSON.parse(json)
+puts result
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Calendar]]></title>
@@ -112,20 +129,6 @@ ActiveRecord::Base.establish_connection({
   password: 'passwd'
 })
 class Event &lt; ActiveRecord::Base
-end
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Check_value]]></title>
-    <link href="http://icps0610.github.io/blog/2017/01/11/check-value/"/>
-    <updated>2017-01-11T20:41:24+08:00</updated>
-    <id>http://icps0610.github.io/blog/2017/01/11/check-value</id>
-    <content type="html"><![CDATA[<pre><code class="ruby">if defined?(value) &amp;&amp; (value != '')
-    puts "yes"
-else
-    puts "nil"
 end
 </code></pre>
 ]]></content>
