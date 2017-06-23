@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-06-19T19:52:55+08:00</updated>
+  <updated>2017-06-23T21:09:06+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,33 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Line-notify]]></title>
+    <link href="http://icps0610.github.io/blog/2017/06/23/line-notify/"/>
+    <updated>2017-06-23T20:45:29+08:00</updated>
+    <id>http://icps0610.github.io/blog/2017/06/23/line-notify</id>
+    <content type="html"><![CDATA[<pre><code class="ruby">line = "https://notify-api.line.me/api/notify"
+to    = ARGV[0]
+msg   = ARGV[1]
+image = ARGV[2]
+
+case to
+when "me"
+  token = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+end
+if image and File.exist?(image)
+  cmd = "curl -X POST -H 'Authorization: Bearer #{token}' -F 'message=#{msg}' -F 'imageFile=@#{image}' #{line}"
+elsif image == nil
+  cmd = "curl -X POST -H 'Authorization: Bearer #{token}' -F 'message=#{msg}' #{line}"
+else
+  cmd = "curl -X POST -H 'Authorization: Bearer #{token}' -F 'message=file cant find' #{line}"
+end
+
+system cmd
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Json]]></title>
@@ -110,25 +137,6 @@ Calendar.new(ARGV[0],ARGV[1])
 <pre><code class="ruby  ">array = ["aa","bb","cc","bb","bb","cc"]
 array.each_with_object(Hash.new(0)){|w,c|c[w]+=1}.each do |w,c|
     puts "#{w} #{c} times"
-end
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Ruby_mysql]]></title>
-    <link href="http://icps0610.github.io/blog/2017/01/13/ruby-mysql/"/>
-    <updated>2017-01-13T21:24:56+08:00</updated>
-    <id>http://icps0610.github.io/blog/2017/01/13/ruby-mysql</id>
-    <content type="html"><![CDATA[<pre><code class="ruby">require 'active_record'
-ActiveRecord::Base.establish_connection({
-  adapter: 'mysql2',
-  encoding: 'utf8',
-  database: 'report',
-  username: 'user',
-  password: 'passwd'
-})
-class Event &lt; ActiveRecord::Base
 end
 </code></pre>
 ]]></content>
