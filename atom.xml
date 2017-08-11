@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-08-12T01:52:19+08:00</updated>
+  <updated>2017-08-12T01:56:44+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -47,9 +47,9 @@
 
 <h3>sox</h3>
 
-<h4>play FAIL formats: no handler for file extension `mp3'</h4>
+<h4>> play FAIL formats: no handler for file extension `mp3'</h4>
 
-<h4>apt install libsox-fmt-mp3</h4>
+<h4>>> apt install libsox-fmt-mp3</h4>
 ]]></content>
   </entry>
   
