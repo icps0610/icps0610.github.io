@@ -4,7 +4,7 @@
   <title><![CDATA[Category: App | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/app/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-06-23T21:09:06+08:00</updated>
+  <updated>2017-08-12T01:52:19+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,40 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Chromecast]]></title>
+    <link href="http://icps0610.github.io/blog/2017/08/12/chromecast/"/>
+    <updated>2017-08-12T01:43:47+08:00</updated>
+    <id>http://icps0610.github.io/blog/2017/08/12/chromecast</id>
+    <content type="html"><![CDATA[<p><a href="https://github.com/xat/castnow">https://github.com/xat/castnow</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Fm_radio]]></title>
+    <link href="http://icps0610.github.io/blog/2017/08/11/fm/"/>
+    <updated>2017-08-11T07:50:07+08:00</updated>
+    <id>http://icps0610.github.io/blog/2017/08/11/fm</id>
+    <content type="html"><![CDATA[<h3>fm_transmitter</h3>
+
+<h4><a href="https://github.com/markondej/fm_transmitter">https://github.com/markondej/fm_transmitter</a></h4>
+
+<pre><code class="">#fm.sh
+
+$f = 101.5
+sox "$1" -r 48000 -c 1 -b 16 -t wav - | fm_transmitter -f $f -
+#lame --decode $1 - | fm_transmitter -f $f -
+#arecord -D plughw:1,0 -c1 -d 0 -r 22050 -f S16_LE | fm_transmitter -f $f -
+</code></pre>
+
+<h3>sox</h3>
+
+<h4>play FAIL formats: no handler for file extension `mp3'</h4>
+
+<h4>apt install libsox-fmt-mp3</h4>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[SoundWire]]></title>
@@ -39,48 +73,6 @@
     <content type="html"><![CDATA[<p><code>apt-get install tesseract-ocr tesseract-ocr-chi-tra</code></p>
 
 <p><code>tesseract image.jpg out -l chi_tra</code></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Proxy]]></title>
-    <link href="http://icps0610.github.io/blog/2017/01/01/proxy/"/>
-    <updated>2017-01-01T23:13:43+08:00</updated>
-    <id>http://icps0610.github.io/blog/2017/01/01/proxy</id>
-    <content type="html"><![CDATA[<p><code>cat /etc/environment</code><br/>
-<code>unset HTTP_PROXY</code></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Sqlmap]]></title>
-    <link href="http://icps0610.github.io/blog/2017/01/01/sqlmap/"/>
-    <updated>2017-01-01T00:44:30+08:00</updated>
-    <id>http://icps0610.github.io/blog/2017/01/01/sqlmap</id>
-    <content type="html"><![CDATA[<pre><code>+9#CAy76Q93[o[20
-Po.[$fe#3cR;m=v:Un74
-V:/6QZel?MovNnK*U&gt;euSQMM&amp;h#SuzZfN.gq[dRc]Q63:d3EH9{(6sJg4fMR),5hD&gt; q5/AQ9a*&gt;;Fd#QYn{Ce96
-jSsyQF7wWho^W#8e
-HegE5Uq/dnsF4&lt;@0?]IkU/j52*4t{1F[7d NW4k3w+k1aRfkE[u$Jf5q
-4MzV*RG.542&amp;g_j@oj4m
-h9[nLj;9&lt;;X&amp;XgA_-VeC7[hqon%*]n728gR6mVV/_K[ml9KP]Pr!Ns3AV&gt;_zwM3d
-S&amp;rPo{!x[WZ;7$ZhnY6cC/0Z++1q$*M#f-q+y&amp;,XfYaIXM:o&gt;3&amp;g3c73
-j%cP0!d9iEuGS9K$PlFw1d1va6i5;opi:7Eym9,+7uXE&gt;T71
-XVV$@[J.2f3WH5#.:B6r
-N83N!-R?X=trl2)&gt;%hX&gt;+F51vuA2N5PsX.6Z &gt;)Z[hl&lt;vV1p
-frXVrPeu4sPrE)+1Jd3o
-q,EC,!Y@4?e[8i3E;;^izAG:Zs7n
-7J[oRL_h3!s90ylZ4yRAV93wNmiR :^]1T;RTsrJGLCAEP8j
-s2zycv5t&amp;6cu3I80
-::]&gt;ce]JoL23vPLl?wAewT2e
--K0TcB#kBkGEL#{F)E8i&lt;vJ4yfhzWFCC7=pf]q1f
-*Q0)Mh^YjU;/KCha3ksX9S$/%JB&amp;ss&lt;zcx49
- VYt7vD1z1*U3be4$vDfg5R$hh/sTl&lt;G79!rFK(z@1b&amp;ai^8{ Z_7]W?ptG/G(/^Xl62
-HFZWJbYW6w=w3cHuV^7m
-mb/Xj3&amp;o{&lt;!,D!ah%#1CHK))vmEsV7kkg:o.cU,U38pi)5h!:7b8{uUQlU8UycV)djcN8jmN^*i&gt;axl&amp;_f9m
-=MWAGWnJc$cDXu dXv7/@$ibD=2qT+^#Xu&amp;;Qwt89:f6Rl93s0[-]Zi8GL2k=3&amp;84&gt;]+My/@9(clKV h0_dryX&gt;n{ aaSx6i
-+h^0pBPViwlQ#D1-:zeVJ&gt;^RREeykc]V;[WhkcKeDI&lt;Z7jd5ZI@6:+X5f]&amp;g:Q9AJFFQH4??IWDyAiQ,g]Btn)$&amp;d-7q
-</code></pre>
 ]]></content>
   </entry>
   
