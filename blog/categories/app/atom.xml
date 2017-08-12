@@ -4,7 +4,7 @@
   <title><![CDATA[Category: App | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/app/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-08-12T01:56:44+08:00</updated>
+  <updated>2017-08-12T14:19:41+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -32,11 +32,15 @@
 <h4><a href="https://github.com/markondej/fm_transmitter">https://github.com/markondej/fm_transmitter</a></h4>
 
 <pre><code class="">#fm.sh
-
-$f = 101.5
+f=101.5
 sox "$1" -r 48000 -c 1 -b 16 -t wav - | fm_transmitter -f $f -
 #lame --decode $1 - | fm_transmitter -f $f -
 #arecord -D plughw:1,0 -c1 -d 0 -r 22050 -f S16_LE | fm_transmitter -f $f -
+
+# server
+#&gt; cat test.wav | nc 192.168.0.201 123
+# client 
+#&gt; nc -l -p 1234 | cat - | sox - -r 48000 -c 1 -b 16 -t wav - | fm_transmitter -f 101.5 -
 </code></pre>
 
 <h3>sox</h3>

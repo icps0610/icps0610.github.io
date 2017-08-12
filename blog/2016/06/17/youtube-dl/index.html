@@ -9,7 +9,7 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="install apt-get install youtube-dl mp3 youtube-dl –extract-audio –audio-format mp3 url video youtube-dl -f mp4 url ">
+  <meta name="description" content="install apt-get install youtube-dl mp3 youtube-dl –extract-audio –audio-format mp3 url video youtube-dl -f mp4 url stream youtube-dl https://youtu.be &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -101,6 +101,10 @@
 <pre><code>youtube-dl -f mp4 <font color='red'>url</font>
 </code></pre>
 
+
+<h3>stream</h3>
+
+<p>youtube-dl <a href="https://youtu.be/B-MTiuswulY">https://youtu.be/B-MTiuswulY</a> -o - | ffmpeg -threads 4 -i pipe:0 -vcodec mp4 -s qcif -f wav -y - | mplayer -</p>
 </div>
 
 
