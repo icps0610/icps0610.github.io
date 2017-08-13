@@ -19,12 +19,15 @@ sox "$1" -r 48000 -c 1 -b 16 -t wav - | fm_transmitter -f $f -
 #arecord -D plughw:1,0 -c1 -d 0 -r 22050 -f S16_LE | fm_transmitter -f $f -
 
 # server
-#> cat test.wav | nc 192.168.0.201 123
+#> ffmpeg -i tt.mp3 -f wav - | nc 192.168.0.201 1234
 # client 
-#> nc -l -p 1234 | cat - | sox - -r 48000 -c 1 -b 16 -t wav - | fm_transmitter -f 101.5 -
+#> nc -l -p 1234 | sox - -r 48000 -c 1 -b 16 -t wav - | fm_transmitter -f 101.5 -
 
 ```
 
 ### sox 
 #### > play FAIL formats: no handler for file extension `mp3'  
-#### >> apt install libsox-fmt-mp3   
+#### >> apt install libsox-fmt-mp3
+
+Unable to locate package libavcodec-unstripped-52
+
