@@ -1,0 +1,14 @@
+---
+layout: post
+title: "ffmpeg"
+date: 2017-08-13 19:23:03 +0800
+comments: true
+categories: app
+---
+```
+git clone https://github.com/FFmpeg/FFmpeg.git
+./configure --arch=armel --target-os=linux --enable-gpl --enable-nonfree --enable-libmp3lame
+make
+sudo make install
+```
+
