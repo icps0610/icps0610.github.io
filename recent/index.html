@@ -220,9 +220,9 @@ git clone https://github.com/FFmpeg/FFmpeg.git
 </span><span class='line'>#arecord -D plughw:1,0 -c1 -d 0 -r 22050 -f S16_LE | fm_transmitter -f $f -
 </span><span class='line'>
 </span><span class='line'># server
-</span><span class='line'>#&gt; cat test.wav | nc 192.168.0.201 123
+</span><span class='line'>#&gt; ffmpeg -i tt.mp3 -f wav - | nc 192.168.0.201 1234
 </span><span class='line'># client 
-</span><span class='line'>#&gt; nc -l -p 1234 | cat - | sox - -r 48000 -c 1 -b 16 -t wav - | fm_transmitter -f 101.5 -
+</span><span class='line'>#&gt; nc -l -p 1234 | sox - -r 48000 -c 1 -b 16 -t wav - | fm_transmitter -f 101.5 -
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -231,6 +231,8 @@ git clone https://github.com/FFmpeg/FFmpeg.git
 <h4>> play FAIL formats: no handler for file extension `mp3'</h4>
 
 <h4>>> apt install libsox-fmt-mp3</h4>
+
+<p>Unable to locate package libavcodec-unstripped-52</p>
 </div>
   
   

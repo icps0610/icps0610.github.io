@@ -4,7 +4,7 @@
   <title><![CDATA[Category: App | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/app/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-08-13T19:26:00+08:00</updated>
+  <updated>2017-08-14T01:28:26+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -64,9 +64,9 @@ sox "$1" -r 48000 -c 1 -b 16 -t wav - | fm_transmitter -f $f -
 #arecord -D plughw:1,0 -c1 -d 0 -r 22050 -f S16_LE | fm_transmitter -f $f -
 
 # server
-#&gt; cat test.wav | nc 192.168.0.201 123
+#&gt; ffmpeg -i tt.mp3 -f wav - | nc 192.168.0.201 1234
 # client 
-#&gt; nc -l -p 1234 | cat - | sox - -r 48000 -c 1 -b 16 -t wav - | fm_transmitter -f 101.5 -
+#&gt; nc -l -p 1234 | sox - -r 48000 -c 1 -b 16 -t wav - | fm_transmitter -f 101.5 -
 </code></pre>
 
 <h3>sox</h3>
@@ -74,6 +74,8 @@ sox "$1" -r 48000 -c 1 -b 16 -t wav - | fm_transmitter -f $f -
 <h4>> play FAIL formats: no handler for file extension `mp3'</h4>
 
 <h4>>> apt install libsox-fmt-mp3</h4>
+
+<p>Unable to locate package libavcodec-unstripped-52</p>
 ]]></content>
   </entry>
   
