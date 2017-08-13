@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-08-13T19:06:50+08:00</updated>
+  <updated>2017-08-13T19:26:00+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -14,17 +14,38 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Ffmpeg]]></title>
+    <link href="http://icps0610.github.io/blog/2017/08/13/ffmpeg/"/>
+    <updated>2017-08-13T19:23:03+08:00</updated>
+    <id>http://icps0610.github.io/blog/2017/08/13/ffmpeg</id>
+    <content type="html"><![CDATA[<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git clone https://github.com/FFmpeg/FFmpeg.git
+</span><span class='line'>./configure --arch=armel --target-os=linux --enable-gpl --enable-nonfree --enable-libmp3lame
+</span><span class='line'>make
+</span><span class='line'>sudo make install</span></code></pre></td></tr></table></div></figure>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Wetty]]></title>
     <link href="http://icps0610.github.io/blog/2017/08/13/wetty/"/>
     <updated>2017-08-13T19:01:19+08:00</updated>
     <id>http://icps0610.github.io/blog/2017/08/13/wetty</id>
-    <content type="html"><![CDATA[<h3>git clone <a href="https://github.com/krishnasrinivas/wetty">https://github.com/krishnasrinivas/wetty</a></h3>
+    <content type="html"><![CDATA[<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'> git clone https://github.com/krishnasrinivas/wetty  
+</span><span class='line'> #npm http://node-arm.herokuapp.com/node_latest_armhf.deb 
+</span><span class='line'> npm install  
+</span><span class='line'> node app.js -p 80</span></code></pre></td></tr></table></div></figure>
 
-<h3>npm install</h3>
-
-<h5><a href="http://node-arm.herokuapp.com/node_latest_armhf.deb">http://node-arm.herokuapp.com/node_latest_armhf.deb</a></h5>
-
-<h3>node app.js -p 80</h3>
 ]]></content>
   </entry>
   
@@ -464,44 +485,6 @@ Exec=gnome-terminal -e 'ls'
 </span><span class='line'><span class="n">array</span><span class="o">.</span><span class="n">each_with_object</span><span class="p">(</span><span class="no">Hash</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">0</span><span class="p">)){</span><span class="o">|</span><span class="n">w</span><span class="p">,</span><span class="n">c</span><span class="o">|</span><span class="n">c</span><span class="o">[</span><span class="n">w</span><span class="o">]+=</span><span class="mi">1</span><span class="p">}</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">w</span><span class="p">,</span><span class="n">c</span><span class="o">|</span>
 </span><span class='line'>  <span class="nb">puts</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">w</span><span class="si">}</span><span class="s2"> </span><span class="si">#{</span><span class="n">c</span><span class="si">}</span><span class="s2"> times&quot;</span>
 </span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Link_entire_table]]></title>
-    <link href="http://icps0610.github.io/blog/2017/01/14/link-entire-table/"/>
-    <updated>2017-01-14T01:44:58+08:00</updated>
-    <id>http://icps0610.github.io/blog/2017/01/14/link-entire-table</id>
-    <content type="html"><![CDATA[<blockquote><p>ref <a href="http://stackoverflow.com/questions/4904938/link-entire-table-row">http://stackoverflow.com/questions/4904938/link-entire-table-row</a></p></blockquote>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;script&gt;</span>
-</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;tr&#39;</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>    <span class="nb">window</span><span class="p">.</span><span class="nx">location</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;href&#39;</span><span class="p">);</span>
-</span><span class='line'><span class="p">}).</span><span class="nx">hover</span><span class="p">(</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>    <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">toggleClass</span><span class="p">(</span><span class="s1">&#39;hover&#39;</span><span class="p">);</span>
-</span><span class='line'><span class="p">});</span>
-</span><span class='line'><span class="nt">&lt;/script&gt;</span>
-</span><span class='line'><span class="nt">&lt;style&gt;</span>
-</span><span class='line'>  <span class="nt">tr</span><span class="nc">.hover</span> <span class="p">{</span>
-</span><span class='line'>   <span class="k">cursor</span><span class="o">:</span> <span class="k">pointer</span><span class="p">;</span>
-</span><span class='line'>   <span class="c">/* whatever other hover styles you want */</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'><span class="nt">&lt;/style&gt;</span>
 </span></code></pre></td></tr></table></div></figure>
 
 ]]></content>
