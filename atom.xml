@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-08-12T14:19:41+08:00</updated>
+  <updated>2017-08-13T19:06:50+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,21 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Wetty]]></title>
+    <link href="http://icps0610.github.io/blog/2017/08/13/wetty/"/>
+    <updated>2017-08-13T19:01:19+08:00</updated>
+    <id>http://icps0610.github.io/blog/2017/08/13/wetty</id>
+    <content type="html"><![CDATA[<h3>git clone <a href="https://github.com/krishnasrinivas/wetty">https://github.com/krishnasrinivas/wetty</a></h3>
+
+<h3>npm install</h3>
+
+<h5><a href="http://node-arm.herokuapp.com/node_latest_armhf.deb">http://node-arm.herokuapp.com/node_latest_armhf.deb</a></h5>
+
+<h3>node app.js -p 80</h3>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Chromecast]]></title>
@@ -487,86 +502,6 @@ Exec=gnome-terminal -e 'ls'
 </span><span class='line'>   <span class="c">/* whatever other hover styles you want */</span>
 </span><span class='line'><span class="p">}</span>
 </span><span class='line'><span class="nt">&lt;/style&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Bootstrap_notify]]></title>
-    <link href="http://icps0610.github.io/blog/2017/01/13/bootstrap-notify/"/>
-    <updated>2017-01-13T21:25:05+08:00</updated>
-    <id>http://icps0610.github.io/blog/2017/01/13/bootstrap-notify</id>
-    <content type="html"><![CDATA[<h3><a href="https://github.com/jclay/bootstrap-notify-gem">https://github.com/jclay/bootstrap-notify-gem</a></h3>
-
-<p><code>gem 'bootstrap_notify'</code></p>
-
-<pre><code>#application.js
-//= require jquery
-//= require jquery_ujs
-//= require bootstrap_notify
-</code></pre>
-
-
-
-
-<pre><code>#application.scss
-@import "bootstrap";
-@import "bootstrap_notify";
-</code></pre>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class='erb'><span class='line'><span class="x">#app/views/partials/_notify.erb</span>
-</span><span class='line'><span class="cp">&lt;%</span> <span class="k">if</span> <span class="o">!</span><span class="n">notice</span><span class="o">.</span><span class="n">blank?</span> <span class="cp">%&gt;</span><span class="x"></span>
-</span><span class='line'><span class="x">  &lt;script&gt; </span>
-</span><span class='line'><span class="x">      $(document).ready(function () {</span>
-</span><span class='line'><span class="x">          $(&#39;.top-left&#39;).notify({</span>
-</span><span class='line'><span class="x">              </span><span class="cp">&lt;%</span> <span class="n">flash</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="nb">name</span><span class="p">,</span> <span class="n">msg</span><span class="o">|</span> <span class="cp">%&gt;</span><span class="x"></span>
-</span><span class='line'><span class="x">                  message: { text: &quot;</span><span class="cp">&lt;%=</span> <span class="n">msg</span> <span class="cp">%&gt;</span><span class="x">&quot; }</span>
-</span><span class='line'><span class="x">              </span><span class="cp">&lt;%</span> <span class="k">end</span> <span class="cp">%&gt;</span><span class="x">  </span>
-</span><span class='line'><span class="x">          }).show();</span>
-</span><span class='line'><span class="x">      });</span>
-</span><span class='line'><span class="x">  &lt;/script&gt;</span>
-</span><span class='line'><span class="cp">&lt;%</span> <span class="k">end</span> <span class="cp">%&gt;</span><span class="x"></span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='erb'><span class='line'><span class="x">#app/views/layouts/application.erb in head tag</span>
-</span><span class='line'><span class="cp">&lt;%=</span> <span class="n">render</span><span class="p">(</span><span class="ss">:partial</span> <span class="o">=&gt;</span> <span class="s2">&quot;partials/notify&quot;</span><span class="p">)</span> <span class="cp">%&gt;</span><span class="x"></span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='erb'><span class='line'><span class="x">#app/views/layouts/application.erb in body tag</span>
-</span><span class='line'><span class="x">#&lt;div class=&#39;notifications top-left&#39;&gt;&lt;/div&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#app/controllers/uploads_controller.rb</span>
-</span><span class='line'><span class="n">flash</span><span class="o">[</span><span class="ss">:notice</span><span class="o">]</span> <span class="o">=</span> <span class="s2">&quot;uploaded&quot;</span>
 </span></code></pre></td></tr></table></div></figure>
 
 ]]></content>

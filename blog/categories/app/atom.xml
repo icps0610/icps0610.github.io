@@ -4,7 +4,7 @@
   <title><![CDATA[Category: App | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/app/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-08-12T14:19:41+08:00</updated>
+  <updated>2017-08-13T19:06:50+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,21 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Wetty]]></title>
+    <link href="http://icps0610.github.io/blog/2017/08/13/wetty/"/>
+    <updated>2017-08-13T19:01:19+08:00</updated>
+    <id>http://icps0610.github.io/blog/2017/08/13/wetty</id>
+    <content type="html"><![CDATA[<h3>git clone <a href="https://github.com/krishnasrinivas/wetty">https://github.com/krishnasrinivas/wetty</a></h3>
+
+<h3>npm install</h3>
+
+<h5><a href="http://node-arm.herokuapp.com/node_latest_armhf.deb">http://node-arm.herokuapp.com/node_latest_armhf.deb</a></h5>
+
+<h3>node app.js -p 80</h3>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Chromecast]]></title>
@@ -66,17 +81,6 @@ sox "$1" -r 48000 -c 1 -b 16 -t wav - | fm_transmitter -f $f -
     <updated>2017-05-07T02:24:18+08:00</updated>
     <id>http://icps0610.github.io/blog/2017/05/07/github</id>
     <content type="html"><![CDATA[<p><a href="http://stackoverflow.com/questions/24114676/git-error-failed-to-push-some-refs-to">http://stackoverflow.com/questions/24114676/git-error-failed-to-push-some-refs-to</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Tesseract]]></title>
-    <link href="http://icps0610.github.io/blog/2017/01/20/tesseract/"/>
-    <updated>2017-01-20T11:10:53+08:00</updated>
-    <id>http://icps0610.github.io/blog/2017/01/20/tesseract</id>
-    <content type="html"><![CDATA[<p><code>apt-get install tesseract-ocr tesseract-ocr-chi-tra</code></p>
-
-<p><code>tesseract image.jpg out -l chi_tra</code></p>
 ]]></content>
   </entry>
   
