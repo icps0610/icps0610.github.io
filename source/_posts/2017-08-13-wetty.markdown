@@ -5,9 +5,9 @@ date: 2017-08-13 19:01:19 +0800
 comments: true
 categories: app
 ---
-
-### git clone https://github.com/krishnasrinivas/wetty  
-### npm install  
-##### http://node-arm.herokuapp.com/node_latest_armhf.deb 
-### node app.js -p 80
-
+```
+ git clone https://github.com/krishnasrinivas/wetty  
+ #npm http://node-arm.herokuapp.com/node_latest_armhf.deb 
+ npm install  
+ node app.js -p 80
+```
