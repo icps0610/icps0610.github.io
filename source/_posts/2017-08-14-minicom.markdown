@@ -1,0 +1,19 @@
+---
+layout: post
+title: "minicom"
+date: 2017-08-14 12:28:47 +0800
+comments: true
+categories: app
+---
+
+### port
+
+`cat /var/log/messages  | grep ttyUSB`  
+`ls /dev/ttyUSB*`  
+
+`apt-get install minicom`  
+
+minicom -s
+
+### config 
+##### /etc/minicom/minirc.dfl 
