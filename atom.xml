@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-08-14T15:00:53+08:00</updated>
+  <updated>2017-08-14T15:14:48+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -36,7 +36,7 @@
 </span><span class='line'>  wpa-ssid SSID</span></code></pre></td></tr></table></div></figure>
 
 
-<p><code>echo wpa-psk</code>wpa_passphrase SSID PASSWORDS | grep -E &ldquo;\spsk=.*\&rdquo;?&ldquo; | cut -f 2 -d &rdquo;=&ldquo; <code>&gt;&gt; /etc/network/interfaces</code></p>
+<p><code>echo wpa-psk `wpa_passphrase SSID PASSWORDS | grep -E "\spsk=.*\"?" | cut -f 2 -d "=" ` &gt;&gt; /etc/network/interfaces</code></p>
 ]]></content>
   </entry>
   
