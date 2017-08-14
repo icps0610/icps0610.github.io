@@ -107,6 +107,20 @@ URI=`apt-cache &hellip;">
 </span><span class='line'>URI=`apt-cache show $PACKAGE | grep "Filename:" | cut -f 2 -d " "`
 </span><span class='line'>wget http://tw.archive.ubuntu.com/ubuntu/$URI</span></code></pre></td></tr></table></div></figure>
 
+
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>#/etc/udev/rules.d/70-persistent-net.rules
+</span><span class='line'>SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*", ATTR{address}=="79:2B:9E:70:67:4F", ATTR{dev_id}=="0x0", ATTR{type}=="1", KERNEL=="wlan*", NAME="wlan0"
+</span><span class='line'>
+</span><span class='line'>SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*", ATTR{address}=="C0:E9:F8:12:F6:6A", ATTR{dev_id}=="0x0", ATTR{type}=="1", KERNEL=="wlan*", NAME="wlan1"</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
 </div>
 
 

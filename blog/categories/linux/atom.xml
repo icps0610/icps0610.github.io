@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-08-14T15:14:48+08:00</updated>
+  <updated>2017-08-14T16:16:25+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -44,6 +44,12 @@ iface wlan0 inet static
 PACKAGE=$1
 URI=`apt-cache show $PACKAGE | grep "Filename:" | cut -f 2 -d " "`
 wget http://tw.archive.ubuntu.com/ubuntu/$URI
+</code></pre>
+
+<pre><code class="">#/etc/udev/rules.d/70-persistent-net.rules
+SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*", ATTR{address}=="79:2B:9E:70:67:4F", ATTR{dev_id}=="0x0", ATTR{type}=="1", KERNEL=="wlan*", NAME="wlan0"
+
+SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*", ATTR{address}=="C0:E9:F8:12:F6:6A", ATTR{dev_id}=="0x0", ATTR{type}=="1", KERNEL=="wlan*", NAME="wlan1"
 </code></pre>
 ]]></content>
   </entry>
