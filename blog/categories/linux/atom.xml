@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-08-14T12:57:28+08:00</updated>
+  <updated>2017-08-14T15:00:53+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,25 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Wifi-config]]></title>
+    <link href="http://icps0610.github.io/blog/2017/08/14/wifi-config/"/>
+    <updated>2017-08-14T14:44:38+08:00</updated>
+    <id>http://icps0610.github.io/blog/2017/08/14/wifi-config</id>
+    <content type="html"><![CDATA[<pre><code>#/etc/network/interfaces
+auto wlan0
+iface wlan0 inet static
+  address 192.168.0.201
+  netmask 255.255.255.0
+  gateway 192.168.0.1
+  wpa-driver wext
+  wpa-ssid SSID
+</code></pre>
+
+<p><code>echo wpa-psk</code>wpa_passphrase SSID PASSWORDS | grep -E &ldquo;\spsk=.*\&rdquo;?&ldquo; | cut -f 2 -d &rdquo;=&ldquo; <code>&gt;&gt; /etc/network/interfaces</code></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Download_deb]]></title>
@@ -64,15 +83,6 @@ Exec=gnome-terminal -e 'ls'
 ro.securestorage.support=true to false</p>
 
 <p>/data/misc/wifi/wpa_supplicant.bak.conf</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[中文字形]]></title>
-    <link href="http://icps0610.github.io/blog/2016/07/06/tw-font/"/>
-    <updated>2016-07-06T19:45:51+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/07/06/tw-font</id>
-    <content type="html"><![CDATA[<p><code>fc-list :lang=zh</code></p>
 ]]></content>
   </entry>
   
