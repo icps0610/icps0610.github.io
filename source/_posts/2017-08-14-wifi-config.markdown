@@ -16,4 +16,4 @@ iface wlan0 inet static
   wpa-ssid SSID
 ```
 
-`echo wpa-psk `wpa_passphrase SSID PASSWORDS | grep -E "\spsk=.*\"?" | cut -f 2 -d "=" ` >> /etc/network/interfaces`
+`{% raw %}`echo wpa-psk `wpa_passphrase SSID PASSWORDS | grep -E "\spsk=.*\"?" | cut -f 2 -d "=" ` >> /etc/network/interfaces`{% endraw %}`
