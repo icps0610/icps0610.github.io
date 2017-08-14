@@ -17,9 +17,13 @@
 6
 7
 8
-#/etc/network/interfaces
-auto wlan0
-iface wlan0 inet static address 192.168.0.201 netmask 255.255.255.0 gateway 192.168.0.1 wpa- &hellip;">
+9
+10
+11
+12
+target = ARGV[0]
+ip = `ifconfig | grep Bcast | cut -d &quot; &quot; -f 12 | cut -d &quot;:&quot; -f 2`
+ip = `ifconfig | &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -78,6 +82,60 @@ iface wlan0 inet static address 192.168.0.201 netmask 255.255.255.0 gateway 192.
       <div class="blog-index">
   
 
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2017/08/14/ssh/">Ssh</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2017-08-14T18:21:12+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>6:21 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">target</span> <span class="o">=</span> <span class="no">ARGV</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span>
+</span><span class='line'><span class="n">ip</span>  <span class="o">=</span> <span class="sb">`ifconfig | grep Bcast | cut -d &quot; &quot; -f 12 | cut -d &quot;:&quot; -f 2`</span>
+</span><span class='line'><span class="n">ip</span>  <span class="o">=</span> <span class="sb">`ifconfig | grep inet | grep cast | cut -d &quot; &quot; -f 10`</span> <span class="k">if</span> <span class="n">ip</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span>
+</span><span class='line'><span class="n">lan</span> <span class="o">=</span> <span class="n">ip</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">{</span><span class="o">|</span><span class="n">i</span><span class="o">|</span> <span class="n">i</span><span class="o">.</span><span class="n">scan</span><span class="p">(</span><span class="sr">/(\d*\.\d*\.\d*\.)\d*/</span><span class="p">)</span><span class="o">.</span><span class="n">join</span><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">if</span> <span class="n">lan</span><span class="o">.</span><span class="n">count</span> <span class="o">&gt;</span> <span class="mi">1</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="n">lan</span>
+</span><span class='line'>  <span class="nb">print</span> <span class="s2">&quot;----------</span><span class="se">\n</span><span class="s2">&gt; &quot;</span>
+</span><span class='line'>  <span class="n">ch</span> <span class="o">=</span> <span class="no">STDIN</span><span class="o">.</span><span class="n">gets</span><span class="o">.</span><span class="n">to_i</span>
+</span><span class='line'>  <span class="n">lan</span> <span class="o">=</span> <span class="n">lan</span><span class="o">[</span><span class="n">ch</span><span class="o">-</span><span class="mi">1</span><span class="o">]</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'><span class="nb">system</span> <span class="s2">&quot;/usr/bin/ssh </span><span class="si">#{</span><span class="o">[</span><span class="n">lan</span><span class="o">].</span><span class="n">join</span><span class="si">}#{</span><span class="n">target</span><span class="si">}</span><span class="s2">&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
+  
   
     <article>
       
@@ -259,43 +317,6 @@ iface wlan0 inet static address 192.168.0.201 netmask 255.255.255.0 gateway 192.
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2017/08/13/wetty/">Wetty</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2017-08-13T19:01:19+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>7:01 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'> git clone https://github.com/krishnasrinivas/wetty  
-</span><span class='line'> #npm http://node-arm.herokuapp.com/node_latest_armhf.deb 
-</span><span class='line'> npm install  
-</span><span class='line'> node app.js -p 80</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
     <a href="/blog/archives">Blog Archives</a>
@@ -313,7 +334,7 @@ iface wlan0 inet static address 192.168.0.201 netmask 255.255.255.0 gateway 192.
 <li class='category'><a href='/blog/categories/notepad/'>notepad (1)</a></li>
 <li class='category'><a href='/blog/categories/python/'>python (5)</a></li>
 <li class='category'><a href='/blog/categories/ror/'>ror (18)</a></li>
-<li class='category'><a href='/blog/categories/ruby/'>ruby (31)</a></li>
+<li class='category'><a href='/blog/categories/ruby/'>ruby (32)</a></li>
 <li class='category'><a href='/blog/categories/uncategorized/'>uncategorized (1)</a></li>
 
     </ul>
@@ -321,6 +342,10 @@ iface wlan0 inet static address 192.168.0.201 netmask 255.255.255.0 gateway 192.
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2017/08/14/ssh/">Ssh</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2017/08/14/wifi-config/">Wifi-config</a>
@@ -336,10 +361,6 @@ iface wlan0 inet static address 192.168.0.201 netmask 255.255.255.0 gateway 192.
     
       <li class="post">
         <a href="/blog/2017/08/13/ffmpeg/">Ffmpeg</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2017/08/13/wetty/">Wetty</a>
       </li>
     
   </ul>

@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-08-14T16:16:25+08:00</updated>
+  <updated>2017-08-14T18:23:50+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,40 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Ssh]]></title>
+    <link href="http://icps0610.github.io/blog/2017/08/14/ssh/"/>
+    <updated>2017-08-14T18:21:12+08:00</updated>
+    <id>http://icps0610.github.io/blog/2017/08/14/ssh</id>
+    <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">target</span> <span class="o">=</span> <span class="no">ARGV</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span>
+</span><span class='line'><span class="n">ip</span>  <span class="o">=</span> <span class="sb">`ifconfig | grep Bcast | cut -d &quot; &quot; -f 12 | cut -d &quot;:&quot; -f 2`</span>
+</span><span class='line'><span class="n">ip</span>  <span class="o">=</span> <span class="sb">`ifconfig | grep inet | grep cast | cut -d &quot; &quot; -f 10`</span> <span class="k">if</span> <span class="n">ip</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span>
+</span><span class='line'><span class="n">lan</span> <span class="o">=</span> <span class="n">ip</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">{</span><span class="o">|</span><span class="n">i</span><span class="o">|</span> <span class="n">i</span><span class="o">.</span><span class="n">scan</span><span class="p">(</span><span class="sr">/(\d*\.\d*\.\d*\.)\d*/</span><span class="p">)</span><span class="o">.</span><span class="n">join</span><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">if</span> <span class="n">lan</span><span class="o">.</span><span class="n">count</span> <span class="o">&gt;</span> <span class="mi">1</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="n">lan</span>
+</span><span class='line'>  <span class="nb">print</span> <span class="s2">&quot;----------</span><span class="se">\n</span><span class="s2">&gt; &quot;</span>
+</span><span class='line'>  <span class="n">ch</span> <span class="o">=</span> <span class="no">STDIN</span><span class="o">.</span><span class="n">gets</span><span class="o">.</span><span class="n">to_i</span>
+</span><span class='line'>  <span class="n">lan</span> <span class="o">=</span> <span class="n">lan</span><span class="o">[</span><span class="n">ch</span><span class="o">-</span><span class="mi">1</span><span class="o">]</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'><span class="nb">system</span> <span class="s2">&quot;/usr/bin/ssh </span><span class="si">#{</span><span class="o">[</span><span class="n">lan</span><span class="o">].</span><span class="n">join</span><span class="si">}#{</span><span class="n">target</span><span class="si">}</span><span class="s2">&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Wifi-config]]></title>
@@ -522,15 +556,6 @@ Exec=gnome-terminal -e 'ls'
 </span><span class='line'><span class="no">Calendar</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="no">ARGV</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">,</span><span class="no">ARGV</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Mount-smb]]></title>
-    <link href="http://icps0610.github.io/blog/2017/04/29/mount-smb/"/>
-    <updated>2017-04-29T13:51:04+08:00</updated>
-    <id>http://icps0610.github.io/blog/2017/04/29/mount-smb</id>
-    <content type="html"><![CDATA[<p><code>mount -t cifs //192.168.0.106/form /to -o username="abc",password="1234"</code></p>
 ]]></content>
   </entry>
   

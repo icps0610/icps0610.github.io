@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-08-14T16:16:25+08:00</updated>
+  <updated>2017-08-14T18:23:50+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,27 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Ssh]]></title>
+    <link href="http://icps0610.github.io/blog/2017/08/14/ssh/"/>
+    <updated>2017-08-14T18:21:12+08:00</updated>
+    <id>http://icps0610.github.io/blog/2017/08/14/ssh</id>
+    <content type="html"><![CDATA[<pre><code class="ruby">target = ARGV[0]
+ip  = `ifconfig | grep Bcast | cut -d " " -f 12 | cut -d ":" -f 2`
+ip  = `ifconfig | grep inet | grep cast | cut -d " " -f 10` if ip == ""
+lan = ip.split("\n").map{|i| i.scan(/(\d*\.\d*\.\d*\.)\d*/).join}
+
+if lan.count &gt; 1
+  puts lan
+  print "----------\n&gt; "
+  ch = STDIN.gets.to_i
+  lan = lan[ch-1]
+end
+system "/usr/bin/ssh #{[lan].join}#{target}"
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Line-notify]]></title>
@@ -124,21 +145,6 @@ Calendar.new(ARGV[0],ARGV[1])
     <updated>2017-01-14T19:41:40+08:00</updated>
     <id>http://icps0610.github.io/blog/2017/01/14/sum-of-array</id>
     <content type="html"><![CDATA[<p><code>array.inject(0){|sum,x| sum + x[0] }</code></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Dupclicate_elements]]></title>
-    <link href="http://icps0610.github.io/blog/2017/01/14/dupclicate-elements/"/>
-    <updated>2017-01-14T17:11:55+08:00</updated>
-    <id>http://icps0610.github.io/blog/2017/01/14/dupclicate-elements</id>
-    <content type="html"><![CDATA[<p><a href="http://stackoverflow.com/questions/569694/count-duplicate-elements-in-ruby-array">http://stackoverflow.com/questions/569694/count-duplicate-elements-in-ruby-array</a></p>
-
-<pre><code class="ruby  ">array = ["aa","bb","cc","bb","bb","cc"]
-array.each_with_object(Hash.new(0)){|w,c|c[w]+=1}.each do |w,c|
-    puts "#{w} #{c} times"
-end
-</code></pre>
 ]]></content>
   </entry>
   

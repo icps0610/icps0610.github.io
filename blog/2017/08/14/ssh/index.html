@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Current_page - icps</title>
+  <title>Ssh - icps</title>
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="ref : https://kmywblog.wordpress.com/2015/10/13/ 1
+  <meta name="description" content="1
 2
 3
 4
@@ -17,8 +17,13 @@
 6
 7
 8
-# app/helpers/application_helper
-module ApplicationHelper def render_active(title, &hellip;">
+9
+10
+11
+12
+target = ARGV[0]
+ip = `ifconfig | grep Bcast | cut -d &quot; &quot; -f 12 | cut -d &quot;:&quot; -f 2`
+ip = `ifconfig | &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -27,7 +32,7 @@ module ApplicationHelper def render_active(title, &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://icps0610.github.io/blog/2016/11/28/current_page/">
+  <link rel="canonical" href="http://icps0610.github.io/blog/2017/08/14/ssh/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="icps" type="application/atom+xml">
@@ -79,7 +84,7 @@ module ApplicationHelper def render_active(title, &hellip;">
   
   <header>
     
-      <h1 class="entry-title">Current_page</h1>
+      <h1 class="entry-title">Ssh</h1>
     
     
       <p class="meta">
@@ -88,16 +93,14 @@ module ApplicationHelper def render_active(title, &hellip;">
 
 
 
-<time class='entry-date' datetime='2016-11-28T13:37:45+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>1:37 pm</span></time>
+<time class='entry-date' datetime='2017-08-14T18:21:12+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>6:21 pm</span></time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><blockquote><p>ref : <a href="https://kmywblog.wordpress.com/2015/10/13/">https://kmywblog.wordpress.com/2015/10/13/</a></p></blockquote>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -105,27 +108,24 @@ module ApplicationHelper def render_active(title, &hellip;">
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># app/helpers/application_helper</span>
-</span><span class='line'><span class="k">module</span> <span class="nn">ApplicationHelper</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">target</span> <span class="o">=</span> <span class="no">ARGV</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span>
+</span><span class='line'><span class="n">ip</span>  <span class="o">=</span> <span class="sb">`ifconfig | grep Bcast | cut -d &quot; &quot; -f 12 | cut -d &quot;:&quot; -f 2`</span>
+</span><span class='line'><span class="n">ip</span>  <span class="o">=</span> <span class="sb">`ifconfig | grep inet | grep cast | cut -d &quot; &quot; -f 10`</span> <span class="k">if</span> <span class="n">ip</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span>
+</span><span class='line'><span class="n">lan</span> <span class="o">=</span> <span class="n">ip</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">{</span><span class="o">|</span><span class="n">i</span><span class="o">|</span> <span class="n">i</span><span class="o">.</span><span class="n">scan</span><span class="p">(</span><span class="sr">/(\d*\.\d*\.\d*\.)\d*/</span><span class="p">)</span><span class="o">.</span><span class="n">join</span><span class="p">}</span>
 </span><span class='line'>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">render_active</span><span class="p">(</span><span class="n">title</span><span class="p">,</span><span class="n">path</span><span class="p">)</span>
-</span><span class='line'>      <span class="n">c</span> <span class="o">=</span> <span class="n">current_page?</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="p">?</span> <span class="s2">&quot;active&quot;</span> <span class="p">:</span> <span class="s2">&quot;&quot;</span>
-</span><span class='line'>      <span class="n">content_tag</span><span class="p">(</span><span class="ss">:li</span><span class="p">,</span> <span class="n">link_to</span><span class="p">(</span> <span class="n">title</span><span class="p">,</span> <span class="n">path</span> <span class="p">),</span> <span class="ss">:class</span> <span class="o">=&gt;</span> <span class="n">c</span> <span class="p">)</span>
-</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">if</span> <span class="n">lan</span><span class="o">.</span><span class="n">count</span> <span class="o">&gt;</span> <span class="mi">1</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="n">lan</span>
+</span><span class='line'>  <span class="nb">print</span> <span class="s2">&quot;----------</span><span class="se">\n</span><span class="s2">&gt; &quot;</span>
+</span><span class='line'>  <span class="n">ch</span> <span class="o">=</span> <span class="no">STDIN</span><span class="o">.</span><span class="n">gets</span><span class="o">.</span><span class="n">to_i</span>
+</span><span class='line'>  <span class="n">lan</span> <span class="o">=</span> <span class="n">lan</span><span class="o">[</span><span class="n">ch</span><span class="o">-</span><span class="mi">1</span><span class="o">]</span>
 </span><span class='line'><span class="k">end</span>
+</span><span class='line'><span class="nb">system</span> <span class="s2">&quot;/usr/bin/ssh </span><span class="si">#{</span><span class="o">[</span><span class="n">lan</span><span class="o">].</span><span class="n">join</span><span class="si">}#{</span><span class="n">target</span><span class="si">}</span><span class="s2">&quot;</span>
 </span></code></pre></td></tr></table></div></figure>
 
-
-<p></p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># views</span>
-</span><span class='line'><span class="o">&lt;%=</span> <span class="n">render_active</span><span class="p">(</span> <span class="s1">&#39;Home&#39;</span><span class="p">,</span> <span class="n">root_path</span> <span class="p">)</span> <span class="o">%&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p></p>
 </div>
 
 
@@ -141,12 +141,12 @@ module ApplicationHelper def render_active(title, &hellip;">
 
 
 
-<time class='entry-date' datetime='2016-11-28T13:37:45+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>1:37 pm</span></time>
+<time class='entry-date' datetime='2017-08-14T18:21:12+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>6:21 pm</span></time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/ror/'>ror</a>
+    <a class='category' href='/blog/categories/ruby/'>ruby</a>
   
 </span>
 
@@ -162,10 +162,8 @@ module ApplicationHelper def render_active(title, &hellip;">
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2016/11/26/fb-login/" title="Previous Post: fb_login">&laquo; fb_login</a>
+        <a class="basic-alignment left" href="/blog/2017/08/14/wifi-config/" title="Previous Post: wifi-config">&laquo; wifi-config</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2016/12/25/android-wifi-passwd/" title="Next Post: android_wifi_passwd">android_wifi_passwd &raquo;</a>
       
     </p>
   </footer>
