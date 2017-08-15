@@ -9,21 +9,7 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-target = ARGV[0]
-ip = `ifconfig | grep Bcast | cut -d &quot; &quot; -f 12 | cut -d &quot;:&quot; -f 2`
-ip = `ifconfig | &hellip;">
+  <meta name="description" content="TP-LINK Archer T4U driver ref https://askubuntu.com/questions/802205/how-to-install-tp-link-archer-t4u-driver wget https://github.com/abperiasamy/ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,6 +68,44 @@ ip = `ifconfig | &hellip;">
       <div class="blog-index">
   
 
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2017/08/16/wifi-driver/">Wifi-driver</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2017-08-16T06:35:42+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>6:35 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>TP-LINK Archer T4U driver</p>
+
+<blockquote><blockquote><p>ref <a href="https://askubuntu.com/questions/802205/how-to-install-tp-link-archer-t4u-driver">https://askubuntu.com/questions/802205/how-to-install-tp-link-archer-t4u-driver</a></p></blockquote></blockquote>
+
+<p>wget <a href="https://github.com/abperiasamy/rtl8812AU_8821AU_linux/archive/master.zip">https://github.com/abperiasamy/rtl8812AU_8821AU_linux/archive/master.zip</a>
+unzip master.zip
+cd rtl8812AU_8821AU_linux-master
+make
+make install
+modprobe rtl8812au</p>
+</div>
+  
+  
+
+
+    </article>
+  
   
     <article>
       
@@ -278,45 +302,6 @@ ip = `ifconfig | &hellip;">
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2017/08/13/ffmpeg/">Ffmpeg</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2017-08-13T19:23:03+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>7:23 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>git clone https://github.com/FFmpeg/FFmpeg.git
-</span><span class='line'>./configure --arch=armel --target-os=linux --enable-gpl --enable-nonfree --enable-libmp3lame
-</span><span class='line'>make
-</span><span class='line'>sudo make install</span></code></pre></td></tr></table></div></figure>
-
-
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
     <a href="/blog/archives">Blog Archives</a>
@@ -330,7 +315,7 @@ ip = `ifconfig | &hellip;">
     <ul id="categories">
        <li class='category'><a href='/blog/categories/app/'>app (22)</a></li>
 <li class='category'><a href='/blog/categories/bat/'>bat (9)</a></li>
-<li class='category'><a href='/blog/categories/linux/'>linux (14)</a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (15)</a></li>
 <li class='category'><a href='/blog/categories/notepad/'>notepad (1)</a></li>
 <li class='category'><a href='/blog/categories/python/'>python (5)</a></li>
 <li class='category'><a href='/blog/categories/ror/'>ror (18)</a></li>
@@ -342,6 +327,10 @@ ip = `ifconfig | &hellip;">
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2017/08/16/wifi-driver/">Wifi-driver</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2017/08/14/ssh/">Ssh</a>
@@ -357,10 +346,6 @@ ip = `ifconfig | &hellip;">
     
       <li class="post">
         <a href="/blog/2017/08/14/minicom/">Minicom</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2017/08/13/ffmpeg/">Ffmpeg</a>
       </li>
     
   </ul>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-08-14T18:23:50+08:00</updated>
+  <updated>2017-08-16T06:38:22+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,24 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Wifi-driver]]></title>
+    <link href="http://icps0610.github.io/blog/2017/08/16/wifi-driver/"/>
+    <updated>2017-08-16T06:35:42+08:00</updated>
+    <id>http://icps0610.github.io/blog/2017/08/16/wifi-driver</id>
+    <content type="html"><![CDATA[<p>TP-LINK Archer T4U driver</p>
+
+<blockquote><blockquote><p>ref <a href="https://askubuntu.com/questions/802205/how-to-install-tp-link-archer-t4u-driver">https://askubuntu.com/questions/802205/how-to-install-tp-link-archer-t4u-driver</a></p></blockquote></blockquote>
+
+<p>wget <a href="https://github.com/abperiasamy/rtl8812AU_8821AU_linux/archive/master.zip">https://github.com/abperiasamy/rtl8812AU_8821AU_linux/archive/master.zip</a>
+unzip master.zip
+cd rtl8812AU_8821AU_linux-master
+make
+make install
+modprobe rtl8812au</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Wifi-config]]></title>
@@ -77,18 +95,6 @@ Exec=gnome-terminal -e 'ls'
     <updated>2017-04-29T13:51:04+08:00</updated>
     <id>http://icps0610.github.io/blog/2017/04/29/mount-smb</id>
     <content type="html"><![CDATA[<p><code>mount -t cifs //192.168.0.106/form /to -o username="abc",password="1234"</code></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Android_wifi_passwd]]></title>
-    <link href="http://icps0610.github.io/blog/2016/12/25/android-wifi-passwd/"/>
-    <updated>2016-12-25T16:22:53+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/12/25/android-wifi-passwd</id>
-    <content type="html"><![CDATA[<p>/system/build.prop
-ro.securestorage.support=true to false</p>
-
-<p>/data/misc/wifi/wpa_supplicant.bak.conf</p>
 ]]></content>
   </entry>
   
