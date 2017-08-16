@@ -11,21 +11,18 @@ categories: ruby
 
 m = (0..15).map{|i|i.to_s(16).upcase}
 random_mac = (0..2).map{":"+(0..1).map{m.sample}.join}.join
-
-company = File.readlines('oui.txt').map do |i|
-  mac=i.split("\n").join.scan(/(\w{2}-\w{2}-\w{2}).*\(hex\)(.*)/)[0]
-  [ mac[0],mac[1].strip ] if mac
-end.compact
-
-mac_co = company.sample
-p mac_co[1]
-p mac = mac_co[0].gsub('-', ':')+random_mac
+list = File.readlines('oui.txt').map{|i|i.split("\n").join.scan(/(\w{2}-\w{2}-\w{2}).*\(hex\)(.*)/)[0]}.compact
+co = list.map{|i|[i[0].gsub('-', ':'),i[1].strip]}
+mac_co = co.sample
+p mac_company = mac_co[1]
+p mac = mac_co[0]+random_mac
 
 #dev = "eth0"
 #`ifconfig #{dev} down`
 #`macchanger -m #{mac} #{dev}`
 #`ifconfig #{dev} up`
 #`macchanger -s #{dev}`
+
 
 
 ```
