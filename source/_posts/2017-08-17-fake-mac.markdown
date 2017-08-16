@@ -9,16 +9,28 @@ categories: ruby
 ```	ruby
 #http://standards-oui.ieee.org/oui.txt
 
-m = (0..15).map{|i|i.to_s(16).upcase}
-random_mac = (0..2).map{"-"+(0..1).map{m.sample}.join}.join
-co = File.readlines('oui.txt').map{|i|i.split("\n").join.scan(/(\w{2}-\w{2}-\w{2})\s*\(hex\)\W*(.*)\r/)[0]}.compact
-mac_co = co.sample
-p mac_company = mac_co[1]
-p mac = mac_co[0]+random_mac
+def random_mac
+  m = (0..15).map{|i|i.to_s(16).upcase}
+  (0..2).map{"-"+(0..1).map{m.sample}.join}.join
+end
+
+def mac_address(co)
+  mac_co = co.sample
+  puts mac_company = mac_co[1]
+  puts mac = mac_co[0]+random_mac
+end
+
+list = File.readlines('oui.txt').map{|i|i.split("\n").join.scan(/(.{8})\s*\(hex\)\W*(.*)\r/)[0]}.compact
+mac_address(list)
+
+word = "D-link"
+list = list.map{|m, c| [m,c] if not c.downcase.scan(/.*#{word.downcase}.*/) == []}.compact
+mac_address(list)
 
 #dev = "eth0"
 #`ifconfig #{dev} down`
 #`macchanger -m #{mac} #{dev}`
 #`ifconfig #{dev} up`
 #`macchanger -s #{dev}`
+
 ```
