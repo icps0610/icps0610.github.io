@@ -124,7 +124,9 @@ iface wlan0 inet static address 192.168.0.201 netmask 255.255.255.0 gateway 192.
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">ssid</span> <span class="o">=</span> <span class="no">ARGV</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#wifi.sh</span>
+</span><span class='line'><span class="n">ssid</span> <span class="o">=</span> <span class="no">ARGV</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span>
 </span><span class='line'><span class="n">passwd</span> <span class="o">=</span> <span class="no">ARGV</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span>
 </span><span class='line'><span class="nb">puts</span> <span class="n">wpa</span> <span class="o">=</span> <span class="sb">`wpa_passphrase </span><span class="si">#{</span><span class="n">ssid</span><span class="si">}</span><span class="sb"> </span><span class="si">#{</span><span class="n">passwd</span><span class="si">}</span><span class="sb">`</span>
 </span><span class='line'><span class="nb">exit</span> <span class="k">if</span> <span class="n">wpa</span> <span class="o">==</span> <span class="s2">&quot;Passphrase must be 8..63 characters</span><span class="se">\n</span><span class="s2">&quot;</span>
