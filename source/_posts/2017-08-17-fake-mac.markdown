@@ -11,7 +11,7 @@ categories: ruby
 
 m = (0..15).map{|i|i.to_s(16).upcase}
 random_mac = (0..2).map{"-"+(0..1).map{m.sample}.join}.join
-co = File.readlines('oui.txt').map{|i|i.split("\n").join.scan(/(\w{2}-\w{2}-\w{2})\s*\(hex\)\W*(.*)[\r]/)[0]}.compact.map{|i|[i[0],i[1]]}
+co = File.readlines('oui.txt').map{|i|i.split("\n").join.scan(/(\w{2}-\w{2}-\w{2})\s*\(hex\)\W*(.*)[\r]/)[0]}.compact
 mac_co = co.sample
 p mac_company = mac_co[1]
 p mac = mac_co[0]+random_mac
@@ -21,6 +21,5 @@ p mac = mac_co[0]+random_mac
 #`macchanger -m #{mac} #{dev}`
 #`ifconfig #{dev} up`
 #`macchanger -s #{dev}`
-
 
 ```
