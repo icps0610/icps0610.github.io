@@ -9,7 +9,12 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="TP-LINK Archer T4U driver ref https://askubuntu.com/questions/802205/how-to-install-tp-link-archer-t4u-driver wget https://github.com/abperiasamy/ &hellip;">
+  <meta name="description" content="1
+2
+3
+m = []
+(0..15).each{|i| m &lt;&lt; i.to_s(16).upcase}
+puts mac = (0..5).map{(0..1).map{m[rand(16)]}.join+&quot;:&quot;}.join.chop ">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -68,6 +73,42 @@
       <div class="blog-index">
   
 
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2017/08/17/fake-mac/">Fake_mac</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2017-08-17T00:27:25+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>12:27 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">m</span> <span class="o">=</span> <span class="o">[]</span>
+</span><span class='line'><span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="n">.</span><span class="mi">15</span><span class="p">)</span><span class="o">.</span><span class="n">each</span><span class="p">{</span><span class="o">|</span><span class="n">i</span><span class="o">|</span> <span class="n">m</span> <span class="o">&lt;&lt;</span> <span class="n">i</span><span class="o">.</span><span class="n">to_s</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span><span class="o">.</span><span class="n">upcase</span><span class="p">}</span>
+</span><span class='line'><span class="nb">puts</span> <span class="n">mac</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="n">.</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">{(</span><span class="mi">0</span><span class="o">.</span><span class="n">.</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">{</span><span class="n">m</span><span class="o">[</span><span class="nb">rand</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span><span class="o">]</span><span class="p">}</span><span class="o">.</span><span class="n">join</span><span class="o">+</span><span class="s2">&quot;:&quot;</span><span class="p">}</span><span class="o">.</span><span class="n">join</span><span class="o">.</span><span class="n">chop</span>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
+  
   
     <article>
       
@@ -283,46 +324,6 @@ modprobe rtl8812au</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2017/08/14/minicom/">Minicom</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2017-08-14T12:28:47+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>12:28 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3>port</h3>
-
-<p><code>cat /var/log/messages  | grep ttyUSB</code><br/>
-<code>ls /dev/ttyUSB*</code></p>
-
-<p><code>apt-get install minicom</code></p>
-
-<p>minicom -s</p>
-
-<h3>config</h3>
-
-<h5>/etc/minicom/minirc.dfl</h5>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
     <a href="/blog/archives">Blog Archives</a>
@@ -340,7 +341,7 @@ modprobe rtl8812au</p>
 <li class='category'><a href='/blog/categories/notepad/'>notepad (1)</a></li>
 <li class='category'><a href='/blog/categories/python/'>python (5)</a></li>
 <li class='category'><a href='/blog/categories/ror/'>ror (18)</a></li>
-<li class='category'><a href='/blog/categories/ruby/'>ruby (32)</a></li>
+<li class='category'><a href='/blog/categories/ruby/'>ruby (33)</a></li>
 <li class='category'><a href='/blog/categories/uncategorized/'>uncategorized (1)</a></li>
 
     </ul>
@@ -348,6 +349,10 @@ modprobe rtl8812au</p>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2017/08/17/fake-mac/">Fake_mac</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2017/08/16/wifi-driver/">Wifi-driver</a>
@@ -363,10 +368,6 @@ modprobe rtl8812au</p>
     
       <li class="post">
         <a href="/blog/2017/08/14/downloaddeb/">Download_deb</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2017/08/14/minicom/">Minicom</a>
       </li>
     
   </ul>

@@ -9,9 +9,15 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="iptables --table nat --append POSTROUTING --out-interface eth1 -j MASQUERADE
-iptables --append FORWARD --in-interface eth0 -j ACCEPT
-echo "1" > /proc &hellip;">
+  <meta name="description" content="1
+2
+3
+4
+5
+wan=&quot;wlan1&quot;
+lan= &quot;wlan0&quot;
+`iptables -t nat -A POSTROUTING -o #{wan} -j MASQUERADE`
+`iptables -A FORWARD -i #{wan} -o #{ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -88,10 +94,17 @@ echo "1" > /proc &hellip;">
   </header>
 
 
-<div class="entry-content"><pre><code>iptables --table nat --append POSTROUTING --out-interface <font color='red'>eth1</font> -j MASQUERADE
-iptables --append FORWARD --in-interface <font color='red'>eth0</font> -j ACCEPT
-echo "1" > /proc/sys/net/ipv4/ip_forward
-</code></pre>
+<div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">wan</span><span class="o">=</span><span class="s2">&quot;wlan1&quot;</span>
+</span><span class='line'><span class="n">lan</span><span class="o">=</span> <span class="s2">&quot;wlan0&quot;</span>
+</span><span class='line'><span class="sb">`iptables -t nat -A POSTROUTING -o </span><span class="si">#{</span><span class="n">wan</span><span class="si">}</span><span class="sb"> -j MASQUERADE`</span>
+</span><span class='line'><span class="sb">`iptables -A FORWARD -i </span><span class="si">#{</span><span class="n">wan</span><span class="si">}</span><span class="sb"> -o </span><span class="si">#{</span><span class="n">lan</span><span class="si">}</span><span class="sb"> -m state --state RELATED,ESTABLISHED -j ACCEPT`</span>
+</span><span class='line'><span class="sb">`iptables -A FORWARD -i </span><span class="si">#{</span><span class="n">lan</span><span class="si">}</span><span class="sb"> -o </span><span class="si">#{</span><span class="n">wan</span><span class="si">}</span><span class="sb"> -j ACCEPT`</span>
+</span></code></pre></td></tr></table></div></figure>
 
 </div>
 
@@ -151,7 +164,7 @@ echo "1" > /proc/sys/net/ipv4/ip_forward
 <li class='category'><a href='/blog/categories/notepad/'>notepad (1)</a></li>
 <li class='category'><a href='/blog/categories/python/'>python (5)</a></li>
 <li class='category'><a href='/blog/categories/ror/'>ror (18)</a></li>
-<li class='category'><a href='/blog/categories/ruby/'>ruby (32)</a></li>
+<li class='category'><a href='/blog/categories/ruby/'>ruby (33)</a></li>
 <li class='category'><a href='/blog/categories/uncategorized/'>uncategorized (1)</a></li>
 
     </ul>
@@ -159,6 +172,10 @@ echo "1" > /proc/sys/net/ipv4/ip_forward
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2017/08/17/fake-mac/">Fake_mac</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2017/08/16/wifi-driver/">Wifi-driver</a>
@@ -174,10 +191,6 @@ echo "1" > /proc/sys/net/ipv4/ip_forward
     
       <li class="post">
         <a href="/blog/2017/08/14/downloaddeb/">Download_deb</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2017/08/14/minicom/">Minicom</a>
       </li>
     
   </ul>

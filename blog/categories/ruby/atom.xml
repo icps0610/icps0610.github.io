@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-08-16T17:24:38+08:00</updated>
+  <updated>2017-08-17T00:27:58+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,18 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Fake_mac]]></title>
+    <link href="http://icps0610.github.io/blog/2017/08/17/fake-mac/"/>
+    <updated>2017-08-17T00:27:25+08:00</updated>
+    <id>http://icps0610.github.io/blog/2017/08/17/fake-mac</id>
+    <content type="html"><![CDATA[<pre><code class="ruby">m = []
+(0..15).each{|i| m &lt;&lt; i.to_s(16).upcase}
+puts mac = (0..5).map{(0..1).map{m[rand(16)]}.join+":"}.join.chop
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Ssh]]></title>
@@ -136,15 +148,6 @@ end
 
 Calendar.new(ARGV[0],ARGV[1])
 </code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Sum_of_array]]></title>
-    <link href="http://icps0610.github.io/blog/2017/01/14/sum-of-array/"/>
-    <updated>2017-01-14T19:41:40+08:00</updated>
-    <id>http://icps0610.github.io/blog/2017/01/14/sum-of-array</id>
-    <content type="html"><![CDATA[<p><code>array.inject(0){|sum,x| sum + x[0] }</code></p>
 ]]></content>
   </entry>
   
