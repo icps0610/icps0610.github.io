@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-08-16T06:38:22+08:00</updated>
+  <updated>2017-08-16T17:22:20+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -47,6 +47,16 @@ iface wlan0 inet static
 </code></pre>
 
 <p><code></code>echo wpa-psk <code>wpa_passphrase SSID PASSWORDS | grep -E "\spsk=.*\"?" | cut -f 2 -d "="</code> >> /etc/network/interfaces<code></code></p>
+
+<pre><code class="ruby">ssid = ARGV[0]
+passwd = ARGV[1]
+puts wpa = `wpa_passphrase #{ssid} #{passwd}`
+exit if wpa == "Passphrase must be 8..63 characters\n"
+psk = wpa.scan(/\tpsk=(.*)/).join
+
+system "echo wpa-ssid #{ssid} &gt;&gt; /etc/network/interfaces"
+system "echo wpa-psk #{psk} &gt;&gt; /etc/network/interfaces"
+</code></pre>
 ]]></content>
   </entry>
   
