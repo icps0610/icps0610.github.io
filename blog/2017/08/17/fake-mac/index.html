@@ -12,9 +12,19 @@
   <meta name="description" content="1
 2
 3
-m = []
-(0..15).each{|i| m &lt;&lt; i.to_s(16).upcase}
-puts mac = (0..5).map{(0..1).map{m[rand(16)]}.join+&quot;:&quot;}.join.chop ">
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+#http://standards-oui.ieee.org/oui.txt m = (0..15).map{|i|i.to_s(16).upcase}
+random_mac = (0..2).map{&quot;:&quot;+( &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -94,9 +104,31 @@ puts mac = (0..5).map{(0..1).map{m[rand(16)]}.join+&quot;:&quot;}.join.chop ">
 <div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">m</span> <span class="o">=</span> <span class="o">[]</span>
-</span><span class='line'><span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="n">.</span><span class="mi">15</span><span class="p">)</span><span class="o">.</span><span class="n">each</span><span class="p">{</span><span class="o">|</span><span class="n">i</span><span class="o">|</span> <span class="n">m</span> <span class="o">&lt;&lt;</span> <span class="n">i</span><span class="o">.</span><span class="n">to_s</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span><span class="o">.</span><span class="n">upcase</span><span class="p">}</span>
-</span><span class='line'><span class="nb">puts</span> <span class="n">mac</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="n">.</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">{(</span><span class="mi">0</span><span class="o">.</span><span class="n">.</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">{</span><span class="n">m</span><span class="o">[</span><span class="nb">rand</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span><span class="o">]</span><span class="p">}</span><span class="o">.</span><span class="n">join</span><span class="o">+</span><span class="s2">&quot;:&quot;</span><span class="p">}</span><span class="o">.</span><span class="n">join</span><span class="o">.</span><span class="n">chop</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#http://standards-oui.ieee.org/oui.txt</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">m</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="n">.</span><span class="mi">15</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">{</span><span class="o">|</span><span class="n">i</span><span class="o">|</span><span class="n">i</span><span class="o">.</span><span class="n">to_s</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span><span class="o">.</span><span class="n">upcase</span><span class="p">}</span>
+</span><span class='line'><span class="n">random_mac</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="n">.</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">{</span><span class="s2">&quot;:&quot;</span><span class="o">+</span><span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="n">.</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">{</span><span class="n">m</span><span class="o">.</span><span class="n">sample</span><span class="p">}</span><span class="o">.</span><span class="n">join</span><span class="p">}</span><span class="o">.</span><span class="n">join</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">co</span> <span class="o">=</span> <span class="o">[]</span>
+</span><span class='line'><span class="no">File</span><span class="o">.</span><span class="n">readlines</span><span class="p">(</span><span class="s1">&#39;oui.txt&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">i</span><span class="o">|</span>
+</span><span class='line'>  <span class="n">mac</span> <span class="o">=</span> <span class="n">i</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">join</span><span class="o">.</span><span class="n">scan</span><span class="p">(</span><span class="sr">/(\w{2}-\w{2}-\w{2})   \(hex\)(.*)/</span><span class="p">)</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span>
+</span><span class='line'>  <span class="n">co</span> <span class="o">&lt;&lt;</span>  <span class="o">[</span><span class="n">mac</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">gsub</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="s1">&#39;:&#39;</span><span class="p">),</span> <span class="n">mac</span><span class="o">[</span><span class="mi">1</span><span class="o">].</span><span class="n">strip</span><span class="o">]</span> <span class="k">if</span> <span class="n">mac</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">mac</span> <span class="o">=</span> <span class="n">co</span><span class="o">.</span><span class="n">sample</span>
+</span><span class='line'><span class="nb">puts</span> <span class="n">mac</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span>
+</span><span class='line'><span class="nb">puts</span> <span class="n">mac</span><span class="o">[</span><span class="mi">0</span><span class="o">]+</span><span class="n">random_mac</span>
 </span></code></pre></td></tr></table></div></figure>
 
 </div>
