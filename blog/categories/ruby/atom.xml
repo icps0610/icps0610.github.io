@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-08-17T02:27:44+08:00</updated>
+  <updated>2017-08-17T02:38:42+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -28,9 +28,15 @@ company = File.readlines('oui.txt').map do |i|
   [ mac[0],mac[1].strip ] if mac
 end.compact
 
-mac = company.sample
-puts mac[1]
-puts mac[0].gsub('-', ':')+random_mac
+mac_co = company.sample
+p mac_co[1]
+p mac = mac_co[0].gsub('-', ':')+random_mac
+
+#dev = "eth0"
+#`ifconfig #{dev} down`
+#`macchanger -m #{mac} #{dev}`
+#`ifconfig #{dev} up`
+#`macchanger -s #{dev}`
 </code></pre>
 ]]></content>
   </entry>
