@@ -5,7 +5,11 @@ date: 2016-06-18 05:38:52 +0800
 comments: true
 categories: linux
 ---
-<pre><code>iptables --table nat --append POSTROUTING --out-interface <font color='red'>eth1</font> -j MASQUERADE
-iptables --append FORWARD --in-interface <font color='red'>eth0</font> -j ACCEPT
-echo "1" > /proc/sys/net/ipv4/ip_forward
-</code></pre>
+
+``` ruby
+wan="wlan1"
+lan= "wlan0"
+`iptables -t nat -A POSTROUTING -o #{wan} -j MASQUERADE`
+`iptables -A FORWARD -i #{wan} -o #{lan} -m state --state RELATED,ESTABLISHED -j ACCEPT`
+`iptables -A FORWARD -i #{lan} -o #{wan} -j ACCEPT`
+```

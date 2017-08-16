@@ -1,0 +1,13 @@
+---
+layout: post
+title: "fake_mac"
+date: 2017-08-17 00:27:25 +0800
+comments: true
+categories: ruby
+---
+
+```	ruby
+m = []
+(0..15).each{|i| m << i.to_s(16).upcase}
+puts mac = (0..5).map{(0..1).map{m[rand(16)]}.join+":"}.join.chop
+```
