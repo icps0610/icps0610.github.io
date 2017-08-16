@@ -19,6 +19,7 @@ iface wlan0 inet static
 `{% raw %}`echo wpa-psk `wpa_passphrase SSID PASSWORDS | grep -E "\spsk=.*\"?" | cut -f 2 -d "=" ` >> /etc/network/interfaces`{% endraw %}`
 
 ``` ruby
+#wifi.sh
 ssid = ARGV[0]
 passwd = ARGV[1]
 puts wpa = `wpa_passphrase #{ssid} #{passwd}`
