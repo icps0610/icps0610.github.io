@@ -24,7 +24,7 @@ list = File.readlines('oui.txt').map{|i|i.split("\n").join.scan(/(.{8})\s*\(hex\
 mac_address(list)
 
 word = "D-link".downcase
-list = list.map{|m, c| [m,c] if not c.downcase.scan(/.*#{word}.*/) == []}.compact
+list = list.map{|m, c| [m,c] if not c.downcase.match(/.*#{word}.*/)}.compact
 mac_address(list)
 
 #dev = "eth0"
