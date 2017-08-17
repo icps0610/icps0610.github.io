@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-08-18T00:59:25+08:00</updated>
+  <updated>2017-08-18T01:13:56+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -35,7 +35,7 @@ list = File.readlines('oui.txt').map{|i|i.split("\n").join.scan(/(.{8})\s*\(hex\
 mac_address(list)
 
 word = "D-link".downcase
-list = list.map{|m, c| [m,c] if not c.downcase.scan(/.*#{word}.*/) == []}.compact
+list = list.map{|m, c| [m,c] if not c.downcase.match(/.*#{word}.*/)}.compact
 mac_address(list)
 
 #dev = "eth0"
