@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-08-19T05:14:43+08:00</updated>
+  <updated>2017-08-19T05:21:23+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,66 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Lan]]></title>
+    <link href="http://icps0610.github.io/blog/2017/08/19/lan/"/>
+    <updated>2017-08-19T05:20:51+08:00</updated>
+    <id>http://icps0610.github.io/blog/2017/08/19/lan</id>
+    <content type="html"><![CDATA[<pre><code class="ruby">class Lan
+  def initialize
+    @thread = 30
+    @width = 15
+    @log_file = "log"
+    @lan = get_lan[1]
+    @log = []
+    @wait = 300
+    @read_log_wait = 10
+    puts "#{@lan}0/24"
+
+    read_log.each_slice(@thread).each do |list|
+      threads = [] ; line = []
+      list.each do |ip|
+        threads &lt;&lt; Thread.new { line &lt;&lt; error( ip) }
+      end
+      threads.each { |t| t.join }
+      display(line, list)
+      line.map{|p,ip| ip if p == " ■"}.compact.each{|ip| @log &lt;&lt; ip } if not File.exist? @log_file
+    end
+    @log.each{|l| `echo #{l} &gt;&gt; #{@log_file}`} if not File.exist? @log_file
+    puts
+  end
+
+  def get_lan
+    ip  = `ifconfig | grep cast`.split("\n").map{|i|i.scan(/\d+\.\d+\.\d+\.\d+/)[0]}
+    lan = ip.map{|i|i.scan(/(\d*\.\d*\.\d*\.)\d*/).join}
+  end
+
+  def read_log
+    begin
+      @wait = @read_log_wait
+      IO.binread(@log_file).split("\n")
+    rescue
+      (1..254).to_a.map{|i| "#{@lan}#{i}"}
+    end
+  end
+
+  def error(ip)
+    `fping #{ip} -t #{@wait}`.match("alive") == nil ? [" □", ip] :  [" ■", ip]
+  end
+
+  def display(line, ip)
+    line = line.map{|p,ip|[p,ip.split(".")[3].to_i]}.sort_by{|p,ip|ip}.map{|p,ip|[p,ip.to_s.rjust(3,'000')]}
+    ip.each_index do |i|
+      print "#{line[i].join}"
+      print "\n" if line[i][1].to_i % @width == 0
+    end
+  end
+end
+Lan.new
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Fake_mac]]></title>
@@ -108,67 +168,6 @@ uri = URI.parse('http://www.example.com/sample.json')
 json = Net::HTTP.get(uri)
 result = JSON.parse(json)
 puts result
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Calendar]]></title>
-    <link href="http://icps0610.github.io/blog/2017/05/06/calendar/"/>
-    <updated>2017-05-06T02:25:27+08:00</updated>
-    <id>http://icps0610.github.io/blog/2017/05/06/calendar</id>
-    <content type="html"><![CDATA[<pre><code class="ruby">#!/usr/bin/env ruby
-# encoding: utf-8
-require 'rmagick'
-require 'date'
-class Calendar
-
-  def initialize(input, output)
-    today = Time.now
-    year, month  = today.year, today.month
-    @day  =  today.day
-    @wday =  Date.new( year, month, 1 ).wday
-    @days =  Date.new( year, month, -1).day
-    #location
-    jpg = `identify #{input}`.split(' ')[2].split('x')
-    @x,@y = jpg[0].to_i-720 , jpg[1].to_i-1100
-    run(input, output)
-  end
-
-  def text( color, text, fixX )
-    @x_day||=0 ;  @y_day||=-1
-    x, y = @x + @sizeX*2*(@x_day) + fixX, @y + @sizeY*(@y_day + 1)
-    @text.fill = 'black'
-    @text.annotate(@canvas, 0, 0, x, y, "#{text}" )
-    @text.fill = "#{color}"
-    @text.annotate(@canvas, 0, 0, x-5, y, "#{text}" )
-  end
-
-  def run(input, output)
-    @canvas = Magick::ImageList.new.read(input)
-    @text = Magick::Draw.new
-    @text.pointsize = @sizeX = 32
-    @sizeY = 42
-    #title
-    title = %w(SU MO TU WE TH FR SA)
-    title.each_with_index do |t , index|
-      fix =  @sizeX*2*index + @sizeX/4
-      text( "grey", t, fix )
-    end
-    #days
-    (0..@days-1).each do |d|
-      @x_day = ( d + @wday ) % 7
-      @y_day = ( d + @wday ) / 7
-      d + 1 == @day ? color = "red" : color = "white"
-      d &gt; 8 ? fix = @sizeX/2 : fix = @sizeX
-      text( color, d+1, fix )
-    end
-    #output
-    @canvas.write(output)
-  end
-end
-
-Calendar.new(ARGV[0],ARGV[1])
 </code></pre>
 ]]></content>
   </entry>

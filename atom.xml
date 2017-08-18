@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-08-19T05:14:43+08:00</updated>
+  <updated>2017-08-19T05:21:23+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -14,11 +14,124 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Lan]]></title>
+    <link href="http://icps0610.github.io/blog/2017/08/19/lan/"/>
+    <updated>2017-08-19T05:20:51+08:00</updated>
+    <id>http://icps0610.github.io/blog/2017/08/19/lan</id>
+    <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Lan</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">initialize</span>
+</span><span class='line'>    <span class="vi">@thread</span> <span class="o">=</span> <span class="mi">30</span>
+</span><span class='line'>    <span class="vi">@width</span> <span class="o">=</span> <span class="mi">15</span>
+</span><span class='line'>    <span class="vi">@log_file</span> <span class="o">=</span> <span class="s2">&quot;log&quot;</span>
+</span><span class='line'>    <span class="vi">@lan</span> <span class="o">=</span> <span class="n">get_lan</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span>
+</span><span class='line'>    <span class="vi">@log</span> <span class="o">=</span> <span class="o">[]</span>
+</span><span class='line'>    <span class="vi">@wait</span> <span class="o">=</span> <span class="mi">300</span>
+</span><span class='line'>    <span class="vi">@read_log_wait</span> <span class="o">=</span> <span class="mi">10</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="vi">@lan</span><span class="si">}</span><span class="s2">0/24&quot;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">read_log</span><span class="o">.</span><span class="n">each_slice</span><span class="p">(</span><span class="vi">@thread</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">list</span><span class="o">|</span>
+</span><span class='line'>      <span class="n">threads</span> <span class="o">=</span> <span class="o">[]</span> <span class="p">;</span> <span class="n">line</span> <span class="o">=</span> <span class="o">[]</span>
+</span><span class='line'>      <span class="n">list</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">ip</span><span class="o">|</span>
+</span><span class='line'>        <span class="n">threads</span> <span class="o">&lt;&lt;</span> <span class="no">Thread</span><span class="o">.</span><span class="n">new</span> <span class="p">{</span> <span class="n">line</span> <span class="o">&lt;&lt;</span> <span class="n">error</span><span class="p">(</span> <span class="n">ip</span><span class="p">)</span> <span class="p">}</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>      <span class="n">threads</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span><span class="o">.</span><span class="n">join</span> <span class="p">}</span>
+</span><span class='line'>      <span class="nb">display</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">list</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">line</span><span class="o">.</span><span class="n">map</span><span class="p">{</span><span class="o">|</span><span class="nb">p</span><span class="p">,</span><span class="n">ip</span><span class="o">|</span> <span class="n">ip</span> <span class="k">if</span> <span class="nb">p</span> <span class="o">==</span> <span class="s2">&quot; ■&quot;</span><span class="p">}</span><span class="o">.</span><span class="n">compact</span><span class="o">.</span><span class="n">each</span><span class="p">{</span><span class="o">|</span><span class="n">ip</span><span class="o">|</span> <span class="vi">@log</span> <span class="o">&lt;&lt;</span> <span class="n">ip</span> <span class="p">}</span> <span class="k">if</span> <span class="ow">not</span> <span class="no">File</span><span class="o">.</span><span class="n">exist?</span> <span class="vi">@log_file</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>    <span class="vi">@log</span><span class="o">.</span><span class="n">each</span><span class="p">{</span><span class="o">|</span><span class="n">l</span><span class="o">|</span> <span class="sb">`echo </span><span class="si">#{</span><span class="n">l</span><span class="si">}</span><span class="sb"> &gt;&gt; </span><span class="si">#{</span><span class="vi">@log_file</span><span class="si">}</span><span class="sb">`</span><span class="p">}</span> <span class="k">if</span> <span class="ow">not</span> <span class="no">File</span><span class="o">.</span><span class="n">exist?</span> <span class="vi">@log_file</span>
+</span><span class='line'>    <span class="nb">puts</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">get_lan</span>
+</span><span class='line'>    <span class="n">ip</span>  <span class="o">=</span> <span class="sb">`ifconfig | grep cast`</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">{</span><span class="o">|</span><span class="n">i</span><span class="o">|</span><span class="n">i</span><span class="o">.</span><span class="n">scan</span><span class="p">(</span><span class="sr">/\d+\.\d+\.\d+\.\d+/</span><span class="p">)</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">}</span>
+</span><span class='line'>    <span class="n">lan</span> <span class="o">=</span> <span class="n">ip</span><span class="o">.</span><span class="n">map</span><span class="p">{</span><span class="o">|</span><span class="n">i</span><span class="o">|</span><span class="n">i</span><span class="o">.</span><span class="n">scan</span><span class="p">(</span><span class="sr">/(\d*\.\d*\.\d*\.)\d*/</span><span class="p">)</span><span class="o">.</span><span class="n">join</span><span class="p">}</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">read_log</span>
+</span><span class='line'>    <span class="k">begin</span>
+</span><span class='line'>      <span class="vi">@wait</span> <span class="o">=</span> <span class="vi">@read_log_wait</span>
+</span><span class='line'>      <span class="no">IO</span><span class="o">.</span><span class="n">binread</span><span class="p">(</span><span class="vi">@log_file</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">rescue</span>
+</span><span class='line'>      <span class="p">(</span><span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="mi">254</span><span class="p">)</span><span class="o">.</span><span class="n">to_a</span><span class="o">.</span><span class="n">map</span><span class="p">{</span><span class="o">|</span><span class="n">i</span><span class="o">|</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="vi">@lan</span><span class="si">}#{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">}</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">error</span><span class="p">(</span><span class="n">ip</span><span class="p">)</span>
+</span><span class='line'>    <span class="sb">`fping </span><span class="si">#{</span><span class="n">ip</span><span class="si">}</span><span class="sb"> -t </span><span class="si">#{</span><span class="vi">@wait</span><span class="si">}</span><span class="sb">`</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;alive&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="kp">nil</span> <span class="p">?</span> <span class="o">[</span><span class="s2">&quot; □&quot;</span><span class="p">,</span> <span class="n">ip</span><span class="o">]</span> <span class="p">:</span>  <span class="o">[</span><span class="s2">&quot; ■&quot;</span><span class="p">,</span> <span class="n">ip</span><span class="o">]</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">display</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">ip</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">map</span><span class="p">{</span><span class="o">|</span><span class="nb">p</span><span class="p">,</span><span class="n">ip</span><span class="o">|[</span><span class="nb">p</span><span class="p">,</span><span class="n">ip</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span><span class="o">[</span><span class="mi">3</span><span class="o">].</span><span class="n">to_i</span><span class="o">]</span><span class="p">}</span><span class="o">.</span><span class="n">sort_by</span><span class="p">{</span><span class="o">|</span><span class="nb">p</span><span class="p">,</span><span class="n">ip</span><span class="o">|</span><span class="n">ip</span><span class="p">}</span><span class="o">.</span><span class="n">map</span><span class="p">{</span><span class="o">|</span><span class="nb">p</span><span class="p">,</span><span class="n">ip</span><span class="o">|[</span><span class="nb">p</span><span class="p">,</span><span class="n">ip</span><span class="o">.</span><span class="n">to_s</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="s1">&#39;000&#39;</span><span class="p">)</span><span class="o">]</span><span class="p">}</span>
+</span><span class='line'>    <span class="n">ip</span><span class="o">.</span><span class="n">each_index</span> <span class="k">do</span> <span class="o">|</span><span class="n">i</span><span class="o">|</span>
+</span><span class='line'>      <span class="nb">print</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">line</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="n">join</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>      <span class="nb">print</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="k">if</span> <span class="n">line</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="mi">1</span><span class="o">].</span><span class="n">to_i</span> <span class="o">%</span> <span class="vi">@width</span> <span class="o">==</span> <span class="mi">0</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'><span class="no">Lan</span><span class="o">.</span><span class="n">new</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[OpenWrt]]></title>
     <link href="http://icps0610.github.io/blog/2017/08/18/openwrt/"/>
     <updated>2017-08-18T05:36:34+08:00</updated>
     <id>http://icps0610.github.io/blog/2017/08/18/openwrt</id>
-    <content type="html"><![CDATA[
+    <content type="html"><![CDATA[<p><code>opkg update</code>
+<code>opkg install luci-i18n-base-zh-tw</code></p>
 ]]></content>
   </entry>
   
@@ -502,32 +615,6 @@ ref>> <a href="http://note.drx.tw/2012/12/mysql-syntax.html">http://note.drx.tw/
     <id>http://icps0610.github.io/blog/2017/05/22/pip3</id>
     <content type="html"><![CDATA[<p><code>apt-get install python3-setuptools</code><br/>
 <code>easy_install3 pip</code></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Zfill]]></title>
-    <link href="http://icps0610.github.io/blog/2017/05/21/zfill/"/>
-    <updated>2017-05-21T16:33:56+08:00</updated>
-    <id>http://icps0610.github.io/blog/2017/05/21/zfill</id>
-    <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="s">&quot;test&quot;</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-</span><span class='line'><span class="c"># &quot;  test&quot;</span>
-</span><span class='line'><span class="s">&quot;test&quot;</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-</span><span class='line'><span class="c"># &quot;test  &quot;</span>
-</span><span class='line'><span class="s">&quot;test&quot;</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-</span><span class='line'><span class="c"># &quot; test &quot;</span>
-</span><span class='line'><span class="s">&quot;test&quot;</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-</span><span class='line'><span class="c"># &quot;0test&quot;</span>
-</span></code></pre></td></tr></table></div></figure>
-
 ]]></content>
   </entry>
   
