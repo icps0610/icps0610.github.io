@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Python | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-08-18T01:13:56+08:00</updated>
+  <updated>2017-08-19T05:14:43+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -60,6 +60,10 @@ pdfkit.from_url('/tmp/result.html', '/tmp/result.pdf', configuration=config, opt
 </code></pre>
 
 <blockquote><blockquote><p>ref  <a href="https://github.com/wkhtmltopdf/wkhtmltopdf/issues/3195">https://github.com/wkhtmltopdf/wkhtmltopdf/issues/3195</a></p></blockquote></blockquote>
+
+<h1><code>/opt/wkhtmltox/bin/wkhtmltoimage \"#{link}\" /tmp/tmp.jpg</code></h1>
+
+<h1><code>convert /tmp/tmp.jpg -crop 770x560+236+406 /tmp/tmp.jpg</code></h1>
 
 <p>``` html</p>
 

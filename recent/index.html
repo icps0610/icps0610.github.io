@@ -9,32 +9,8 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-#http://standards-oui.ieee.org/oui.txt def random_mac m = (0..15).map{|i|i.to_s(16 &hellip;">
+  <meta name="description" content="
+">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -93,6 +69,35 @@
       <div class="blog-index">
   
 
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2017/08/18/openwrt/">OpenWrt</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2017-08-18T05:36:34+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>5:36 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">
+</div>
+  
+  
+
+
+    </article>
+  
   
     <article>
       
@@ -245,16 +250,16 @@ modprobe rtl8812au</p>
 <span class='line-number'>11</span>
 <span class='line-number'>12</span>
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">target</span> <span class="o">=</span> <span class="no">ARGV</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span>
-</span><span class='line'><span class="n">ip</span>  <span class="o">=</span> <span class="sb">`ifconfig | grep Bcast | cut -d &quot; &quot; -f 12 | cut -d &quot;:&quot; -f 2`</span>
-</span><span class='line'><span class="n">ip</span>  <span class="o">=</span> <span class="sb">`ifconfig | grep inet | grep cast | cut -d &quot; &quot; -f 10`</span> <span class="k">if</span> <span class="n">ip</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span>
-</span><span class='line'><span class="n">lan</span> <span class="o">=</span> <span class="n">ip</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">{</span><span class="o">|</span><span class="n">i</span><span class="o">|</span> <span class="n">i</span><span class="o">.</span><span class="n">scan</span><span class="p">(</span><span class="sr">/(\d*\.\d*\.\d*\.)\d*/</span><span class="p">)</span><span class="o">.</span><span class="n">join</span><span class="p">}</span>
+</span><span class='line'><span class="n">ip</span>  <span class="o">=</span> <span class="sb">`ifconfig | grep cast`</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">{</span><span class="o">|</span><span class="n">i</span><span class="o">|</span><span class="n">i</span><span class="o">.</span><span class="n">scan</span><span class="p">(</span><span class="sr">/\d+\.\d+\.\d+\.\d+/</span><span class="p">)</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">}</span>
+</span><span class='line'><span class="n">lan</span> <span class="o">=</span> <span class="n">ip</span><span class="o">.</span><span class="n">map</span><span class="p">{</span><span class="o">|</span><span class="n">i</span><span class="o">|</span><span class="n">i</span><span class="o">.</span><span class="n">scan</span><span class="p">(</span><span class="sr">/(\d*\.\d*\.\d*\.)\d*/</span><span class="p">)</span><span class="o">.</span><span class="n">join</span><span class="p">}</span>
 </span><span class='line'>
-</span><span class='line'><span class="k">if</span> <span class="n">lan</span><span class="o">.</span><span class="n">count</span> <span class="o">&gt;</span> <span class="mi">1</span>
+</span><span class='line'><span class="k">if</span> <span class="n">lan</span><span class="o">.</span><span class="n">count</span> <span class="o">&gt;</span> <span class="mi">11</span>
 </span><span class='line'>  <span class="nb">puts</span> <span class="n">lan</span>
 </span><span class='line'>  <span class="nb">print</span> <span class="s2">&quot;----------</span><span class="se">\n</span><span class="s2">&gt; &quot;</span>
 </span><span class='line'>  <span class="n">ch</span> <span class="o">=</span> <span class="no">STDIN</span><span class="o">.</span><span class="n">gets</span><span class="o">.</span><span class="n">to_i</span>
 </span><span class='line'>  <span class="n">lan</span> <span class="o">=</span> <span class="n">lan</span><span class="o">[</span><span class="n">ch</span><span class="o">-</span><span class="mi">1</span><span class="o">]</span>
 </span><span class='line'><span class="k">end</span>
+</span><span class='line'>
 </span><span class='line'><span class="nb">system</span> <span class="s2">&quot;/usr/bin/ssh </span><span class="si">#{</span><span class="o">[</span><span class="n">lan</span><span class="o">].</span><span class="n">join</span><span class="si">}#{</span><span class="n">target</span><span class="si">}</span><span class="s2">&quot;</span>
 </span></code></pre></td></tr></table></div></figure>
 
@@ -333,61 +338,6 @@ modprobe rtl8812au</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2017/08/14/downloaddeb/">Download_deb</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2017-08-14T12:55:13+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>12:55 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><blockquote><blockquote><p>ref <a href="https://askubuntu.com/questions/47865/how-do-i-use-apt-get-to-only-download-packages">https://askubuntu.com/questions/47865/how-do-i-use-apt-get-to-only-download-packages</a></p></blockquote></blockquote>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'># dldeb.sh
-</span><span class='line'>#! /bin/bash
-</span><span class='line'>PACKAGE=$1
-</span><span class='line'>URI=`apt-cache show $PACKAGE | grep "Filename:" | cut -f 2 -d " "`
-</span><span class='line'>wget http://tw.archive.ubuntu.com/ubuntu/$URI</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>#/etc/udev/rules.d/70-persistent-net.rules
-</span><span class='line'>SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*", ATTR{address}=="79:2B:9E:70:67:4F", ATTR{dev_id}=="0x0", ATTR{type}=="1", KERNEL=="wlan*", NAME="wlan0"
-</span><span class='line'>
-</span><span class='line'>SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*", ATTR{address}=="C0:E9:F8:12:F6:6A", ATTR{dev_id}=="0x0", ATTR{type}=="1", KERNEL=="wlan*", NAME="wlan1"</span></code></pre></td></tr></table></div></figure>
-
-
-<p></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
     <a href="/blog/archives">Blog Archives</a>
@@ -406,13 +356,17 @@ modprobe rtl8812au</p>
 <li class='category'><a href='/blog/categories/python/'>python (5)</a></li>
 <li class='category'><a href='/blog/categories/ror/'>ror (18)</a></li>
 <li class='category'><a href='/blog/categories/ruby/'>ruby (33)</a></li>
-<li class='category'><a href='/blog/categories/uncategorized/'>uncategorized (1)</a></li>
+<li class='category'><a href='/blog/categories/uncategorized/'>uncategorized (2)</a></li>
 
     </ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2017/08/18/openwrt/">OpenWrt</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2017/08/17/fake-mac/">Fake_mac</a>
@@ -428,10 +382,6 @@ modprobe rtl8812au</p>
     
       <li class="post">
         <a href="/blog/2017/08/14/wifi-config/">Wifi-config</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2017/08/14/downloaddeb/">Download_deb</a>
       </li>
     
   </ul>

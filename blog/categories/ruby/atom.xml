@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-08-18T01:13:56+08:00</updated>
+  <updated>2017-08-19T05:14:43+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -53,16 +53,16 @@ mac_address(list)
     <updated>2017-08-14T18:21:12+08:00</updated>
     <id>http://icps0610.github.io/blog/2017/08/14/ssh</id>
     <content type="html"><![CDATA[<pre><code class="ruby">target = ARGV[0]
-ip  = `ifconfig | grep Bcast | cut -d " " -f 12 | cut -d ":" -f 2`
-ip  = `ifconfig | grep inet | grep cast | cut -d " " -f 10` if ip == ""
-lan = ip.split("\n").map{|i| i.scan(/(\d*\.\d*\.\d*\.)\d*/).join}
+ip  = `ifconfig | grep cast`.split("\n").map{|i|i.scan(/\d+\.\d+\.\d+\.\d+/)[0]}
+lan = ip.map{|i|i.scan(/(\d*\.\d*\.\d*\.)\d*/).join}
 
-if lan.count &gt; 1
+if lan.count &gt; 11 
   puts lan
   print "----------\n&gt; "
   ch = STDIN.gets.to_i
   lan = lan[ch-1]
 end
+
 system "/usr/bin/ssh #{[lan].join}#{target}"
 </code></pre>
 ]]></content>
