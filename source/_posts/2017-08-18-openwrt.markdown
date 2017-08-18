@@ -3,5 +3,9 @@ layout: post
 title: "OpenWrt"
 date: 2017-08-18 05:36:34 +0800
 comments: true
-categories: uncategorized
+categories: linux
 ---
+
+`opkg update`
+`opkg install luci-i18n-base-zh-tw`
+

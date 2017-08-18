@@ -1,0 +1,61 @@
+---
+layout: post
+title: "lan"
+date: 2017-08-19 05:20:51 +0800
+comments: true
+categories: ruby
+---
+
+``` ruby
+class Lan
+  def initialize
+    @thread = 30
+    @width = 15
+    @log_file = "log"
+    @lan = get_lan[1]
+    @log = []
+    @wait = 300
+    @read_log_wait = 10
+    puts "#{@lan}0/24"
+    
+    read_log.each_slice(@thread).each do |list|
+      threads = [] ; line = []
+      list.each do |ip|
+        threads << Thread.new { line << error( ip) }
+      end
+      threads.each { |t| t.join }
+      display(line, list)
+      line.map{|p,ip| ip if p == " ■"}.compact.each{|ip| @log << ip } if not File.exist? @log_file
+    end
+    @log.each{|l| `echo #{l} >> #{@log_file}`} if not File.exist? @log_file
+    puts
+  end
+
+  def get_lan
+    ip  = `ifconfig | grep cast`.split("\n").map{|i|i.scan(/\d+\.\d+\.\d+\.\d+/)[0]}
+    lan = ip.map{|i|i.scan(/(\d*\.\d*\.\d*\.)\d*/).join}
+  end
+
+  def read_log
+    begin
+      @wait = @read_log_wait
+      IO.binread(@log_file).split("\n")
+    rescue
+      (1..254).to_a.map{|i| "#{@lan}#{i}"}
+    end
+  end
+
+  def error(ip)
+    `fping #{ip} -t #{@wait}`.match("alive") == nil ? [" □", ip] :  [" ■", ip]
+  end
+
+  def display(line, ip)
+    line = line.map{|p,ip|[p,ip.split(".")[3].to_i]}.sort_by{|p,ip|ip}.map{|p,ip|[p,ip.to_s.rjust(3,'000')]}
+    ip.each_index do |i|
+      print "#{line[i].join}"
+      print "\n" if line[i][1].to_i % @width == 0
+    end
+  end
+end
+Lan.new
+```
