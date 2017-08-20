@@ -1,0 +1,25 @@
+---
+layout: post
+title: "id3tool"
+date: 2017-08-21 02:47:18 +0800
+comments: true
+categories: app
+---
+
+http://nekohako.xware.cx/id3tool/
+http://nekohako.xware.cx/id3tool/id3tool-1.2a.tar.gz
+```
+usage:
+id3tool [<options>] <filename>
+  -t, --set-title=WORD          Sets the title to WORD
+  -a, --set-album=WORD          Sets the album to WORD
+  -r, --set-artist=WORD         Sets the artist to WORD
+  -y, --set-year=YEAR           Sets the year to YEAR [4 digits]
+  -n, --set-note=WORD           Sets the note to WORD
+  -g, --set-genre=INT           Sets the genre code to INT
+  -G, --set-genre-word=WORD     Sets the genre to WORD
+  -c, --set-track=INT           Sets the track number to INT
+  -l, --genre-list              Shows the Genre's and their codes
+  -v, --version                 Displays the version
+  -h, --help                    Displays this message
+```
