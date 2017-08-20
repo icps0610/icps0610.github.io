@@ -7,3 +7,4 @@ categories: linux
 ---
 rename -n 's/（(.*)）/($1)/' *
 rename -v 's/\s+(.*)/$1/' *
+
