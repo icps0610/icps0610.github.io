@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-08-21T03:44:40+08:00</updated>
+  <updated>2017-08-21T04:16:54+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,17 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Two Wods Regex]]></title>
+    <link href="http://icps0610.github.io/blog/2017/08/21/ruby-regex/"/>
+    <updated>2017-08-21T04:15:41+08:00</updated>
+    <id>http://icps0610.github.io/blog/2017/08/21/ruby-regex</id>
+    <content type="html"><![CDATA[<blockquote><blockquote><p>ref <a href="https://stackoverflow.com/questions/10678823/regex-format-for-two-strings">https://stackoverflow.com/questions/10678823/regex-format-for-two-strings</a>
+array = [&ldquo;happy&rdquo;,&ldquo;good&rdquo;]
+p array.map{|s|s.scan(/\b(hppy|good)\b/).join}</p></blockquote></blockquote>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Rename去掉中文括弧]]></title>
@@ -582,32 +593,6 @@ ref>> <a href="http://note.drx.tw/2012/12/mysql-syntax.html">http://note.drx.tw/
     <updated>2017-05-29T21:57:37+08:00</updated>
     <id>http://icps0610.github.io/blog/2017/05/29/soundwire</id>
     <content type="html"><![CDATA[<p><code>http://soundwire-server.en.uptodown.com/windows</code></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Charts]]></title>
-    <link href="http://icps0610.github.io/blog/2017/05/26/charts/"/>
-    <updated>2017-05-26T20:54:03+08:00</updated>
-    <id>http://icps0610.github.io/blog/2017/05/26/charts</id>
-    <content type="html"><![CDATA[<p><code>http://pygal.org/en/stable/documentation/index.html</code></p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">pygal</span>
-</span><span class='line'><span class="n">pie_chart</span> <span class="o">=</span> <span class="n">pygal</span><span class="o">.</span><span class="n">Pie</span><span class="p">()</span>
-</span><span class='line'><span class="n">pie_chart</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="s">&#39;PTT&#39;</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">result</span><span class="p">:</span>
-</span><span class='line'>    <span class="n">pie_chart</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="s">&#39;country&#39;</span><span class="p">],</span> <span class="n">r</span><span class="p">[</span><span class="s">&#39;number&#39;</span><span class="p">])</span>
-</span><span class='line'><span class="n">pie_chart</span><span class="o">.</span><span class="n">render_to_file</span><span class="p">(</span><span class="n">DIR_JSON</span><span class="o">+</span><span class="n">board</span><span class="o">+</span><span class="s">&#39;.svg&#39;</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
 ]]></content>
   </entry>
   
