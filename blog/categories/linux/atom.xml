@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-08-19T05:55:00+08:00</updated>
+  <updated>2017-08-21T03:44:40+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,16 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Rename去掉中文括弧]]></title>
+    <link href="http://icps0610.github.io/blog/2017/08/21/qu-diao-zhong-wen-gua-hu/"/>
+    <updated>2017-08-21T02:55:06+08:00</updated>
+    <id>http://icps0610.github.io/blog/2017/08/21/qu-diao-zhong-wen-gua-hu</id>
+    <content type="html"><![CDATA[<p>rename -n &rsquo;s/（(.<em>)）/($1)/&lsquo; *
+rename -v &rsquo;s/\s+(.</em>)/$1/&rsquo; *</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[OpenWrt]]></title>
@@ -90,23 +100,6 @@ SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*", ATTR{address}=="79:2B:9E:70:67:4
 
 SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*", ATTR{address}=="C0:E9:F8:12:F6:6A", ATTR{dev_id}=="0x0", ATTR{type}=="1", KERNEL=="wlan*", NAME="wlan1"
 </code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Desktop]]></title>
-    <link href="http://icps0610.github.io/blog/2017/05/07/desktop/"/>
-    <updated>2017-05-07T02:14:55+08:00</updated>
-    <id>http://icps0610.github.io/blog/2017/05/07/desktop</id>
-    <content type="html"><![CDATA[<pre>
-[Desktop Entry]   
-Type=Application   
-Terminal=true   
-Name=File   
-Icon=icon.svg   
-Exec=gnome-terminal -e 'ls'  
-</pre>
-
 ]]></content>
   </entry>
   

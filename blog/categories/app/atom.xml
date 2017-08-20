@@ -4,7 +4,7 @@
   <title><![CDATA[Category: App | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/app/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-08-19T05:55:00+08:00</updated>
+  <updated>2017-08-21T03:44:40+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,31 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Id3tool]]></title>
+    <link href="http://icps0610.github.io/blog/2017/08/21/id3tool/"/>
+    <updated>2017-08-21T02:47:18+08:00</updated>
+    <id>http://icps0610.github.io/blog/2017/08/21/id3tool</id>
+    <content type="html"><![CDATA[<p><a href="http://nekohako.xware.cx/id3tool/">http://nekohako.xware.cx/id3tool/</a>
+<a href="http://nekohako.xware.cx/id3tool/id3tool-1.2a.tar.gz">http://nekohako.xware.cx/id3tool/id3tool-1.2a.tar.gz</a>
+<code>
+usage:
+id3tool [&lt;options&gt;] &lt;filename&gt;
+  -t, --set-title=WORD          Sets the title to WORD
+  -a, --set-album=WORD          Sets the album to WORD
+  -r, --set-artist=WORD         Sets the artist to WORD
+  -y, --set-year=YEAR           Sets the year to YEAR [4 digits]
+  -n, --set-note=WORD           Sets the note to WORD
+  -g, --set-genre=INT           Sets the genre code to INT
+  -G, --set-genre-word=WORD     Sets the genre to WORD
+  -c, --set-track=INT           Sets the track number to INT
+  -l, --genre-list              Shows the Genre's and their codes
+  -v, --version                 Displays the version
+  -h, --help                    Displays this message
+</code></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Minicom]]></title>
@@ -65,37 +90,6 @@ sudo make install
     <updated>2017-08-12T01:43:47+08:00</updated>
     <id>http://icps0610.github.io/blog/2017/08/12/chromecast</id>
     <content type="html"><![CDATA[<p><a href="https://github.com/xat/castnow">https://github.com/xat/castnow</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Fm_radio]]></title>
-    <link href="http://icps0610.github.io/blog/2017/08/11/fm/"/>
-    <updated>2017-08-11T07:50:07+08:00</updated>
-    <id>http://icps0610.github.io/blog/2017/08/11/fm</id>
-    <content type="html"><![CDATA[<h3>fm_transmitter</h3>
-
-<h4><a href="https://github.com/markondej/fm_transmitter">https://github.com/markondej/fm_transmitter</a></h4>
-
-<pre><code class="">#fm.sh
-f=101.5
-sox "$1" -r 48000 -c 1 -b 16 -t wav - | fm_transmitter -f $f -
-#lame --decode $1 - | fm_transmitter -f $f -
-#arecord -D plughw:1,0 -c1 -d 0 -r 22050 -f S16_LE | fm_transmitter -f $f -
-
-# server
-#&gt; ffmpeg -i tt.mp3 -f wav - | nc 192.168.0.201 1234
-# client 
-#&gt; nc -l -p 1234 | sox - -r 48000 -c 1 -b 16 -t wav - | fm_transmitter -f 101.5 -
-</code></pre>
-
-<h3>sox</h3>
-
-<h4>> play FAIL formats: no handler for file extension `mp3'</h4>
-
-<h4>>> apt install libsox-fmt-mp3</h4>
-
-<p>Unable to locate package libavcodec-unstripped-52</p>
 ]]></content>
   </entry>
   
