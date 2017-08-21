@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-08-21T04:16:54+08:00</updated>
+  <updated>2017-08-21T20:34:38+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,22 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[No_ri_no_rdoc]]></title>
+    <link href="http://icps0610.github.io/blog/2017/08/21/no-ri-no-rdoc/"/>
+    <updated>2017-08-21T20:27:38+08:00</updated>
+    <id>http://icps0610.github.io/blog/2017/08/21/no-ri-no-rdoc</id>
+    <content type="html"><![CDATA[<blockquote><blockquote><p>ref  <a href="https://stackoverflow.com/questions/1381725/how-to-make-no-ri-no-rdoc-the-default-for-gem-install">https://stackoverflow.com/questions/1381725/how-to-make-no-ri-no-rdoc-the-default-for-gem-install</a></p></blockquote></blockquote>
+
+<p>ou just add following line to your local ~/.gemrc file (it is in your home folder)</p>
+
+<p><code>gem: --no-document</code>
+or you can add this line to the global gemrc config file. Here is how to find it (in Linux)</p>
+
+<p><code>strace gem source 2&gt;&amp;1 | grep gemrc</code></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Lan]]></title>
@@ -151,23 +167,6 @@ else
 end
 
 system cmd
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Json]]></title>
-    <link href="http://icps0610.github.io/blog/2017/06/19/json/"/>
-    <updated>2017-06-19T19:51:53+08:00</updated>
-    <id>http://icps0610.github.io/blog/2017/06/19/json</id>
-    <content type="html"><![CDATA[<pre><code class="ruby">require 'net/http'
-require 'uri'
-require 'json'
-
-uri = URI.parse('http://www.example.com/sample.json')
-json = Net::HTTP.get(uri)
-result = JSON.parse(json)
-puts result
 </code></pre>
 ]]></content>
   </entry>

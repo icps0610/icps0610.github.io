@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-08-21T04:16:54+08:00</updated>
+  <updated>2017-08-21T20:34:38+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,22 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[No_ri_no_rdoc]]></title>
+    <link href="http://icps0610.github.io/blog/2017/08/21/no-ri-no-rdoc/"/>
+    <updated>2017-08-21T20:27:38+08:00</updated>
+    <id>http://icps0610.github.io/blog/2017/08/21/no-ri-no-rdoc</id>
+    <content type="html"><![CDATA[<blockquote><blockquote><p>ref  <a href="https://stackoverflow.com/questions/1381725/how-to-make-no-ri-no-rdoc-the-default-for-gem-install">https://stackoverflow.com/questions/1381725/how-to-make-no-ri-no-rdoc-the-default-for-gem-install</a></p></blockquote></blockquote>
+
+<p>ou just add following line to your local ~/.gemrc file (it is in your home folder)</p>
+
+<p><code>gem: --no-document</code>
+or you can add this line to the global gemrc config file. Here is how to find it (in Linux)</p>
+
+<p><code>strace gem source 2&gt;&amp;1 | grep gemrc</code></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Two Wods Regex]]></title>
@@ -584,15 +600,6 @@ modprobe rtl8812au</p>
     <id>http://icps0610.github.io/blog/2017/05/29/mysql-python</id>
     <content type="html"><![CDATA[<p>ref>> <a href="http://www.runoob.com/python3/python3-mysql.html">http://www.runoob.com/python3/python3-mysql.html</a>
 ref>> <a href="http://note.drx.tw/2012/12/mysql-syntax.html">http://note.drx.tw/2012/12/mysql-syntax.html</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[SoundWire]]></title>
-    <link href="http://icps0610.github.io/blog/2017/05/29/soundwire/"/>
-    <updated>2017-05-29T21:57:37+08:00</updated>
-    <id>http://icps0610.github.io/blog/2017/05/29/soundwire</id>
-    <content type="html"><![CDATA[<p><code>http://soundwire-server.en.uptodown.com/windows</code></p>
 ]]></content>
   </entry>
   
