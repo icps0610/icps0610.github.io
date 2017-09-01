@@ -4,7 +4,7 @@
   <title><![CDATA[Category: App | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/app/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-09-02T01:20:30+08:00</updated>
+  <updated>2017-09-02T01:32:03+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -31,21 +31,23 @@
 
 <h6>php</h6>
 
-<p>找到php.ini
-``` php</p>
+<h6>###找到php.ini</h6>
 
-<h1>show.php</h1>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="o">&amp;</span><span class="nx">lt</span><span class="p">;</span><span class="o">?</span><span class="nx">php</span>
+</span><span class='line'> <span class="nb">phpinfo</span><span class="p">();</span>
+</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
+</span></code></pre></td></tr></table></div></figure></p>
 
-<p>&lt;?php
-phpinfo();
-?>
-<code>
-</code>
-php.ini
+<h6>###Configuration File (php.ini) Path</h6>
+
+<pre><code>#php.ini
 upload_max_filesize = 1000M
 post_max_size = 1000M
 memory_limit  1000M
-```</p>
+</code></pre>
 ]]></content>
   </entry>
   

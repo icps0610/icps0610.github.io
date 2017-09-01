@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-08-21T20:34:38+08:00</updated>
+  <updated>2017-09-02T01:32:03+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -14,18 +14,86 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Maximum Supported Is 2 TiB.]]></title>
+    <link href="http://icps0610.github.io/blog/2017/08/31/2t/"/>
+    <updated>2017-08-31T22:33:11+08:00</updated>
+    <id>http://icps0610.github.io/blog/2017/08/31/2t</id>
+    <content type="html"><![CDATA[<blockquote><blockquote><p>ref: <a href="https://www.raspberrypi.org/forums/viewtopic.php?f=28&amp;t=15519">https://www.raspberrypi.org/forums/viewtopic.php?f=28&amp;t=15519</a></p></blockquote></blockquote>
+
+<p><code>apt-get install ntfs-3g</code></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[KODExplorer]]></title>
+    <link href="http://icps0610.github.io/blog/2017/08/31/kodexplorer/"/>
+    <updated>2017-08-31T22:02:42+08:00</updated>
+    <id>http://icps0610.github.io/blog/2017/08/31/kodexplorer</id>
+    <content type="html"><![CDATA[<h3>raspberry pi 3 B</h3>
+
+<h6>apache2</h6>
+
+<p><code>apt-get install apache2 php5 libapache2-mod-php5 php5-gd php5-curl</code><br/>
+<code>/etc/init.d/apache2 restart</code></p>
+
+<p><code>git clone https://github.com/kalcaddle/KODExplorer.git</code><br/>
+<code>chmod -Rf 777 ./KODExplorer/*</code><br/>
+<code>mv KODExplorer /var/www/html</code></p>
+
+<h6>php</h6>
+
+<h6>###找到php.ini</h6>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="o">&lt;?</span><span class="nx">php</span>
+</span><span class='line'> <span class="nb">phpinfo</span><span class="p">();</span>
+</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h6>###Configuration File (php.ini) Path</h6>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>#php.ini
+</span><span class='line'>upload_max_filesize = 1000M
+</span><span class='line'>post_max_size = 1000M
+</span><span class='line'>memory_limit  1000M</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Masscan]]></title>
+    <link href="http://icps0610.github.io/blog/2017/08/31/masscan/"/>
+    <updated>2017-08-31T20:20:35+08:00</updated>
+    <id>http://icps0610.github.io/blog/2017/08/31/masscan</id>
+    <content type="html"><![CDATA[<p><a href="https://github.com/robertdavidgraham/masscan">https://github.com/robertdavidgraham/masscan</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[No_ri_no_rdoc]]></title>
     <link href="http://icps0610.github.io/blog/2017/08/21/no-ri-no-rdoc/"/>
     <updated>2017-08-21T20:27:38+08:00</updated>
     <id>http://icps0610.github.io/blog/2017/08/21/no-ri-no-rdoc</id>
     <content type="html"><![CDATA[<blockquote><blockquote><p>ref  <a href="https://stackoverflow.com/questions/1381725/how-to-make-no-ri-no-rdoc-the-default-for-gem-install">https://stackoverflow.com/questions/1381725/how-to-make-no-ri-no-rdoc-the-default-for-gem-install</a></p></blockquote></blockquote>
 
-<p>ou just add following line to your local ~/.gemrc file (it is in your home folder)</p>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>ou just add following line to your local ~/.gemrc file (it is in your home folder)
+</span><span class='line'>
+</span><span class='line'>gem: --no-document or you can add this line to the global gemrc config file. Here is how to find it (in Linux)
+</span><span class='line'>
+</span><span class='line'>strace gem source 2&gt;&1 | grep gemrc</span></code></pre></td></tr></table></div></figure>
 
-<p><code>gem: --no-document</code>
-or you can add this line to the global gemrc config file. Here is how to find it (in Linux)</p>
-
-<p><code>strace gem source 2&gt;&amp;1 | grep gemrc</code></p>
 ]]></content>
   </entry>
   
@@ -34,9 +102,12 @@ or you can add this line to the global gemrc config file. Here is how to find it
     <link href="http://icps0610.github.io/blog/2017/08/21/ruby-regex/"/>
     <updated>2017-08-21T04:15:41+08:00</updated>
     <id>http://icps0610.github.io/blog/2017/08/21/ruby-regex</id>
-    <content type="html"><![CDATA[<blockquote><blockquote><p>ref <a href="https://stackoverflow.com/questions/10678823/regex-format-for-two-strings">https://stackoverflow.com/questions/10678823/regex-format-for-two-strings</a>
-array = [&ldquo;happy&rdquo;,&ldquo;good&rdquo;]
-p array.map{|s|s.scan(/\b(hppy|good)\b/).join}</p></blockquote></blockquote>
+    <content type="html"><![CDATA[<blockquote><blockquote><p>ref <a href="https://stackoverflow.com/questions/10678823/regex-format-for-two-strings">https://stackoverflow.com/questions/10678823/regex-format-for-two-strings</a></p></blockquote></blockquote>
+
+<h3></h3>
+
+<p><code>array = ["happy","good"]</code><br/>
+<code>p array.map{|s|s.scan(/\b(hppy|good)\b/).join}</code></p>
 ]]></content>
   </entry>
   
@@ -45,8 +116,8 @@ p array.map{|s|s.scan(/\b(hppy|good)\b/).join}</p></blockquote></blockquote>
     <link href="http://icps0610.github.io/blog/2017/08/21/qu-diao-zhong-wen-gua-hu/"/>
     <updated>2017-08-21T02:55:06+08:00</updated>
     <id>http://icps0610.github.io/blog/2017/08/21/qu-diao-zhong-wen-gua-hu</id>
-    <content type="html"><![CDATA[<p>rename -n &rsquo;s/（(.<em>)）/($1)/&lsquo; *
-rename -v &rsquo;s/\s+(.</em>)/$1/&rsquo; *</p>
+    <content type="html"><![CDATA[<p><code>rename -n 's/（(.*)）/($1)/'</code> *<br/>
+<code>rename -v 's/\s+(.*)/$1/' *</code></p>
 ]]></content>
   </entry>
   
@@ -205,7 +276,7 @@ rename -v &rsquo;s/\s+(.</em>)/$1/&rsquo; *</p>
     <link href="http://icps0610.github.io/blog/2017/08/18/openwrt/"/>
     <updated>2017-08-18T05:36:34+08:00</updated>
     <id>http://icps0610.github.io/blog/2017/08/18/openwrt</id>
-    <content type="html"><![CDATA[<p><code>opkg update</code>
+    <content type="html"><![CDATA[<p><code>opkg update</code><br/>
 <code>opkg install luci-i18n-base-zh-tw</code></p>
 ]]></content>
   </entry>
@@ -555,51 +626,6 @@ modprobe rtl8812au</p>
 </span><span class='line'><span class="nb">system</span> <span class="n">cmd</span>
 </span></code></pre></td></tr></table></div></figure>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Json]]></title>
-    <link href="http://icps0610.github.io/blog/2017/06/19/json/"/>
-    <updated>2017-06-19T19:51:53+08:00</updated>
-    <id>http://icps0610.github.io/blog/2017/06/19/json</id>
-    <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;net/http&#39;</span>
-</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;uri&#39;</span>
-</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;json&#39;</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">uri</span> <span class="o">=</span> <span class="no">URI</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s1">&#39;http://www.example.com/sample.json&#39;</span><span class="p">)</span>
-</span><span class='line'><span class="n">json</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
-</span><span class='line'><span class="n">result</span> <span class="o">=</span> <span class="no">JSON</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">json</span><span class="p">)</span>
-</span><span class='line'><span class="nb">puts</span> <span class="n">result</span>
-</span></code></pre></td></tr></table></div></figure>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Html-css]]></title>
-    <link href="http://icps0610.github.io/blog/2017/06/03/html-css/"/>
-    <updated>2017-06-03T07:19:32+08:00</updated>
-    <id>http://icps0610.github.io/blog/2017/06/03/html-css</id>
-    <content type="html"><![CDATA[
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Mysql-python]]></title>
-    <link href="http://icps0610.github.io/blog/2017/05/29/mysql-python/"/>
-    <updated>2017-05-29T22:26:31+08:00</updated>
-    <id>http://icps0610.github.io/blog/2017/05/29/mysql-python</id>
-    <content type="html"><![CDATA[<p>ref>> <a href="http://www.runoob.com/python3/python3-mysql.html">http://www.runoob.com/python3/python3-mysql.html</a>
-ref>> <a href="http://note.drx.tw/2012/12/mysql-syntax.html">http://note.drx.tw/2012/12/mysql-syntax.html</a></p>
 ]]></content>
   </entry>
   
