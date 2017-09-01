@@ -15,15 +15,15 @@ categories: app
 `mv KODExplorer /var/www/html`  
 
 ######php
-找到php.ini
-``` php
-#show.php
+#########找到php.ini
+{% codeblock lang:php %}
 <?php
-phpinfo();
+ phpinfo();
 ?>
+{% endcodeblock %}
+#########Configuration File (php.ini) Path
 ```
-```
-php.ini
+#php.ini
 upload_max_filesize = 1000M
 post_max_size = 1000M
 memory_limit  1000M
