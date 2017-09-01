@@ -4,7 +4,7 @@
   <title><![CDATA[Category: App | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/app/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-08-21T20:34:38+08:00</updated>
+  <updated>2017-09-02T01:20:30+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,51 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[KODExplorer]]></title>
+    <link href="http://icps0610.github.io/blog/2017/08/31/kodexplorer/"/>
+    <updated>2017-08-31T22:02:42+08:00</updated>
+    <id>http://icps0610.github.io/blog/2017/08/31/kodexplorer</id>
+    <content type="html"><![CDATA[<h3>raspberry pi 3 B</h3>
+
+<h6>apache2</h6>
+
+<p><code>apt-get install apache2 php5 libapache2-mod-php5 php5-gd php5-curl</code><br/>
+<code>/etc/init.d/apache2 restart</code></p>
+
+<p><code>git clone https://github.com/kalcaddle/KODExplorer.git</code><br/>
+<code>chmod -Rf 777 ./KODExplorer/*</code><br/>
+<code>mv KODExplorer /var/www/html</code></p>
+
+<h6>php</h6>
+
+<p>找到php.ini
+``` php</p>
+
+<h1>show.php</h1>
+
+<p>&lt;?php
+phpinfo();
+?>
+<code>
+</code>
+php.ini
+upload_max_filesize = 1000M
+post_max_size = 1000M
+memory_limit  1000M
+```</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Masscan]]></title>
+    <link href="http://icps0610.github.io/blog/2017/08/31/masscan/"/>
+    <updated>2017-08-31T20:20:35+08:00</updated>
+    <id>http://icps0610.github.io/blog/2017/08/31/masscan</id>
+    <content type="html"><![CDATA[<p><a href="https://github.com/robertdavidgraham/masscan">https://github.com/robertdavidgraham/masscan</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Id3tool]]></title>
@@ -68,28 +113,6 @@ id3tool [&lt;options&gt;] &lt;filename&gt;
 make
 sudo make install
 </code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Wetty]]></title>
-    <link href="http://icps0610.github.io/blog/2017/08/13/wetty/"/>
-    <updated>2017-08-13T19:01:19+08:00</updated>
-    <id>http://icps0610.github.io/blog/2017/08/13/wetty</id>
-    <content type="html"><![CDATA[<pre><code> git clone https://github.com/krishnasrinivas/wetty  
- #npm http://node-arm.herokuapp.com/node_latest_armhf.deb 
- npm install  
- node app.js -p 80
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Chromecast]]></title>
-    <link href="http://icps0610.github.io/blog/2017/08/12/chromecast/"/>
-    <updated>2017-08-12T01:43:47+08:00</updated>
-    <id>http://icps0610.github.io/blog/2017/08/12/chromecast</id>
-    <content type="html"><![CDATA[<p><a href="https://github.com/xat/castnow">https://github.com/xat/castnow</a></p>
 ]]></content>
   </entry>
   

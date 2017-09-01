@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-08-21T20:34:38+08:00</updated>
+  <updated>2017-09-02T01:20:30+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -20,12 +20,12 @@
     <id>http://icps0610.github.io/blog/2017/08/21/no-ri-no-rdoc</id>
     <content type="html"><![CDATA[<blockquote><blockquote><p>ref  <a href="https://stackoverflow.com/questions/1381725/how-to-make-no-ri-no-rdoc-the-default-for-gem-install">https://stackoverflow.com/questions/1381725/how-to-make-no-ri-no-rdoc-the-default-for-gem-install</a></p></blockquote></blockquote>
 
-<p>ou just add following line to your local ~/.gemrc file (it is in your home folder)</p>
+<pre><code>ou just add following line to your local ~/.gemrc file (it is in your home folder)
 
-<p><code>gem: --no-document</code>
-or you can add this line to the global gemrc config file. Here is how to find it (in Linux)</p>
+gem: --no-document or you can add this line to the global gemrc config file. Here is how to find it (in Linux)
 
-<p><code>strace gem source 2&gt;&amp;1 | grep gemrc</code></p>
+strace gem source 2&gt;&amp;1 | grep gemrc
+</code></pre>
 ]]></content>
   </entry>
   

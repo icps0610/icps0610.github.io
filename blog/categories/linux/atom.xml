@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-08-21T20:34:38+08:00</updated>
+  <updated>2017-09-02T01:20:30+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -14,12 +14,23 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Maximum Supported Is 2 TiB.]]></title>
+    <link href="http://icps0610.github.io/blog/2017/08/31/2t/"/>
+    <updated>2017-08-31T22:33:11+08:00</updated>
+    <id>http://icps0610.github.io/blog/2017/08/31/2t</id>
+    <content type="html"><![CDATA[<blockquote><blockquote><p>ref: <a href="https://www.raspberrypi.org/forums/viewtopic.php?f=28&amp;t=15519">https://www.raspberrypi.org/forums/viewtopic.php?f=28&amp;t=15519</a></p></blockquote></blockquote>
+
+<p><code>apt-get install ntfs-3g</code></p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Rename去掉中文括弧]]></title>
     <link href="http://icps0610.github.io/blog/2017/08/21/qu-diao-zhong-wen-gua-hu/"/>
     <updated>2017-08-21T02:55:06+08:00</updated>
     <id>http://icps0610.github.io/blog/2017/08/21/qu-diao-zhong-wen-gua-hu</id>
-    <content type="html"><![CDATA[<p>rename -n &rsquo;s/（(.<em>)）/($1)/&lsquo; *
-rename -v &rsquo;s/\s+(.</em>)/$1/&rsquo; *</p>
+    <content type="html"><![CDATA[<p><code>rename -n 's/（(.*)）/($1)/'</code> *<br/>
+<code>rename -v 's/\s+(.*)/$1/' *</code></p>
 ]]></content>
   </entry>
   
@@ -28,7 +39,7 @@ rename -v &rsquo;s/\s+(.</em>)/$1/&rsquo; *</p>
     <link href="http://icps0610.github.io/blog/2017/08/18/openwrt/"/>
     <updated>2017-08-18T05:36:34+08:00</updated>
     <id>http://icps0610.github.io/blog/2017/08/18/openwrt</id>
-    <content type="html"><![CDATA[<p><code>opkg update</code>
+    <content type="html"><![CDATA[<p><code>opkg update</code><br/>
 <code>opkg install luci-i18n-base-zh-tw</code></p>
 ]]></content>
   </entry>
@@ -66,7 +77,7 @@ iface wlan0 inet static
   wpa-ssid SSID
 </code></pre>
 
-<p><code></code>echo wpa-psk <code>wpa_passphrase SSID PASSWORDS | grep -E "\spsk=.*\"?" | cut -f 2 -d "="</code> >> /etc/network/interfaces<code></code></p>
+<p><code>{% raw %}</code>echo wpa-psk <code>wpa_passphrase SSID PASSWORDS | grep -E "\spsk=.*\"?" | cut -f 2 -d "="</code> >> /etc/network/interfaces<code>{% endraw %}</code></p>
 
 <pre><code class="ruby">#wifi.sh
 ssid = ARGV[0]
@@ -77,28 +88,6 @@ psk = wpa.scan(/\tpsk=(.*)/).join
 
 system "echo wpa-ssid #{ssid} &gt;&gt; /etc/network/interfaces"
 system "echo wpa-psk #{psk} &gt;&gt; /etc/network/interfaces"
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Download_deb]]></title>
-    <link href="http://icps0610.github.io/blog/2017/08/14/downloaddeb/"/>
-    <updated>2017-08-14T12:55:13+08:00</updated>
-    <id>http://icps0610.github.io/blog/2017/08/14/downloaddeb</id>
-    <content type="html"><![CDATA[<blockquote><blockquote><p>ref <a href="https://askubuntu.com/questions/47865/how-do-i-use-apt-get-to-only-download-packages">https://askubuntu.com/questions/47865/how-do-i-use-apt-get-to-only-download-packages</a></p></blockquote></blockquote>
-
-<pre><code># dldeb.sh
-#! /bin/bash
-PACKAGE=$1
-URI=`apt-cache show $PACKAGE | grep "Filename:" | cut -f 2 -d " "`
-wget http://tw.archive.ubuntu.com/ubuntu/$URI
-</code></pre>
-
-<pre><code class="">#/etc/udev/rules.d/70-persistent-net.rules
-SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*", ATTR{address}=="79:2B:9E:70:67:4F", ATTR{dev_id}=="0x0", ATTR{type}=="1", KERNEL=="wlan*", NAME="wlan0"
-
-SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*", ATTR{address}=="C0:E9:F8:12:F6:6A", ATTR{dev_id}=="0x0", ATTR{type}=="1", KERNEL=="wlan*", NAME="wlan1"
 </code></pre>
 ]]></content>
   </entry>
