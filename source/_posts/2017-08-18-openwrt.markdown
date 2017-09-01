@@ -6,6 +6,6 @@ comments: true
 categories: linux
 ---
 
-`opkg update`
-`opkg install luci-i18n-base-zh-tw`
+`opkg update`  
+`opkg install luci-i18n-base-zh-tw`  
 
