@@ -21,9 +21,6 @@ pdfkit.from_url('/tmp/result.html', '/tmp/result.pdf', configuration=config, opt
 
 >> ref  https://github.com/wkhtmltopdf/wkhtmltopdf/issues/3195
 
-
-#`/opt/wkhtmltox/bin/wkhtmltoimage \"#{link}\" /tmp/tmp.jpg`
-#`convert /tmp/tmp.jpg -crop 770x560+236+406 /tmp/tmp.jpg`
 ``` html
 <style>
 	tr { page-break-inside: avoid !important; }

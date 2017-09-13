@@ -5,4 +5,5 @@ date: 2016-06-18 04:11:25 +0800
 comments: true
 categories: linux
 ---
-`du -h --max-depth=1 -x /home | sort -n`
+
+`du -B M --max-depth=1 | sort -g`

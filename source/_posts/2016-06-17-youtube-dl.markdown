@@ -15,7 +15,3 @@ categories: app
 ### video
 <pre><code>youtube-dl -f mp4 <font color='red'>url</font>
 </code></pre>
-
-### stream
-
-youtube-dl https://youtu.be/B-MTiuswulY -o - | ffmpeg -threads 4 -i pipe:0 -vcodec mp4 -s qcif -f wav -y - | mplayer -

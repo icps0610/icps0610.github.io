@@ -1,33 +1,20 @@
 ---
 layout: post
-title: "fm_radio"
+title: "fm"
 date: 2017-08-11 07:50:07 +0800
 comments: true
 categories: app
 ---
+sox
+#play FAIL formats: no handler for file extension `mp3'
+apt install libsox-fmt-mp3 
 
-### fm_transmitter  
-#### https://github.com/markondej/fm_transmitter  
 
-
-
-``` 
 #fm.sh
-f=101.5
-sox "$1" -r 48000 -c 1 -b 16 -t wav - | fm_transmitter -f $f -
-#lame --decode $1 - | fm_transmitter -f $f -
-#arecord -D plughw:1,0 -c1 -d 0 -r 22050 -f S16_LE | fm_transmitter -f $f -
+sox "$1" -r 22050 -c 1 -b 16 -t wav - | fm_transmitter -f 101.5 -
+#lame --decode $1 - | fm_transmitter -f 101.5 -
 
-# server
-#> ffmpeg -i tt.mp3 -f wav - | nc 192.168.0.201 1234
-# client 
-#> nc -l -p 1234 | sox - -r 48000 -c 1 -b 16 -t wav - | fm_transmitter -f 101.5 -
 
-```
+arecord -D plughw:1,0 -c1 -d 0 -r 22050 -f S16_LE | fm_transmitter -f 101.5 -
 
-### sox 
-#### > play FAIL formats: no handler for file extension `mp3'  
-#### >> apt install libsox-fmt-mp3
-
-Unable to locate package libavcodec-unstripped-52
-
+>>https://github.com/markondej/fm_transmitter

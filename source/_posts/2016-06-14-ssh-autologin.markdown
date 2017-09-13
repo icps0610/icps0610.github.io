@@ -13,23 +13,10 @@ if `gem list | grep net-ssh` == ""
 end
 require "net/ssh"
 require "net/scp"
-$ip=[]
-if ARGV.count == 3
-  $ip << [ ARGV[0], ARGV[1], ARGV[2] ]
-else
-  puts "target user passwd"
-  exit
-end
-$localip = `ifconfig | grep cast`.split("\n").map{|i|i.scan(/\d+\.\d+\.\d+\.\d+/)[0]}
-
-if $localip.count > 1
-  puts $localip
-  print "----------\n> "
-  ch = STDIN.gets.to_i
-  $localip = $localip[ch-1]
-end
-$localip =  $localip
+$localip=`ifconfig | grep Bcast | cut -d :  -f 2 | cut -d " " -f 1`.chomp
 $localuser=ENV['USER']
+$ip=[]
+$ip << ["192.168.1.100","test","test"]
 
 class SSH_n_1
 
@@ -54,14 +41,13 @@ class SSH_n_1
         `chmod 600 ~/.ssh/authorized_keys`
         `sed -i /#{user}@#{@hostname}/d ~/.ssh/authorized_keys`
         `cat #{$localip}.pub >> ~/.ssh/authorized_keys`
-        `rm #{$localip}.pub`
+
         puts "   USER: #{user} 已完成"
       else
         puts ">> #{host} 沒有回應"
       end
       puts
     end
-
   end
 
   def download_key(host,user,passwd)
@@ -108,7 +94,6 @@ class SSH_1_n
       end
       puts
     end
-
   end
 
   def upload_key(host,user,passwd)
@@ -130,14 +115,7 @@ class SSH_1_n
     if not File.exist?("#{ENV['HOME']}/.ssh/#{$localip}")
       system("ssh-keygen -t rsa -f #{ENV['HOME']}/.ssh/#{$localip} -N '' -q")
     end
-
   end
 
 end
-#IP列表為SSH主機
-SSH_1_n.new
-#本地端為SSH主機
-SSH_n_1.new
-
-
 ```
