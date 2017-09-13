@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-09-02T01:32:03+08:00</updated>
+  <updated>2017-09-13T21:54:26+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,26 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Kill_all_process]]></title>
+    <link href="http://icps0610.github.io/blog/2017/09/02/kill-all-process/"/>
+    <updated>2017-09-02T19:07:40+08:00</updated>
+    <id>http://icps0610.github.io/blog/2017/09/02/kill-all-process</id>
+    <content type="html"><![CDATA[<p>pkill -f ngrok</p>
+
+<p><code>ps aux | grep  ngrok | awk '{print "kill -9 " $2}'</code></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Owncloud]]></title>
+    <link href="http://icps0610.github.io/blog/2017/09/02/owncloud/"/>
+    <updated>2017-09-02T01:50:27+08:00</updated>
+    <id>http://icps0610.github.io/blog/2017/09/02/owncloud</id>
+    <content type="html"><![CDATA[<p>php-gd php-zip php-dom</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Maximum Supported Is 2 TiB.]]></title>
@@ -538,94 +558,6 @@ modprobe rtl8812au</p>
     <updated>2017-08-12T01:43:47+08:00</updated>
     <id>http://icps0610.github.io/blog/2017/08/12/chromecast</id>
     <content type="html"><![CDATA[<p><a href="https://github.com/xat/castnow">https://github.com/xat/castnow</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Fm_radio]]></title>
-    <link href="http://icps0610.github.io/blog/2017/08/11/fm/"/>
-    <updated>2017-08-11T07:50:07+08:00</updated>
-    <id>http://icps0610.github.io/blog/2017/08/11/fm</id>
-    <content type="html"><![CDATA[<h3>fm_transmitter</h3>
-
-<h4><a href="https://github.com/markondej/fm_transmitter">https://github.com/markondej/fm_transmitter</a></h4>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>#fm.sh
-</span><span class='line'>f=101.5
-</span><span class='line'>sox "$1" -r 48000 -c 1 -b 16 -t wav - | fm_transmitter -f $f -
-</span><span class='line'>#lame --decode $1 - | fm_transmitter -f $f -
-</span><span class='line'>#arecord -D plughw:1,0 -c1 -d 0 -r 22050 -f S16_LE | fm_transmitter -f $f -
-</span><span class='line'>
-</span><span class='line'># server
-</span><span class='line'>#&gt; ffmpeg -i tt.mp3 -f wav - | nc 192.168.0.201 1234
-</span><span class='line'># client 
-</span><span class='line'>#&gt; nc -l -p 1234 | sox - -r 48000 -c 1 -b 16 -t wav - | fm_transmitter -f 101.5 -
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>sox</h3>
-
-<h4>> play FAIL formats: no handler for file extension `mp3'</h4>
-
-<h4>>> apt install libsox-fmt-mp3</h4>
-
-<p>Unable to locate package libavcodec-unstripped-52</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Line-notify]]></title>
-    <link href="http://icps0610.github.io/blog/2017/06/23/line-notify/"/>
-    <updated>2017-06-23T20:45:29+08:00</updated>
-    <id>http://icps0610.github.io/blog/2017/06/23/line-notify</id>
-    <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">line</span> <span class="o">=</span> <span class="s2">&quot;https://notify-api.line.me/api/notify&quot;</span>
-</span><span class='line'><span class="n">to</span>    <span class="o">=</span> <span class="no">ARGV</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span>
-</span><span class='line'><span class="n">msg</span>   <span class="o">=</span> <span class="no">ARGV</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span>
-</span><span class='line'><span class="n">image</span> <span class="o">=</span> <span class="no">ARGV</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">case</span> <span class="n">to</span>
-</span><span class='line'><span class="k">when</span> <span class="s2">&quot;me&quot;</span>
-</span><span class='line'>  <span class="n">token</span> <span class="o">=</span> <span class="s2">&quot;AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA&quot;</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'><span class="k">if</span> <span class="n">image</span> <span class="ow">and</span> <span class="no">File</span><span class="o">.</span><span class="n">exist?</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
-</span><span class='line'>  <span class="n">cmd</span> <span class="o">=</span> <span class="s2">&quot;curl -X POST -H &#39;Authorization: Bearer </span><span class="si">#{</span><span class="n">token</span><span class="si">}</span><span class="s2">&#39; -F &#39;message=</span><span class="si">#{</span><span class="n">msg</span><span class="si">}</span><span class="s2">&#39; -F &#39;imageFile=@</span><span class="si">#{</span><span class="n">image</span><span class="si">}</span><span class="s2">&#39; </span><span class="si">#{</span><span class="n">line</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span class='line'><span class="k">elsif</span> <span class="n">image</span> <span class="o">==</span> <span class="kp">nil</span>
-</span><span class='line'>  <span class="n">cmd</span> <span class="o">=</span> <span class="s2">&quot;curl -X POST -H &#39;Authorization: Bearer </span><span class="si">#{</span><span class="n">token</span><span class="si">}</span><span class="s2">&#39; -F &#39;message=</span><span class="si">#{</span><span class="n">msg</span><span class="si">}</span><span class="s2">&#39; </span><span class="si">#{</span><span class="n">line</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span class='line'><span class="k">else</span>
-</span><span class='line'>  <span class="n">cmd</span> <span class="o">=</span> <span class="s2">&quot;curl -X POST -H &#39;Authorization: Bearer </span><span class="si">#{</span><span class="n">token</span><span class="si">}</span><span class="s2">&#39; -F &#39;message=file cant find&#39; </span><span class="si">#{</span><span class="n">line</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="nb">system</span> <span class="n">cmd</span>
-</span></code></pre></td></tr></table></div></figure>
-
 ]]></content>
   </entry>
   

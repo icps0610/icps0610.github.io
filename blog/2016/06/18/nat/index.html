@@ -9,15 +9,9 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="1
-2
-3
-4
-5
-wan=&quot;wlan1&quot;
-lan= &quot;wlan0&quot;
-`iptables -t nat -A POSTROUTING -o #{wan} -j MASQUERADE`
-`iptables -A FORWARD -i #{wan} -o #{ &hellip;">
+  <meta name="description" content="iptables --table nat --append POSTROUTING --out-interface eth1 -j MASQUERADE
+iptables --append FORWARD --in-interface eth0 -j ACCEPT
+echo "1" > /proc &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -94,17 +88,10 @@ lan= &quot;wlan0&quot;
   </header>
 
 
-<div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">wan</span><span class="o">=</span><span class="s2">&quot;wlan1&quot;</span>
-</span><span class='line'><span class="n">lan</span><span class="o">=</span> <span class="s2">&quot;wlan0&quot;</span>
-</span><span class='line'><span class="sb">`iptables -t nat -A POSTROUTING -o </span><span class="si">#{</span><span class="n">wan</span><span class="si">}</span><span class="sb"> -j MASQUERADE`</span>
-</span><span class='line'><span class="sb">`iptables -A FORWARD -i </span><span class="si">#{</span><span class="n">wan</span><span class="si">}</span><span class="sb"> -o </span><span class="si">#{</span><span class="n">lan</span><span class="si">}</span><span class="sb"> -m state --state RELATED,ESTABLISHED -j ACCEPT`</span>
-</span><span class='line'><span class="sb">`iptables -A FORWARD -i </span><span class="si">#{</span><span class="n">lan</span><span class="si">}</span><span class="sb"> -o </span><span class="si">#{</span><span class="n">wan</span><span class="si">}</span><span class="sb"> -j ACCEPT`</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="entry-content"><pre><code>iptables --table nat --append POSTROUTING --out-interface <font color='red'>eth1</font> -j MASQUERADE
+iptables --append FORWARD --in-interface <font color='red'>eth0</font> -j ACCEPT
+echo "1" > /proc/sys/net/ipv4/ip_forward
+</code></pre>
 
 </div>
 
@@ -160,18 +147,26 @@ lan= &quot;wlan0&quot;
     <ul id="categories">
        <li class='category'><a href='/blog/categories/app/'>app (25)</a></li>
 <li class='category'><a href='/blog/categories/bat/'>bat (9)</a></li>
-<li class='category'><a href='/blog/categories/linux/'>linux (18)</a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (19)</a></li>
 <li class='category'><a href='/blog/categories/notepad/'>notepad (1)</a></li>
-<li class='category'><a href='/blog/categories/python/'>python (5)</a></li>
+<li class='category'><a href='/blog/categories/python/'>python (4)</a></li>
 <li class='category'><a href='/blog/categories/ror/'>ror (18)</a></li>
 <li class='category'><a href='/blog/categories/ruby/'>ruby (36)</a></li>
-<li class='category'><a href='/blog/categories/uncategorized/'>uncategorized (1)</a></li>
+<li class='category'><a href='/blog/categories/uncategorized/'>uncategorized (3)</a></li>
 
     </ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2017/09/02/kill-all-process/">Kill_all_process</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2017/09/02/owncloud/">Owncloud</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2017/08/31/2t/">Maximum Supported Is 2 TiB.</a>
@@ -183,14 +178,6 @@ lan= &quot;wlan0&quot;
     
       <li class="post">
         <a href="/blog/2017/08/31/masscan/">Masscan</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2017/08/21/no-ri-no-rdoc/">No_ri_no_rdoc</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2017/08/21/ruby-regex/">Two Wods Regex</a>
       </li>
     
   </ul>

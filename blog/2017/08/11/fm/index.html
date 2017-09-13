@@ -5,23 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Fm_radio - icps</title>
+  <title>Fm - icps</title>
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="fm_transmitter https://github.com/markondej/fm_transmitter 1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-#fm.sh
-f=101.5
-sox "$1" -r 48000 -c 1 -b 16 -t wav - | fm_transmitter &hellip;">
+  <meta name="description" content="sox play FAIL formats: no handler for file extension `mp3' apt install libsox-fmt-mp3 fm.sh sox &ldquo;$1&rdquo; -r 22050 -c 1 -b 16 -t wav - | &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,7 +70,7 @@ sox "$1" -r 48000 -c 1 -b 16 -t wav - | fm_transmitter &hellip;">
   
   <header>
     
-      <h1 class="entry-title">Fm_radio</h1>
+      <h1 class="entry-title">Fm</h1>
     
     
       <p class="meta">
@@ -98,40 +86,21 @@ sox "$1" -r 48000 -c 1 -b 16 -t wav - | fm_transmitter &hellip;">
   </header>
 
 
-<div class="entry-content"><h3>fm_transmitter</h3>
+<div class="entry-content"><p>sox</p>
 
-<h4><a href="https://github.com/markondej/fm_transmitter">https://github.com/markondej/fm_transmitter</a></h4>
+<h1>play FAIL formats: no handler for file extension `mp3'</h1>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>#fm.sh
-</span><span class='line'>f=101.5
-</span><span class='line'>sox "$1" -r 48000 -c 1 -b 16 -t wav - | fm_transmitter -f $f -
-</span><span class='line'>#lame --decode $1 - | fm_transmitter -f $f -
-</span><span class='line'>#arecord -D plughw:1,0 -c1 -d 0 -r 22050 -f S16_LE | fm_transmitter -f $f -
-</span><span class='line'>
-</span><span class='line'># server
-</span><span class='line'>#&gt; ffmpeg -i tt.mp3 -f wav - | nc 192.168.0.201 1234
-</span><span class='line'># client 
-</span><span class='line'>#&gt; nc -l -p 1234 | sox - -r 48000 -c 1 -b 16 -t wav - | fm_transmitter -f 101.5 -
-</span></code></pre></td></tr></table></div></figure>
+<p>apt install libsox-fmt-mp3</p>
 
+<h1>fm.sh</h1>
 
-<h3>sox</h3>
+<p>sox &ldquo;$1&rdquo; -r 22050 -c 1 -b 16 -t wav - | fm_transmitter -f 101.5 -</p>
 
-<h4>> play FAIL formats: no handler for file extension `mp3'</h4>
+<h1>lame &ndash;decode $1 - | fm_transmitter -f 101.5 -</h1>
 
-<h4>>> apt install libsox-fmt-mp3</h4>
+<p>arecord -D plughw:1,0 -c1 -d 0 -r 22050 -f S16_LE | fm_transmitter -f 101.5 -</p>
 
-<p>Unable to locate package libavcodec-unstripped-52</p>
+<blockquote><blockquote><p><a href="https://github.com/markondej/fm_transmitter">https://github.com/markondej/fm_transmitter</a></p></blockquote></blockquote>
 </div>
 
 
@@ -186,18 +155,26 @@ sox "$1" -r 48000 -c 1 -b 16 -t wav - | fm_transmitter &hellip;">
     <ul id="categories">
        <li class='category'><a href='/blog/categories/app/'>app (25)</a></li>
 <li class='category'><a href='/blog/categories/bat/'>bat (9)</a></li>
-<li class='category'><a href='/blog/categories/linux/'>linux (18)</a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (19)</a></li>
 <li class='category'><a href='/blog/categories/notepad/'>notepad (1)</a></li>
-<li class='category'><a href='/blog/categories/python/'>python (5)</a></li>
+<li class='category'><a href='/blog/categories/python/'>python (4)</a></li>
 <li class='category'><a href='/blog/categories/ror/'>ror (18)</a></li>
 <li class='category'><a href='/blog/categories/ruby/'>ruby (36)</a></li>
-<li class='category'><a href='/blog/categories/uncategorized/'>uncategorized (1)</a></li>
+<li class='category'><a href='/blog/categories/uncategorized/'>uncategorized (3)</a></li>
 
     </ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2017/09/02/kill-all-process/">Kill_all_process</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2017/09/02/owncloud/">Owncloud</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2017/08/31/2t/">Maximum Supported Is 2 TiB.</a>
@@ -209,14 +186,6 @@ sox "$1" -r 48000 -c 1 -b 16 -t wav - | fm_transmitter &hellip;">
     
       <li class="post">
         <a href="/blog/2017/08/31/masscan/">Masscan</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2017/08/21/no-ri-no-rdoc/">No_ri_no_rdoc</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2017/08/21/ruby-regex/">Two Wods Regex</a>
       </li>
     
   </ul>
