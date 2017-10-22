@@ -9,6 +9,7 @@ categories: ruby
 >> ref https://mgleon08.github.io/blog/2016/08/30/optionparser/
 
 ``` ruby
+require 'optparse'
 class Help
   def initialize(arguments)
     @arguments = arguments
