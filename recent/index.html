@@ -9,7 +9,8 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="ref https://mgleon08.github.io/blog/2016/08/30/optionparser/ class Help def initialize(arguments) @arguments = arguments @arguments = ["-h"] if @ &hellip;">
+  <meta name="description" content="ref https://mgleon08.github.io/blog/2016/08/30/optionparser/ require 'optparse'
+class Help def initialize(arguments) @arguments = arguments @ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -91,7 +92,8 @@
 
   <div class="entry-content"><blockquote><blockquote><p>ref <a href="https://mgleon08.github.io/blog/2016/08/30/optionparser/">https://mgleon08.github.io/blog/2016/08/30/optionparser/</a></p></blockquote></blockquote>
 
-<pre><code class="ruby">class Help
+<pre><code class="ruby">require 'optparse'
+class Help
   def initialize(arguments)
     @arguments = arguments
     @arguments = ["-h"] if @arguments == []

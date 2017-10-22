@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-10-23T00:58:36+08:00</updated>
+  <updated>2017-10-23T00:59:48+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -20,7 +20,8 @@
     <id>http://icps0610.github.io/blog/2017/10/23/argv</id>
     <content type="html"><![CDATA[<blockquote><blockquote><p>ref <a href="https://mgleon08.github.io/blog/2016/08/30/optionparser/">https://mgleon08.github.io/blog/2016/08/30/optionparser/</a></p></blockquote></blockquote>
 
-<pre><code class="ruby">class Help
+<pre><code class="ruby">require 'optparse'
+class Help
   def initialize(arguments)
     @arguments = arguments
     @arguments = ["-h"] if @arguments == []
