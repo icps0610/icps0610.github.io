@@ -1,0 +1,31 @@
+---
+layout: post
+title: "argv"
+date: 2017-10-23 00:57:04 +0800
+comments: true
+categories: ruby
+---
+
+>> ref https://mgleon08.github.io/blog/2016/08/30/optionparser/
+
+``` ruby
+class Help
+  def initialize(arguments)
+    @arguments = arguments
+    @arguments = ["-h"] if @arguments == []
+    parse_options
+  end
+
+  def parse_options
+    options = OptionParser.new
+    options.banner = 'Usage: Backup & Restore [options]'
+    options.separator ''
+    options.separator 'options:'
+    options.on('-r', '--backup', 'backup') { backup }
+    options.on('-r', '--restroe', 'restroe') { restroe }
+    
+    options.on('-h', '--help', 'Show this message') { puts(options); exit }
+    options.parse!(@arguments)
+  end
+ end
+ ```

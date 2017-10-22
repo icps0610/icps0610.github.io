@@ -1,0 +1,25 @@
+---
+layout: post
+title: "argv"
+date: 2017-10-22 21:24:03 +0800
+comments: true
+categories: python
+---
+``` python
+import sys, getopt
+#args = " " . join(map(lambda s: '"%s"' % s if ' ' in s else s, sys.argv[2:]))
+
+opts, args = getopt.getopt(sys.argv[1:], "hm:r:")
+mode = ""
+rating = ""
+for op, value in opts:
+  if op == "-m":
+    mode = value
+  elif op == "-r":
+    rating = value
+  else:
+  	print("-m mode -r rating")
+  	sys.exit()
+print(mode)
+print(rating)
+```

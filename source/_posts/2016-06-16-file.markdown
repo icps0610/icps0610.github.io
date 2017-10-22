@@ -17,12 +17,15 @@ file.close()
 
 ``` ruby
 #讀取檔案每行
-File.readlines('foo').each{|line| puts line }
+File.readlines("test.txt").each do |line| 
+  puts line 
+end
 
 ```
 ``` ruby
 #讀取檔案成字串
-(IO.binread("test.txt"))
+IO.binread("test.txt")
+IO.binwrite("test.txt")
 
 ```
 ``` ruby
