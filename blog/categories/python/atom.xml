@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Python | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-09-13T21:54:26+08:00</updated>
+  <updated>2017-10-23T00:58:36+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,31 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Argv]]></title>
+    <link href="http://icps0610.github.io/blog/2017/10/22/argv/"/>
+    <updated>2017-10-22T21:24:03+08:00</updated>
+    <id>http://icps0610.github.io/blog/2017/10/22/argv</id>
+    <content type="html"><![CDATA[<pre><code class="python">import sys, getopt
+#args = " " . join(map(lambda s: '"%s"' % s if ' ' in s else s, sys.argv[2:]))
+
+opts, args = getopt.getopt(sys.argv[1:], "hm:r:")
+mode = ""
+rating = ""
+for op, value in opts:
+  if op == "-m":
+    mode = value
+  elif op == "-r":
+    rating = value
+  else:
+    print("-m mode -r rating")
+    sys.exit()
+print(mode)
+print(rating)
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Mysql-python]]></title>
@@ -28,7 +53,10 @@ ref>> <a href="http://note.drx.tw/2012/12/mysql-syntax.html">http://note.drx.tw/
     <link href="http://icps0610.github.io/blog/2017/05/25/html2pdf/"/>
     <updated>2017-05-25T03:56:46+08:00</updated>
     <id>http://icps0610.github.io/blog/2017/05/25/html2pdf</id>
-    <content type="html"><![CDATA[<p><code>https://github.com/twtrubiks/python-pdfkit-example</code></p>
+    <content type="html"><![CDATA[<p><code>apt-get install wkhtmltopdf</code>
+<code>https://wkhtmltopdf.org/downloads.html</code></p>
+
+<p><code>https://github.com/twtrubiks/python-pdfkit-example</code></p>
 
 <pre><code class="python">config = pdfkit.configuration(wkhtmltopdf='/opt/wkhtmltox/bin/wkhtmltopdf')
 options = {

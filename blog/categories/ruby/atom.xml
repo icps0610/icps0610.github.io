@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-09-13T21:54:26+08:00</updated>
+  <updated>2017-10-23T00:58:36+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,36 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Argv]]></title>
+    <link href="http://icps0610.github.io/blog/2017/10/23/argv/"/>
+    <updated>2017-10-23T00:57:04+08:00</updated>
+    <id>http://icps0610.github.io/blog/2017/10/23/argv</id>
+    <content type="html"><![CDATA[<blockquote><blockquote><p>ref <a href="https://mgleon08.github.io/blog/2016/08/30/optionparser/">https://mgleon08.github.io/blog/2016/08/30/optionparser/</a></p></blockquote></blockquote>
+
+<pre><code class="ruby">class Help
+  def initialize(arguments)
+    @arguments = arguments
+    @arguments = ["-h"] if @arguments == []
+    parse_options
+  end
+
+  def parse_options
+    options = OptionParser.new
+    options.banner = 'Usage: Backup &amp; Restore [options]'
+    options.separator ''
+    options.separator 'options:'
+    options.on('-r', '--backup', 'backup') { backup }
+    options.on('-r', '--restroe', 'restroe') { restroe }
+
+    options.on('-h', '--help', 'Show this message') { puts(options); exit }
+    options.parse!(@arguments)
+  end
+ end
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[No_ri_no_rdoc]]></title>
@@ -133,27 +163,6 @@ mac_address(list)
 #`macchanger -m #{mac} #{dev}`
 #`ifconfig #{dev} up`
 #`macchanger -s #{dev}`
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Ssh]]></title>
-    <link href="http://icps0610.github.io/blog/2017/08/14/ssh/"/>
-    <updated>2017-08-14T18:21:12+08:00</updated>
-    <id>http://icps0610.github.io/blog/2017/08/14/ssh</id>
-    <content type="html"><![CDATA[<pre><code class="ruby">target = ARGV[0]
-ip  = `ifconfig | grep cast`.split("\n").map{|i|i.scan(/\d+\.\d+\.\d+\.\d+/)[0]}
-lan = ip.map{|i|i.scan(/(\d*\.\d*\.\d*\.)\d*/).join}
-
-if lan.count &gt; 11 
-  puts lan
-  print "----------\n&gt; "
-  ch = STDIN.gets.to_i
-  lan = lan[ch-1]
-end
-
-system "/usr/bin/ssh #{[lan].join}#{target}"
 </code></pre>
 ]]></content>
   </entry>

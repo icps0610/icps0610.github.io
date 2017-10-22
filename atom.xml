@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-09-13T21:54:26+08:00</updated>
+  <updated>2017-10-23T00:58:36+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,78 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Argv]]></title>
+    <link href="http://icps0610.github.io/blog/2017/10/23/argv/"/>
+    <updated>2017-10-23T00:57:04+08:00</updated>
+    <id>http://icps0610.github.io/blog/2017/10/23/argv</id>
+    <content type="html"><![CDATA[<blockquote><blockquote><p>ref <a href="https://mgleon08.github.io/blog/2016/08/30/optionparser/">https://mgleon08.github.io/blog/2016/08/30/optionparser/</a></p></blockquote></blockquote>
+
+<pre><code class="ruby">class Help
+  def initialize(arguments)
+    @arguments = arguments
+    @arguments = ["-h"] if @arguments == []
+    parse_options
+  end
+
+  def parse_options
+    options = OptionParser.new
+    options.banner = 'Usage: Backup &amp; Restore [options]'
+    options.separator ''
+    options.separator 'options:'
+    options.on('-r', '--backup', 'backup') { backup }
+    options.on('-r', '--restroe', 'restroe') { restroe }
+
+    options.on('-h', '--help', 'Show this message') { puts(options); exit }
+    options.parse!(@arguments)
+  end
+ end
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Argv]]></title>
+    <link href="http://icps0610.github.io/blog/2017/10/22/argv/"/>
+    <updated>2017-10-22T21:24:03+08:00</updated>
+    <id>http://icps0610.github.io/blog/2017/10/22/argv</id>
+    <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">getopt</span>
+</span><span class='line'><span class="c">#args = &quot; &quot; . join(map(lambda s: &#39;&quot;%s&quot;&#39; % s if &#39; &#39; in s else s, sys.argv[2:]))</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">opts</span><span class="p">,</span> <span class="n">args</span> <span class="o">=</span> <span class="n">getopt</span><span class="o">.</span><span class="n">getopt</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="s">&quot;hm:r:&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="n">mode</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+</span><span class='line'><span class="n">rating</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+</span><span class='line'><span class="k">for</span> <span class="n">op</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">opts</span><span class="p">:</span>
+</span><span class='line'>  <span class="k">if</span> <span class="n">op</span> <span class="o">==</span> <span class="s">&quot;-m&quot;</span><span class="p">:</span>
+</span><span class='line'>    <span class="n">mode</span> <span class="o">=</span> <span class="n">value</span>
+</span><span class='line'>  <span class="k">elif</span> <span class="n">op</span> <span class="o">==</span> <span class="s">&quot;-r&quot;</span><span class="p">:</span>
+</span><span class='line'>    <span class="n">rating</span> <span class="o">=</span> <span class="n">value</span>
+</span><span class='line'>  <span class="k">else</span><span class="p">:</span>
+</span><span class='line'>      <span class="k">print</span><span class="p">(</span><span class="s">&quot;-m mode -r rating&quot;</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
+</span><span class='line'><span class="k">print</span><span class="p">(</span><span class="n">mode</span><span class="p">)</span>
+</span><span class='line'><span class="k">print</span><span class="p">(</span><span class="n">rating</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Kill_all_process]]></title>
@@ -532,32 +604,6 @@ modprobe rtl8812au</p>
 
 
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Wetty]]></title>
-    <link href="http://icps0610.github.io/blog/2017/08/13/wetty/"/>
-    <updated>2017-08-13T19:01:19+08:00</updated>
-    <id>http://icps0610.github.io/blog/2017/08/13/wetty</id>
-    <content type="html"><![CDATA[<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'> git clone https://github.com/krishnasrinivas/wetty  
-</span><span class='line'> #npm http://node-arm.herokuapp.com/node_latest_armhf.deb 
-</span><span class='line'> npm install  
-</span><span class='line'> node app.js -p 80</span></code></pre></td></tr></table></div></figure>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Chromecast]]></title>
-    <link href="http://icps0610.github.io/blog/2017/08/12/chromecast/"/>
-    <updated>2017-08-12T01:43:47+08:00</updated>
-    <id>http://icps0610.github.io/blog/2017/08/12/chromecast</id>
-    <content type="html"><![CDATA[<p><a href="https://github.com/xat/castnow">https://github.com/xat/castnow</a></p>
 ]]></content>
   </entry>
   
