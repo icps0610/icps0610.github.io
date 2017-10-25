@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-10-25T22:17:45+08:00</updated>
+  <updated>2017-10-25T23:55:20+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,60 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Production]]></title>
+    <link href="http://icps0610.github.io/blog/2017/10/25/production/"/>
+    <updated>2017-10-25T23:51:28+08:00</updated>
+    <id>http://icps0610.github.io/blog/2017/10/25/production</id>
+    <content type="html"><![CDATA[<p><code>rake secret</code> => config/secrets.yml</p>
+
+<h6>不能使用tab要用space</h6>
+
+<p><code>rake db:create db:migrate RAILS_ENV=production</code>
+<code>rake assets:precompile RAILS_ENV=production</code>
+<code>rails s -e production -p 80</code></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Firt_user_admin]]></title>
+    <link href="http://icps0610.github.io/blog/2017/10/25/firt-user-admin/"/>
+    <updated>2017-10-25T23:49:19+08:00</updated>
+    <id>http://icps0610.github.io/blog/2017/10/25/firt-user-admin</id>
+    <content type="html"><![CDATA[<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>#models/user.rb
+</span><span class='line'>class User &lt; ApplicationRecord
+</span><span class='line'>  after_create :set_admin
+</span><span class='line'>
+</span><span class='line'>  private
+</span><span class='line'>
+</span><span class='line'>  def set_admin
+</span><span class='line'>   if User.count == 1
+</span><span class='line'>     User.first.update_attribute(:power,3)
+</span><span class='line'>   else
+</span><span class='line'>     return true
+</span><span class='line'>   end
+</span><span class='line'>
+</span><span class='line'>  end
+</span><span class='line'>end</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Execute_sql]]></title>
@@ -559,61 +613,6 @@ modprobe rtl8812au</p>
 </span><span class='line'><span class="nb">system</span> <span class="s2">&quot;echo wpa-psk </span><span class="si">#{</span><span class="n">psk</span><span class="si">}</span><span class="s2"> &gt;&gt; /etc/network/interfaces&quot;</span>
 </span></code></pre></td></tr></table></div></figure>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Download_deb]]></title>
-    <link href="http://icps0610.github.io/blog/2017/08/14/downloaddeb/"/>
-    <updated>2017-08-14T12:55:13+08:00</updated>
-    <id>http://icps0610.github.io/blog/2017/08/14/downloaddeb</id>
-    <content type="html"><![CDATA[<blockquote><blockquote><p>ref <a href="https://askubuntu.com/questions/47865/how-do-i-use-apt-get-to-only-download-packages">https://askubuntu.com/questions/47865/how-do-i-use-apt-get-to-only-download-packages</a></p></blockquote></blockquote>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'># dldeb.sh
-</span><span class='line'>#! /bin/bash
-</span><span class='line'>PACKAGE=$1
-</span><span class='line'>URI=`apt-cache show $PACKAGE | grep "Filename:" | cut -f 2 -d " "`
-</span><span class='line'>wget http://tw.archive.ubuntu.com/ubuntu/$URI</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>#/etc/udev/rules.d/70-persistent-net.rules
-</span><span class='line'>SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*", ATTR{address}=="79:2B:9E:70:67:4F", ATTR{dev_id}=="0x0", ATTR{type}=="1", KERNEL=="wlan*", NAME="wlan0"
-</span><span class='line'>
-</span><span class='line'>SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*", ATTR{address}=="C0:E9:F8:12:F6:6A", ATTR{dev_id}=="0x0", ATTR{type}=="1", KERNEL=="wlan*", NAME="wlan1"</span></code></pre></td></tr></table></div></figure>
-
-
-<p></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Minicom]]></title>
-    <link href="http://icps0610.github.io/blog/2017/08/14/minicom/"/>
-    <updated>2017-08-14T12:28:47+08:00</updated>
-    <id>http://icps0610.github.io/blog/2017/08/14/minicom</id>
-    <content type="html"><![CDATA[<h3>port</h3>
-
-<p><code>cat /var/log/messages  | grep ttyUSB</code><br/>
-<code>ls /dev/ttyUSB*</code></p>
-
-<p><code>apt-get install minicom</code></p>
-
-<p>minicom -s</p>
-
-<h3>config</h3>
-
-<h5>/etc/minicom/minirc.dfl</h5>
 ]]></content>
   </entry>
   

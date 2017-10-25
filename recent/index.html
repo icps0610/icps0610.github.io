@@ -9,14 +9,9 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="ref https://stackoverflow.com/questions/15408285/rails-3-execute-custom-sql-query-without-a-model 1
-2
-3
-4
-5
-6
-7
-ActiveRecord::Base. &hellip;">
+  <meta name="description" content="rake secret => config/secrets.yml 不能使用tab要用space rake db:create db:migrate RAILS_ENV=production
+rake assets:precompile RAILS_ENV=production
+rails s - &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -75,6 +70,100 @@ ActiveRecord::Base. &hellip;">
       <div class="blog-index">
   
 
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2017/10/25/production/">Production</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2017-10-25T23:51:28+08:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>25</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>11:51 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><code>rake secret</code> => config/secrets.yml</p>
+
+<h6>不能使用tab要用space</h6>
+
+<p><code>rake db:create db:migrate RAILS_ENV=production</code>
+<code>rake assets:precompile RAILS_ENV=production</code>
+<code>rails s -e production -p 80</code></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2017/10/25/firt-user-admin/">Firt_user_admin</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2017-10-25T23:49:19+08:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>25</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>11:49 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>#models/user.rb
+</span><span class='line'>class User &lt; ApplicationRecord
+</span><span class='line'>  after_create :set_admin
+</span><span class='line'>
+</span><span class='line'>  private
+</span><span class='line'>
+</span><span class='line'>  def set_admin
+</span><span class='line'>   if User.count == 1
+</span><span class='line'>     User.first.update_attribute(:power,3)
+</span><span class='line'>   else
+</span><span class='line'>     return true
+</span><span class='line'>   end
+</span><span class='line'>
+</span><span class='line'>  end
+</span><span class='line'>end</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
+  
   
     <article>
       
@@ -236,66 +325,6 @@ class Help
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2017/09/02/kill-all-process/">Kill_all_process</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2017-09-02T19:07:40+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2017</span></span> <span class='time'>7:07 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>pkill -f ngrok</p>
-
-<p><code>ps aux | grep  ngrok | awk '{print "kill -9 " $2}'</code></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2017/09/02/owncloud/">Owncloud</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2017-09-02T01:50:27+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2017</span></span> <span class='time'>1:50 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>php-gd php-zip php-dom</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
     <a href="/blog/archives">Blog Archives</a>
@@ -312,7 +341,7 @@ class Help
 <li class='category'><a href='/blog/categories/linux/'>linux (19)</a></li>
 <li class='category'><a href='/blog/categories/notepad/'>notepad (1)</a></li>
 <li class='category'><a href='/blog/categories/python/'>python (5)</a></li>
-<li class='category'><a href='/blog/categories/ror/'>ror (18)</a></li>
+<li class='category'><a href='/blog/categories/ror/'>ror (20)</a></li>
 <li class='category'><a href='/blog/categories/ruby/'>ruby (38)</a></li>
 <li class='category'><a href='/blog/categories/uncategorized/'>uncategorized (3)</a></li>
 
@@ -321,6 +350,14 @@ class Help
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2017/10/25/production/">Production</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2017/10/25/firt-user-admin/">Firt_user_admin</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2017/10/25/execute-sql/">Execute_sql</a>
@@ -332,14 +369,6 @@ class Help
     
       <li class="post">
         <a href="/blog/2017/10/22/argv/">Argv</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2017/09/02/kill-all-process/">Kill_all_process</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2017/09/02/owncloud/">Owncloud</a>
       </li>
     
   </ul>
