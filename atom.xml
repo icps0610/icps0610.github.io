@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-10-23T00:59:48+08:00</updated>
+  <updated>2017-10-25T22:17:45+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,34 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Execute_sql]]></title>
+    <link href="http://icps0610.github.io/blog/2017/10/25/execute-sql/"/>
+    <updated>2017-10-25T21:51:05+08:00</updated>
+    <id>http://icps0610.github.io/blog/2017/10/25/execute-sql</id>
+    <content type="html"><![CDATA[<blockquote><blockquote><p>ref <a href="https://stackoverflow.com/questions/15408285/rails-3-execute-custom-sql-query-without-a-model">https://stackoverflow.com/questions/15408285/rails-3-execute-custom-sql-query-without-a-model</a></p></blockquote></blockquote>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="o">.</span><span class="n">establish_connection</span><span class="p">({</span><span class="ss">adapter</span><span class="p">:</span> <span class="s1">&#39;mysql2&#39;</span><span class="p">,</span> <span class="ss">encoding</span><span class="p">:</span> <span class="s1">&#39;utf8&#39;</span><span class="p">,</span> <span class="ss">database</span><span class="p">:</span> <span class="no">DB</span><span class="p">,</span> <span class="ss">username</span><span class="p">:</span> <span class="no">USER</span><span class="p">,</span><span class="ss">password</span><span class="p">:</span> <span class="no">PASSWD</span><span class="p">})</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">sql</span> <span class="o">=</span> <span class="s2">&quot;SELECT * from users&quot;</span>
+</span><span class='line'><span class="vi">@result</span> <span class="o">=</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sql</span><span class="p">);</span>
+</span><span class='line'><span class="vi">@result</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">r</span><span class="o">|</span>
+</span><span class='line'>   <span class="nb">puts</span> <span class="n">r</span><span class="o">[</span><span class="s2">&quot;name&quot;</span><span class="o">]</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Argv]]></title>
@@ -586,25 +614,6 @@ modprobe rtl8812au</p>
 <h3>config</h3>
 
 <h5>/etc/minicom/minirc.dfl</h5>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Ffmpeg]]></title>
-    <link href="http://icps0610.github.io/blog/2017/08/13/ffmpeg/"/>
-    <updated>2017-08-13T19:23:03+08:00</updated>
-    <id>http://icps0610.github.io/blog/2017/08/13/ffmpeg</id>
-    <content type="html"><![CDATA[<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>git clone https://github.com/FFmpeg/FFmpeg.git
-</span><span class='line'>./configure --arch=armel --target-os=linux --enable-gpl --enable-nonfree --enable-libmp3lame
-</span><span class='line'>make
-</span><span class='line'>sudo make install</span></code></pre></td></tr></table></div></figure>
-
-
-
 ]]></content>
   </entry>
   

@@ -9,8 +9,14 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="ref https://mgleon08.github.io/blog/2016/08/30/optionparser/ require 'optparse'
-class Help def initialize(arguments) @arguments = arguments @ &hellip;">
+  <meta name="description" content="ref https://stackoverflow.com/questions/15408285/rails-3-execute-custom-sql-query-without-a-model 1
+2
+3
+4
+5
+6
+7
+ActiveRecord::Base. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -69,6 +75,54 @@ class Help def initialize(arguments) @arguments = arguments @ &hellip;">
       <div class="blog-index">
   
 
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2017/10/25/execute-sql/">Execute_sql</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2017-10-25T21:51:05+08:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>25</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>9:51 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><blockquote><blockquote><p>ref <a href="https://stackoverflow.com/questions/15408285/rails-3-execute-custom-sql-query-without-a-model">https://stackoverflow.com/questions/15408285/rails-3-execute-custom-sql-query-without-a-model</a></p></blockquote></blockquote>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="o">.</span><span class="n">establish_connection</span><span class="p">({</span><span class="ss">adapter</span><span class="p">:</span> <span class="s1">&#39;mysql2&#39;</span><span class="p">,</span> <span class="ss">encoding</span><span class="p">:</span> <span class="s1">&#39;utf8&#39;</span><span class="p">,</span> <span class="ss">database</span><span class="p">:</span> <span class="no">DB</span><span class="p">,</span> <span class="ss">username</span><span class="p">:</span> <span class="no">USER</span><span class="p">,</span><span class="ss">password</span><span class="p">:</span> <span class="no">PASSWD</span><span class="p">})</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">sql</span> <span class="o">=</span> <span class="s2">&quot;SELECT * from users&quot;</span>
+</span><span class='line'><span class="vi">@result</span> <span class="o">=</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sql</span><span class="p">);</span>
+</span><span class='line'><span class="vi">@result</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">r</span><span class="o">|</span>
+</span><span class='line'>   <span class="nb">puts</span> <span class="n">r</span><span class="o">[</span><span class="s2">&quot;name&quot;</span><span class="o">]</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+</div>
+  
+  
+
+
+    </article>
+  
   
     <article>
       
@@ -242,37 +296,6 @@ class Help
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2017/08/31/2t/">Maximum Supported Is 2 TiB.</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2017-08-31T22:33:11+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>31</span><span class='date-suffix'>st</span>, <span class='date-year'>2017</span></span> <span class='time'>10:33 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><blockquote><blockquote><p>ref: <a href="https://www.raspberrypi.org/forums/viewtopic.php?f=28&amp;t=15519">https://www.raspberrypi.org/forums/viewtopic.php?f=28&amp;t=15519</a></p></blockquote></blockquote>
-
-<p><code>apt-get install ntfs-3g</code></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
     <a href="/blog/archives">Blog Archives</a>
@@ -290,7 +313,7 @@ class Help
 <li class='category'><a href='/blog/categories/notepad/'>notepad (1)</a></li>
 <li class='category'><a href='/blog/categories/python/'>python (5)</a></li>
 <li class='category'><a href='/blog/categories/ror/'>ror (18)</a></li>
-<li class='category'><a href='/blog/categories/ruby/'>ruby (37)</a></li>
+<li class='category'><a href='/blog/categories/ruby/'>ruby (38)</a></li>
 <li class='category'><a href='/blog/categories/uncategorized/'>uncategorized (3)</a></li>
 
     </ul>
@@ -298,6 +321,10 @@ class Help
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2017/10/25/execute-sql/">Execute_sql</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2017/10/23/argv/">Argv</a>
@@ -313,10 +340,6 @@ class Help
     
       <li class="post">
         <a href="/blog/2017/09/02/owncloud/">Owncloud</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2017/08/31/2t/">Maximum Supported Is 2 TiB.</a>
       </li>
     
   </ul>
