@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Lightbox | icps]]></title>
+  <link href="http://icps0610.github.io/blog/categories/lightbox/atom.xml" rel="self"/>
+  <link href="http://icps0610.github.io/"/>
+  <updated>2018-01-24T18:54:21+08:00</updated>
+  <id>http://icps0610.github.io/</id>
+  <author>
+    <name><![CDATA[icps]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Image_view]]></title>
+    <link href="http://icps0610.github.io/blog/2018/01/04/image-view/"/>
+    <updated>2018-01-04T01:34:16+08:00</updated>
+    <id>http://icps0610.github.io/blog/2018/01/04/image-view</id>
+    <content type="html"><![CDATA[<p><a href="https://github.com/luciuschoi/lightbox-bootstrap-rails">https://github.com/luciuschoi/lightbox-bootstrap-rails</a></p>
+]]></content>
+  </entry>
+  
+ </feed>

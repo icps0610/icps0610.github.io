@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ror | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ror/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-10-25T23:55:20+08:00</updated>
+  <updated>2018-01-24T18:54:21+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,33 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Btn_copy_textarea]]></title>
+    <link href="http://icps0610.github.io/blog/2017/12/25/btn-copy-textarea/"/>
+    <updated>2017-12-25T22:19:24+08:00</updated>
+    <id>http://icps0610.github.io/blog/2017/12/25/btn-copy-textarea</id>
+    <content type="html"><![CDATA[<blockquote><blockquote><p>ref <a href="https://stackoverflow.com/questions/3739330/copy-textarea-text-to-clipboard-html-javascript">https://stackoverflow.com/questions/3739330/copy-textarea-text-to-clipboard-html-javascript</a></p></blockquote></blockquote>
+
+<p>``` html</p>
+
+<p><TEXTAREA COLS="40" ROWS="8" id="dic" name="dic"  class="form-control">
+test</TEXTAREA>
+<button class="btn btn-default" onclick="copy_to_clipboard('eic')">Copy</button>
+<button class="btn btn-default" onclick="copy_to_clipboard('dic')">Copy</button></p>
+
+<script>
+function copy_to_clipboard(id)
+{
+    document.getElementById(id).select();
+    document.execCommand('copy');
+}
+</script>
+
+
+<p>```</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Production]]></title>
@@ -25,6 +52,9 @@
 <p><code>rake db:create db:migrate RAILS_ENV=production</code>
 <code>rake assets:precompile RAILS_ENV=production</code>
 <code>rails s -e production -p 80</code></p>
+
+<p><code>rails console production 出現 uninitialized constant</code>
+<code>spring stop</code></p>
 ]]></content>
   </entry>
   
@@ -124,16 +154,6 @@ end
 
 <pre><code class="ruby">#app/controllers/uploads_controller.rb
 flash[:notice] = "uploaded"
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Link_img]]></title>
-    <link href="http://icps0610.github.io/blog/2017/01/13/link-img/"/>
-    <updated>2017-01-13T09:48:39+08:00</updated>
-    <id>http://icps0610.github.io/blog/2017/01/13/link-img</id>
-    <content type="html"><![CDATA[<pre><code class="erb">&lt;%= link_to(image_tag("path/to/image.png"), image_path) %&gt;
 </code></pre>
 ]]></content>
   </entry>

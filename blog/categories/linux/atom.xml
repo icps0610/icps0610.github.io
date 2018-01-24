@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-10-25T23:55:20+08:00</updated>
+  <updated>2018-01-24T18:54:21+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,19 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Invalid_byte]]></title>
+    <link href="http://icps0610.github.io/blog/2017/12/17/invalid-byte/"/>
+    <updated>2017-12-17T21:50:31+08:00</updated>
+    <id>http://icps0610.github.io/blog/2017/12/17/invalid-byte</id>
+    <content type="html"><![CDATA[<p>invalid byte</p>
+
+<p>export LANG=en_US.UTF-8
+export LANGUAGE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Kill_all_process]]></title>
@@ -52,24 +65,6 @@
     <id>http://icps0610.github.io/blog/2017/08/18/openwrt</id>
     <content type="html"><![CDATA[<p><code>opkg update</code><br/>
 <code>opkg install luci-i18n-base-zh-tw</code></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Wifi-driver]]></title>
-    <link href="http://icps0610.github.io/blog/2017/08/16/wifi-driver/"/>
-    <updated>2017-08-16T06:35:42+08:00</updated>
-    <id>http://icps0610.github.io/blog/2017/08/16/wifi-driver</id>
-    <content type="html"><![CDATA[<p>TP-LINK Archer T4U driver</p>
-
-<blockquote><blockquote><p>ref <a href="https://askubuntu.com/questions/802205/how-to-install-tp-link-archer-t4u-driver">https://askubuntu.com/questions/802205/how-to-install-tp-link-archer-t4u-driver</a></p></blockquote></blockquote>
-
-<p>wget <a href="https://github.com/abperiasamy/rtl8812AU_8821AU_linux/archive/master.zip">https://github.com/abperiasamy/rtl8812AU_8821AU_linux/archive/master.zip</a>
-unzip master.zip
-cd rtl8812AU_8821AU_linux-master
-make
-make install
-modprobe rtl8812au</p>
 ]]></content>
   </entry>
   

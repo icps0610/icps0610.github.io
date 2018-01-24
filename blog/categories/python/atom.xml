@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Python | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2017-10-25T23:55:20+08:00</updated>
+  <updated>2018-01-24T18:54:21+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,37 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Flatten]]></title>
+    <link href="http://icps0610.github.io/blog/2017/11/24/list/"/>
+    <updated>2017-11-24T15:58:10+08:00</updated>
+    <id>http://icps0610.github.io/blog/2017/11/24/list</id>
+    <content type="html"><![CDATA[<p>from itertools import chain
+a = [[1, 2 ,3], [1, 2 ,3], None, []]
+a = filter(None, a)
+array = list(chain(*a))</p>
+
+<p>print(array)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Unix_time]]></title>
+    <link href="http://icps0610.github.io/blog/2017/11/19/unix-time/"/>
+    <updated>2017-11-19T21:05:36+08:00</updated>
+    <id>http://icps0610.github.io/blog/2017/11/19/unix-time</id>
+    <content type="html"><![CDATA[<p>import time
+import datetime</p>
+
+<p>u = &ldquo;1284101485&rdquo;
+s = datetime.datetime.fromtimestamp( int(u)).strftime(&lsquo;%Y-%m-%d %H:%M:%S&rsquo;)
+print(s)</p>
+
+<p>u = time.mktime(datetime.datetime.strptime(s, &lsquo;%Y-%m-%d %H:%M:%S&rsquo;).timetuple())
+print(u)</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Argv]]></title>
@@ -76,33 +107,6 @@ pdfkit.from_url('/tmp/result.html', '/tmp/result.pdf', configuration=config, opt
 
 
 <p>```</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Pip3]]></title>
-    <link href="http://icps0610.github.io/blog/2017/05/22/pip3/"/>
-    <updated>2017-05-22T23:33:35+08:00</updated>
-    <id>http://icps0610.github.io/blog/2017/05/22/pip3</id>
-    <content type="html"><![CDATA[<p><code>apt-get install python3-setuptools</code><br/>
-<code>easy_install3 pip</code></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Zfill]]></title>
-    <link href="http://icps0610.github.io/blog/2017/05/21/zfill/"/>
-    <updated>2017-05-21T16:33:56+08:00</updated>
-    <id>http://icps0610.github.io/blog/2017/05/21/zfill</id>
-    <content type="html"><![CDATA[<pre><code class="python">"test".rjust(5)
-# "  test"
-"test".ljust(5)
-# "test  "
-"test".center(5)
-# " test "
-"test".zfill(5)
-# "0test"
-</code></pre>
 ]]></content>
   </entry>
   

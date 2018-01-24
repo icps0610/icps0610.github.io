@@ -1,6 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://icps0610.github.io/blog/2018/01/24/download-gem/</loc>
+<lastmod>2018-01-24T18:53:33+08:00</lastmod>
+</url>
+<url>
+<loc>http://icps0610.github.io/blog/2018/01/04/image-view/</loc>
+<lastmod>2018-01-04T01:34:16+08:00</lastmod>
+</url>
+<url>
+<loc>http://icps0610.github.io/blog/2017/12/25/btn-copy-textarea/</loc>
+<lastmod>2017-12-25T22:19:24+08:00</lastmod>
+</url>
+<url>
+<loc>http://icps0610.github.io/blog/2017/12/19/tor/</loc>
+<lastmod>2017-12-19T15:38:50+08:00</lastmod>
+</url>
+<url>
+<loc>http://icps0610.github.io/blog/2017/12/17/invalid-byte/</loc>
+<lastmod>2017-12-17T21:50:31+08:00</lastmod>
+</url>
+<url>
+<loc>http://icps0610.github.io/blog/2017/11/24/list/</loc>
+<lastmod>2017-11-24T15:58:10+08:00</lastmod>
+</url>
+<url>
+<loc>http://icps0610.github.io/blog/2017/11/19/unix-time/</loc>
+<lastmod>2017-11-19T21:05:36+08:00</lastmod>
+</url>
+<url>
+<loc>http://icps0610.github.io/blog/2017/11/14/map-pthon/</loc>
+<lastmod>2017-11-14T01:30:33+08:00</lastmod>
+</url>
+<url>
 <loc>http://icps0610.github.io/blog/2017/10/25/production/</loc>
 <lastmod>2017-10-25T23:51:28+08:00</lastmod>
 </url>
@@ -523,5 +555,8 @@
 </url>
 <url>
 <loc>http://icps0610.github.io/blog/categories/uncategorized/</loc>
+</url>
+<url>
+<loc>http://icps0610.github.io/blog/categories/lightbox/</loc>
 </url>
 </urlset>
