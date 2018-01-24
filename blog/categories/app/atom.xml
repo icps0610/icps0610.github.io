@@ -4,7 +4,7 @@
   <title><![CDATA[Category: App | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/app/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-01-24T19:07:02+08:00</updated>
+  <updated>2018-01-24T19:17:14+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,25 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Tor]]></title>
+    <link href="http://icps0610.github.io/blog/2017/12/19/tor/"/>
+    <updated>2017-12-19T15:38:50+08:00</updated>
+    <id>http://icps0610.github.io/blog/2017/12/19/tor</id>
+    <content type="html"><![CDATA[<blockquote><blockquote><p>ref <a href="https://blog.gtwang.org/linux/ubuntu-linux-use-tor-and-privoxy-to-build-anonymous-http-proxy/">https://blog.gtwang.org/linux/ubuntu-linux-use-tor-and-privoxy-to-build-anonymous-http-proxy/</a>
+ref <a href="https://blog.gtwang.org/iot/raspberry-pi-tor-router-onion-pi-proxy/">https://blog.gtwang.org/iot/raspberry-pi-tor-router-onion-pi-proxy/</a></p></blockquote></blockquote>
+
+<p><code>apt install tor privoxy</code>
+```</p>
+
+<h1>/etc/privoxy/config</h1>
+
+<p>forward-socks5t   /               127.0.0.1:9050 .
+listen-address  :8080
+```</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[KODExplorer]]></title>
@@ -101,19 +120,6 @@ id3tool [&lt;options&gt;] &lt;filename&gt;
 <h3>config</h3>
 
 <h5>/etc/minicom/minirc.dfl</h5>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Ffmpeg]]></title>
-    <link href="http://icps0610.github.io/blog/2017/08/13/ffmpeg/"/>
-    <updated>2017-08-13T19:23:03+08:00</updated>
-    <id>http://icps0610.github.io/blog/2017/08/13/ffmpeg</id>
-    <content type="html"><![CDATA[<pre><code>git clone https://github.com/FFmpeg/FFmpeg.git
-./configure --arch=armel --target-os=linux --enable-gpl --enable-nonfree --enable-libmp3lame
-make
-sudo make install
-</code></pre>
 ]]></content>
   </entry>
   

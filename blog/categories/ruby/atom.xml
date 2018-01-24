@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-01-24T19:07:02+08:00</updated>
+  <updated>2018-01-24T19:17:14+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -18,7 +18,7 @@
     <link href="http://icps0610.github.io/blog/2018/01/24/download-gem/"/>
     <updated>2018-01-24T18:53:33+08:00</updated>
     <id>http://icps0610.github.io/blog/2018/01/24/download-gem</id>
-    <content type="html"><![CDATA[<p>gem fetch [name]</p>
+    <content type="html"><![CDATA[<p><code>gem fetch [name]</code></p>
 ]]></content>
   </entry>
   
