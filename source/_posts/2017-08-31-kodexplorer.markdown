@@ -13,7 +13,7 @@ categories: app
 `git clone https://github.com/kalcaddle/KODExplorer.git`  
 `chmod -Rf 777 ./KODExplorer/*`  
 `mv KODExplorer /var/www/html`  
-
+`/etc/apache2/port.conf`
 ######php
 #########找到php.ini
 {% codeblock lang:php %}
