@@ -8,11 +8,11 @@ categories: app
 `apt-get install transmission-daemon`  
 
 ```
-#/etc/transmission-daemon/settings.json
-"download-dir"
-"rpc-password"
-"rpc-username"
-"rpc-port":
-"incomplete-dir"
-"incomplete-dir-enabled"
+#/etc/transmission-daemon/settings.json  
+"download-dir"  
+"rpc-password"  
+"rpc-username"  
+"rpc-port":  
+"incomplete-dir"  
+"incomplete-dir-enabled"  
 ```
