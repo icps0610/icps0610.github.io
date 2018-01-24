@@ -1,0 +1,15 @@
+---
+layout: post
+title: "map_pthon"
+date: 2017-11-14 01:30:33 +0800
+comments: true
+categories: uncategorized
+---
+
+pthon
+s = [ "1", "2", "3" ]
+print( map(int, s) )
+
+pthon3
+s = [ "1", "2", "3" ]
+print( listmap(int, s) )

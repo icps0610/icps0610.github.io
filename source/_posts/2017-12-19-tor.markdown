@@ -1,0 +1,20 @@
+---
+layout: post
+title: "tor"
+date: 2017-12-19 15:38:50 +0800
+comments: true
+categories: uncategorized
+---
+
+>> ref https://blog.gtwang.org/linux/ubuntu-linux-use-tor-and-privoxy-to-build-anonymous-http-proxy/
+>> ref https://blog.gtwang.org/iot/raspberry-pi-tor-router-onion-pi-proxy/
+
+`apt install tor privoxy`
+```
+#/etc/privoxy/config
+forward-socks5t   /               127.0.0.1:9050 .
+listen-address  :8080
+```
+sudo iptables -t nat -A PREROUTING -i wlan1 -p tcp --dport 22 -j REDIRECT --to-ports 22
+sudo iptables -t nat -A PREROUTING -i wlan1 -p udp --dport 53 -j REDIRECT --to-ports 53
+sudo iptables -t nat -A PREROUTING -i wlan0 -p tcp --syn -j REDIRECT --to-ports 8081

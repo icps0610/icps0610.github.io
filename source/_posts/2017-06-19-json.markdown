@@ -14,4 +14,18 @@ uri = URI.parse('http://www.example.com/sample.json')
 json = Net::HTTP.get(uri)
 result = JSON.parse(json)
 puts result
+
+
+
+hash = Hash.new
+
+hash[title] = link
+
+
+File.open("/tmp/matsu_ship.json","w") do |f|
+  f.write(JSON.pretty_generate(hash))
+end
+
+p hash = JSON.parse(IO.binread("/tmp/matsu_ship.json"))
+
 ```
