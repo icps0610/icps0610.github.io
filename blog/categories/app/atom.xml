@@ -4,7 +4,7 @@
   <title><![CDATA[Category: App | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/app/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-01-24T19:35:15+08:00</updated>
+  <updated>2018-01-24T19:55:34+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -20,16 +20,14 @@
     <id>http://icps0610.github.io/blog/2018/01/24/transmission</id>
     <content type="html"><![CDATA[<p><code>apt-get install transmission-daemon</code></p>
 
-<p>```</p>
-
-<h1>/etc/transmission-daemon/settings.json</h1>
-
-<p>&ldquo;download-dir&rdquo;
-&ldquo;rpc-password&rdquo;
-&ldquo;rpc-username&rdquo;
-&ldquo;rpc-port&rdquo;:
-&ldquo;incomplete-dir&rdquo;
-&ldquo;incomplete-dir-enabled&rdquo;</p>
+<pre><code>#/etc/transmission-daemon/settings.json  
+"download-dir"  
+"rpc-password"  
+"rpc-username"  
+"rpc-port":  
+"incomplete-dir"  
+"incomplete-dir-enabled"  
+</code></pre>
 ]]></content>
   </entry>
   
