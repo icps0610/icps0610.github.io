@@ -12,6 +12,6 @@ categories: app
 `apt install tor privoxy`
 ```
 #/etc/privoxy/config
-#forward-socks5t   /               127.0.0.1:9050 .
-#listen-address  :8080
+forward-socks5t   /               127.0.0.1:9050 .
+listen-address  :8080
 ```
