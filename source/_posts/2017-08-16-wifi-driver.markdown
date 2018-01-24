@@ -9,9 +9,9 @@ categories: linux
 TP-LINK Archer T4U driver
 >> ref https://askubuntu.com/questions/802205/how-to-install-tp-link-archer-t4u-driver
 
-wget https://github.com/abperiasamy/rtl8812AU_8821AU_linux/archive/master.zip
-unzip master.zip
-cd rtl8812AU_8821AU_linux-master
-make
-make install
-modprobe rtl8812au
+`wget https://github.com/abperiasamy/rtl8812AU_8821AU_linux/archive/master.zip`  
+`unzip master.zip`  
+`cd rtl8812AU_8821AU_linux-master`  
+`make`  
+`make install`  
+`modprobe rtl8812au`  
