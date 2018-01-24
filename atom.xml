@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-01-24T21:01:37+08:00</updated>
+  <updated>2018-01-24T21:04:22+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -128,12 +128,20 @@ export LC_ALL=en_US.UTF-8</p>
     <link href="http://icps0610.github.io/blog/2017/11/24/list/"/>
     <updated>2017-11-24T15:58:10+08:00</updated>
     <id>http://icps0610.github.io/blog/2017/11/24/list</id>
-    <content type="html"><![CDATA[<p>from itertools import chain
-a = [[1, 2 ,3], [1, 2 ,3], None, []]
-a = filter(None, a)
-array = list(chain(*a))</p>
+    <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">chain</span>
+</span><span class='line'><span class="n">a</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span> <span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span> <span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="bp">None</span><span class="p">,</span> <span class="p">[]]</span>
+</span><span class='line'><span class="n">a</span> <span class="o">=</span> <span class="nb">filter</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+</span><span class='line'><span class="n">array</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">chain</span><span class="p">(</span><span class="o">*</span><span class="n">a</span><span class="p">))</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">print</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>print(array)</p>
 ]]></content>
   </entry>
   
@@ -142,15 +150,26 @@ array = list(chain(*a))</p>
     <link href="http://icps0610.github.io/blog/2017/11/19/unix-time/"/>
     <updated>2017-11-19T21:05:36+08:00</updated>
     <id>http://icps0610.github.io/blog/2017/11/19/unix-time</id>
-    <content type="html"><![CDATA[<p>import time
-import datetime</p>
+    <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">time</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">datetime</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">u</span> <span class="o">=</span> <span class="s">&quot;1284101485&quot;</span>
+</span><span class='line'><span class="n">s</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span> <span class="nb">int</span><span class="p">(</span><span class="n">u</span><span class="p">))</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">&#39;%Y-%m-</span><span class="si">%d</span><span class="s"> %H:%M:%S&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">u</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">mktime</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="s">&#39;%Y-%m-</span><span class="si">%d</span><span class="s"> %H:%M:%S&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">timetuple</span><span class="p">())</span>
+</span><span class='line'><span class="k">print</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>u = &ldquo;1284101485&rdquo;
-s = datetime.datetime.fromtimestamp( int(u)).strftime(&lsquo;%Y-%m-%d %H:%M:%S&rsquo;)
-print(s)</p>
-
-<p>u = time.mktime(datetime.datetime.strptime(s, &lsquo;%Y-%m-%d %H:%M:%S&rsquo;).timetuple())
-print(u)</p>
 ]]></content>
   </entry>
   
@@ -159,13 +178,22 @@ print(u)</p>
     <link href="http://icps0610.github.io/blog/2017/11/14/map-pthon/"/>
     <updated>2017-11-14T01:30:33+08:00</updated>
     <id>http://icps0610.github.io/blog/2017/11/14/map-pthon</id>
-    <content type="html"><![CDATA[<p>python
-s = [ &ldquo;1&rdquo;, &ldquo;2&rdquo;, &ldquo;3&rdquo; ]
-print( map(int, s) )</p>
+    <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="c">#python</span>
+</span><span class='line'><span class="n">s</span> <span class="o">=</span> <span class="p">[</span> <span class="s">&quot;1&quot;</span><span class="p">,</span> <span class="s">&quot;2&quot;</span><span class="p">,</span> <span class="s">&quot;3&quot;</span> <span class="p">]</span>
+</span><span class='line'><span class="k">print</span><span class="p">(</span> <span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span> <span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="c">#pthon3</span>
+</span><span class='line'><span class="n">s</span> <span class="o">=</span> <span class="p">[</span> <span class="s">&quot;1&quot;</span><span class="p">,</span> <span class="s">&quot;2&quot;</span><span class="p">,</span> <span class="s">&quot;3&quot;</span> <span class="p">]</span>
+</span><span class='line'><span class="k">print</span><span class="p">(</span> <span class="n">listmap</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span> <span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>pthon3
-s = [ &ldquo;1&rdquo;, &ldquo;2&rdquo;, &ldquo;3&rdquo; ]
-print( listmap(int, s) )</p>
 ]]></content>
   </entry>
   

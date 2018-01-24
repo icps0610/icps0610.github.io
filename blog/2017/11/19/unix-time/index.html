@@ -9,10 +9,18 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="import time
-import datetime u = &ldquo;1284101485&rdquo;
-s = datetime.datetime.fromtimestamp( int(u)).strftime(&lsquo;%Y-%m-%d %H:%M:%S&rsquo;)
-print &hellip;">
+  <meta name="description" content="1
+2
+3
+4
+5
+6
+7
+8
+9
+import time
+import datetime u = &quot;1284101485&quot;
+s = datetime.datetime.fromtimestamp( int(u)).strftime(&#39;%Y-%m-%d %H:%M:%S &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -89,15 +97,26 @@ print &hellip;">
   </header>
 
 
-<div class="entry-content"><p>import time
-import datetime</p>
+<div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">time</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">datetime</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">u</span> <span class="o">=</span> <span class="s">&quot;1284101485&quot;</span>
+</span><span class='line'><span class="n">s</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span> <span class="nb">int</span><span class="p">(</span><span class="n">u</span><span class="p">))</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">&#39;%Y-%m-</span><span class="si">%d</span><span class="s"> %H:%M:%S&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">u</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">mktime</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="s">&#39;%Y-%m-</span><span class="si">%d</span><span class="s"> %H:%M:%S&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">timetuple</span><span class="p">())</span>
+</span><span class='line'><span class="k">print</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>u = &ldquo;1284101485&rdquo;
-s = datetime.datetime.fromtimestamp( int(u)).strftime(&lsquo;%Y-%m-%d %H:%M:%S&rsquo;)
-print(s)</p>
-
-<p>u = time.mktime(datetime.datetime.strptime(s, &lsquo;%Y-%m-%d %H:%M:%S&rsquo;).timetuple())
-print(u)</p>
 </div>
 
 
