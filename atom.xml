@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-01-24T19:16:44+08:00</updated>
+  <updated>2018-01-24T19:23:27+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -70,7 +70,7 @@
     <link href="http://icps0610.github.io/blog/2017/12/19/tor/"/>
     <updated>2017-12-19T15:38:50+08:00</updated>
     <id>http://icps0610.github.io/blog/2017/12/19/tor</id>
-    <content type="html"><![CDATA[<blockquote><blockquote><p>ref <a href="https://blog.gtwang.org/linux/ubuntu-linux-use-tor-and-privoxy-to-build-anonymous-http-proxy/">https://blog.gtwang.org/linux/ubuntu-linux-use-tor-and-privoxy-to-build-anonymous-http-proxy/</a>
+    <content type="html"><![CDATA[<blockquote><blockquote><p>ref <a href="https://blog.gtwang.org/linux/ubuntu-linux-use-tor-and-privoxy-to-build-anonymous-http-proxy/">https://blog.gtwang.org/linux/ubuntu-linux-use-tor-and-privoxy-to-build-anonymous-http-proxy/</a>  <br/>
 ref <a href="https://blog.gtwang.org/iot/raspberry-pi-tor-router-onion-pi-proxy/">https://blog.gtwang.org/iot/raspberry-pi-tor-router-onion-pi-proxy/</a></p></blockquote></blockquote>
 
 <p><code>apt install tor privoxy</code></p>
@@ -78,9 +78,9 @@ ref <a href="https://blog.gtwang.org/iot/raspberry-pi-tor-router-onion-pi-proxy/
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>#/etc/privoxy/config
-</span><span class='line'>#forward-socks5t   /               127.0.0.1:9050 .
-</span><span class='line'>#listen-address  :8080</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>#/etc/privoxy/config  
+</span><span class='line'>#forward-socks5t / 127.0.0.1:9050 .  
+</span><span class='line'>listen-address :8080   </span></code></pre></td></tr></table></div></figure>
 
 ]]></content>
   </entry>
@@ -134,7 +134,7 @@ print(u)</p>
     <link href="http://icps0610.github.io/blog/2017/11/14/map-pthon/"/>
     <updated>2017-11-14T01:30:33+08:00</updated>
     <id>http://icps0610.github.io/blog/2017/11/14/map-pthon</id>
-    <content type="html"><![CDATA[<p>pthon
+    <content type="html"><![CDATA[<p>python
 s = [ &ldquo;1&rdquo;, &ldquo;2&rdquo;, &ldquo;3&rdquo; ]
 print( map(int, s) )</p>
 

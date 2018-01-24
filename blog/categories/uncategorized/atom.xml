@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Uncategorized | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/uncategorized/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-01-24T19:19:13+08:00</updated>
+  <updated>2018-01-24T19:23:27+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,21 +12,6 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
-  
-  <entry>
-    <title type="html"><![CDATA[Map_pthon]]></title>
-    <link href="http://icps0610.github.io/blog/2017/11/14/map-pthon/"/>
-    <updated>2017-11-14T01:30:33+08:00</updated>
-    <id>http://icps0610.github.io/blog/2017/11/14/map-pthon</id>
-    <content type="html"><![CDATA[<p>pthon
-s = [ &ldquo;1&rdquo;, &ldquo;2&rdquo;, &ldquo;3&rdquo; ]
-print( map(int, s) )</p>
-
-<p>pthon3
-s = [ &ldquo;1&rdquo;, &ldquo;2&rdquo;, &ldquo;3&rdquo; ]
-print( listmap(int, s) )</p>
-]]></content>
-  </entry>
   
   <entry>
     <title type="html"><![CDATA[Owncloud]]></title>
