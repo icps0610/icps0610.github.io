@@ -6,12 +6,13 @@ comments: true
 categories: app
 ---
 
->> ref https://blog.gtwang.org/linux/ubuntu-linux-use-tor-and-privoxy-to-build-anonymous-http-proxy/  
->> ref https://blog.gtwang.org/iot/raspberry-pi-tor-router-onion-pi-proxy/  
-
+>> ref https://blog.gtwang.org/linux/ubuntu-linux-use-tor-and-privoxy-to-build-anonymous-http-proxy/    
+>> ref https://blog.gtwang.org/iot/raspberry-pi-tor-router-onion-pi-proxy/    
+  
 `apt install tor privoxy`
+
 ```
-#/etc/privoxy/config
-forward-socks5t   /               127.0.0.1:9050 .
-listen-address  :8080
+#/etc/privoxy/config  
+#forward-socks5t / 127.0.0.1:9050 .  
+listen-address :8080   
 ```
