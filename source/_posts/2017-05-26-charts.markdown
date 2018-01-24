@@ -3,7 +3,7 @@ layout: post
 title: "charts"
 date: 2017-05-26 20:54:03 +0800
 comments: true
-categories: uncategorized
+categories: python
 ---
 `http://pygal.org/en/stable/documentation/index.html`
 
