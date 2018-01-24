@@ -4,7 +4,7 @@
   <title><![CDATA[Category: App | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/app/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-01-24T19:17:14+08:00</updated>
+  <updated>2018-01-24T19:19:13+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -18,7 +18,7 @@
     <link href="http://icps0610.github.io/blog/2017/12/19/tor/"/>
     <updated>2017-12-19T15:38:50+08:00</updated>
     <id>http://icps0610.github.io/blog/2017/12/19/tor</id>
-    <content type="html"><![CDATA[<blockquote><blockquote><p>ref <a href="https://blog.gtwang.org/linux/ubuntu-linux-use-tor-and-privoxy-to-build-anonymous-http-proxy/">https://blog.gtwang.org/linux/ubuntu-linux-use-tor-and-privoxy-to-build-anonymous-http-proxy/</a>
+    <content type="html"><![CDATA[<blockquote><blockquote><p>ref <a href="https://blog.gtwang.org/linux/ubuntu-linux-use-tor-and-privoxy-to-build-anonymous-http-proxy/">https://blog.gtwang.org/linux/ubuntu-linux-use-tor-and-privoxy-to-build-anonymous-http-proxy/</a><br/>
 ref <a href="https://blog.gtwang.org/iot/raspberry-pi-tor-router-onion-pi-proxy/">https://blog.gtwang.org/iot/raspberry-pi-tor-router-onion-pi-proxy/</a></p></blockquote></blockquote>
 
 <p><code>apt install tor privoxy</code>
