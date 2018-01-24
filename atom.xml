@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-01-24T19:23:27+08:00</updated>
+  <updated>2018-01-24T19:35:15+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,26 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Transmission]]></title>
+    <link href="http://icps0610.github.io/blog/2018/01/24/transmission/"/>
+    <updated>2018-01-24T19:26:10+08:00</updated>
+    <id>http://icps0610.github.io/blog/2018/01/24/transmission</id>
+    <content type="html"><![CDATA[<p><code>apt-get install transmission-daemon</code></p>
+
+<p>```</p>
+
+<h1>/etc/transmission-daemon/settings.json</h1>
+
+<p>&ldquo;download-dir&rdquo;
+&ldquo;rpc-password&rdquo;
+&ldquo;rpc-username&rdquo;
+&ldquo;rpc-port&rdquo;:
+&ldquo;incomplete-dir&rdquo;
+&ldquo;incomplete-dir-enabled&rdquo;</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Download-gem]]></title>
@@ -404,20 +424,6 @@ class Help
 </span><span class='line'>
 </span><span class='line'>strace gem source 2&gt;&1 | grep gemrc</span></code></pre></td></tr></table></div></figure>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Two Wods Regex]]></title>
-    <link href="http://icps0610.github.io/blog/2017/08/21/ruby-regex/"/>
-    <updated>2017-08-21T04:15:41+08:00</updated>
-    <id>http://icps0610.github.io/blog/2017/08/21/ruby-regex</id>
-    <content type="html"><![CDATA[<blockquote><blockquote><p>ref <a href="https://stackoverflow.com/questions/10678823/regex-format-for-two-strings">https://stackoverflow.com/questions/10678823/regex-format-for-two-strings</a></p></blockquote></blockquote>
-
-<h3></h3>
-
-<p><code>array = ["happy","good"]</code><br/>
-<code>p array.map{|s|s.scan(/\b(hppy|good)\b/).join}</code></p>
 ]]></content>
   </entry>
   
