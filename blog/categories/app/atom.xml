@@ -4,7 +4,7 @@
   <title><![CDATA[Category: App | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/app/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-01-24T18:54:21+08:00</updated>
+  <updated>2018-01-24T19:00:13+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -27,7 +27,8 @@
 
 <p><code>git clone https://github.com/kalcaddle/KODExplorer.git</code><br/>
 <code>chmod -Rf 777 ./KODExplorer/*</code><br/>
-<code>mv KODExplorer /var/www/html</code></p>
+<code>mv KODExplorer /var/www/html</code><br/>
+<code>/etc/apache2/port.conf</code></p>
 
 <h6>php</h6>
 
