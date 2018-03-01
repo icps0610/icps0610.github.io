@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-01-24T21:04:22+08:00</updated>
+  <updated>2018-03-01T16:04:00+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,15 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Franky]]></title>
+    <link href="http://icps0610.github.io/blog/2018/03/01/franky/"/>
+    <updated>2018-03-01T16:03:16+08:00</updated>
+    <id>http://icps0610.github.io/blog/2018/03/01/franky</id>
+    <content type="html"><![CDATA[<blockquote><blockquote><p><a href="http://motion-express.com/blog/20150204-introduce-franky">http://motion-express.com/blog/20150204-introduce-franky</a></p></blockquote></blockquote>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Transmission]]></title>
@@ -448,20 +457,6 @@ class Help
 </span><span class='line'>
 </span><span class='line'>strace gem source 2&gt;&1 | grep gemrc</span></code></pre></td></tr></table></div></figure>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Two Wods Regex]]></title>
-    <link href="http://icps0610.github.io/blog/2017/08/21/ruby-regex/"/>
-    <updated>2017-08-21T04:15:41+08:00</updated>
-    <id>http://icps0610.github.io/blog/2017/08/21/ruby-regex</id>
-    <content type="html"><![CDATA[<blockquote><blockquote><p>ref <a href="https://stackoverflow.com/questions/10678823/regex-format-for-two-strings">https://stackoverflow.com/questions/10678823/regex-format-for-two-strings</a></p></blockquote></blockquote>
-
-<h3></h3>
-
-<p><code>array = ["happy","good"]</code><br/>
-<code>p array.map{|s|s.scan(/\b(hppy|good)\b/).join}</code></p>
 ]]></content>
   </entry>
   
