@@ -1,0 +1,286 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Sso - icps</title>
+  <meta name="author" content="icps">
+
+  
+  <meta name="description" content="http://codetheory.in/rails-devise-omniauth-sso/ client Gemfile gem &lsquo;omniauth&rsquo;
+gem &lsquo;omniauth-oauth2&rsquo; config/environment.rb &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://icps0610.github.io/blog/2018/03/19/sso/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="icps" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<!--<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">-->
+<!--<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">-->
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">icps</a></h1>
+  
+    <h2>notes</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="icps0610.github.io">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/recent">Recent</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/blog/categories">Categories</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Sso</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2018-03-19T22:28:58+08:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>19</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>10:28 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h1><a href="http://codetheory.in/rails-devise-omniauth-sso/">http://codetheory.in/rails-devise-omniauth-sso/</a></h1>
+
+<h2>client</h2>
+
+<h1>Gemfile</h1>
+
+<p>gem &lsquo;omniauth&rsquo;
+gem &lsquo;omniauth-oauth2&rsquo;</p>
+
+<h1>config/environment.rb</h1>
+
+<p>require &ldquo;icps&rdquo;</p>
+
+<h1>lib/icps.rb</h1>
+
+<p>require &lsquo;omniauth-oauth2&rsquo;
+module OmniAuth
+  module Strategies
+    class Icps &lt; OmniAuth::Strategies::OAuth2</p>
+
+<pre><code>  CUSTOM_PROVIDER_URL = 'http://192.168.0.201:3000'
+
+  option :client_options, {
+    :site =&gt;  CUSTOM_PROVIDER_URL,
+    :authorize_url =&gt; "#{CUSTOM_PROVIDER_URL}/auth/icps/authorize",
+    :access_token_url =&gt; "#{CUSTOM_PROVIDER_URL}/auth/icps/access_token"
+  }
+
+  uid do
+    raw_info['id']
+  end
+
+  info do
+    {
+      :email =&gt; raw_info['info']['email']
+    }
+  end
+
+  extra do
+    {
+      :first_name =&gt; raw_info['extra']['first_name'],
+      :last_name  =&gt; raw_info['extra']['last_name']
+    }
+  end
+
+  def raw_info
+    @raw_info ||= access_token.get("/auth/icps/user.json?oauth_token=#{access_token.token}").parsed
+  end
+end
+</code></pre>
+
+<p>  end
+end</p>
+
+<h1>route.rb</h1>
+
+<p>get &lsquo;/users/auth/:provider/callback&rsquo; => &lsquo;user_sessions#create&rsquo;
+get &lsquo;/users/auth/failure&rsquo; => &lsquo;user_sessions#failure&rsquo;
+match &lsquo;/logout&rsquo;, :to => &lsquo;user_sessions#destroy&rsquo;, via: :all</p>
+
+<h1>user_sessions_controller.rb</h1>
+
+<p>class UserSessionsController &lt; ApplicationController
+    def create
+        @user = User.from_omniauth(request.env[&ldquo;omniauth.auth&rdquo;])
+        sign_in_and_redirect @user
+    end
+end</p>
+
+<h1>view.erb</h1>
+
+<p>&lt;% if current_user %>
+  &lt;%= link_to current_user.name, &ldquo;#&rdquo; %>
+  &lt;%= link_to(&ldquo;登出&rdquo;, destroy_user_session_path, method: :delete) %>
+&lt;% else %>
+    &lt;%= link_to &ldquo;login&rdquo;, &ldquo;/users/auth/icps&rdquo; %>
+&lt;% end %></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">icps</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2018-03-19T22:28:58+08:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>19</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>10:28 pm</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/ror/'>ror</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2018/03/01/franky/" title="Previous Post: Franky">&laquo; Franky</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2018/03/20/rtl8192eu-linux-drives/" title="Next Post: rtl8192eu-linux-drives">rtl8192eu-linux-drives &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Categories</h1>
+    <ul id="categories">
+       <li class='category'><a href='/blog/categories/app/'>app (27)</a></li>
+<li class='category'><a href='/blog/categories/bat/'>bat (9)</a></li>
+<li class='category'><a href='/blog/categories/franky/'>franky (1)</a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (21)</a></li>
+<li class='category'><a href='/blog/categories/notepad/'>notepad (1)</a></li>
+<li class='category'><a href='/blog/categories/python/'>python (9)</a></li>
+<li class='category'><a href='/blog/categories/ror/'>ror (23)</a></li>
+<li class='category'><a href='/blog/categories/ruby/'>ruby (39)</a></li>
+
+    </ul>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2018/03/20/rtl8192eu-linux-drives/">Rtl8192eu-linux-drives</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2018/03/19/sso/">Sso</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2018/03/01/franky/">Franky</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2018/01/24/transmission/">Transmission</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2018/01/24/download-gem/">Download-gem</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2018 - icps -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

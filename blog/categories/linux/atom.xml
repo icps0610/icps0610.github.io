@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-03-01T16:04:00+08:00</updated>
+  <updated>2018-03-21T13:10:04+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,25 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Rtl8192eu-linux-drives]]></title>
+    <link href="http://icps0610.github.io/blog/2018/03/20/rtl8192eu-linux-drives/"/>
+    <updated>2018-03-20T23:38:25+08:00</updated>
+    <id>http://icps0610.github.io/blog/2018/03/20/rtl8192eu-linux-drives</id>
+    <content type="html"><![CDATA[<p><code>https://github.com/lord2y/rtl8192eu-arm-linux-driver</code></p>
+
+<pre><code>apt-get install git raspberrypi-kernel-headers build-essential dkms
+dkms add .
+dkms install rtl8192eu/1.0
+
+dkms status
+
+dkms uninstall rtl8192eu/1.0  
+dkms remove rtl8192eu/1.0 --all  
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Invalid_byte]]></title>
@@ -55,16 +74,6 @@ export LC_ALL=en_US.UTF-8</p>
     <id>http://icps0610.github.io/blog/2017/08/21/qu-diao-zhong-wen-gua-hu</id>
     <content type="html"><![CDATA[<p><code>rename -n 's/（(.*)）/($1)/'</code> *<br/>
 <code>rename -v 's/\s+(.*)/$1/' *</code></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[OpenWrt]]></title>
-    <link href="http://icps0610.github.io/blog/2017/08/18/openwrt/"/>
-    <updated>2017-08-18T05:36:34+08:00</updated>
-    <id>http://icps0610.github.io/blog/2017/08/18/openwrt</id>
-    <content type="html"><![CDATA[<p><code>opkg update</code><br/>
-<code>opkg install luci-i18n-base-zh-tw</code></p>
 ]]></content>
   </entry>
   

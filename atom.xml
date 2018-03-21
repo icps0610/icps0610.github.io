@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-03-01T16:04:00+08:00</updated>
+  <updated>2018-03-21T13:10:04+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,121 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Rtl8192eu-linux-drives]]></title>
+    <link href="http://icps0610.github.io/blog/2018/03/20/rtl8192eu-linux-drives/"/>
+    <updated>2018-03-20T23:38:25+08:00</updated>
+    <id>http://icps0610.github.io/blog/2018/03/20/rtl8192eu-linux-drives</id>
+    <content type="html"><![CDATA[<p><code>https://github.com/lord2y/rtl8192eu-arm-linux-driver</code></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>apt-get install git raspberrypi-kernel-headers build-essential dkms
+</span><span class='line'>dkms add .
+</span><span class='line'>dkms install rtl8192eu/1.0
+</span><span class='line'>
+</span><span class='line'>dkms status
+</span><span class='line'>
+</span><span class='line'>dkms uninstall rtl8192eu/1.0  
+</span><span class='line'>dkms remove rtl8192eu/1.0 --all  
+</span><span class='line'>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Sso]]></title>
+    <link href="http://icps0610.github.io/blog/2018/03/19/sso/"/>
+    <updated>2018-03-19T22:28:58+08:00</updated>
+    <id>http://icps0610.github.io/blog/2018/03/19/sso</id>
+    <content type="html"><![CDATA[<h1><a href="http://codetheory.in/rails-devise-omniauth-sso/">http://codetheory.in/rails-devise-omniauth-sso/</a></h1>
+
+<h2>client</h2>
+
+<h1>Gemfile</h1>
+
+<p>gem &lsquo;omniauth&rsquo;
+gem &lsquo;omniauth-oauth2&rsquo;</p>
+
+<h1>config/environment.rb</h1>
+
+<p>require &ldquo;icps&rdquo;</p>
+
+<h1>lib/icps.rb</h1>
+
+<p>require &lsquo;omniauth-oauth2&rsquo;
+module OmniAuth
+  module Strategies
+    class Icps &lt; OmniAuth::Strategies::OAuth2</p>
+
+<pre><code>  CUSTOM_PROVIDER_URL = 'http://192.168.0.201:3000'
+
+  option :client_options, {
+    :site =&gt;  CUSTOM_PROVIDER_URL,
+    :authorize_url =&gt; "#{CUSTOM_PROVIDER_URL}/auth/icps/authorize",
+    :access_token_url =&gt; "#{CUSTOM_PROVIDER_URL}/auth/icps/access_token"
+  }
+
+  uid do
+    raw_info['id']
+  end
+
+  info do
+    {
+      :email =&gt; raw_info['info']['email']
+    }
+  end
+
+  extra do
+    {
+      :first_name =&gt; raw_info['extra']['first_name'],
+      :last_name  =&gt; raw_info['extra']['last_name']
+    }
+  end
+
+  def raw_info
+    @raw_info ||= access_token.get("/auth/icps/user.json?oauth_token=#{access_token.token}").parsed
+  end
+end
+</code></pre>
+
+<p>  end
+end</p>
+
+<h1>route.rb</h1>
+
+<p>get &lsquo;/users/auth/:provider/callback&rsquo; => &lsquo;user_sessions#create&rsquo;
+get &lsquo;/users/auth/failure&rsquo; => &lsquo;user_sessions#failure&rsquo;
+match &lsquo;/logout&rsquo;, :to => &lsquo;user_sessions#destroy&rsquo;, via: :all</p>
+
+<h1>user_sessions_controller.rb</h1>
+
+<p>class UserSessionsController &lt; ApplicationController
+    def create
+        @user = User.from_omniauth(request.env[&ldquo;omniauth.auth&rdquo;])
+        sign_in_and_redirect @user
+    end
+end</p>
+
+<h1>view.erb</h1>
+
+<p>&lt;% if current_user %>
+  &lt;%= link_to current_user.name, &ldquo;#&rdquo; %>
+  &lt;%= link_to(&ldquo;登出&rdquo;, destroy_user_session_path, method: :delete) %>
+&lt;% else %>
+    &lt;%= link_to &ldquo;login&rdquo;, &ldquo;/users/auth/icps&rdquo; %>
+&lt;% end %></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Franky]]></title>
@@ -426,36 +541,6 @@ class Help
 </span><span class='line'>upload_max_filesize = 1000M
 </span><span class='line'>post_max_size = 1000M
 </span><span class='line'>memory_limit  1000M</span></code></pre></td></tr></table></div></figure>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Masscan]]></title>
-    <link href="http://icps0610.github.io/blog/2017/08/31/masscan/"/>
-    <updated>2017-08-31T20:20:35+08:00</updated>
-    <id>http://icps0610.github.io/blog/2017/08/31/masscan</id>
-    <content type="html"><![CDATA[<p><a href="https://github.com/robertdavidgraham/masscan">https://github.com/robertdavidgraham/masscan</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[No_ri_no_rdoc]]></title>
-    <link href="http://icps0610.github.io/blog/2017/08/21/no-ri-no-rdoc/"/>
-    <updated>2017-08-21T20:27:38+08:00</updated>
-    <id>http://icps0610.github.io/blog/2017/08/21/no-ri-no-rdoc</id>
-    <content type="html"><![CDATA[<blockquote><blockquote><p>ref  <a href="https://stackoverflow.com/questions/1381725/how-to-make-no-ri-no-rdoc-the-default-for-gem-install">https://stackoverflow.com/questions/1381725/how-to-make-no-ri-no-rdoc-the-default-for-gem-install</a></p></blockquote></blockquote>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>ou just add following line to your local ~/.gemrc file (it is in your home folder)
-</span><span class='line'>
-</span><span class='line'>gem: --no-document or you can add this line to the global gemrc config file. Here is how to find it (in Linux)
-</span><span class='line'>
-</span><span class='line'>strace gem source 2&gt;&1 | grep gemrc</span></code></pre></td></tr></table></div></figure>
 
 ]]></content>
   </entry>
