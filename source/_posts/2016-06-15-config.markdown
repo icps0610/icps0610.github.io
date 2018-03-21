@@ -68,3 +68,5 @@ dmesg : `kernel logs`
 ### 關閉傳送內部錯誤
 /etc/default/apport
 enbable=0
+
+`apt-get install gcc make libsqlite3-dev nodejs zlib1g-dev`
