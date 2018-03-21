@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ror | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ror/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-03-21T13:10:04+08:00</updated>
+  <updated>2018-03-21T13:16:04+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -18,83 +18,7 @@
     <link href="http://icps0610.github.io/blog/2018/03/19/sso/"/>
     <updated>2018-03-19T22:28:58+08:00</updated>
     <id>http://icps0610.github.io/blog/2018/03/19/sso</id>
-    <content type="html"><![CDATA[<h1><a href="http://codetheory.in/rails-devise-omniauth-sso/">http://codetheory.in/rails-devise-omniauth-sso/</a></h1>
-
-<h2>client</h2>
-
-<h1>Gemfile</h1>
-
-<p>gem &lsquo;omniauth&rsquo;
-gem &lsquo;omniauth-oauth2&rsquo;</p>
-
-<h1>config/environment.rb</h1>
-
-<p>require &ldquo;icps&rdquo;</p>
-
-<h1>lib/icps.rb</h1>
-
-<p>require &lsquo;omniauth-oauth2&rsquo;
-module OmniAuth
-  module Strategies
-    class Icps &lt; OmniAuth::Strategies::OAuth2</p>
-
-<pre><code>  CUSTOM_PROVIDER_URL = 'http://192.168.0.201:3000'
-
-  option :client_options, {
-    :site =&gt;  CUSTOM_PROVIDER_URL,
-    :authorize_url =&gt; "#{CUSTOM_PROVIDER_URL}/auth/icps/authorize",
-    :access_token_url =&gt; "#{CUSTOM_PROVIDER_URL}/auth/icps/access_token"
-  }
-
-  uid do
-    raw_info['id']
-  end
-
-  info do
-    {
-      :email =&gt; raw_info['info']['email']
-    }
-  end
-
-  extra do
-    {
-      :first_name =&gt; raw_info['extra']['first_name'],
-      :last_name  =&gt; raw_info['extra']['last_name']
-    }
-  end
-
-  def raw_info
-    @raw_info ||= access_token.get("/auth/icps/user.json?oauth_token=#{access_token.token}").parsed
-  end
-end
-</code></pre>
-
-<p>  end
-end</p>
-
-<h1>route.rb</h1>
-
-<p>get &lsquo;/users/auth/:provider/callback&rsquo; => &lsquo;user_sessions#create&rsquo;
-get &lsquo;/users/auth/failure&rsquo; => &lsquo;user_sessions#failure&rsquo;
-match &lsquo;/logout&rsquo;, :to => &lsquo;user_sessions#destroy&rsquo;, via: :all</p>
-
-<h1>user_sessions_controller.rb</h1>
-
-<p>class UserSessionsController &lt; ApplicationController
-    def create
-        @user = User.from_omniauth(request.env[&ldquo;omniauth.auth&rdquo;])
-        sign_in_and_redirect @user
-    end
-end</p>
-
-<h1>view.erb</h1>
-
-<p>&lt;% if current_user %>
-  &lt;%= link_to current_user.name, &ldquo;#&rdquo; %>
-  &lt;%= link_to(&ldquo;登出&rdquo;, destroy_user_session_path, method: :delete) %>
-&lt;% else %>
-    &lt;%= link_to &ldquo;login&rdquo;, &ldquo;/users/auth/icps&rdquo; %>
-&lt;% end %></p>
+    <content type="html"><![CDATA[
 ]]></content>
   </entry>
   
