@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Python | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-04-04T16:42:45+08:00</updated>
+  <updated>2018-04-04T17:02:57+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -41,32 +41,22 @@ workbook.close()
 
 <h3>xlwt</h3>
 
-<p>``` python</p>
+<pre><code class="python">
+#!/usr/bin/env python3
+# -*- coding:utf-8 -*-
+import xlrd, xlwt
+wb = xlwt.Workbook(style_compression=2) 
+# style_compression=2 解決styple太多造成錯誤
+ex = wb.add_sheet('rank_u2')
+ex.col(0).width = int(60*260)
 
-<h1>!/usr/bin/env python3</h1>
-
-<h1>-<em>- coding:utf-8 -</em>-</h1>
-
-<p>import xlrd, xlwt
-wb = xlwt.Workbook(style_compression=2)</p>
-
-<h1>style_compression=2 解決styple太多造成錯誤</h1>
-
-<p>ex = wb.add_sheet(&lsquo;rank_u2&rsquo;)
-ex.col(0).width = int(60*260)</p>
-
-<p>style = xlwt.Formula(&lsquo;HYPERLINK(&ldquo;{}&rdquo;;&ldquo;{}&rdquo;)&rsquo;.format(link, name))
-ex.write(0, 0, style)</p>
-
-<h1>做連結</h1>
-
-<p>ex.write(idx, 1, gp, xlwt.easyxf(num_format_str=&lsquo;0.00%&rsquo;))</p>
-
-<h1>格式化</h1>
-
-<p>wb.save(&ldquo;test.xls&rdquo;)</p>
-
-<p>``</p>
+style = xlwt.Formula('HYPERLINK("{}";"{}")'.format(link, name))
+ex.write(0, 0, style)
+#做連結
+ex.write(idx, 1, gp, xlwt.easyxf(num_format_str='0.00%'))
+#格式化
+wb.save("test.xls")
+</code></pre>
 ]]></content>
   </entry>
   

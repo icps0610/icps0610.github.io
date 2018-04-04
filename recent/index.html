@@ -149,32 +149,36 @@ import xlsxwriter def cell(x, y): return &#39;%s%s &hellip;">
 
 <h3>xlwt</h3>
 
-<p>``` python</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="c">#!/usr/bin/env python3</span>
+</span><span class='line'><span class="c"># -*- coding:utf-8 -*-</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">xlrd</span><span class="o">,</span> <span class="nn">xlwt</span>
+</span><span class='line'><span class="n">wb</span> <span class="o">=</span> <span class="n">xlwt</span><span class="o">.</span><span class="n">Workbook</span><span class="p">(</span><span class="n">style_compression</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</span><span class='line'><span class="c"># style_compression=2 解決styple太多造成錯誤</span>
+</span><span class='line'><span class="n">ex</span> <span class="o">=</span> <span class="n">wb</span><span class="o">.</span><span class="n">add_sheet</span><span class="p">(</span><span class="s">&#39;rank_u2&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="n">ex</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">60</span><span class="o">*</span><span class="mi">260</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">style</span> <span class="o">=</span> <span class="n">xlwt</span><span class="o">.</span><span class="n">Formula</span><span class="p">(</span><span class="s">&#39;HYPERLINK(&quot;{}&quot;;&quot;{}&quot;)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">link</span><span class="p">,</span> <span class="n">name</span><span class="p">))</span>
+</span><span class='line'><span class="n">ex</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">style</span><span class="p">)</span>
+</span><span class='line'><span class="c">#做連結</span>
+</span><span class='line'><span class="n">ex</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">gp</span><span class="p">,</span> <span class="n">xlwt</span><span class="o">.</span><span class="n">easyxf</span><span class="p">(</span><span class="n">num_format_str</span><span class="o">=</span><span class="s">&#39;0.00%&#39;</span><span class="p">))</span>
+</span><span class='line'><span class="c">#格式化</span>
+</span><span class='line'><span class="n">wb</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s">&quot;test.xls&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<h1>!/usr/bin/env python3</h1>
-
-<h1>-<em>- coding:utf-8 -</em>-</h1>
-
-<p>import xlrd, xlwt
-wb = xlwt.Workbook(style_compression=2)</p>
-
-<h1>style_compression=2 解決styple太多造成錯誤</h1>
-
-<p>ex = wb.add_sheet(&lsquo;rank_u2&rsquo;)
-ex.col(0).width = int(60*260)</p>
-
-<p>style = xlwt.Formula(&lsquo;HYPERLINK(&ldquo;{}&rdquo;;&ldquo;{}&rdquo;)&rsquo;.format(link, name))
-ex.write(0, 0, style)</p>
-
-<h1>做連結</h1>
-
-<p>ex.write(idx, 1, gp, xlwt.easyxf(num_format_str=&lsquo;0.00%&rsquo;))</p>
-
-<h1>格式化</h1>
-
-<p>wb.save(&ldquo;test.xls&rdquo;)</p>
-
-<p>``</p>
 </div>
   
   
