@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Python | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-03-21T13:16:04+08:00</updated>
+  <updated>2018-04-04T16:42:45+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,63 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Excel]]></title>
+    <link href="http://icps0610.github.io/blog/2018/04/04/excel/"/>
+    <updated>2018-04-04T16:39:18+08:00</updated>
+    <id>http://icps0610.github.io/blog/2018/04/04/excel</id>
+    <content type="html"><![CDATA[<h3>xlsxwriter</h3>
+
+<pre><code class="python">#!/usr/bin/env python3
+# -*- coding:utf-8 -*-
+import xlsxwriter
+
+def cell(x, y):
+    return '%s%s' % ( chr(x+65), y+1)
+
+workbook = xlsxwriter.Workbook('/tmp/text.xlsx')
+
+worksheet = workbook.add_worksheet()
+worksheet.write(0, 1, 'headings')
+worksheet.write_url(0, 0, 'http://www.python.org/', tip='Click here')
+
+cell_format =  workbook.add_format()
+cell_format.set_num_format('0.00%')
+worksheet.write(9, 0, 0.87, cell_format)   
+workbook.close()
+</code></pre>
+
+<h3>xlwt</h3>
+
+<p>``` python</p>
+
+<h1>!/usr/bin/env python3</h1>
+
+<h1>-<em>- coding:utf-8 -</em>-</h1>
+
+<p>import xlrd, xlwt
+wb = xlwt.Workbook(style_compression=2)</p>
+
+<h1>style_compression=2 解決styple太多造成錯誤</h1>
+
+<p>ex = wb.add_sheet(&lsquo;rank_u2&rsquo;)
+ex.col(0).width = int(60*260)</p>
+
+<p>style = xlwt.Formula(&lsquo;HYPERLINK(&ldquo;{}&rdquo;;&ldquo;{}&rdquo;)&rsquo;.format(link, name))
+ex.write(0, 0, style)</p>
+
+<h1>做連結</h1>
+
+<p>ex.write(idx, 1, gp, xlwt.easyxf(num_format_str=&lsquo;0.00%&rsquo;))</p>
+
+<h1>格式化</h1>
+
+<p>wb.save(&ldquo;test.xls&rdquo;)</p>
+
+<p>``</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Flatten]]></title>
@@ -84,16 +141,6 @@ for op, value in opts:
 print(mode)
 print(rating)
 </code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Mysql-python]]></title>
-    <link href="http://icps0610.github.io/blog/2017/05/29/mysql-python/"/>
-    <updated>2017-05-29T22:26:31+08:00</updated>
-    <id>http://icps0610.github.io/blog/2017/05/29/mysql-python</id>
-    <content type="html"><![CDATA[<p>ref>> <a href="http://www.runoob.com/python3/python3-mysql.html">http://www.runoob.com/python3/python3-mysql.html</a>
-ref>> <a href="http://note.drx.tw/2012/12/mysql-syntax.html">http://note.drx.tw/2012/12/mysql-syntax.html</a></p>
 ]]></content>
   </entry>
   

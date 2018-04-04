@@ -4,7 +4,7 @@
   <title><![CDATA[Category: App | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/app/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-03-21T13:16:04+08:00</updated>
+  <updated>2018-04-04T16:42:45+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,17 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Franky]]></title>
+    <link href="http://icps0610.github.io/blog/2018/03/01/franky/"/>
+    <updated>2018-03-01T16:03:16+08:00</updated>
+    <id>http://icps0610.github.io/blog/2018/03/01/franky</id>
+    <content type="html"><![CDATA[<p>Franky</p>
+
+<blockquote><blockquote><p><a href="http://motion-express.com/blog/20150204-introduce-franky">http://motion-express.com/blog/20150204-introduce-franky</a></p></blockquote></blockquote>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Transmission]]></title>
@@ -93,31 +104,6 @@ memory_limit  1000M
     <updated>2017-08-31T20:20:35+08:00</updated>
     <id>http://icps0610.github.io/blog/2017/08/31/masscan</id>
     <content type="html"><![CDATA[<p><a href="https://github.com/robertdavidgraham/masscan">https://github.com/robertdavidgraham/masscan</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Id3tool]]></title>
-    <link href="http://icps0610.github.io/blog/2017/08/21/id3tool/"/>
-    <updated>2017-08-21T02:47:18+08:00</updated>
-    <id>http://icps0610.github.io/blog/2017/08/21/id3tool</id>
-    <content type="html"><![CDATA[<p><a href="http://nekohako.xware.cx/id3tool/">http://nekohako.xware.cx/id3tool/</a>
-<a href="http://nekohako.xware.cx/id3tool/id3tool-1.2a.tar.gz">http://nekohako.xware.cx/id3tool/id3tool-1.2a.tar.gz</a>
-<code>
-usage:
-id3tool [&lt;options&gt;] &lt;filename&gt;
-  -t, --set-title=WORD          Sets the title to WORD
-  -a, --set-album=WORD          Sets the album to WORD
-  -r, --set-artist=WORD         Sets the artist to WORD
-  -y, --set-year=YEAR           Sets the year to YEAR [4 digits]
-  -n, --set-note=WORD           Sets the note to WORD
-  -g, --set-genre=INT           Sets the genre code to INT
-  -G, --set-genre-word=WORD     Sets the genre to WORD
-  -c, --set-track=INT           Sets the track number to INT
-  -l, --genre-list              Shows the Genre's and their codes
-  -v, --version                 Displays the version
-  -h, --help                    Displays this message
-</code></p>
 ]]></content>
   </entry>
   

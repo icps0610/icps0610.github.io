@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ror | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ror/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-03-21T13:16:04+08:00</updated>
+  <updated>2018-04-04T16:42:45+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -18,7 +18,78 @@
     <link href="http://icps0610.github.io/blog/2018/03/19/sso/"/>
     <updated>2018-03-19T22:28:58+08:00</updated>
     <id>http://icps0610.github.io/blog/2018/03/19/sso</id>
-    <content type="html"><![CDATA[
+    <content type="html"><![CDATA[<blockquote><blockquote><p>ref <a href="https://github.com/rishabhp/sso-rails-client">https://github.com/rishabhp/sso-rails-client</a></p></blockquote></blockquote>
+
+<pre><code>#Gemfile
+gem 'omniauth-oauth2'
+
+#config\environment.rb
+require 'icps'
+
+#lib\icps.rb
+require 'omniauth-oauth2'
+module OmniAuth
+  module Strategies
+    class Icps &lt; OmniAuth::Strategies::OAuth2
+
+      CUSTOM_PROVIDER_URL = 'http://192.168.0.201:3000'
+
+      option :client_options, {
+        :site =&gt;  CUSTOM_PROVIDER_URL,
+        :authorize_url =&gt; "#{CUSTOM_PROVIDER_URL}/auth/icps/authorize",
+        :access_token_url =&gt; "#{CUSTOM_PROVIDER_URL}/auth/icps/access_token"
+      }
+
+      uid do
+        raw_info['id']
+      end
+
+      info do
+        {
+          :email =&gt; raw_info['info']['email']
+        }
+      end
+
+      extra do
+        {
+          :first_name =&gt; raw_info['extra']['first_name'],
+          :last_name  =&gt; raw_info['extra']['last_name']
+        }
+      end
+
+      def raw_info
+        @raw_info ||= access_token.get("/auth/icps/user.json?oauth_token=#{access_token.token}").parsed
+      end
+    end
+  end
+end
+
+#config\router.rb
+get '/users/auth/:provider/callback' =&gt; 'user_sessions#create'
+get '/users/auth/failure' =&gt; 'user_sessions#failure'
+match '/logout', :to =&gt; 'user_sessions#destroy', via: :all
+
+#user_sessions_controller.rb
+class UserSessionsController &lt; ApplicationController
+
+    def create
+        @user = User.from_omniauth(request.env["omniauth.auth"])
+        sign_in_and_redirect @user
+    end
+
+end
+
+
+#config\initializers\devise.rb
+config.omniauth :icps, Figaro.env.icps_app_id, Figaro.env.icps_secret, scope: 'email', info_fields: 'email, name'
+
+#config\application.yml
+icps_app_id: "id"
+icps_secret: "secret"
+
+#view.erb
+&lt;%= link_to "login", "/users/auth/icps" %&gt;
+</code></pre>
 ]]></content>
   </entry>
   

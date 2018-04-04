@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-03-21T13:16:04+08:00</updated>
+  <updated>2018-04-04T16:42:45+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,18 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Tshark]]></title>
+    <link href="http://icps0610.github.io/blog/2018/04/02/tshark/"/>
+    <updated>2018-04-02T01:27:20+08:00</updated>
+    <id>http://icps0610.github.io/blog/2018/04/02/tshark</id>
+    <content type="html"><![CDATA[<h2>dofile has been disabled due to running Wireshark as superuser. See <a href="https://wiki.wireshark.org/CaptureSetup/CapturePrivileges">https://wiki.wireshark.org/CaptureSetup/CapturePrivileges</a> for help in running Wireshark as an unprivileged user.</h2>
+
+<p>nano /usr/share/wireshark/init.lua
+disable_lua = true</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Rtl8192eu-linux-drives]]></title>
@@ -64,16 +76,6 @@ export LC_ALL=en_US.UTF-8</p>
     <content type="html"><![CDATA[<blockquote><blockquote><p>ref: <a href="https://www.raspberrypi.org/forums/viewtopic.php?f=28&amp;t=15519">https://www.raspberrypi.org/forums/viewtopic.php?f=28&amp;t=15519</a></p></blockquote></blockquote>
 
 <p><code>apt-get install ntfs-3g</code></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Rename去掉中文括弧]]></title>
-    <link href="http://icps0610.github.io/blog/2017/08/21/qu-diao-zhong-wen-gua-hu/"/>
-    <updated>2017-08-21T02:55:06+08:00</updated>
-    <id>http://icps0610.github.io/blog/2017/08/21/qu-diao-zhong-wen-gua-hu</id>
-    <content type="html"><![CDATA[<p><code>rename -n 's/（(.*)）/($1)/'</code> *<br/>
-<code>rename -v 's/\s+(.*)/$1/' *</code></p>
 ]]></content>
   </entry>
   
