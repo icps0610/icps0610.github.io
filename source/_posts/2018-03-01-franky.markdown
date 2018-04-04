@@ -3,6 +3,7 @@ layout: post
 title: "Franky"
 date: 2018-03-01 16:03:16 +0800
 comments: true
-categories: Franky
+categories: app
 ---
+Franky
 >> http://motion-express.com/blog/20150204-introduce-franky
