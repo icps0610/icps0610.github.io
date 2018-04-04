@@ -1,0 +1,13 @@
+---
+layout: post
+title: "wifi_AP"
+date: 2018-03-21 13:46:45 +0800
+comments: true
+categories: uncategorized
+---
+https://superuser.com/questions/1100472/how-to-configure-hotspot-with-wifi-dongle-dwa-131-in-kali-linux
+wget http://www.adafruit.com/downloads/adafruit_hostapd.zip 
+unzip adafruit_hostapd.zip 
+sudo mv /usr/sbin/hostapd /usr/sbin/hostapd.ORIG 
+sudo mv hostapd /usr/sbin
+sudo chmod 755 /usr/sbin/hostapd

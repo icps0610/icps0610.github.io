@@ -1,0 +1,49 @@
+---
+layout: post
+title: "excel"
+date: 2018-04-04 16:39:18 +0800
+comments: true
+categories: python
+---
+### xlsxwriter
+```python
+#!/usr/bin/env python3
+# -*- coding:utf-8 -*-
+import xlsxwriter
+
+def cell(x, y):
+    return '%s%s' % ( chr(x+65), y+1)
+
+workbook = xlsxwriter.Workbook('/tmp/text.xlsx')
+
+worksheet = workbook.add_worksheet()
+worksheet.write(0, 1, 'headings')
+worksheet.write_url(0, 0, 'http://www.python.org/', tip='Click here')
+
+cell_format =  workbook.add_format()
+cell_format.set_num_format('0.00%')
+worksheet.write(9, 0, 0.87, cell_format)   
+workbook.close()
+
+```
+
+
+### xlwt
+``` python
+#!/usr/bin/env python3
+# -*- coding:utf-8 -*-
+import xlrd, xlwt
+wb = xlwt.Workbook(style_compression=2) 
+# style_compression=2 解決styple太多造成錯誤
+ex = wb.add_sheet('rank_u2')
+ex.col(0).width = int(60*260)
+
+style = xlwt.Formula('HYPERLINK("{}";"{}")'.format(link, name))
+ex.write(0, 0, style)
+#做連結
+ex.write(idx, 1, gp, xlwt.easyxf(num_format_str='0.00%'))
+#格式化
+wb.save("test.xls")
+
+
+``

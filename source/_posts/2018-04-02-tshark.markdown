@@ -1,0 +1,12 @@
+---
+layout: post
+title: "tshark"
+date: 2018-04-02 01:27:20 +0800
+comments: true
+categories: linux
+---
+
+## dofile has been disabled due to running Wireshark as superuser. See https://wiki.wireshark.org/CaptureSetup/CapturePrivileges for help in running Wireshark as an unprivileged user.
+
+nano /usr/share/wireshark/init.lua
+disable_lua = true

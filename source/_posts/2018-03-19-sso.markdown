@@ -6,3 +6,81 @@ comments: true
 categories: ror
 ---
 
+>> ref https://github.com/rishabhp/sso-rails-client
+
+```
+#Gemfile
+gem 'omniauth-oauth2'
+
+#config\environment.rb
+require 'icps'
+
+#lib\icps.rb
+require 'omniauth-oauth2'
+module OmniAuth
+  module Strategies
+    class Icps < OmniAuth::Strategies::OAuth2
+
+      CUSTOM_PROVIDER_URL = 'http://192.168.0.201:3000'
+
+      option :client_options, {
+        :site =>  CUSTOM_PROVIDER_URL,
+        :authorize_url => "#{CUSTOM_PROVIDER_URL}/auth/icps/authorize",
+        :access_token_url => "#{CUSTOM_PROVIDER_URL}/auth/icps/access_token"
+      }
+
+      uid do
+        raw_info['id']
+      end
+
+      info do
+        {
+          :email => raw_info['info']['email']
+        }
+      end
+
+      extra do
+        {
+          :first_name => raw_info['extra']['first_name'],
+          :last_name  => raw_info['extra']['last_name']
+        }
+      end
+
+      def raw_info
+        @raw_info ||= access_token.get("/auth/icps/user.json?oauth_token=#{access_token.token}").parsed
+      end
+    end
+  end
+end
+
+#config\router.rb
+get '/users/auth/:provider/callback' => 'user_sessions#create'
+get '/users/auth/failure' => 'user_sessions#failure'
+match '/logout', :to => 'user_sessions#destroy', via: :all
+
+#user_sessions_controller.rb
+class UserSessionsController < ApplicationController
+
+    def create
+        @user = User.from_omniauth(request.env["omniauth.auth"])
+        sign_in_and_redirect @user
+    end
+
+end
+
+
+#config\initializers\devise.rb
+config.omniauth :icps, Figaro.env.icps_app_id, Figaro.env.icps_secret, scope: 'email', info_fields: 'email, name'
+
+#config\application.yml
+icps_app_id: "id"
+icps_secret: "secret"
+
+#view.erb
+<%= link_to "login", "/users/auth/icps" %>
+
+
+
+
+
+```
