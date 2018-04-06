@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-04-04T17:02:57+08:00</updated>
+  <updated>2018-04-06T17:57:55+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -22,6 +22,20 @@
 
 <p>nano /usr/share/wireshark/init.lua
 disable_lua = true</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[wifi_AP_dwa-131]]></title>
+    <link href="http://icps0610.github.io/blog/2018/03/21/wifi-ap/"/>
+    <updated>2018-03-21T13:46:45+08:00</updated>
+    <id>http://icps0610.github.io/blog/2018/03/21/wifi-ap</id>
+    <content type="html"><![CDATA[<p><a href="https://superuser.com/questions/1100472/how-to-configure-hotspot-with-wifi-dongle-dwa-131-in-kali-linux">https://superuser.com/questions/1100472/how-to-configure-hotspot-with-wifi-dongle-dwa-131-in-kali-linux</a>
+wget <a href="http://www.adafruit.com/downloads/adafruit_hostapd.zip">http://www.adafruit.com/downloads/adafruit_hostapd.zip</a>
+unzip adafruit_hostapd.zip
+sudo mv /usr/sbin/hostapd /usr/sbin/hostapd.ORIG
+sudo mv hostapd /usr/sbin
+sudo chmod 755 /usr/sbin/hostapd</p>
 ]]></content>
   </entry>
   
@@ -65,17 +79,6 @@ export LC_ALL=en_US.UTF-8</p>
     <content type="html"><![CDATA[<p>pkill -f ngrok</p>
 
 <p><code>ps aux | grep  ngrok | awk '{print "kill -9 " $2}'</code></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Maximum Supported Is 2 TiB.]]></title>
-    <link href="http://icps0610.github.io/blog/2017/08/31/2t/"/>
-    <updated>2017-08-31T22:33:11+08:00</updated>
-    <id>http://icps0610.github.io/blog/2017/08/31/2t</id>
-    <content type="html"><![CDATA[<blockquote><blockquote><p>ref: <a href="https://www.raspberrypi.org/forums/viewtopic.php?f=28&amp;t=15519">https://www.raspberrypi.org/forums/viewtopic.php?f=28&amp;t=15519</a></p></blockquote></blockquote>
-
-<p><code>apt-get install ntfs-3g</code></p>
 ]]></content>
   </entry>
   
