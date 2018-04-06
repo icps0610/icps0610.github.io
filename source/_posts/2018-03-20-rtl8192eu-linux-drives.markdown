@@ -17,5 +17,5 @@ dkms status
 dkms uninstall rtl8192eu/1.0  
 dkms remove rtl8192eu/1.0 --all  
 
-
+`https://icps0610.github.io/blog/2018/03/21/wifi-ap/`
 ```
