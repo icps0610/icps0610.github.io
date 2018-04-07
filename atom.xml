@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-04-07T18:01:02+08:00</updated>
+  <updated>2018-04-07T18:01:24+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -119,7 +119,7 @@ disable_lua = true</p>
 </pre></td><td class='code'><pre><code class=''><span class='line'>wget http://www.adafruit.com/downloads/adafruit_hostapd.zip
 </span><span class='line'>unzip adafruit_hostapd.zip
 </span><span class='line'>sudo mv /usr/sbin/hostapd /usr/sbin/hostapd.ORIG
-</span><span class='line'>sudo mv hostapd /usr/sbin` 
+</span><span class='line'>sudo mv hostapd /usr/sbin
 </span><span class='line'>sudo chmod 755 /usr/sbin/hostapd</span></code></pre></td></tr></table></div></figure>
 
 ]]></content>
