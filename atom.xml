@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-04-07T17:59:28+08:00</updated>
+  <updated>2018-04-07T18:01:02+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -109,12 +109,19 @@ disable_lua = true</p>
     <link href="http://icps0610.github.io/blog/2018/03/21/wifi-ap/"/>
     <updated>2018-03-21T13:46:45+08:00</updated>
     <id>http://icps0610.github.io/blog/2018/03/21/wifi-ap</id>
-    <content type="html"><![CDATA[<p><code>https://superuser.com/questions/1100472/how-to-configure-hotspot-with-wifi-dongle-dwa-131-in-kali-linux</code>
-<code>wget http://www.adafruit.com/downloads/adafruit_hostapd.zip</code>
-<code>unzip adafruit_hostapd.zip</code>
-<code>sudo mv /usr/sbin/hostapd /usr/sbin/hostapd.ORIG</code>
-<code>sudo mv hostapd /usr/sbin</code><br/>
-<code>sudo chmod 755 /usr/sbin/hostapd</code></p>
+    <content type="html"><![CDATA[<p><code>https://superuser.com/questions/1100472/how-to-configure-hotspot-with-wifi-dongle-dwa-131-in-kali-linux</code></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>wget http://www.adafruit.com/downloads/adafruit_hostapd.zip
+</span><span class='line'>unzip adafruit_hostapd.zip
+</span><span class='line'>sudo mv /usr/sbin/hostapd /usr/sbin/hostapd.ORIG
+</span><span class='line'>sudo mv hostapd /usr/sbin` 
+</span><span class='line'>sudo chmod 755 /usr/sbin/hostapd</span></code></pre></td></tr></table></div></figure>
+
 ]]></content>
   </entry>
   
