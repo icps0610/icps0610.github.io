@@ -6,6 +6,7 @@ comments: true
 categories: python
 ---
 ### xlsxwriter
+#### write
 ```python
 #!/usr/bin/env python3
 # -*- coding:utf-8 -*-
@@ -27,6 +28,27 @@ workbook.close()
 
 ```
 
+####
+``` python
+wb = load_workbook(filename=filename)
+sheets = wb.sheetnames[0]
+ws = wb[sheets]
+rows = ws.rows
+columns = ws.columns
+channel = []
+for row in rows:
+    line = [col.value for col in row]
+    channel.append({
+        'name'                         : line[0],
+        'monthly_sub_growth_percentage': line[1],
+        'monthly_sub_growth'           : line[2],
+        'subscribers'                  : line[3],
+        'views_average'                : line[4],
+        'video_count'                  : line[5],
+        'monthly_video_count'          : line[6],
+    })
+
+```
 
 ### xlwt
 ``` python
