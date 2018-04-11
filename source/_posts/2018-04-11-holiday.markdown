@@ -34,7 +34,6 @@ def holiday
 end
 
 def check_holiday(data, m, d)
-    print "#{m}/#{d}"
     if data[m-1][d-1] == "FFFF99FF"
         return true
     else
