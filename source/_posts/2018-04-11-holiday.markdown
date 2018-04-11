@@ -1,0 +1,59 @@
+---
+layout: post
+title: "holiday"
+date: 2018-04-11 23:58:57 +0800
+comments: true
+categories: ruby
+---
+
+### http://www.319papago.idv.tw/holiday/2017-hr/2017_HR.html
+``` ruby
+require 'rubyXL'
+
+def holiday
+    file_path = '/data/ruby/holiday/107.xlsx'
+    workbook  = RubyXL::Parser.parse(file_path)
+    worksheet =  workbook[0]
+    data = []
+    yl = [4, 16, 28, 42]
+    xl = [1, 8, 15]
+    hl = [5, 5, 6, 6]
+
+    (0..3).each do |y|
+        (0..2).each do |x|
+            month = (0..(7 * hl[y]-1)).map do |i|
+                cx = xl[x] + i % 7
+                cy = yl[y] + (i / 7) * 2
+                cell = worksheet[cy][cx]
+                cell.fill_color if cell.value
+            end.compact
+            data << month
+        end
+    end
+    return data
+end
+
+def check_holiday(data, m, d)
+    print "#{m}/#{d}"
+    if data[m-1][d-1] == "FFFF99FF"
+        return true
+    else
+        return false
+    end
+end
+
+h = holiday
+p check_holiday(h, 1, 1)
+p check_holiday(h, 2, 15)
+p check_holiday(h, 3, 11)
+p check_holiday(h, 4, 5)
+p check_holiday(h, 5, 27)
+p check_holiday(h, 6, 18)
+p check_holiday(h, 7, 15)
+p check_holiday(h, 8, 26)
+p check_holiday(h, 9, 24)
+p check_holiday(h, 10, 10)
+p check_holiday(h, 11, 10)
+p check_holiday(h, 12, 31)
+
+```
