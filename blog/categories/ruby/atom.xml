@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-04-22T01:14:09+08:00</updated>
+  <updated>2018-04-22T01:14:46+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -18,9 +18,9 @@
     <link href="http://icps0610.github.io/blog/2018/04/21/vba-excel-csv-and-use-ruby-read/"/>
     <updated>2018-04-21T19:43:25+08:00</updated>
     <id>http://icps0610.github.io/blog/2018/04/21/vba-excel-csv-and-use-ruby-read</id>
-    <content type="html"><![CDATA[<p>excel vba => Unicode => Icov => utf-8</p>
+    <content type="html"><![CDATA[<h3>excel vba => Unicode => Icov => utf-8</h3>
 
-<pre><code class="vba">#excel vba
+<pre><code class="">#excel vba
 Dim i As Integer
 Dim WS_Count As Integer
 
@@ -149,15 +149,21 @@ p check_holiday(h, 12, 31)
     <updated>2017-10-25T21:51:05+08:00</updated>
     <id>http://icps0610.github.io/blog/2017/10/25/execute-sql</id>
     <content type="html"><![CDATA[<blockquote><blockquote><p>ref <a href="https://stackoverflow.com/questions/15408285/rails-3-execute-custom-sql-query-without-a-model">https://stackoverflow.com/questions/15408285/rails-3-execute-custom-sql-query-without-a-model</a>
-``` ruby
-ActiveRecord::Base.establish_connection({adapter: &lsquo;mysql2&rsquo;, encoding: &lsquo;utf8&rsquo;, database: DB, username: USER,password: PASSWD})</p></blockquote></blockquote>
-
-<p>sql = &ldquo;SELECT * from users&rdquo;
-@result = ActiveRecord::Base.connection.execute(sql);
-@result.each do |r|
-   puts r[&ldquo;name&rdquo;]
-end
-```</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="o">.</span><span class="n">establish_connection</span><span class="p">({</span><span class="ss">adapter</span><span class="p">:</span> <span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">mysql2</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;,</span> <span class="ss">encoding</span><span class="p">:</span> <span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">utf8</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;,</span> <span class="ss">database</span><span class="p">:</span> <span class="no">DB</span><span class="p">,</span> <span class="ss">username</span><span class="p">:</span> <span class="no">USER</span><span class="p">,</span><span class="ss">password</span><span class="p">:</span> <span class="no">PASSWD</span><span class="p">})</span><span class="o">&lt;</span><span class="sr">/p&gt;&lt;/</span><span class="n">blockquote</span><span class="o">&gt;&lt;</span><span class="sr">/blockquote&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="sr">&lt;p&gt;sql = &amp;ldquo;SELECT * from users&amp;rdquo;</span>
+</span><span class='line'><span class="sr">@result = ActiveRecord::Base.connection.execute(sql);</span>
+</span><span class='line'><span class="sr">@result.each do |r|</span>
+</span><span class='line'><span class="sr">   puts r[&amp;ldquo;name&amp;rdquo;]</span>
+</span><span class='line'><span class="sr">end</span>
+</span></code></pre></td></tr></table></div></figure></p>
 ]]></content>
   </entry>
   

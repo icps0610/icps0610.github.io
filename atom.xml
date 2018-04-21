@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-04-12T00:06:01+08:00</updated>
+  <updated>2018-04-22T01:14:46+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,129 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Vba_excel_csv_and_use_ruby_read]]></title>
+    <link href="http://icps0610.github.io/blog/2018/04/21/vba-excel-csv-and-use-ruby-read/"/>
+    <updated>2018-04-21T19:43:25+08:00</updated>
+    <id>http://icps0610.github.io/blog/2018/04/21/vba-excel-csv-and-use-ruby-read</id>
+    <content type="html"><![CDATA[<h3>excel vba => Unicode => Icov => utf-8</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>#excel vba
+</span><span class='line'>Dim i As Integer
+</span><span class='line'>Dim WS_Count As Integer
+</span><span class='line'>
+</span><span class='line'>file = "z:\workbook.xlsx"
+</span><span class='line'>csv = "z:\workbook.csv"
+</span><span class='line'>  
+</span><span class='line'>WS_Count = ActiveWorkbook.Worksheets.Count
+</span><span class='line'>For i = 1 To WS_Count
+</span><span class='line'>Dim ws As Worksheet
+</span><span class='line'>
+</span><span class='line'>Set ws = ThisWorkbook.Worksheets(i)
+</span><span class='line'>    ws.Copy
+</span><span class='line'>    ActiveWorkbook.SaveAs Filename:=csv, _
+</span><span class='line'>        FileFormat:=xlUnicodeText
+</span><span class='line'>Next i
+</span><span class='line'>Application.DisplayAlerts = False
+</span><span class='line'>ActiveWorkbook.Close
+</span><span class='line'>Shell ("ruby X:\excel\send.rb")
+</span><span class='line'>
+</span><span class='line'>Do
+</span><span class='line'>    If Dir(file) &lt;&gt; "" Then
+</span><span class='line'>        Exit Do
+</span><span class='line'>    End If
+</span><span class='line'>    DoEvents 'Prevents Excel from being unresponsive
+</span><span class='line'>    Application.Wait Now + TimeValue("0:00:01") 'wait for one second
+</span><span class='line'>Loop
+</span><span class='line'>Workbooks.Open file</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># encoding: utf-8</span>
+</span><span class='line'><span class="nb">require</span> <span class="s2">&quot;net/ssh&quot;</span>
+</span><span class='line'><span class="no">Net</span><span class="o">::</span><span class="no">SSH</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">user</span><span class="p">,</span> <span class="ss">:password</span> <span class="o">=&gt;</span> <span class="n">passwd</span> <span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">ssh</span><span class="o">|</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="n">ssh</span><span class="o">.</span><span class="n">exec!</span> <span class="s2">&quot;ruby excel.rb&quot;</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;csv&#39;</span>
+</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;iconv&#39;</span>
+</span><span class='line'><span class="n">file_path</span> <span class="o">=</span> <span class="s2">&quot;/tmp/workbook.csv&quot;</span>
+</span><span class='line'><span class="n">f</span> <span class="o">=</span> <span class="no">IO</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+</span><span class='line'><span class="no">Iconv</span><span class="o">.</span><span class="n">iconv</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">,</span> <span class="s1">&#39;unicode&#39;</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span><span class="o">.</span><span class="n">join</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\r\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[LC_ALL_cannot_change_locale]]></title>
+    <link href="http://icps0610.github.io/blog/2018/04/19/lc-all-cannot-change-locale/"/>
+    <updated>2018-04-19T20:23:27+08:00</updated>
+    <id>http://icps0610.github.io/blog/2018/04/19/lc-all-cannot-change-locale</id>
+    <content type="html"><![CDATA[<p>export LANGUAGE=en_US.UTF-8
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+locale-gen en_US.UTF-8
+dpkg-reconfigure locales</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Net-ssh]]></title>
+    <link href="http://icps0610.github.io/blog/2018/04/19/net-ssh/"/>
+    <updated>2018-04-19T20:15:35+08:00</updated>
+    <id>http://icps0610.github.io/blog/2018/04/19/net-ssh</id>
+    <content type="html"><![CDATA[<p><code>Net::SSH::Authentication::AgentError: could not get identity count</code></p>
+
+<p><code>eval "$(ssh-agent)";</code></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Holiday]]></title>
@@ -669,104 +792,6 @@ export LC_ALL=en_US.UTF-8</p>
 
 <p><code>rails console production 出現 uninitialized constant</code>
 <code>spring stop</code></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Firt_user_admin]]></title>
-    <link href="http://icps0610.github.io/blog/2017/10/25/firt-user-admin/"/>
-    <updated>2017-10-25T23:49:19+08:00</updated>
-    <id>http://icps0610.github.io/blog/2017/10/25/firt-user-admin</id>
-    <content type="html"><![CDATA[<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>#models/user.rb
-</span><span class='line'>class User &lt; ApplicationRecord
-</span><span class='line'>  after_create :set_admin
-</span><span class='line'>
-</span><span class='line'>  private
-</span><span class='line'>
-</span><span class='line'>  def set_admin
-</span><span class='line'>   if User.count == 1
-</span><span class='line'>     User.first.update_attribute(:power,3)
-</span><span class='line'>   else
-</span><span class='line'>     return true
-</span><span class='line'>   end
-</span><span class='line'>
-</span><span class='line'>  end
-</span><span class='line'>end</span></code></pre></td></tr></table></div></figure>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Execute_sql]]></title>
-    <link href="http://icps0610.github.io/blog/2017/10/25/execute-sql/"/>
-    <updated>2017-10-25T21:51:05+08:00</updated>
-    <id>http://icps0610.github.io/blog/2017/10/25/execute-sql</id>
-    <content type="html"><![CDATA[<blockquote><blockquote><p>ref <a href="https://stackoverflow.com/questions/15408285/rails-3-execute-custom-sql-query-without-a-model">https://stackoverflow.com/questions/15408285/rails-3-execute-custom-sql-query-without-a-model</a></p></blockquote></blockquote>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="o">.</span><span class="n">establish_connection</span><span class="p">({</span><span class="ss">adapter</span><span class="p">:</span> <span class="s1">&#39;mysql2&#39;</span><span class="p">,</span> <span class="ss">encoding</span><span class="p">:</span> <span class="s1">&#39;utf8&#39;</span><span class="p">,</span> <span class="ss">database</span><span class="p">:</span> <span class="no">DB</span><span class="p">,</span> <span class="ss">username</span><span class="p">:</span> <span class="no">USER</span><span class="p">,</span><span class="ss">password</span><span class="p">:</span> <span class="no">PASSWD</span><span class="p">})</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">sql</span> <span class="o">=</span> <span class="s2">&quot;SELECT * from users&quot;</span>
-</span><span class='line'><span class="vi">@result</span> <span class="o">=</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sql</span><span class="p">);</span>
-</span><span class='line'><span class="vi">@result</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">r</span><span class="o">|</span>
-</span><span class='line'>   <span class="nb">puts</span> <span class="n">r</span><span class="o">[</span><span class="s2">&quot;name&quot;</span><span class="o">]</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Argv]]></title>
-    <link href="http://icps0610.github.io/blog/2017/10/23/argv/"/>
-    <updated>2017-10-23T00:57:04+08:00</updated>
-    <id>http://icps0610.github.io/blog/2017/10/23/argv</id>
-    <content type="html"><![CDATA[<blockquote><blockquote><p>ref <a href="https://mgleon08.github.io/blog/2016/08/30/optionparser/">https://mgleon08.github.io/blog/2016/08/30/optionparser/</a></p></blockquote></blockquote>
-
-<pre><code class="ruby">require 'optparse'
-class Help
-  def initialize(arguments)
-    @arguments = arguments
-    @arguments = ["-h"] if @arguments == []
-    parse_options
-  end
-
-  def parse_options
-    options = OptionParser.new
-    options.banner = 'Usage: Backup &amp; Restore [options]'
-    options.separator ''
-    options.separator 'options:'
-    options.on('-r', '--backup', 'backup') { backup }
-    options.on('-r', '--restroe', 'restroe') { restroe }
-
-    options.on('-h', '--help', 'Show this message') { puts(options); exit }
-    options.parse!(@arguments)
-  end
- end
-</code></pre>
 ]]></content>
   </entry>
   
