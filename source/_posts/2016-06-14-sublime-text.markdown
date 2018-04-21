@@ -62,3 +62,5 @@ Emmt   #settings
 </code></pre>
 
 pythonpep8autoformat 
+
+SublimeLinter-ruby
