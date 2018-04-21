@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-04-22T01:14:46+08:00</updated>
+  <updated>2018-04-22T01:20:21+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Vba_excel_csv_and_use_ruby_read]]></title>
+    <title type="html"><![CDATA[Read_csv_encoding]]></title>
     <link href="http://icps0610.github.io/blog/2018/04/21/vba-excel-csv-and-use-ruby-read/"/>
     <updated>2018-04-21T19:43:25+08:00</updated>
     <id>http://icps0610.github.io/blog/2018/04/21/vba-excel-csv-and-use-ruby-read</id>
@@ -113,15 +113,17 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[LC_ALL_cannot_change_locale]]></title>
+    <title type="html"><![CDATA[Locale]]></title>
     <link href="http://icps0610.github.io/blog/2018/04/19/lc-all-cannot-change-locale/"/>
     <updated>2018-04-19T20:23:27+08:00</updated>
     <id>http://icps0610.github.io/blog/2018/04/19/lc-all-cannot-change-locale</id>
-    <content type="html"><![CDATA[<p>export LANGUAGE=en_US.UTF-8
-export LANG=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
-locale-gen en_US.UTF-8
-dpkg-reconfigure locales</p>
+    <content type="html"><![CDATA[<h3>LC_ALL_cannot_change_locale</h3>
+
+<p><code>export LANGUAGE=en_US.UTF-8</code>
+<code>export LANG=en_US.UTF-8</code>
+<code>export LC_ALL=en_US.UTF-8</code>
+<code>locale-gen en_US.UTF-8</code>
+<code>dpkg-reconfigure locales</code></p>
 ]]></content>
   </entry>
   
