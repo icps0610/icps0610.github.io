@@ -6,9 +6,9 @@ comments: true
 categories: ruby
 ---
 
-excel vba => Unicode => Icov => utf-8
+### excel vba => Unicode => Icov => utf-8
 
-``` vba
+``` 
 #excel vba
 Dim i As Integer
 Dim WS_Count As Integer
