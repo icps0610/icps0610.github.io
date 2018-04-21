@@ -9,37 +9,14 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="excel vba => Unicode => Icov => utf-8 1
+  <meta name="description" content="1
 2
 3
 4
 5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-#excel vba
-Dim i As Integer
-Dim &hellip;">
+# /etc/apt/sources.list
+# Uncomment line below then 'apt-get update' to enable 'apt-get source'
+deb ftp://ftp.yzu.edu.tw/Linux/raspbian/ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -98,6 +75,71 @@ Dim &hellip;">
       <div class="blog-index">
   
 
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2018/04/22/raspberry-pi-3-plus/">Raspberry_pi_3_plus</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2018-04-22T01:21:33+08:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>22</span><span class='date-suffix'>nd</span>, <span class='date-year'>2018</span></span> <span class='time'>1:21 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'># /etc/apt/sources.list
+</span><span class='line'># Uncomment line below then 'apt-get update' to enable 'apt-get source'
+</span><span class='line'>deb ftp://ftp.yzu.edu.tw/Linux/raspbian/raspbian/ wheezy main contrib non-free rpi
+</span><span class='line'>deb http://raspbian.raspberrypi.org/raspbian/ stretch main contrib non-free rpi
+</span><span class='line'>deb-src http://raspbian.raspberrypi.org/raspbian/ stretch main contrib non-free rp</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>LC_ALL_cannot_change_locale</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>`export LANGUAGE=en_US.UTF-8`
+</span><span class='line'>`export LANG=en_US.UTF-8`
+</span><span class='line'>`export LC_ALL=en_US.UTF-8`
+</span><span class='line'>`locale-gen en_US.UTF-8`
+</span><span class='line'>`dpkg-reconfigure locales`</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>#</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>`apt-get install ruby-dev libsqlite3-dev minicom`
+</span><span class='line'>`gem install sinatra`
+</span><span class='line'>`gem install bundle`
+</span><span class='line'>`bundle install`</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
+  
   
     <article>
       
@@ -407,146 +449,6 @@ Dim &hellip;">
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2018/04/04/excel/">Excel</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2018-04-04T16:39:18+08:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>4:39 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3>xlsxwriter</h3>
-
-<h4>write</h4>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="c">#!/usr/bin/env python3</span>
-</span><span class='line'><span class="c"># -*- coding:utf-8 -*-</span>
-</span><span class='line'><span class="kn">import</span> <span class="nn">xlsxwriter</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">def</span> <span class="nf">cell</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-</span><span class='line'>    <span class="k">return</span> <span class="s">&#39;</span><span class="si">%s%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span> <span class="nb">chr</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="mi">65</span><span class="p">),</span> <span class="n">y</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">workbook</span> <span class="o">=</span> <span class="n">xlsxwriter</span><span class="o">.</span><span class="n">Workbook</span><span class="p">(</span><span class="s">&#39;/tmp/text.xlsx&#39;</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">worksheet</span> <span class="o">=</span> <span class="n">workbook</span><span class="o">.</span><span class="n">add_worksheet</span><span class="p">()</span>
-</span><span class='line'><span class="n">worksheet</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s">&#39;headings&#39;</span><span class="p">)</span>
-</span><span class='line'><span class="n">worksheet</span><span class="o">.</span><span class="n">write_url</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s">&#39;http://www.python.org/&#39;</span><span class="p">,</span> <span class="n">tip</span><span class="o">=</span><span class="s">&#39;Click here&#39;</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">cell_format</span> <span class="o">=</span>  <span class="n">workbook</span><span class="o">.</span><span class="n">add_format</span><span class="p">()</span>
-</span><span class='line'><span class="n">cell_format</span><span class="o">.</span><span class="n">set_num_format</span><span class="p">(</span><span class="s">&#39;0.00%&#39;</span><span class="p">)</span>
-</span><span class='line'><span class="n">worksheet</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.87</span><span class="p">,</span> <span class="n">cell_format</span><span class="p">)</span>
-</span><span class='line'><span class="n">workbook</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>#</h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">wb</span> <span class="o">=</span> <span class="n">load_workbook</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">filename</span><span class="p">)</span>
-</span><span class='line'><span class="n">sheets</span> <span class="o">=</span> <span class="n">wb</span><span class="o">.</span><span class="n">sheetnames</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-</span><span class='line'><span class="n">ws</span> <span class="o">=</span> <span class="n">wb</span><span class="p">[</span><span class="n">sheets</span><span class="p">]</span>
-</span><span class='line'><span class="n">rows</span> <span class="o">=</span> <span class="n">ws</span><span class="o">.</span><span class="n">rows</span>
-</span><span class='line'><span class="n">columns</span> <span class="o">=</span> <span class="n">ws</span><span class="o">.</span><span class="n">columns</span>
-</span><span class='line'><span class="n">channel</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span class='line'><span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">:</span>
-</span><span class='line'>    <span class="n">line</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span><span class="o">.</span><span class="n">value</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">row</span><span class="p">]</span>
-</span><span class='line'>    <span class="n">channel</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
-</span><span class='line'>        <span class="s">&#39;name&#39;</span>                         <span class="p">:</span> <span class="n">line</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
-</span><span class='line'>        <span class="s">&#39;monthly_sub_growth_percentage&#39;</span><span class="p">:</span> <span class="n">line</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
-</span><span class='line'>        <span class="s">&#39;monthly_sub_growth&#39;</span>           <span class="p">:</span> <span class="n">line</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
-</span><span class='line'>        <span class="s">&#39;subscribers&#39;</span>                  <span class="p">:</span> <span class="n">line</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span>
-</span><span class='line'>        <span class="s">&#39;views_average&#39;</span>                <span class="p">:</span> <span class="n">line</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span>
-</span><span class='line'>        <span class="s">&#39;video_count&#39;</span>                  <span class="p">:</span> <span class="n">line</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span>
-</span><span class='line'>        <span class="s">&#39;monthly_video_count&#39;</span>          <span class="p">:</span> <span class="n">line</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span>
-</span><span class='line'>    <span class="p">})</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>xlwt</h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="c">#!/usr/bin/env python3</span>
-</span><span class='line'><span class="c"># -*- coding:utf-8 -*-</span>
-</span><span class='line'><span class="kn">import</span> <span class="nn">xlrd</span><span class="o">,</span> <span class="nn">xlwt</span>
-</span><span class='line'><span class="n">wb</span> <span class="o">=</span> <span class="n">xlwt</span><span class="o">.</span><span class="n">Workbook</span><span class="p">(</span><span class="n">style_compression</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-</span><span class='line'><span class="c"># style_compression=2 解決styple太多造成錯誤</span>
-</span><span class='line'><span class="n">ex</span> <span class="o">=</span> <span class="n">wb</span><span class="o">.</span><span class="n">add_sheet</span><span class="p">(</span><span class="s">&#39;rank_u2&#39;</span><span class="p">)</span>
-</span><span class='line'><span class="n">ex</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">60</span><span class="o">*</span><span class="mi">260</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">style</span> <span class="o">=</span> <span class="n">xlwt</span><span class="o">.</span><span class="n">Formula</span><span class="p">(</span><span class="s">&#39;HYPERLINK(&quot;{}&quot;;&quot;{}&quot;)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">link</span><span class="p">,</span> <span class="n">name</span><span class="p">))</span>
-</span><span class='line'><span class="n">ex</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">style</span><span class="p">)</span>
-</span><span class='line'><span class="c">#做連結</span>
-</span><span class='line'><span class="n">ex</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">gp</span><span class="p">,</span> <span class="n">xlwt</span><span class="o">.</span><span class="n">easyxf</span><span class="p">(</span><span class="n">num_format_str</span><span class="o">=</span><span class="s">&#39;0.00%&#39;</span><span class="p">))</span>
-</span><span class='line'><span class="c">#格式化</span>
-</span><span class='line'><span class="n">wb</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s">&quot;test.xls&quot;</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
     <a href="/blog/archives">Blog Archives</a>
@@ -560,7 +462,7 @@ Dim &hellip;">
     <ul id="categories">
        <li class='category'><a href='/blog/categories/app/'>app (28)</a></li>
 <li class='category'><a href='/blog/categories/bat/'>bat (9)</a></li>
-<li class='category'><a href='/blog/categories/linux/'>linux (24)</a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (25)</a></li>
 <li class='category'><a href='/blog/categories/notepad/'>notepad (1)</a></li>
 <li class='category'><a href='/blog/categories/python/'>python (10)</a></li>
 <li class='category'><a href='/blog/categories/ror/'>ror (23)</a></li>
@@ -571,6 +473,10 @@ Dim &hellip;">
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2018/04/22/raspberry-pi-3-plus/">Raspberry_pi_3_plus</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2018/04/21/vba-excel-csv-and-use-ruby-read/">Read_csv_encoding</a>
@@ -586,10 +492,6 @@ Dim &hellip;">
     
       <li class="post">
         <a href="/blog/2018/04/11/holiday/">Holiday</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2018/04/04/excel/">Excel</a>
       </li>
     
   </ul>

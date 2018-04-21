@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://icps0610.github.io/blog/2018/04/22/raspberry-pi-3-plus/</loc>
+<lastmod>2018-04-22T01:21:33+08:00</lastmod>
+</url>
+<url>
 <loc>http://icps0610.github.io/blog/2018/04/21/vba-excel-csv-and-use-ruby-read/</loc>
 <lastmod>2018-04-21T19:43:25+08:00</lastmod>
 </url>

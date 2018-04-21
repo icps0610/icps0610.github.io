@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-04-22T01:20:21+08:00</updated>
+  <updated>2018-04-22T01:28:13+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,37 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Raspberry_pi_3_plus]]></title>
+    <link href="http://icps0610.github.io/blog/2018/04/22/raspberry-pi-3-plus/"/>
+    <updated>2018-04-22T01:21:33+08:00</updated>
+    <id>http://icps0610.github.io/blog/2018/04/22/raspberry-pi-3-plus</id>
+    <content type="html"><![CDATA[<pre><code># /etc/apt/sources.list
+# Uncomment line below then 'apt-get update' to enable 'apt-get source'
+deb ftp://ftp.yzu.edu.tw/Linux/raspbian/raspbian/ wheezy main contrib non-free rpi
+deb http://raspbian.raspberrypi.org/raspbian/ stretch main contrib non-free rpi
+deb-src http://raspbian.raspberrypi.org/raspbian/ stretch main contrib non-free rp
+</code></pre>
+
+<h3>LC_ALL_cannot_change_locale</h3>
+
+<pre><code>`export LANGUAGE=en_US.UTF-8`
+`export LANG=en_US.UTF-8`
+`export LC_ALL=en_US.UTF-8`
+`locale-gen en_US.UTF-8`
+`dpkg-reconfigure locales`
+</code></pre>
+
+<h2>#</h2>
+
+<pre><code>`apt-get install ruby-dev libsqlite3-dev minicom`
+`gem install sinatra`
+`gem install bundle`
+`bundle install`
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Locale]]></title>
@@ -74,19 +105,6 @@ dkms remove rtl8192eu/1.0 --all
 
 `https://icps0610.github.io/blog/2018/03/21/wifi-ap/`
 </code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Invalid_byte]]></title>
-    <link href="http://icps0610.github.io/blog/2017/12/17/invalid-byte/"/>
-    <updated>2017-12-17T21:50:31+08:00</updated>
-    <id>http://icps0610.github.io/blog/2017/12/17/invalid-byte</id>
-    <content type="html"><![CDATA[<p>invalid byte</p>
-
-<p>export LANG=en_US.UTF-8
-export LANGUAGE=en_US.UTF-8
-export LC_ALL=en_US.UTF-8</p>
 ]]></content>
   </entry>
   

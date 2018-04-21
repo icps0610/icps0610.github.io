@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-04-22T01:20:21+08:00</updated>
+  <updated>2018-04-22T01:28:13+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,51 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Raspberry_pi_3_plus]]></title>
+    <link href="http://icps0610.github.io/blog/2018/04/22/raspberry-pi-3-plus/"/>
+    <updated>2018-04-22T01:21:33+08:00</updated>
+    <id>http://icps0610.github.io/blog/2018/04/22/raspberry-pi-3-plus</id>
+    <content type="html"><![CDATA[<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'># /etc/apt/sources.list
+</span><span class='line'># Uncomment line below then 'apt-get update' to enable 'apt-get source'
+</span><span class='line'>deb ftp://ftp.yzu.edu.tw/Linux/raspbian/raspbian/ wheezy main contrib non-free rpi
+</span><span class='line'>deb http://raspbian.raspberrypi.org/raspbian/ stretch main contrib non-free rpi
+</span><span class='line'>deb-src http://raspbian.raspberrypi.org/raspbian/ stretch main contrib non-free rp</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>LC_ALL_cannot_change_locale</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>`export LANGUAGE=en_US.UTF-8`
+</span><span class='line'>`export LANG=en_US.UTF-8`
+</span><span class='line'>`export LC_ALL=en_US.UTF-8`
+</span><span class='line'>`locale-gen en_US.UTF-8`
+</span><span class='line'>`dpkg-reconfigure locales`</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>#</h2>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>`apt-get install ruby-dev libsqlite3-dev minicom`
+</span><span class='line'>`gem install sinatra`
+</span><span class='line'>`gem install bundle`
+</span><span class='line'>`bundle install`</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Read_csv_encoding]]></title>
@@ -776,24 +821,6 @@ export LC_ALL=en_US.UTF-8</p>
 </span><span class='line'><span class="k">print</span><span class="p">(</span> <span class="n">listmap</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span> <span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Production]]></title>
-    <link href="http://icps0610.github.io/blog/2017/10/25/production/"/>
-    <updated>2017-10-25T23:51:28+08:00</updated>
-    <id>http://icps0610.github.io/blog/2017/10/25/production</id>
-    <content type="html"><![CDATA[<p><code>rake secret</code> => config/secrets.yml</p>
-
-<h6>不能使用tab要用space</h6>
-
-<p><code>rake db:create db:migrate RAILS_ENV=production</code>
-<code>rake assets:precompile RAILS_ENV=production</code>
-<code>rails s -e production -p 80</code></p>
-
-<p><code>rails console production 出現 uninitialized constant</code>
-<code>spring stop</code></p>
 ]]></content>
   </entry>
   
