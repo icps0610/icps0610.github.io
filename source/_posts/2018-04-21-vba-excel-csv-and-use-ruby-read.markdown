@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "vba_excel_csv_and_use_ruby_read"
+title: "read_csv_encoding"
 date: 2018-04-21 19:43:25 +0800
 comments: true
 categories: ruby
