@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-04-22T01:31:33+08:00</updated>
+  <updated>2018-04-22T02:08:35+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -51,10 +51,10 @@ deb-src http://raspbian.raspberrypi.org/raspbian/ stretch main contrib non-free 
     <id>http://icps0610.github.io/blog/2018/04/19/lc-all-cannot-change-locale</id>
     <content type="html"><![CDATA[<h3>LC_ALL_cannot_change_locale</h3>
 
-<p><code>export LANGUAGE=en_US.UTF-8</code>
-<code>export LANG=en_US.UTF-8</code>
-<code>export LC_ALL=en_US.UTF-8</code>
-<code>locale-gen en_US.UTF-8</code>
+<p><code>export LANGUAGE=en_US.UTF-8</code><br/>
+<code>export LANG=en_US.UTF-8</code><br/>
+<code>export LC_ALL=en_US.UTF-8</code><br/>
+<code>locale-gen en_US.UTF-8</code><br/>
 <code>dpkg-reconfigure locales</code></p>
 ]]></content>
   </entry>
