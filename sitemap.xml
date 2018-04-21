@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://icps0610.github.io/blog/2018/04/21/vba-excel-csv-and-use-ruby-read/</loc>
+<lastmod>2018-04-21T19:43:25+08:00</lastmod>
+</url>
+<url>
+<loc>http://icps0610.github.io/blog/2018/04/19/lc-all-cannot-change-locale/</loc>
+<lastmod>2018-04-19T20:23:27+08:00</lastmod>
+</url>
+<url>
+<loc>http://icps0610.github.io/blog/2018/04/19/net-ssh/</loc>
+<lastmod>2018-04-19T20:15:35+08:00</lastmod>
+</url>
+<url>
 <loc>http://icps0610.github.io/blog/2018/04/11/holiday/</loc>
 <lastmod>2018-04-11T23:58:57+08:00</lastmod>
 </url>
