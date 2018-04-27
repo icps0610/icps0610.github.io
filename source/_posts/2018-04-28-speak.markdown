@@ -1,0 +1,20 @@
+---
+layout: post
+title: "speak"
+date: 2018-04-28 01:13:04 +0800
+comments: true
+categories: ror
+---
+<button type="button" onclick="click()">Click</button>
+<script>
+    function click(){
+    var msg = new SpeechSynthesisUtterance('你是豬豬人');
+     msg.lang='zh';
+     msg.voice = speechSynthesis.getVoices().filter(function(voice) { 
+    return voice.name == 'Whisper'; }
+    )[0]; 
+
+    speechSynthesis.speak(msg);
+}
+
+</script>
