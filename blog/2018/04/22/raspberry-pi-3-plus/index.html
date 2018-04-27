@@ -125,10 +125,20 @@ deb ftp://ftp.yzu.edu.tw/Linux/raspbian/ &hellip;">
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>`apt-get install ruby-dev libsqlite3-dev minicom`
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>`apt-get install ruby-dev libsqlite3-dev minicom fuse ntfs-3g`
+</span><span class='line'># fix mount usb =&gt; read only
+</span><span class='line'># ==&gt; fuse ntfs-3g
+</span><span class='line'>
 </span><span class='line'>`gem install sinatra`
 </span><span class='line'>`gem install bundle`
-</span><span class='line'>`bundle install`</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'>`bundle install`
+</span><span class='line'>eval "$(ssh-agent)";</span></code></pre></td></tr></table></div></figure>
+
+
 
 </div>
 
@@ -169,6 +179,8 @@ deb ftp://ftp.yzu.edu.tw/Linux/raspbian/ &hellip;">
         <a class="basic-alignment left" href="/blog/2018/04/21/vba-excel-csv-and-use-ruby-read/" title="Previous Post: read_csv_encoding">&laquo; read_csv_encoding</a>
       
       
+        <a class="basic-alignment right" href="/blog/2018/04/25/ssh-server/" title="Next Post: ssh_server">ssh_server &raquo;</a>
+      
     </p>
   </footer>
 </article>
@@ -180,7 +192,7 @@ deb ftp://ftp.yzu.edu.tw/Linux/raspbian/ &hellip;">
     <section>
   <h1>Categories</h1>
     <ul id="categories">
-       <li class='category'><a href='/blog/categories/app/'>app (28)</a></li>
+       <li class='category'><a href='/blog/categories/app/'>app (29)</a></li>
 <li class='category'><a href='/blog/categories/bat/'>bat (9)</a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (25)</a></li>
 <li class='category'><a href='/blog/categories/notepad/'>notepad (1)</a></li>
@@ -193,6 +205,10 @@ deb ftp://ftp.yzu.edu.tw/Linux/raspbian/ &hellip;">
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2018/04/25/ssh-server/">Ssh_server</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2018/04/22/raspberry-pi-3-plus/">Raspberry_pi_3_plus</a>
@@ -208,10 +224,6 @@ deb ftp://ftp.yzu.edu.tw/Linux/raspbian/ &hellip;">
     
       <li class="post">
         <a href="/blog/2018/04/19/net-ssh/">Net-ssh</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2018/04/11/holiday/">Holiday</a>
       </li>
     
   </ul>
