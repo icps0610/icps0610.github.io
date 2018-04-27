@@ -9,9 +9,7 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="https://github.com/krishnasrinivas/wetty
-https://github.com/paradoxxxzero/butterfly
-">
+  <meta name="description" content="Click ">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -70,6 +68,49 @@ https://github.com/paradoxxxzero/butterfly
       <div class="blog-index">
   
 
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2018/04/28/speak/">Speak</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2018-04-28T01:13:04+08:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>1:13 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><button type="button" onclick="click()">Click</button></p>
+
+<script>
+    function click(){
+    var msg = new SpeechSynthesisUtterance('你是豬豬人');
+     msg.lang='zh';
+     msg.voice = speechSynthesis.getVoices().filter(function(voice) { 
+    return voice.name == 'Whisper'; }
+    )[0]; 
+
+    speechSynthesis.speak(msg);
+}
+
+</script>
+
+</div>
+  
+  
+
+
+    </article>
+  
   
     <article>
       
@@ -329,37 +370,6 @@ https://github.com/paradoxxxzero/butterfly
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2018/04/19/net-ssh/">Net-ssh</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2018-04-19T20:15:35+08:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>19</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>8:15 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><code>Net::SSH::Authentication::AgentError: could not get identity count</code></p>
-
-<p><code>eval "$(ssh-agent)";</code></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
     <a href="/blog/archives">Blog Archives</a>
@@ -376,7 +386,7 @@ https://github.com/paradoxxxzero/butterfly
 <li class='category'><a href='/blog/categories/linux/'>linux (25)</a></li>
 <li class='category'><a href='/blog/categories/notepad/'>notepad (1)</a></li>
 <li class='category'><a href='/blog/categories/python/'>python (10)</a></li>
-<li class='category'><a href='/blog/categories/ror/'>ror (23)</a></li>
+<li class='category'><a href='/blog/categories/ror/'>ror (24)</a></li>
 <li class='category'><a href='/blog/categories/ruby/'>ruby (42)</a></li>
 
     </ul>
@@ -384,6 +394,10 @@ https://github.com/paradoxxxzero/butterfly
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2018/04/28/speak/">Speak</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2018/04/25/ssh-server/">Ssh_server</a>
@@ -399,10 +413,6 @@ https://github.com/paradoxxxzero/butterfly
     
       <li class="post">
         <a href="/blog/2018/04/19/lc-all-cannot-change-locale/">Locale</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2018/04/19/net-ssh/">Net-ssh</a>
       </li>
     
   </ul>

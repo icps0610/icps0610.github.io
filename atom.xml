@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-04-27T22:23:40+08:00</updated>
+  <updated>2018-04-28T01:14:09+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,29 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Speak]]></title>
+    <link href="http://icps0610.github.io/blog/2018/04/28/speak/"/>
+    <updated>2018-04-28T01:13:04+08:00</updated>
+    <id>http://icps0610.github.io/blog/2018/04/28/speak</id>
+    <content type="html"><![CDATA[<p><button type="button" onclick="click()">Click</button></p>
+
+<script>
+    function click(){
+    var msg = new SpeechSynthesisUtterance('你是豬豬人');
+     msg.lang='zh';
+     msg.voice = speechSynthesis.getVoices().filter(function(voice) { 
+    return voice.name == 'Whisper'; }
+    )[0]; 
+
+    speechSynthesis.speak(msg);
+}
+
+</script>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Ssh_server]]></title>
@@ -771,34 +794,6 @@ export LC_ALL=en_US.UTF-8</p>
 </span><span class='line'><span class="n">array</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">chain</span><span class="p">(</span><span class="o">*</span><span class="n">a</span><span class="p">))</span>
 </span><span class='line'>
 </span><span class='line'><span class="k">print</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Unix_time]]></title>
-    <link href="http://icps0610.github.io/blog/2017/11/19/unix-time/"/>
-    <updated>2017-11-19T21:05:36+08:00</updated>
-    <id>http://icps0610.github.io/blog/2017/11/19/unix-time</id>
-    <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">time</span>
-</span><span class='line'><span class="kn">import</span> <span class="nn">datetime</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">u</span> <span class="o">=</span> <span class="s">&quot;1284101485&quot;</span>
-</span><span class='line'><span class="n">s</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span> <span class="nb">int</span><span class="p">(</span><span class="n">u</span><span class="p">))</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">&#39;%Y-%m-</span><span class="si">%d</span><span class="s"> %H:%M:%S&#39;</span><span class="p">)</span>
-</span><span class='line'><span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">u</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">mktime</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="s">&#39;%Y-%m-</span><span class="si">%d</span><span class="s"> %H:%M:%S&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">timetuple</span><span class="p">())</span>
-</span><span class='line'><span class="k">print</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure>
 
 ]]></content>
