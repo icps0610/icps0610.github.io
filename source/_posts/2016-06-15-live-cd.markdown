@@ -9,115 +9,129 @@ categories: ruby
 #!/usr/bin/env ruby
 # encoding: utf-8
 `apt-get install squashfs-tools` if `dpkg-query -W | grep squashfs-tools` == ""
- 
+
 class Live
- 
-  def initialize
-    iso_list
-    puts "1.解壓縮#{@iso_name}.#{@iso_name_ext}的filesystem.squashfs 到 #{@filesystem}"
-    puts "2.chroot #{@filesystem}"
-    puts "3.將#{@filesystem}壓縮檔案製成光碟/tmp/#{@iso_name}.#{@iso_name_ext}"
-    puts "4.將.\/#{@iso_name} 製作光碟"
-    puts "-------------"
-    choice=gets.chomp
-    if choice == "1"
-      extract
-    elsif choice =="2"
-      mount_system
-    elsif choice =="3"
-      zip_file
-    elsif choice =="4"
-      iso
-    else
-      initialize
+
+    def initialize
+        output_dir     = "/data/tmp"
+        iso_name_ext   = "iso"
+        ext            = ".#{iso_name_ext}"
+        filesystem_ext = "_filesystem"
+        iso_name       = iso_list(iso_name_ext, ext)
+        filesystem     = filesystem_list(filesystem_ext)
+        iso            = "#{iso_name}.#{iso_name_ext}"
+        output_iso     = "#{output_dir}/#{iso}"
+        puts "-------------"
+        puts "1.解壓縮#{iso}的filesystem.squashfs 到 #{filesystem}"
+        puts "2.chroot #{filesystem}"
+        puts "3.將#{filesystem}壓縮檔案製成光碟#{output_iso}"
+        puts "4.將.\/#{iso_name} 製作光碟"
+        print "-------------\n>> "
+        case gets.chomp
+        when "1"
+            extract(iso, iso_name, filesystem)
+        when "2"
+            mount_system(filesystem)
+        when "3"
+            zip_file(iso_name, filesystem, output_iso, output_dir)
+        when "4"
+            make_iso(iso_name, filesystem, output_iso, output_dir)
+        else
+            initialize
+        end
     end
-  end
- 
-  def iso_list
-    @iso_name_ext="iso"
-    list = `ls | grep #{@iso_name_ext}`.split("\n")
-    if list.count > 1
-      puts "請選擇iso"
-      list.each_index do |i|
-        puts "#{i+1}. #{list[i]}"
-      end
-      puts "--------------"
-      choice=gets.chomp
-      if not choice == ""
-        @iso_name=File.basename(list[choice.to_i-1],"."+@iso_name_ext)
-      else
-        iso_list
-      end
-    else
-      @iso_name=File.basename(list[0],"."+@iso_name_ext)
+
+    def list(regx)
+        list = `ls | grep #{regx}`.split("\n")
+        if list.count == 1
+            list[0]
+        else
+            puts "請選擇\n-------------"
+            list.sort!.each_with_index do |l, i|
+                puts "#{i+1}. #{l}"
+            end
+            print ">> "
+            choice = STDIN.gets.chomp.to_i-1
+            if choice <= list.count or choice > 0 
+                list[choice]
+            else
+                list(regx)
+            end
+        end
     end
-    @filesystem="#{@iso_name}_filesystem"
-  end
- 
-  def iso_extract
-    if File.exist?("#{@iso_name}")
-      printf "\n是否移除舊 #{@iso_name}(y/n) : "
-      `umout #{@iso_name} && rm -rf #{@iso_name}` if gets.downcase.chomp == "y"
+
+    def iso_list(iso_name_ext, ext)
+        choice = list(iso_name_ext)
+        iso_name = File.basename(choice, ext)
     end
-    puts "將光碟#{@iso_name}.#{@iso_name_ext}掛載到.\/#{@iso_name}.."
-    system("mkdir #{@iso_name} 2> /dev/null")
-    system("mount -o loop #{@iso_name}.#{@iso_name_ext} #{@iso_name}")
- 
-  end
- 
-  def extract
-    iso_extract
-    puts "解壓縮 filesystem.squashfs 到 #{@filesystem}"
-    if File.exist?("#{@filesystem}")
-      printf "\n是否移除舊  #{@filesystem}(y/n) : "
-      `rm -rf #{@filesystem}` if gets.downcase.chomp == "y"
+
+    def filesystem_list(filesystem_ext)
+        filesystem = list(filesystem_ext)
     end
-    system("mount -o loop -t squashfs #{@iso_name}/casper/filesystem.squashfs /mnt/ ")
-    system("rsync -aAXv /mnt/* #{@filesystem} | pv -ls `find /mnt|wc -l` >/dev/null")
-  end
- 
-  def mount_system
-    puts "開始掛載..."
-    system("umount /mnt/  2>/dev/null")
-    system("mount -o bind /dev/ #{@filesystem}/dev/ 2>/dev/null")
-    system("mount --bind /dev/pts #{@filesystem}/dev/pts 2>/dev/null")
-    system("mount -t proc procfs #{@filesystem}/proc/  2>/dev/null")
-    system("cp /etc/resolv.conf #{@filesystem}/etc/")
-    system("chroot #{@filesystem}/ /bin/bash")
-    system("umount #{@filesystem}/dev/pts")
-    system("umount #{@filesystem}/proc/")
-    system("umount #{@filesystem}/dev/")
-  end
- 
-  def zip_file
-    puts "開始壓縮檔案.."
-    if not File.exist?("/tmp/#{@iso_name}")
-      iso_extract
-      system("rsync -a --exclude 'filesystem.squashfs' #{@iso_name} /tmp/  | pv -les $(df -i #{@iso_name} | perl -ane 'print $F[2] if $F[5] =~ m:^/:') >/dev/null")
+
+
+    def extract(iso, iso_name, filesystem)
+        iso_extract(iso, iso_name)
+        puts "解壓縮 filesystem.squashfs 到 #{filesystem}"
+        if File.exist?(filesystem)
+            printf "\n是否移除舊  #{filesystem}(y/n) : "
+            `rm -rf #{filesystem}` if gets.downcase.chomp == "y"
+        end
+        system("mount -o loop -t squashfs #{iso_name}/casper/filesystem.squashfs /mnt/")
+        cpr("/mnt", filesystem)
     end
-    system("umount #{@filesystem}/dev/pts 2>/dev/null")
-    system("umount #{@filesystem}/proc/ 2>/dev/null")
-    system("umount #{@filesystem}/dev/ 2>/dev/null")
- 
-    system("chroot #{@filesystem} dpkg-query -W --showformat='${Package} ${Version}\n' > /tmp/#{@iso_name}/casper/filesystem.manifest")
-    system("rm /tmp/#{@iso_name}/casper/filesystem.squashfs 2>/dev/null")
-    system("mksquashfs #{@filesystem} /tmp/#{@iso_name}/casper/filesystem.squashfs -comp xz")
-    system("printf $( du -sx --block-size=1 #{@filesystem} | cut -f1) > /tmp/#{@iso_name}/casper/filesystem.size")
-    Dir.chdir("/tmp/#{@iso_name}")
-    system("rm MD5SUMS")
-    system("find -type f -print0 |  xargs -0 md5sum | grep -v isolinux/boot.cat |  tee MD5SUMS")
-    system("mkisofs -input-charset iso8859-1 -r -D -V '/#{@iso_name}-icps' -cache-inodes -J -l -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -graft-point -o /tmp/#{@iso_name}.#{@iso_name_ext} ../#{@iso_name}")
-  end
- 
-  def iso
-    puts "開始打包光碟.."
-    #system("cp setup.rb /tmp/#{@iso_name}")
-    #system("printf $( du -sx --block-size=1 #{@filesystem} | cut -f1) > /tmp/#{@iso_name}/casper/filesystem.size")
-    Dir.chdir("/tmp/#{@iso_name}")
-    #system("rm MD5SUMS")
-    #system("find -type f -print0 |  xargs -0 md5sum | grep -v isolinux/boot.cat |  tee MD5SUMS")
-    system("mkisofs -input-charset iso8859-1 -r -D -V '/#{@iso_name}-icps' -cache-inodes -J -l -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -graft-point -o /tmp/#{@iso_name}.#{@iso_name_ext} ../#{@iso_name}")
-  end
+
+    def iso_extract(iso, iso_name)
+        if File.exist?(iso_name)
+            printf "\n是否移除舊 #{iso_name}(y/n) : "
+            `umout #{iso_name} && rm -rf #{iso_name}` if gets.downcase.chomp == "y"
+        end
+        puts "將光碟#{iso}掛載到.\/#{iso_name}.."
+        system("mkdir #{iso_name} 2> /dev/null")
+        system("mount -o loop #{iso} #{iso_name}")
+    end
+
+    def cpr(source, to)
+        system("rsync -aAXv #{source}/* #{to} | pv -ls `find #{source}|wc -l` >/dev/null")
+    end
+
+    def mount_system(filesystem)
+        puts "開始掛載..."
+        system("umount /mnt/  2>/dev/null")
+        system("mount -o bind /dev/ #{filesystem}/dev/ 2>/dev/null")
+        system("mount --bind /dev/pts #{filesystem}/dev/pts 2>/dev/null")
+        system("mount -t proc procfs #{filesystem}/proc/  2>/dev/null")
+        system("cp /etc/resolv.conf #{filesystem}/etc/")
+        system("chroot #{filesystem}/ /bin/bash")
+        system("umount #{filesystem}/dev/pts")
+        system("umount #{filesystem}/proc/")
+        system("umount #{filesystem}/dev/")
+    end
+
+    def zip_file(iso_name, filesystem, output_iso, output_dir)
+        puts "開始壓縮檔案.."
+        if not File.exist?(output_iso)
+            iso_extract(iso, iso_name)
+            system("rsync -a --exclude 'filesystem.squashfs' #{iso_name} #{output_dir}/  | pv -les $(df -i #{iso_name} | perl -ane 'print $F[2] if $F[5] =~ m:^/:') >/dev/null")
+        end
+        system("umount #{filesystem}/dev/pts 2>/dev/null")
+        system("umount #{filesystem}/proc/ 2>/dev/null")
+        system("umount #{filesystem}/dev/ 2>/dev/null")
+
+        system("chroot #{filesystem} dpkg-query -W --showformat='${Package} ${Version}\n' > #{output_iso}/casper/filesystem.manifest")
+        system("rm #{output_iso}/casper/filesystem.squashfs 2>/dev/null")
+        system("mksquashfs #{filesystem} #{output_iso}/casper/filesystem.squashfs -comp xz")
+        make_iso(iso_name, filesystem, output_iso, output_dir)
+    end
+
+    def make_iso(iso_name, filesystem, output_iso, output_dir)
+        puts "開始打包光碟.."
+        system("printf $( du -sx --block-size=1 #{filesystem} | cut -f1) > #{output_iso}/casper/filesystem.size")
+        Dir.chdir(output_dir)
+        system("rm MD5SUMS")
+        system("find -type f -print0 |  xargs -0 md5sum | grep -v isolinux/boot.cat |  tee MD5SUMS")
+        system("mkisofs -input-charset iso8859-1 -r -D -V '/#{iso_name}-icps' -cache-inodes -J -l -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -graft-point -o #{output_iso} ../#{iso_name}")
+    end
 end
 Live.new
 ```

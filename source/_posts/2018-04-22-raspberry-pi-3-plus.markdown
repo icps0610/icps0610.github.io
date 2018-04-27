@@ -25,8 +25,13 @@ deb-src http://raspbian.raspberrypi.org/raspbian/ stretch main contrib non-free 
 
 ###
 ```
-`apt-get install ruby-dev libsqlite3-dev minicom`
+`apt-get install ruby-dev libsqlite3-dev minicom fuse ntfs-3g`
+# fix mount usb => read only
+# ==> fuse ntfs-3g
+
 `gem install sinatra`
 `gem install bundle`
 `bundle install`
+eval "$(ssh-agent)";
 ```
+

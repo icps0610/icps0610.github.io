@@ -5,14 +5,21 @@ date: 2017-08-31 22:02:42 +0800
 comments: true
 categories: app
 ---
+
+`git clone https://github.com/kalcaddle/KODExplorer.git`  
+`chmod -Rf 777 ./KODExplorer/*`  
+`mv KODExplorer /var/www/html`  
+
+### raspberry pi 3 PLUS
+######apache2
+`apt-get install apache2 php7.0 libapache2-mod-php7.0 php7.0-gd php7.0-curl php7.0-mbstring`  
+
 ### raspberry pi 3 B
 ######apache2
 `apt-get install apache2 php5 libapache2-mod-php5 php5-gd php5-curl`  
 `/etc/init.d/apache2 restart`  
 
-`git clone https://github.com/kalcaddle/KODExplorer.git`  
-`chmod -Rf 777 ./KODExplorer/*`  
-`mv KODExplorer /var/www/html`  
+
 `/etc/apache2/port.conf`  
 ######php
 #########找到php.ini
