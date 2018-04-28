@@ -8,3 +8,7 @@ categories: ruby
 `Net::SSH::Authentication::AgentError: could not get identity count`
 
 `eval "$(ssh-agent)";`
+
+``` ruby
+ENV['SSH_AUTH_SOCK'] = `ssh-agent`.split("\n")[0].scan(/SSH_AUTH_SOCK=(.*); e/).join
+```
