@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-04-28T19:15:30+08:00</updated>
+  <updated>2018-04-28T19:17:49+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -223,6 +223,11 @@
     <content type="html"><![CDATA[<p><code>Net::SSH::Authentication::AgentError: could not get identity count</code></p>
 
 <p><code>eval "$(ssh-agent)";</code></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;SSH_AUTH_SOCK&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="sb">`ssh-agent`</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">scan</span><span class="p">(</span><span class="sr">/SSH_AUTH_SOCK=(.*); e/</span><span class="p">)</span><span class="o">.</span><span class="n">join</span>
+</span></code></pre></td></tr></table></div></figure>
+
 ]]></content>
   </entry>
   

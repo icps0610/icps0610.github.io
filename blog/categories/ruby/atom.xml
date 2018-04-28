@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-04-28T19:15:30+08:00</updated>
+  <updated>2018-04-28T19:17:49+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -74,6 +74,9 @@ Iconv.iconv('utf-8', 'unicode', f).join.split("\r\n")
     <content type="html"><![CDATA[<p><code>Net::SSH::Authentication::AgentError: could not get identity count</code></p>
 
 <p><code>eval "$(ssh-agent)";</code></p>
+
+<pre><code class="ruby">ENV['SSH_AUTH_SOCK'] = `ssh-agent`.split("\n")[0].scan(/SSH_AUTH_SOCK=(.*); e/).join
+</code></pre>
 ]]></content>
   </entry>
   
