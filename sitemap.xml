@@ -473,10 +473,6 @@
 <lastmod>2016-06-17T17:22:48+08:00</lastmod>
 </url>
 <url>
-<loc>http://icps0610.github.io/blog/2016/06/17/unlockpattern/</loc>
-<lastmod>2016-06-17T00:56:20+08:00</lastmod>
-</url>
-<url>
 <loc>http://icps0610.github.io/blog/2016/06/17/carrierwave/</loc>
 <lastmod>2016-06-17T00:31:49+08:00</lastmod>
 </url>
@@ -569,9 +565,6 @@
 <lastmod>2016-06-13T01:27:59+08:00</lastmod>
 </url>
 <url>
-<loc>http://icps0610.github.io/recent/</loc>
-</url>
-<url>
 <loc>http://icps0610.github.io/</loc>
 </url>
 <url>
@@ -579,6 +572,9 @@
 </url>
 <url>
 <loc>http://icps0610.github.io/blog/categories/</loc>
+</url>
+<url>
+<loc>http://icps0610.github.io/recent/</loc>
 </url>
 <url>
 <loc>http://icps0610.github.io/blog/categories/ror/</loc>
