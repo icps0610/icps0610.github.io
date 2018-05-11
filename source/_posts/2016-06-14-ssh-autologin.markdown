@@ -19,31 +19,45 @@ end
 class SSH
 
     def initialize
-        remote_ip, remote_user, remote_passwd = set_remote
         local_ip, local_user = set_local
-        one_n(remote_ip, remote_user, remote_passwd, local_user, local_ip)
-        n_one(remote_ip, remote_user, remote_passwd, local_user, local_ip)
-    end
-
-    def set_remote
-        if ARGV.count == 3
-            return ARGV[0], ARGV[1], ARGV[2]
-        else
-            puts "Remote_ip, Remote_user, Remote_passwd"
-            exit
+        set_remote.each do |remote_ip, remote_user, remote_passwd|
+            one_n(remote_ip, remote_user, remote_passwd, local_user, local_ip)
+            n_one(remote_ip, remote_user, remote_passwd, local_user, local_ip)
         end
     end
 
-    def set_local
-        ENV['SSH_AUTH_SOCK'] = `ssh-agent`.split("\n")[0].scan(/SSH_AUTH_SOCK=(.*); e/).join
-        if not Gem::Platform.local.os == 'linux'
-            local_ip   = "192.168.0.100"
-            local_user = "icps"
+    def one_n(remote_ip, remote_user, remote_passwd, local_user, local_ip)
+        puts "IP列表為SSH主機, 使用者: #{local_user}"
+        hostname = `hostname`.chomp
+        puts "產生ssh key..."
+        ssh_keygen(local_ip)
+        if check_remote(remote_ip)
+            puts ">> #{remote_ip}連線正常"
+            puts "   上傳key到 #{remote_ip}"
+            upload_key(remote_ip, remote_user, remote_passwd, local_ip)
+            puts "   #{remote_ip} 執行指令"
+            one_n_script(remote_ip, remote_user, remote_passwd, local_user, hostname)
+            `sed -i '/HOST #{remote_ip}/,+1d' ~/.ssh/config 2>/dev/null`
+            `echo HOST #{remote_ip} >> #{ENV['HOME']}/.ssh/config`
+            `echo IdentityFile #{ENV['HOME']}/.ssh/#{local_ip} >> #{ENV['HOME']}/.ssh/config`
+            puts "   >> #{remote_user}@#{remote_ip}"
         else
-            local_ip = `ifconfig | grep Bcast | cut -d :  -f 2 | cut -d " " -f 1`.split("\n").first
-            local_user = ENV['USER']
+            puts ">> #{remote_ip} 沒有回應"
         end
-        return local_ip, local_user
+    end
+
+    def upload_key(remote_ip, remote_user, remote_passwd, local_ip)
+        Net::SCP.upload!(remote_ip, remote_user, "#{ENV['HOME']}/.ssh/#{local_ip}.pub", "id_rsa.pub",  :ssh => { :password => remote_passwd })
+    end
+
+    def one_n_script(remote_ip, remote_user, remote_passwd, local_user, hostname)
+        Net::SSH.start(remote_ip, remote_user, :password => remote_passwd ) do |ssh|
+            ssh.exec!("mkdir ~/.ssh")
+            ssh.exec!("sed -i /#{local_user}@#{hostname}/d ~/.ssh/authorized_keys")
+            ssh.exec!("cat id_rsa.pub >> ~/.ssh/authorized_keys")
+            ssh.exec!("chmod 700 ~/.ssh")
+            ssh.exec!("chmod 400 ~/.ssh/authorized_keys")
+        end
     end
 
     def n_one(remote_ip, remote_user, remote_passwd, local_user, local_ip)
@@ -60,7 +74,6 @@ class SSH
             puts "   #{remote_ip}下載ssh key"
             download_key(remote_ip, remote_user, remote_passwd, home, local_ip)
             `mkdir ~/.ssh 2> /dev/null`
-            `chmod go-w ~`
             `chmod 700 ~/.ssh`
             `chmod 600 ~/.ssh/authorized_keys`
             `sed -i /#{remote_user}@#{@hostname}/d ~/.ssh/authorized_keys`
@@ -91,46 +104,38 @@ class SSH
         end
     end
 
-    def one_n(remote_ip, remote_user, remote_passwd, local_user, local_ip)
-        puts "IP列表為SSH主機, 使用者: #{local_user}"
-        hostname = `hostname`.chomp
-        puts "產生ssh key..."
-        ssh_keygen(local_ip)
-        if check_remote(remote_ip)
-            puts ">> #{remote_ip}連線正常"
-            puts "   上傳key到 #{remote_ip}"
-            upload_key(remote_ip, remote_user, remote_passwd, local_ip)
-            puts "   #{remote_ip} 執行指令"
-            one_n_script(remote_ip, remote_user, remote_passwd, local_user)
-            `sed -i '/HOST #{remote_ip}/,+1d' ~/.ssh/config 2>/dev/null`
-            `echo HOST #{remote_ip} >> #{ENV['HOME']}/.ssh/config`
-            `echo IdentityFile #{ENV['HOME']}/.ssh/#{local_ip} >> #{ENV['HOME']}/.ssh/config`
-            puts "   >> #{remote_user}@#{remote_ip}"
+    def set_remote
+        if ARGV.count == 3
+            return ARGV[0], ARGV[1], ARGV[2]
+        elsif ARGV[0] == "group"
+            [[ "192.168.0.210", "root", "341031" ],
+             [            "pi", "root", "341031" ]
+             ]
         else
-            puts ">> #{remote_ip} 沒有回應"
+            puts "Remote_ip, Remote_user, Remote_passwd"
+            exit
         end
     end
 
-    def upload_key(remote_ip, remote_user, remote_passwd, local_ip)
-        Net::SCP.upload!(remote_ip, remote_user, "#{ENV['HOME']}/.ssh/#{local_ip}.pub", "id_rsa.pub",  :ssh => { :password => remote_passwd })
+    def set_local
+        ENV['SSH_AUTH_SOCK'] = `ssh-agent`.split("\n")[0].scan(/SSH_AUTH_SOCK=(.*); e/).join
+        if not Gem::Platform.local.os == 'linux'
+            local_ip   = "192.168.0.100"
+            local_user = "icps"
+        else
+            ENV['SSH_AUTH_SOCK'] = `ssh-agent`.split("\n")[0].scan(/SSH_AUTH_SOCK=(.*); e/).join
+            local_ip = `ifconfig | grep Bcast | cut -d :  -f 2 | cut -d " " -f 1`.split("\n").first
+            local_user = ENV['USER']
+        end
+        return local_ip, local_user
     end
 
-    def one_n_script(remote_ip, remote_user, remote_passwd, local_user)
-        Net::SSH.start(remote_ip, remote_user, :password => remote_passwd ) do |ssh|
-            ssh.exec!("sed -i /#{local_user}@#{@hostname}/d ~/.ssh/authorized_keys")
-            ssh.exec!("mkdir ~/.ssh")
-            ssh.exec!("cat id_rsa.pub >> ~/.ssh/authorized_keys")
-            ssh.exec!("chmod go-w ~")
-            ssh.exec!("chmod 700 ~/.ssh")
-            ssh.exec!("chmod 600 ~/.ssh/authorized_keys")
-        end
-    end
 
     def ssh_keygen(local_ip)
-        if not File.exist?("#{ENV['HOME']}/.ssh/#{local_ip}")
-            system("ssh-keygen -t rsa -f #{ENV['HOME']}/.ssh/#{local_ip} -N '' -q")
+        path = "#{ENV['HOME']}/.ssh/#{local_ip}"
+        if not File.exist?(path)
+            system("ssh-keygen -t rsa -f #{path} -N '' -q")
         end
-
     end
 
     def check_remote_os_method(remote_ip)
@@ -151,5 +156,6 @@ class SSH
     end
 end
 SSH.new
+
 
 ```
