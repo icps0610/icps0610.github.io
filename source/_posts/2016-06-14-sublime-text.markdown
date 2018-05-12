@@ -5,7 +5,13 @@ date: 2016-06-14 01:02:30 +0800
 comments: true
 categories: app
 ---
-[http://www.sublimetext.com/2](http://www.sublimetext.com/2)
+
+sublime 3 
+- ChineseLocalizations 中文化
+- BracketHighlighter   括弧
+- Insert Nums          插入行號
+
+sublime 2
 
 - 中文化  %APPDATA%\Sublime Text 2\Packages\Default
 - 安裝套件 https://sublime.wbond.net/installation
@@ -13,29 +19,31 @@ categories: app
 - 多行編輯 ctrl + shift + L  
 `beautifyruby`
 
-<pre><code>BracketHighlighter  #376
- 
+<pre><code>{
+#user
 "bracket_styles": {
  
-"default": {
- 
-"color": "entity.name.class",
-"style": "highlight",
- 
-"quote_scope" : "bracket.quote",
-"curly_scope" : "bracket.curly",
-"round_scope" : "bracket.round",
-"square_scope": "bracket.square",
-"angle_scope" : "bracket.angle",
-"tag_scope"   : "bracket.tag",
- 
-// 高亮樣式 (solid|outline|underline|none)
-"quote_style" : "solid",
-"curly_style" : "solid",
-"round_style" : "solid",
-"square_style": "solid",
-"angle_style" : "solid",
-"tag_style"   : "outline"
+    "default": {
+     
+        "color": "entity.name.class",
+        "style": "highlight",
+         
+        "quote_scope" : "bracket.quote",
+        "curly_scope" : "bracket.curly",
+        "round_scope" : "bracket.round",
+        "square_scope": "bracket.square",
+        "angle_scope" : "bracket.angle",
+        "tag_scope"   : "bracket.tag",
+         
+        // 高亮樣式 (solid|outline|underline|none)
+        "quote_style" : "solid",
+        "curly_style" : "solid",
+        "round_style" : "solid",
+        "square_style": "solid",
+        "angle_style" : "solid",
+        "tag_style"   : "outline"
+        },
+    }
 }
 </code></pre>
 
