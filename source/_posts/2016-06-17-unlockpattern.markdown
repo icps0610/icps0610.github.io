@@ -27,11 +27,12 @@ def check(num)
 end
 
 def num_possible(num, l)
-    num += l.to_s
-    (["1", "2", "3", "4", "5", "6", "7", "8", "9"] - num.split(//)).map do |n|
+    num = (num + l.to_s).split(//) 
+    all = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+    (all - num).map do |n|
         co = "1379"
         if (co.include? l.to_s and co.include? n) or n.to_i == 10 - l.to_i
-        m = (l.to_i + n.to_i)/2
+            m = (l.to_i + n.to_i)/2
             n if num.include? m.to_s
         else
             n
@@ -42,14 +43,10 @@ end
 def dfs(pt, route=[], take=->(r) { yield(r) })
     num = route.join
     possible = num_possible(num, pt)
-    if route.size == 8 or possible.size > 0
+    if possible.size > 0 or route.size == 8
         route.push(pt)
-        if route.size >= 4
-           take.call(route.join)
-        end
-        possible.each do |s|
-            dfs(s, route, take)
-        end
+        take.call(route.join) if route.size >= 4 
+        possible.each {|s| dfs(s, route, take) }
         route.pop
     end
 end
