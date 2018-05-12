@@ -10,7 +10,7 @@ categories: ruby
 #!/usr/bin/env ruby
 # encoding: utf-8
 require 'rmagick'
-equire 'benchmark'
+require 'benchmark'
 
 def check(num)
     (0..num.length-2).each do |i|
