@@ -75,21 +75,28 @@ def location(i)
     return [ 50 + 100 * x - 5, 50 + 100 * y ]
 end
 
-def draw_line(num)
-    canvas = Magick::ImageList.new
-    canvas.read("base.jpg")
+def draw_line(num, scnum)
+    canvas = Magick::Image.new(300, 300)
     text = Magick::Draw.new
-    text.font_family = 'helvetica'
+    text.font_family = 'TW-Sung'
     text.pointsize = 14
     text.gravity = Magick::CenterGravity
     text.annotate(canvas, 0, 0, -5, -125, num)
-    canvas.write("/tmp/num0.jpg")
+    text.annotate(canvas, 0, 0, -5,  140, scnum)
     draw = Magick::Draw.new
-    (0..num.length-2).each do |i|
-        j = i + 1
+    spinner = Magick::ImageList.new
+    (1..9).each do |i|
+        x, y = location(i)
+        draw.circle(x, y, x + 6, y + 6)
+        draw.draw(canvas)
+    end
+    spinner << canvas.copy
+    draw.draw(spinner)
+    num.split(//).take(num.size-1).each_with_index do |n, i|
+        o = num[i + 1]
         draw.fill('red')
-        ax, ay = location(num[i])
-        bx, by = location(num[j])
+        ax, ay = location(n)
+        bx, by = location(o)
         draw.line(ax, ay, bx, by)
         if i == 0
             draw.fill('blue')
@@ -97,17 +104,24 @@ def draw_line(num)
         elsif i == num.length-2
             draw.fill('yellow')
             draw.circle(bx, by, bx + 6, by + 6)
+            5.times do
+                spinner << canvas.copy
+                draw.draw(spinner)
+            end
         end
-        draw.draw(canvas)
-        canvas.write("/tmp/num#{j}.jpg")
+        spinner << canvas.copy
+        draw.draw(spinner)
     end
-    `convert -delay 50 -loop 0 /tmp/num*.jpg /tmp/unlockpattern.gif`
+    spinner.delay = 30
+    spinner.compression = Magick::LZWCompression
+    spinner.write('/tmp/unlockpattern.gif')
 end
+
 
 sc = '〇〡〢〣〤〥〦〧〨〩'
 p num   = produce_rand(9)
 puts scnum = num.split(//).map{|i| sc[i.to_i] }.join
-draw_line(num)
+draw_line(num, scnum)
 
 t = Time.now
 all = []
@@ -129,6 +143,7 @@ all = a.map do |num|
 end.compact
 p all.size
 p Time.now - t
+
 
 ```
 
