@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-05-18T21:29:18+08:00</updated>
+  <updated>2018-05-30T21:44:17+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,20 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Powercfg]]></title>
+    <link href="http://icps0610.github.io/blog/2018/05/30/powercfg/"/>
+    <updated>2018-05-30T21:36:45+08:00</updated>
+    <id>http://icps0610.github.io/blog/2018/05/30/powercfg</id>
+    <content type="html"><![CDATA[<p><code>powercfg –h off</code><br/>
+<code>powercfg /energy</code><br/>
+<code>   C:\ProgramData\Microsoft\Windows\Power Efficiency Diagnostics\energy-report.html</code><br/>
+<code>powercfg /requests</code><br/>
+<code>powercfg -lastwake</code><br/>
+<code>powercfg /waketimers</code></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Speak]]></title>
@@ -779,28 +793,6 @@ ref <a href="https://blog.gtwang.org/iot/raspberry-pi-tor-router-onion-pi-proxy/
 <p>export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Flatten]]></title>
-    <link href="http://icps0610.github.io/blog/2017/11/24/list/"/>
-    <updated>2017-11-24T15:58:10+08:00</updated>
-    <id>http://icps0610.github.io/blog/2017/11/24/list</id>
-    <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">chain</span>
-</span><span class='line'><span class="n">a</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span> <span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span> <span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="bp">None</span><span class="p">,</span> <span class="p">[]]</span>
-</span><span class='line'><span class="n">a</span> <span class="o">=</span> <span class="nb">filter</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
-</span><span class='line'><span class="n">array</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">chain</span><span class="p">(</span><span class="o">*</span><span class="n">a</span><span class="p">))</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">print</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
 ]]></content>
   </entry>
   

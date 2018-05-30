@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Bat | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/bat/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-05-18T21:29:18+08:00</updated>
+  <updated>2018-05-30T21:44:17+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,20 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Powercfg]]></title>
+    <link href="http://icps0610.github.io/blog/2018/05/30/powercfg/"/>
+    <updated>2018-05-30T21:36:45+08:00</updated>
+    <id>http://icps0610.github.io/blog/2018/05/30/powercfg</id>
+    <content type="html"><![CDATA[<p><code>powercfg –h off</code><br/>
+<code>powercfg /energy</code><br/>
+<code>   C:\ProgramData\Microsoft\Windows\Power Efficiency Diagnostics\energy-report.html</code><br/>
+<code>powercfg /requests</code><br/>
+<code>powercfg -lastwake</code><br/>
+<code>powercfg /waketimers</code></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Ping_lan2]]></title>
@@ -112,46 +126,6 @@ ping 127.0.0.1 -n 10 > nul
 for /f "delims=" %%i in (file.list) do (
   taskkill /F /IM "%%i"
 )
-</code></pre>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Ping_lan]]></title>
-    <link href="http://icps0610.github.io/blog/2016/06/15/ping-lan/"/>
-    <updated>2016-06-15T13:09:26+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/06/15/ping-lan</id>
-    <content type="html"><![CDATA[<pre><code>@echo off
-del ip.tmp 2> nul
-del tmp.txt 2>nul
-del log.txt 2>nul
-SETLOCAL ENABLEDELAYEDEXPANSION
-
-for /l %%i in (1,1,254) do (
-   echo ^@echo off > %SystemRoot%\TEMP\%%i.bat
-   echo ping -n 1 -w 1000 192.168.1.%%i ^>nul >> %SystemRoot%\TEMP\%%i.bat
-   echo if %%errorlevel%% == 0 echo 192.168.1.%%i ^>^> ip.tmp >> %SystemRoot%\TEMP\%%i.bat
-   echo exit >> %SystemRoot%\TEMP\%%i.bat
-   start %SystemRoot%\TEMP\%%i.bat
-)
-echo 正在尋找有回應的主機
-pause
-echo 已找到有回應的主機
-type ip.tmp
-echo 分析主機名稱中..
-for /l %%i in (1,1,254) do del %SystemRoot%\TEMP\%%i.bat
-for /f %%i in (ip.tmp) do (
-   ping -a -n 1 -w 100 %%i > tmp.txt
-   set line=0
-   for /f "tokens=2 delims= " %%j in (tmp.txt) do (
-      set /a line=!line!+1
-      if !line! == 1 echo %%i %%j & echo %%i %%j >>log.txt
-   )
-)
-del ip.tmp 2> nul
-del tmp.txt 2>nul
-pause
 </code></pre>
 
 ]]></content>
