@@ -1,0 +1,14 @@
+---
+layout: post
+title: "powercfg"
+date: 2018-05-30 21:36:45 +0800
+comments: true
+categories: bat
+---
+
+`powercfg –h off`  
+`powercfg /energy`  
+`    C:\ProgramData\Microsoft\Windows\Power Efficiency Diagnostics\energy-report.html`  
+`powercfg /requests`  
+`powercfg -lastwake`  
+`powercfg /waketimers`  
