@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-05-30T21:44:17+08:00</updated>
+  <updated>2018-06-27T01:14:47+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,37 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Moto]]></title>
+    <link href="http://icps0610.github.io/blog/2018/06/27/moto/"/>
+    <updated>2018-06-27T01:14:07+08:00</updated>
+    <id>http://icps0610.github.io/blog/2018/06/27/moto</id>
+    <content type="html"><![CDATA[<pre><code class="ruby">#!/usr/bin/env ruby
+# encoding: utf-8
+require 'rmagick'
+
+def add_number(canvas, x, y, n)
+    append_image =  Magick::Image.read(n).first
+    canvas.composite!(append_image, x, y, Magick::OverCompositeOp)
+end
+
+def run(number)
+    x, y = 1232, 1360
+    canvas = Magick::Image.read("base.png").first
+    number.split(//).each_with_index do |n, i|
+        xn = x + i * 87
+        yn = rand(y-4..y+4)
+        add_number(canvas, xn, yn, n + ".png")
+    end
+    canvas.write("/tmp/moto.png")
+end
+
+number = "05812"
+run(number)
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Read_csv_encoding]]></title>
@@ -135,30 +166,6 @@ p check_check_holiday(h)
     <updated>2018-01-24T18:53:33+08:00</updated>
     <id>http://icps0610.github.io/blog/2018/01/24/download-gem</id>
     <content type="html"><![CDATA[<p><code>gem fetch [name]</code></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Execute_sql]]></title>
-    <link href="http://icps0610.github.io/blog/2017/10/25/execute-sql/"/>
-    <updated>2017-10-25T21:51:05+08:00</updated>
-    <id>http://icps0610.github.io/blog/2017/10/25/execute-sql</id>
-    <content type="html"><![CDATA[<blockquote><blockquote><p>ref <a href="https://stackoverflow.com/questions/15408285/rails-3-execute-custom-sql-query-without-a-model">https://stackoverflow.com/questions/15408285/rails-3-execute-custom-sql-query-without-a-model</a>
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="o">.</span><span class="n">establish_connection</span><span class="p">({</span><span class="ss">adapter</span><span class="p">:</span> <span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">mysql2</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;,</span> <span class="ss">encoding</span><span class="p">:</span> <span class="o">&amp;</span><span class="n">lsquo</span><span class="p">;</span><span class="n">utf8</span><span class="o">&amp;</span><span class="n">rsquo</span><span class="p">;,</span> <span class="ss">database</span><span class="p">:</span> <span class="no">DB</span><span class="p">,</span> <span class="ss">username</span><span class="p">:</span> <span class="no">USER</span><span class="p">,</span><span class="ss">password</span><span class="p">:</span> <span class="no">PASSWD</span><span class="p">})</span><span class="o">&lt;</span><span class="sr">/p&gt;&lt;/</span><span class="n">blockquote</span><span class="o">&gt;&lt;</span><span class="sr">/blockquote&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="sr">&lt;p&gt;sql = &amp;ldquo;SELECT * from users&amp;rdquo;</span>
-</span><span class='line'><span class="sr">@result = ActiveRecord::Base.connection.execute(sql);</span>
-</span><span class='line'><span class="sr">@result.each do |r|</span>
-</span><span class='line'><span class="sr">   puts r[&amp;ldquo;name&amp;rdquo;]</span>
-</span><span class='line'><span class="sr">end</span>
-</span></code></pre></td></tr></table></div></figure></p>
 ]]></content>
   </entry>
   
