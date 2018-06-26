@@ -1,0 +1,33 @@
+---
+layout: post
+title: "moto"
+date: 2018-06-27 01:14:07 +0800
+comments: true
+categories: ruby
+---
+
+``` ruby
+#!/usr/bin/env ruby
+# encoding: utf-8
+require 'rmagick'
+
+def add_number(canvas, x, y, n)
+    append_image =  Magick::Image.read(n).first
+    canvas.composite!(append_image, x, y, Magick::OverCompositeOp)
+end
+
+def run(number)
+    x, y = 1232, 1360
+    canvas = Magick::Image.read("base.png").first
+    number.split(//).each_with_index do |n, i|
+        xn = x + i * 87
+        yn = rand(y-4..y+4)
+        add_number(canvas, xn, yn, n + ".png")
+    end
+    canvas.write("/tmp/moto.png")
+end
+
+number = "05812"
+run(number)
+
+```
