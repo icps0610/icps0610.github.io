@@ -31,9 +31,11 @@
 20
 21
 22
+23
+24
 #!/usr/bin/env ruby
 # encoding: utf-8
-require &#39;rmagick&#39; def add_number(canvas, x, y &hellip;">
+require &#39;rmagick&#39; def add_number(canvas &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -132,6 +134,8 @@ require &#39;rmagick&#39; def add_number(canvas, x, y &hellip;">
 <span class='line-number'>20</span>
 <span class='line-number'>21</span>
 <span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#!/usr/bin/env ruby</span>
 </span><span class='line'><span class="c1"># encoding: utf-8</span>
 </span><span class='line'><span class="nb">require</span> <span class="s1">&#39;rmagick&#39;</span>
@@ -142,17 +146,19 @@ require &#39;rmagick&#39; def add_number(canvas, x, y &hellip;">
 </span><span class='line'><span class="k">end</span>
 </span><span class='line'>
 </span><span class='line'><span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
-</span><span class='line'>    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">1232</span><span class="p">,</span> <span class="mi">1360</span>
+</span><span class='line'>    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">1232</span><span class="p">,</span> <span class="mi">1361</span>
 </span><span class='line'>    <span class="n">canvas</span> <span class="o">=</span> <span class="no">Magick</span><span class="o">::</span><span class="no">Image</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">&quot;base.png&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">first</span>
-</span><span class='line'>    <span class="n">number</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sr">//</span><span class="p">)</span><span class="o">.</span><span class="n">each_with_index</span> <span class="k">do</span> <span class="o">|</span><span class="n">n</span><span class="p">,</span> <span class="n">i</span><span class="o">|</span>
+</span><span class='line'>    <span class="n">number</span><span class="o">.</span><span class="n">to_s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sr">//</span><span class="p">)</span><span class="o">.</span><span class="n">each_with_index</span> <span class="k">do</span> <span class="o">|</span><span class="n">n</span><span class="p">,</span> <span class="n">i</span><span class="o">|</span>
 </span><span class='line'>        <span class="n">xn</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">i</span> <span class="o">*</span> <span class="mi">87</span>
-</span><span class='line'>        <span class="n">yn</span> <span class="o">=</span> <span class="nb">rand</span><span class="p">(</span><span class="n">y</span><span class="o">-</span><span class="mi">4</span><span class="o">.</span><span class="n">.y</span><span class="o">+</span><span class="mi">4</span><span class="p">)</span>
-</span><span class='line'>        <span class="n">add_number</span><span class="p">(</span><span class="n">canvas</span><span class="p">,</span> <span class="n">xn</span><span class="p">,</span> <span class="n">yn</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="s2">&quot;.png&quot;</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">yn</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="nb">rand</span><span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="n">.</span><span class="mi">3</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">add_number</span><span class="p">(</span><span class="n">canvas</span><span class="p">,</span> <span class="n">xn</span><span class="p">,</span> <span class="n">yn</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">n</span><span class="si">}</span><span class="s2">.png&quot;</span><span class="p">)</span>
 </span><span class='line'>    <span class="k">end</span>
-</span><span class='line'>    <span class="n">canvas</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;/tmp/moto.png&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">tn</span> <span class="o">=</span> <span class="nb">rand</span><span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="n">.</span><span class="mi">9</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">add_number</span><span class="p">(</span><span class="n">canvas</span><span class="p">,</span> <span class="mi">1662</span><span class="p">,</span> <span class="mi">1355</span><span class="p">,</span> <span class="s2">&quot;b</span><span class="si">#{</span><span class="n">tn</span><span class="si">}</span><span class="s2">.png&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">canvas</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;/tmp/moto</span><span class="si">#{</span><span class="n">number</span><span class="si">}</span><span class="s2">.png&quot;</span><span class="p">)</span>
 </span><span class='line'><span class="k">end</span>
 </span><span class='line'>
-</span><span class='line'><span class="n">number</span> <span class="o">=</span> <span class="s2">&quot;05812&quot;</span>
+</span><span class='line'><span class="nb">p</span> <span class="n">number</span> <span class="o">=</span> <span class="nb">rand</span><span class="p">(</span><span class="mi">10000</span><span class="o">.</span><span class="n">.</span><span class="mi">99999</span><span class="p">)</span>
 </span><span class='line'><span class="n">run</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure>
 
