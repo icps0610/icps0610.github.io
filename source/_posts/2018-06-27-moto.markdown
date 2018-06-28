@@ -11,27 +11,20 @@ categories: ruby
 # encoding: utf-8
 require 'rmagick'
 
-def add_number(canvas, x, y, n)
-    append_image =  Magick::Image.read(n).first
-    canvas.composite!(append_image, x, y, Magick::OverCompositeOp)
+def add_number(canvas, file, x, y, h)
+    image = Magick::ImageList.new(file).crop!(0, h, 63, 90)
+    canvas.composite!(image, x, y, Magick::OverCompositeOp)
 end
 
-def run(number)
-    x, y = 1232, 1361
-    canvas = Magick::Image.read("base.png").first
-    number.to_s.split(//).each_with_index do |n, i|
-        xn = x + i * 87
-        yn = y + rand(0..3)
-        add_number(canvas, xn, yn, "#{n}.png")
-    end
-    tn = rand(0..9)
-    add_number(canvas, 1662, 1355, "b#{tn}.png")
-    canvas.write("/tmp/moto#{number}.png")
+number = "98765"
+x, y = 1232, 1361
+canvas = Magick::Image.read("base.png").first
+number.split(//).each_with_index do |n, i|
+    xn = x + i * 87
+    yn = y + rand(0..3)
+    add_number(canvas, "w.png", xn, yn, n.to_i * 80)
 end
-
-p number = rand(10000..99999)
-run(number)
-
-
+add_number(canvas, "b.png", 1662, 1353, rand(0..720))
+canvas.write("/tmp/moto.png")
 
 ```
