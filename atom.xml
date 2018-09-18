@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-09-10T01:09:53+08:00</updated>
+  <updated>2018-09-18T17:11:51+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,26 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Infinity]]></title>
+    <link href="http://icps0610.github.io/blog/2018/09/18/infinity/"/>
+    <updated>2018-09-18T17:10:30+08:00</updated>
+    <id>http://icps0610.github.io/blog/2018/09/18/infinity</id>
+    <content type="html"><![CDATA[<h3>Infinity</h3>
+
+<h3>ref <a href="https://stackoverflow.com/questions/5778295/how-to-express-infinity-in-ruby">https://stackoverflow.com/questions/5778295/how-to-express-infinity-in-ruby</a></h3>
+
+<p>PositiveInfinity = +1.0/0.0
+=> Infinity</p>
+
+<p>NegativeInfinity = -1.0/0.0
+=> -Infinity</p>
+
+<p>CompleteInfinity = NegativeInfinity..PositiveInfinity
+=> -Infinity..Infinity</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Moto]]></title>
@@ -807,26 +827,6 @@ disable_lua = true</p>
 </span><span class='line'><span class="p">}</span>
 </span><span class='line'><span class="nt">&lt;/script&gt;</span>
 </span></code></pre></td></tr></table></div></figure>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Tor]]></title>
-    <link href="http://icps0610.github.io/blog/2017/12/19/tor/"/>
-    <updated>2017-12-19T15:38:50+08:00</updated>
-    <id>http://icps0610.github.io/blog/2017/12/19/tor</id>
-    <content type="html"><![CDATA[<blockquote><blockquote><p>ref <a href="https://blog.gtwang.org/linux/ubuntu-linux-use-tor-and-privoxy-to-build-anonymous-http-proxy/">https://blog.gtwang.org/linux/ubuntu-linux-use-tor-and-privoxy-to-build-anonymous-http-proxy/</a>  <br/>
-ref <a href="https://blog.gtwang.org/iot/raspberry-pi-tor-router-onion-pi-proxy/">https://blog.gtwang.org/iot/raspberry-pi-tor-router-onion-pi-proxy/</a></p></blockquote></blockquote>
-
-<p><code>apt install tor privoxy</code></p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>#/etc/privoxy/config  
-</span><span class='line'>#forward-socks5t / 127.0.0.1:9050 .  
-</span><span class='line'>listen-address :8080   </span></code></pre></td></tr></table></div></figure>
 
 ]]></content>
   </entry>

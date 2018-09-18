@@ -9,28 +9,8 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-#!/usr/bin/env ruby
-# encoding: utf-8
-require &#39;rmagick&#39; def add_number(canvas, file, x, y, h &hellip;">
+  <meta name="description" content="Infinity ref https://stackoverflow.com/questions/5778295/how-to-express-infinity-in-ruby PositiveInfinity = +1.0/0.0
+=> Infinity NegativeInfinity = - &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -89,6 +69,46 @@ require &#39;rmagick&#39; def add_number(canvas, file, x, y, h &hellip;">
       <div class="blog-index">
   
 
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2018/09/18/infinity/">Infinity</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2018-09-18T17:10:30+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>5:10 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>Infinity</h3>
+
+<h3>ref <a href="https://stackoverflow.com/questions/5778295/how-to-express-infinity-in-ruby">https://stackoverflow.com/questions/5778295/how-to-express-infinity-in-ruby</a></h3>
+
+<p>PositiveInfinity = +1.0/0.0
+=> Infinity</p>
+
+<p>NegativeInfinity = -1.0/0.0
+=> -Infinity</p>
+
+<p>CompleteInfinity = NegativeInfinity..PositiveInfinity
+=> -Infinity..Infinity</p>
+</div>
+  
+  
+
+
+    </article>
+  
   
     <article>
       
@@ -264,81 +284,6 @@ require &#39;rmagick&#39; def add_number(canvas, file, x, y, h &hellip;">
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2018/04/22/raspberry-pi-3-plus/">Raspberry_pi_3_plus</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2018-04-22T01:21:33+08:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>22</span><span class='date-suffix'>nd</span>, <span class='date-year'>2018</span></span> <span class='time'>1:21 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'># /etc/apt/sources.list
-</span><span class='line'># Uncomment line below then 'apt-get update' to enable 'apt-get source'
-</span><span class='line'>deb ftp://ftp.yzu.edu.tw/Linux/raspbian/raspbian/ wheezy main contrib non-free rpi
-</span><span class='line'>deb http://raspbian.raspberrypi.org/raspbian/ stretch main contrib non-free rpi
-</span><span class='line'>deb-src http://raspbian.raspberrypi.org/raspbian/ stretch main contrib non-free rp</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>LC_ALL_cannot_change_locale</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>`export LANGUAGE=en_US.UTF-8`
-</span><span class='line'>`export LANG=en_US.UTF-8`
-</span><span class='line'>`export LC_ALL=en_US.UTF-8`
-</span><span class='line'>`locale-gen en_US.UTF-8`
-</span><span class='line'>`dpkg-reconfigure locales`</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>#</h2>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>`apt-get install ruby-dev libsqlite3-dev minicom fuse ntfs-3g`
-</span><span class='line'># fix mount usb =&gt; read only
-</span><span class='line'># ==&gt; fuse ntfs-3g
-</span><span class='line'>
-</span><span class='line'>`gem install sinatra`
-</span><span class='line'>`gem install bundle`
-</span><span class='line'>`bundle install`
-</span><span class='line'>eval "$(ssh-agent)";</span></code></pre></td></tr></table></div></figure>
-
-
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
     <a href="/blog/archives">Blog Archives</a>
@@ -356,12 +301,17 @@ require &#39;rmagick&#39; def add_number(canvas, file, x, y, h &hellip;">
 <li class='category'><a href='/blog/categories/python/'>python (10)</a></li>
 <li class='category'><a href='/blog/categories/ror/'>ror (24)</a></li>
 <li class='category'><a href='/blog/categories/ruby/'>ruby (43)</a></li>
+<li class='category'><a href='/blog/categories/uncategorized/'>uncategorized (1)</a></li>
 
     </ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2018/09/18/infinity/">Infinity</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2018/06/27/moto/">Moto</a>
@@ -377,10 +327,6 @@ require &#39;rmagick&#39; def add_number(canvas, file, x, y, h &hellip;">
     
       <li class="post">
         <a href="/blog/2018/04/25/ssh-server/">Ssh_server</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2018/04/22/raspberry-pi-3-plus/">Raspberry_pi_3_plus</a>
       </li>
     
   </ul>
