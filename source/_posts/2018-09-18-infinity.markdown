@@ -1,0 +1,17 @@
+---
+layout: post
+title: "infinity"
+date: 2018-09-18 17:10:30 +0800
+comments: true
+categories: uncategorized
+---
+### Infinity
+### ref https://stackoverflow.com/questions/5778295/how-to-express-infinity-in-ruby
+PositiveInfinity = +1.0/0.0 
+=> Infinity
+
+NegativeInfinity = -1.0/0.0 
+=> -Infinity
+
+CompleteInfinity = NegativeInfinity..PositiveInfinity
+=> -Infinity..Infinity
