@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-09-18T17:11:51+08:00</updated>
+  <updated>2018-09-24T02:51:49+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,63 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Remove_black]]></title>
+    <link href="http://icps0610.github.io/blog/2018/09/23/remove-black/"/>
+    <updated>2018-09-23T16:39:45+08:00</updated>
+    <id>http://icps0610.github.io/blog/2018/09/23/remove-black</id>
+    <content type="html"><![CDATA[<pre><code class="ruby"># encoding: utf-8
+require "watir"
+require 'rmagick'
+
+def pixel_black(img, x, y)
+    pixel = img.pixel_color(x, y)
+    if not [ pixel.red, pixel.green, pixel.blue ] == [ 0, 0, 0 ]
+        return true
+    end
+end
+
+def locate_x(img)
+    x = img.columns/2
+    y = img.rows
+    i = 0
+    loop do
+        if pixel_black(img, i, i) 
+            @fxy ||= locate_y(img, "left", i, i)
+        end
+        if pixel_black(img, x, y) 
+            @bxy ||= locate_y(img, "right", x, y)
+        end
+        if defined?(@fxy) and defined?(@bxy)
+            return [@fxy, @bxy].flatten
+        end
+        i += 1
+        x -= 1
+        y -= 1
+    end
+end
+
+def locate_y(img, direction, x, y)
+    if direction == "left"
+        i = -1
+    else
+        i =  1
+    end
+    if pixel_black(img, x, y) and pixel_black(img, x, y + i)
+        locate_y(img, direction, x, y + i)
+    else
+        return x, y
+    end
+end
+
+screenshot = Magick::Image.capture{ self.filename = "root" }
+fx, fy, bx, by = locate_x(screenshot)
+screenshot.crop!(fx, fy, bx-fx, by-fy)
+screenshot.write("/tmp/screenshot.jpg")
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Moto]]></title>
@@ -154,15 +211,6 @@ end
 h = holiday
 p check_check_holiday(h)
 </code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Download-gem]]></title>
-    <link href="http://icps0610.github.io/blog/2018/01/24/download-gem/"/>
-    <updated>2018-01-24T18:53:33+08:00</updated>
-    <id>http://icps0610.github.io/blog/2018/01/24/download-gem</id>
-    <content type="html"><![CDATA[<p><code>gem fetch [name]</code></p>
 ]]></content>
   </entry>
   
