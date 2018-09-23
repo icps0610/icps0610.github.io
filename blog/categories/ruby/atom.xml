@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-09-24T02:51:49+08:00</updated>
+  <updated>2018-09-24T04:15:32+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -30,7 +30,7 @@ def pixel_black(img, x, y)
 end
 
 def locate_x(img)
-    x = img.columns/2
+    x = 1920
     y = img.rows
     i = 0
     loop do
