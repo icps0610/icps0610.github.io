@@ -18,7 +18,7 @@ def pixel_black(img, x, y)
 end
 
 def locate_x(img)
-    x = img.columns/2
+    x = 1920
     y = img.rows
     i = 0
     loop do
