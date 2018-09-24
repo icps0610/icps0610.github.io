@@ -10,30 +10,28 @@ categories: ruby
 require "watir"
 require 'rmagick'
 
-def pixel_black(img, x, y)
-    pixel = img.pixel_color(x, y)
-    if not [ pixel.red, pixel.green, pixel.blue ] == [ 0, 0, 0 ]
+def pixel_not_black(img, x, y)
+    px = img.pixel_color(x, y)
+    if px.red > 16448 or px.green > 13878 or px.blue > 11308
         return true
     end
 end
 
-def locate_x(img)
+def locate_x_left(img)
+    (0..img.rows).each do |i|
+        if pixel_not_black(img, i, i)
+            return locate_y(img, "left", i, i)
+        end
+    end
+end
+
+def locate_x_right(img)
     x = 1920
     y = img.rows
-    i = 0
-    loop do
-        if pixel_black(img, i, i) 
-            @fxy ||= locate_y(img, "left", i, i)
+    (0..x).each do |i|
+        if pixel_not_black(img, x - i, y - i)
+            return locate_y(img, "right", x - i, y - i)
         end
-        if pixel_black(img, x, y) 
-            @bxy ||= locate_y(img, "right", x, y)
-        end
-        if defined?(@fxy) and defined?(@bxy)
-            return [@fxy, @bxy].flatten
-        end
-        i += 1
-        x -= 1
-        y -= 1
     end
 end
 
@@ -43,15 +41,18 @@ def locate_y(img, direction, x, y)
     else
         i =  1
     end
-    if pixel_black(img, x, y) and pixel_black(img, x, y + i)
+    if pixel_not_black(img, x, y) and pixel_not_black(img, x, y + i)
         locate_y(img, direction, x, y + i)
     else
         return x, y
     end
 end
 
-screenshot = Magick::Image.capture{ self.filename = "root" }
-fx, fy, bx, by = locate_x(screenshot)
-screenshot.crop!(fx, fy, bx-fx, by-fy)
-screenshot.write("/tmp/screenshot.jpg")
+#screenshot = Magick::Image.capture{ self.filename = "root" }
+img = Magick::ImageList.new.read("/tmp/image/base0.jpg")
+lx, ly = locate_x_left(img)
+rx, ry = locate_x_right(img)
+img.crop!(lx, ly, rx-lx, ry-ly)
+img.write("/tmp/image/base2.jpg")
+
 ```
