@@ -12,8 +12,9 @@ require 'rmagick'
 
 def pixel_not_black(img, x, y)
     px = img.pixel_color(x, y)
-    pc = [px.red, px.green, px.blue].map {|n| n/256 }
-    pc.each {|p| return true if p > 87 }
+    if px.red > 16448 or px.green > 16448 or px.blue > 16448
+        return true
+    end
 end
 
 def locate_x_left(img)
