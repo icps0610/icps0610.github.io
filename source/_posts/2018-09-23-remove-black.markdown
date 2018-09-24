@@ -12,12 +12,15 @@ require 'rmagick'
 
 def pixel_not_black(img, x, y)
     px = img.pixel_color(x, y)
-    if px.red > 16448 or px.green > 13878 or px.blue > 11308
+    if px.red > 16448 or px.green > 16448 or px.blue > 16448
         return true
     end
 end
 
 def locate_x_left(img)
+    if pixel_not_black(img, 0, 0)
+        return 0, 0
+    end
     (0..img.rows).each do |i|
         if pixel_not_black(img, i, i)
             return locate_y(img, "left", i, i)
@@ -27,10 +30,12 @@ end
 
 def locate_x_right(img)
     x = 1920
-    y = img.rows
+    if pixel_not_black(img, x, 0)
+        return x, 0
+    end
     (0..x).each do |i|
-        if pixel_not_black(img, x - i, y - i)
-            return locate_y(img, "right", x - i, y - i)
+        if pixel_not_black(img, x - i, i)
+            return locate_y(img, "right", x - i, i)
         end
     end
 end
