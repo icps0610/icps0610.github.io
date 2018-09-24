@@ -9,52 +9,10 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="1
+  <meta name="description" content="https://github.com/p0deje/watir-scroll 1
 2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-# encoding: utf-8
-require &hellip;">
+browser = Watir::Browser.new :firefox
+browser.button(text: &#39;Click&#39;).scroll.by(0, 800) ">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -113,6 +71,42 @@ require &hellip;">
       <div class="blog-index">
   
 
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2018/09/24/waitr-scoll/">Waitr-scoll</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2018-09-24T20:38:17+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>24</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>8:38 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3><a href="https://github.com/p0deje/watir-scroll">https://github.com/p0deje/watir-scroll</a></h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">browser</span> <span class="o">=</span> <span class="no">Watir</span><span class="o">::</span><span class="no">Browser</span><span class="o">.</span><span class="n">new</span> <span class="ss">:firefox</span>
+</span><span class='line'><span class="n">browser</span><span class="o">.</span><span class="n">button</span><span class="p">(</span><span class="ss">text</span><span class="p">:</span> <span class="s1">&#39;Click&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">scroll</span><span class="o">.</span><span class="n">by</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">800</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
+  
   
     <article>
       
@@ -373,49 +367,6 @@ require &hellip;">
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2018/04/28/speak/">Speak</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2018-04-28T01:13:04+08:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>1:13 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><button type="button" onclick="click()">Click</button></p>
-
-<script>
-    function click(){
-    var msg = new SpeechSynthesisUtterance('你是豬豬人');
-     msg.lang='zh';
-     msg.voice = speechSynthesis.getVoices().filter(function(voice) { 
-    return voice.name == 'Whisper'; }
-    )[0]; 
-
-    speechSynthesis.speak(msg);
-}
-
-</script>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
     <a href="/blog/archives">Blog Archives</a>
@@ -432,7 +383,7 @@ require &hellip;">
 <li class='category'><a href='/blog/categories/linux/'>linux (25)</a></li>
 <li class='category'><a href='/blog/categories/python/'>python (10)</a></li>
 <li class='category'><a href='/blog/categories/ror/'>ror (24)</a></li>
-<li class='category'><a href='/blog/categories/ruby/'>ruby (44)</a></li>
+<li class='category'><a href='/blog/categories/ruby/'>ruby (45)</a></li>
 <li class='category'><a href='/blog/categories/uncategorized/'>uncategorized (1)</a></li>
 
     </ul>
@@ -440,6 +391,10 @@ require &hellip;">
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2018/09/24/waitr-scoll/">Waitr-scoll</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2018/09/23/remove-black/">Remove_black</a>
@@ -455,10 +410,6 @@ require &hellip;">
     
       <li class="post">
         <a href="/blog/2018/05/30/powercfg/">Powercfg</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2018/04/28/speak/">Speak</a>
       </li>
     
   </ul>

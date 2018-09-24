@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-09-24T15:34:28+08:00</updated>
+  <updated>2018-09-24T20:39:44+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,19 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Waitr-scoll]]></title>
+    <link href="http://icps0610.github.io/blog/2018/09/24/waitr-scoll/"/>
+    <updated>2018-09-24T20:38:17+08:00</updated>
+    <id>http://icps0610.github.io/blog/2018/09/24/waitr-scoll</id>
+    <content type="html"><![CDATA[<h3><a href="https://github.com/p0deje/watir-scroll">https://github.com/p0deje/watir-scroll</a></h3>
+
+<pre><code class="ruby">browser = Watir::Browser.new :firefox
+browser.button(text: 'Click').scroll.by(0, 800)
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Remove_black]]></title>
@@ -157,55 +170,6 @@ Iconv.iconv('utf-8', 'unicode', f).join.split("\r\n")
 <p><code>eval "$(ssh-agent)";</code></p>
 
 <pre><code class="ruby">ENV['SSH_AUTH_SOCK'] = `ssh-agent`.split("\n")[0].scan(/SSH_AUTH_SOCK=(.*); e/).join
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Holiday]]></title>
-    <link href="http://icps0610.github.io/blog/2018/04/11/holiday/"/>
-    <updated>2018-04-11T23:58:57+08:00</updated>
-    <id>http://icps0610.github.io/blog/2018/04/11/holiday</id>
-    <content type="html"><![CDATA[<h3><a href="http://www.319papago.idv.tw/holiday/2017-hr/2017_HR.html">http://www.319papago.idv.tw/holiday/2017-hr/2017_HR.html</a></h3>
-
-<pre><code class="ruby">require 'rubyXL'
-
-def holiday
-    file_path = '107.xlsx'
-    workbook  = RubyXL::Parser.parse(file_path)
-    worksheet = workbook[0]
-    xl = [1,  8, 15]
-    yl = [4, 16, 28, 42]
-    hl = [5,  5,  6,  6]
-    (0..3).map do |y|
-        (0..2).map do |x|
-            (0..(7 * hl[y]-1)).map do |i|
-                cx = xl[x] + i % 7
-                cy = yl[y] + (i / 7) * 2
-                cell = worksheet[cy][cx]
-                cell.fill_color if cell.value
-            end.compact
-        end
-    end.flatten(1)
-end
-
-def check_holiday(data, m, d)
-    data[m-1][d-1] == "FFFF99FF" ? true : false
-end
-
-def check_check_holiday(h)
-    ans = [true, false, true, true, true, false, true, false, true, true, true, false]
-    ans.each_with_index do |a, idx|
-        idx += 1
-        if not check_holiday(h, idx, idx) == a
-            return false
-        end
-    end
-    return true
-end
-
-h = holiday
-p check_check_holiday(h)
 </code></pre>
 ]]></content>
   </entry>

@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-09-24T15:34:28+08:00</updated>
+  <updated>2018-09-24T20:39:44+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,22 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Waitr-scoll]]></title>
+    <link href="http://icps0610.github.io/blog/2018/09/24/waitr-scoll/"/>
+    <updated>2018-09-24T20:38:17+08:00</updated>
+    <id>http://icps0610.github.io/blog/2018/09/24/waitr-scoll</id>
+    <content type="html"><![CDATA[<h3><a href="https://github.com/p0deje/watir-scroll">https://github.com/p0deje/watir-scroll</a></h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">browser</span> <span class="o">=</span> <span class="no">Watir</span><span class="o">::</span><span class="no">Browser</span><span class="o">.</span><span class="n">new</span> <span class="ss">:firefox</span>
+</span><span class='line'><span class="n">browser</span><span class="o">.</span><span class="n">button</span><span class="p">(</span><span class="ss">text</span><span class="p">:</span> <span class="s1">&#39;Click&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">scroll</span><span class="o">.</span><span class="n">by</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">800</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Remove_black]]></title>
@@ -883,15 +899,6 @@ disable_lua = true</p>
     <updated>2018-01-24T18:53:33+08:00</updated>
     <id>http://icps0610.github.io/blog/2018/01/24/download-gem</id>
     <content type="html"><![CDATA[<p><code>gem fetch [name]</code></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Image_view]]></title>
-    <link href="http://icps0610.github.io/blog/2018/01/04/image-view/"/>
-    <updated>2018-01-04T01:34:16+08:00</updated>
-    <id>http://icps0610.github.io/blog/2018/01/04/image-view</id>
-    <content type="html"><![CDATA[<p><a href="https://github.com/luciuschoi/lightbox-bootstrap-rails">https://github.com/luciuschoi/lightbox-bootstrap-rails</a></p>
 ]]></content>
   </entry>
   
