@@ -3,7 +3,7 @@ layout: post
 title: "infinity"
 date: 2018-09-18 17:10:30 +0800
 comments: true
-categories: uncategorized
+categories: ruby
 ---
 ### Infinity
 ### ref https://stackoverflow.com/questions/5778295/how-to-express-infinity-in-ruby
