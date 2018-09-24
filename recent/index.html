@@ -176,14 +176,16 @@ browser.button(text: &#39;Click&#39;).scroll.by(0, 800) ">
 <span class='line-number'>46</span>
 <span class='line-number'>47</span>
 <span class='line-number'>48</span>
+<span class='line-number'>49</span>
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># encoding: utf-8</span>
 </span><span class='line'><span class="nb">require</span> <span class="s2">&quot;watir&quot;</span>
 </span><span class='line'><span class="nb">require</span> <span class="s1">&#39;rmagick&#39;</span>
 </span><span class='line'>
 </span><span class='line'><span class="k">def</span> <span class="nf">pixel_not_black</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 </span><span class='line'>    <span class="n">px</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">pixel_color</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-</span><span class='line'>    <span class="n">pc</span> <span class="o">=</span> <span class="o">[</span><span class="n">px</span><span class="o">.</span><span class="n">red</span><span class="p">,</span> <span class="n">px</span><span class="o">.</span><span class="n">green</span><span class="p">,</span> <span class="n">px</span><span class="o">.</span><span class="n">blue</span><span class="o">].</span><span class="n">map</span> <span class="p">{</span><span class="o">|</span><span class="n">n</span><span class="o">|</span> <span class="n">n</span><span class="o">/</span><span class="mi">256</span> <span class="p">}</span>
-</span><span class='line'>    <span class="n">pc</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span><span class="o">|</span><span class="nb">p</span><span class="o">|</span> <span class="k">return</span> <span class="kp">true</span> <span class="k">if</span> <span class="nb">p</span> <span class="o">&gt;</span> <span class="mi">87</span> <span class="p">}</span>
+</span><span class='line'>    <span class="k">if</span> <span class="n">px</span><span class="o">.</span><span class="n">red</span> <span class="o">&gt;</span> <span class="mi">16448</span> <span class="ow">or</span> <span class="n">px</span><span class="o">.</span><span class="n">green</span> <span class="o">&gt;</span> <span class="mi">16448</span> <span class="ow">or</span> <span class="n">px</span><span class="o">.</span><span class="n">blue</span> <span class="o">&gt;</span> <span class="mi">16448</span>
+</span><span class='line'>        <span class="k">return</span> <span class="kp">true</span>
+</span><span class='line'>    <span class="k">end</span>
 </span><span class='line'><span class="k">end</span>
 </span><span class='line'>
 </span><span class='line'><span class="k">def</span> <span class="nf">locate_x_left</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
