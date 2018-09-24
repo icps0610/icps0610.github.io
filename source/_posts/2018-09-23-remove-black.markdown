@@ -36,11 +36,7 @@ def locate_x_right(img)
 end
 
 def locate_y(img, direction, x, y)
-    if direction == "left"
-        i = -1
-    else
-        i =  1
-    end
+    direction == "right" ? i = 1 : i = -1
     if pixel_not_black(img, x, y) and pixel_not_black(img, x, y + i)
         locate_y(img, direction, x, y + i)
     else
