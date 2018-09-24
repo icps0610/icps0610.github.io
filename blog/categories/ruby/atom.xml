@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-09-24T21:14:01+08:00</updated>
+  <updated>2018-09-24T21:35:28+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -37,9 +37,8 @@ require 'rmagick'
 
 def pixel_not_black(img, x, y)
     px = img.pixel_color(x, y)
-    if px.red &gt; 16448 or px.green &gt; 16448 or px.blue &gt; 16448
-        return true
-    end
+    pc = [px.red, px.green, px.blue].map {|n| n/256 }
+    pc.each {|p| return true if p &gt; 87 }
 end
 
 def locate_x_left(img)
