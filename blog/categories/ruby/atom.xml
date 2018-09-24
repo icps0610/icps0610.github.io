@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-09-25T00:46:06+08:00</updated>
+  <updated>2018-09-25T00:47:02+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -79,6 +79,26 @@ rx, ry = locate_right(img)
 img.crop!(lx, ly, rx-lx, ry-ly)
 img.write("/tmp/image/base1.jpg")
 </code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Infinity]]></title>
+    <link href="http://icps0610.github.io/blog/2018/09/18/infinity/"/>
+    <updated>2018-09-18T17:10:30+08:00</updated>
+    <id>http://icps0610.github.io/blog/2018/09/18/infinity</id>
+    <content type="html"><![CDATA[<h3>Infinity</h3>
+
+<h3>ref <a href="https://stackoverflow.com/questions/5778295/how-to-express-infinity-in-ruby">https://stackoverflow.com/questions/5778295/how-to-express-infinity-in-ruby</a></h3>
+
+<p>PositiveInfinity = +1.0/0.0
+=> Infinity</p>
+
+<p>NegativeInfinity = -1.0/0.0
+=> -Infinity</p>
+
+<p>CompleteInfinity = NegativeInfinity..PositiveInfinity
+=> -Infinity..Infinity</p>
 ]]></content>
   </entry>
   
@@ -159,20 +179,6 @@ require 'iconv'
 file_path = "/tmp/workbook.csv"
 f = IO.read(file_path)
 Iconv.iconv('utf-8', 'unicode', f).join.split("\r\n")
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Net-ssh]]></title>
-    <link href="http://icps0610.github.io/blog/2018/04/19/net-ssh/"/>
-    <updated>2018-04-19T20:15:35+08:00</updated>
-    <id>http://icps0610.github.io/blog/2018/04/19/net-ssh</id>
-    <content type="html"><![CDATA[<p><code>Net::SSH::Authentication::AgentError: could not get identity count</code></p>
-
-<p><code>eval "$(ssh-agent)";</code></p>
-
-<pre><code class="ruby">ENV['SSH_AUTH_SOCK'] = `ssh-agent`.split("\n")[0].scan(/SSH_AUTH_SOCK=(.*); e/).join
 </code></pre>
 ]]></content>
   </entry>
