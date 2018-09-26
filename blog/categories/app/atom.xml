@@ -4,7 +4,7 @@
   <title><![CDATA[Category: App | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/app/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-09-25T00:47:02+08:00</updated>
+  <updated>2018-09-27T02:46:37+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,15 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Gmail]]></title>
+    <link href="http://icps0610.github.io/blog/2018/09/27/gmail/"/>
+    <updated>2018-09-27T02:46:01+08:00</updated>
+    <id>http://icps0610.github.io/blog/2018/09/27/gmail</id>
+    <content type="html"><![CDATA[<p><code>curl -u username:password --silent "https://mail.google.com/mail/feed/atom" | tr -d '\n' | awk -F '&lt;entry&gt;' '{for (i=2; i&lt;=NF; i++) {print $i}}' | sed -n "s/&lt;title&gt;\(.*\)&lt;\/title.*name&gt;\(.*\)&lt;\/name&gt;.*/\2 - \1/p"</code></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Ssh_server]]></title>
@@ -65,52 +74,6 @@ ref <a href="https://blog.gtwang.org/iot/raspberry-pi-tor-router-onion-pi-proxy/
 <pre><code>#/etc/privoxy/config  
 #forward-socks5t / 127.0.0.1:9050 .  
 listen-address :8080   
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[KODExplorer]]></title>
-    <link href="http://icps0610.github.io/blog/2017/08/31/kodexplorer/"/>
-    <updated>2017-08-31T22:02:42+08:00</updated>
-    <id>http://icps0610.github.io/blog/2017/08/31/kodexplorer</id>
-    <content type="html"><![CDATA[<p><code>git clone https://github.com/kalcaddle/KODExplorer.git</code><br/>
-<code>chmod -Rf 777 ./KODExplorer/*</code><br/>
-<code>mv KODExplorer /var/www/html</code></p>
-
-<h3>raspberry pi 3 PLUS</h3>
-
-<h6>apache2</h6>
-
-<p><code>apt-get install apache2 php7.0 libapache2-mod-php7.0 php7.0-gd php7.0-curl php7.0-mbstring</code></p>
-
-<h3>raspberry pi 3 B</h3>
-
-<h6>apache2</h6>
-
-<p><code>apt-get install apache2 php5 libapache2-mod-php5 php5-gd php5-curl</code><br/>
-<code>/etc/init.d/apache2 restart</code></p>
-
-<p><code>/etc/apache2/port.conf</code></p>
-
-<h6>php</h6>
-
-<h6>###找到php.ini</h6>
-
-<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="o">&amp;</span><span class="nx">lt</span><span class="p">;</span><span class="o">?</span><span class="nx">php</span>
-</span><span class='line'> <span class="nb">phpinfo</span><span class="p">();</span>
-</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
-</span></code></pre></td></tr></table></div></figure></p>
-
-<h6>###Configuration File (php.ini) Path</h6>
-
-<pre><code>#php.ini
-upload_max_filesize = 1000M
-post_max_size = 1000M
-memory_limit  1000M
 </code></pre>
 ]]></content>
   </entry>

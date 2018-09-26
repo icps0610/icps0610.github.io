@@ -9,10 +9,7 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="https://github.com/p0deje/watir-scroll 1
-2
-browser = Watir::Browser.new :firefox
-browser.button(text: &#39;Click&#39;).scroll.by(0, 800) ">
+  <meta name="description" content="curl -u username:password --silent "https://mail.google.com/mail/feed/atom" | tr -d '\n' | awk -F '&lt;entry&gt;' '{for (i=2; i&lt;=NF; i++) {print $ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -71,6 +68,35 @@ browser.button(text: &#39;Click&#39;).scroll.by(0, 800) ">
       <div class="blog-index">
   
 
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2018/09/27/gmail/">Gmail</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2018-09-27T02:46:01+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>27</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>2:46 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><code>curl -u username:password --silent "https://mail.google.com/mail/feed/atom" | tr -d '\n' | awk -F '&lt;entry&gt;' '{for (i=2; i&lt;=NF; i++) {print $i}}' | sed -n "s/&lt;title&gt;\(.*\)&lt;\/title.*name&gt;\(.*\)&lt;\/name&gt;.*/\2 - \1/p"</code></p>
+</div>
+  
+  
+
+
+    </article>
+  
   
     <article>
       
@@ -339,40 +365,6 @@ browser.button(text: &#39;Click&#39;).scroll.by(0, 800) ">
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2018/05/30/powercfg/">Powercfg</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2018-05-30T21:36:45+08:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>30</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>9:36 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><code>powercfg –h off</code><br/>
-<code>powercfg /energy</code><br/>
-<code>   C:\ProgramData\Microsoft\Windows\Power Efficiency Diagnostics\energy-report.html</code><br/>
-<code>powercfg /requests</code><br/>
-<code>powercfg -lastwake</code><br/>
-<code>powercfg /waketimers</code></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
     <a href="/blog/archives">Blog Archives</a>
@@ -384,7 +376,7 @@ browser.button(text: &#39;Click&#39;).scroll.by(0, 800) ">
     <section>
   <h1>Categories</h1>
     <ul id="categories">
-       <li class='category'><a href='/blog/categories/app/'>app (29)</a></li>
+       <li class='category'><a href='/blog/categories/app/'>app (30)</a></li>
 <li class='category'><a href='/blog/categories/bat/'>bat (10)</a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (25)</a></li>
 <li class='category'><a href='/blog/categories/python/'>python (10)</a></li>
@@ -396,6 +388,10 @@ browser.button(text: &#39;Click&#39;).scroll.by(0, 800) ">
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2018/09/27/gmail/">Gmail</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2018/09/24/waitr-scoll/">Waitr-scoll</a>
@@ -411,10 +407,6 @@ browser.button(text: &#39;Click&#39;).scroll.by(0, 800) ">
     
       <li class="post">
         <a href="/blog/2018/06/27/moto/">Moto</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2018/05/30/powercfg/">Powercfg</a>
       </li>
     
   </ul>

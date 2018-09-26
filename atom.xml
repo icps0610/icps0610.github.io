@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-09-25T00:47:02+08:00</updated>
+  <updated>2018-09-27T02:46:37+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,15 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Gmail]]></title>
+    <link href="http://icps0610.github.io/blog/2018/09/27/gmail/"/>
+    <updated>2018-09-27T02:46:01+08:00</updated>
+    <id>http://icps0610.github.io/blog/2018/09/27/gmail</id>
+    <content type="html"><![CDATA[<p><code>curl -u username:password --silent "https://mail.google.com/mail/feed/atom" | tr -d '\n' | awk -F '&lt;entry&gt;' '{for (i=2; i&lt;=NF; i++) {print $i}}' | sed -n "s/&lt;title&gt;\(.*\)&lt;\/title.*name&gt;\(.*\)&lt;\/name&gt;.*/\2 - \1/p"</code></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Waitr-scoll]]></title>
@@ -896,15 +905,6 @@ disable_lua = true</p>
 </span><span class='line'>"incomplete-dir"  
 </span><span class='line'>"incomplete-dir-enabled"  </span></code></pre></td></tr></table></div></figure>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Download-gem]]></title>
-    <link href="http://icps0610.github.io/blog/2018/01/24/download-gem/"/>
-    <updated>2018-01-24T18:53:33+08:00</updated>
-    <id>http://icps0610.github.io/blog/2018/01/24/download-gem</id>
-    <content type="html"><![CDATA[<p><code>gem fetch [name]</code></p>
 ]]></content>
   </entry>
   
