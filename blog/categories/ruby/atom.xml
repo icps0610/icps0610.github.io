@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-09-27T02:46:37+08:00</updated>
+  <updated>2018-10-03T18:14:01+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,47 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Iptocountry]]></title>
+    <link href="http://icps0610.github.io/blog/2018/10/03/iptocountry/"/>
+    <updated>2018-10-03T17:54:18+08:00</updated>
+    <id>http://icps0610.github.io/blog/2018/10/03/iptocountry</id>
+    <content type="html"><![CDATA[<h3><a href="http://software77.net/geo-ip/">http://software77.net/geo-ip/</a></h3>
+
+<pre><code class="ruby">def prune(itc, idx, tmp, sort)
+    tmp.first[1] = itc[idx][1]
+    sort &lt;&lt; tmp.first
+    return sort
+end
+
+def reorganize(itc, idx=0, tmp=[], sort=[])
+    next_elemnt = itc[idx+1]
+    if next_elemnt == nil
+        return prune(itc, idx, tmp, sort)
+    end
+    if not next_elemnt[2] == itc[idx][2] and tmp == []
+        sort &lt;&lt; itc[idx]
+    elsif next_elemnt[2] == itc[idx][2]
+        tmp &lt;&lt; itc[idx]
+    else
+        sort = prune(itc, idx, tmp, sort)
+        tmp  = []
+    end
+    return reorganize(itc, idx+1, tmp, sort)
+end
+
+file = File.open("sort_iptocountry.txt", 'w')
+file.truncate(file.size)
+File.readlines("IpToCountry.txt").map do |line|
+    l = line.gsub("\"", "").chomp.split(",")
+    p line = [l[0], l[1], l[4], l[6]].join(",")
+    file.write("#{line}\n")
+end
+file.close()
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Waitr-scoll]]></title>
@@ -126,59 +167,6 @@ number.split(//).each_with_index do |n, i|
 end
 add_number(canvas, "b.png", 1662, 1353, rand(0..720))
 canvas.write("/tmp/moto.png")
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Read_csv_encoding]]></title>
-    <link href="http://icps0610.github.io/blog/2018/04/21/vba-excel-csv-and-use-ruby-read/"/>
-    <updated>2018-04-21T19:43:25+08:00</updated>
-    <id>http://icps0610.github.io/blog/2018/04/21/vba-excel-csv-and-use-ruby-read</id>
-    <content type="html"><![CDATA[<h3>excel vba => Unicode => Icov => utf-8</h3>
-
-<pre><code class="">#excel vba
-Dim i As Integer
-Dim WS_Count As Integer
-
-file = "z:\workbook.xlsx"
-csv = "z:\workbook.csv"
-
-WS_Count = ActiveWorkbook.Worksheets.Count
-For i = 1 To WS_Count
-Dim ws As Worksheet
-
-Set ws = ThisWorkbook.Worksheets(i)
-    ws.Copy
-    ActiveWorkbook.SaveAs Filename:=csv, _
-        FileFormat:=xlUnicodeText
-Next i
-Application.DisplayAlerts = False
-ActiveWorkbook.Close
-Shell ("ruby X:\excel\send.rb")
-
-Do
-    If Dir(file) &lt;&gt; "" Then
-        Exit Do
-    End If
-    DoEvents 'Prevents Excel from being unresponsive
-    Application.Wait Now + TimeValue("0:00:01") 'wait for one second
-Loop
-Workbooks.Open file
-</code></pre>
-
-<pre><code class="ruby"># encoding: utf-8
-require "net/ssh"
-Net::SSH.start(host, user, :password =&gt; passwd ) do |ssh|
-    puts ssh.exec! "ruby excel.rb"
-end
-</code></pre>
-
-<pre><code class="ruby ">require 'csv'
-require 'iconv'
-file_path = "/tmp/workbook.csv"
-f = IO.read(file_path)
-Iconv.iconv('utf-8', 'unicode', f).join.split("\r\n")
 </code></pre>
 ]]></content>
   </entry>

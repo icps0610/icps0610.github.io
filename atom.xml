@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-09-27T02:46:37+08:00</updated>
+  <updated>2018-10-03T18:14:01+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,78 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Iptocountry]]></title>
+    <link href="http://icps0610.github.io/blog/2018/10/03/iptocountry/"/>
+    <updated>2018-10-03T17:54:18+08:00</updated>
+    <id>http://icps0610.github.io/blog/2018/10/03/iptocountry</id>
+    <content type="html"><![CDATA[<h3><a href="http://software77.net/geo-ip/">http://software77.net/geo-ip/</a></h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">prune</span><span class="p">(</span><span class="n">itc</span><span class="p">,</span> <span class="n">idx</span><span class="p">,</span> <span class="n">tmp</span><span class="p">,</span> <span class="n">sort</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">tmp</span><span class="o">.</span><span class="n">first</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="n">itc</span><span class="o">[</span><span class="n">idx</span><span class="o">][</span><span class="mi">1</span><span class="o">]</span>
+</span><span class='line'>    <span class="n">sort</span> <span class="o">&lt;&lt;</span> <span class="n">tmp</span><span class="o">.</span><span class="n">first</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">sort</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">reorganize</span><span class="p">(</span><span class="n">itc</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">tmp</span><span class="o">=[]</span><span class="p">,</span> <span class="n">sort</span><span class="o">=[]</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">next_elemnt</span> <span class="o">=</span> <span class="n">itc</span><span class="o">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">1</span><span class="o">]</span>
+</span><span class='line'>    <span class="k">if</span> <span class="n">next_elemnt</span> <span class="o">==</span> <span class="kp">nil</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">prune</span><span class="p">(</span><span class="n">itc</span><span class="p">,</span> <span class="n">idx</span><span class="p">,</span> <span class="n">tmp</span><span class="p">,</span> <span class="n">sort</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>    <span class="k">if</span> <span class="ow">not</span> <span class="n">next_elemnt</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span> <span class="o">==</span> <span class="n">itc</span><span class="o">[</span><span class="n">idx</span><span class="o">][</span><span class="mi">2</span><span class="o">]</span> <span class="ow">and</span> <span class="n">tmp</span> <span class="o">==</span> <span class="o">[]</span>
+</span><span class='line'>        <span class="n">sort</span> <span class="o">&lt;&lt;</span> <span class="n">itc</span><span class="o">[</span><span class="n">idx</span><span class="o">]</span>
+</span><span class='line'>    <span class="k">elsif</span> <span class="n">next_elemnt</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span> <span class="o">==</span> <span class="n">itc</span><span class="o">[</span><span class="n">idx</span><span class="o">][</span><span class="mi">2</span><span class="o">]</span>
+</span><span class='line'>        <span class="n">tmp</span> <span class="o">&lt;&lt;</span> <span class="n">itc</span><span class="o">[</span><span class="n">idx</span><span class="o">]</span>
+</span><span class='line'>    <span class="k">else</span>
+</span><span class='line'>        <span class="n">sort</span> <span class="o">=</span> <span class="n">prune</span><span class="p">(</span><span class="n">itc</span><span class="p">,</span> <span class="n">idx</span><span class="p">,</span> <span class="n">tmp</span><span class="p">,</span> <span class="n">sort</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">tmp</span>  <span class="o">=</span> <span class="o">[]</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">reorganize</span><span class="p">(</span><span class="n">itc</span><span class="p">,</span> <span class="n">idx</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">tmp</span><span class="p">,</span> <span class="n">sort</span><span class="p">)</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">file</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;sort_iptocountry.txt&quot;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="n">file</span><span class="o">.</span><span class="n">truncate</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+</span><span class='line'><span class="no">File</span><span class="o">.</span><span class="n">readlines</span><span class="p">(</span><span class="s2">&quot;IpToCountry.txt&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">map</span> <span class="k">do</span> <span class="o">|</span><span class="n">line</span><span class="o">|</span>
+</span><span class='line'>    <span class="n">l</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\&quot;</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">chomp</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="nb">p</span> <span class="n">line</span> <span class="o">=</span> <span class="o">[</span><span class="n">l</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">,</span> <span class="n">l</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="p">,</span> <span class="n">l</span><span class="o">[</span><span class="mi">4</span><span class="o">]</span><span class="p">,</span> <span class="n">l</span><span class="o">[</span><span class="mi">6</span><span class="o">]].</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">#{</span><span class="n">line</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'><span class="n">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Gmail]]></title>
@@ -880,31 +952,6 @@ disable_lua = true</p>
     <content type="html"><![CDATA[<p>Franky</p>
 
 <blockquote><blockquote><p><a href="http://motion-express.com/blog/20150204-introduce-franky">http://motion-express.com/blog/20150204-introduce-franky</a></p></blockquote></blockquote>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Transmission]]></title>
-    <link href="http://icps0610.github.io/blog/2018/01/24/transmission/"/>
-    <updated>2018-01-24T19:26:10+08:00</updated>
-    <id>http://icps0610.github.io/blog/2018/01/24/transmission</id>
-    <content type="html"><![CDATA[<p><code>apt-get install transmission-daemon</code></p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>#/etc/transmission-daemon/settings.json  
-</span><span class='line'>"download-dir"  
-</span><span class='line'>"rpc-password"  
-</span><span class='line'>"rpc-username"  
-</span><span class='line'>"rpc-port":  
-</span><span class='line'>"incomplete-dir"  
-</span><span class='line'>"incomplete-dir-enabled"  </span></code></pre></td></tr></table></div></figure>
-
 ]]></content>
   </entry>
   
