@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-10-03T18:14:01+08:00</updated>
+  <updated>2018-10-04T22:22:14+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,17 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Save_last_directory]]></title>
+    <link href="http://icps0610.github.io/blog/2018/10/04/save-last-directory/"/>
+    <updated>2018-10-04T22:21:12+08:00</updated>
+    <id>http://icps0610.github.io/blog/2018/10/04/save-last-directory</id>
+    <content type="html"><![CDATA[<h3>Save last working directory on Bash logout</h3>
+
+<blockquote><p>ref <a href="https://stackoverflow.com/questions/767040/save-last-working-directory-on-bash-logout">https://stackoverflow.com/questions/767040/save-last-working-directory-on-bash-logout</a></p></blockquote>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Iptocountry]]></title>
@@ -941,17 +952,6 @@ disable_lua = true</p>
 </span><span class='line'>
 </span></code></pre></td></tr></table></div></figure>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Franky]]></title>
-    <link href="http://icps0610.github.io/blog/2018/03/01/franky/"/>
-    <updated>2018-03-01T16:03:16+08:00</updated>
-    <id>http://icps0610.github.io/blog/2018/03/01/franky</id>
-    <content type="html"><![CDATA[<p>Franky</p>
-
-<blockquote><blockquote><p><a href="http://motion-express.com/blog/20150204-introduce-franky">http://motion-express.com/blog/20150204-introduce-franky</a></p></blockquote></blockquote>
 ]]></content>
   </entry>
   

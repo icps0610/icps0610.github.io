@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-10-03T18:14:01+08:00</updated>
+  <updated>2018-10-04T22:22:14+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,17 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Save_last_directory]]></title>
+    <link href="http://icps0610.github.io/blog/2018/10/04/save-last-directory/"/>
+    <updated>2018-10-04T22:21:12+08:00</updated>
+    <id>http://icps0610.github.io/blog/2018/10/04/save-last-directory</id>
+    <content type="html"><![CDATA[<h3>Save last working directory on Bash logout</h3>
+
+<blockquote><p>ref <a href="https://stackoverflow.com/questions/767040/save-last-working-directory-on-bash-logout">https://stackoverflow.com/questions/767040/save-last-working-directory-on-bash-logout</a></p></blockquote>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Raspberry_pi_3_plus]]></title>
@@ -87,27 +98,6 @@ unzip adafruit_hostapd.zip
 sudo mv /usr/sbin/hostapd /usr/sbin/hostapd.ORIG
 sudo mv hostapd /usr/sbin
 sudo chmod 755 /usr/sbin/hostapd
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Rtl8192eu-linux-drives]]></title>
-    <link href="http://icps0610.github.io/blog/2018/03/20/rtl8192eu-linux-drives/"/>
-    <updated>2018-03-20T23:38:25+08:00</updated>
-    <id>http://icps0610.github.io/blog/2018/03/20/rtl8192eu-linux-drives</id>
-    <content type="html"><![CDATA[<p><code>https://github.com/lord2y/rtl8192eu-arm-linux-driver</code></p>
-
-<pre><code>apt-get install git raspberrypi-kernel-headers build-essential dkms
-dkms add .
-dkms install rtl8192eu/1.0
-
-dkms status
-
-dkms uninstall rtl8192eu/1.0  
-dkms remove rtl8192eu/1.0 --all  
-
-`https://icps0610.github.io/blog/2018/03/21/wifi-ap/`
 </code></pre>
 ]]></content>
   </entry>
