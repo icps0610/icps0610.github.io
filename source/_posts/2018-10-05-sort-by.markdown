@@ -1,0 +1,12 @@
+---
+layout: post
+title: "sorting-a-two-dimensional-array"
+date: 2018-10-05 18:31:04 +0800
+comments: true
+categories: ruby
+---
+
+>ref https://stackoverflow.com/questions/7033719/sorting-a-two-dimensional-array-by-second-value
+
+arr.sort_by{|x,y|y}
+arr.sort_by(&:last)

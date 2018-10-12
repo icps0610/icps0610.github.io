@@ -1,0 +1,12 @@
+---
+layout: post
+title: "pycall"
+date: 2018-10-07 11:44:45 +0800
+comments: true
+categories: ruby
+---
+
+``` ruby
+require 'pycall/import'
+include PyCall::Import
+```

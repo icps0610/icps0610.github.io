@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "ruby檔案操作"
+title: "file"
 date: 2016-06-16 14:50:15 +0800
 comments: true
 categories: ruby
@@ -8,32 +8,34 @@ categories: ruby
 
 
 ``` ruby
+ext   = ".#{file.split(".").last}"
+fname = File.basename(file, ext)
+
 #寫入檔案 w 寫 r讀 a附加
 file = File.open("file.txt", 'w')
 file.truncate(file.size)
 file.write("hello")
 file.close()
-```
 
-``` ruby
+File.open("myfile.txt", 'w') do |f|
+  f.write("Lorem ipsum dolor sit amet")
+  f.write("Lorem ipsum dolor sit amet")  
+end
+
 #讀取檔案每行
 File.readlines("test.txt").each do |line| 
   puts line 
 end
 
-```
-``` ruby
+
 #讀取檔案成字串
 IO.binread("test.txt")
 IO.binwrite("test.txt")
 
-```
-``` ruby
 #列出檔案清單 dir ls
 Dir.new("e:\\download").each{|x| puts x}
 
-```
-``` ruby
+
 #目錄或檔案
 File.directory?("name")
 File.file?("name")
