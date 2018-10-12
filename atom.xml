@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-10-04T22:22:14+08:00</updated>
+  <updated>2018-10-13T06:17:11+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -14,6 +14,45 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Pycall]]></title>
+    <link href="http://icps0610.github.io/blog/2018/10/07/pycall/"/>
+    <updated>2018-10-07T11:44:45+08:00</updated>
+    <id>http://icps0610.github.io/blog/2018/10/07/pycall</id>
+    <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;pycall/import&#39;</span>
+</span><span class='line'><span class="kp">include</span> <span class="no">PyCall</span><span class="o">::</span><span class="no">Import</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Sorting-a-two-dimensional-array]]></title>
+    <link href="http://icps0610.github.io/blog/2018/10/05/sort-by/"/>
+    <updated>2018-10-05T18:31:04+08:00</updated>
+    <id>http://icps0610.github.io/blog/2018/10/05/sort-by</id>
+    <content type="html"><![CDATA[<blockquote><p>ref <a href="https://stackoverflow.com/questions/7033719/sorting-a-two-dimensional-array-by-second-value">https://stackoverflow.com/questions/7033719/sorting-a-two-dimensional-array-by-second-value</a></p></blockquote>
+
+<p>arr.sort_by{|x,y|y}
+arr.sort_by(&amp;:last)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Fuzzystringmatch]]></title>
+    <link href="http://icps0610.github.io/blog/2018/10/05/fuzzystringmatch/"/>
+    <updated>2018-10-05T14:07:20+08:00</updated>
+    <id>http://icps0610.github.io/blog/2018/10/05/fuzzystringmatch</id>
+    <content type="html"><![CDATA[<h3><a href="https://github.com/kiyoka/fuzzy-string-match">https://github.com/kiyoka/fuzzy-string-match</a></h3>
+
+<p>require &lsquo;fuzzystringmatch&rsquo;
+jarow = FuzzyStringMatch::JaroWinkler.create( :native )
+p jarow.getDistance(  &ldquo;jones&rdquo;,      &ldquo;johnson&rdquo; )</p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Save_last_directory]]></title>
     <link href="http://icps0610.github.io/blog/2018/10/04/save-last-directory/"/>
     <updated>2018-10-04T22:21:12+08:00</updated>
@@ -21,78 +60,6 @@
     <content type="html"><![CDATA[<h3>Save last working directory on Bash logout</h3>
 
 <blockquote><p>ref <a href="https://stackoverflow.com/questions/767040/save-last-working-directory-on-bash-logout">https://stackoverflow.com/questions/767040/save-last-working-directory-on-bash-logout</a></p></blockquote>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Iptocountry]]></title>
-    <link href="http://icps0610.github.io/blog/2018/10/03/iptocountry/"/>
-    <updated>2018-10-03T17:54:18+08:00</updated>
-    <id>http://icps0610.github.io/blog/2018/10/03/iptocountry</id>
-    <content type="html"><![CDATA[<h3><a href="http://software77.net/geo-ip/">http://software77.net/geo-ip/</a></h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">prune</span><span class="p">(</span><span class="n">itc</span><span class="p">,</span> <span class="n">idx</span><span class="p">,</span> <span class="n">tmp</span><span class="p">,</span> <span class="n">sort</span><span class="p">)</span>
-</span><span class='line'>    <span class="n">tmp</span><span class="o">.</span><span class="n">first</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="n">itc</span><span class="o">[</span><span class="n">idx</span><span class="o">][</span><span class="mi">1</span><span class="o">]</span>
-</span><span class='line'>    <span class="n">sort</span> <span class="o">&lt;&lt;</span> <span class="n">tmp</span><span class="o">.</span><span class="n">first</span>
-</span><span class='line'>    <span class="k">return</span> <span class="n">sort</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">def</span> <span class="nf">reorganize</span><span class="p">(</span><span class="n">itc</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">tmp</span><span class="o">=[]</span><span class="p">,</span> <span class="n">sort</span><span class="o">=[]</span><span class="p">)</span>
-</span><span class='line'>    <span class="n">next_elemnt</span> <span class="o">=</span> <span class="n">itc</span><span class="o">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">1</span><span class="o">]</span>
-</span><span class='line'>    <span class="k">if</span> <span class="n">next_elemnt</span> <span class="o">==</span> <span class="kp">nil</span>
-</span><span class='line'>        <span class="k">return</span> <span class="n">prune</span><span class="p">(</span><span class="n">itc</span><span class="p">,</span> <span class="n">idx</span><span class="p">,</span> <span class="n">tmp</span><span class="p">,</span> <span class="n">sort</span><span class="p">)</span>
-</span><span class='line'>    <span class="k">end</span>
-</span><span class='line'>    <span class="k">if</span> <span class="ow">not</span> <span class="n">next_elemnt</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span> <span class="o">==</span> <span class="n">itc</span><span class="o">[</span><span class="n">idx</span><span class="o">][</span><span class="mi">2</span><span class="o">]</span> <span class="ow">and</span> <span class="n">tmp</span> <span class="o">==</span> <span class="o">[]</span>
-</span><span class='line'>        <span class="n">sort</span> <span class="o">&lt;&lt;</span> <span class="n">itc</span><span class="o">[</span><span class="n">idx</span><span class="o">]</span>
-</span><span class='line'>    <span class="k">elsif</span> <span class="n">next_elemnt</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span> <span class="o">==</span> <span class="n">itc</span><span class="o">[</span><span class="n">idx</span><span class="o">][</span><span class="mi">2</span><span class="o">]</span>
-</span><span class='line'>        <span class="n">tmp</span> <span class="o">&lt;&lt;</span> <span class="n">itc</span><span class="o">[</span><span class="n">idx</span><span class="o">]</span>
-</span><span class='line'>    <span class="k">else</span>
-</span><span class='line'>        <span class="n">sort</span> <span class="o">=</span> <span class="n">prune</span><span class="p">(</span><span class="n">itc</span><span class="p">,</span> <span class="n">idx</span><span class="p">,</span> <span class="n">tmp</span><span class="p">,</span> <span class="n">sort</span><span class="p">)</span>
-</span><span class='line'>        <span class="n">tmp</span>  <span class="o">=</span> <span class="o">[]</span>
-</span><span class='line'>    <span class="k">end</span>
-</span><span class='line'>    <span class="k">return</span> <span class="n">reorganize</span><span class="p">(</span><span class="n">itc</span><span class="p">,</span> <span class="n">idx</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">tmp</span><span class="p">,</span> <span class="n">sort</span><span class="p">)</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">file</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;sort_iptocountry.txt&quot;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
-</span><span class='line'><span class="n">file</span><span class="o">.</span><span class="n">truncate</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
-</span><span class='line'><span class="no">File</span><span class="o">.</span><span class="n">readlines</span><span class="p">(</span><span class="s2">&quot;IpToCountry.txt&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">map</span> <span class="k">do</span> <span class="o">|</span><span class="n">line</span><span class="o">|</span>
-</span><span class='line'>    <span class="n">l</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\&quot;</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">chomp</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
-</span><span class='line'>    <span class="nb">p</span> <span class="n">line</span> <span class="o">=</span> <span class="o">[</span><span class="n">l</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">,</span> <span class="n">l</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="p">,</span> <span class="n">l</span><span class="o">[</span><span class="mi">4</span><span class="o">]</span><span class="p">,</span> <span class="n">l</span><span class="o">[</span><span class="mi">6</span><span class="o">]].</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
-</span><span class='line'>    <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">#{</span><span class="n">line</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'><span class="n">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-</span></code></pre></td></tr></table></div></figure>
-
 ]]></content>
   </entry>
   
@@ -762,195 +729,6 @@ disable_lua = true</p>
 </span><span class='line'>sudo mv /usr/sbin/hostapd /usr/sbin/hostapd.ORIG
 </span><span class='line'>sudo mv hostapd /usr/sbin
 </span><span class='line'>sudo chmod 755 /usr/sbin/hostapd</span></code></pre></td></tr></table></div></figure>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Rtl8192eu-linux-drives]]></title>
-    <link href="http://icps0610.github.io/blog/2018/03/20/rtl8192eu-linux-drives/"/>
-    <updated>2018-03-20T23:38:25+08:00</updated>
-    <id>http://icps0610.github.io/blog/2018/03/20/rtl8192eu-linux-drives</id>
-    <content type="html"><![CDATA[<p><code>https://github.com/lord2y/rtl8192eu-arm-linux-driver</code></p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>apt-get install git raspberrypi-kernel-headers build-essential dkms
-</span><span class='line'>dkms add .
-</span><span class='line'>dkms install rtl8192eu/1.0
-</span><span class='line'>
-</span><span class='line'>dkms status
-</span><span class='line'>
-</span><span class='line'>dkms uninstall rtl8192eu/1.0  
-</span><span class='line'>dkms remove rtl8192eu/1.0 --all  
-</span><span class='line'>
-</span><span class='line'>`https://icps0610.github.io/blog/2018/03/21/wifi-ap/`</span></code></pre></td></tr></table></div></figure>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Sso]]></title>
-    <link href="http://icps0610.github.io/blog/2018/03/19/sso/"/>
-    <updated>2018-03-19T22:28:58+08:00</updated>
-    <id>http://icps0610.github.io/blog/2018/03/19/sso</id>
-    <content type="html"><![CDATA[<blockquote><blockquote><p>ref <a href="https://github.com/rishabhp/sso-rails-client">https://github.com/rishabhp/sso-rails-client</a></p></blockquote></blockquote>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-<span class='line-number'>41</span>
-<span class='line-number'>42</span>
-<span class='line-number'>43</span>
-<span class='line-number'>44</span>
-<span class='line-number'>45</span>
-<span class='line-number'>46</span>
-<span class='line-number'>47</span>
-<span class='line-number'>48</span>
-<span class='line-number'>49</span>
-<span class='line-number'>50</span>
-<span class='line-number'>51</span>
-<span class='line-number'>52</span>
-<span class='line-number'>53</span>
-<span class='line-number'>54</span>
-<span class='line-number'>55</span>
-<span class='line-number'>56</span>
-<span class='line-number'>57</span>
-<span class='line-number'>58</span>
-<span class='line-number'>59</span>
-<span class='line-number'>60</span>
-<span class='line-number'>61</span>
-<span class='line-number'>62</span>
-<span class='line-number'>63</span>
-<span class='line-number'>64</span>
-<span class='line-number'>65</span>
-<span class='line-number'>66</span>
-<span class='line-number'>67</span>
-<span class='line-number'>68</span>
-<span class='line-number'>69</span>
-<span class='line-number'>70</span>
-<span class='line-number'>71</span>
-<span class='line-number'>72</span>
-<span class='line-number'>73</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>#Gemfile
-</span><span class='line'>gem 'omniauth-oauth2'
-</span><span class='line'>
-</span><span class='line'>#config\environment.rb
-</span><span class='line'>require 'icps'
-</span><span class='line'>
-</span><span class='line'>#lib\icps.rb
-</span><span class='line'>require 'omniauth-oauth2'
-</span><span class='line'>module OmniAuth
-</span><span class='line'>  module Strategies
-</span><span class='line'>    class Icps &lt; OmniAuth::Strategies::OAuth2
-</span><span class='line'>
-</span><span class='line'>      CUSTOM_PROVIDER_URL = 'http://192.168.0.201:3000'
-</span><span class='line'>
-</span><span class='line'>      option :client_options, {
-</span><span class='line'>        :site =&gt;  CUSTOM_PROVIDER_URL,
-</span><span class='line'>        :authorize_url =&gt; "#{CUSTOM_PROVIDER_URL}/auth/icps/authorize",
-</span><span class='line'>        :access_token_url =&gt; "#{CUSTOM_PROVIDER_URL}/auth/icps/access_token"
-</span><span class='line'>      }
-</span><span class='line'>
-</span><span class='line'>      uid do
-</span><span class='line'>        raw_info['id']
-</span><span class='line'>      end
-</span><span class='line'>
-</span><span class='line'>      info do
-</span><span class='line'>        {
-</span><span class='line'>          :email =&gt; raw_info['info']['email']
-</span><span class='line'>        }
-</span><span class='line'>      end
-</span><span class='line'>
-</span><span class='line'>      extra do
-</span><span class='line'>        {
-</span><span class='line'>          :first_name =&gt; raw_info['extra']['first_name'],
-</span><span class='line'>          :last_name  =&gt; raw_info['extra']['last_name']
-</span><span class='line'>        }
-</span><span class='line'>      end
-</span><span class='line'>
-</span><span class='line'>      def raw_info
-</span><span class='line'>        @raw_info ||= access_token.get("/auth/icps/user.json?oauth_token=#{access_token.token}").parsed
-</span><span class='line'>      end
-</span><span class='line'>    end
-</span><span class='line'>  end
-</span><span class='line'>end
-</span><span class='line'>
-</span><span class='line'>#config\router.rb
-</span><span class='line'>get '/users/auth/:provider/callback' =&gt; 'user_sessions#create'
-</span><span class='line'>get '/users/auth/failure' =&gt; 'user_sessions#failure'
-</span><span class='line'>match '/logout', :to =&gt; 'user_sessions#destroy', via: :all
-</span><span class='line'>
-</span><span class='line'>#user_sessions_controller.rb
-</span><span class='line'>class UserSessionsController &lt; ApplicationController
-</span><span class='line'>
-</span><span class='line'>    def create
-</span><span class='line'>        @user = User.from_omniauth(request.env["omniauth.auth"])
-</span><span class='line'>        sign_in_and_redirect @user
-</span><span class='line'>    end
-</span><span class='line'>
-</span><span class='line'>end
-</span><span class='line'>
-</span><span class='line'>
-</span><span class='line'>#config\initializers\devise.rb
-</span><span class='line'>config.omniauth :icps, Figaro.env.icps_app_id, Figaro.env.icps_secret, scope: 'email', info_fields: 'email, name'
-</span><span class='line'>
-</span><span class='line'>#config\application.yml
-</span><span class='line'>icps_app_id: "id"
-</span><span class='line'>icps_secret: "secret"
-</span><span class='line'>
-</span><span class='line'>#view.erb
-</span><span class='line'>&lt;%= link_to "login", "/users/auth/icps" %&gt;
-</span><span class='line'>
-</span><span class='line'>
-</span><span class='line'>
-</span><span class='line'>
-</span></code></pre></td></tr></table></div></figure>
 
 ]]></content>
   </entry>

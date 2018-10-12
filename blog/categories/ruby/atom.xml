@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-10-04T22:22:14+08:00</updated>
+  <updated>2018-10-13T06:17:11+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -14,43 +14,38 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Iptocountry]]></title>
-    <link href="http://icps0610.github.io/blog/2018/10/03/iptocountry/"/>
-    <updated>2018-10-03T17:54:18+08:00</updated>
-    <id>http://icps0610.github.io/blog/2018/10/03/iptocountry</id>
-    <content type="html"><![CDATA[<h3><a href="http://software77.net/geo-ip/">http://software77.net/geo-ip/</a></h3>
-
-<pre><code class="ruby">def prune(itc, idx, tmp, sort)
-    tmp.first[1] = itc[idx][1]
-    sort &lt;&lt; tmp.first
-    return sort
-end
-
-def reorganize(itc, idx=0, tmp=[], sort=[])
-    next_elemnt = itc[idx+1]
-    if next_elemnt == nil
-        return prune(itc, idx, tmp, sort)
-    end
-    if not next_elemnt[2] == itc[idx][2] and tmp == []
-        sort &lt;&lt; itc[idx]
-    elsif next_elemnt[2] == itc[idx][2]
-        tmp &lt;&lt; itc[idx]
-    else
-        sort = prune(itc, idx, tmp, sort)
-        tmp  = []
-    end
-    return reorganize(itc, idx+1, tmp, sort)
-end
-
-file = File.open("sort_iptocountry.txt", 'w')
-file.truncate(file.size)
-File.readlines("IpToCountry.txt").map do |line|
-    l = line.gsub("\"", "").chomp.split(",")
-    p line = [l[0], l[1], l[4], l[6]].join(",")
-    file.write("#{line}\n")
-end
-file.close()
+    <title type="html"><![CDATA[Pycall]]></title>
+    <link href="http://icps0610.github.io/blog/2018/10/07/pycall/"/>
+    <updated>2018-10-07T11:44:45+08:00</updated>
+    <id>http://icps0610.github.io/blog/2018/10/07/pycall</id>
+    <content type="html"><![CDATA[<pre><code class="ruby">require 'pycall/import'
+include PyCall::Import
 </code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Sorting-a-two-dimensional-array]]></title>
+    <link href="http://icps0610.github.io/blog/2018/10/05/sort-by/"/>
+    <updated>2018-10-05T18:31:04+08:00</updated>
+    <id>http://icps0610.github.io/blog/2018/10/05/sort-by</id>
+    <content type="html"><![CDATA[<blockquote><p>ref <a href="https://stackoverflow.com/questions/7033719/sorting-a-two-dimensional-array-by-second-value">https://stackoverflow.com/questions/7033719/sorting-a-two-dimensional-array-by-second-value</a></p></blockquote>
+
+<p>arr.sort_by{|x,y|y}
+arr.sort_by(&amp;:last)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Fuzzystringmatch]]></title>
+    <link href="http://icps0610.github.io/blog/2018/10/05/fuzzystringmatch/"/>
+    <updated>2018-10-05T14:07:20+08:00</updated>
+    <id>http://icps0610.github.io/blog/2018/10/05/fuzzystringmatch</id>
+    <content type="html"><![CDATA[<h3><a href="https://github.com/kiyoka/fuzzy-string-match">https://github.com/kiyoka/fuzzy-string-match</a></h3>
+
+<p>require &lsquo;fuzzystringmatch&rsquo;
+jarow = FuzzyStringMatch::JaroWinkler.create( :native )
+p jarow.getDistance(  &ldquo;jones&rdquo;,      &ldquo;johnson&rdquo; )</p>
 ]]></content>
   </entry>
   
@@ -119,54 +114,6 @@ lx, ly = locate_left(img)
 rx, ry = locate_right(img)
 img.crop!(lx, ly, rx-lx, ry-ly)
 img.write("/tmp/image/base1.jpg")
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Infinity]]></title>
-    <link href="http://icps0610.github.io/blog/2018/09/18/infinity/"/>
-    <updated>2018-09-18T17:10:30+08:00</updated>
-    <id>http://icps0610.github.io/blog/2018/09/18/infinity</id>
-    <content type="html"><![CDATA[<h3>Infinity</h3>
-
-<h3>ref <a href="https://stackoverflow.com/questions/5778295/how-to-express-infinity-in-ruby">https://stackoverflow.com/questions/5778295/how-to-express-infinity-in-ruby</a></h3>
-
-<p>PositiveInfinity = +1.0/0.0
-=> Infinity</p>
-
-<p>NegativeInfinity = -1.0/0.0
-=> -Infinity</p>
-
-<p>CompleteInfinity = NegativeInfinity..PositiveInfinity
-=> -Infinity..Infinity</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Moto]]></title>
-    <link href="http://icps0610.github.io/blog/2018/06/27/moto/"/>
-    <updated>2018-06-27T01:14:07+08:00</updated>
-    <id>http://icps0610.github.io/blog/2018/06/27/moto</id>
-    <content type="html"><![CDATA[<pre><code class="ruby">#!/usr/bin/env ruby
-# encoding: utf-8
-require 'rmagick'
-
-def add_number(canvas, file, x, y, h)
-    image = Magick::ImageList.new(file).crop!(0, h, 63, 90)
-    canvas.composite!(image, x, y, Magick::OverCompositeOp)
-end
-
-number = "98765"
-x, y = 1232, 1361
-canvas = Magick::Image.read("base.png").first
-number.split(//).each_with_index do |n, i|
-    xn = x + i * 87
-    yn = y + rand(0..3)
-    add_number(canvas, "w.png", xn, yn, n.to_i * 80)
-end
-add_number(canvas, "b.png", 1662, 1353, rand(0..720))
-canvas.write("/tmp/moto.png")
 </code></pre>
 ]]></content>
   </entry>
