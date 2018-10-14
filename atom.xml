@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-10-14T16:03:07+08:00</updated>
+  <updated>2018-10-14T16:11:16+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -18,7 +18,36 @@
     <link href="http://icps0610.github.io/blog/2018/10/14/days-excel/"/>
     <updated>2018-10-14T15:47:25+08:00</updated>
     <id>http://icps0610.github.io/blog/2018/10/14/days-excel</id>
-    <content type="html"><![CDATA[
+    <content type="html"><![CDATA[<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>A1
+</span><span class='line'>1999/12/29
+</span><span class='line'>
+</span><span class='line'>C1
+</span><span class='line'>=LEFT(A1, SEARCH("/",A1,1)-1)
+</span><span class='line'>
+</span><span class='line'>D1
+</span><span class='line'>=MID(A1,SEARCH("/",A1,1)+1,SEARCH("/",A1,SEARCH("/",A1,1)+1)-SEARCH("/",A1,1)-1)
+</span><span class='line'>
+</span><span class='line'>E1
+</span><span class='line'>=RIGHT(A1,LEN(A1)-SEARCH("/",A1,SEARCH("/",A1,1)+1))
+</span><span class='line'>
+</span><span class='line'>F1
+</span><span class='line'>=(C1-1)*365+INT((C1-1)/4)-INT((C1-1)/100)+INT((C1-1)/400)+DATEDIF("1/1",D1&"/"&E1,"YD")+IF(OR(MOD(C1,400)=0,AND(MOD(C1,4)=0,MOD(C1,100)&lt;&gt;0)),IF(INT(D1)&gt;2,2,1), 1)
+</span></code></pre></td></tr></table></div></figure>
+
 ]]></content>
   </entry>
   

@@ -9,8 +9,24 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="
-">
+  <meta name="description" content="1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+A1
+1999/12/29 C1
+=LEFT(A1, SEARCH("/",A1,1)-1) D1
+=MID(A1,SEARCH("/",A1,1)+1,SEARCH("/",A1,SEARCH("/",A1,1)+1)- &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -87,7 +103,36 @@
   </header>
 
 
-<div class="entry-content">
+<div class="entry-content"><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>A1
+</span><span class='line'>1999/12/29
+</span><span class='line'>
+</span><span class='line'>C1
+</span><span class='line'>=LEFT(A1, SEARCH("/",A1,1)-1)
+</span><span class='line'>
+</span><span class='line'>D1
+</span><span class='line'>=MID(A1,SEARCH("/",A1,1)+1,SEARCH("/",A1,SEARCH("/",A1,1)+1)-SEARCH("/",A1,1)-1)
+</span><span class='line'>
+</span><span class='line'>E1
+</span><span class='line'>=RIGHT(A1,LEN(A1)-SEARCH("/",A1,SEARCH("/",A1,1)+1))
+</span><span class='line'>
+</span><span class='line'>F1
+</span><span class='line'>=(C1-1)*365+INT((C1-1)/4)-INT((C1-1)/100)+INT((C1-1)/400)+DATEDIF("1/1",D1&"/"&E1,"YD")+IF(OR(MOD(C1,400)=0,AND(MOD(C1,4)=0,MOD(C1,100)&lt;&gt;0)),IF(INT(D1)&gt;2,2,1), 1)
+</span></code></pre></td></tr></table></div></figure>
+
 </div>
 
 
