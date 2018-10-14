@@ -3,10 +3,10 @@ layout: post
 title: "days_excel"
 date: 2018-10-14 15:47:25 +0800
 comments: true
-categories: excel
+categories: excel  
 ---
 
-``` excel
+<pre>
 A1
 1999/12/29
 
@@ -22,4 +22,4 @@ E1
 F1
 =(C1-1)*365+INT((C1-1)/4)-INT((C1-1)/100)+INT((C1-1)/400)+DATEDIF("1/1",D1&"/"&E1,"YD")+IF(OR(MOD(C1,400)=0,AND(MOD(C1,4)=0,MOD(C1,100)<>0)),IF(INT(D1)>2,2,1), 1)
 
-```
+</pre>>
