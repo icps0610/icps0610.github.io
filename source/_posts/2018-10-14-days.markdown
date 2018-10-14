@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "date"
+title: "days"
 date: 2018-10-14 15:42:13 +0800
 comments: true
 categories: ruby
