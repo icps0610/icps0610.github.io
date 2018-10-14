@@ -1,0 +1,37 @@
+---
+layout: post
+title: "date"
+date: 2018-10-14 15:42:13 +0800
+comments: true
+categories: ruby
+---
+``` ruby
+def leap_year(y)
+    y % 4 == 0 && y % 100 != 0 || y % 400 == 0
+end
+
+def md(y)
+    if leap_year(y)
+        [0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+    else
+        [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+    end
+end
+
+def days(date)
+    year, month, day = date.split("/").map(&:to_i)
+    y = year - 1
+    years  = y * 365 + (y / 4 - y / 100 + y / 400)
+    months = md(year)[1..(month - 1)].sum
+    years + months + day
+end
+
+def between(sdate, edate)
+    (days(edate) - days(sdate)).abs
+end
+
+sdate = '1900/1/1'
+edate = '2018/12/28'
+
+p between(sdate, edate)
+```
