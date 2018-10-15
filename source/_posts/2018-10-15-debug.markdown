@@ -1,0 +1,15 @@
+---
+layout: post
+title: "debug"
+date: 2018-10-15 21:19:16 +0800
+comments: true
+categories: ruby
+---
+
+>> ref https://stackoverflow.com/questions/2603617/ruby-print-the-variable-name-and-then-its-value
+``` ruby
+def dbg(a, &b)
+    puts "#{a} = #{eval(a.to_s, b.binding)}"
+end
+#dbg(:var) {}
+```
