@@ -15,6 +15,7 @@
 4
 5
 6
+7
 def dbg(a, &amp;b) v = eval(a.to_s, b. &hellip;">
   
 
@@ -103,12 +104,14 @@ def dbg(a, &amp;b) v = eval(a.to_s, b. &hellip;">
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
+<span class='line-number'>7</span>
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">dbg</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">b</span><span class="p">)</span>
 </span><span class='line'>    <span class="n">v</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">to_s</span><span class="p">,</span> <span class="n">b</span><span class="o">.</span><span class="n">binding</span><span class="p">)</span>
 </span><span class='line'>    <span class="n">v</span> <span class="o">=</span> <span class="s2">&quot;nil&quot;</span> <span class="k">if</span> <span class="n">v</span> <span class="o">==</span> <span class="kp">nil</span> <span class="ow">or</span> <span class="n">v</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span>
-</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">a</span><span class="si">}</span><span class="s2"> : </span><span class="si">#{</span><span class="n">v</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">a</span><span class="si">}</span><span class="s2"> : </span><span class="si">#{</span><span class="n">v</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">if</span> <span class="ow">not</span> <span class="vi">@dbg</span> <span class="o">==</span> <span class="mi">0</span>
 </span><span class='line'><span class="k">end</span>
 </span><span class='line'><span class="c1">#dbg(:var) {}</span>
+</span><span class='line'><span class="c1">#@dbg = 0</span>
 </span></code></pre></td></tr></table></div></figure>
 
 </div>

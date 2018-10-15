@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-10-15T21:38:56+08:00</updated>
+  <updated>2018-10-15T23:17:17+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -18,17 +18,16 @@
     <link href="http://icps0610.github.io/blog/2018/10/15/debug/"/>
     <updated>2018-10-15T21:19:16+08:00</updated>
     <id>http://icps0610.github.io/blog/2018/10/15/debug</id>
-    <content type="html"><![CDATA[<blockquote><blockquote><p>ref <a href="https://stackoverflow.com/questions/2603617/ruby-print-the-variable-name-and-then-its-value">https://stackoverflow.com/questions/2603617/ruby-print-the-variable-name-and-then-its-value</a>
-``` ruby
-def dbg(a, &amp;b)
+    <content type="html"><![CDATA[<blockquote><blockquote><p>ref <a href="https://stackoverflow.com/questions/2603617/ruby-print-the-variable-name-and-then-its-value">https://stackoverflow.com/questions/2603617/ruby-print-the-variable-name-and-then-its-value</a></p></blockquote></blockquote>
+
+<pre><code class="ruby">def dbg(a, &amp;b)
     v = eval(a.to_s, b.binding)
-    v = &ldquo;nil&rdquo; if v == nil or v == &ldquo;&rdquo;
-    puts &ldquo;#{a} : #{v}&rdquo;
-end</p>
-
-<h1>dbg(:var) {}</h1>
-
-<p>```</p></blockquote></blockquote>
+    v = "nil" if v == nil or v == ""
+    puts "#{a} : #{v}" if not @dbg == 0
+end
+#dbg(:var) {}
+#@dbg = 0
+</code></pre>
 ]]></content>
   </entry>
   
