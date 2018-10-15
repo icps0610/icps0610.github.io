@@ -9,7 +9,9 @@ categories: ruby
 >> ref https://stackoverflow.com/questions/2603617/ruby-print-the-variable-name-and-then-its-value
 ``` ruby
 def dbg(a, &b)
-    puts "#{a} = #{eval(a.to_s, b.binding)}"
+    v = eval(a.to_s, b.binding)
+    v = "nil" if v == nil or v == ""
+    puts "#{a} : #{v}"
 end
 #dbg(:var) {}
 ```
