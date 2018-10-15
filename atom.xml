@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-10-14T16:16:45+08:00</updated>
+  <updated>2018-10-15T21:21:34+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,26 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Debug]]></title>
+    <link href="http://icps0610.github.io/blog/2018/10/15/debug/"/>
+    <updated>2018-10-15T21:19:16+08:00</updated>
+    <id>http://icps0610.github.io/blog/2018/10/15/debug</id>
+    <content type="html"><![CDATA[<blockquote><blockquote><p>ref <a href="https://stackoverflow.com/questions/2603617/ruby-print-the-variable-name-and-then-its-value">https://stackoverflow.com/questions/2603617/ruby-print-the-variable-name-and-then-its-value</a></p></blockquote></blockquote>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">dbg</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">b</span><span class="p">)</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">a</span><span class="si">}</span><span class="s2"> = </span><span class="si">#{</span><span class="nb">eval</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">to_s</span><span class="p">,</span> <span class="n">b</span><span class="o">.</span><span class="n">binding</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'><span class="c1">#dbg(:var) {}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Days_excel]]></title>
@@ -679,126 +699,6 @@ p jarow.getDistance(  &ldquo;jones&rdquo;,      &ldquo;johnson&rdquo; )</p>
 </span><span class='line'>
 </span><span class='line'><span class="n">h</span> <span class="o">=</span> <span class="n">holiday</span>
 </span><span class='line'><span class="nb">p</span> <span class="n">check_check_holiday</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Excel]]></title>
-    <link href="http://icps0610.github.io/blog/2018/04/04/excel/"/>
-    <updated>2018-04-04T16:39:18+08:00</updated>
-    <id>http://icps0610.github.io/blog/2018/04/04/excel</id>
-    <content type="html"><![CDATA[<h3>xlsxwriter</h3>
-
-<h4>write</h4>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="c">#!/usr/bin/env python3</span>
-</span><span class='line'><span class="c"># -*- coding:utf-8 -*-</span>
-</span><span class='line'><span class="kn">import</span> <span class="nn">xlsxwriter</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">def</span> <span class="nf">cell</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-</span><span class='line'>    <span class="k">return</span> <span class="s">&#39;</span><span class="si">%s%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span> <span class="nb">chr</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="mi">65</span><span class="p">),</span> <span class="n">y</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">workbook</span> <span class="o">=</span> <span class="n">xlsxwriter</span><span class="o">.</span><span class="n">Workbook</span><span class="p">(</span><span class="s">&#39;/tmp/text.xlsx&#39;</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">worksheet</span> <span class="o">=</span> <span class="n">workbook</span><span class="o">.</span><span class="n">add_worksheet</span><span class="p">()</span>
-</span><span class='line'><span class="n">worksheet</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s">&#39;headings&#39;</span><span class="p">)</span>
-</span><span class='line'><span class="n">worksheet</span><span class="o">.</span><span class="n">write_url</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s">&#39;http://www.python.org/&#39;</span><span class="p">,</span> <span class="n">tip</span><span class="o">=</span><span class="s">&#39;Click here&#39;</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">cell_format</span> <span class="o">=</span>  <span class="n">workbook</span><span class="o">.</span><span class="n">add_format</span><span class="p">()</span>
-</span><span class='line'><span class="n">cell_format</span><span class="o">.</span><span class="n">set_num_format</span><span class="p">(</span><span class="s">&#39;0.00%&#39;</span><span class="p">)</span>
-</span><span class='line'><span class="n">worksheet</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.87</span><span class="p">,</span> <span class="n">cell_format</span><span class="p">)</span>
-</span><span class='line'><span class="n">workbook</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>#</h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">wb</span> <span class="o">=</span> <span class="n">load_workbook</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">filename</span><span class="p">)</span>
-</span><span class='line'><span class="n">sheets</span> <span class="o">=</span> <span class="n">wb</span><span class="o">.</span><span class="n">sheetnames</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-</span><span class='line'><span class="n">ws</span> <span class="o">=</span> <span class="n">wb</span><span class="p">[</span><span class="n">sheets</span><span class="p">]</span>
-</span><span class='line'><span class="n">rows</span> <span class="o">=</span> <span class="n">ws</span><span class="o">.</span><span class="n">rows</span>
-</span><span class='line'><span class="n">columns</span> <span class="o">=</span> <span class="n">ws</span><span class="o">.</span><span class="n">columns</span>
-</span><span class='line'><span class="n">channel</span> <span class="o">=</span> <span class="p">[]</span>
-</span><span class='line'><span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">:</span>
-</span><span class='line'>    <span class="n">line</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span><span class="o">.</span><span class="n">value</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">row</span><span class="p">]</span>
-</span><span class='line'>    <span class="n">channel</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
-</span><span class='line'>        <span class="s">&#39;name&#39;</span>                         <span class="p">:</span> <span class="n">line</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
-</span><span class='line'>        <span class="s">&#39;monthly_sub_growth_percentage&#39;</span><span class="p">:</span> <span class="n">line</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
-</span><span class='line'>        <span class="s">&#39;monthly_sub_growth&#39;</span>           <span class="p">:</span> <span class="n">line</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
-</span><span class='line'>        <span class="s">&#39;subscribers&#39;</span>                  <span class="p">:</span> <span class="n">line</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span>
-</span><span class='line'>        <span class="s">&#39;views_average&#39;</span>                <span class="p">:</span> <span class="n">line</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span>
-</span><span class='line'>        <span class="s">&#39;video_count&#39;</span>                  <span class="p">:</span> <span class="n">line</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span>
-</span><span class='line'>        <span class="s">&#39;monthly_video_count&#39;</span>          <span class="p">:</span> <span class="n">line</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span>
-</span><span class='line'>    <span class="p">})</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>xlwt</h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="c">#!/usr/bin/env python3</span>
-</span><span class='line'><span class="c"># -*- coding:utf-8 -*-</span>
-</span><span class='line'><span class="kn">import</span> <span class="nn">xlrd</span><span class="o">,</span> <span class="nn">xlwt</span>
-</span><span class='line'><span class="n">wb</span> <span class="o">=</span> <span class="n">xlwt</span><span class="o">.</span><span class="n">Workbook</span><span class="p">(</span><span class="n">style_compression</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-</span><span class='line'><span class="c"># style_compression=2 解決styple太多造成錯誤</span>
-</span><span class='line'><span class="n">ex</span> <span class="o">=</span> <span class="n">wb</span><span class="o">.</span><span class="n">add_sheet</span><span class="p">(</span><span class="s">&#39;rank_u2&#39;</span><span class="p">)</span>
-</span><span class='line'><span class="n">ex</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">60</span><span class="o">*</span><span class="mi">260</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">style</span> <span class="o">=</span> <span class="n">xlwt</span><span class="o">.</span><span class="n">Formula</span><span class="p">(</span><span class="s">&#39;HYPERLINK(&quot;{}&quot;;&quot;{}&quot;)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">link</span><span class="p">,</span> <span class="n">name</span><span class="p">))</span>
-</span><span class='line'><span class="n">ex</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">style</span><span class="p">)</span>
-</span><span class='line'><span class="c">#做連結</span>
-</span><span class='line'><span class="n">ex</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">gp</span><span class="p">,</span> <span class="n">xlwt</span><span class="o">.</span><span class="n">easyxf</span><span class="p">(</span><span class="n">num_format_str</span><span class="o">=</span><span class="s">&#39;0.00%&#39;</span><span class="p">))</span>
-</span><span class='line'><span class="c">#格式化</span>
-</span><span class='line'><span class="n">wb</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s">&quot;test.xls&quot;</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure>
 
 ]]></content>

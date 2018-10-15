@@ -9,24 +9,11 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="1
+  <meta name="description" content="ref https://stackoverflow.com/questions/2603617/ruby-print-the-variable-name-and-then-its-value 1
 2
 3
 4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-A1
-1999/12/29 C1
-=LEFT(A1, SEARCH("/",A1,1)-1) D1
-=MID(A1,SEARCH("/",A1,1)+1,SEARCH("/",A1,SEARCH("/",A1,1)+1)- &hellip;">
+def dbg(a, &amp;b) puts &quot;#{a} = #{eval(a &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -85,6 +72,46 @@ A1
       <div class="blog-index">
   
 
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2018/10/15/debug/">Debug</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2018-10-15T21:19:16+08:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>9:19 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><blockquote><blockquote><p>ref <a href="https://stackoverflow.com/questions/2603617/ruby-print-the-variable-name-and-then-its-value">https://stackoverflow.com/questions/2603617/ruby-print-the-variable-name-and-then-its-value</a></p></blockquote></blockquote>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">dbg</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">b</span><span class="p">)</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">a</span><span class="si">}</span><span class="s2"> = </span><span class="si">#{</span><span class="nb">eval</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">to_s</span><span class="p">,</span> <span class="n">b</span><span class="o">.</span><span class="n">binding</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'><span class="c1">#dbg(:var) {}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
+  
   
     <article>
       
@@ -295,39 +322,6 @@ arr.sort_by(&amp;:last)</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2018/10/05/fuzzystringmatch/">Fuzzystringmatch</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2018-10-05T14:07:20+08:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>2:07 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3><a href="https://github.com/kiyoka/fuzzy-string-match">https://github.com/kiyoka/fuzzy-string-match</a></h3>
-
-<p>require &lsquo;fuzzystringmatch&rsquo;
-jarow = FuzzyStringMatch::JaroWinkler.create( :native )
-p jarow.getDistance(  &ldquo;jones&rdquo;,      &ldquo;johnson&rdquo; )</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
     <a href="/blog/archives">Blog Archives</a>
@@ -345,13 +339,17 @@ p jarow.getDistance(  &ldquo;jones&rdquo;,      &ldquo;johnson&rdquo; )</p>
 <li class='category'><a href='/blog/categories/linux/'>linux (26)</a></li>
 <li class='category'><a href='/blog/categories/python/'>python (10)</a></li>
 <li class='category'><a href='/blog/categories/ror/'>ror (24)</a></li>
-<li class='category'><a href='/blog/categories/ruby/'>ruby (50)</a></li>
+<li class='category'><a href='/blog/categories/ruby/'>ruby (51)</a></li>
 
     </ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2018/10/15/debug/">Debug</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2018/10/14/days-excel/">Days_excel</a>
@@ -367,10 +365,6 @@ p jarow.getDistance(  &ldquo;jones&rdquo;,      &ldquo;johnson&rdquo; )</p>
     
       <li class="post">
         <a href="/blog/2018/10/05/sort-by/">Sorting-a-two-dimensional-array</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2018/10/05/fuzzystringmatch/">Fuzzystringmatch</a>
       </li>
     
   </ul>
