@@ -7,11 +7,14 @@ categories: ruby
 ---
 
 >> ref https://stackoverflow.com/questions/2603617/ruby-print-the-variable-name-and-then-its-value
+
 ``` ruby
 def dbg(a, &b)
     v = eval(a.to_s, b.binding)
     v = "nil" if v == nil or v == ""
-    puts "#{a} : #{v}"
+    puts "#{a} : #{v}" if not @dbg == 0
 end
 #dbg(:var) {}
+#@dbg = 0
+
 ```
