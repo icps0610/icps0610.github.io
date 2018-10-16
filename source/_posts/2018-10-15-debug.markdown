@@ -10,11 +10,16 @@ categories: ruby
 
 ``` ruby
 def dbg(a, &b)
-    v = eval(a.to_s, b.binding)
-    v = "nil" if v == nil or v == ""
+    begin
+        v = eval(a.to_s, b.binding)
+    rescue
+        v = "Variable not defined"
+    end
+    v = "nil" if v.to_s == ""
     puts "#{a} : #{v}" if not @dbg == 0
 end
 #dbg(:var) {}
 #@dbg = 0
+
 
 ```
