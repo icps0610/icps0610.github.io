@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-10-15T23:17:17+08:00</updated>
+  <updated>2018-10-16T13:15:31+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -21,8 +21,12 @@
     <content type="html"><![CDATA[<blockquote><blockquote><p>ref <a href="https://stackoverflow.com/questions/2603617/ruby-print-the-variable-name-and-then-its-value">https://stackoverflow.com/questions/2603617/ruby-print-the-variable-name-and-then-its-value</a></p></blockquote></blockquote>
 
 <pre><code class="ruby">def dbg(a, &amp;b)
-    v = eval(a.to_s, b.binding)
-    v = "nil" if v == nil or v == ""
+    begin
+        v = eval(a.to_s, b.binding)
+    rescue
+        v = "Variable not defined"
+    end
+    v = "nil" if v.to_s == ""
     puts "#{a} : #{v}" if not @dbg == 0
 end
 #dbg(:var) {}
