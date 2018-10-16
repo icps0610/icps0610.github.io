@@ -12,8 +12,8 @@ categories: ruby
 def dbg(a, &b)
     begin
         v = eval(a.to_s, b.binding)
-    rescue
-        v = "Variable not defined"
+    rescue Exception => e
+        v = e.to_s.split("\n").first
     end
     v = "nil" if v.to_s == ""
     puts "#{a} : #{v}" if not @dbg == 0
