@@ -9,17 +9,17 @@ categories: ruby
 >> ref https://stackoverflow.com/questions/2603617/ruby-print-the-variable-name-and-then-its-value
 
 ``` ruby
-def dbg(a, &b)
+def dbg(a, s=nil, &b)
     begin
         v = eval(a.to_s, b.binding)
     rescue Exception => e
         v = e.to_s.split("\n").first
     end
+    s = " ------ " if s == 1
     v = "nil" if v.to_s == ""
-    puts "#{a} : #{v}" if not @dbg == 0
+    puts "#{s}#{a} : #{v}#{s}" if not @dbg == 0
 end
 #dbg(:var) {}
 #@dbg = 0
-
 
 ```
