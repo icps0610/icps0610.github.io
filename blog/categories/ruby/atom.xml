@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-10-16T13:31:11+08:00</updated>
+  <updated>2018-10-17T09:15:44+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -20,14 +20,15 @@
     <id>http://icps0610.github.io/blog/2018/10/15/debug</id>
     <content type="html"><![CDATA[<blockquote><blockquote><p>ref <a href="https://stackoverflow.com/questions/2603617/ruby-print-the-variable-name-and-then-its-value">https://stackoverflow.com/questions/2603617/ruby-print-the-variable-name-and-then-its-value</a></p></blockquote></blockquote>
 
-<pre><code class="ruby">def dbg(a, &amp;b)
+<pre><code class="ruby">def dbg(a, s=nil, &amp;b)
     begin
         v = eval(a.to_s, b.binding)
     rescue Exception =&gt; e
         v = e.to_s.split("\n").first
     end
+    s = " ------ " if s == 1
     v = "nil" if v.to_s == ""
-    puts "#{a} : #{v}" if not @dbg == 0
+    puts "#{s}#{a} : #{v}#{s}" if not @dbg == 0
 end
 #dbg(:var) {}
 #@dbg = 0

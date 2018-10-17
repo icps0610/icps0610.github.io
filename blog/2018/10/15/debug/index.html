@@ -20,7 +20,8 @@
 9
 10
 11
-def dbg(a, &amp;b) begin v = &hellip;">
+12
+def dbg(a, s=nil, &amp;b) &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -110,14 +111,16 @@ def dbg(a, &amp;b) begin v = &hellip;">
 <span class='line-number'>9</span>
 <span class='line-number'>10</span>
 <span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">dbg</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">b</span><span class="p">)</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">dbg</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="kp">nil</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">b</span><span class="p">)</span>
 </span><span class='line'>    <span class="k">begin</span>
 </span><span class='line'>        <span class="n">v</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">to_s</span><span class="p">,</span> <span class="n">b</span><span class="o">.</span><span class="n">binding</span><span class="p">)</span>
 </span><span class='line'>    <span class="k">rescue</span> <span class="no">Exception</span> <span class="o">=&gt;</span> <span class="n">e</span>
 </span><span class='line'>        <span class="n">v</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="n">to_s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">first</span>
 </span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>    <span class="n">s</span> <span class="o">=</span> <span class="s2">&quot; ------ &quot;</span> <span class="k">if</span> <span class="n">s</span> <span class="o">==</span> <span class="mi">1</span>
 </span><span class='line'>    <span class="n">v</span> <span class="o">=</span> <span class="s2">&quot;nil&quot;</span> <span class="k">if</span> <span class="n">v</span><span class="o">.</span><span class="n">to_s</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span>
-</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">a</span><span class="si">}</span><span class="s2"> : </span><span class="si">#{</span><span class="n">v</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">if</span> <span class="ow">not</span> <span class="vi">@dbg</span> <span class="o">==</span> <span class="mi">0</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">s</span><span class="si">}#{</span><span class="n">a</span><span class="si">}</span><span class="s2"> : </span><span class="si">#{</span><span class="n">v</span><span class="si">}#{</span><span class="n">s</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">if</span> <span class="ow">not</span> <span class="vi">@dbg</span> <span class="o">==</span> <span class="mi">0</span>
 </span><span class='line'><span class="k">end</span>
 </span><span class='line'><span class="c1">#dbg(:var) {}</span>
 </span><span class='line'><span class="c1">#@dbg = 0</span>
