@@ -3,7 +3,7 @@ layout: post
 title: "cpr"
 date: 2018-10-20 23:09:11 +0800
 comments: true
-categories: ruby, linux
+categories: ruby
 ---
 ``` ruby
 source = ARGV[0]

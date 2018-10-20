@@ -65,8 +65,14 @@ dmesg : `kernel logs`
 ####
 `find $PWD/test | xargs ls -d1`
 
-### 關閉傳送內部錯誤
+#### 關閉傳送內部錯誤
 /etc/default/apport
 enbable=0
 
 `apt-get install gcc make libsqlite3-dev nodejs zlib1g-dev`
+
+#### 顏色
+`force_color_prompt=yes`
+
+#### 移除舊核心
+`apt-get remove $(dpkg -l|egrep '^ii  linux-(im|he)'|awk '{print $2}'|grep -v `uname -r`)`
