@@ -10,10 +10,11 @@
 
   
   <meta name="description" content="apt-get clean
+apt-get clean
 apt-get autoclean
 apt-get autoremove
-rm /var/cache/apt/archives/* 2>/dev/nul # Package (deb) cache
-rm /var/cache/apt/archives/partial &hellip;">
+rm /var/cache/apt/archives/* 2>/dev/null
+rm /var/cache/apt/archives/partial/* 2>/dev &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -91,13 +92,16 @@ rm /var/cache/apt/archives/partial &hellip;">
 
 
 <div class="entry-content"><pre><code>apt-get clean
+apt-get clean
 apt-get autoclean
 apt-get autoremove
-rm /var/cache/apt/archives/* 2>/dev/nul # Package (deb) cache
-rm /var/cache/apt/archives/partial/* 2>/dev/nul
-rm -R /var/log/* 2>/dev/nul
-rm -R /tmp/* 2>/dev/nul
-rm /root/.local/share/Trash/files/* 2>/dev/nul
+rm /var/cache/apt/archives/* 2>/dev/null
+rm /var/cache/apt/archives/partial/* 2>/dev/null
+rm -R /var/log/* 2>/dev/null
+rm -R /tmp/* 2>/dev/null
+rm /root/.local/share/Trash/files/* 2>/dev/null
+#rm /root/.bash_history 2>/dev/null
+#updatedb
 </code></pre>
 
 
