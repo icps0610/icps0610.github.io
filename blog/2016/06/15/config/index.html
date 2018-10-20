@@ -161,12 +161,20 @@ dmesg : <code>kernel logs</code></p>
 
 <p><code>find $PWD/test | xargs ls -d1</code></p>
 
-<h3>關閉傳送內部錯誤</h3>
+<h4>關閉傳送內部錯誤</h4>
 
 <p>/etc/default/apport
 enbable=0</p>
 
 <p><code>apt-get install gcc make libsqlite3-dev nodejs zlib1g-dev</code></p>
+
+<h4>顏色</h4>
+
+<p><code>force_color_prompt=yes</code></p>
+
+<h4>移除舊核心</h4>
+
+<p><code>apt-get remove $(dpkg -l|egrep '^ii  linux-(im|he)'|awk '{print $2}'|grep -v</code>uname -r<code>)</code></p>
 </div>
 
 
@@ -222,11 +230,10 @@ enbable=0</p>
        <li class='category'><a href='/blog/categories/app/'>app (30)</a></li>
 <li class='category'><a href='/blog/categories/bat/'>bat (10)</a></li>
 <li class='category'><a href='/blog/categories/excel/'>excel (1)</a></li>
-<li class='category'><a href='/blog/categories/linux/'>linux (27)</a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (26)</a></li>
 <li class='category'><a href='/blog/categories/python/'>python (10)</a></li>
 <li class='category'><a href='/blog/categories/ror/'>ror (24)</a></li>
-<li class='category'><a href='/blog/categories/ruby/'>ruby (51)</a></li>
-<li class='category'><a href='/blog/categories/ruby-/'>ruby, (1)</a></li>
+<li class='category'><a href='/blog/categories/ruby/'>ruby (52)</a></li>
 
     </ul>
 </section>

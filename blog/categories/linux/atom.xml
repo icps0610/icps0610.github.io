@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-10-20T23:10:04+08:00</updated>
+  <updated>2018-10-21T00:24:10+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,18 +12,6 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
-  
-  <entry>
-    <title type="html"><![CDATA[Cpr]]></title>
-    <link href="http://icps0610.github.io/blog/2018/10/20/cpr/"/>
-    <updated>2018-10-20T23:09:11+08:00</updated>
-    <id>http://icps0610.github.io/blog/2018/10/20/cpr</id>
-    <content type="html"><![CDATA[<pre><code class="ruby">source = ARGV[0]
-to     = ARGV[1]
-system("rsync -aAXv #{source}/* #{to} | pv -ls `find #{source}|wc -l` &gt;/dev/null")
-</code></pre>
-]]></content>
-  </entry>
   
   <entry>
     <title type="html"><![CDATA[Save_last_directory]]></title>
@@ -95,6 +83,22 @@ eval "$(ssh-agent)";
 
 <p>nano /usr/share/wireshark/init.lua
 disable_lua = true</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[wifi_AP_dwa-131]]></title>
+    <link href="http://icps0610.github.io/blog/2018/03/21/wifi-ap/"/>
+    <updated>2018-03-21T13:46:45+08:00</updated>
+    <id>http://icps0610.github.io/blog/2018/03/21/wifi-ap</id>
+    <content type="html"><![CDATA[<p><code>https://superuser.com/questions/1100472/how-to-configure-hotspot-with-wifi-dongle-dwa-131-in-kali-linux</code></p>
+
+<pre><code class="">wget http://www.adafruit.com/downloads/adafruit_hostapd.zip
+unzip adafruit_hostapd.zip
+sudo mv /usr/sbin/hostapd /usr/sbin/hostapd.ORIG
+sudo mv hostapd /usr/sbin
+sudo chmod 755 /usr/sbin/hostapd
+</code></pre>
 ]]></content>
   </entry>
   

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Ruby, | icps]]></title>
+  <title><![CDATA[Category: Ruby | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-10-20T23:10:04+08:00</updated>
+  <updated>2018-10-21T00:24:10+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -22,6 +22,89 @@
 to     = ARGV[1]
 system("rsync -aAXv #{source}/* #{to} | pv -ls `find #{source}|wc -l` &gt;/dev/null")
 </code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Debug]]></title>
+    <link href="http://icps0610.github.io/blog/2018/10/15/debug/"/>
+    <updated>2018-10-15T21:19:16+08:00</updated>
+    <id>http://icps0610.github.io/blog/2018/10/15/debug</id>
+    <content type="html"><![CDATA[<blockquote><blockquote><p>ref <a href="https://stackoverflow.com/questions/2603617/ruby-print-the-variable-name-and-then-its-value">https://stackoverflow.com/questions/2603617/ruby-print-the-variable-name-and-then-its-value</a></p></blockquote></blockquote>
+
+<pre><code class="ruby">def dbg(a, s=nil, &amp;b)
+    begin
+        v = eval(a.to_s, b.binding)
+    rescue Exception =&gt; e
+        v = e.to_s.split("\n").first
+    end
+    s = " ------ " if s == 1
+    v = "nil" if v.to_s == ""
+    puts "#{s}#{a} : #{v}#{s}" if not @dbg == 0
+end
+#dbg(:var) {}
+#@dbg = 0
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Days]]></title>
+    <link href="http://icps0610.github.io/blog/2018/10/14/days/"/>
+    <updated>2018-10-14T15:42:13+08:00</updated>
+    <id>http://icps0610.github.io/blog/2018/10/14/days</id>
+    <content type="html"><![CDATA[<pre><code class="ruby">def leap_year(y)
+    y % 4 == 0 &amp;&amp; y % 100 != 0 || y % 400 == 0
+end
+
+def md(y)
+    if leap_year(y)
+        [0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+    else
+        [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+    end
+end
+
+def days(date)
+    year, month, day = date.split("/").map(&amp;:to_i)
+    y = year - 1
+    years  = y * 365 + (y / 4 - y / 100 + y / 400)
+    months = md(year)[1..(month - 1)].sum
+    years + months + day
+end
+
+def between(sdate, edate)
+    (days(edate) - days(sdate)).abs
+end
+
+sdate = '1900/1/1'
+edate = '2018/12/28'
+
+p between(sdate, edate)
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Pycall]]></title>
+    <link href="http://icps0610.github.io/blog/2018/10/07/pycall/"/>
+    <updated>2018-10-07T11:44:45+08:00</updated>
+    <id>http://icps0610.github.io/blog/2018/10/07/pycall</id>
+    <content type="html"><![CDATA[<pre><code class="ruby">require 'pycall/import'
+include PyCall::Import
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Sorting-a-two-dimensional-array]]></title>
+    <link href="http://icps0610.github.io/blog/2018/10/05/sort-by/"/>
+    <updated>2018-10-05T18:31:04+08:00</updated>
+    <id>http://icps0610.github.io/blog/2018/10/05/sort-by</id>
+    <content type="html"><![CDATA[<blockquote><p>ref <a href="https://stackoverflow.com/questions/7033719/sorting-a-two-dimensional-array-by-second-value">https://stackoverflow.com/questions/7033719/sorting-a-two-dimensional-array-by-second-value</a></p></blockquote>
+
+<p>arr.sort_by{|x,y|y}
+arr.sort_by(&amp;:last)</p>
 ]]></content>
   </entry>
   
