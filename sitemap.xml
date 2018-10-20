@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://icps0610.github.io/blog/2018/10/20/cpr/</loc>
+<lastmod>2018-10-20T23:09:11+08:00</lastmod>
+</url>
+<url>
 <loc>http://icps0610.github.io/blog/2018/10/15/debug/</loc>
 <lastmod>2018-10-15T21:19:16+08:00</lastmod>
 </url>
@@ -648,5 +652,8 @@
 </url>
 <url>
 <loc>http://icps0610.github.io/blog/categories/excel/</loc>
+</url>
+<url>
+<loc>http://icps0610.github.io/blog/categories/ruby/</loc>
 </url>
 </urlset>
