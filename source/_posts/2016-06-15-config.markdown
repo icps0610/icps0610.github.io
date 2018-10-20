@@ -75,4 +75,4 @@ enbable=0
 `force_color_prompt=yes`
 
 #### 移除舊核心
-`apt-get remove $(dpkg -l|egrep '^ii  linux-(im|he)'|awk '{print $2}'|grep -v `uname -r`)`
+`apt-get remove $(dpkg -l|egrep '^ii  linux-(im|he)'|awk '{print $2}'|grep -v ```uname -r```)`
