@@ -1,0 +1,12 @@
+---
+layout: post
+title: "cpr"
+date: 2018-10-20 23:09:11 +0800
+comments: true
+categories: ruby, linux
+---
+``` ruby
+source = ARGV[0]
+to     = ARGV[1]
+system("rsync -aAXv #{source}/* #{to} | pv -ls `find #{source}|wc -l` >/dev/null")
+```
