@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Ta - icps</title>
+  <title>Tar - icps</title>
   <meta name="author" content="icps">
 
   
@@ -68,7 +68,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://icps0610.github.io/blog/2018/10/21/ta/">
+  <link rel="canonical" href="http://icps0610.github.io/blog/2018/10/21/tar/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="icps" type="application/atom+xml">
@@ -120,7 +120,7 @@
   
   <header>
     
-      <h1 class="entry-title">Ta</h1>
+      <h1 class="entry-title">Tar</h1>
     
     
       <p class="meta">
@@ -192,38 +192,38 @@
 </span><span class='line'>    <span class="k">case</span> <span class="n">ext</span>
 </span><span class='line'>    <span class="k">when</span> <span class="sr">/tar.bz2/</span>
 </span><span class='line'>        <span class="s2">&quot;tar jcvf </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="s2"> [DIR]</span><span class="se">\n</span><span class="s2">tar jxvf </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+</span><span class='line'>    <span class="k">when</span> <span class="sr">/tar.tgz/</span>
+</span><span class='line'>        <span class="s2">&quot;tar zcvf </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="s2"> [DIR]</span><span class="se">\n</span><span class="s2">tar zxvf </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
 </span><span class='line'>    <span class="k">when</span> <span class="sr">/tar.bz/</span>
 </span><span class='line'>        <span class="s2">&quot;tar jxvf </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="s2">&quot;</span>
 </span><span class='line'>    <span class="k">when</span> <span class="sr">/tar.gz/</span>
-</span><span class='line'>        <span class="s2">&quot;tar zcvf </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="s2"> [DIR]</span><span class="se">\n</span><span class="s2">tar zxvf </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
-</span><span class='line'>    <span class="k">when</span> <span class="sr">/tar.tgz/</span>
 </span><span class='line'>        <span class="s2">&quot;tar zcvf </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="s2"> [DIR]</span><span class="se">\n</span><span class="s2">tar zxvf </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
 </span><span class='line'>    <span class="k">when</span> <span class="sr">/tar.xz/</span>
 </span><span class='line'>        <span class="s2">&quot;tar Jcvf </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="s2"> [DIR]</span><span class="se">\n</span><span class="s2">tar Jxvf </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
 </span><span class='line'>    <span class="k">when</span> <span class="sr">/tar.Z/</span>
 </span><span class='line'>        <span class="s2">&quot;tar Zcvf </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="s2"> [DIR]</span><span class="se">\n</span><span class="s2">tar Zxvf </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
-</span><span class='line'>    <span class="k">when</span> <span class="sr">/tar/</span>
-</span><span class='line'>        <span class="s2">&quot;tar cvf </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="s2"> [DIR]</span><span class="se">\n</span><span class="s2">tar xvf </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
-</span><span class='line'>    <span class="k">when</span> <span class="s2">&quot;gz&quot;</span>
-</span><span class='line'>        <span class="s2">&quot;gzip </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="se">\n</span><span class="s2">gzip -d </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
-</span><span class='line'>    <span class="k">when</span> <span class="sr">/bz/</span>
-</span><span class='line'>        <span class="s2">&quot;bunzip2 </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span class='line'>    <span class="k">when</span> <span class="sr">/bz2/</span>
-</span><span class='line'>        <span class="s2">&quot;bzip2 -z </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span class='line'>    <span class="k">when</span> <span class="sr">/xz/</span>
-</span><span class='line'>        <span class="s2">&quot;xz -z </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="se">\n</span><span class="s2">xz -d </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
-</span><span class='line'>    <span class="k">when</span> <span class="sr">/Z/</span>
-</span><span class='line'>        <span class="s2">&quot;uncompress </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="s2">&quot;</span>
 </span><span class='line'>    <span class="k">when</span> <span class="sr">/tgz/</span>
 </span><span class='line'>        <span class="s2">&quot;tar zcvf </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="s2"> [DIR]</span><span class="se">\n</span><span class="s2">tar zxvf </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
-</span><span class='line'>    <span class="k">when</span> <span class="sr">/7z/</span>
-</span><span class='line'>        <span class="s2">&quot;7z a </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="s2"> [DIR]</span><span class="se">\n</span><span class="s2">7z a </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="s2">.7z [DIR] -p[PASSWORD]</span><span class="se">\n</span><span class="s2">7z x </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+</span><span class='line'>    <span class="k">when</span> <span class="sr">/tar/</span>
+</span><span class='line'>        <span class="s2">&quot;tar cvf </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="s2"> [DIR]</span><span class="se">\n</span><span class="s2">tar xvf </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
 </span><span class='line'>    <span class="k">when</span> <span class="sr">/zip/</span>
 </span><span class='line'>        <span class="s2">&quot;zip </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="s2"> [DIR]</span><span class="se">\n</span><span class="s2">unzip </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+</span><span class='line'>    <span class="k">when</span> <span class="sr">/bz2/</span>
+</span><span class='line'>        <span class="s2">&quot;bzip2 -z </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="se">\n</span><span class="s2">bzip2 -d </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="se">\n</span><span class="s2">bunzip2 </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="s2">&quot;</span>
 </span><span class='line'>    <span class="k">when</span> <span class="sr">/rar/</span>
 </span><span class='line'>        <span class="s2">&quot;rar a </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="s2"> [DIR]</span><span class="se">\n</span><span class="s2">rar e </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="se">\n</span><span class="s2">rar x </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="s2"> [DIR]</span><span class="se">\n</span><span class="s2">&quot;</span>
 </span><span class='line'>    <span class="k">when</span> <span class="sr">/lha/</span>
 </span><span class='line'>        <span class="s2">&quot;lha -a </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="s2"> [DIR]</span><span class="se">\n</span><span class="s2">lha -e </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+</span><span class='line'>    <span class="k">when</span> <span class="sr">/bz/</span>
+</span><span class='line'>        <span class="s2">&quot;bzip2 -d </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="se">\n</span><span class="s2">bunzip2 </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>    <span class="k">when</span> <span class="sr">/xz/</span>
+</span><span class='line'>        <span class="s2">&quot;xz -z </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="se">\n</span><span class="s2">xz -d </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+</span><span class='line'>    <span class="k">when</span> <span class="sr">/7z/</span>
+</span><span class='line'>        <span class="s2">&quot;7z a </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="s2"> [DIR]</span><span class="se">\n</span><span class="s2">7z a </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="s2">.7z [DIR] -p[PASSWORD]</span><span class="se">\n</span><span class="s2">7z x </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+</span><span class='line'>    <span class="k">when</span> <span class="sr">/gz/</span>
+</span><span class='line'>        <span class="s2">&quot;gzip </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="se">\n</span><span class="s2">gunzip </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="se">\n</span><span class="s2">gzip -d </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+</span><span class='line'>    <span class="k">when</span> <span class="sr">/Z/</span>
+</span><span class='line'>        <span class="s2">&quot;uncompress </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="s2">&quot;</span>
 </span><span class='line'>    <span class="k">else</span>
 </span><span class='line'>        <span class="n">ext</span> <span class="o">=</span> <span class="s2">&quot;nil&quot;</span> <span class="k">if</span> <span class="n">ext</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span>
 </span><span class='line'>        <span class="s2">&quot;error</span><span class="se">\n</span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="se">\n</span><span class="si">#{</span><span class="n">ext</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
@@ -303,7 +303,7 @@
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2018/10/21/ta/">Ta</a>
+        <a href="/blog/2018/10/21/tar/">Tar</a>
       </li>
     
       <li class="post">
