@@ -9,7 +9,7 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="1
+  <meta name="description" content="livecd.rb 1
 2
 3
 4
@@ -57,11 +57,7 @@
 46
 47
 48
-49
-50
-51
-52
-53 &hellip;">
+49 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -138,7 +134,9 @@
   </header>
 
 
-<div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<div class="entry-content"><h4>livecd.rb</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -266,134 +264,376 @@
 <span class='line-number'>126</span>
 <span class='line-number'>127</span>
 <span class='line-number'>128</span>
+<span class='line-number'>129</span>
+<span class='line-number'>130</span>
+<span class='line-number'>131</span>
+<span class='line-number'>132</span>
+<span class='line-number'>133</span>
+<span class='line-number'>134</span>
+<span class='line-number'>135</span>
+<span class='line-number'>136</span>
+<span class='line-number'>137</span>
+<span class='line-number'>138</span>
+<span class='line-number'>139</span>
+<span class='line-number'>140</span>
+<span class='line-number'>141</span>
+<span class='line-number'>142</span>
+<span class='line-number'>143</span>
+<span class='line-number'>144</span>
+<span class='line-number'>145</span>
+<span class='line-number'>146</span>
+<span class='line-number'>147</span>
+<span class='line-number'>148</span>
+<span class='line-number'>149</span>
+<span class='line-number'>150</span>
+<span class='line-number'>151</span>
+<span class='line-number'>152</span>
+<span class='line-number'>153</span>
+<span class='line-number'>154</span>
+<span class='line-number'>155</span>
+<span class='line-number'>156</span>
+<span class='line-number'>157</span>
+<span class='line-number'>158</span>
+<span class='line-number'>159</span>
+<span class='line-number'>160</span>
+<span class='line-number'>161</span>
+<span class='line-number'>162</span>
+<span class='line-number'>163</span>
+<span class='line-number'>164</span>
+<span class='line-number'>165</span>
+<span class='line-number'>166</span>
+<span class='line-number'>167</span>
+<span class='line-number'>168</span>
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#!/usr/bin/env ruby</span>
 </span><span class='line'><span class="c1"># encoding: utf-8</span>
 </span><span class='line'><span class="sb">`apt-get install squashfs-tools`</span> <span class="k">if</span> <span class="sb">`dpkg-query -W | grep squashfs-tools`</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span>
 </span><span class='line'>
-</span><span class='line'><span class="k">class</span> <span class="nc">Live</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">def</span> <span class="nf">initialize</span>
-</span><span class='line'>        <span class="n">output_dir</span>     <span class="o">=</span> <span class="s2">&quot;/data/tmp&quot;</span>
-</span><span class='line'>        <span class="n">iso_name_ext</span>   <span class="o">=</span> <span class="s2">&quot;iso&quot;</span>
-</span><span class='line'>        <span class="n">ext</span>            <span class="o">=</span> <span class="s2">&quot;.</span><span class="si">#{</span><span class="n">iso_name_ext</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span class='line'>        <span class="n">filesystem_ext</span> <span class="o">=</span> <span class="s2">&quot;_filesystem&quot;</span>
-</span><span class='line'>        <span class="n">iso_name</span>       <span class="o">=</span> <span class="n">iso_list</span><span class="p">(</span><span class="n">iso_name_ext</span><span class="p">,</span> <span class="n">ext</span><span class="p">)</span>
-</span><span class='line'>        <span class="n">filesystem</span>     <span class="o">=</span> <span class="n">filesystem_list</span><span class="p">(</span><span class="n">filesystem_ext</span><span class="p">)</span>
-</span><span class='line'>        <span class="n">iso</span>            <span class="o">=</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">iso_name</span><span class="si">}</span><span class="s2">.</span><span class="si">#{</span><span class="n">iso_name_ext</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span class='line'>        <span class="n">output_iso</span>     <span class="o">=</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">output_dir</span><span class="si">}</span><span class="s2">/</span><span class="si">#{</span><span class="n">iso</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span class='line'>        <span class="nb">puts</span> <span class="s2">&quot;-------------&quot;</span>
-</span><span class='line'>        <span class="nb">puts</span> <span class="s2">&quot;1.解壓縮</span><span class="si">#{</span><span class="n">iso</span><span class="si">}</span><span class="s2">的filesystem.squashfs 到 </span><span class="si">#{</span><span class="n">filesystem</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span class='line'>        <span class="nb">puts</span> <span class="s2">&quot;2.chroot </span><span class="si">#{</span><span class="n">filesystem</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span class='line'>        <span class="nb">puts</span> <span class="s2">&quot;3.將</span><span class="si">#{</span><span class="n">filesystem</span><span class="si">}</span><span class="s2">壓縮檔案製成光碟</span><span class="si">#{</span><span class="n">output_iso</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span class='line'>        <span class="nb">puts</span> <span class="s2">&quot;4.將.\/</span><span class="si">#{</span><span class="n">iso_name</span><span class="si">}</span><span class="s2"> 製作光碟&quot;</span>
-</span><span class='line'>        <span class="nb">print</span> <span class="s2">&quot;-------------</span><span class="se">\n</span><span class="s2">&gt;&gt; &quot;</span>
-</span><span class='line'>        <span class="k">case</span> <span class="nb">gets</span><span class="o">.</span><span class="n">chomp</span>
-</span><span class='line'>        <span class="k">when</span> <span class="s2">&quot;1&quot;</span>
-</span><span class='line'>            <span class="n">extract</span><span class="p">(</span><span class="n">iso</span><span class="p">,</span> <span class="n">iso_name</span><span class="p">,</span> <span class="n">filesystem</span><span class="p">)</span>
-</span><span class='line'>        <span class="k">when</span> <span class="s2">&quot;2&quot;</span>
-</span><span class='line'>            <span class="n">mount_system</span><span class="p">(</span><span class="n">filesystem</span><span class="p">)</span>
-</span><span class='line'>        <span class="k">when</span> <span class="s2">&quot;3&quot;</span>
-</span><span class='line'>            <span class="n">zip_file</span><span class="p">(</span><span class="n">iso_name</span><span class="p">,</span> <span class="n">filesystem</span><span class="p">,</span> <span class="n">output_iso</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">)</span>
-</span><span class='line'>        <span class="k">when</span> <span class="s2">&quot;4&quot;</span>
-</span><span class='line'>            <span class="n">make_iso</span><span class="p">(</span><span class="n">iso_name</span><span class="p">,</span> <span class="n">filesystem</span><span class="p">,</span> <span class="n">output_iso</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">)</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">list</span><span class="p">(</span><span class="n">regx</span><span class="p">,</span> <span class="n">dir</span><span class="o">=</span><span class="kp">nil</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">if</span> <span class="n">dir</span> <span class="o">==</span> <span class="mi">1</span>
+</span><span class='line'>        <span class="n">dir</span> <span class="o">=</span> <span class="s2">&quot;-d </span><span class="si">#{</span><span class="no">OUTPUT_DIR</span><span class="si">}</span><span class="s2">/*/&quot;</span>
+</span><span class='line'>        <span class="n">pwd</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+</span><span class='line'>    <span class="k">else</span>
+</span><span class='line'>        <span class="n">pwd</span> <span class="o">=</span> <span class="sb">`pwd`</span><span class="o">.</span><span class="n">chomp</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>    <span class="n">list</span> <span class="o">=</span> <span class="sb">`ls </span><span class="si">#{</span><span class="n">dir</span><span class="si">}</span><span class="sb"> | grep </span><span class="se">\&quot;</span><span class="si">#{</span><span class="n">regx</span><span class="si">}</span><span class="se">\&quot;</span><span class="sb">`</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">{</span><span class="o">|</span><span class="n">f</span><span class="o">|</span><span class="s2">&quot;</span><span class="si">#{</span><span class="n">pwd</span><span class="si">}#{</span><span class="n">f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">}</span><span class="o">.</span><span class="n">sort</span>
+</span><span class='line'>    <span class="k">if</span> <span class="n">list</span><span class="o">.</span><span class="n">count</span> <span class="o">==</span> <span class="mi">1</span>
+</span><span class='line'>        <span class="n">list</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span>
+</span><span class='line'>    <span class="k">else</span>
+</span><span class='line'>        <span class="nb">puts</span> <span class="s2">&quot;請選擇</span><span class="se">\n</span><span class="s2">-------------&quot;</span>
+</span><span class='line'>        <span class="n">list</span><span class="o">.</span><span class="n">each_with_index</span> <span class="k">do</span> <span class="o">|</span><span class="n">l</span><span class="p">,</span> <span class="n">i</span><span class="o">|</span>
+</span><span class='line'>            <span class="nb">puts</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">. </span><span class="si">#{</span><span class="n">l</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>        <span class="k">end</span>
+</span><span class='line'>        <span class="nb">print</span> <span class="s2">&quot;&gt;&gt; &quot;</span>
+</span><span class='line'>        <span class="n">choice</span> <span class="o">=</span> <span class="no">STDIN</span><span class="o">.</span><span class="n">gets</span><span class="o">.</span><span class="n">chomp</span><span class="o">.</span><span class="n">to_i</span><span class="o">-</span><span class="mi">1</span>
+</span><span class='line'>        <span class="k">if</span> <span class="n">choice</span> <span class="o">&lt;=</span> <span class="n">list</span><span class="o">.</span><span class="n">count</span> <span class="ow">or</span> <span class="n">choice</span> <span class="o">&gt;</span> <span class="mi">0</span>
+</span><span class='line'>            <span class="n">list</span><span class="o">[</span><span class="n">choice</span><span class="o">]</span>
 </span><span class='line'>        <span class="k">else</span>
-</span><span class='line'>            <span class="kp">initialize</span>
+</span><span class='line'>            <span class="n">list</span><span class="p">(</span><span class="n">regx</span><span class="p">)</span>
 </span><span class='line'>        <span class="k">end</span>
-</span><span class='line'>    <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">def</span> <span class="nf">list</span><span class="p">(</span><span class="n">regx</span><span class="p">)</span>
-</span><span class='line'>        <span class="n">list</span> <span class="o">=</span> <span class="sb">`ls | grep </span><span class="si">#{</span><span class="n">regx</span><span class="si">}</span><span class="sb">`</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span class='line'>        <span class="k">if</span> <span class="n">list</span><span class="o">.</span><span class="n">count</span> <span class="o">==</span> <span class="mi">1</span>
-</span><span class='line'>            <span class="n">list</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span>
-</span><span class='line'>        <span class="k">else</span>
-</span><span class='line'>            <span class="nb">puts</span> <span class="s2">&quot;請選擇</span><span class="se">\n</span><span class="s2">-------------&quot;</span>
-</span><span class='line'>            <span class="n">list</span><span class="o">.</span><span class="n">sort!</span><span class="o">.</span><span class="n">each_with_index</span> <span class="k">do</span> <span class="o">|</span><span class="n">l</span><span class="p">,</span> <span class="n">i</span><span class="o">|</span>
-</span><span class='line'>                <span class="nb">puts</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">. </span><span class="si">#{</span><span class="n">l</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span class='line'>            <span class="k">end</span>
-</span><span class='line'>            <span class="nb">print</span> <span class="s2">&quot;&gt;&gt; &quot;</span>
-</span><span class='line'>            <span class="n">choice</span> <span class="o">=</span> <span class="no">STDIN</span><span class="o">.</span><span class="n">gets</span><span class="o">.</span><span class="n">chomp</span><span class="o">.</span><span class="n">to_i</span><span class="o">-</span><span class="mi">1</span>
-</span><span class='line'>            <span class="k">if</span> <span class="n">choice</span> <span class="o">&lt;=</span> <span class="n">list</span><span class="o">.</span><span class="n">count</span> <span class="ow">or</span> <span class="n">choice</span> <span class="o">&gt;</span> <span class="mi">0</span>
-</span><span class='line'>                <span class="n">list</span><span class="o">[</span><span class="n">choice</span><span class="o">]</span>
-</span><span class='line'>            <span class="k">else</span>
-</span><span class='line'>                <span class="n">list</span><span class="p">(</span><span class="n">regx</span><span class="p">)</span>
-</span><span class='line'>            <span class="k">end</span>
-</span><span class='line'>        <span class="k">end</span>
-</span><span class='line'>    <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">def</span> <span class="nf">iso_list</span><span class="p">(</span><span class="n">iso_name_ext</span><span class="p">,</span> <span class="n">ext</span><span class="p">)</span>
-</span><span class='line'>        <span class="n">choice</span> <span class="o">=</span> <span class="n">list</span><span class="p">(</span><span class="n">iso_name_ext</span><span class="p">)</span>
-</span><span class='line'>        <span class="n">iso_name</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">choice</span><span class="p">,</span> <span class="n">ext</span><span class="p">)</span>
-</span><span class='line'>    <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">def</span> <span class="nf">filesystem_list</span><span class="p">(</span><span class="n">filesystem_ext</span><span class="p">)</span>
-</span><span class='line'>        <span class="n">filesystem</span> <span class="o">=</span> <span class="n">list</span><span class="p">(</span><span class="n">filesystem_ext</span><span class="p">)</span>
-</span><span class='line'>    <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">def</span> <span class="nf">extract</span><span class="p">(</span><span class="n">iso</span><span class="p">,</span> <span class="n">iso_name</span><span class="p">,</span> <span class="n">filesystem</span><span class="p">)</span>
-</span><span class='line'>        <span class="n">iso_extract</span><span class="p">(</span><span class="n">iso</span><span class="p">,</span> <span class="n">iso_name</span><span class="p">)</span>
-</span><span class='line'>        <span class="nb">puts</span> <span class="s2">&quot;解壓縮 filesystem.squashfs 到 </span><span class="si">#{</span><span class="n">filesystem</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span class='line'>        <span class="k">if</span> <span class="no">File</span><span class="o">.</span><span class="n">exist?</span><span class="p">(</span><span class="n">filesystem</span><span class="p">)</span>
-</span><span class='line'>            <span class="nb">printf</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">是否移除舊  </span><span class="si">#{</span><span class="n">filesystem</span><span class="si">}</span><span class="s2">(y/n) : &quot;</span>
-</span><span class='line'>            <span class="sb">`rm -rf </span><span class="si">#{</span><span class="n">filesystem</span><span class="si">}</span><span class="sb">`</span> <span class="k">if</span> <span class="nb">gets</span><span class="o">.</span><span class="n">downcase</span><span class="o">.</span><span class="n">chomp</span> <span class="o">==</span> <span class="s2">&quot;y&quot;</span>
-</span><span class='line'>        <span class="k">end</span>
-</span><span class='line'>        <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;mount -o loop -t squashfs </span><span class="si">#{</span><span class="n">iso_name</span><span class="si">}</span><span class="s2">/casper/filesystem.squashfs /mnt/&quot;</span><span class="p">)</span>
-</span><span class='line'>        <span class="n">cpr</span><span class="p">(</span><span class="s2">&quot;/mnt&quot;</span><span class="p">,</span> <span class="n">filesystem</span><span class="p">)</span>
-</span><span class='line'>    <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">def</span> <span class="nf">iso_extract</span><span class="p">(</span><span class="n">iso</span><span class="p">,</span> <span class="n">iso_name</span><span class="p">)</span>
-</span><span class='line'>        <span class="k">if</span> <span class="no">File</span><span class="o">.</span><span class="n">exist?</span><span class="p">(</span><span class="n">iso_name</span><span class="p">)</span>
-</span><span class='line'>            <span class="nb">printf</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">是否移除舊 </span><span class="si">#{</span><span class="n">iso_name</span><span class="si">}</span><span class="s2">(y/n) : &quot;</span>
-</span><span class='line'>            <span class="sb">`umout </span><span class="si">#{</span><span class="n">iso_name</span><span class="si">}</span><span class="sb"> &amp;&amp; rm -rf </span><span class="si">#{</span><span class="n">iso_name</span><span class="si">}</span><span class="sb">`</span> <span class="k">if</span> <span class="nb">gets</span><span class="o">.</span><span class="n">downcase</span><span class="o">.</span><span class="n">chomp</span> <span class="o">==</span> <span class="s2">&quot;y&quot;</span>
-</span><span class='line'>        <span class="k">end</span>
-</span><span class='line'>        <span class="nb">puts</span> <span class="s2">&quot;將光碟</span><span class="si">#{</span><span class="n">iso</span><span class="si">}</span><span class="s2">掛載到.\/</span><span class="si">#{</span><span class="n">iso_name</span><span class="si">}</span><span class="s2">..&quot;</span>
-</span><span class='line'>        <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;mkdir </span><span class="si">#{</span><span class="n">iso_name</span><span class="si">}</span><span class="s2"> 2&gt; /dev/null&quot;</span><span class="p">)</span>
-</span><span class='line'>        <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;mount -o loop </span><span class="si">#{</span><span class="n">iso</span><span class="si">}</span><span class="s2"> </span><span class="si">#{</span><span class="n">iso_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span class='line'>    <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">def</span> <span class="nf">cpr</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">to</span><span class="p">)</span>
-</span><span class='line'>        <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;rsync -aAXv </span><span class="si">#{</span><span class="n">source</span><span class="si">}</span><span class="s2">/* </span><span class="si">#{</span><span class="n">to</span><span class="si">}</span><span class="s2"> | pv -ls `find </span><span class="si">#{</span><span class="n">source</span><span class="si">}</span><span class="s2">|wc -l` &gt;/dev/null&quot;</span><span class="p">)</span>
-</span><span class='line'>    <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">def</span> <span class="nf">mount_system</span><span class="p">(</span><span class="n">filesystem</span><span class="p">)</span>
-</span><span class='line'>        <span class="nb">puts</span> <span class="s2">&quot;開始掛載...&quot;</span>
-</span><span class='line'>        <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;umount /mnt/  2&gt;/dev/null&quot;</span><span class="p">)</span>
-</span><span class='line'>        <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;mount -o bind /dev/ </span><span class="si">#{</span><span class="n">filesystem</span><span class="si">}</span><span class="s2">/dev/ 2&gt;/dev/null&quot;</span><span class="p">)</span>
-</span><span class='line'>        <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;mount --bind /dev/pts </span><span class="si">#{</span><span class="n">filesystem</span><span class="si">}</span><span class="s2">/dev/pts 2&gt;/dev/null&quot;</span><span class="p">)</span>
-</span><span class='line'>        <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;mount -t proc procfs </span><span class="si">#{</span><span class="n">filesystem</span><span class="si">}</span><span class="s2">/proc/  2&gt;/dev/null&quot;</span><span class="p">)</span>
-</span><span class='line'>        <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;cp /etc/resolv.conf </span><span class="si">#{</span><span class="n">filesystem</span><span class="si">}</span><span class="s2">/etc/&quot;</span><span class="p">)</span>
-</span><span class='line'>        <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;chroot </span><span class="si">#{</span><span class="n">filesystem</span><span class="si">}</span><span class="s2">/ /bin/bash&quot;</span><span class="p">)</span>
-</span><span class='line'>        <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;umount </span><span class="si">#{</span><span class="n">filesystem</span><span class="si">}</span><span class="s2">/dev/pts&quot;</span><span class="p">)</span>
-</span><span class='line'>        <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;umount </span><span class="si">#{</span><span class="n">filesystem</span><span class="si">}</span><span class="s2">/proc/&quot;</span><span class="p">)</span>
-</span><span class='line'>        <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;umount </span><span class="si">#{</span><span class="n">filesystem</span><span class="si">}</span><span class="s2">/dev/&quot;</span><span class="p">)</span>
-</span><span class='line'>    <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">def</span> <span class="nf">zip_file</span><span class="p">(</span><span class="n">iso_name</span><span class="p">,</span> <span class="n">filesystem</span><span class="p">,</span> <span class="n">output_iso</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">)</span>
-</span><span class='line'>        <span class="nb">puts</span> <span class="s2">&quot;開始壓縮檔案..&quot;</span>
-</span><span class='line'>        <span class="k">if</span> <span class="ow">not</span> <span class="no">File</span><span class="o">.</span><span class="n">exist?</span><span class="p">(</span><span class="n">output_iso</span><span class="p">)</span>
-</span><span class='line'>            <span class="n">iso_extract</span><span class="p">(</span><span class="n">iso</span><span class="p">,</span> <span class="n">iso_name</span><span class="p">)</span>
-</span><span class='line'>            <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;rsync -a --exclude &#39;filesystem.squashfs&#39; </span><span class="si">#{</span><span class="n">iso_name</span><span class="si">}</span><span class="s2"> </span><span class="si">#{</span><span class="n">output_dir</span><span class="si">}</span><span class="s2">/  | pv -les $(df -i </span><span class="si">#{</span><span class="n">iso_name</span><span class="si">}</span><span class="s2"> | perl -ane &#39;print $F[2] if $F[5] =~ m:^/:&#39;) &gt;/dev/null&quot;</span><span class="p">)</span>
-</span><span class='line'>        <span class="k">end</span>
-</span><span class='line'>        <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;umount </span><span class="si">#{</span><span class="n">filesystem</span><span class="si">}</span><span class="s2">/dev/pts 2&gt;/dev/null&quot;</span><span class="p">)</span>
-</span><span class='line'>        <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;umount </span><span class="si">#{</span><span class="n">filesystem</span><span class="si">}</span><span class="s2">/proc/ 2&gt;/dev/null&quot;</span><span class="p">)</span>
-</span><span class='line'>        <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;umount </span><span class="si">#{</span><span class="n">filesystem</span><span class="si">}</span><span class="s2">/dev/ 2&gt;/dev/null&quot;</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'>        <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;chroot </span><span class="si">#{</span><span class="n">filesystem</span><span class="si">}</span><span class="s2"> dpkg-query -W --showformat=&#39;${Package} ${Version}</span><span class="se">\n</span><span class="s2">&#39; &gt; </span><span class="si">#{</span><span class="n">output_iso</span><span class="si">}</span><span class="s2">/casper/filesystem.manifest&quot;</span><span class="p">)</span>
-</span><span class='line'>        <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;rm </span><span class="si">#{</span><span class="n">output_iso</span><span class="si">}</span><span class="s2">/casper/filesystem.squashfs 2&gt;/dev/null&quot;</span><span class="p">)</span>
-</span><span class='line'>        <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;mksquashfs </span><span class="si">#{</span><span class="n">filesystem</span><span class="si">}</span><span class="s2"> </span><span class="si">#{</span><span class="n">output_iso</span><span class="si">}</span><span class="s2">/casper/filesystem.squashfs -comp xz&quot;</span><span class="p">)</span>
-</span><span class='line'>        <span class="n">make_iso</span><span class="p">(</span><span class="n">iso_name</span><span class="p">,</span> <span class="n">filesystem</span><span class="p">,</span> <span class="n">output_iso</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">)</span>
-</span><span class='line'>    <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">def</span> <span class="nf">make_iso</span><span class="p">(</span><span class="n">iso_name</span><span class="p">,</span> <span class="n">filesystem</span><span class="p">,</span> <span class="n">output_iso</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">)</span>
-</span><span class='line'>        <span class="nb">puts</span> <span class="s2">&quot;開始打包光碟..&quot;</span>
-</span><span class='line'>        <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;printf $( du -sx --block-size=1 </span><span class="si">#{</span><span class="n">filesystem</span><span class="si">}</span><span class="s2"> | cut -f1) &gt; </span><span class="si">#{</span><span class="n">output_iso</span><span class="si">}</span><span class="s2">/casper/filesystem.size&quot;</span><span class="p">)</span>
-</span><span class='line'>        <span class="no">Dir</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">output_dir</span><span class="p">)</span>
-</span><span class='line'>        <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;rm MD5SUMS&quot;</span><span class="p">)</span>
-</span><span class='line'>        <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;find -type f -print0 |  xargs -0 md5sum | grep -v isolinux/boot.cat |  tee MD5SUMS&quot;</span><span class="p">)</span>
-</span><span class='line'>        <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;mkisofs -input-charset iso8859-1 -r -D -V &#39;/</span><span class="si">#{</span><span class="n">iso_name</span><span class="si">}</span><span class="s2">-icps&#39; -cache-inodes -J -l -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -graft-point -o </span><span class="si">#{</span><span class="n">output_iso</span><span class="si">}</span><span class="s2"> ../</span><span class="si">#{</span><span class="n">iso_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </span><span class='line'>    <span class="k">end</span>
 </span><span class='line'><span class="k">end</span>
-</span><span class='line'><span class="no">Live</span><span class="o">.</span><span class="n">new</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">iso_list</span>
+</span><span class='line'>    <span class="n">choice</span>   <span class="o">=</span> <span class="n">list</span><span class="p">(</span><span class="no">ISO_EXT</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">iso_name</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">choice</span><span class="p">,</span> <span class="s2">&quot;.</span><span class="si">#{</span><span class="no">ISO_EXT</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">alias_file</span><span class="p">(</span><span class="n">filesystem</span><span class="p">)</span>
+</span><span class='line'>    <span class="nb">system</span> <span class="s2">&quot;cp alias/clean.sh </span><span class="si">#{</span><span class="n">filesystem</span><span class="si">}</span><span class="s2">/root&quot;</span>
+</span><span class='line'>    <span class="nb">system</span> <span class="s2">&quot;cp alias/.bashrc  </span><span class="si">#{</span><span class="n">filesystem</span><span class="si">}</span><span class="s2">/root&quot;</span>
+</span><span class='line'>    <span class="nb">system</span> <span class="s2">&quot;cp alias/build.rb </span><span class="si">#{</span><span class="n">filesystem</span><span class="si">}</span><span class="s2">/root&quot;</span>
+</span><span class='line'>    <span class="nb">system</span> <span class="s2">&quot;cp alias/ta.rb    </span><span class="si">#{</span><span class="n">filesystem</span><span class="si">}</span><span class="s2">/root/alias&quot;</span>
+</span><span class='line'>    <span class="nb">system</span> <span class="s2">&quot;cp alias/dk.rb    </span><span class="si">#{</span><span class="n">filesystem</span><span class="si">}</span><span class="s2">/root/alias&quot;</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">extract</span><span class="p">(</span><span class="n">iso_name</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">iso_dir</span>    <span class="o">=</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="no">SOURCE_DIR</span><span class="si">}</span><span class="s2">/</span><span class="si">#{</span><span class="n">iso_name</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>    <span class="n">filesystem</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">iso_name</span><span class="si">}</span><span class="s2">_filesystem&quot;</span>
+</span><span class='line'>    <span class="n">iso_mount</span><span class="p">(</span><span class="n">iso_name</span><span class="p">)</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;=&gt; 解壓縮 filesystem.squashfs 到 </span><span class="si">#{</span><span class="n">filesystem</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>    <span class="k">if</span> <span class="no">File</span><span class="o">.</span><span class="n">exist?</span><span class="p">(</span><span class="n">filesystem</span><span class="p">)</span>
+</span><span class='line'>        <span class="nb">printf</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">是否移除舊  </span><span class="si">#{</span><span class="n">filesystem</span><span class="si">}</span><span class="s2">(y/n) : &quot;</span>
+</span><span class='line'>        <span class="sb">`rm -rf </span><span class="si">#{</span><span class="n">filesystem</span><span class="si">}</span><span class="sb">`</span> <span class="k">if</span> <span class="nb">gets</span><span class="o">.</span><span class="n">downcase</span><span class="o">.</span><span class="n">chomp</span> <span class="o">==</span> <span class="s2">&quot;y&quot;</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>    <span class="nb">system</span> <span class="s2">&quot;mount -o loop -t squashfs </span><span class="si">#{</span><span class="n">iso_dir</span><span class="si">}</span><span class="s2">/casper/filesystem.squashfs /mnt/&quot;</span>
+</span><span class='line'>    <span class="n">cpr</span><span class="p">(</span><span class="s2">&quot;/mnt&quot;</span><span class="p">,</span> <span class="n">filesystem</span><span class="p">)</span>
+</span><span class='line'>    <span class="nb">system</span> <span class="s2">&quot;umount -l /mnt&quot;</span>
+</span><span class='line'>    <span class="nb">system</span> <span class="s2">&quot;umount -l </span><span class="si">#{</span><span class="n">iso_dir</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>    <span class="nb">system</span> <span class="s2">&quot;mkdir </span><span class="si">#{</span><span class="n">filesystem</span><span class="si">}</span><span class="s2">/root/alias&quot;</span>
+</span><span class='line'>    <span class="n">alias_file</span><span class="p">(</span><span class="n">filesystem</span><span class="p">)</span>
+</span><span class='line'>    <span class="nb">system</span> <span class="s2">&quot;mv </span><span class="si">#{</span><span class="n">filesystem</span><span class="si">}</span><span class="s2">/etc/apt/sources.list </span><span class="si">#{</span><span class="n">filesystem</span><span class="si">}</span><span class="s2">/etc/apt/sources.list.bk&quot;</span>
+</span><span class='line'>    <span class="nb">system</span> <span class="s2">&quot;cp /etc/apt/sources.list </span><span class="si">#{</span><span class="n">filesystem</span><span class="si">}</span><span class="s2">/etc/apt/&quot;</span>
+</span><span class='line'>    <span class="nb">system</span> <span class="s1">&#39;echo &quot;setup=\&quot;/isodevice/OUTTOOL/setup.rb\&quot;&quot; &gt;&gt;&#39;</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">filesystem</span><span class="si">}</span><span class="s2">/etc/skel/.profile&quot;</span>
+</span><span class='line'>    <span class="nb">system</span> <span class="s1">&#39;echo &quot;[ -e \$setup ] &amp;&amp; sudo ruby $setup&quot;    &gt;&gt;&#39;</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">filesystem</span><span class="si">}</span><span class="s2">/etc/skel/.profile&quot;</span>
+</span><span class='line'>    <span class="nb">system</span> <span class="s1">&#39;echo &quot;setup=\&quot;/cdrom/setup.rb\&quot;&quot;             &gt;&gt;&#39;</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">filesystem</span><span class="si">}</span><span class="s2">/etc/skel/.profile&quot;</span>
+</span><span class='line'>    <span class="nb">system</span> <span class="s1">&#39;echo &quot;[ -e \$setup ] &amp;&amp; sudo ruby $setup&quot;    &gt;&gt;&#39;</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">filesystem</span><span class="si">}</span><span class="s2">/etc/skel/.profile&quot;</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">iso_mount</span><span class="p">(</span><span class="n">iso_name</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">iso_dir</span>  <span class="o">=</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="no">SOURCE_DIR</span><span class="si">}</span><span class="s2">/</span><span class="si">#{</span><span class="n">iso_name</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>    <span class="n">iso_file</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">iso_name</span><span class="si">}</span><span class="s2">.</span><span class="si">#{</span><span class="no">ISO_EXT</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>    <span class="sb">`umount -l </span><span class="si">#{</span><span class="n">iso_dir</span><span class="si">}</span><span class="sb"> &amp;&amp; rm -rf </span><span class="si">#{</span><span class="n">iso_dir</span><span class="si">}</span><span class="sb">`</span>
+</span><span class='line'>    <span class="c1">#`mount|grep iso`.split(&quot;\n&quot;).map{|i| system &quot;umount -l #{i.split(&quot; &quot;).first}&quot;}</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;=&gt; 將光碟 </span><span class="si">#{</span><span class="n">iso_file</span><span class="si">}</span><span class="s2"> 掛載到 </span><span class="si">#{</span><span class="n">iso_dir</span><span class="si">}</span><span class="s2"> ..&quot;</span>
+</span><span class='line'>    <span class="nb">system</span> <span class="s2">&quot;mkdir </span><span class="si">#{</span><span class="n">iso_dir</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>    <span class="nb">system</span> <span class="s2">&quot;mount -o loop </span><span class="si">#{</span><span class="n">iso_file</span><span class="si">}</span><span class="s2"> </span><span class="si">#{</span><span class="n">iso_dir</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">cpr</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">to</span><span class="p">)</span>
+</span><span class='line'>    <span class="nb">system</span> <span class="s2">&quot;rsync -aAXv </span><span class="si">#{</span><span class="n">source</span><span class="si">}</span><span class="s2">/* </span><span class="si">#{</span><span class="n">to</span><span class="si">}</span><span class="s2"> | pv -ls `find </span><span class="si">#{</span><span class="n">source</span><span class="si">}</span><span class="s2">|wc -l` &gt;/dev/null&quot;</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">mount_system</span><span class="p">(</span><span class="n">filesystem</span><span class="p">)</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;=&gt; 開始掛載...&quot;</span>
+</span><span class='line'>    <span class="nb">system</span> <span class="s2">&quot;mount -o bind /dev/ </span><span class="si">#{</span><span class="n">filesystem</span><span class="si">}</span><span class="s2">/dev/&quot;</span>
+</span><span class='line'>    <span class="nb">system</span> <span class="s2">&quot;mount --bind /dev/pts </span><span class="si">#{</span><span class="n">filesystem</span><span class="si">}</span><span class="s2">/dev/pts&quot;</span>
+</span><span class='line'>    <span class="nb">system</span> <span class="s2">&quot;mount -t proc procfs </span><span class="si">#{</span><span class="n">filesystem</span><span class="si">}</span><span class="s2">/proc/ &quot;</span>
+</span><span class='line'>    <span class="nb">system</span> <span class="s2">&quot;cp /etc/resolv.conf </span><span class="si">#{</span><span class="n">filesystem</span><span class="si">}</span><span class="s2">/etc/&quot;</span>
+</span><span class='line'>    <span class="nb">system</span> <span class="s2">&quot;chroot </span><span class="si">#{</span><span class="n">filesystem</span><span class="si">}</span><span class="s2">/ /bin/bash&quot;</span>
+</span><span class='line'>    <span class="nb">system</span> <span class="s2">&quot;umount -l </span><span class="si">#{</span><span class="n">filesystem</span><span class="si">}</span><span class="s2">/dev/pts&quot;</span>
+</span><span class='line'>    <span class="nb">system</span> <span class="s2">&quot;umount -l </span><span class="si">#{</span><span class="n">filesystem</span><span class="si">}</span><span class="s2">/proc/&quot;</span>
+</span><span class='line'>    <span class="nb">system</span> <span class="s2">&quot;umount -l </span><span class="si">#{</span><span class="n">filesystem</span><span class="si">}</span><span class="s2">/dev/&quot;</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">zip</span><span class="p">(</span><span class="n">filesystem</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">squashfs</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="no">OUTPUT_DIR</span><span class="si">}</span><span class="s2">/filesystem.squashfs&quot;</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;=&gt; 開始壓縮檔案..&quot;</span>
+</span><span class='line'>    <span class="nb">system</span> <span class="s2">&quot;umount -l </span><span class="si">#{</span><span class="n">filesystem</span><span class="si">}</span><span class="s2">/dev/pts&quot;</span>
+</span><span class='line'>    <span class="nb">system</span> <span class="s2">&quot;umount -l </span><span class="si">#{</span><span class="n">filesystem</span><span class="si">}</span><span class="s2">/proc/&quot;</span>
+</span><span class='line'>    <span class="nb">system</span> <span class="s2">&quot;umount -l </span><span class="si">#{</span><span class="n">filesystem</span><span class="si">}</span><span class="s2">/dev/&quot;</span>
+</span><span class='line'>    <span class="k">if</span> <span class="no">File</span><span class="o">.</span><span class="n">exist?</span><span class="p">(</span><span class="n">squashfs</span><span class="p">)</span>
+</span><span class='line'>        <span class="nb">printf</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">是否移除舊 </span><span class="si">#{</span><span class="n">squashfs</span><span class="si">}</span><span class="s2">(Y/n) : &quot;</span>
+</span><span class='line'>        <span class="sb">`rm </span><span class="si">#{</span><span class="n">squashfs</span><span class="si">}</span><span class="sb">`</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">gets</span><span class="o">.</span><span class="n">downcase</span><span class="o">.</span><span class="n">chomp</span> <span class="o">==</span> <span class="s2">&quot;n&quot;</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>    <span class="nb">system</span> <span class="s2">&quot;chroot </span><span class="si">#{</span><span class="n">filesystem</span><span class="si">}</span><span class="s2"> dpkg-query -W --showformat=&#39;${Package} ${Version}</span><span class="se">\n</span><span class="s2">&#39; &gt; </span><span class="si">#{</span><span class="no">OUTPUT_DIR</span><span class="si">}</span><span class="s2">/filesystem.manifest&quot;</span>
+</span><span class='line'>    <span class="no">Dir</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="no">OUTPUT_DIR</span><span class="p">)</span>
+</span><span class='line'>    <span class="nb">system</span> <span class="s2">&quot;mksquashfs </span><span class="si">#{</span><span class="n">filesystem</span><span class="si">}</span><span class="s2"> </span><span class="si">#{</span><span class="n">squashfs</span><span class="si">}</span><span class="s2"> -comp xz&quot;</span>
+</span><span class='line'>    <span class="nb">system</span> <span class="s2">&quot;printf $( du -sx --block-size=1 </span><span class="si">#{</span><span class="n">filesystem</span><span class="si">}</span><span class="s2"> | cut -f1) &gt; </span><span class="si">#{</span><span class="no">OUTPUT_DIR</span><span class="si">}</span><span class="s2">/filesystem.size&quot;</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">all</span><span class="p">(</span><span class="n">iso_name</span><span class="p">,</span> <span class="n">filesystem</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">make_iso_dir</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="no">OUTPUT_DIR</span><span class="si">}</span><span class="s2">/</span><span class="si">#{</span><span class="n">iso_name</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>    <span class="n">zip</span><span class="p">(</span><span class="n">filesystem</span><span class="p">)</span>
+</span><span class='line'>    <span class="sb">`cp -Rp </span><span class="si">#{</span><span class="no">SOURCE_DIR</span><span class="si">}</span><span class="sb">/</span><span class="si">#{</span><span class="n">iso_name</span><span class="si">}</span><span class="sb"> </span><span class="si">#{</span><span class="no">OUTPUT_DIR</span><span class="si">}</span><span class="sb">`</span>
+</span><span class='line'>    <span class="sb">`rm </span><span class="si">#{</span><span class="n">make_iso_dir</span><span class="si">}</span><span class="sb">/ubuntu -rf`</span>
+</span><span class='line'>    <span class="sb">`mv </span><span class="si">#{</span><span class="no">OUTPUT_DIR</span><span class="si">}</span><span class="sb">/filesystem.size </span><span class="si">#{</span><span class="n">make_iso_dir</span><span class="si">}</span><span class="sb">/casper`</span>
+</span><span class='line'>    <span class="sb">`mv </span><span class="si">#{</span><span class="no">OUTPUT_DIR</span><span class="si">}</span><span class="sb">/filesystem.manifest </span><span class="si">#{</span><span class="n">make_iso_dir</span><span class="si">}</span><span class="sb">/casper`</span>
+</span><span class='line'>    <span class="sb">`mv </span><span class="si">#{</span><span class="no">OUTPUT_DIR</span><span class="si">}</span><span class="sb">/filesystem.squashfs </span><span class="si">#{</span><span class="n">make_iso_dir</span><span class="si">}</span><span class="sb">/casper`</span>
+</span><span class='line'>    <span class="n">make_iso</span><span class="p">(</span><span class="n">make_iso_dir</span><span class="p">)</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">make_iso</span><span class="p">(</span><span class="n">squashfs</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">iso_name</span> <span class="o">=</span> <span class="n">squashfs</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="no">OUTPUT_DIR</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="nb">system</span> <span class="s2">&quot;mkisofs -input-charset iso8859-1 -r -D -V &#39;/icps&#39; -cache-inodes -J -l -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -graft-point -o </span><span class="si">#{</span><span class="no">OUTPUT_DIR</span><span class="si">}</span><span class="s2">/</span><span class="si">#{</span><span class="n">iso_name</span><span class="si">}</span><span class="s2">.</span><span class="si">#{</span><span class="no">ISO_EXT</span><span class="si">}</span><span class="s2"> </span><span class="si">#{</span><span class="n">squashfs</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="no">OUTPUT_DIR</span> <span class="o">=</span> <span class="s2">&quot;/tmp/ramfs&quot;</span>
+</span><span class='line'><span class="no">SOURCE_DIR</span> <span class="o">=</span> <span class="s2">&quot;/tmp/source&quot;</span>
+</span><span class='line'><span class="no">ISO_EXT</span>    <span class="o">=</span> <span class="s2">&quot;iso&quot;</span>
+</span><span class='line'><span class="no">FILESYSTEM</span> <span class="o">=</span> <span class="s2">&quot;_filesystem&quot;</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="sb">`mkdir -p </span><span class="si">#{</span><span class="no">OUTPUT_DIR</span><span class="si">}</span><span class="sb">`</span>
+</span><span class='line'><span class="sb">`mkdir -p </span><span class="si">#{</span><span class="no">SOURCE_DIR</span><span class="si">}</span><span class="sb">`</span>
+</span><span class='line'><span class="sb">`chown -R icps:icps </span><span class="si">#{</span><span class="no">OUTPUT_DIR</span><span class="si">}</span><span class="sb"> 2&gt; /dev/null`</span>
+</span><span class='line'>
+</span><span class='line'><span class="nb">puts</span>
+</span><span class='line'><span class="nb">puts</span> <span class="s2">&quot;1.解壓縮filesystem.squashfs&quot;</span>
+</span><span class='line'><span class="nb">puts</span> <span class="s2">&quot;2.chroot&quot;</span>
+</span><span class='line'><span class="nb">puts</span> <span class="s2">&quot;3.將filesystem壓縮&quot;</span>
+</span><span class='line'><span class="nb">puts</span> <span class="s2">&quot;4.將filesystem壓縮,製作光碟&quot;</span>
+</span><span class='line'><span class="nb">puts</span> <span class="s2">&quot;5.製作光碟&quot;</span>
+</span><span class='line'><span class="nb">puts</span> <span class="s2">&quot;6.mount光碟&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nb">puts</span> <span class="s2">&quot;請選擇</span><span class="se">\n</span><span class="s2">-------------&quot;</span>
+</span><span class='line'><span class="nb">print</span> <span class="s2">&quot;&gt;&gt; &quot;</span>
+</span><span class='line'><span class="k">case</span> <span class="nb">gets</span><span class="o">.</span><span class="n">chomp</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">when</span> <span class="s2">&quot;1&quot;</span>
+</span><span class='line'>    <span class="n">iso_name</span> <span class="o">=</span> <span class="n">iso_list</span>
+</span><span class='line'>    <span class="n">extract</span><span class="p">(</span><span class="n">iso_name</span><span class="p">)</span>
+</span><span class='line'><span class="k">when</span> <span class="s2">&quot;2&quot;</span>
+</span><span class='line'>    <span class="n">filesystem</span> <span class="o">=</span> <span class="n">list</span><span class="p">(</span><span class="no">FILESYSTEM</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">alias_file</span><span class="p">(</span><span class="n">filesystem</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">mount_system</span><span class="p">(</span><span class="n">filesystem</span><span class="p">)</span>
+</span><span class='line'><span class="k">when</span> <span class="s2">&quot;3&quot;</span>
+</span><span class='line'>    <span class="n">filesystem</span> <span class="o">=</span> <span class="n">list</span><span class="p">(</span><span class="no">FILESYSTEM</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">zip</span><span class="p">(</span><span class="n">filesystem</span><span class="p">)</span>
+</span><span class='line'><span class="k">when</span> <span class="s2">&quot;4&quot;</span>
+</span><span class='line'>    <span class="n">iso_name</span> <span class="o">=</span> <span class="n">iso_list</span>
+</span><span class='line'>    <span class="n">iso_mount</span><span class="p">(</span><span class="n">iso_name</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">filesystem</span> <span class="o">=</span> <span class="n">list</span><span class="p">(</span><span class="no">FILESYSTEM</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">all</span><span class="p">(</span><span class="n">iso_name</span><span class="p">,</span> <span class="n">filesystem</span><span class="p">)</span>
+</span><span class='line'><span class="k">when</span> <span class="s2">&quot;5&quot;</span>
+</span><span class='line'>    <span class="n">squashfs</span> <span class="o">=</span> <span class="n">list</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">make_iso</span><span class="p">(</span><span class="n">squashfs</span><span class="p">)</span>
+</span><span class='line'><span class="k">when</span> <span class="s2">&quot;6&quot;</span>
+</span><span class='line'>    <span class="n">iso_name</span> <span class="o">=</span> <span class="n">iso_list</span>
+</span><span class='line'>    <span class="n">iso_mount</span><span class="p">(</span><span class="n">iso_name</span><span class="p">)</span>
+</span><span class='line'>    <span class="sb">`cp -Rp </span><span class="si">#{</span><span class="no">SOURCE_DIR</span><span class="si">}</span><span class="sb">/</span><span class="si">#{</span><span class="n">iso_name</span><span class="si">}</span><span class="sb"> </span><span class="si">#{</span><span class="no">OUTPUT_DIR</span><span class="si">}</span><span class="sb">`</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>build.rb</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#移除amaz desktop</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">amazon</span>
+</span><span class='line'>    <span class="nb">system</span> <span class="s2">&quot;locate *amazon*desktop | xargs rm&quot;</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'><span class="c1">#關閉崩潰報告</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">report</span>
+</span><span class='line'>    <span class="nb">system</span> <span class="s2">&quot;echo &#39;enabled=0&#39; &gt; /etc/default/apport&quot;</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'><span class="c1">#語言</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">zh_language</span>
+</span><span class='line'>    <span class="nb">system</span> <span class="s2">&quot;apt-get install -y language-pack-gnome-zh-hant language-pack-gnome-zh-hans language-pack-zh-hant language-pack-zh-hans&quot;</span>
+</span><span class='line'>    <span class="nb">system</span> <span class="s2">&quot;rm /var/lib/locales/supported.d/*&quot;</span>
+</span><span class='line'>    <span class="nb">system</span> <span class="s2">&quot;echo &#39;zh_TW.UTF-8 UTF-8&#39; &gt; /var/lib/locales/supported.d/local&quot;</span>
+</span><span class='line'>    <span class="nb">system</span> <span class="s2">&quot;echo &#39;en_US.UTF-8 UTF-8&#39; &gt;&gt; /var/lib/locales/supported.d/local&quot;</span>
+</span><span class='line'>    <span class="nb">system</span> <span class="s2">&quot;echo &#39;zh_TW BIG5&#39; &gt;&gt; /var/lib/locales/supported.d/local&quot;</span>
+</span><span class='line'>    <span class="nb">system</span> <span class="s2">&quot;locale-gen&quot;</span>
+</span><span class='line'>    <span class="nb">system</span> <span class="s2">&quot;echo export LANG=&#39;zh_TW.UTF-8&#39;&gt;&gt; /etc/environment&quot;</span>
+</span><span class='line'>    <span class="nb">system</span> <span class="s2">&quot;echo export LANGUAGE=&#39;zh_TW:zh&#39;&gt;&gt; /etc/environment&quot;</span>
+</span><span class='line'>    <span class="nb">system</span> <span class="s2">&quot;echo export LC_ALL=&#39;zh_TW.UTF-8&#39;&gt;&gt; /etc/environment&quot;</span>
+</span><span class='line'>    <span class="nb">system</span> <span class="s2">&quot;dpkg-reconfigure locales&quot;</span>
+</span><span class='line'>    <span class="nb">system</span> <span class="s2">&quot;update-locale&quot;</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'><span class="c1">#設定時間</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">time_zone</span>
+</span><span class='line'>    <span class="nb">system</span> <span class="s2">&quot;ln -sf /usr/share/zoneinfo/Asia/Taipei /etc/localtime&quot;</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">remove</span>
+</span><span class='line'>    <span class="c1">#system &quot;sed -i &#39;s/tw.archive.ubuntu.com/free.nchc.org.tw/g&#39; /etc/apt/sources.list&quot;</span>
+</span><span class='line'>    <span class="nb">system</span> <span class="s2">&quot;apt purge -y aisleriot brasero empathy firefox landscape-client-ui-install rhythmbox thunderbird&quot;</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">install</span>
+</span><span class='line'>    <span class="nb">system</span> <span class="s2">&quot;sudo apt-get -y update&quot;</span>
+</span><span class='line'>    <span class="n">apps</span> <span class="o">=</span> <span class="s2">&quot;aircrack-ng bkhive bleachbit build-essential build-essential bundler chntpw crunch deborphan ettercap-graphical fcitx fcitx-chewing fcitx-config-gtk git git gparted hydra hydra-gtk john libreadline-dev libssl-dev libyaml-dev medusa netcat-traditional netdiscover nmap ophcrack pv qrencode rdesktop reaver ruby ruby-dev samdump2 ssh wifite wireshark zbar-tools zlib1g-dev&quot;</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">error</span> <span class="o">=</span> <span class="nb">Array</span><span class="o">.</span><span class="n">new</span>
+</span><span class='line'>    <span class="n">apps</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">app</span><span class="o">|</span>
+</span><span class='line'>        <span class="n">e</span> <span class="o">=</span> <span class="nb">system</span> <span class="s2">&quot;apt install -y </span><span class="si">#{</span><span class="n">app</span><span class="si">}</span><span class="s2"> &amp;&amp; echo $?&quot;</span>
+</span><span class='line'>        <span class="k">if</span> <span class="ow">not</span> <span class="n">e</span>
+</span><span class='line'>            <span class="n">error</span> <span class="o">&lt;&lt;</span> <span class="n">app</span>
+</span><span class='line'>        <span class="k">end</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>    <span class="n">install</span> <span class="o">=</span> <span class="p">(</span><span class="n">apps</span> <span class="o">-</span> <span class="n">error</span><span class="p">)</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;&quot;, &quot;&#39;</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">uninstall</span> <span class="o">=</span> <span class="p">(</span><span class="n">error</span><span class="p">)</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;&quot;, &quot;&#39;</span><span class="p">)</span>
+</span><span class='line'>    <span class="nb">puts</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;#已安裝 </span><span class="se">\&quot;</span><span class="si">#{</span><span class="n">install</span><span class="si">}</span><span class="se">\&quot;</span><span class="s2">&quot;</span>
+</span><span class='line'>    <span class="nb">puts</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;#未安裝 </span><span class="se">\&quot;</span><span class="si">#{</span><span class="n">uninstall</span><span class="si">}</span><span class="se">\&quot;</span><span class="s2">&quot;</span>
+</span><span class='line'>    <span class="nb">system</span> <span class="s2">&quot;rm /etc/alternatives/nc &amp;&amp; ln -s /bin/nc.traditional /etc/alternatives/nc&quot;</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">gems</span>
+</span><span class='line'>    <span class="n">apps</span> <span class="o">=</span> <span class="s2">&quot;colorize net-scp net-ssh shotgun sinatra&quot;</span>
+</span><span class='line'>    <span class="nb">system</span> <span class="s2">&quot;gem install </span><span class="si">#{</span><span class="n">apps</span><span class="si">}</span><span class="s2"> --no-ri --no-rdoc&quot;</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">#zh_language</span>
+</span><span class='line'><span class="n">amazon</span>
+</span><span class='line'><span class="n">report</span>
+</span><span class='line'><span class="n">time_zone</span>
+</span><span class='line'><span class="n">remove</span>
+</span><span class='line'><span class="n">install</span>
+</span><span class='line'><span class="n">gems</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>clean.sh</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>apt-get update
+</span><span class='line'>apt-get -y upgrade
+</span><span class='line'>apt-get clean
+</span><span class='line'>apt-get autoclean
+</span><span class='line'>apt-get autoremove
+</span><span class='line'>rm /var/cache/apt/archives/* 2&gt;/dev/null
+</span><span class='line'>rm /var/cache/apt/archives/partial/* 2&gt;/dev/null
+</span><span class='line'>rm -R /var/log/* 2&gt;/dev/null
+</span><span class='line'>rm -R /tmp/* 2&gt;/dev/null
+</span><span class='line'>rm /root/.local/share/Trash/files/* 2&gt;/dev/null
+</span><span class='line'>rm /root/.bash_history 2&gt;/dev/null
+</span><span class='line'><span class="c">#update-grub2</span>
+</span><span class='line'>updatedb
 </span></code></pre></td></tr></table></div></figure>
 
 </div>
@@ -454,13 +694,17 @@
 <li class='category'><a href='/blog/categories/linux/'>linux (26)</a></li>
 <li class='category'><a href='/blog/categories/python/'>python (10)</a></li>
 <li class='category'><a href='/blog/categories/ror/'>ror (24)</a></li>
-<li class='category'><a href='/blog/categories/ruby/'>ruby (52)</a></li>
+<li class='category'><a href='/blog/categories/ruby/'>ruby (53)</a></li>
 
     </ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2018/10/21/ta/">Ta</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2018/10/20/cpr/">Cpr</a>
@@ -476,10 +720,6 @@
     
       <li class="post">
         <a href="/blog/2018/10/14/days/">Days</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2018/10/07/pycall/">Pycall</a>
       </li>
     
   </ul>

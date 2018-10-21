@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-10-21T01:28:23+08:00</updated>
+  <updated>2018-10-21T17:27:58+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,65 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Ta]]></title>
+    <link href="http://icps0610.github.io/blog/2018/10/21/ta/"/>
+    <updated>2018-10-21T16:37:50+08:00</updated>
+    <id>http://icps0610.github.io/blog/2018/10/21/ta</id>
+    <content type="html"><![CDATA[<pre><code class="ruby">#!/usr/bin/env ruby
+# encoding: utf-8
+def tar(file, ext)
+    case ext
+    when /tar.bz2/
+        "tar jcvf #{file} [DIR]\ntar jxvf #{file}\n"
+    when /tar.bz/
+        "tar jxvf #{file}"
+    when /tar.gz/
+        "tar zcvf #{file} [DIR]\ntar zxvf #{file}\n"
+    when /tar.tgz/
+        "tar zcvf #{file} [DIR]\ntar zxvf #{file}\n"
+    when /tar.xz/
+        "tar Jcvf #{file} [DIR]\ntar Jxvf #{file}\n"
+    when /tar.Z/
+        "tar Zcvf #{file} [DIR]\ntar Zxvf #{file}\n"
+    when /tar/
+        "tar cvf #{file} [DIR]\ntar xvf #{file}\n"
+    when "gz"
+        "gzip #{file}\ngzip -d #{file}\n"
+    when /bz/
+        "bunzip2 #{file}"
+    when /bz2/
+        "bzip2 -z #{file}"
+    when /xz/
+        "xz -z #{file}\nxz -d #{file}\n"
+    when /Z/
+        "uncompress #{file}"
+    when /tgz/
+        "tar zcvf #{file} [DIR]\ntar zxvf #{file}\n"
+    when /7z/
+        "7z a #{file} [DIR]\n7z a #{file}.7z [DIR] -p[PASSWORD]\n7z x #{file}\n"
+    when /zip/
+        "zip #{file} [DIR]\nunzip #{file}\n"
+    when /rar/
+        "rar a #{file} [DIR]\nrar e #{file}\nrar x #{file} [DIR]\n"
+    when /lha/
+        "lha -a #{file} [DIR]\nlha -e #{file}\n"
+    else
+        ext = "nil" if ext == ""
+        "error\n#{file}\n#{ext}\n"
+    end
+end
+file = ARGV[0]
+if not file
+    puts "ta.rb filename"
+    exit
+end
+ext = File.basename(file).scan(/\.(.*)/).join
+puts tar(file, ext)
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Cpr]]></title>
@@ -93,18 +152,6 @@ p between(sdate, edate)
     <content type="html"><![CDATA[<pre><code class="ruby">require 'pycall/import'
 include PyCall::Import
 </code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Sorting-a-two-dimensional-array]]></title>
-    <link href="http://icps0610.github.io/blog/2018/10/05/sort-by/"/>
-    <updated>2018-10-05T18:31:04+08:00</updated>
-    <id>http://icps0610.github.io/blog/2018/10/05/sort-by</id>
-    <content type="html"><![CDATA[<blockquote><p>ref <a href="https://stackoverflow.com/questions/7033719/sorting-a-two-dimensional-array-by-second-value">https://stackoverflow.com/questions/7033719/sorting-a-two-dimensional-array-by-second-value</a></p></blockquote>
-
-<p>arr.sort_by{|x,y|y}
-arr.sort_by(&amp;:last)</p>
 ]]></content>
   </entry>
   
