@@ -1,0 +1,61 @@
+---
+layout: post
+title: "ta"
+date: 2018-10-21 16:37:50 +0800
+comments: true
+categories: ruby
+---
+
+``` ruby
+#!/usr/bin/env ruby
+# encoding: utf-8
+def tar(file, ext)
+    case ext
+    when /tar.bz2/
+        "tar jcvf #{file} [DIR]\ntar jxvf #{file}\n"
+    when /tar.bz/
+        "tar jxvf #{file}"
+    when /tar.gz/
+        "tar zcvf #{file} [DIR]\ntar zxvf #{file}\n"
+    when /tar.tgz/
+        "tar zcvf #{file} [DIR]\ntar zxvf #{file}\n"
+    when /tar.xz/
+        "tar Jcvf #{file} [DIR]\ntar Jxvf #{file}\n"
+    when /tar.Z/
+        "tar Zcvf #{file} [DIR]\ntar Zxvf #{file}\n"
+    when /tar/
+        "tar cvf #{file} [DIR]\ntar xvf #{file}\n"
+    when "gz"
+        "gzip #{file}\ngzip -d #{file}\n"
+    when /bz/
+        "bunzip2 #{file}"
+    when /bz2/
+        "bzip2 -z #{file}"
+    when /xz/
+        "xz -z #{file}\nxz -d #{file}\n"
+    when /Z/
+        "uncompress #{file}"
+    when /tgz/
+        "tar zcvf #{file} [DIR]\ntar zxvf #{file}\n"
+    when /7z/
+        "7z a #{file} [DIR]\n7z a #{file}.7z [DIR] -p[PASSWORD]\n7z x #{file}\n"
+    when /zip/
+        "zip #{file} [DIR]\nunzip #{file}\n"
+    when /rar/
+        "rar a #{file} [DIR]\nrar e #{file}\nrar x #{file} [DIR]\n"
+    when /lha/
+        "lha -a #{file} [DIR]\nlha -e #{file}\n"
+    else
+        ext = "nil" if ext == ""
+        "error\n#{file}\n#{ext}\n"
+    end
+end
+file = ARGV[0]
+if not file
+    puts "ta.rb filename"
+    exit
+end
+ext = File.basename(file).scan(/\.(.*)/).join
+puts tar(file, ext)
+
+```

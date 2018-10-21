@@ -19,6 +19,8 @@ sublime 2
 - 多行編輯 ctrl + shift + L  
 `beautifyruby`
 
+`"default_line_ending": "unix"`
+
 <pre><code>{
 #user
 "bracket_styles": {
@@ -72,3 +74,13 @@ Emmt   #settings
 pythonpep8autoformat 
 
 SublimeLinter-ruby
+
+```
+#Preferences.sublime-settings
+
+{
+    "tab_size": 4,
+    "translate_tabs_to_spaces": false,
+    "default_line_ending": "unix"
+}
+```

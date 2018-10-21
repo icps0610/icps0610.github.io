@@ -5,133 +5,259 @@ date: 2016-06-15 22:09:51 +0800
 comments: true
 categories: ruby
 ---
+
+#### livecd.rb
+
 ``` ruby
 #!/usr/bin/env ruby
 # encoding: utf-8
 `apt-get install squashfs-tools` if `dpkg-query -W | grep squashfs-tools` == ""
 
-class Live
-
-    def initialize
-        output_dir     = "/data/tmp"
-        iso_name_ext   = "iso"
-        ext            = ".#{iso_name_ext}"
-        filesystem_ext = "_filesystem"
-        iso_name       = iso_list(iso_name_ext, ext)
-        filesystem     = filesystem_list(filesystem_ext)
-        iso            = "#{iso_name}.#{iso_name_ext}"
-        output_iso     = "#{output_dir}/#{iso}"
-        puts "-------------"
-        puts "1.解壓縮#{iso}的filesystem.squashfs 到 #{filesystem}"
-        puts "2.chroot #{filesystem}"
-        puts "3.將#{filesystem}壓縮檔案製成光碟#{output_iso}"
-        puts "4.將.\/#{iso_name} 製作光碟"
-        print "-------------\n>> "
-        case gets.chomp
-        when "1"
-            extract(iso, iso_name, filesystem)
-        when "2"
-            mount_system(filesystem)
-        when "3"
-            zip_file(iso_name, filesystem, output_iso, output_dir)
-        when "4"
-            make_iso(iso_name, filesystem, output_iso, output_dir)
+def list(regx, dir=nil)
+    if dir == 1
+        dir = "-d #{OUTPUT_DIR}/*/"
+        pwd = ""
+    else
+        pwd = `pwd`.chomp + "/"
+    end
+    list = `ls #{dir} | grep \"#{regx}\"`.split("\n").map{|f|"#{pwd}#{f}"}.sort
+    if list.count == 1
+        list[0]
+    else
+        puts "請選擇\n-------------"
+        list.each_with_index do |l, i|
+            puts "#{i+1}. #{l}"
+        end
+        print ">> "
+        choice = STDIN.gets.chomp.to_i-1
+        if choice <= list.count or choice > 0
+            list[choice]
         else
-            initialize
+            list(regx)
         end
-    end
-
-    def list(regx)
-        list = `ls | grep #{regx}`.split("\n")
-        if list.count == 1
-            list[0]
-        else
-            puts "請選擇\n-------------"
-            list.sort!.each_with_index do |l, i|
-                puts "#{i+1}. #{l}"
-            end
-            print ">> "
-            choice = STDIN.gets.chomp.to_i-1
-            if choice <= list.count or choice > 0 
-                list[choice]
-            else
-                list(regx)
-            end
-        end
-    end
-
-    def iso_list(iso_name_ext, ext)
-        choice = list(iso_name_ext)
-        iso_name = File.basename(choice, ext)
-    end
-
-    def filesystem_list(filesystem_ext)
-        filesystem = list(filesystem_ext)
-    end
-
-
-    def extract(iso, iso_name, filesystem)
-        iso_extract(iso, iso_name)
-        puts "解壓縮 filesystem.squashfs 到 #{filesystem}"
-        if File.exist?(filesystem)
-            printf "\n是否移除舊  #{filesystem}(y/n) : "
-            `rm -rf #{filesystem}` if gets.downcase.chomp == "y"
-        end
-        system("mount -o loop -t squashfs #{iso_name}/casper/filesystem.squashfs /mnt/")
-        cpr("/mnt", filesystem)
-    end
-
-    def iso_extract(iso, iso_name)
-        if File.exist?(iso_name)
-            printf "\n是否移除舊 #{iso_name}(y/n) : "
-            `umout #{iso_name} && rm -rf #{iso_name}` if gets.downcase.chomp == "y"
-        end
-        puts "將光碟#{iso}掛載到.\/#{iso_name}.."
-        system("mkdir #{iso_name} 2> /dev/null")
-        system("mount -o loop #{iso} #{iso_name}")
-    end
-
-    def cpr(source, to)
-        system("rsync -aAXv #{source}/* #{to} | pv -ls `find #{source}|wc -l` >/dev/null")
-    end
-
-    def mount_system(filesystem)
-        puts "開始掛載..."
-        system("umount /mnt/  2>/dev/null")
-        system("mount -o bind /dev/ #{filesystem}/dev/ 2>/dev/null")
-        system("mount --bind /dev/pts #{filesystem}/dev/pts 2>/dev/null")
-        system("mount -t proc procfs #{filesystem}/proc/  2>/dev/null")
-        system("cp /etc/resolv.conf #{filesystem}/etc/")
-        system("chroot #{filesystem}/ /bin/bash")
-        system("umount #{filesystem}/dev/pts")
-        system("umount #{filesystem}/proc/")
-        system("umount #{filesystem}/dev/")
-    end
-
-    def zip_file(iso_name, filesystem, output_iso, output_dir)
-        puts "開始壓縮檔案.."
-        if not File.exist?(output_iso)
-            iso_extract(iso, iso_name)
-            system("rsync -a --exclude 'filesystem.squashfs' #{iso_name} #{output_dir}/  | pv -les $(df -i #{iso_name} | perl -ane 'print $F[2] if $F[5] =~ m:^/:') >/dev/null")
-        end
-        system("umount #{filesystem}/dev/pts 2>/dev/null")
-        system("umount #{filesystem}/proc/ 2>/dev/null")
-        system("umount #{filesystem}/dev/ 2>/dev/null")
-
-        system("chroot #{filesystem} dpkg-query -W --showformat='${Package} ${Version}\n' > #{output_iso}/casper/filesystem.manifest")
-        system("rm #{output_iso}/casper/filesystem.squashfs 2>/dev/null")
-        system("mksquashfs #{filesystem} #{output_iso}/casper/filesystem.squashfs -comp xz")
-        make_iso(iso_name, filesystem, output_iso, output_dir)
-    end
-
-    def make_iso(iso_name, filesystem, output_iso, output_dir)
-        puts "開始打包光碟.."
-        system("printf $( du -sx --block-size=1 #{filesystem} | cut -f1) > #{output_iso}/casper/filesystem.size")
-        Dir.chdir(output_dir)
-        system("rm MD5SUMS")
-        system("find -type f -print0 |  xargs -0 md5sum | grep -v isolinux/boot.cat |  tee MD5SUMS")
-        system("mkisofs -input-charset iso8859-1 -r -D -V '/#{iso_name}-icps' -cache-inodes -J -l -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -graft-point -o #{output_iso} ../#{iso_name}")
     end
 end
-Live.new
+
+def iso_list
+    choice   = list(ISO_EXT)
+    iso_name = File.basename(choice, ".#{ISO_EXT}")
+end
+
+def alias_file(filesystem)
+    system "cp alias/clean.sh #{filesystem}/root"
+    system "cp alias/.bashrc  #{filesystem}/root"
+    system "cp alias/build.rb #{filesystem}/root"
+    system "cp alias/ta.rb    #{filesystem}/root/alias"
+    system "cp alias/dk.rb    #{filesystem}/root/alias"
+end
+
+def extract(iso_name)
+    iso_dir    = "#{SOURCE_DIR}/#{iso_name}"
+    filesystem = "#{iso_name}_filesystem"
+    iso_mount(iso_name)
+    puts "=> 解壓縮 filesystem.squashfs 到 #{filesystem}"
+    if File.exist?(filesystem)
+        printf "\n是否移除舊  #{filesystem}(y/n) : "
+        `rm -rf #{filesystem}` if gets.downcase.chomp == "y"
+    end
+    system "mount -o loop -t squashfs #{iso_dir}/casper/filesystem.squashfs /mnt/"
+    cpr("/mnt", filesystem)
+    system "umount -l /mnt"
+    system "umount -l #{iso_dir}"
+    system "mkdir #{filesystem}/root/alias"
+    alias_file(filesystem)
+    system "mv #{filesystem}/etc/apt/sources.list #{filesystem}/etc/apt/sources.list.bk"
+    system "cp /etc/apt/sources.list #{filesystem}/etc/apt/"
+    system 'echo "setup=\"/isodevice/OUTTOOL/setup.rb\"" >>' + "#{filesystem}/etc/skel/.profile"
+    system 'echo "[ -e \$setup ] && sudo ruby $setup"    >>' + "#{filesystem}/etc/skel/.profile"
+    system 'echo "setup=\"/cdrom/setup.rb\""             >>' + "#{filesystem}/etc/skel/.profile"
+    system 'echo "[ -e \$setup ] && sudo ruby $setup"    >>' + "#{filesystem}/etc/skel/.profile"
+end
+
+def iso_mount(iso_name)
+    iso_dir  = "#{SOURCE_DIR}/#{iso_name}"
+    iso_file = "#{iso_name}.#{ISO_EXT}"
+    `umount -l #{iso_dir} && rm -rf #{iso_dir}`
+    #`mount|grep iso`.split("\n").map{|i| system "umount -l #{i.split(" ").first}"}
+    puts "=> 將光碟 #{iso_file} 掛載到 #{iso_dir} .."
+    system "mkdir #{iso_dir}"
+    system "mount -o loop #{iso_file} #{iso_dir}"
+end
+
+def cpr(source, to)
+    system "rsync -aAXv #{source}/* #{to} | pv -ls `find #{source}|wc -l` >/dev/null"
+end
+
+def mount_system(filesystem)
+    puts "=> 開始掛載..."
+    system "mount -o bind /dev/ #{filesystem}/dev/"
+    system "mount --bind /dev/pts #{filesystem}/dev/pts"
+    system "mount -t proc procfs #{filesystem}/proc/ "
+    system "cp /etc/resolv.conf #{filesystem}/etc/"
+    system "chroot #{filesystem}/ /bin/bash"
+    system "umount -l #{filesystem}/dev/pts"
+    system "umount -l #{filesystem}/proc/"
+    system "umount -l #{filesystem}/dev/"
+end
+
+def zip(filesystem)
+    squashfs = "#{OUTPUT_DIR}/filesystem.squashfs"
+    puts "=> 開始壓縮檔案.."
+    system "umount -l #{filesystem}/dev/pts"
+    system "umount -l #{filesystem}/proc/"
+    system "umount -l #{filesystem}/dev/"
+    if File.exist?(squashfs)
+        printf "\n是否移除舊 #{squashfs}(Y/n) : "
+        `rm #{squashfs}` if not gets.downcase.chomp == "n"
+    end
+    system "chroot #{filesystem} dpkg-query -W --showformat='${Package} ${Version}\n' > #{OUTPUT_DIR}/filesystem.manifest"
+    Dir.chdir(OUTPUT_DIR)
+    system "mksquashfs #{filesystem} #{squashfs} -comp xz"
+    system "printf $( du -sx --block-size=1 #{filesystem} | cut -f1) > #{OUTPUT_DIR}/filesystem.size"
+end
+
+def all(iso_name, filesystem)
+    make_iso_dir = "#{OUTPUT_DIR}/#{iso_name}"
+    zip(filesystem)
+    `cp -Rp #{SOURCE_DIR}/#{iso_name} #{OUTPUT_DIR}`
+    `rm #{make_iso_dir}/ubuntu -rf`
+    `mv #{OUTPUT_DIR}/filesystem.size #{make_iso_dir}/casper`
+    `mv #{OUTPUT_DIR}/filesystem.manifest #{make_iso_dir}/casper`
+    `mv #{OUTPUT_DIR}/filesystem.squashfs #{make_iso_dir}/casper`
+    make_iso(make_iso_dir)
+end
+
+def make_iso(squashfs)
+    iso_name = squashfs.gsub(OUTPUT_DIR, "").gsub("/", "")
+    system "mkisofs -input-charset iso8859-1 -r -D -V '/icps' -cache-inodes -J -l -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -graft-point -o #{OUTPUT_DIR}/#{iso_name}.#{ISO_EXT} #{squashfs}"
+end
+
+OUTPUT_DIR = "/tmp/ramfs"
+SOURCE_DIR = "/tmp/source"
+ISO_EXT    = "iso"
+FILESYSTEM = "_filesystem"
+
+
+`mkdir -p #{OUTPUT_DIR}`
+`mkdir -p #{SOURCE_DIR}`
+`chown -R icps:icps #{OUTPUT_DIR} 2> /dev/null`
+
+puts
+puts "1.解壓縮filesystem.squashfs"
+puts "2.chroot"
+puts "3.將filesystem壓縮"
+puts "4.將filesystem壓縮,製作光碟"
+puts "5.製作光碟"
+puts "6.mount光碟"
+
+puts "請選擇\n-------------"
+print ">> "
+case gets.chomp
+
+when "1"
+    iso_name = iso_list
+    extract(iso_name)
+when "2"
+    filesystem = list(FILESYSTEM)
+    alias_file(filesystem)
+    mount_system(filesystem)
+when "3"
+    filesystem = list(FILESYSTEM)
+    zip(filesystem)
+when "4"
+    iso_name = iso_list
+    iso_mount(iso_name)
+    filesystem = list(FILESYSTEM)
+    all(iso_name, filesystem)
+when "5"
+    squashfs = list('', 1)
+    make_iso(squashfs)
+when "6"
+    iso_name = iso_list
+    iso_mount(iso_name)
+    `cp -Rp #{SOURCE_DIR}/#{iso_name} #{OUTPUT_DIR}`
+end
+
+```
+#### build.rb
+``` ruby
+#移除amaz desktop
+def amazon
+    system "locate *amazon*desktop | xargs rm"
+end
+#關閉崩潰報告
+def report
+    system "echo 'enabled=0' > /etc/default/apport"
+end
+#語言
+def zh_language
+    system "apt-get install -y language-pack-gnome-zh-hant language-pack-gnome-zh-hans language-pack-zh-hant language-pack-zh-hans"
+    system "rm /var/lib/locales/supported.d/*"
+    system "echo 'zh_TW.UTF-8 UTF-8' > /var/lib/locales/supported.d/local"
+    system "echo 'en_US.UTF-8 UTF-8' >> /var/lib/locales/supported.d/local"
+    system "echo 'zh_TW BIG5' >> /var/lib/locales/supported.d/local"
+    system "locale-gen"
+    system "echo export LANG='zh_TW.UTF-8'>> /etc/environment"
+    system "echo export LANGUAGE='zh_TW:zh'>> /etc/environment"
+    system "echo export LC_ALL='zh_TW.UTF-8'>> /etc/environment"
+    system "dpkg-reconfigure locales"
+    system "update-locale"
+end
+#設定時間
+def time_zone
+    system "ln -sf /usr/share/zoneinfo/Asia/Taipei /etc/localtime"
+end
+
+def remove
+    #system "sed -i 's/tw.archive.ubuntu.com/free.nchc.org.tw/g' /etc/apt/sources.list"
+    system "apt purge -y aisleriot brasero empathy firefox landscape-client-ui-install rhythmbox thunderbird"
+end
+
+def install
+    system "sudo apt-get -y update"
+    apps = "aircrack-ng bkhive bleachbit build-essential build-essential bundler chntpw crunch deborphan ettercap-graphical fcitx fcitx-chewing fcitx-config-gtk git git gparted hydra hydra-gtk john libreadline-dev libssl-dev libyaml-dev medusa netcat-traditional netdiscover nmap ophcrack pv qrencode rdesktop reaver ruby ruby-dev samdump2 ssh wifite wireshark zbar-tools zlib1g-dev".split(" ")
+    error = Array.new
+    apps.each do |app|
+        e = system "apt install -y #{app} && echo $?"
+        if not e
+            error << app
+        end
+    end
+    install = (apps - error).join('", "')
+    uninstall = (error).join('", "')
+    puts
+    puts "#已安裝 \"#{install}\""
+    puts
+    puts "#未安裝 \"#{uninstall}\""
+    system "rm /etc/alternatives/nc && ln -s /bin/nc.traditional /etc/alternatives/nc"
+end
+
+def gems
+    apps = "colorize net-scp net-ssh shotgun sinatra"
+    system "gem install #{apps} --no-ri --no-rdoc"
+end
+
+#zh_language
+amazon
+report
+time_zone
+remove
+install
+gems
+```
+#### clean.sh
+``` sh
+apt-get update
+apt-get -y upgrade
+apt-get clean
+apt-get autoclean
+apt-get autoremove
+rm /var/cache/apt/archives/* 2>/dev/null
+rm /var/cache/apt/archives/partial/* 2>/dev/null
+rm -R /var/log/* 2>/dev/null
+rm -R /tmp/* 2>/dev/null
+rm /root/.local/share/Trash/files/* 2>/dev/null
+rm /root/.bash_history 2>/dev/null
+#update-grub2
+updatedb
 ```
