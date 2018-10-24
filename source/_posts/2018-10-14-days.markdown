@@ -6,6 +6,19 @@ comments: true
 categories: ruby
 ---
 ``` ruby
+# encoding: utf-8
+# .rvmrc rvm use 2.5.1
+require 'date'
+require '/data/ruby/debug/debug.rb'
+
+def cheack_date_true(year, month, day)
+    not leap_year(year) and month == 2 and day == 29
+end
+
+def leap_year_days(y)
+    leap_year(y) ? 366 : 365
+end
+
 def leap_year(y)
     y % 4 == 0 && y % 100 != 0 || y % 400 == 0
 end
@@ -20,18 +33,53 @@ end
 
 def days(date)
     year, month, day = date.split("/").map(&:to_i)
+    return false if cheack_date_true(year, month, day)
     y = year - 1
     years  = y * 365 + (y / 4 - y / 100 + y / 400)
     months = md(year)[1..(month - 1)].sum
     years + months + day
 end
 
-def between(sdate, edate)
-    (days(edate) - days(sdate)).abs
+def add_date(date, num)
+    return Date.parse(date) if num == 0
+    year, month, day = date.split("/").map(&:to_i)
+    return false if cheack_date_true(year, month, day)
+    left_year = md(year)[month..13].sum - day
+    if num > left_year
+        month = day = 0
+        num -= left_year
+        until num < leap_year_days(year + 1)
+            num -= leap_year_days(year + 1)
+            year += 1
+        end
+        year += 1
+    elsif num == left_year
+        return "#{year}/12/31"
+    end
+    num += day
+    md(year).each_with_index do |d, idx|
+        next if idx < month
+        if num <= d
+            return "#{year}/#{idx}/#{num}"
+        else
+            num -= d
+        end
+    end
 end
 
-sdate = '1900/1/1'
-edate = '2018/12/28'
+def between(sdate, edate)
+    s = days(sdate)
+    e = days(edate)
+    s and e ? (days(edate) - days(sdate)).abs : false
+end
 
-p between(sdate, edate)
+adate = '1950/1/1'
+bdate = '1981/2/29'
+cdate = '2000/2/29'
+p days(adate)
+p days(bdate)
+p between(adate, bdate)
+p between(adate, cdate)
+p add_date(cdate, 1000)
+
 ```
