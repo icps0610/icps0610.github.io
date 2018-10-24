@@ -11,8 +11,23 @@
   
   <meta name="description" content="https://ngrok.com/ 1
 2
-url = `curl -s http://localhost:4040/api/tunnels`.scan(/(http:\/\/\w*\.ngrok\.io)/).to_a.join
-puts url ">
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+def continue puts &quot;Press any key to break&quot; $stdin.gets
+end port = ARGV[0]
+if not &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -93,8 +108,36 @@ puts url ">
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">url</span> <span class="o">=</span> <span class="sb">`curl -s http://localhost:4040/api/tunnels`</span><span class="o">.</span><span class="n">scan</span><span class="p">(</span><span class="sr">/(http:\/\/\w*\.ngrok\.io)/</span><span class="p">)</span><span class="o">.</span><span class="n">to_a</span><span class="o">.</span><span class="n">join</span>
-</span><span class='line'><span class="nb">puts</span> <span class="n">url</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">continue</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;Press any key to break&quot;</span>
+</span><span class='line'>    <span class="vg">$stdin</span><span class="o">.</span><span class="n">gets</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">port</span> <span class="o">=</span> <span class="no">ARGV</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span>
+</span><span class='line'><span class="k">if</span> <span class="ow">not</span> <span class="n">port</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;ngrok.rb [port]&quot;</span>
+</span><span class='line'>    <span class="nb">exit</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="sb">`ngrok http </span><span class="si">#{</span><span class="n">port</span><span class="si">}</span><span class="sb"> &gt; /dev/null &amp;`</span>
+</span><span class='line'><span class="nb">sleep</span> <span class="mi">5</span>
+</span><span class='line'><span class="nb">puts</span> <span class="n">url</span> <span class="o">=</span> <span class="sb">`curl -s http://localhost:4040/api/tunnels`</span><span class="o">.</span><span class="n">scan</span><span class="p">(</span><span class="sr">/(https:\/\/\w*\.ngrok\.io)/</span><span class="p">)</span><span class="o">.</span><span class="n">to_a</span><span class="o">.</span><span class="n">join</span>
+</span><span class='line'><span class="n">continue</span>
+</span><span class='line'><span class="sb">`ps aux | grep ngrok | awk &#39;{print $2}&#39; | xargs kill -9 `</span>
 </span></code></pre></td></tr></table></div></figure>
 
 </div>
