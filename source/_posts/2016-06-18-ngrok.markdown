@@ -9,6 +9,21 @@ categories: app
 https://ngrok.com/
 
 ``` ruby
-url = `curl -s http://localhost:4040/api/tunnels`.scan(/(http:\/\/\w*\.ngrok\.io)/).to_a.join
-puts url
+def continue
+    puts "Press any key to break"
+    $stdin.gets
+end
+
+port = ARGV[0]
+if not port
+    puts "ngrok.rb [port]"
+    exit
+end
+
+`ngrok http #{port} > /dev/null &`
+sleep 5
+puts url = `curl -s http://localhost:4040/api/tunnels`.scan(/(https:\/\/\w*\.ngrok\.io)/).to_a.join
+continue
+`ps aux | grep ngrok | awk '{print $2}' | xargs kill -9 `
+
 ```

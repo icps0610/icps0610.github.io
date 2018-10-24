@@ -6,5 +6,32 @@ comments: true
 categories: ruby
 ---
 
-apt-get install imagemagick libmagickwand-dev
-gem install rmagick
+`apt-get install imagemagick libmagickwand-dev`
+`gem install rmagick`
+
+``` ruby
+def screen
+    width, height = `xrandr 2> /dev/null`.scan(/current (\d+) x (\d+)/).flatten
+end
+
+def resize_by_height(width, height, resize_height)
+    resize_height * width / height
+end
+
+def resize_by_width(width, height, resize_width)
+    resize_width * height / width
+end
+img = Magick::ImageList.new(file).crop!(0, 0, 800, 600)
+img = Magick::ImageList.new(file).crop!(Magick::CenterGravity, 800, 600)
+
+resize_height = 768
+
+img = Magick::Image.ping(file).first
+width = img.columns
+height = img.rows
+resize_width = resize_by_height(width, height, resize_height)
+img = Magick::ImageList.new(file)
+img.resize!(resize_width, resize_height)
+img.crop!( Magick::CenterGravity, 1024, 768)
+img.write('desktop1.png')
+```
