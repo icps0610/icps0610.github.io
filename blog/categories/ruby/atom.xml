@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-10-24T11:13:43+08:00</updated>
+  <updated>2018-10-24T11:17:18+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -19,7 +19,17 @@
     <updated>2018-10-24T11:12:57+08:00</updated>
     <id>http://icps0610.github.io/blog/2018/10/24/array-empty</id>
     <content type="html"><![CDATA[<blockquote><blockquote><p>ref <a href="https://stackoverflow.com/questions/5878697/how-do-i-remove-blank-elements-from-an-array">https://stackoverflow.com/questions/5878697/how-do-i-remove-blank-elements-from-an-array</a>
-<code>array.reject!(&amp;:blank?)</code></p></blockquote></blockquote>
+``` ruby
+array = [[], &ldquo;&rdquo;, &ldquo;2&rdquo;, nil]
+array.compact</p>
+
+<h1>[[], &ldquo;&rdquo;, &ldquo;2&rdquo;]</h1>
+
+<p>array.reject(&amp;:blank?)</p>
+
+<h1>[&ldquo;2&rdquo;]</h1>
+
+<p>```</p></blockquote></blockquote>
 ]]></content>
   </entry>
   

@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-10-24T11:13:43+08:00</updated>
+  <updated>2018-10-24T11:17:18+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -18,8 +18,20 @@
     <link href="http://icps0610.github.io/blog/2018/10/24/array-empty/"/>
     <updated>2018-10-24T11:12:57+08:00</updated>
     <id>http://icps0610.github.io/blog/2018/10/24/array-empty</id>
-    <content type="html"><![CDATA[<blockquote><blockquote><p>ref <a href="https://stackoverflow.com/questions/5878697/how-do-i-remove-blank-elements-from-an-array">https://stackoverflow.com/questions/5878697/how-do-i-remove-blank-elements-from-an-array</a>
-<code>array.reject!(&amp;:blank?)</code></p></blockquote></blockquote>
+    <content type="html"><![CDATA[<blockquote><blockquote><p>ref <a href="https://stackoverflow.com/questions/5878697/how-do-i-remove-blank-elements-from-an-array">https://stackoverflow.com/questions/5878697/how-do-i-remove-blank-elements-from-an-array</a></p></blockquote></blockquote>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">array</span> <span class="o">=</span> <span class="o">[[]</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span> <span class="kp">nil</span><span class="o">]</span>
+</span><span class='line'><span class="n">array</span><span class="o">.</span><span class="n">compact</span>
+</span><span class='line'><span class="c1">#[[], &quot;&quot;, &quot;2&quot;]</span>
+</span><span class='line'><span class="n">array</span><span class="o">.</span><span class="n">reject</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:blank?</span><span class="p">)</span>
+</span><span class='line'><span class="c1">#[&quot;2&quot;]</span>
+</span></code></pre></td></tr></table></div></figure>
+
 ]]></content>
   </entry>
   

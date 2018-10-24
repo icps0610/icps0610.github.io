@@ -9,9 +9,12 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="ref https://stackoverflow.com/questions/5878697/how-do-i-remove-blank-elements-from-an-array
-array.reject!(&amp;:blank?)
-">
+  <meta name="description" content="ref https://stackoverflow.com/questions/5878697/how-do-i-remove-blank-elements-from-an-array 1
+2
+3
+4
+5
+array = [[], &quot;&quot;, &quot;2&quot;, nil &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -88,8 +91,20 @@ array.reject!(&amp;:blank?)
   </header>
 
 
-<div class="entry-content"><blockquote><blockquote><p>ref <a href="https://stackoverflow.com/questions/5878697/how-do-i-remove-blank-elements-from-an-array">https://stackoverflow.com/questions/5878697/how-do-i-remove-blank-elements-from-an-array</a>
-<code>array.reject!(&amp;:blank?)</code></p></blockquote></blockquote>
+<div class="entry-content"><blockquote><blockquote><p>ref <a href="https://stackoverflow.com/questions/5878697/how-do-i-remove-blank-elements-from-an-array">https://stackoverflow.com/questions/5878697/how-do-i-remove-blank-elements-from-an-array</a></p></blockquote></blockquote>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">array</span> <span class="o">=</span> <span class="o">[[]</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span> <span class="kp">nil</span><span class="o">]</span>
+</span><span class='line'><span class="n">array</span><span class="o">.</span><span class="n">compact</span>
+</span><span class='line'><span class="c1">#[[], &quot;&quot;, &quot;2&quot;]</span>
+</span><span class='line'><span class="n">array</span><span class="o">.</span><span class="n">reject</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:blank?</span><span class="p">)</span>
+</span><span class='line'><span class="c1">#[&quot;2&quot;]</span>
+</span></code></pre></td></tr></table></div></figure>
+
 </div>
 
 
