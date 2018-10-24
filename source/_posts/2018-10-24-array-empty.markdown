@@ -6,4 +6,10 @@ comments: true
 categories: ruby
 ---
 >> ref https://stackoverflow.com/questions/5878697/how-do-i-remove-blank-elements-from-an-array
-`array.reject!(&:blank?)`
+``` ruby
+array = [[], "", "2", nil]
+array.compact
+#[[], "", "2"]
+array.reject(&:blank?)
+#["2"]
+```
