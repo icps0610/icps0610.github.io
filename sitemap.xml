@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://icps0610.github.io/blog/2018/10/24/array-empty/</loc>
+<lastmod>2018-10-24T11:12:57+08:00</lastmod>
+</url>
+<url>
 <loc>http://icps0610.github.io/blog/2018/10/21/ta/</loc>
 <lastmod>2018-10-21T16:37:50+08:00</lastmod>
 </url>
@@ -625,16 +629,16 @@
 <lastmod>2016-06-13T01:27:59+08:00</lastmod>
 </url>
 <url>
-<loc>http://icps0610.github.io/</loc>
-</url>
-<url>
-<loc>http://icps0610.github.io/blog/archives/</loc>
+<loc>http://icps0610.github.io/recent/</loc>
 </url>
 <url>
 <loc>http://icps0610.github.io/blog/categories/</loc>
 </url>
 <url>
-<loc>http://icps0610.github.io/recent/</loc>
+<loc>http://icps0610.github.io/blog/archives/</loc>
+</url>
+<url>
+<loc>http://icps0610.github.io/</loc>
 </url>
 <url>
 <loc>http://icps0610.github.io/blog/categories/ror/</loc>
