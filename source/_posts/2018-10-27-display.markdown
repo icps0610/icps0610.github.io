@@ -1,0 +1,37 @@
+---
+layout: post
+title: "display"
+date: 2018-10-27 17:59:06 +0800
+comments: true
+categories: ruby
+---
+``` ruby
+class Display
+    def self.display_content(contents)
+        max = content_transpose_max_size(contents)
+        contents.map do |content|
+            content.each_index.map do|i|
+                space = max[i] - string_size(content[i]) + 1
+                show = content[i]
+                content[i].class == String ? "#{show}#{" "*space}" : "#{" "*space}#{show} "
+            end.join
+        end
+    end
+
+    private
+
+    def self.string_size(string)
+        string.each_byte.map do |c|
+            c < 127 ? 1 : 2
+        end.compact.inject(:+)
+    end
+
+    def self.content_transpose_max_size(contents)
+        contents.transpose.map do |content|
+            content.map do |c|
+                c ? string_size(c) : 0
+            end.max
+        end
+    end
+end
+```
