@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-10-28T00:21:31+08:00</updated>
+  <updated>2018-10-28T03:54:16+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -84,8 +84,8 @@
     <link href="http://icps0610.github.io/blog/2018/10/27/test_disk/"/>
     <updated>2018-10-27T06:34:36+08:00</updated>
     <id>http://icps0610.github.io/blog/2018/10/27/test_disk</id>
-    <content type="html"><![CDATA[<p><code>apt install smartmontools</code>
-<code>smartctl --attributes /dev/sdb</code>
+    <content type="html"><![CDATA[<p><code>apt install smartmontools</code><br/>
+<code>smartctl --attributes /dev/sdb</code><br/>
 <code>badblocks -vs /dev/sdb</code></p>
 ]]></content>
   </entry>
