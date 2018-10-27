@@ -10,8 +10,9 @@
 
   
   <meta name="description" content="apt install smartmontools
-smartctl --attributes /dev/sdb
-badblocks -vs /dev/sdb
+smartctl -H /dev/sda
+smartctl -A /dev/sda
+badblocks -vs /dev/sda
 ">
   
 
@@ -89,9 +90,10 @@ badblocks -vs /dev/sdb
   </header>
 
 
-<div class="entry-content"><p><code>apt install smartmontools</code><br/>
-<code>smartctl --attributes /dev/sdb</code><br/>
-<code>badblocks -vs /dev/sdb</code></p>
+<div class="entry-content"><p><code>apt install smartmontools</code>
+<code>smartctl -H /dev/sda</code>
+<code>smartctl -A /dev/sda</code>
+<code>badblocks -vs /dev/sda</code></p>
 </div>
 
 
@@ -128,7 +130,7 @@ badblocks -vs /dev/sdb
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2018/10/27/disk/" title="Previous Post: test_disk">&laquo; test_disk</a>
+        <a class="basic-alignment left" href="/blog/2018/10/24/array-empty/" title="Previous Post: array_empty">&laquo; array_empty</a>
       
       
         <a class="basic-alignment right" href="/blog/2018/10/27/display/" title="Next Post: display">display &raquo;</a>
@@ -159,15 +161,15 @@ badblocks -vs /dev/sdb
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2018/10/28/network-interfaces/">Network_interfaces</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2018/10/27/display/">Display</a>
       </li>
     
       <li class="post">
         <a href="/blog/2018/10/27/test_disk/">Test_disk</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2018/10/27/disk/">Test_disk</a>
       </li>
     
       <li class="post">
