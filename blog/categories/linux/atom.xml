@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-10-25T19:05:23+08:00</updated>
+  <updated>2018-10-27T20:42:45+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,29 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Test_disk]]></title>
+    <link href="http://icps0610.github.io/blog/2018/10/27/test_disk/"/>
+    <updated>2018-10-27T06:34:36+08:00</updated>
+    <id>http://icps0610.github.io/blog/2018/10/27/test_disk</id>
+    <content type="html"><![CDATA[<p><code>apt install smartmontools</code>
+<code>smartctl --attributes /dev/sdb</code>
+<code>badblocks -vs /dev/sdb</code></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Test_disk]]></title>
+    <link href="http://icps0610.github.io/blog/2018/10/27/disk/"/>
+    <updated>2018-10-27T06:34:36+08:00</updated>
+    <id>http://icps0610.github.io/blog/2018/10/27/disk</id>
+    <content type="html"><![CDATA[<p><code>apt install smartmontools</code>
+<code>smartctl -H /dev/sda</code>
+<code>smartctl -A /dev/sda</code>
+<code>badblocks -vs /dev/sda</code></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Save_last_directory]]></title>
@@ -71,34 +94,6 @@ eval "$(ssh-agent)";
 <code>export LC_ALL=en_US.UTF-8</code><br/>
 <code>locale-gen en_US.UTF-8</code><br/>
 <code>dpkg-reconfigure locales</code></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Tshark]]></title>
-    <link href="http://icps0610.github.io/blog/2018/04/02/tshark/"/>
-    <updated>2018-04-02T01:27:20+08:00</updated>
-    <id>http://icps0610.github.io/blog/2018/04/02/tshark</id>
-    <content type="html"><![CDATA[<h2>dofile has been disabled due to running Wireshark as superuser. See <a href="https://wiki.wireshark.org/CaptureSetup/CapturePrivileges">https://wiki.wireshark.org/CaptureSetup/CapturePrivileges</a> for help in running Wireshark as an unprivileged user.</h2>
-
-<p>nano /usr/share/wireshark/init.lua
-disable_lua = true</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[wifi_AP_dwa-131]]></title>
-    <link href="http://icps0610.github.io/blog/2018/03/21/wifi-ap/"/>
-    <updated>2018-03-21T13:46:45+08:00</updated>
-    <id>http://icps0610.github.io/blog/2018/03/21/wifi-ap</id>
-    <content type="html"><![CDATA[<p><code>https://superuser.com/questions/1100472/how-to-configure-hotspot-with-wifi-dongle-dwa-131-in-kali-linux</code></p>
-
-<pre><code class="">wget http://www.adafruit.com/downloads/adafruit_hostapd.zip
-unzip adafruit_hostapd.zip
-sudo mv /usr/sbin/hostapd /usr/sbin/hostapd.ORIG
-sudo mv hostapd /usr/sbin
-sudo chmod 755 /usr/sbin/hostapd
-</code></pre>
 ]]></content>
   </entry>
   

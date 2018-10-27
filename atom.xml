@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-10-25T19:05:23+08:00</updated>
+  <updated>2018-10-27T20:42:45+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,95 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Display]]></title>
+    <link href="http://icps0610.github.io/blog/2018/10/27/display/"/>
+    <updated>2018-10-27T17:59:06+08:00</updated>
+    <id>http://icps0610.github.io/blog/2018/10/27/display</id>
+    <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Display</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">display_content</span><span class="p">(</span><span class="n">contents</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">max</span> <span class="o">=</span> <span class="n">content_transpose_max_size</span><span class="p">(</span><span class="n">contents</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">contents</span><span class="o">.</span><span class="n">map</span> <span class="k">do</span> <span class="o">|</span><span class="n">content</span><span class="o">|</span>
+</span><span class='line'>            <span class="n">content</span><span class="o">.</span><span class="n">each_index</span><span class="o">.</span><span class="n">map</span> <span class="k">do</span><span class="o">|</span><span class="n">i</span><span class="o">|</span>
+</span><span class='line'>                <span class="n">space</span> <span class="o">=</span> <span class="n">max</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">-</span> <span class="n">string_size</span><span class="p">(</span><span class="n">content</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+</span><span class='line'>                <span class="n">show</span> <span class="o">=</span> <span class="n">content</span><span class="o">[</span><span class="n">i</span><span class="o">]</span>
+</span><span class='line'>                <span class="n">content</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="n">class</span> <span class="o">==</span> <span class="nb">String</span> <span class="p">?</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">show</span><span class="si">}#{</span><span class="s2">&quot; &quot;</span><span class="o">*</span><span class="n">space</span><span class="si">}</span><span class="s2">&quot;</span> <span class="p">:</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="s2">&quot; &quot;</span><span class="o">*</span><span class="n">space</span><span class="si">}#{</span><span class="n">show</span><span class="si">}</span><span class="s2"> &quot;</span>
+</span><span class='line'>            <span class="k">end</span><span class="o">.</span><span class="n">join</span>
+</span><span class='line'>        <span class="k">end</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kp">private</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">string_size</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">string</span><span class="o">.</span><span class="n">each_byte</span><span class="o">.</span><span class="n">map</span> <span class="k">do</span> <span class="o">|</span><span class="n">c</span><span class="o">|</span>
+</span><span class='line'>            <span class="n">c</span> <span class="o">&lt;</span> <span class="mi">127</span> <span class="o">?</span> <span class="mi">1</span> <span class="p">:</span> <span class="mi">2</span>
+</span><span class='line'>        <span class="k">end</span><span class="o">.</span><span class="n">compact</span><span class="o">.</span><span class="n">inject</span><span class="p">(</span><span class="ss">:+</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">content_transpose_max_size</span><span class="p">(</span><span class="n">contents</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">contents</span><span class="o">.</span><span class="n">transpose</span><span class="o">.</span><span class="n">map</span> <span class="k">do</span> <span class="o">|</span><span class="n">content</span><span class="o">|</span>
+</span><span class='line'>            <span class="n">content</span><span class="o">.</span><span class="n">map</span> <span class="k">do</span> <span class="o">|</span><span class="n">c</span><span class="o">|</span>
+</span><span class='line'>                <span class="n">c</span> <span class="p">?</span> <span class="n">string_size</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="p">:</span> <span class="mi">0</span>
+</span><span class='line'>            <span class="k">end</span><span class="o">.</span><span class="n">max</span>
+</span><span class='line'>        <span class="k">end</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Test_disk]]></title>
+    <link href="http://icps0610.github.io/blog/2018/10/27/test_disk/"/>
+    <updated>2018-10-27T06:34:36+08:00</updated>
+    <id>http://icps0610.github.io/blog/2018/10/27/test_disk</id>
+    <content type="html"><![CDATA[<p><code>apt install smartmontools</code>
+<code>smartctl --attributes /dev/sdb</code>
+<code>badblocks -vs /dev/sdb</code></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Test_disk]]></title>
+    <link href="http://icps0610.github.io/blog/2018/10/27/disk/"/>
+    <updated>2018-10-27T06:34:36+08:00</updated>
+    <id>http://icps0610.github.io/blog/2018/10/27/disk</id>
+    <content type="html"><![CDATA[<p><code>apt install smartmontools</code>
+<code>smartctl -H /dev/sda</code>
+<code>smartctl -A /dev/sda</code>
+<code>badblocks -vs /dev/sda</code></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Array_empty]]></title>
@@ -96,38 +185,38 @@
 </span><span class='line'>    <span class="k">case</span> <span class="n">ext</span>
 </span><span class='line'>    <span class="k">when</span> <span class="sr">/tar.bz2/</span>
 </span><span class='line'>        <span class="s2">&quot;tar jcvf </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="s2"> [DIR]</span><span class="se">\n</span><span class="s2">tar jxvf </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+</span><span class='line'>    <span class="k">when</span> <span class="sr">/tar.tgz/</span>
+</span><span class='line'>        <span class="s2">&quot;tar zcvf </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="s2"> [DIR]</span><span class="se">\n</span><span class="s2">tar zxvf </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
 </span><span class='line'>    <span class="k">when</span> <span class="sr">/tar.bz/</span>
 </span><span class='line'>        <span class="s2">&quot;tar jxvf </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="s2">&quot;</span>
 </span><span class='line'>    <span class="k">when</span> <span class="sr">/tar.gz/</span>
-</span><span class='line'>        <span class="s2">&quot;tar zcvf </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="s2"> [DIR]</span><span class="se">\n</span><span class="s2">tar zxvf </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
-</span><span class='line'>    <span class="k">when</span> <span class="sr">/tar.tgz/</span>
 </span><span class='line'>        <span class="s2">&quot;tar zcvf </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="s2"> [DIR]</span><span class="se">\n</span><span class="s2">tar zxvf </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
 </span><span class='line'>    <span class="k">when</span> <span class="sr">/tar.xz/</span>
 </span><span class='line'>        <span class="s2">&quot;tar Jcvf </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="s2"> [DIR]</span><span class="se">\n</span><span class="s2">tar Jxvf </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
 </span><span class='line'>    <span class="k">when</span> <span class="sr">/tar.Z/</span>
 </span><span class='line'>        <span class="s2">&quot;tar Zcvf </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="s2"> [DIR]</span><span class="se">\n</span><span class="s2">tar Zxvf </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
-</span><span class='line'>    <span class="k">when</span> <span class="sr">/tar/</span>
-</span><span class='line'>        <span class="s2">&quot;tar cvf </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="s2"> [DIR]</span><span class="se">\n</span><span class="s2">tar xvf </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
-</span><span class='line'>    <span class="k">when</span> <span class="s2">&quot;gz&quot;</span>
-</span><span class='line'>        <span class="s2">&quot;gzip </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="se">\n</span><span class="s2">gzip -d </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
-</span><span class='line'>    <span class="k">when</span> <span class="sr">/bz/</span>
-</span><span class='line'>        <span class="s2">&quot;bunzip2 </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span class='line'>    <span class="k">when</span> <span class="sr">/bz2/</span>
-</span><span class='line'>        <span class="s2">&quot;bzip2 -z </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span class='line'>    <span class="k">when</span> <span class="sr">/xz/</span>
-</span><span class='line'>        <span class="s2">&quot;xz -z </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="se">\n</span><span class="s2">xz -d </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
-</span><span class='line'>    <span class="k">when</span> <span class="sr">/Z/</span>
-</span><span class='line'>        <span class="s2">&quot;uncompress </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="s2">&quot;</span>
 </span><span class='line'>    <span class="k">when</span> <span class="sr">/tgz/</span>
 </span><span class='line'>        <span class="s2">&quot;tar zcvf </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="s2"> [DIR]</span><span class="se">\n</span><span class="s2">tar zxvf </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
-</span><span class='line'>    <span class="k">when</span> <span class="sr">/7z/</span>
-</span><span class='line'>        <span class="s2">&quot;7z a </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="s2"> [DIR]</span><span class="se">\n</span><span class="s2">7z a </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="s2">.7z [DIR] -p[PASSWORD]</span><span class="se">\n</span><span class="s2">7z x </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+</span><span class='line'>    <span class="k">when</span> <span class="sr">/tar/</span>
+</span><span class='line'>        <span class="s2">&quot;tar cvf </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="s2"> [DIR]</span><span class="se">\n</span><span class="s2">tar xvf </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
 </span><span class='line'>    <span class="k">when</span> <span class="sr">/zip/</span>
 </span><span class='line'>        <span class="s2">&quot;zip </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="s2"> [DIR]</span><span class="se">\n</span><span class="s2">unzip </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+</span><span class='line'>    <span class="k">when</span> <span class="sr">/bz2/</span>
+</span><span class='line'>        <span class="s2">&quot;bzip2 -z </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="se">\n</span><span class="s2">bzip2 -d </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="se">\n</span><span class="s2">bunzip2 </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="s2">&quot;</span>
 </span><span class='line'>    <span class="k">when</span> <span class="sr">/rar/</span>
 </span><span class='line'>        <span class="s2">&quot;rar a </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="s2"> [DIR]</span><span class="se">\n</span><span class="s2">rar e </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="se">\n</span><span class="s2">rar x </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="s2"> [DIR]</span><span class="se">\n</span><span class="s2">&quot;</span>
 </span><span class='line'>    <span class="k">when</span> <span class="sr">/lha/</span>
 </span><span class='line'>        <span class="s2">&quot;lha -a </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="s2"> [DIR]</span><span class="se">\n</span><span class="s2">lha -e </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+</span><span class='line'>    <span class="k">when</span> <span class="sr">/bz/</span>
+</span><span class='line'>        <span class="s2">&quot;bzip2 -d </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="se">\n</span><span class="s2">bunzip2 </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>    <span class="k">when</span> <span class="sr">/xz/</span>
+</span><span class='line'>        <span class="s2">&quot;xz -z </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="se">\n</span><span class="s2">xz -d </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+</span><span class='line'>    <span class="k">when</span> <span class="sr">/7z/</span>
+</span><span class='line'>        <span class="s2">&quot;7z a </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="s2"> [DIR]</span><span class="se">\n</span><span class="s2">7z a </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="s2">.7z [DIR] -p[PASSWORD]</span><span class="se">\n</span><span class="s2">7z x </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+</span><span class='line'>    <span class="k">when</span> <span class="sr">/gz/</span>
+</span><span class='line'>        <span class="s2">&quot;gzip </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="se">\n</span><span class="s2">gunzip </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="se">\n</span><span class="s2">gzip -d </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+</span><span class='line'>    <span class="k">when</span> <span class="sr">/Z/</span>
+</span><span class='line'>        <span class="s2">&quot;uncompress </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="s2">&quot;</span>
 </span><span class='line'>    <span class="k">else</span>
 </span><span class='line'>        <span class="n">ext</span> <span class="o">=</span> <span class="s2">&quot;nil&quot;</span> <span class="k">if</span> <span class="n">ext</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span>
 </span><span class='line'>        <span class="s2">&quot;error</span><span class="se">\n</span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="se">\n</span><span class="si">#{</span><span class="n">ext</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
@@ -675,170 +764,6 @@ p jarow.getDistance(  &ldquo;jones&rdquo;,      &ldquo;johnson&rdquo; )</p>
 }
 
 </script>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Ssh_server]]></title>
-    <link href="http://icps0610.github.io/blog/2018/04/25/ssh-server/"/>
-    <updated>2018-04-25T12:38:21+08:00</updated>
-    <id>http://icps0610.github.io/blog/2018/04/25/ssh-server</id>
-    <content type="html"><![CDATA[<p><code>https://github.com/krishnasrinivas/wetty</code><br/>
-<code>https://github.com/paradoxxxzero/butterfly</code></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Raspberry_pi_3_plus]]></title>
-    <link href="http://icps0610.github.io/blog/2018/04/22/raspberry-pi-3-plus/"/>
-    <updated>2018-04-22T01:21:33+08:00</updated>
-    <id>http://icps0610.github.io/blog/2018/04/22/raspberry-pi-3-plus</id>
-    <content type="html"><![CDATA[<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'># /etc/apt/sources.list
-</span><span class='line'># Uncomment line below then 'apt-get update' to enable 'apt-get source'
-</span><span class='line'>deb ftp://ftp.yzu.edu.tw/Linux/raspbian/raspbian/ wheezy main contrib non-free rpi
-</span><span class='line'>deb http://raspbian.raspberrypi.org/raspbian/ stretch main contrib non-free rpi
-</span><span class='line'>deb-src http://raspbian.raspberrypi.org/raspbian/ stretch main contrib non-free rp</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>LC_ALL_cannot_change_locale</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>`export LANGUAGE=en_US.UTF-8`
-</span><span class='line'>`export LANG=en_US.UTF-8`
-</span><span class='line'>`export LC_ALL=en_US.UTF-8`
-</span><span class='line'>`locale-gen en_US.UTF-8`
-</span><span class='line'>`dpkg-reconfigure locales`</span></code></pre></td></tr></table></div></figure>
-
-
-<h2>#</h2>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>`apt-get install ruby-dev libsqlite3-dev minicom fuse ntfs-3g`
-</span><span class='line'># fix mount usb =&gt; read only
-</span><span class='line'># ==&gt; fuse ntfs-3g
-</span><span class='line'>
-</span><span class='line'>`gem install sinatra`
-</span><span class='line'>`gem install bundle`
-</span><span class='line'>`bundle install`
-</span><span class='line'>eval "$(ssh-agent)";</span></code></pre></td></tr></table></div></figure>
-
-
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Read_csv_encoding]]></title>
-    <link href="http://icps0610.github.io/blog/2018/04/21/vba-excel-csv-and-use-ruby-read/"/>
-    <updated>2018-04-21T19:43:25+08:00</updated>
-    <id>http://icps0610.github.io/blog/2018/04/21/vba-excel-csv-and-use-ruby-read</id>
-    <content type="html"><![CDATA[<h3>excel vba => Unicode => Icov => utf-8</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>#excel vba
-</span><span class='line'>Dim i As Integer
-</span><span class='line'>Dim WS_Count As Integer
-</span><span class='line'>
-</span><span class='line'>file = "z:\workbook.xlsx"
-</span><span class='line'>csv = "z:\workbook.csv"
-</span><span class='line'>  
-</span><span class='line'>WS_Count = ActiveWorkbook.Worksheets.Count
-</span><span class='line'>For i = 1 To WS_Count
-</span><span class='line'>Dim ws As Worksheet
-</span><span class='line'>
-</span><span class='line'>Set ws = ThisWorkbook.Worksheets(i)
-</span><span class='line'>    ws.Copy
-</span><span class='line'>    ActiveWorkbook.SaveAs Filename:=csv, _
-</span><span class='line'>        FileFormat:=xlUnicodeText
-</span><span class='line'>Next i
-</span><span class='line'>Application.DisplayAlerts = False
-</span><span class='line'>ActiveWorkbook.Close
-</span><span class='line'>Shell ("ruby X:\excel\send.rb")
-</span><span class='line'>
-</span><span class='line'>Do
-</span><span class='line'>    If Dir(file) &lt;&gt; "" Then
-</span><span class='line'>        Exit Do
-</span><span class='line'>    End If
-</span><span class='line'>    DoEvents 'Prevents Excel from being unresponsive
-</span><span class='line'>    Application.Wait Now + TimeValue("0:00:01") 'wait for one second
-</span><span class='line'>Loop
-</span><span class='line'>Workbooks.Open file</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># encoding: utf-8</span>
-</span><span class='line'><span class="nb">require</span> <span class="s2">&quot;net/ssh&quot;</span>
-</span><span class='line'><span class="no">Net</span><span class="o">::</span><span class="no">SSH</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">user</span><span class="p">,</span> <span class="ss">:password</span> <span class="o">=&gt;</span> <span class="n">passwd</span> <span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">ssh</span><span class="o">|</span>
-</span><span class='line'>    <span class="nb">puts</span> <span class="n">ssh</span><span class="o">.</span><span class="n">exec!</span> <span class="s2">&quot;ruby excel.rb&quot;</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;csv&#39;</span>
-</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;iconv&#39;</span>
-</span><span class='line'><span class="n">file_path</span> <span class="o">=</span> <span class="s2">&quot;/tmp/workbook.csv&quot;</span>
-</span><span class='line'><span class="n">f</span> <span class="o">=</span> <span class="no">IO</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
-</span><span class='line'><span class="no">Iconv</span><span class="o">.</span><span class="n">iconv</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">,</span> <span class="s1">&#39;unicode&#39;</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span><span class="o">.</span><span class="n">join</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\r\n</span><span class="s2">&quot;</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
 
 ]]></content>
   </entry>
