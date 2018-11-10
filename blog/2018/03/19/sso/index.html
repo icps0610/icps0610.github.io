@@ -9,42 +9,9 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="ref https://github.com/rishabhp/sso-rails-client 1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36 &hellip;">
+  <meta name="description" content="ref https://github.com/rishabhp/sso-rails-client
+ref https://github.com/rishabhp/sso-rails-provider
+">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -121,156 +88,8 @@
   </header>
 
 
-<div class="entry-content"><blockquote><blockquote><p>ref <a href="https://github.com/rishabhp/sso-rails-client">https://github.com/rishabhp/sso-rails-client</a></p></blockquote></blockquote>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-<span class='line-number'>41</span>
-<span class='line-number'>42</span>
-<span class='line-number'>43</span>
-<span class='line-number'>44</span>
-<span class='line-number'>45</span>
-<span class='line-number'>46</span>
-<span class='line-number'>47</span>
-<span class='line-number'>48</span>
-<span class='line-number'>49</span>
-<span class='line-number'>50</span>
-<span class='line-number'>51</span>
-<span class='line-number'>52</span>
-<span class='line-number'>53</span>
-<span class='line-number'>54</span>
-<span class='line-number'>55</span>
-<span class='line-number'>56</span>
-<span class='line-number'>57</span>
-<span class='line-number'>58</span>
-<span class='line-number'>59</span>
-<span class='line-number'>60</span>
-<span class='line-number'>61</span>
-<span class='line-number'>62</span>
-<span class='line-number'>63</span>
-<span class='line-number'>64</span>
-<span class='line-number'>65</span>
-<span class='line-number'>66</span>
-<span class='line-number'>67</span>
-<span class='line-number'>68</span>
-<span class='line-number'>69</span>
-<span class='line-number'>70</span>
-<span class='line-number'>71</span>
-<span class='line-number'>72</span>
-<span class='line-number'>73</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>#Gemfile
-</span><span class='line'>gem 'omniauth-oauth2'
-</span><span class='line'>
-</span><span class='line'>#config\environment.rb
-</span><span class='line'>require 'icps'
-</span><span class='line'>
-</span><span class='line'>#lib\icps.rb
-</span><span class='line'>require 'omniauth-oauth2'
-</span><span class='line'>module OmniAuth
-</span><span class='line'>  module Strategies
-</span><span class='line'>    class Icps &lt; OmniAuth::Strategies::OAuth2
-</span><span class='line'>
-</span><span class='line'>      CUSTOM_PROVIDER_URL = 'http://192.168.0.201:3000'
-</span><span class='line'>
-</span><span class='line'>      option :client_options, {
-</span><span class='line'>        :site =&gt;  CUSTOM_PROVIDER_URL,
-</span><span class='line'>        :authorize_url =&gt; "#{CUSTOM_PROVIDER_URL}/auth/icps/authorize",
-</span><span class='line'>        :access_token_url =&gt; "#{CUSTOM_PROVIDER_URL}/auth/icps/access_token"
-</span><span class='line'>      }
-</span><span class='line'>
-</span><span class='line'>      uid do
-</span><span class='line'>        raw_info['id']
-</span><span class='line'>      end
-</span><span class='line'>
-</span><span class='line'>      info do
-</span><span class='line'>        {
-</span><span class='line'>          :email =&gt; raw_info['info']['email']
-</span><span class='line'>        }
-</span><span class='line'>      end
-</span><span class='line'>
-</span><span class='line'>      extra do
-</span><span class='line'>        {
-</span><span class='line'>          :first_name =&gt; raw_info['extra']['first_name'],
-</span><span class='line'>          :last_name  =&gt; raw_info['extra']['last_name']
-</span><span class='line'>        }
-</span><span class='line'>      end
-</span><span class='line'>
-</span><span class='line'>      def raw_info
-</span><span class='line'>        @raw_info ||= access_token.get("/auth/icps/user.json?oauth_token=#{access_token.token}").parsed
-</span><span class='line'>      end
-</span><span class='line'>    end
-</span><span class='line'>  end
-</span><span class='line'>end
-</span><span class='line'>
-</span><span class='line'>#config\router.rb
-</span><span class='line'>get '/users/auth/:provider/callback' =&gt; 'user_sessions#create'
-</span><span class='line'>get '/users/auth/failure' =&gt; 'user_sessions#failure'
-</span><span class='line'>match '/logout', :to =&gt; 'user_sessions#destroy', via: :all
-</span><span class='line'>
-</span><span class='line'>#user_sessions_controller.rb
-</span><span class='line'>class UserSessionsController &lt; ApplicationController
-</span><span class='line'>
-</span><span class='line'>    def create
-</span><span class='line'>        @user = User.from_omniauth(request.env["omniauth.auth"])
-</span><span class='line'>        sign_in_and_redirect @user
-</span><span class='line'>    end
-</span><span class='line'>
-</span><span class='line'>end
-</span><span class='line'>
-</span><span class='line'>
-</span><span class='line'>#config\initializers\devise.rb
-</span><span class='line'>config.omniauth :icps, Figaro.env.icps_app_id, Figaro.env.icps_secret, scope: 'email', info_fields: 'email, name'
-</span><span class='line'>
-</span><span class='line'>#config\application.yml
-</span><span class='line'>icps_app_id: "id"
-</span><span class='line'>icps_secret: "secret"
-</span><span class='line'>
-</span><span class='line'>#view.erb
-</span><span class='line'>&lt;%= link_to "login", "/users/auth/icps" %&gt;
-</span><span class='line'>
-</span><span class='line'>
-</span><span class='line'>
-</span><span class='line'>
-</span></code></pre></td></tr></table></div></figure>
-
+<div class="entry-content"><blockquote><blockquote><p>ref <a href="https://github.com/rishabhp/sso-rails-client">https://github.com/rishabhp/sso-rails-client</a>
+ref <a href="https://github.com/rishabhp/sso-rails-provider">https://github.com/rishabhp/sso-rails-provider</a></p></blockquote></blockquote>
 </div>
 
 
@@ -328,7 +147,7 @@
 <li class='category'><a href='/blog/categories/excel/'>excel (1)</a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (28)</a></li>
 <li class='category'><a href='/blog/categories/python/'>python (10)</a></li>
-<li class='category'><a href='/blog/categories/ror/'>ror (24)</a></li>
+<li class='category'><a href='/blog/categories/ror/'>ror (26)</a></li>
 <li class='category'><a href='/blog/categories/ruby/'>ruby (55)</a></li>
 
     </ul>
@@ -336,6 +155,14 @@
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2018/11/10/heroku/">Heroku</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2018/11/01/devise-use-name/">Devise_use_name</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2018/10/28/network-interfaces/">Network_interfaces</a>
@@ -347,14 +174,6 @@
     
       <li class="post">
         <a href="/blog/2018/10/27/test_disk/">Test_disk</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2018/10/24/array-empty/">Array_empty</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2018/10/21/ta/">Ta</a>
       </li>
     
   </ul>

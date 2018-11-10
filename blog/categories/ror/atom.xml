@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ror | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ror/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-11-10T18:25:01+08:00</updated>
+  <updated>2018-11-10T18:25:54+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -85,94 +85,7 @@ end
     <updated>2018-03-19T22:28:58+08:00</updated>
     <id>http://icps0610.github.io/blog/2018/03/19/sso</id>
     <content type="html"><![CDATA[<blockquote><blockquote><p>ref <a href="https://github.com/rishabhp/sso-rails-client">https://github.com/rishabhp/sso-rails-client</a>
-ref <a href="https://github.com/rishabhp/sso-rails-provider">https://github.com/rishabhp/sso-rails-provider</a>
-```</p>
-
-<h1>Gemfile</h1>
-
-<p>gem &lsquo;omniauth-oauth2&rsquo;</p></blockquote></blockquote>
-
-<h1>config\environment.rb</h1>
-
-<p>require &lsquo;icps&rsquo;</p>
-
-<h1>lib\icps.rb</h1>
-
-<p>require &lsquo;omniauth-oauth2&rsquo;
-module OmniAuth
-  module Strategies
-    class Icps &lt; OmniAuth::Strategies::OAuth2</p>
-
-<pre><code>  CUSTOM_PROVIDER_URL = 'http://192.168.0.201:3000'
-
-  option :client_options, {
-    :site =&gt;  CUSTOM_PROVIDER_URL,
-    :authorize_url =&gt; "#{CUSTOM_PROVIDER_URL}/auth/icps/authorize",
-    :access_token_url =&gt; "#{CUSTOM_PROVIDER_URL}/auth/icps/access_token"
-  }
-
-  uid do
-    raw_info['id']
-  end
-
-  info do
-    {
-      :email =&gt; raw_info['info']['email']
-    }
-  end
-
-  extra do
-    {
-      :first_name =&gt; raw_info['extra']['first_name'],
-      :last_name  =&gt; raw_info['extra']['last_name']
-    }
-  end
-
-  def raw_info
-    @raw_info ||= access_token.get("/auth/icps/user.json?oauth_token=#{access_token.token}").parsed
-  end
-end
-</code></pre>
-
-<p>  end
-end</p>
-
-<h1>config\router.rb</h1>
-
-<p>get &lsquo;/users/auth/:provider/callback&rsquo; => &lsquo;user_sessions#create&rsquo;
-get &lsquo;/users/auth/failure&rsquo; => &lsquo;user_sessions#failure&rsquo;
-match &lsquo;/logout&rsquo;, :to => &lsquo;user_sessions#destroy&rsquo;, via: :all</p>
-
-<h1>app/controllers/user_sessions_controller.rb</h1>
-
-<p>class UserSessionsController &lt; ApplicationController
-    def create
-        @user = User.from_omniauth(request.env[&ldquo;omniauth.auth&rdquo;])
-        sign_in_and_redirect @user
-    end
-end</p>
-
-<h1>config\initializers\devise.rb</h1>
-
-<h1>config.omniauth :icps, Figaro.env.icps_app_id, Figaro.env.icps_secret, #scope: &lsquo;email&rsquo;, info_fields: &lsquo;email, name&rsquo;</h1>
-
-<h1>config\application.yml</h1>
-
-<p>icps_app_id: &ldquo;id&rdquo;
-icps_secret: &ldquo;secret&rdquo;</p>
-
-<h1>view.erb</h1>
-
-<h1>&lt;%= link_to &ldquo;login&rdquo;, &ldquo;/users/auth/icps&rdquo; %></h1>
-
-<pre><code></code></pre>
-
-<h1>sso-rails-provider</h1>
-
-<p>ip = &ldquo;192.168.0.201&rdquo;
-system &ldquo;ifconfig eth0:0 #{ip}&rdquo;
-system &ldquo;rails s -b #{ip} -p 3000&rdquo;
-```</p>
+ref <a href="https://github.com/rishabhp/sso-rails-provider">https://github.com/rishabhp/sso-rails-provider</a></p></blockquote></blockquote>
 ]]></content>
   </entry>
   

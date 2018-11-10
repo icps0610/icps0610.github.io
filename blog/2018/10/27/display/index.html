@@ -37,7 +37,17 @@
 26
 27
 28
-class Display def self.display_content(contents) max = &hellip;">
+29
+30
+31
+32
+33
+34
+35
+36
+#!/usr/bin/env ruby
+# encoding: utf-8
+class &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -142,14 +152,29 @@ class Display def self.display_content(contents) max = &hellip;">
 <span class='line-number'>26</span>
 <span class='line-number'>27</span>
 <span class='line-number'>28</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Display</span>
-</span><span class='line'>    <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">display_content</span><span class="p">(</span><span class="n">contents</span><span class="p">)</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#!/usr/bin/env ruby</span>
+</span><span class='line'><span class="c1"># encoding: utf-8</span>
+</span><span class='line'><span class="k">class</span> <span class="nc">Display</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">display_content</span><span class="p">(</span><span class="n">contents</span><span class="p">,</span> <span class="n">idxs</span><span class="o">=</span><span class="kp">nil</span><span class="p">)</span>
+</span><span class='line'>        <span class="k">return</span> <span class="s2">&quot;error&quot;</span> <span class="k">if</span> <span class="n">contents</span><span class="o">.</span><span class="n">first</span><span class="o">.</span><span class="n">size</span> <span class="o">!=</span> <span class="n">idxs</span><span class="o">.</span><span class="n">size</span>
 </span><span class='line'>        <span class="n">max</span> <span class="o">=</span> <span class="n">content_transpose_max_size</span><span class="p">(</span><span class="n">contents</span><span class="p">)</span>
 </span><span class='line'>        <span class="n">contents</span><span class="o">.</span><span class="n">map</span> <span class="k">do</span> <span class="o">|</span><span class="n">content</span><span class="o">|</span>
 </span><span class='line'>            <span class="n">content</span><span class="o">.</span><span class="n">each_index</span><span class="o">.</span><span class="n">map</span> <span class="k">do</span><span class="o">|</span><span class="n">i</span><span class="o">|</span>
 </span><span class='line'>                <span class="n">space</span> <span class="o">=</span> <span class="n">max</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">-</span> <span class="n">string_size</span><span class="p">(</span><span class="n">content</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
-</span><span class='line'>                <span class="n">show</span> <span class="o">=</span> <span class="n">content</span><span class="o">[</span><span class="n">i</span><span class="o">]</span>
-</span><span class='line'>                <span class="n">content</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="n">class</span> <span class="o">==</span> <span class="nb">String</span> <span class="p">?</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">show</span><span class="si">}#{</span><span class="s2">&quot; &quot;</span><span class="o">*</span><span class="n">space</span><span class="si">}</span><span class="s2">&quot;</span> <span class="p">:</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="s2">&quot; &quot;</span><span class="o">*</span><span class="n">space</span><span class="si">}#{</span><span class="n">show</span><span class="si">}</span><span class="s2"> &quot;</span>
+</span><span class='line'>                <span class="n">show</span>  <span class="o">=</span> <span class="n">content</span><span class="o">[</span><span class="n">i</span><span class="o">]</span>
+</span><span class='line'>                <span class="k">if</span> <span class="n">idxs</span> <span class="ow">and</span> <span class="n">idxs</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">==</span> <span class="mi">1</span>
+</span><span class='line'>                    <span class="s2">&quot;</span><span class="si">#{</span><span class="s2">&quot; &quot;</span><span class="o">*</span><span class="n">space</span><span class="si">}#{</span><span class="n">show</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>                <span class="k">else</span>
+</span><span class='line'>                   <span class="s2">&quot;</span><span class="si">#{</span><span class="n">show</span><span class="si">}#{</span><span class="s2">&quot; &quot;</span><span class="o">*</span><span class="n">space</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>                <span class="k">end</span>
 </span><span class='line'>            <span class="k">end</span><span class="o">.</span><span class="n">join</span>
 </span><span class='line'>        <span class="k">end</span>
 </span><span class='line'>    <span class="k">end</span>
@@ -170,6 +195,7 @@ class Display def self.display_content(contents) max = &hellip;">
 </span><span class='line'>        <span class="k">end</span>
 </span><span class='line'>    <span class="k">end</span>
 </span><span class='line'><span class="k">end</span>
+</span><span class='line'><span class="c1">#require &quot;/data/ruby/display/display.rb&quot;</span>
 </span></code></pre></td></tr></table></div></figure>
 
 </div>
@@ -229,7 +255,7 @@ class Display def self.display_content(contents) max = &hellip;">
 <li class='category'><a href='/blog/categories/excel/'>excel (1)</a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (28)</a></li>
 <li class='category'><a href='/blog/categories/python/'>python (10)</a></li>
-<li class='category'><a href='/blog/categories/ror/'>ror (24)</a></li>
+<li class='category'><a href='/blog/categories/ror/'>ror (26)</a></li>
 <li class='category'><a href='/blog/categories/ruby/'>ruby (55)</a></li>
 
     </ul>
@@ -237,6 +263,14 @@ class Display def self.display_content(contents) max = &hellip;">
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2018/11/10/heroku/">Heroku</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2018/11/01/devise-use-name/">Devise_use_name</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2018/10/28/network-interfaces/">Network_interfaces</a>
@@ -248,14 +282,6 @@ class Display def self.display_content(contents) max = &hellip;">
     
       <li class="post">
         <a href="/blog/2018/10/27/test_disk/">Test_disk</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2018/10/24/array-empty/">Array_empty</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2018/10/21/ta/">Ta</a>
       </li>
     
   </ul>

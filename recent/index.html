@@ -9,8 +9,13 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content=" ls /sys/class/net
-">
+  <meta name="description" content="heroku login
+heroku create [name] heroku git:remote -a [name]
+git init git commit -am '```date +%Y-%m-%d:%H:%M:%S```'
+git push heroku master 1
+2
+3
+4 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -74,6 +79,108 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2018/11/10/heroku/">Heroku</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2018-11-10T15:29:15+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>3:29 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><code>heroku login</code>
+<code>heroku create [name]</code></p>
+
+<p><code>heroku git:remote -a [name]</code>
+<code>git init</code></p>
+
+<p><code>git commit -am '```date +%Y-%m-%d:%H:%M:%S```'</code>
+<code>git push heroku master</code></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#Gemfile</span>
+</span><span class='line'><span class="n">group</span> <span class="ss">:production</span> <span class="k">do</span>
+</span><span class='line'>    <span class="n">gem</span> <span class="s1">&#39;rails_12factor&#39;</span>
+</span><span class='line'>    <span class="n">gem</span> <span class="s1">&#39;pg&#39;</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2018/11/01/devise-use-name/">Devise_use_name</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2018-11-01T16:30:18+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2018</span></span> <span class='time'>4:30 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>#config\initalizers\devise.rb
+</span><span class='line'>config.authentication_keys = [:name]
+</span><span class='line'>
+</span><span class='line'>#app\model\user.rb
+</span><span class='line'>devise :database_authenticatable, :registerable,
+</span><span class='line'>    :recoverable, :rememberable, :trackable, :validatable,
+</span><span class='line'>    :omniauthable, authentication_keys: [:name]
+</span><span class='line'>
+</span><span class='line'>def email_required?
+</span><span class='line'>    false
+</span><span class='line'>end</span></code></pre></td></tr></table></div></figure>
+
+
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2018/10/28/network-interfaces/">Network_interfaces</a></h1>
     
     
@@ -90,7 +197,8 @@
   </header>
 
 
-  <div class="entry-content"><p> <code>ls /sys/class/net</code></p>
+  <div class="entry-content"><p> <code>interface = /sys/class/net</code>
+ <code>mac       =  /sys/class/net/*/address</code></p>
 </div>
   
   
@@ -147,14 +255,29 @@
 <span class='line-number'>26</span>
 <span class='line-number'>27</span>
 <span class='line-number'>28</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Display</span>
-</span><span class='line'>    <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">display_content</span><span class="p">(</span><span class="n">contents</span><span class="p">)</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#!/usr/bin/env ruby</span>
+</span><span class='line'><span class="c1"># encoding: utf-8</span>
+</span><span class='line'><span class="k">class</span> <span class="nc">Display</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">display_content</span><span class="p">(</span><span class="n">contents</span><span class="p">,</span> <span class="n">idxs</span><span class="o">=</span><span class="kp">nil</span><span class="p">)</span>
+</span><span class='line'>        <span class="k">return</span> <span class="s2">&quot;error&quot;</span> <span class="k">if</span> <span class="n">contents</span><span class="o">.</span><span class="n">first</span><span class="o">.</span><span class="n">size</span> <span class="o">!=</span> <span class="n">idxs</span><span class="o">.</span><span class="n">size</span>
 </span><span class='line'>        <span class="n">max</span> <span class="o">=</span> <span class="n">content_transpose_max_size</span><span class="p">(</span><span class="n">contents</span><span class="p">)</span>
 </span><span class='line'>        <span class="n">contents</span><span class="o">.</span><span class="n">map</span> <span class="k">do</span> <span class="o">|</span><span class="n">content</span><span class="o">|</span>
 </span><span class='line'>            <span class="n">content</span><span class="o">.</span><span class="n">each_index</span><span class="o">.</span><span class="n">map</span> <span class="k">do</span><span class="o">|</span><span class="n">i</span><span class="o">|</span>
 </span><span class='line'>                <span class="n">space</span> <span class="o">=</span> <span class="n">max</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">-</span> <span class="n">string_size</span><span class="p">(</span><span class="n">content</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
-</span><span class='line'>                <span class="n">show</span> <span class="o">=</span> <span class="n">content</span><span class="o">[</span><span class="n">i</span><span class="o">]</span>
-</span><span class='line'>                <span class="n">content</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="n">class</span> <span class="o">==</span> <span class="nb">String</span> <span class="p">?</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">show</span><span class="si">}#{</span><span class="s2">&quot; &quot;</span><span class="o">*</span><span class="n">space</span><span class="si">}</span><span class="s2">&quot;</span> <span class="p">:</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="s2">&quot; &quot;</span><span class="o">*</span><span class="n">space</span><span class="si">}#{</span><span class="n">show</span><span class="si">}</span><span class="s2"> &quot;</span>
+</span><span class='line'>                <span class="n">show</span>  <span class="o">=</span> <span class="n">content</span><span class="o">[</span><span class="n">i</span><span class="o">]</span>
+</span><span class='line'>                <span class="k">if</span> <span class="n">idxs</span> <span class="ow">and</span> <span class="n">idxs</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">==</span> <span class="mi">1</span>
+</span><span class='line'>                    <span class="s2">&quot;</span><span class="si">#{</span><span class="s2">&quot; &quot;</span><span class="o">*</span><span class="n">space</span><span class="si">}#{</span><span class="n">show</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>                <span class="k">else</span>
+</span><span class='line'>                   <span class="s2">&quot;</span><span class="si">#{</span><span class="n">show</span><span class="si">}#{</span><span class="s2">&quot; &quot;</span><span class="o">*</span><span class="n">space</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>                <span class="k">end</span>
 </span><span class='line'>            <span class="k">end</span><span class="o">.</span><span class="n">join</span>
 </span><span class='line'>        <span class="k">end</span>
 </span><span class='line'>    <span class="k">end</span>
@@ -175,6 +298,7 @@
 </span><span class='line'>        <span class="k">end</span>
 </span><span class='line'>    <span class="k">end</span>
 </span><span class='line'><span class="k">end</span>
+</span><span class='line'><span class="c1">#require &quot;/data/ruby/display/display.rb&quot;</span>
 </span></code></pre></td></tr></table></div></figure>
 
 </div>
@@ -216,178 +340,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2018/10/24/array-empty/">Array_empty</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2018-10-24T11:12:57+08:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>24</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>11:12 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><blockquote><blockquote><p>ref <a href="https://stackoverflow.com/questions/5878697/how-do-i-remove-blank-elements-from-an-array">https://stackoverflow.com/questions/5878697/how-do-i-remove-blank-elements-from-an-array</a></p></blockquote></blockquote>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">array</span> <span class="o">=</span> <span class="o">[[]</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span> <span class="kp">nil</span><span class="o">]</span>
-</span><span class='line'><span class="n">array</span><span class="o">.</span><span class="n">compact</span>
-</span><span class='line'><span class="c1">#[[], &quot;&quot;, &quot;2&quot;]</span>
-</span><span class='line'><span class="n">array</span><span class="o">.</span><span class="n">reject</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:blank?</span><span class="p">)</span>
-</span><span class='line'><span class="c1">#[&quot;2&quot;]</span>
-</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2018/10/21/ta/">Ta</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2018-10-21T16:37:50+08:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2018</span></span> <span class='time'>4:37 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-<span class='line-number'>41</span>
-<span class='line-number'>42</span>
-<span class='line-number'>43</span>
-<span class='line-number'>44</span>
-<span class='line-number'>45</span>
-<span class='line-number'>46</span>
-<span class='line-number'>47</span>
-<span class='line-number'>48</span>
-<span class='line-number'>49</span>
-<span class='line-number'>50</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#!/usr/bin/env ruby</span>
-</span><span class='line'><span class="c1"># encoding: utf-8</span>
-</span><span class='line'><span class="k">def</span> <span class="nf">tar</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">ext</span><span class="p">)</span>
-</span><span class='line'>    <span class="k">case</span> <span class="n">ext</span>
-</span><span class='line'>    <span class="k">when</span> <span class="sr">/tar.bz2/</span>
-</span><span class='line'>        <span class="s2">&quot;tar jcvf </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="s2"> [DIR]</span><span class="se">\n</span><span class="s2">tar jxvf </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
-</span><span class='line'>    <span class="k">when</span> <span class="sr">/tar.tgz/</span>
-</span><span class='line'>        <span class="s2">&quot;tar zcvf </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="s2"> [DIR]</span><span class="se">\n</span><span class="s2">tar zxvf </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
-</span><span class='line'>    <span class="k">when</span> <span class="sr">/tar.bz/</span>
-</span><span class='line'>        <span class="s2">&quot;tar jxvf </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span class='line'>    <span class="k">when</span> <span class="sr">/tar.gz/</span>
-</span><span class='line'>        <span class="s2">&quot;tar zcvf </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="s2"> [DIR]</span><span class="se">\n</span><span class="s2">tar zxvf </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
-</span><span class='line'>    <span class="k">when</span> <span class="sr">/tar.xz/</span>
-</span><span class='line'>        <span class="s2">&quot;tar Jcvf </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="s2"> [DIR]</span><span class="se">\n</span><span class="s2">tar Jxvf </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
-</span><span class='line'>    <span class="k">when</span> <span class="sr">/tar.Z/</span>
-</span><span class='line'>        <span class="s2">&quot;tar Zcvf </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="s2"> [DIR]</span><span class="se">\n</span><span class="s2">tar Zxvf </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
-</span><span class='line'>    <span class="k">when</span> <span class="sr">/tgz/</span>
-</span><span class='line'>        <span class="s2">&quot;tar zcvf </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="s2"> [DIR]</span><span class="se">\n</span><span class="s2">tar zxvf </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
-</span><span class='line'>    <span class="k">when</span> <span class="sr">/tar/</span>
-</span><span class='line'>        <span class="s2">&quot;tar cvf </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="s2"> [DIR]</span><span class="se">\n</span><span class="s2">tar xvf </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
-</span><span class='line'>    <span class="k">when</span> <span class="sr">/zip/</span>
-</span><span class='line'>        <span class="s2">&quot;zip </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="s2"> [DIR]</span><span class="se">\n</span><span class="s2">unzip </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
-</span><span class='line'>    <span class="k">when</span> <span class="sr">/bz2/</span>
-</span><span class='line'>        <span class="s2">&quot;bzip2 -z </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="se">\n</span><span class="s2">bzip2 -d </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="se">\n</span><span class="s2">bunzip2 </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span class='line'>    <span class="k">when</span> <span class="sr">/rar/</span>
-</span><span class='line'>        <span class="s2">&quot;rar a </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="s2"> [DIR]</span><span class="se">\n</span><span class="s2">rar e </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="se">\n</span><span class="s2">rar x </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="s2"> [DIR]</span><span class="se">\n</span><span class="s2">&quot;</span>
-</span><span class='line'>    <span class="k">when</span> <span class="sr">/lha/</span>
-</span><span class='line'>        <span class="s2">&quot;lha -a </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="s2"> [DIR]</span><span class="se">\n</span><span class="s2">lha -e </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
-</span><span class='line'>    <span class="k">when</span> <span class="sr">/bz/</span>
-</span><span class='line'>        <span class="s2">&quot;bzip2 -d </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="se">\n</span><span class="s2">bunzip2 </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span class='line'>    <span class="k">when</span> <span class="sr">/xz/</span>
-</span><span class='line'>        <span class="s2">&quot;xz -z </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="se">\n</span><span class="s2">xz -d </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
-</span><span class='line'>    <span class="k">when</span> <span class="sr">/7z/</span>
-</span><span class='line'>        <span class="s2">&quot;7z a </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="s2"> [DIR]</span><span class="se">\n</span><span class="s2">7z a </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="s2">.7z [DIR] -p[PASSWORD]</span><span class="se">\n</span><span class="s2">7z x </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
-</span><span class='line'>    <span class="k">when</span> <span class="sr">/gz/</span>
-</span><span class='line'>        <span class="s2">&quot;gzip </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="se">\n</span><span class="s2">gunzip </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="se">\n</span><span class="s2">gzip -d </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
-</span><span class='line'>    <span class="k">when</span> <span class="sr">/Z/</span>
-</span><span class='line'>        <span class="s2">&quot;uncompress </span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span class='line'>    <span class="k">else</span>
-</span><span class='line'>        <span class="n">ext</span> <span class="o">=</span> <span class="s2">&quot;nil&quot;</span> <span class="k">if</span> <span class="n">ext</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span>
-</span><span class='line'>        <span class="s2">&quot;error</span><span class="se">\n</span><span class="si">#{</span><span class="n">file</span><span class="si">}</span><span class="se">\n</span><span class="si">#{</span><span class="n">ext</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
-</span><span class='line'>    <span class="k">end</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'><span class="n">file</span> <span class="o">=</span> <span class="no">ARGV</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span>
-</span><span class='line'><span class="k">if</span> <span class="ow">not</span> <span class="n">file</span>
-</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;ta.rb filename&quot;</span>
-</span><span class='line'>    <span class="nb">exit</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'><span class="n">ext</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">file</span><span class="p">)</span><span class="o">.</span><span class="n">scan</span><span class="p">(</span><span class="sr">/\.(.*)/</span><span class="p">)</span><span class="o">.</span><span class="n">join</span>
-</span><span class='line'><span class="nb">puts</span> <span class="n">tar</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">ext</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
     <a href="/blog/archives">Blog Archives</a>
@@ -404,7 +356,7 @@
 <li class='category'><a href='/blog/categories/excel/'>excel (1)</a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (28)</a></li>
 <li class='category'><a href='/blog/categories/python/'>python (10)</a></li>
-<li class='category'><a href='/blog/categories/ror/'>ror (24)</a></li>
+<li class='category'><a href='/blog/categories/ror/'>ror (26)</a></li>
 <li class='category'><a href='/blog/categories/ruby/'>ruby (55)</a></li>
 
     </ul>
@@ -412,6 +364,14 @@
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2018/11/10/heroku/">Heroku</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2018/11/01/devise-use-name/">Devise_use_name</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2018/10/28/network-interfaces/">Network_interfaces</a>
@@ -423,14 +383,6 @@
     
       <li class="post">
         <a href="/blog/2018/10/27/test_disk/">Test_disk</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2018/10/24/array-empty/">Array_empty</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2018/10/21/ta/">Ta</a>
       </li>
     
   </ul>

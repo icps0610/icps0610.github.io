@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-10-28T16:35:45+08:00</updated>
+  <updated>2018-11-10T18:25:54+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -14,11 +14,74 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Heroku]]></title>
+    <link href="http://icps0610.github.io/blog/2018/11/10/heroku/"/>
+    <updated>2018-11-10T15:29:15+08:00</updated>
+    <id>http://icps0610.github.io/blog/2018/11/10/heroku</id>
+    <content type="html"><![CDATA[<p><code>heroku login</code>
+<code>heroku create [name]</code></p>
+
+<p><code>heroku git:remote -a [name]</code>
+<code>git init</code></p>
+
+<p><code>git commit -am '```date +%Y-%m-%d:%H:%M:%S```'</code>
+<code>git push heroku master</code></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#Gemfile</span>
+</span><span class='line'><span class="n">group</span> <span class="ss">:production</span> <span class="k">do</span>
+</span><span class='line'>    <span class="n">gem</span> <span class="s1">&#39;rails_12factor&#39;</span>
+</span><span class='line'>    <span class="n">gem</span> <span class="s1">&#39;pg&#39;</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Devise_use_name]]></title>
+    <link href="http://icps0610.github.io/blog/2018/11/01/devise-use-name/"/>
+    <updated>2018-11-01T16:30:18+08:00</updated>
+    <id>http://icps0610.github.io/blog/2018/11/01/devise-use-name</id>
+    <content type="html"><![CDATA[<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>#config\initalizers\devise.rb
+</span><span class='line'>config.authentication_keys = [:name]
+</span><span class='line'>
+</span><span class='line'>#app\model\user.rb
+</span><span class='line'>devise :database_authenticatable, :registerable,
+</span><span class='line'>    :recoverable, :rememberable, :trackable, :validatable,
+</span><span class='line'>    :omniauthable, authentication_keys: [:name]
+</span><span class='line'>
+</span><span class='line'>def email_required?
+</span><span class='line'>    false
+</span><span class='line'>end</span></code></pre></td></tr></table></div></figure>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Network_interfaces]]></title>
     <link href="http://icps0610.github.io/blog/2018/10/28/network-interfaces/"/>
     <updated>2018-10-28T03:59:55+08:00</updated>
     <id>http://icps0610.github.io/blog/2018/10/28/network-interfaces</id>
-    <content type="html"><![CDATA[<p> <code>ls /sys/class/net</code></p>
+    <content type="html"><![CDATA[<p> <code>interface = /sys/class/net</code>
+ <code>mac       =  /sys/class/net/*/address</code></p>
 ]]></content>
   </entry>
   
@@ -55,14 +118,29 @@
 <span class='line-number'>26</span>
 <span class='line-number'>27</span>
 <span class='line-number'>28</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Display</span>
-</span><span class='line'>    <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">display_content</span><span class="p">(</span><span class="n">contents</span><span class="p">)</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#!/usr/bin/env ruby</span>
+</span><span class='line'><span class="c1"># encoding: utf-8</span>
+</span><span class='line'><span class="k">class</span> <span class="nc">Display</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">display_content</span><span class="p">(</span><span class="n">contents</span><span class="p">,</span> <span class="n">idxs</span><span class="o">=</span><span class="kp">nil</span><span class="p">)</span>
+</span><span class='line'>        <span class="k">return</span> <span class="s2">&quot;error&quot;</span> <span class="k">if</span> <span class="n">contents</span><span class="o">.</span><span class="n">first</span><span class="o">.</span><span class="n">size</span> <span class="o">!=</span> <span class="n">idxs</span><span class="o">.</span><span class="n">size</span>
 </span><span class='line'>        <span class="n">max</span> <span class="o">=</span> <span class="n">content_transpose_max_size</span><span class="p">(</span><span class="n">contents</span><span class="p">)</span>
 </span><span class='line'>        <span class="n">contents</span><span class="o">.</span><span class="n">map</span> <span class="k">do</span> <span class="o">|</span><span class="n">content</span><span class="o">|</span>
 </span><span class='line'>            <span class="n">content</span><span class="o">.</span><span class="n">each_index</span><span class="o">.</span><span class="n">map</span> <span class="k">do</span><span class="o">|</span><span class="n">i</span><span class="o">|</span>
 </span><span class='line'>                <span class="n">space</span> <span class="o">=</span> <span class="n">max</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">-</span> <span class="n">string_size</span><span class="p">(</span><span class="n">content</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
-</span><span class='line'>                <span class="n">show</span> <span class="o">=</span> <span class="n">content</span><span class="o">[</span><span class="n">i</span><span class="o">]</span>
-</span><span class='line'>                <span class="n">content</span><span class="o">[</span><span class="n">i</span><span class="o">].</span><span class="n">class</span> <span class="o">==</span> <span class="nb">String</span> <span class="p">?</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">show</span><span class="si">}#{</span><span class="s2">&quot; &quot;</span><span class="o">*</span><span class="n">space</span><span class="si">}</span><span class="s2">&quot;</span> <span class="p">:</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="s2">&quot; &quot;</span><span class="o">*</span><span class="n">space</span><span class="si">}#{</span><span class="n">show</span><span class="si">}</span><span class="s2"> &quot;</span>
+</span><span class='line'>                <span class="n">show</span>  <span class="o">=</span> <span class="n">content</span><span class="o">[</span><span class="n">i</span><span class="o">]</span>
+</span><span class='line'>                <span class="k">if</span> <span class="n">idxs</span> <span class="ow">and</span> <span class="n">idxs</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">==</span> <span class="mi">1</span>
+</span><span class='line'>                    <span class="s2">&quot;</span><span class="si">#{</span><span class="s2">&quot; &quot;</span><span class="o">*</span><span class="n">space</span><span class="si">}#{</span><span class="n">show</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>                <span class="k">else</span>
+</span><span class='line'>                   <span class="s2">&quot;</span><span class="si">#{</span><span class="n">show</span><span class="si">}#{</span><span class="s2">&quot; &quot;</span><span class="o">*</span><span class="n">space</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>                <span class="k">end</span>
 </span><span class='line'>            <span class="k">end</span><span class="o">.</span><span class="n">join</span>
 </span><span class='line'>        <span class="k">end</span>
 </span><span class='line'>    <span class="k">end</span>
@@ -83,6 +161,7 @@
 </span><span class='line'>        <span class="k">end</span>
 </span><span class='line'>    <span class="k">end</span>
 </span><span class='line'><span class="k">end</span>
+</span><span class='line'><span class="c1">#require &quot;/data/ruby/display/display.rb&quot;</span>
 </span></code></pre></td></tr></table></div></figure>
 
 ]]></content>
@@ -402,6 +481,9 @@
 <span class='line-number'>73</span>
 <span class='line-number'>74</span>
 <span class='line-number'>75</span>
+<span class='line-number'>76</span>
+<span class='line-number'>77</span>
+<span class='line-number'>78</span>
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># encoding: utf-8</span>
 </span><span class='line'><span class="c1"># .rvmrc rvm use 2.5.1</span>
 </span><span class='line'><span class="nb">require</span> <span class="s1">&#39;date&#39;</span>
@@ -468,6 +550,9 @@
 </span><span class='line'>    <span class="n">e</span> <span class="o">=</span> <span class="n">days</span><span class="p">(</span><span class="n">edate</span><span class="p">)</span>
 </span><span class='line'>    <span class="n">s</span> <span class="ow">and</span> <span class="n">e</span> <span class="p">?</span> <span class="p">(</span><span class="n">days</span><span class="p">(</span><span class="n">edate</span><span class="p">)</span> <span class="o">-</span> <span class="n">days</span><span class="p">(</span><span class="n">sdate</span><span class="p">))</span><span class="o">.</span><span class="n">abs</span> <span class="p">:</span> <span class="kp">false</span>
 </span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">#i = Time.now.to_i</span>
+</span><span class='line'><span class="c1">#t = Time.at(i)</span>
 </span><span class='line'>
 </span><span class='line'><span class="n">adate</span> <span class="o">=</span> <span class="s1">&#39;1950/1/1&#39;</span>
 </span><span class='line'><span class="n">bdate</span> <span class="o">=</span> <span class="s1">&#39;1981/2/29&#39;</span>
@@ -725,43 +810,6 @@ p jarow.getDistance(  &ldquo;jones&rdquo;,      &ldquo;johnson&rdquo; )</p>
 </span><span class='line'><span class="n">add_number</span><span class="p">(</span><span class="n">canvas</span><span class="p">,</span> <span class="s2">&quot;b.png&quot;</span><span class="p">,</span> <span class="mi">1662</span><span class="p">,</span> <span class="mi">1353</span><span class="p">,</span> <span class="nb">rand</span><span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="n">.</span><span class="mi">720</span><span class="p">))</span>
 </span><span class='line'><span class="n">canvas</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;/tmp/moto.png&quot;</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Powercfg]]></title>
-    <link href="http://icps0610.github.io/blog/2018/05/30/powercfg/"/>
-    <updated>2018-05-30T21:36:45+08:00</updated>
-    <id>http://icps0610.github.io/blog/2018/05/30/powercfg</id>
-    <content type="html"><![CDATA[<p><code>powercfg –h off</code><br/>
-<code>powercfg /energy</code><br/>
-<code>   C:\ProgramData\Microsoft\Windows\Power Efficiency Diagnostics\energy-report.html</code><br/>
-<code>powercfg /requests</code><br/>
-<code>powercfg -lastwake</code><br/>
-<code>powercfg /waketimers</code></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Speak]]></title>
-    <link href="http://icps0610.github.io/blog/2018/04/28/speak/"/>
-    <updated>2018-04-28T01:13:04+08:00</updated>
-    <id>http://icps0610.github.io/blog/2018/04/28/speak</id>
-    <content type="html"><![CDATA[<p><button type="button" onclick="click()">Click</button></p>
-
-<script>
-    function click(){
-    var msg = new SpeechSynthesisUtterance('你是豬豬人');
-     msg.lang='zh';
-     msg.voice = speechSynthesis.getVoices().filter(function(voice) { 
-    return voice.name == 'Whisper'; }
-    )[0]; 
-
-    speechSynthesis.speak(msg);
-}
-
-</script>
 
 ]]></content>
   </entry>
