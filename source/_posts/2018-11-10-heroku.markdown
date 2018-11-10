@@ -13,10 +13,10 @@ categories: ror
 `git init`
 
 
-`git commit -am '```date +%Y-%m-%d:%H:%M:%S```'`
+`git commit -am 'date +%Y-%m-%d:%H:%M:%S'`
 `git push heroku master`
 
-```
+``` ruby
 #Gemfile
 group :production do
     gem 'rails_12factor'
