@@ -3,7 +3,7 @@ layout: post
 title: "devise_use_name"
 date: 2018-11-01 16:30:18 +0800
 comments: true
-categories: uncategorized
+categories: ror
 ---
 ```
 #config\initalizers\devise.rb
