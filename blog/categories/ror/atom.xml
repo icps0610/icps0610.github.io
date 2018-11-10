@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ror | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ror/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-11-10T18:23:51+08:00</updated>
+  <updated>2018-11-10T18:25:01+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -154,7 +154,7 @@ end</p>
 
 <h1>config\initializers\devise.rb</h1>
 
-<p>config.omniauth :icps, Figaro.env.icps_app_id, Figaro.env.icps_secret, scope: &lsquo;email&rsquo;, info_fields: &lsquo;email, name&rsquo;</p>
+<h1>config.omniauth :icps, Figaro.env.icps_app_id, Figaro.env.icps_secret, #scope: &lsquo;email&rsquo;, info_fields: &lsquo;email, name&rsquo;</h1>
 
 <h1>config\application.yml</h1>
 
@@ -163,14 +163,16 @@ icps_secret: &ldquo;secret&rdquo;</p>
 
 <h1>view.erb</h1>
 
-<p>&lt;%= link_to &ldquo;login&rdquo;, &ldquo;/users/auth/icps&rdquo; %>
-```</p>
+<h1>&lt;%= link_to &ldquo;login&rdquo;, &ldquo;/users/auth/icps&rdquo; %></h1>
 
-<pre><code>#sso-rails-provider
-ip = "192.168.0.201"
-system "ifconfig eth0:0 #{ip}"
-system "rails s -b #{ip} -p 3000"
-</code></pre>
+<pre><code></code></pre>
+
+<h1>sso-rails-provider</h1>
+
+<p>ip = &ldquo;192.168.0.201&rdquo;
+system &ldquo;ifconfig eth0:0 #{ip}&rdquo;
+system &ldquo;rails s -b #{ip} -p 3000&rdquo;
+```</p>
 ]]></content>
   </entry>
   
