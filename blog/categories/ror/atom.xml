@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ror | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ror/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-11-10T18:19:04+08:00</updated>
+  <updated>2018-11-10T18:20:56+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -24,10 +24,10 @@
 <p><code>heroku git:remote -a [name]</code>
 <code>git init</code></p>
 
-<p><code>git commit -am '```date +%Y-%m-%d:%H:%M:%S```'</code>
+<p><code>git commit -am 'date +%Y-%m-%d:%H:%M:%S'</code>
 <code>git push heroku master</code></p>
 
-<pre><code>#Gemfile
+<pre><code class="ruby">#Gemfile
 group :production do
     gem 'rails_12factor'
     gem 'pg'
