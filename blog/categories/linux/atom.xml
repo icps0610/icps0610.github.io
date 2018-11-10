@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-10-28T16:35:45+08:00</updated>
+  <updated>2018-11-10T18:19:04+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -18,7 +18,8 @@
     <link href="http://icps0610.github.io/blog/2018/10/28/network-interfaces/"/>
     <updated>2018-10-28T03:59:55+08:00</updated>
     <id>http://icps0610.github.io/blog/2018/10/28/network-interfaces</id>
-    <content type="html"><![CDATA[<p> <code>ls /sys/class/net</code></p>
+    <content type="html"><![CDATA[<p> <code>interface = /sys/class/net</code>
+ <code>mac       =  /sys/class/net/*/address</code></p>
 ]]></content>
   </entry>
   

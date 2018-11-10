@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-10-28T16:35:45+08:00</updated>
+  <updated>2018-11-10T18:19:04+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -18,14 +18,21 @@
     <link href="http://icps0610.github.io/blog/2018/10/27/display/"/>
     <updated>2018-10-27T17:59:06+08:00</updated>
     <id>http://icps0610.github.io/blog/2018/10/27/display</id>
-    <content type="html"><![CDATA[<pre><code class="ruby">class Display
-    def self.display_content(contents)
+    <content type="html"><![CDATA[<pre><code class="ruby">#!/usr/bin/env ruby
+# encoding: utf-8
+class Display
+    def self.display_content(contents, idxs=nil)
+        return "error" if contents.first.size != idxs.size
         max = content_transpose_max_size(contents)
         contents.map do |content|
             content.each_index.map do|i|
                 space = max[i] - string_size(content[i]) + 1
-                show = content[i]
-                content[i].class == String ? "#{show}#{" "*space}" : "#{" "*space}#{show} "
+                show  = content[i]
+                if idxs and idxs[i] == 1
+                    "#{" "*space}#{show}"
+                else
+                   "#{show}#{" "*space}"
+                end
             end.join
         end
     end
@@ -46,6 +53,7 @@
         end
     end
 end
+#require "/data/ruby/display/display.rb"
 </code></pre>
 ]]></content>
   </entry>

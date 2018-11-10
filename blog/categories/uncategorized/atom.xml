@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Uncategorized | icps]]></title>
+  <link href="http://icps0610.github.io/blog/categories/uncategorized/atom.xml" rel="self"/>
+  <link href="http://icps0610.github.io/"/>
+  <updated>2018-11-10T18:19:04+08:00</updated>
+  <id>http://icps0610.github.io/</id>
+  <author>
+    <name><![CDATA[icps]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Devise_use_name]]></title>
+    <link href="http://icps0610.github.io/blog/2018/11/01/devise-use-name/"/>
+    <updated>2018-11-01T16:30:18+08:00</updated>
+    <id>http://icps0610.github.io/blog/2018/11/01/devise-use-name</id>
+    <content type="html"><![CDATA[<pre><code>#config\initalizers\devise.rb
+config.authentication_keys = [:name]
+
+#app\model\user.rb
+devise :database_authenticatable, :registerable,
+    :recoverable, :rememberable, :trackable, :validatable,
+    :omniauthable, authentication_keys: [:name]
+
+def email_required?
+    false
+end
+</code></pre>
+]]></content>
+  </entry>
+  
+ </feed>
