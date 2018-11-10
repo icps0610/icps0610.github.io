@@ -5,4 +5,5 @@ date: 2018-10-28 03:59:55 +0800
 comments: true
 categories: linux
 ---
- `ls /sys/class/net`
+ `interface = /sys/class/net`
+ `mac       =  /sys/class/net/*/address`

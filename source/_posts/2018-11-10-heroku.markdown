@@ -1,0 +1,25 @@
+---
+layout: post
+title: "heroku"
+date: 2018-11-10 15:29:15 +0800
+comments: true
+categories: ror
+---
+
+`heroku login`
+`heroku create [name]`
+
+`heroku git:remote -a [name]`
+`git init`
+
+
+`git commit -am '```date +%Y-%m-%d:%H:%M:%S```'`
+`git push heroku master`
+
+```
+#Gemfile
+group :production do
+    gem 'rails_12factor'
+    gem 'pg'
+end
+```

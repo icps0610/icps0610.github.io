@@ -73,6 +73,9 @@ def between(sdate, edate)
     s and e ? (days(edate) - days(sdate)).abs : false
 end
 
+#i = Time.now.to_i
+#t = Time.at(i)
+
 adate = '1950/1/1'
 bdate = '1981/2/29'
 cdate = '2000/2/29'

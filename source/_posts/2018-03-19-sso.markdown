@@ -7,7 +7,7 @@ categories: ror
 ---
 
 >> ref https://github.com/rishabhp/sso-rails-client
-
+>> ref https://github.com/rishabhp/sso-rails-provider
 ```
 #Gemfile
 gem 'omniauth-oauth2'
@@ -58,14 +58,12 @@ get '/users/auth/:provider/callback' => 'user_sessions#create'
 get '/users/auth/failure' => 'user_sessions#failure'
 match '/logout', :to => 'user_sessions#destroy', via: :all
 
-#user_sessions_controller.rb
+#app/controllers/user_sessions_controller.rb
 class UserSessionsController < ApplicationController
-
     def create
         @user = User.from_omniauth(request.env["omniauth.auth"])
         sign_in_and_redirect @user
     end
-
 end
 
 
@@ -78,9 +76,11 @@ icps_secret: "secret"
 
 #view.erb
 <%= link_to "login", "/users/auth/icps" %>
+```
 
-
-
-
-
+```
+#sso-rails-provider
+ip = "192.168.0.201"
+system "ifconfig eth0:0 #{ip}"
+system "rails s -b #{ip} -p 3000"
 ```

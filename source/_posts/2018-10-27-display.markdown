@@ -6,14 +6,21 @@ comments: true
 categories: ruby
 ---
 ``` ruby
+#!/usr/bin/env ruby
+# encoding: utf-8
 class Display
-    def self.display_content(contents)
+    def self.display_content(contents, idxs=nil)
+        return "error" if contents.first.size != idxs.size
         max = content_transpose_max_size(contents)
         contents.map do |content|
             content.each_index.map do|i|
                 space = max[i] - string_size(content[i]) + 1
-                show = content[i]
-                content[i].class == String ? "#{show}#{" "*space}" : "#{" "*space}#{show} "
+                show  = content[i]
+                if idxs and idxs[i] == 1
+                    "#{" "*space}#{show}"
+                else
+                   "#{show}#{" "*space}"
+                end
             end.join
         end
     end
@@ -34,4 +41,6 @@ class Display
         end
     end
 end
+#require "/data/ruby/display/display.rb"
+
 ```
