@@ -10,48 +10,7 @@ categories: ror
 >> ref https://github.com/rishabhp/sso-rails-provider
 ```
 #Gemfile
-gem 'omniauth-oauth2'
 
-#config\environment.rb
-require 'icps'
-
-#lib\icps.rb
-require 'omniauth-oauth2'
-module OmniAuth
-  module Strategies
-    class Icps < OmniAuth::Strategies::OAuth2
-
-      CUSTOM_PROVIDER_URL = 'http://192.168.0.201:3000'
-
-      option :client_options, {
-        :site =>  CUSTOM_PROVIDER_URL,
-        :authorize_url => "#{CUSTOM_PROVIDER_URL}/auth/icps/authorize",
-        :access_token_url => "#{CUSTOM_PROVIDER_URL}/auth/icps/access_token"
-      }
-
-      uid do
-        raw_info['id']
-      end
-
-      info do
-        {
-          :email => raw_info['info']['email']
-        }
-      end
-
-      extra do
-        {
-          :first_name => raw_info['extra']['first_name'],
-          :last_name  => raw_info['extra']['last_name']
-        }
-      end
-
-      def raw_info
-        @raw_info ||= access_token.get("/auth/icps/user.json?oauth_token=#{access_token.token}").parsed
-      end
-    end
-  end
-end
 
 #config\router.rb
 get '/users/auth/:provider/callback' => 'user_sessions#create'
