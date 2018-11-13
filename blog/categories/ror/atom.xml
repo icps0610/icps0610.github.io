@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ror | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ror/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-11-10T18:27:05+08:00</updated>
+  <updated>2018-11-14T04:27:20+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -33,6 +33,10 @@ group :production do
     gem 'pg'
 end
 </code></pre>
+
+<h3>reset base</h3>
+
+<p><code>heroku restart; heroku pg:reset DATABASE --confirm [APP-NAME] &amp;&amp; heroku run rake db:migrate</code></p>
 ]]></content>
   </entry>
   

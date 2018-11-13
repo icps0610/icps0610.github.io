@@ -114,6 +114,10 @@ git push heroku master 1
 </span><span class='line'><span class="k">end</span>
 </span></code></pre></td></tr></table></div></figure>
 
+
+<h3>reset base</h3>
+
+<p><code>heroku restart; heroku pg:reset DATABASE --confirm [APP-NAME] &amp;&amp; heroku run rake db:migrate</code></p>
 </div>
 
 
