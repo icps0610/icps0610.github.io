@@ -23,3 +23,7 @@ group :production do
     gem 'pg'
 end
 ```
+
+### reset base
+`heroku restart; heroku pg:reset DATABASE --confirm [APP-NAME] && heroku run rake db:migrate`
+
