@@ -9,7 +9,7 @@ categories: ror
 `heroku login`  
 `heroku create [name]`  
 
-`heroku git:remote -a [name]`  
+``heroku git:remote -a `cat .git/config | grep heroku.com | awk -F [/.] '{print $6}'` ``  
 `git init`  
 
 
