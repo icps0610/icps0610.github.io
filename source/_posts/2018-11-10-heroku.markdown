@@ -13,7 +13,7 @@ categories: ror
 `git init`  
 
 
-`git commit -am '``date +%Y-%m-%d:%H:%M:%S``'`  
+``git commit -am '`date +%Y-%m-%d:%H:%M:%S`'``
 `git push heroku master`  
 
 ``` ruby
@@ -25,5 +25,5 @@ end
 ```
 
 ### reset base
-`heroku restart; heroku pg:reset DATABASE --confirm ```cat .git/config | grep heroku.com | awk -F [/.] '{print $6}'``` && heroku run rake db:migrate`
+``heroku restart; heroku pg:reset DATABASE --confirm `cat .git/config | grep heroku.com | awk -F [/.] '{print $6}'` && heroku run rake db:migrate``
 
