@@ -10,14 +10,8 @@
 
   
   <meta name="description" content="heroku login
-heroku create [name] heroku git:remote -a [name]
-git init git commit -am '`date +%Y-%m-%d:%H:%M:%S`'
-git push heroku master 1
-2
-3
-4
-5
-# &hellip;">
+heroku create [name] heroku git:remote -a `cat .git/config | grep heroku.com | awk -F [/.] '{print $6}'`
+git init git commit -am '`date &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -100,7 +94,7 @@ git push heroku master 1
   <div class="entry-content"><p><code>heroku login</code><br/>
 <code>heroku create [name]</code></p>
 
-<p><code>heroku git:remote -a [name]</code><br/>
+<p><code>heroku git:remote -a `cat .git/config | grep heroku.com | awk -F [/.] '{print $6}'`</code><br/>
 <code>git init</code></p>
 
 <p><code>git commit -am '`date +%Y-%m-%d:%H:%M:%S`'</code>
