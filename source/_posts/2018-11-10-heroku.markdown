@@ -25,5 +25,5 @@ end
 ```
 
 ### reset base
-`heroku restart; heroku pg:reset DATABASE --confirm [APP-NAME] && heroku run rake db:migrate`
+`heroku restart; heroku pg:reset DATABASE --confirm ```cat .git/config | grep heroku.com | awk -F [/.] '{print $6}'``` && heroku run rake db:migrate`
 
