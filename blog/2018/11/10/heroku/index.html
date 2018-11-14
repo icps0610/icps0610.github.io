@@ -11,12 +11,13 @@
   
   <meta name="description" content="heroku login
 heroku create [name] heroku git:remote -a [name]
-git init git commit -am '``date +%Y-%m-%d:%H:%M:%S``'
+git init git commit -am '`date +%Y-%m-%d:%H:%M:%S`'
 git push heroku master 1
 2
 3
 4
-5 &hellip;">
+5
+# &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -99,7 +100,7 @@ git push heroku master 1
 <p><code>heroku git:remote -a [name]</code><br/>
 <code>git init</code></p>
 
-<p><code>git commit -am '``date +%Y-%m-%d:%H:%M:%S``'</code><br/>
+<p><code>git commit -am '`date +%Y-%m-%d:%H:%M:%S`'</code>
 <code>git push heroku master</code></p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -117,7 +118,7 @@ git push heroku master 1
 
 <h3>reset base</h3>
 
-<p><code>heroku restart; heroku pg:reset DATABASE --confirm [APP-NAME] &amp;&amp; heroku run rake db:migrate</code></p>
+<p><code>heroku restart; heroku pg:reset DATABASE --confirm `cat .git/config | grep heroku.com | awk -F [/.] '{print $6}'` &amp;&amp; heroku run rake db:migrate</code></p>
 </div>
 
 
