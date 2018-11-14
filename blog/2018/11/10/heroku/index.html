@@ -9,9 +9,8 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="heroku login
-heroku create [name] heroku git:remote -a `cat .git/config | grep heroku.com | awk -F [/.] '{print $6}'`
-git init git commit -am '`date &hellip;">
+  <meta name="description" content="build heroku login
+heroku create [name] app name cat .git/config | grep heroku.com | awk -F [/.] '{print $6}' heroku git:remote -a `cat .git/config &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -88,11 +87,19 @@ git init git commit -am '`date &hellip;">
   </header>
 
 
-<div class="entry-content"><p><code>heroku login</code><br/>
+<div class="entry-content"><h3>build</h3>
+
+<p><code>heroku login</code><br/>
 <code>heroku create [name]</code></p>
+
+<h3>app name</h3>
+
+<p><code>cat .git/config | grep heroku.com | awk -F [/.] '{print $6}'</code></p>
 
 <p><code>heroku git:remote -a `cat .git/config | grep heroku.com | awk -F [/.] '{print $6}'`</code><br/>
 <code>git init</code></p>
+
+<h3>upload</h3>
 
 <p><code>git commit -am '`date +%Y-%m-%d:%H:%M:%S`'</code>
 <code>git push heroku master</code></p>
@@ -113,6 +120,11 @@ git init git commit -am '`date &hellip;">
 <h3>reset base</h3>
 
 <p><code>heroku restart; heroku pg:reset DATABASE --confirm `cat .git/config | grep heroku.com | awk -F [/.] '{print $6}'` &amp;&amp; heroku run rake db:migrate</code></p>
+
+<h3>rename app</h3>
+
+<p><code>git remote rm heroku</code><br/>
+<code>`heroku git:remote -a [new_app_name]</code></p>
 </div>
 
 

@@ -19,9 +19,11 @@
 8
 9
 10
+11
 @echo off
 SETLOCAL ENABLEDELAYEDEXPANSION
-for /l %%i in (1,1,254) do ( ping -n 1 -w 1 192.168.0.%%i &gt; nul if !errorlevel! == &hellip;">
+set l=192.168.0
+for /l %%i in (1,1,254) do ( ping -n 1 -w 1 %l%.%%i &gt; nul if ! &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -108,15 +110,17 @@ for /l %%i in (1,1,254) do ( ping -n 1 -w 1 192.168.0.%%i &gt; nul if !errorleve
 <span class='line-number'>8</span>
 <span class='line-number'>9</span>
 <span class='line-number'>10</span>
+<span class='line-number'>11</span>
 </pre></td><td class='code'><pre><code class='bat'><span class='line'><span class="p">@</span><span class="k">echo</span> <span class="k">off</span>
 </span><span class='line'><span class="k">SETLOCAL</span> ENABLEDELAYEDEXPANSION
+</span><span class='line'><span class="k">set</span> <span class="nv">l</span><span class="o">=</span><span class="m">192</span>.<span class="m">168</span>.<span class="m">0</span>
 </span><span class='line'><span class="k">for</span> <span class="n">/l</span> <span class="nv">%%i</span> in (<span class="m">1</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">254</span>) <span class="k">do</span> (
-</span><span class='line'>   ping -n <span class="m">1</span> -w <span class="m">1</span> <span class="m">192</span>.<span class="m">168</span>.<span class="m">0</span>.<span class="nv">%%i</span> <span class="p">&gt;</span> <span class="n">nul</span>
-</span><span class='line'>  <span class="k">if</span> !<span class="k">errorlevel</span>! <span class="o">==</span> <span class="m">0</span> (
-</span><span class='line'>      <span class="k">echo</span> <span class="m">192</span>.<span class="m">168</span>.<span class="m">0</span>.<span class="nv">%%i</span> O
-</span><span class='line'>  ) <span class="k">else</span> (
-</span><span class='line'>      <span class="k">echo</span> <span class="m">192</span>.<span class="m">168</span>.<span class="m">0</span>.<span class="nv">%%i</span> X
-</span><span class='line'>  )
+</span><span class='line'>   ping -n <span class="m">1</span> -w <span class="m">1</span> <span class="nv">%l%</span>.<span class="nv">%%i</span> <span class="p">&gt;</span> <span class="n">nul</span>
+</span><span class='line'>    <span class="k">if</span> !<span class="k">errorlevel</span>! <span class="o">==</span> <span class="m">0</span> (
+</span><span class='line'>        <span class="k">echo</span> <span class="nv">%l%</span>.<span class="nv">%%i</span> O
+</span><span class='line'>    ) <span class="k">else</span> (
+</span><span class='line'>        <span class="k">echo</span> <span class="nv">%l%</span>.<span class="nv">%%i</span> X
+</span><span class='line'>    )
 </span><span class='line'>)
 </span></code></pre></td></tr></table></div></figure>
 
