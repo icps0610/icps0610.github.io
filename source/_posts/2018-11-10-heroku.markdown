@@ -5,13 +5,17 @@ date: 2018-11-10 15:29:15 +0800
 comments: true
 categories: ror
 ---
-
+### build
 `heroku login`  
 `heroku create [name]`  
+### app name
+`cat .git/config | grep heroku.com | awk -F [/.] '{print $6}'`
+
 
 ``heroku git:remote -a `cat .git/config | grep heroku.com | awk -F [/.] '{print $6}'` ``  
 `git init`  
 
+### upload
 
 ``git commit -am '`date +%Y-%m-%d:%H:%M:%S`'``
 `git push heroku master`  
@@ -27,3 +31,7 @@ end
 ### reset base
 ``heroku restart; heroku pg:reset DATABASE --confirm `cat .git/config | grep heroku.com | awk -F [/.] '{print $6}'` && heroku run rake db:migrate``
 
+
+### rename app
+`git remote rm heroku`  
+``heroku git:remote -a [new_app_name]`  

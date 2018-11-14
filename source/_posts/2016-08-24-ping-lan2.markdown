@@ -8,13 +8,14 @@ categories: bat
 ``` bat
 @echo off
 SETLOCAL ENABLEDELAYEDEXPANSION
+set l=192.168.0
 for /l %%i in (1,1,254) do (
-   ping -n 1 -w 1 192.168.0.%%i > nul
-	if !errorlevel! == 0 (
-		echo 192.168.0.%%i O
-	) else (
-		echo 192.168.0.%%i X 
-	)
+   ping -n 1 -w 1 %l%.%%i > nul
+    if !errorlevel! == 0 (
+        echo %l%.%%i O
+    ) else (
+        echo %l%.%%i X 
+    )
 )
 ```
 
