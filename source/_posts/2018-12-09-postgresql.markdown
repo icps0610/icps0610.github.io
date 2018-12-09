@@ -32,4 +32,5 @@ development:
 ```
 
 ### heroku
-`PGUSER=postgres PGPASSWORD=password heroku pg:pull HEROKU_POSTGRESQL_MAGENTA mylocaldb --app sushi`
+`su postgres`
+`PGUSER=postgres PGPASSWORD=password heroku pg:pull HEROKU_DATABASE_NAME LOCALDB --app sushi`
