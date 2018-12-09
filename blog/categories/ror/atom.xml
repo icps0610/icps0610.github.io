@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ror | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ror/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-11-14T22:25:59+08:00</updated>
+  <updated>2018-12-09T18:00:29+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,45 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Postgresql]]></title>
+    <link href="http://icps0610.github.io/blog/2018/12/09/postgresql/"/>
+    <updated>2018-12-09T17:55:32+08:00</updated>
+    <id>http://icps0610.github.io/blog/2018/12/09/postgresql</id>
+    <content type="html"><![CDATA[<h3>install</h3>
+
+<p><code>apt-get install postgresql</code></p>
+
+<h3>change passwd</h3>
+
+<p><code>sudo -u postgres psql postgres</code>
+<code>\password postgres</code></p>
+
+<h3>gem</h3>
+
+<p><code>gem install pg</code></p>
+
+<h3>database.yml</h3>
+
+<pre><code>default: &amp;default
+  adapter: postgresql
+  encoding: unicode
+  username: postgres
+  password: password
+  host: localhost
+  pool: 5
+
+development:
+  &lt;&lt;: *default
+  database: database_development
+</code></pre>
+
+<h3>heroku</h3>
+
+<p><code>PGUSER=postgres PGPASSWORD=password heroku pg:pull HEROKU_POSTGRESQL_MAGENTA mylocaldb --app sushi</code></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Heroku]]></title>
@@ -32,7 +71,7 @@
 
 <h3>upload</h3>
 
-<p><code>git commit -am '`date +%Y-%m-%d:%H:%M:%S`'</code>
+<p><code>git commit -am '`date +%Y-%m-%d:%H:%M:%S`'</code><br/>
 <code>git push heroku master</code></p>
 
 <pre><code class="ruby">#Gemfile
@@ -103,15 +142,6 @@ end
     <id>http://icps0610.github.io/blog/2018/03/19/sso</id>
     <content type="html"><![CDATA[<blockquote><blockquote><p>ref <a href="https://github.com/rishabhp/sso-rails-client">https://github.com/rishabhp/sso-rails-client</a>
 ref <a href="https://github.com/rishabhp/sso-rails-provider">https://github.com/rishabhp/sso-rails-provider</a></p></blockquote></blockquote>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Image_view]]></title>
-    <link href="http://icps0610.github.io/blog/2018/01/04/image-view/"/>
-    <updated>2018-01-04T01:34:16+08:00</updated>
-    <id>http://icps0610.github.io/blog/2018/01/04/image-view</id>
-    <content type="html"><![CDATA[<p><a href="https://github.com/luciuschoi/lightbox-bootstrap-rails">https://github.com/luciuschoi/lightbox-bootstrap-rails</a></p>
 ]]></content>
   </entry>
   
