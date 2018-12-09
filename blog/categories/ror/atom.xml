@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ror | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ror/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-12-09T18:00:29+08:00</updated>
+  <updated>2018-12-09T18:06:36+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -24,7 +24,7 @@
 
 <h3>change passwd</h3>
 
-<p><code>sudo -u postgres psql postgres</code>
+<p><code>sudo -u postgres psql postgres</code><br/>
 <code>\password postgres</code></p>
 
 <h3>gem</h3>
