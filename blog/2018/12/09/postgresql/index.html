@@ -136,7 +136,8 @@
 
 <h3>heroku</h3>
 
-<p><code>PGUSER=postgres PGPASSWORD=password heroku pg:pull HEROKU_POSTGRESQL_MAGENTA mylocaldb --app sushi</code></p>
+<p><code>su postgres</code>
+<code>PGUSER=postgres PGPASSWORD=password heroku pg:pull HEROKU_DATABASE_NAME LOCALDB --app sushi</code></p>
 </div>
 
 
