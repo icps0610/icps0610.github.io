@@ -10,8 +10,8 @@ categories: ror
 `apt-get install postgresql`
 
 ### change passwd
-`sudo -u postgres psql postgres`
-`\password postgres`
+`sudo -u postgres psql postgres`  
+`\password postgres`  
 
 ### gem
 `gem install pg`
