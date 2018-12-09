@@ -17,7 +17,7 @@ categories: ror
 
 ### upload
 
-``git commit -am '`date +%Y-%m-%d:%H:%M:%S`'``
+``git commit -am '`date +%Y-%m-%d:%H:%M:%S`'``  
 `git push heroku master`  
 
 ``` ruby
