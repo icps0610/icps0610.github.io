@@ -50,11 +50,11 @@ gem 'waitr'
 require 'watir'
 ```
 
-### switch
-https://github.com/heroku/heroku-accounts
-add accounts
-`heroku accounts:add username`
-switch accounts
-`heroku accounts:set username`
-list accounts
-`heroku accounts`
+### switch  
+ref >> https://github.com/heroku/heroku-accounts  
+##### add accounts  
+`heroku accounts:add username`  
+##### switch accounts  
+`heroku accounts:set username`  
+##### list accounts  
+`heroku accounts`  
