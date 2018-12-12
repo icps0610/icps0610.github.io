@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-12-12T22:53:58+08:00</updated>
+  <updated>2018-12-12T22:56:17+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -131,13 +131,19 @@ add buildpacks:</p>
 
 <h3>switch</h3>
 
-<p><a href="https://github.com/heroku/heroku-accounts">https://github.com/heroku/heroku-accounts</a>
-add accounts
-<code>heroku accounts:add username</code>
-switch accounts
-<code>heroku accounts:set username</code>
-list accounts
-<code>heroku accounts</code></p>
+<p>ref >> <a href="https://github.com/heroku/heroku-accounts">https://github.com/heroku/heroku-accounts</a></p>
+
+<h5>add accounts</h5>
+
+<p><code>heroku accounts:add username</code></p>
+
+<h5>switch accounts</h5>
+
+<p><code>heroku accounts:set username</code></p>
+
+<h5>list accounts</h5>
+
+<p><code>heroku accounts</code></p>
 ]]></content>
   </entry>
   
