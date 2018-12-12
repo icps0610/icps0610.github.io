@@ -35,3 +35,26 @@ end
 ### rename app
 `git remote rm heroku`  
 ``heroku git:remote -a [new_app_name]`  
+
+### sync database
+`PGUSER=postgres PGPASSWORD=passwd heroku pg:push local_database heroku_datbase --app app`
+`PGUSER=postgres PGPASSWORD=passwd heroku pg:pull heroku_datbase local_database --app app`
+
+### watir
+ref >> https://www.simon-neutert.de/2018/watir-chrome-heroku/
+add buildpacks:
+```
+https://github.com/heroku/heroku-buildpack-google-chrome
+https://github.com/heroku/heroku-buildpack-chromedriver
+gem 'waitr'
+require 'watir'
+```
+
+### switch
+https://github.com/heroku/heroku-accounts
+add accounts
+`heroku accounts:add username`
+switch accounts
+`heroku accounts:set username`
+list accounts
+`heroku accounts`
