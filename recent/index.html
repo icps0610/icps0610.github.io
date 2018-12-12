@@ -207,6 +207,37 @@
 
 <p><code>git remote rm heroku</code><br/>
 <code>`heroku git:remote -a [new_app_name]</code></p>
+
+<h3>sync database</h3>
+
+<p><code>PGUSER=postgres PGPASSWORD=passwd heroku pg:push local_database heroku_datbase --app app</code>
+<code>PGUSER=postgres PGPASSWORD=passwd heroku pg:pull heroku_datbase local_database --app app</code></p>
+
+<h3>watir</h3>
+
+<p>ref >> <a href="https://www.simon-neutert.de/2018/watir-chrome-heroku/">https://www.simon-neutert.de/2018/watir-chrome-heroku/</a>
+add buildpacks:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="ss">https</span><span class="p">:</span><span class="sr">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">heroku</span><span class="o">/</span><span class="n">heroku</span><span class="o">-</span><span class="n">buildpack</span><span class="o">-</span><span class="n">google</span><span class="o">-</span><span class="n">chrome</span>
+</span><span class='line'><span class="ss">https</span><span class="p">:</span><span class="sr">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">heroku</span><span class="o">/</span><span class="n">heroku</span><span class="o">-</span><span class="n">buildpack</span><span class="o">-</span><span class="n">chromedriver</span>
+</span><span class='line'><span class="n">gem</span> <span class="s1">&#39;waitr&#39;</span>
+</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;watir&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>switch</h3>
+
+<p><a href="https://github.com/heroku/heroku-accounts">https://github.com/heroku/heroku-accounts</a>
+add accounts
+<code>heroku accounts:add username</code>
+switch accounts
+<code>heroku accounts:set username</code>
+list accounts
+<code>heroku accounts</code></p>
 </div>
   
   

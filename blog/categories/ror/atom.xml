@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ror | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ror/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-12-09T18:40:56+08:00</updated>
+  <updated>2018-12-12T22:53:58+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -90,6 +90,32 @@ end
 
 <p><code>git remote rm heroku</code><br/>
 <code>`heroku git:remote -a [new_app_name]</code></p>
+
+<h3>sync database</h3>
+
+<p><code>PGUSER=postgres PGPASSWORD=passwd heroku pg:push local_database heroku_datbase --app app</code>
+<code>PGUSER=postgres PGPASSWORD=passwd heroku pg:pull heroku_datbase local_database --app app</code></p>
+
+<h3>watir</h3>
+
+<p>ref >> <a href="https://www.simon-neutert.de/2018/watir-chrome-heroku/">https://www.simon-neutert.de/2018/watir-chrome-heroku/</a>
+add buildpacks:
+<code>
+https://github.com/heroku/heroku-buildpack-google-chrome
+https://github.com/heroku/heroku-buildpack-chromedriver
+gem 'waitr'
+require 'watir'
+</code></p>
+
+<h3>switch</h3>
+
+<p><a href="https://github.com/heroku/heroku-accounts">https://github.com/heroku/heroku-accounts</a>
+add accounts
+<code>heroku accounts:add username</code>
+switch accounts
+<code>heroku accounts:set username</code>
+list accounts
+<code>heroku accounts</code></p>
 ]]></content>
   </entry>
   
