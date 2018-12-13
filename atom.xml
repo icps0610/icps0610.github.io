@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-12-12T22:56:17+08:00</updated>
+  <updated>2018-12-13T17:56:01+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,16 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Weather_api]]></title>
+    <link href="http://icps0610.github.io/blog/2018/12/13/weather-api/"/>
+    <updated>2018-12-13T17:53:26+08:00</updated>
+    <id>http://icps0610.github.io/blog/2018/12/13/weather-api</id>
+    <content type="html"><![CDATA[<p><code>https://works.ioa.tw/weather/api/doc/index.html#api-Weather_API</code>
+<code>http://opendata2.epa.gov.tw/AQI.json</code></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Postgresql]]></title>
@@ -848,26 +858,6 @@ p jarow.getDistance(  &ldquo;jones&rdquo;,      &ldquo;johnson&rdquo; )</p>
 </span><span class='line'><span class="n">img</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;/tmp/image/base1.jpg&quot;</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Infinity]]></title>
-    <link href="http://icps0610.github.io/blog/2018/09/18/infinity/"/>
-    <updated>2018-09-18T17:10:30+08:00</updated>
-    <id>http://icps0610.github.io/blog/2018/09/18/infinity</id>
-    <content type="html"><![CDATA[<h3>Infinity</h3>
-
-<h3>ref <a href="https://stackoverflow.com/questions/5778295/how-to-express-infinity-in-ruby">https://stackoverflow.com/questions/5778295/how-to-express-infinity-in-ruby</a></h3>
-
-<p>PositiveInfinity = +1.0/0.0
-=> Infinity</p>
-
-<p>NegativeInfinity = -1.0/0.0
-=> -Infinity</p>
-
-<p>CompleteInfinity = NegativeInfinity..PositiveInfinity
-=> -Infinity..Infinity</p>
 ]]></content>
   </entry>
   

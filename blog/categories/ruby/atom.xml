@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-12-12T22:56:17+08:00</updated>
+  <updated>2018-12-13T17:56:01+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,16 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Weather_api]]></title>
+    <link href="http://icps0610.github.io/blog/2018/12/13/weather-api/"/>
+    <updated>2018-12-13T17:53:26+08:00</updated>
+    <id>http://icps0610.github.io/blog/2018/12/13/weather-api</id>
+    <content type="html"><![CDATA[<p><code>https://works.ioa.tw/weather/api/doc/index.html#api-Weather_API</code>
+<code>http://opendata2.epa.gov.tw/AQI.json</code></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Display]]></title>
@@ -145,29 +155,6 @@ puts tar(file, ext)
     <content type="html"><![CDATA[<pre><code class="ruby">source = ARGV[0]
 to     = ARGV[1]
 system("rsync -aAXv #{source}/* #{to} | pv -ls `find #{source}|wc -l` &gt;/dev/null")
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Debug]]></title>
-    <link href="http://icps0610.github.io/blog/2018/10/15/debug/"/>
-    <updated>2018-10-15T21:19:16+08:00</updated>
-    <id>http://icps0610.github.io/blog/2018/10/15/debug</id>
-    <content type="html"><![CDATA[<blockquote><blockquote><p>ref <a href="https://stackoverflow.com/questions/2603617/ruby-print-the-variable-name-and-then-its-value">https://stackoverflow.com/questions/2603617/ruby-print-the-variable-name-and-then-its-value</a></p></blockquote></blockquote>
-
-<pre><code class="ruby">def dbg(a, s=nil, &amp;b)
-    begin
-        v = eval(a.to_s, b.binding)
-    rescue Exception =&gt; e
-        v = e.to_s.split("\n").first
-    end
-    s = " ------ " if s == 1
-    v = "nil" if v.to_s == ""
-    puts "#{s}#{a} : #{v}#{s}" if not @dbg == 0
-end
-#dbg(:var) {}
-#@dbg = 0
 </code></pre>
 ]]></content>
   </entry>

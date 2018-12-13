@@ -9,16 +9,9 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="install apt-get install postgresql change passwd sudo -u postgres psql postgres
-\password postgres gem gem install pg database.yml 1
-2
-3
-4
-5
-6
-7
-8
-9 &hellip;">
+  <meta name="description" content="https://works.ioa.tw/weather/api/doc/index.html#api-Weather_API
+http://opendata2.epa.gov.tw/AQI.json
+">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,6 +70,36 @@
       <div class="blog-index">
   
 
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2018/12/13/weather-api/">Weather_api</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2018-12-13T17:53:26+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>5:53 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><code>https://works.ioa.tw/weather/api/doc/index.html#api-Weather_API</code>
+<code>http://opendata2.epa.gov.tw/AQI.json</code></p>
+</div>
+  
+  
+
+
+    </article>
+  
   
     <article>
       
@@ -334,108 +357,6 @@ add buildpacks:</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2018/10/27/display/">Display</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2018-10-27T17:59:06+08:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>27</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>5:59 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#!/usr/bin/env ruby</span>
-</span><span class='line'><span class="c1"># encoding: utf-8</span>
-</span><span class='line'><span class="k">class</span> <span class="nc">Display</span>
-</span><span class='line'>    <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">display_content</span><span class="p">(</span><span class="n">contents</span><span class="p">,</span> <span class="n">idxs</span><span class="o">=</span><span class="kp">nil</span><span class="p">)</span>
-</span><span class='line'>        <span class="k">return</span> <span class="s2">&quot;error&quot;</span> <span class="k">if</span> <span class="n">contents</span><span class="o">.</span><span class="n">first</span><span class="o">.</span><span class="n">size</span> <span class="o">!=</span> <span class="n">idxs</span><span class="o">.</span><span class="n">size</span>
-</span><span class='line'>        <span class="n">max</span> <span class="o">=</span> <span class="n">content_transpose_max_size</span><span class="p">(</span><span class="n">contents</span><span class="p">)</span>
-</span><span class='line'>        <span class="n">contents</span><span class="o">.</span><span class="n">map</span> <span class="k">do</span> <span class="o">|</span><span class="n">content</span><span class="o">|</span>
-</span><span class='line'>            <span class="n">content</span><span class="o">.</span><span class="n">each_index</span><span class="o">.</span><span class="n">map</span> <span class="k">do</span><span class="o">|</span><span class="n">i</span><span class="o">|</span>
-</span><span class='line'>                <span class="n">space</span> <span class="o">=</span> <span class="n">max</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">-</span> <span class="n">string_size</span><span class="p">(</span><span class="n">content</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
-</span><span class='line'>                <span class="n">show</span>  <span class="o">=</span> <span class="n">content</span><span class="o">[</span><span class="n">i</span><span class="o">]</span>
-</span><span class='line'>                <span class="k">if</span> <span class="n">idxs</span> <span class="ow">and</span> <span class="n">idxs</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">==</span> <span class="mi">1</span>
-</span><span class='line'>                    <span class="s2">&quot;</span><span class="si">#{</span><span class="s2">&quot; &quot;</span><span class="o">*</span><span class="n">space</span><span class="si">}#{</span><span class="n">show</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span class='line'>                <span class="k">else</span>
-</span><span class='line'>                   <span class="s2">&quot;</span><span class="si">#{</span><span class="n">show</span><span class="si">}#{</span><span class="s2">&quot; &quot;</span><span class="o">*</span><span class="n">space</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span class='line'>                <span class="k">end</span>
-</span><span class='line'>            <span class="k">end</span><span class="o">.</span><span class="n">join</span>
-</span><span class='line'>        <span class="k">end</span>
-</span><span class='line'>    <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="kp">private</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">string_size</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
-</span><span class='line'>        <span class="n">string</span><span class="o">.</span><span class="n">each_byte</span><span class="o">.</span><span class="n">map</span> <span class="k">do</span> <span class="o">|</span><span class="n">c</span><span class="o">|</span>
-</span><span class='line'>            <span class="n">c</span> <span class="o">&lt;</span> <span class="mi">127</span> <span class="o">?</span> <span class="mi">1</span> <span class="p">:</span> <span class="mi">2</span>
-</span><span class='line'>        <span class="k">end</span><span class="o">.</span><span class="n">compact</span><span class="o">.</span><span class="n">inject</span><span class="p">(</span><span class="ss">:+</span><span class="p">)</span>
-</span><span class='line'>    <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">content_transpose_max_size</span><span class="p">(</span><span class="n">contents</span><span class="p">)</span>
-</span><span class='line'>        <span class="n">contents</span><span class="o">.</span><span class="n">transpose</span><span class="o">.</span><span class="n">map</span> <span class="k">do</span> <span class="o">|</span><span class="n">content</span><span class="o">|</span>
-</span><span class='line'>            <span class="n">content</span><span class="o">.</span><span class="n">map</span> <span class="k">do</span> <span class="o">|</span><span class="n">c</span><span class="o">|</span>
-</span><span class='line'>                <span class="n">c</span> <span class="p">?</span> <span class="n">string_size</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="p">:</span> <span class="mi">0</span>
-</span><span class='line'>            <span class="k">end</span><span class="o">.</span><span class="n">max</span>
-</span><span class='line'>        <span class="k">end</span>
-</span><span class='line'>    <span class="k">end</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'><span class="c1">#require &quot;/data/ruby/display/display.rb&quot;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
     <a href="/blog/archives">Blog Archives</a>
@@ -453,13 +374,17 @@ add buildpacks:</p>
 <li class='category'><a href='/blog/categories/linux/'>linux (28)</a></li>
 <li class='category'><a href='/blog/categories/python/'>python (10)</a></li>
 <li class='category'><a href='/blog/categories/ror/'>ror (27)</a></li>
-<li class='category'><a href='/blog/categories/ruby/'>ruby (55)</a></li>
+<li class='category'><a href='/blog/categories/ruby/'>ruby (56)</a></li>
 
     </ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2018/12/13/weather-api/">Weather_api</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2018/12/09/postgresql/">Postgresql</a>
@@ -475,10 +400,6 @@ add buildpacks:</p>
     
       <li class="post">
         <a href="/blog/2018/10/28/network-interfaces/">Network_interfaces</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2018/10/27/display/">Display</a>
       </li>
     
   </ul>
