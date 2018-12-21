@@ -58,3 +58,8 @@ ref >> https://github.com/heroku/heroku-accounts
 `heroku accounts:set username`  
 ##### list accounts  
 `heroku accounts`  
+
+
+## No migration with version number 
+`heroku pg:psql`
+`delete from schema_migrations where version= 'XXXXXXXXXXX';`
