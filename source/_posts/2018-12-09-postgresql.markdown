@@ -34,3 +34,6 @@ development:
 ### heroku
 `su postgres`
 `PGUSER=postgres PGPASSWORD=password heroku pg:pull HEROKU_DATABASE_NAME LOCALDB --app sushi`
+
+### rails
+`rails new myapp --database=postgresql`
