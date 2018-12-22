@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-12-13T17:56:01+08:00</updated>
+  <updated>2018-12-22T13:55:51+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,35 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Print]]></title>
+    <link href="http://icps0610.github.io/blog/2018/12/21/print/"/>
+    <updated>2018-12-21T20:51:58+08:00</updated>
+    <id>http://icps0610.github.io/blog/2018/12/21/print</id>
+    <content type="html"><![CDATA[<p><code>gem "terminal-table"</code>
+<code>gem "hirb"</code>
+<code>gem "hirb-unicode"</code></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Form]]></title>
+    <link href="http://icps0610.github.io/blog/2018/12/20/form/"/>
+    <updated>2018-12-20T23:27:53+08:00</updated>
+    <id>http://icps0610.github.io/blog/2018/12/20/form</id>
+    <content type="html"><![CDATA[<p><code>&lt;%= token_tag %&gt;</code></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Mass_data_import_sql]]></title>
+    <link href="http://icps0610.github.io/blog/2018/12/15/mass-data-import-sql/"/>
+    <updated>2018-12-15T20:18:52+08:00</updated>
+    <id>http://icps0610.github.io/blog/2018/12/15/mass-data-import-sql</id>
+    <content type="html"><![CDATA[<p><code>https://github.com/zdennis/activerecord-import</code></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Weather_api]]></title>
@@ -154,6 +183,11 @@ add buildpacks:</p>
 <h5>list accounts</h5>
 
 <p><code>heroku accounts</code></p>
+
+<h2>No migration with version number</h2>
+
+<p><code>heroku pg:psql</code>
+<code>delete from schema_migrations where version= 'XXXXXXXXXXX';</code></p>
 ]]></content>
   </entry>
   
@@ -729,135 +763,6 @@ p jarow.getDistance(  &ldquo;jones&rdquo;,      &ldquo;johnson&rdquo; )</p>
     <content type="html"><![CDATA[<h3>Save last working directory on Bash logout</h3>
 
 <blockquote><p>ref <a href="https://stackoverflow.com/questions/767040/save-last-working-directory-on-bash-logout">https://stackoverflow.com/questions/767040/save-last-working-directory-on-bash-logout</a></p></blockquote>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Gmail]]></title>
-    <link href="http://icps0610.github.io/blog/2018/09/27/gmail/"/>
-    <updated>2018-09-27T02:46:01+08:00</updated>
-    <id>http://icps0610.github.io/blog/2018/09/27/gmail</id>
-    <content type="html"><![CDATA[<p><code>curl -u username:password --silent "https://mail.google.com/mail/feed/atom" | tr -d '\n' | awk -F '&lt;entry&gt;' '{for (i=2; i&lt;=NF; i++) {print $i}}' | sed -n "s/&lt;title&gt;\(.*\)&lt;\/title.*name&gt;\(.*\)&lt;\/name&gt;.*/\2 - \1/p"</code></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Waitr-scoll]]></title>
-    <link href="http://icps0610.github.io/blog/2018/09/24/waitr-scoll/"/>
-    <updated>2018-09-24T20:38:17+08:00</updated>
-    <id>http://icps0610.github.io/blog/2018/09/24/waitr-scoll</id>
-    <content type="html"><![CDATA[<h3><a href="https://github.com/p0deje/watir-scroll">https://github.com/p0deje/watir-scroll</a></h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">browser</span> <span class="o">=</span> <span class="no">Watir</span><span class="o">::</span><span class="no">Browser</span><span class="o">.</span><span class="n">new</span> <span class="ss">:firefox</span>
-</span><span class='line'><span class="n">browser</span><span class="o">.</span><span class="n">button</span><span class="p">(</span><span class="ss">text</span><span class="p">:</span> <span class="s1">&#39;Click&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">scroll</span><span class="o">.</span><span class="n">by</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">800</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Remove_black]]></title>
-    <link href="http://icps0610.github.io/blog/2018/09/23/remove-black/"/>
-    <updated>2018-09-23T16:39:45+08:00</updated>
-    <id>http://icps0610.github.io/blog/2018/09/23/remove-black</id>
-    <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-<span class='line-number'>41</span>
-<span class='line-number'>42</span>
-<span class='line-number'>43</span>
-<span class='line-number'>44</span>
-<span class='line-number'>45</span>
-<span class='line-number'>46</span>
-<span class='line-number'>47</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># encoding: utf-8</span>
-</span><span class='line'><span class="nb">require</span> <span class="s2">&quot;watir&quot;</span>
-</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;rmagick&#39;</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">def</span> <span class="nf">pixel_not_black</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-</span><span class='line'>    <span class="n">px</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">pixel_color</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-</span><span class='line'>    <span class="k">if</span> <span class="n">px</span><span class="o">.</span><span class="n">red</span> <span class="o">&gt;</span> <span class="mi">16448</span> <span class="ow">or</span> <span class="n">px</span><span class="o">.</span><span class="n">green</span> <span class="o">&gt;</span> <span class="mi">16448</span> <span class="ow">or</span> <span class="n">px</span><span class="o">.</span><span class="n">blue</span> <span class="o">&gt;</span> <span class="mi">16448</span>
-</span><span class='line'>        <span class="k">return</span> <span class="kp">true</span>
-</span><span class='line'>    <span class="k">end</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">def</span> <span class="nf">locate_left</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
-</span><span class='line'>    <span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="n">.img</span><span class="o">.</span><span class="n">rows</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">i</span><span class="o">|</span>
-</span><span class='line'>        <span class="k">if</span> <span class="n">pixel_not_black</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
-</span><span class='line'>            <span class="vi">@x</span> <span class="o">=</span> <span class="n">i</span>
-</span><span class='line'>            <span class="k">break</span>
-</span><span class='line'>        <span class="k">end</span>
-</span><span class='line'>    <span class="k">end</span>
-</span><span class='line'>    <span class="n">locate_y</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="vi">@x</span><span class="p">)</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">def</span> <span class="nf">locate_right</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
-</span><span class='line'>    <span class="n">x</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">columns</span><span class="o">/</span><span class="mi">2</span> <span class="c1">#雙螢幕</span>
-</span><span class='line'>    <span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="n">.x</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">i</span><span class="o">|</span>
-</span><span class='line'>        <span class="k">if</span> <span class="n">pixel_not_black</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">x</span> <span class="o">-</span> <span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
-</span><span class='line'>            <span class="vi">@x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">i</span>
-</span><span class='line'>            <span class="k">break</span>
-</span><span class='line'>        <span class="k">end</span>
-</span><span class='line'>    <span class="k">end</span>
-</span><span class='line'>    <span class="n">locate_y</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="vi">@x</span><span class="p">)</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">def</span> <span class="nf">locate_y</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">st</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
-</span><span class='line'>    <span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="n">.img</span><span class="o">.</span><span class="n">rows</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">i</span><span class="o">|</span>
-</span><span class='line'>        <span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="n">st</span><span class="p">)</span><span class="o">.</span><span class="n">abs</span>
-</span><span class='line'>        <span class="k">if</span> <span class="n">pixel_not_black</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-</span><span class='line'>            <span class="k">return</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span>
-</span><span class='line'>        <span class="k">end</span>
-</span><span class='line'>    <span class="k">end</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1">#screenshot = Magick::Image.capture{ self.filename = &quot;root&quot; }</span>
-</span><span class='line'><span class="n">img</span> <span class="o">=</span> <span class="no">Magick</span><span class="o">::</span><span class="no">ImageList</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">&quot;/tmp/image/base.jpg&quot;</span><span class="p">)</span>
-</span><span class='line'><span class="n">lx</span><span class="p">,</span> <span class="n">ly</span> <span class="o">=</span> <span class="n">locate_left</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
-</span><span class='line'><span class="n">rx</span><span class="p">,</span> <span class="n">ry</span> <span class="o">=</span> <span class="n">locate_right</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
-</span><span class='line'><span class="n">img</span><span class="o">.</span><span class="n">crop!</span><span class="p">(</span><span class="n">lx</span><span class="p">,</span> <span class="n">ly</span><span class="p">,</span> <span class="n">rx</span><span class="o">-</span><span class="n">lx</span><span class="p">,</span> <span class="n">ry</span><span class="o">-</span><span class="n">ly</span><span class="p">)</span>
-</span><span class='line'><span class="n">img</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;/tmp/image/base1.jpg&quot;</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
 ]]></content>
   </entry>
   

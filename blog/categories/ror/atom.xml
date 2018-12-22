@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ror | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ror/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-12-13T17:56:01+08:00</updated>
+  <updated>2018-12-22T13:55:51+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,35 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Print]]></title>
+    <link href="http://icps0610.github.io/blog/2018/12/21/print/"/>
+    <updated>2018-12-21T20:51:58+08:00</updated>
+    <id>http://icps0610.github.io/blog/2018/12/21/print</id>
+    <content type="html"><![CDATA[<p><code>gem "terminal-table"</code>
+<code>gem "hirb"</code>
+<code>gem "hirb-unicode"</code></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Form]]></title>
+    <link href="http://icps0610.github.io/blog/2018/12/20/form/"/>
+    <updated>2018-12-20T23:27:53+08:00</updated>
+    <id>http://icps0610.github.io/blog/2018/12/20/form</id>
+    <content type="html"><![CDATA[<p><code>&lt;%= token_tag %&gt;</code></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Mass_data_import_sql]]></title>
+    <link href="http://icps0610.github.io/blog/2018/12/15/mass-data-import-sql/"/>
+    <updated>2018-12-15T20:18:52+08:00</updated>
+    <id>http://icps0610.github.io/blog/2018/12/15/mass-data-import-sql</id>
+    <content type="html"><![CDATA[<p><code>https://github.com/zdennis/activerecord-import</code></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Postgresql]]></title>
@@ -122,59 +151,11 @@ require 'watir'
 <h5>list accounts</h5>
 
 <p><code>heroku accounts</code></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Devise_use_name]]></title>
-    <link href="http://icps0610.github.io/blog/2018/11/01/devise-use-name/"/>
-    <updated>2018-11-01T16:30:18+08:00</updated>
-    <id>http://icps0610.github.io/blog/2018/11/01/devise-use-name</id>
-    <content type="html"><![CDATA[<pre><code>#config\initalizers\devise.rb
-config.authentication_keys = [:name]
 
-#app\model\user.rb
-devise :database_authenticatable, :registerable,
-    :recoverable, :rememberable, :trackable, :validatable,
-    :omniauthable, authentication_keys: [:name]
+<h2>No migration with version number</h2>
 
-def email_required?
-    false
-end
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Speak]]></title>
-    <link href="http://icps0610.github.io/blog/2018/04/28/speak/"/>
-    <updated>2018-04-28T01:13:04+08:00</updated>
-    <id>http://icps0610.github.io/blog/2018/04/28/speak</id>
-    <content type="html"><![CDATA[<p><button type="button" onclick="click()">Click</button></p>
-
-<script>
-    function click(){
-    var msg = new SpeechSynthesisUtterance('你是豬豬人');
-     msg.lang='zh';
-     msg.voice = speechSynthesis.getVoices().filter(function(voice) { 
-    return voice.name == 'Whisper'; }
-    )[0]; 
-
-    speechSynthesis.speak(msg);
-}
-
-</script>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Sso]]></title>
-    <link href="http://icps0610.github.io/blog/2018/03/19/sso/"/>
-    <updated>2018-03-19T22:28:58+08:00</updated>
-    <id>http://icps0610.github.io/blog/2018/03/19/sso</id>
-    <content type="html"><![CDATA[<blockquote><blockquote><p>ref <a href="https://github.com/rishabhp/sso-rails-client">https://github.com/rishabhp/sso-rails-client</a>
-ref <a href="https://github.com/rishabhp/sso-rails-provider">https://github.com/rishabhp/sso-rails-provider</a></p></blockquote></blockquote>
+<p><code>heroku pg:psql</code>
+<code>delete from schema_migrations where version= 'XXXXXXXXXXX';</code></p>
 ]]></content>
   </entry>
   
