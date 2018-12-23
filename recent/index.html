@@ -9,10 +9,9 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="gem "terminal-table"
-gem "hirb"
-gem "hirb-unicode"
-">
+  <meta name="description" content="apt-get install tor privoxy 1
+2
+/etc/privoxy/config #785 listen-address :8118 ">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -71,6 +70,79 @@ gem "hirb-unicode"
       <div class="blog-index">
   
 
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2018/12/23/tor-privoxy/">Tor_privoxy</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2018-12-23T23:13:19+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2018</span></span> <span class='time'>11:13 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><code>apt-get install tor privoxy</code></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>/etc/privoxy/config 
+</span><span class='line'>#785 listen-address :8118</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2018/12/23/minpony/">Minpony</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2018-12-23T16:10:50+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2018</span></span> <span class='time'>4:10 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><code>apt-get install wine1.8</code><br/>
+<code>https://dl.winehq.org/wine/wine-mono/4.7.1/</code><br/>
+<code>apt install libmono-webbrowser4.0-cil</code></p>
+
+<h3>winetricks</h3>
+
+<p><code>https://wiki.winehq.org/Winetricks</code><br/>
+<code>wget  https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks</code><br/>
+<code>chmod +x winetricks</code><br/>
+<code>winetricks gdiplus fontfix dotnet40, ie8</code></p>
+</div>
+  
+  
+
+
+    </article>
+  
   
     <article>
       
@@ -160,111 +232,6 @@ gem "hirb-unicode"
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2018/12/13/weather-api/">Weather_api</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2018-12-13T17:53:26+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>5:53 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><code>https://works.ioa.tw/weather/api/doc/index.html#api-Weather_API</code>
-<code>http://opendata2.epa.gov.tw/AQI.json</code></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2018/12/09/postgresql/">Postgresql</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2018-12-09T17:55:32+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2018</span></span> <span class='time'>5:55 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3>install</h3>
-
-<p><code>apt-get install postgresql</code></p>
-
-<h3>change passwd</h3>
-
-<p><code>sudo -u postgres psql postgres</code><br/>
-<code>\password postgres</code></p>
-
-<h3>gem</h3>
-
-<p><code>gem install pg</code></p>
-
-<h3>database.yml</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>default: &default
-</span><span class='line'>  adapter: postgresql
-</span><span class='line'>  encoding: unicode
-</span><span class='line'>  username: postgres
-</span><span class='line'>  password: password
-</span><span class='line'>  host: localhost
-</span><span class='line'>  pool: 5
-</span><span class='line'>
-</span><span class='line'>development:
-</span><span class='line'>  &lt;&lt;: *default
-</span><span class='line'>  database: database_development</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>heroku</h3>
-
-<p><code>su postgres</code>
-<code>PGUSER=postgres PGPASSWORD=password heroku pg:pull HEROKU_DATABASE_NAME LOCALDB --app sushi</code></p>
-
-<h3>rails</h3>
-
-<p><code>rails new myapp --database=postgresql</code></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
     <a href="/blog/archives">Blog Archives</a>
@@ -276,19 +243,28 @@ gem "hirb-unicode"
     <section>
   <h1>Categories</h1>
     <ul id="categories">
-       <li class='category'><a href='/blog/categories/app/'>app (30)</a></li>
+       <li class='category'><a href='/blog/categories/app/'>app (31)</a></li>
 <li class='category'><a href='/blog/categories/bat/'>bat (10)</a></li>
 <li class='category'><a href='/blog/categories/excel/'>excel (1)</a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (28)</a></li>
 <li class='category'><a href='/blog/categories/python/'>python (10)</a></li>
 <li class='category'><a href='/blog/categories/ror/'>ror (30)</a></li>
 <li class='category'><a href='/blog/categories/ruby/'>ruby (56)</a></li>
+<li class='category'><a href='/blog/categories/uncategorized/'>uncategorized (1)</a></li>
 
     </ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2018/12/23/tor-privoxy/">Tor_privoxy</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2018/12/23/minpony/">Minpony</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2018/12/21/print/">Print</a>
@@ -300,14 +276,6 @@ gem "hirb-unicode"
     
       <li class="post">
         <a href="/blog/2018/12/15/mass-data-import-sql/">Mass_data_import_sql</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2018/12/13/weather-api/">Weather_api</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2018/12/09/postgresql/">Postgresql</a>
       </li>
     
   </ul>

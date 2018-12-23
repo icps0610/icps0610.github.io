@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-12-23T02:51:27+08:00</updated>
+  <updated>2018-12-23T23:17:25+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,39 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Tor_privoxy]]></title>
+    <link href="http://icps0610.github.io/blog/2018/12/23/tor-privoxy/"/>
+    <updated>2018-12-23T23:13:19+08:00</updated>
+    <id>http://icps0610.github.io/blog/2018/12/23/tor-privoxy</id>
+    <content type="html"><![CDATA[<p><code>apt-get install tor privoxy</code></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>/etc/privoxy/config 
+</span><span class='line'>#785 listen-address :8118</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Minpony]]></title>
+    <link href="http://icps0610.github.io/blog/2018/12/23/minpony/"/>
+    <updated>2018-12-23T16:10:50+08:00</updated>
+    <id>http://icps0610.github.io/blog/2018/12/23/minpony</id>
+    <content type="html"><![CDATA[<p><code>apt-get install wine1.8</code><br/>
+<code>https://dl.winehq.org/wine/wine-mono/4.7.1/</code><br/>
+<code>apt install libmono-webbrowser4.0-cil</code></p>
+
+<h3>winetricks</h3>
+
+<p><code>https://wiki.winehq.org/Winetricks</code><br/>
+<code>wget  https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks</code><br/>
+<code>chmod +x winetricks</code><br/>
+<code>winetricks gdiplus fontfix dotnet40, ie8</code></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Print]]></title>
@@ -743,30 +776,6 @@ add buildpacks:</p>
 
 <p>arr.sort_by{|x,y|y}
 arr.sort_by(&amp;:last)</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Fuzzystringmatch]]></title>
-    <link href="http://icps0610.github.io/blog/2018/10/05/fuzzystringmatch/"/>
-    <updated>2018-10-05T14:07:20+08:00</updated>
-    <id>http://icps0610.github.io/blog/2018/10/05/fuzzystringmatch</id>
-    <content type="html"><![CDATA[<h3><a href="https://github.com/kiyoka/fuzzy-string-match">https://github.com/kiyoka/fuzzy-string-match</a></h3>
-
-<p>require &lsquo;fuzzystringmatch&rsquo;
-jarow = FuzzyStringMatch::JaroWinkler.create( :native )
-p jarow.getDistance(  &ldquo;jones&rdquo;,      &ldquo;johnson&rdquo; )</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Save_last_directory]]></title>
-    <link href="http://icps0610.github.io/blog/2018/10/04/save-last-directory/"/>
-    <updated>2018-10-04T22:21:12+08:00</updated>
-    <id>http://icps0610.github.io/blog/2018/10/04/save-last-directory</id>
-    <content type="html"><![CDATA[<h3>Save last working directory on Bash logout</h3>
-
-<blockquote><p>ref <a href="https://stackoverflow.com/questions/767040/save-last-working-directory-on-bash-logout">https://stackoverflow.com/questions/767040/save-last-working-directory-on-bash-logout</a></p></blockquote>
 ]]></content>
   </entry>
   

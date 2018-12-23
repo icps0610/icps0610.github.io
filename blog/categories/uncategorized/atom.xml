@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Uncategorized | icps]]></title>
+  <link href="http://icps0610.github.io/blog/categories/uncategorized/atom.xml" rel="self"/>
+  <link href="http://icps0610.github.io/"/>
+  <updated>2018-12-23T23:17:25+08:00</updated>
+  <id>http://icps0610.github.io/</id>
+  <author>
+    <name><![CDATA[icps]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Tor_privoxy]]></title>
+    <link href="http://icps0610.github.io/blog/2018/12/23/tor-privoxy/"/>
+    <updated>2018-12-23T23:13:19+08:00</updated>
+    <id>http://icps0610.github.io/blog/2018/12/23/tor-privoxy</id>
+    <content type="html"><![CDATA[<p><code>apt-get install tor privoxy</code><br/>
+```
+/etc/privoxy/config</p>
+
+<h1>785 listen-address :8118</h1>
+
+<p>```</p>
+]]></content>
+  </entry>
+  
+ </feed>

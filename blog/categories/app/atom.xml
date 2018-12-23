@@ -4,7 +4,7 @@
   <title><![CDATA[Category: App | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/app/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-12-23T02:51:27+08:00</updated>
+  <updated>2018-12-23T23:17:25+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,24 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Minpony]]></title>
+    <link href="http://icps0610.github.io/blog/2018/12/23/minpony/"/>
+    <updated>2018-12-23T16:10:50+08:00</updated>
+    <id>http://icps0610.github.io/blog/2018/12/23/minpony</id>
+    <content type="html"><![CDATA[<p><code>apt-get install wine1.8</code><br/>
+<code>https://dl.winehq.org/wine/wine-mono/4.7.1/</code><br/>
+<code>apt install libmono-webbrowser4.0-cil</code></p>
+
+<h3>winetricks</h3>
+
+<p><code>https://wiki.winehq.org/Winetricks</code><br/>
+<code>wget  https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks</code><br/>
+<code>chmod +x winetricks</code><br/>
+<code>winetricks gdiplus fontfix dotnet40, ie8</code></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Gmail]]></title>
@@ -57,23 +75,6 @@
 "rpc-port":  
 "incomplete-dir"  
 "incomplete-dir-enabled"  
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Tor]]></title>
-    <link href="http://icps0610.github.io/blog/2017/12/19/tor/"/>
-    <updated>2017-12-19T15:38:50+08:00</updated>
-    <id>http://icps0610.github.io/blog/2017/12/19/tor</id>
-    <content type="html"><![CDATA[<blockquote><blockquote><p>ref <a href="https://blog.gtwang.org/linux/ubuntu-linux-use-tor-and-privoxy-to-build-anonymous-http-proxy/">https://blog.gtwang.org/linux/ubuntu-linux-use-tor-and-privoxy-to-build-anonymous-http-proxy/</a>  <br/>
-ref <a href="https://blog.gtwang.org/iot/raspberry-pi-tor-router-onion-pi-proxy/">https://blog.gtwang.org/iot/raspberry-pi-tor-router-onion-pi-proxy/</a></p></blockquote></blockquote>
-
-<p><code>apt install tor privoxy</code></p>
-
-<pre><code>#/etc/privoxy/config  
-#forward-socks5t / 127.0.0.1:9050 .  
-listen-address :8080   
 </code></pre>
 ]]></content>
   </entry>
