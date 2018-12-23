@@ -1,0 +1,15 @@
+---
+layout: post
+title: "minpony"
+date: 2018-12-23 16:10:50 +0800
+comments: true
+categories: app
+---
+` apt-get install wine1.8`  
+`https://dl.winehq.org/wine/wine-mono/4.7.1/`  
+`apt install libmono-webbrowser4.0-cil`  
+### winetricks
+`https://wiki.winehq.org/Winetricks`  
+`wget  https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks`  
+`chmod +x winetricks`  
+`winetricks gdiplus fontfix dotnet40, ie8`  
