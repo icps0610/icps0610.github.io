@@ -4,7 +4,7 @@
   <title><![CDATA[Category: App | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/app/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-12-23T23:17:25+08:00</updated>
+  <updated>2019-01-13T03:35:59+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,15 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Stacer]]></title>
+    <link href="http://icps0610.github.io/blog/2018/12/24/stacer/"/>
+    <updated>2018-12-24T18:35:53+08:00</updated>
+    <id>http://icps0610.github.io/blog/2018/12/24/stacer</id>
+    <content type="html"><![CDATA[<p><code>https://github.com/oguzhaninan/Stacer/releases</code></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Minpony]]></title>
@@ -58,24 +67,6 @@
     <content type="html"><![CDATA[<p>Franky</p>
 
 <blockquote><blockquote><p><a href="http://motion-express.com/blog/20150204-introduce-franky">http://motion-express.com/blog/20150204-introduce-franky</a></p></blockquote></blockquote>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Transmission]]></title>
-    <link href="http://icps0610.github.io/blog/2018/01/24/transmission/"/>
-    <updated>2018-01-24T19:26:10+08:00</updated>
-    <id>http://icps0610.github.io/blog/2018/01/24/transmission</id>
-    <content type="html"><![CDATA[<p><code>apt-get install transmission-daemon</code></p>
-
-<pre><code>#/etc/transmission-daemon/settings.json  
-"download-dir"  
-"rpc-password"  
-"rpc-username"  
-"rpc-port":  
-"incomplete-dir"  
-"incomplete-dir-enabled"  
-</code></pre>
 ]]></content>
   </entry>
   

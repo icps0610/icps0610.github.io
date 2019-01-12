@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-12-23T23:17:25+08:00</updated>
+  <updated>2019-01-13T03:35:59+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,25 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Where_certain_day]]></title>
+    <link href="http://icps0610.github.io/blog/2019/01/12/where-certain-day/"/>
+    <updated>2019-01-12T01:39:03+08:00</updated>
+    <id>http://icps0610.github.io/blog/2019/01/12/where-certain-day</id>
+    <content type="html"><![CDATA[<p>date = A.last.created_at
+A.where(created_at: date.midnight..date.end_of_day)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Stacer]]></title>
+    <link href="http://icps0610.github.io/blog/2018/12/24/stacer/"/>
+    <updated>2018-12-24T18:35:53+08:00</updated>
+    <id>http://icps0610.github.io/blog/2018/12/24/stacer</id>
+    <content type="html"><![CDATA[<p><code>https://github.com/oguzhaninan/Stacer/releases</code></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Tor_privoxy]]></title>
@@ -750,32 +769,6 @@ add buildpacks:</p>
 </span><span class='line'><span class="nb">p</span> <span class="n">add_date</span><span class="p">(</span><span class="n">cdate</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Pycall]]></title>
-    <link href="http://icps0610.github.io/blog/2018/10/07/pycall/"/>
-    <updated>2018-10-07T11:44:45+08:00</updated>
-    <id>http://icps0610.github.io/blog/2018/10/07/pycall</id>
-    <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;pycall/import&#39;</span>
-</span><span class='line'><span class="kp">include</span> <span class="no">PyCall</span><span class="o">::</span><span class="no">Import</span>
-</span></code></pre></td></tr></table></div></figure>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Sorting-a-two-dimensional-array]]></title>
-    <link href="http://icps0610.github.io/blog/2018/10/05/sort-by/"/>
-    <updated>2018-10-05T18:31:04+08:00</updated>
-    <id>http://icps0610.github.io/blog/2018/10/05/sort-by</id>
-    <content type="html"><![CDATA[<blockquote><p>ref <a href="https://stackoverflow.com/questions/7033719/sorting-a-two-dimensional-array-by-second-value">https://stackoverflow.com/questions/7033719/sorting-a-two-dimensional-array-by-second-value</a></p></blockquote>
-
-<p>arr.sort_by{|x,y|y}
-arr.sort_by(&amp;:last)</p>
 ]]></content>
   </entry>
   

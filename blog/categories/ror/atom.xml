@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ror | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/ror/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2018-12-23T23:17:25+08:00</updated>
+  <updated>2019-01-13T03:35:59+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,16 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Where_certain_day]]></title>
+    <link href="http://icps0610.github.io/blog/2019/01/12/where-certain-day/"/>
+    <updated>2019-01-12T01:39:03+08:00</updated>
+    <id>http://icps0610.github.io/blog/2019/01/12/where-certain-day</id>
+    <content type="html"><![CDATA[<p>date = A.last.created_at
+A.where(created_at: date.midnight..date.end_of_day)</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Print]]></title>
@@ -83,83 +93,6 @@ development:
 <h3>rails</h3>
 
 <p><code>rails new myapp --database=postgresql</code></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Heroku]]></title>
-    <link href="http://icps0610.github.io/blog/2018/11/10/heroku/"/>
-    <updated>2018-11-10T15:29:15+08:00</updated>
-    <id>http://icps0610.github.io/blog/2018/11/10/heroku</id>
-    <content type="html"><![CDATA[<h3>build</h3>
-
-<p><code>heroku login</code><br/>
-<code>heroku create [name]</code></p>
-
-<h3>app name</h3>
-
-<p><code>cat .git/config | grep heroku.com | awk -F [/.] '{print $6}'</code></p>
-
-<p><code>heroku git:remote -a `cat .git/config | grep heroku.com | awk -F [/.] '{print $6}'`</code><br/>
-<code>git init</code></p>
-
-<h3>upload</h3>
-
-<p><code>git commit -am '`date +%Y-%m-%d:%H:%M:%S`'</code><br/>
-<code>git push heroku master</code></p>
-
-<pre><code class="ruby">#Gemfile
-group :production do
-    gem 'rails_12factor'
-    gem 'pg'
-end
-</code></pre>
-
-<h3>reset base</h3>
-
-<p><code>heroku restart; heroku pg:reset DATABASE --confirm `cat .git/config | grep heroku.com | awk -F [/.] '{print $6}'` &amp;&amp; heroku run rake db:migrate</code></p>
-
-<h3>rename app</h3>
-
-<p><code>git remote rm heroku</code><br/>
-<code>`heroku git:remote -a [new_app_name]</code></p>
-
-<h3>sync database</h3>
-
-<p><code>PGUSER=postgres PGPASSWORD=passwd heroku pg:push local_database heroku_datbase --app app</code>
-<code>PGUSER=postgres PGPASSWORD=passwd heroku pg:pull heroku_datbase local_database --app app</code></p>
-
-<h3>watir</h3>
-
-<p>ref >> <a href="https://www.simon-neutert.de/2018/watir-chrome-heroku/">https://www.simon-neutert.de/2018/watir-chrome-heroku/</a>
-add buildpacks:
-<code>
-https://github.com/heroku/heroku-buildpack-google-chrome
-https://github.com/heroku/heroku-buildpack-chromedriver
-gem 'waitr'
-require 'watir'
-</code></p>
-
-<h3>switch</h3>
-
-<p>ref >> <a href="https://github.com/heroku/heroku-accounts">https://github.com/heroku/heroku-accounts</a></p>
-
-<h5>add accounts</h5>
-
-<p><code>heroku accounts:add username</code></p>
-
-<h5>switch accounts</h5>
-
-<p><code>heroku accounts:set username</code></p>
-
-<h5>list accounts</h5>
-
-<p><code>heroku accounts</code></p>
-
-<h2>No migration with version number</h2>
-
-<p><code>heroku pg:psql</code>
-<code>delete from schema_migrations where version= 'XXXXXXXXXXX';</code></p>
 ]]></content>
   </entry>
   
