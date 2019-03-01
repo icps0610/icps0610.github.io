@@ -4,7 +4,7 @@
   <title><![CDATA[Category: App | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/app/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2019-03-01T14:26:44+08:00</updated>
+  <updated>2019-03-01T14:28:14+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -19,6 +19,21 @@
     <updated>2018-12-24T18:35:53+08:00</updated>
     <id>http://icps0610.github.io/blog/2018/12/24/stacer</id>
     <content type="html"><![CDATA[<p><code>https://github.com/oguzhaninan/Stacer/releases</code></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Tor_privoxy]]></title>
+    <link href="http://icps0610.github.io/blog/2018/12/23/tor-privoxy/"/>
+    <updated>2018-12-23T23:13:19+08:00</updated>
+    <id>http://icps0610.github.io/blog/2018/12/23/tor-privoxy</id>
+    <content type="html"><![CDATA[<p><code>apt-get install tor privoxy</code><br/>
+```
+/etc/privoxy/config</p>
+
+<h1>785 listen-address :8118</h1>
+
+<p>```</p>
 ]]></content>
   </entry>
   
@@ -56,17 +71,6 @@
     <id>http://icps0610.github.io/blog/2018/04/25/ssh-server</id>
     <content type="html"><![CDATA[<p><code>https://github.com/krishnasrinivas/wetty</code><br/>
 <code>https://github.com/paradoxxxzero/butterfly</code></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Franky]]></title>
-    <link href="http://icps0610.github.io/blog/2018/03/01/franky/"/>
-    <updated>2018-03-01T16:03:16+08:00</updated>
-    <id>http://icps0610.github.io/blog/2018/03/01/franky</id>
-    <content type="html"><![CDATA[<p>Franky</p>
-
-<blockquote><blockquote><p><a href="http://motion-express.com/blog/20150204-introduce-franky">http://motion-express.com/blog/20150204-introduce-franky</a></p></blockquote></blockquote>
 ]]></content>
   </entry>
   
