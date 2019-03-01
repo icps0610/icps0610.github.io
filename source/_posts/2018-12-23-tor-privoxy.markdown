@@ -3,7 +3,7 @@ layout: post
 title: "tor_privoxy"
 date: 2018-12-23 23:13:19 +0800
 comments: true
-categories: uncategorized
+categories: app
 ---
 `apt-get install tor privoxy`  
 ```
