@@ -266,9 +266,6 @@
 <span class='line-number'>126</span>
 <span class='line-number'>127</span>
 <span class='line-number'>128</span>
-<span class='line-number'>129</span>
-<span class='line-number'>130</span>
-<span class='line-number'>131</span>
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># encoding: utf-8</span>
 </span><span class='line'><span class="nb">require</span> <span class="s1">&#39;rmagick&#39;</span>
 </span><span class='line'>
@@ -279,10 +276,7 @@
 </span><span class='line'>
 </span><span class='line'><span class="k">def</span> <span class="nf">num_possible</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="n">l</span><span class="p">)</span>
 </span><span class='line'>    <span class="p">((</span><span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="mi">9</span><span class="p">)</span><span class="o">.</span><span class="n">to_a</span> <span class="o">-</span> <span class="n">num</span> <span class="o">-</span> <span class="o">[</span><span class="n">l</span><span class="o">]</span><span class="p">)</span><span class="o">.</span><span class="n">map</span> <span class="k">do</span> <span class="o">|</span><span class="n">n</span><span class="o">|</span>
-</span><span class='line'>        <span class="k">if</span> <span class="n">cross_two_num</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
-</span><span class='line'>            <span class="n">m</span> <span class="o">=</span> <span class="p">(</span><span class="n">l</span> <span class="o">+</span> <span class="n">n</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
-</span><span class='line'>            <span class="n">n</span> <span class="k">if</span> <span class="n">num</span><span class="o">.</span><span class="n">include?</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
-</span><span class='line'>        <span class="k">else</span>
+</span><span class='line'>        <span class="k">if</span> <span class="ow">not</span> <span class="n">cross_two_num</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="ow">or</span> <span class="n">num</span><span class="o">.</span><span class="n">include?</span><span class="p">((</span><span class="n">l</span> <span class="o">+</span> <span class="n">n</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
 </span><span class='line'>            <span class="n">n</span>
 </span><span class='line'>        <span class="k">end</span>
 </span><span class='line'>    <span class="k">end</span><span class="o">.</span><span class="n">compact</span>
