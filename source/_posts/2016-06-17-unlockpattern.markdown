@@ -12,28 +12,14 @@ require 'rmagick'
 
 def cross_two_num(l, n)
     co = "1379"
-    co.include? l.to_s and co.include? n or n.to_i == 10 - l.to_i
-end
-
-def num_check(num)
-    (0..num.size-2).each do |i|
-        l = num[i]
-        n = num[i+1]
-        if cross_two_num(l, n)
-            m = (l.to_i + n.to_i)/2
-            return false if not num[0..i].include?(m.to_s)
-        end
-    end
-    return true
+    co.include? l.to_s and co.include? n.to_s or n.to_i == 10 - l.to_i
 end
 
 def num_possible(num, l)
-    num = (num + l.to_s).split(//) 
-    all = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
-    (all - num).map do |n|
+    ((1..9).to_a - num - [l]).map do |n|
         if cross_two_num(l, n)
-            m = (l.to_i + n.to_i)/2
-            n if num.include?(m.to_s)
+            m = (l + n)/2
+            n if num.include?(m)
         else
             n
         end
@@ -41,8 +27,7 @@ def num_possible(num, l)
 end
 
 def dfs(pt, route=[], take=->(r) { yield(r) })
-    num = route.join
-    possible = num_possible(num, pt)
+    possible = num_possible(route, pt)
     if route.size == 8 or possible.size > 0
         route.push(pt)
         if route.size >= 4
@@ -55,27 +40,37 @@ def dfs(pt, route=[], take=->(r) { yield(r) })
     end
 end
 
-def produce_rand(length, num="", s=rand(1..9))
+def produce_rand(length)
+    num = [rand(1..9)]
     length.times do
-        num += s.to_s
-        s = num_possible(num[0, num.size-1],  num[-1]).sample
+        num << num_possible(num, num[-1]).sample
     end
-    return num
+    num.join
 end
 
-def location(i)
-    base = i.to_i.divmod(3)
-    if base[1] == 0
-        x = base[1] + 2
-        y = base[0] - 1
-    else
-        x = base[1] - 1
-        y = base[0]
+def num_check(num)
+    (0..num.size-2).each do |i|
+        l = num[i]
+        n = num[i+1]
+        if cross_two_num(l, n)
+            m = (l.to_i + n.to_i)/2
+            return false if not num[0..i].include?(m.to_s)
+        end
     end
-    return [ 50 + 100 * x - 5, 50 + 100 * y ]
 end
 
 def draw_line(num, scnum)
+    def location(i)
+        base = i.to_i.divmod(3)
+        if base[1] == 0
+            x = base[1] + 2
+            y = base[0] - 1
+        else
+            x = base[1] - 1
+            y = base[0]
+        end
+        return [ 50 + 100 * x - 5, 50 + 100 * y ]
+    end
     canvas = Magick::Image.new(300, 300)
     text = Magick::Draw.new
     text.font_family = 'TW-Sung'
@@ -117,12 +112,7 @@ def draw_line(num, scnum)
     spinner.write('/tmp/unlockpattern.gif')
 end
 
-
-sc = '〇〡〢〣〤〥〦〧〨〩'
-p num   = produce_rand(9)
-puts scnum = num.split(//).map{|i| sc[i.to_i] }.join
-draw_line(num, scnum)
-
+#===method 1
 t = Time.now
 all = []
 (1..9).map do |i|
@@ -133,17 +123,20 @@ end
 p all.size
 p Time.now - t
 
+#===method 2
 t = Time.now
 a = (4..9).map{|e| "123456789".split(//).permutation(e).map &:join }.flatten
 
 all = a.map do |num|
-    if num_check(num) == true
-        num
-    end
+    num if num_check(num)
 end.compact
 p all.size
 p Time.now - t
 
-
+#rand
+sc = '零一二三四五六七八九'
+p num   = produce_rand(9)
+puts scnum = num.split(//).map{|i| sc[i.to_i] }.join
+draw_line(num, scnum)
 ```
 
