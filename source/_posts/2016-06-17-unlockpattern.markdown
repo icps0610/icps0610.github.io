@@ -17,10 +17,7 @@ end
 
 def num_possible(num, l)
     ((1..9).to_a - num - [l]).map do |n|
-        if cross_two_num(l, n)
-            m = (l + n)/2
-            n if num.include?(m)
-        else
+        if not cross_two_num(l, n) or num.include?((l + n)/2)
             n
         end
     end.compact
