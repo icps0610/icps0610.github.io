@@ -8,10 +8,10 @@ categories: ruby
 ### Infinity
 ### ref https://stackoverflow.com/questions/5778295/how-to-express-infinity-in-ruby
 PositiveInfinity = +1.0/0.0   
-#=> Infinity
+#### => Infinity
 
 NegativeInfinity = -1.0/0.0   
-#=> -Infinity
+#### => -Infinity
 
 CompleteInfinity = NegativeInfinity..PositiveInfinity  
-#=> -Infinity..Infinity
+#### => -Infinity..Infinity
