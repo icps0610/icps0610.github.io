@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://icps0610.github.io/blog/2019/04/11/rimworld/</loc>
+<lastmod>2019-04-11T20:46:04+08:00</lastmod>
+</url>
+<url>
+<loc>http://icps0610.github.io/blog/2019/04/04/sort-nil/</loc>
+<lastmod>2019-04-04T17:12:03+08:00</lastmod>
+</url>
+<url>
 <loc>http://icps0610.github.io/blog/2019/01/12/where-certain-day/</loc>
 <lastmod>2019-01-12T01:39:03+08:00</lastmod>
 </url>
@@ -716,5 +724,8 @@
 </url>
 <url>
 <loc>http://icps0610.github.io/blog/categories/excel/</loc>
+</url>
+<url>
+<loc>http://icps0610.github.io/blog/categories/uncategorized/</loc>
 </url>
 </urlset>

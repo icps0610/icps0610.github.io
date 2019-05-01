@@ -9,9 +9,13 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="date = A.last.created_at
-A.where(created_at: date.midnight..date.end_of_day)
-">
+  <meta name="description" content="HugsLib mod
+Architect Sense mod Blueprints 複製建築
+Defensive Positions 防禦位置
+Conduit Deconstruct 拆除電線
+Time-of-Day Switches 定時開關
+RimFridge-1.0 小冰箱
+EdB &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -70,6 +74,91 @@ A.where(created_at: date.midnight..date.end_of_day)
       <div class="blog-index">
   
 
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2019/04/11/rimworld/">Rimworld</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2019-04-11T20:46:04+08:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2019</span></span> <span class='time'>8:46 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>HugsLib mod<br/>
+Architect Sense mod</p>
+
+<p>Blueprints 複製建築<br/>
+Defensive Positions 防禦位置<br/>
+Conduit Deconstruct 拆除電線<br/>
+Time-of-Day Switches 定時開關<br/>
+RimFridge-1.0 小冰箱<br/>
+EdB Prepare Carefuly 開場設定<br/>
+Furnace 焚化爐<br/>
+bridges 挖水坑<br/>
+CleaningArea 清掃區域<br/>
+Area Unlocker 增加區域<br/>
+LT-DoorMat 地毯<br/>
+Human Power Generator Mod 人力發電<br/>
+Miniaturisation 允許將工作桌搬走<br/>
+Replace Stuff 變更建築</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2019/04/04/sort-nil/">Sort_nil</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2019-04-04T17:12:03+08:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2019</span></span> <span class='time'>5:12 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">s</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="kp">nil</span><span class="p">,</span> <span class="mi">3</span><span class="o">]</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># sort index</span>
+</span><span class='line'><span class="nb">p</span> <span class="n">s</span><span class="o">.</span><span class="n">map</span><span class="p">{</span><span class="o">|</span><span class="n">i</span><span class="o">|</span><span class="n">i</span> <span class="o">==</span> <span class="kp">nil</span> <span class="p">?</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span><span class="o">/</span><span class="mi">0</span><span class="o">.</span><span class="mi">0</span> <span class="p">:</span> <span class="n">i</span><span class="p">}</span><span class="o">.</span><span class="n">map</span><span class="o">.</span><span class="n">with_index</span><span class="o">.</span><span class="n">sort</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:last</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
+  
   
     <article>
       
@@ -164,75 +253,6 @@ A.where(created_at: date.midnight..date.end_of_day)</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2018/12/23/minpony/">Minpony</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2018-12-23T16:10:50+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2018</span></span> <span class='time'>4:10 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><code>apt-get install wine1.8</code><br/>
-<code>https://dl.winehq.org/wine/wine-mono/4.7.1/</code><br/>
-<code>apt install libmono-webbrowser4.0-cil</code></p>
-
-<h3>winetricks</h3>
-
-<p><code>https://wiki.winehq.org/Winetricks</code><br/>
-<code>wget  https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks</code><br/>
-<code>chmod +x winetricks</code><br/>
-<code>winetricks gdiplus fontfix dotnet40, ie8</code></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2018/12/21/print/">Print</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2018-12-21T20:51:58+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2018</span></span> <span class='time'>8:51 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><code>gem "terminal-table"</code>
-<code>gem "hirb"</code>
-<code>gem "hirb-unicode"</code></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
     <a href="/blog/archives">Blog Archives</a>
@@ -250,13 +270,22 @@ A.where(created_at: date.midnight..date.end_of_day)</p>
 <li class='category'><a href='/blog/categories/linux/'>linux (28)</a></li>
 <li class='category'><a href='/blog/categories/python/'>python (10)</a></li>
 <li class='category'><a href='/blog/categories/ror/'>ror (31)</a></li>
-<li class='category'><a href='/blog/categories/ruby/'>ruby (56)</a></li>
+<li class='category'><a href='/blog/categories/ruby/'>ruby (57)</a></li>
+<li class='category'><a href='/blog/categories/uncategorized/'>uncategorized (1)</a></li>
 
     </ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2019/04/11/rimworld/">Rimworld</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2019/04/04/sort-nil/">Sort_nil</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2019/01/12/where-certain-day/">Where_certain_day</a>
@@ -268,14 +297,6 @@ A.where(created_at: date.midnight..date.end_of_day)</p>
     
       <li class="post">
         <a href="/blog/2018/12/23/tor-privoxy/">Tor_privoxy</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2018/12/23/minpony/">Minpony</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2018/12/21/print/">Print</a>
       </li>
     
   </ul>

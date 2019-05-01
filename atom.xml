@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2019-04-02T22:55:59+08:00</updated>
+  <updated>2019-05-01T21:26:33+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,51 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Rimworld]]></title>
+    <link href="http://icps0610.github.io/blog/2019/04/11/rimworld/"/>
+    <updated>2019-04-11T20:46:04+08:00</updated>
+    <id>http://icps0610.github.io/blog/2019/04/11/rimworld</id>
+    <content type="html"><![CDATA[<p>HugsLib mod<br/>
+Architect Sense mod</p>
+
+<p>Blueprints 複製建築<br/>
+Defensive Positions 防禦位置<br/>
+Conduit Deconstruct 拆除電線<br/>
+Time-of-Day Switches 定時開關<br/>
+RimFridge-1.0 小冰箱<br/>
+EdB Prepare Carefuly 開場設定<br/>
+Furnace 焚化爐<br/>
+bridges 挖水坑<br/>
+CleaningArea 清掃區域<br/>
+Area Unlocker 增加區域<br/>
+LT-DoorMat 地毯<br/>
+Human Power Generator Mod 人力發電<br/>
+Miniaturisation 允許將工作桌搬走<br/>
+Replace Stuff 變更建築</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Sort_nil]]></title>
+    <link href="http://icps0610.github.io/blog/2019/04/04/sort-nil/"/>
+    <updated>2019-04-04T17:12:03+08:00</updated>
+    <id>http://icps0610.github.io/blog/2019/04/04/sort-nil</id>
+    <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">s</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="kp">nil</span><span class="p">,</span> <span class="mi">3</span><span class="o">]</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># sort index</span>
+</span><span class='line'><span class="nb">p</span> <span class="n">s</span><span class="o">.</span><span class="n">map</span><span class="p">{</span><span class="o">|</span><span class="n">i</span><span class="o">|</span><span class="n">i</span> <span class="o">==</span> <span class="kp">nil</span> <span class="p">?</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span><span class="o">/</span><span class="mi">0</span><span class="o">.</span><span class="mi">0</span> <span class="p">:</span> <span class="n">i</span><span class="p">}</span><span class="o">.</span><span class="n">map</span><span class="o">.</span><span class="n">with_index</span><span class="o">.</span><span class="n">sort</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:last</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Where_certain_day]]></title>
@@ -563,210 +608,6 @@ add buildpacks:</p>
 </span><span class='line'><span class="k">end</span>
 </span><span class='line'><span class="c1">#dbg(:var) {}</span>
 </span><span class='line'><span class="c1">#@dbg = 0</span>
-</span></code></pre></td></tr></table></div></figure>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Days_excel]]></title>
-    <link href="http://icps0610.github.io/blog/2018/10/14/days-excel/"/>
-    <updated>2018-10-14T15:47:25+08:00</updated>
-    <id>http://icps0610.github.io/blog/2018/10/14/days-excel</id>
-    <content type="html"><![CDATA[<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>A1
-</span><span class='line'>1999/12/29
-</span><span class='line'>
-</span><span class='line'>C1
-</span><span class='line'>=LEFT(A1, SEARCH("/",A1,1)-1)
-</span><span class='line'>
-</span><span class='line'>D1
-</span><span class='line'>=MID(A1,SEARCH("/",A1,1)+1,SEARCH("/",A1,SEARCH("/",A1,1)+1)-SEARCH("/",A1,1)-1)
-</span><span class='line'>
-</span><span class='line'>E1
-</span><span class='line'>=RIGHT(A1,LEN(A1)-SEARCH("/",A1,SEARCH("/",A1,1)+1))
-</span><span class='line'>
-</span><span class='line'>F1
-</span><span class='line'>=(C1-1)*365+INT((C1-1)/4)-INT((C1-1)/100)+INT((C1-1)/400)+DATEDIF("1/1",D1&"/"&E1,"YD")+IF(OR(MOD(C1,400)=0,AND(MOD(C1,4)=0,MOD(C1,100)&lt;&gt;0)),IF(INT(D1)&gt;2,2,1), 1)
-</span></code></pre></td></tr></table></div></figure>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Days]]></title>
-    <link href="http://icps0610.github.io/blog/2018/10/14/days/"/>
-    <updated>2018-10-14T15:42:13+08:00</updated>
-    <id>http://icps0610.github.io/blog/2018/10/14/days</id>
-    <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-<span class='line-number'>41</span>
-<span class='line-number'>42</span>
-<span class='line-number'>43</span>
-<span class='line-number'>44</span>
-<span class='line-number'>45</span>
-<span class='line-number'>46</span>
-<span class='line-number'>47</span>
-<span class='line-number'>48</span>
-<span class='line-number'>49</span>
-<span class='line-number'>50</span>
-<span class='line-number'>51</span>
-<span class='line-number'>52</span>
-<span class='line-number'>53</span>
-<span class='line-number'>54</span>
-<span class='line-number'>55</span>
-<span class='line-number'>56</span>
-<span class='line-number'>57</span>
-<span class='line-number'>58</span>
-<span class='line-number'>59</span>
-<span class='line-number'>60</span>
-<span class='line-number'>61</span>
-<span class='line-number'>62</span>
-<span class='line-number'>63</span>
-<span class='line-number'>64</span>
-<span class='line-number'>65</span>
-<span class='line-number'>66</span>
-<span class='line-number'>67</span>
-<span class='line-number'>68</span>
-<span class='line-number'>69</span>
-<span class='line-number'>70</span>
-<span class='line-number'>71</span>
-<span class='line-number'>72</span>
-<span class='line-number'>73</span>
-<span class='line-number'>74</span>
-<span class='line-number'>75</span>
-<span class='line-number'>76</span>
-<span class='line-number'>77</span>
-<span class='line-number'>78</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># encoding: utf-8</span>
-</span><span class='line'><span class="c1"># .rvmrc rvm use 2.5.1</span>
-</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;date&#39;</span>
-</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;/data/ruby/debug/debug.rb&#39;</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">def</span> <span class="nf">cheack_date_true</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="n">day</span><span class="p">)</span>
-</span><span class='line'>    <span class="ow">not</span> <span class="n">leap_year</span><span class="p">(</span><span class="n">year</span><span class="p">)</span> <span class="ow">and</span> <span class="n">month</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">day</span> <span class="o">==</span> <span class="mi">29</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">def</span> <span class="nf">leap_year_days</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-</span><span class='line'>    <span class="n">leap_year</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="p">?</span> <span class="mi">366</span> <span class="p">:</span> <span class="mi">365</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">def</span> <span class="nf">leap_year</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-</span><span class='line'>    <span class="n">y</span> <span class="o">%</span> <span class="mi">4</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">y</span> <span class="o">%</span> <span class="mi">100</span> <span class="o">!=</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">y</span> <span class="o">%</span> <span class="mi">400</span> <span class="o">==</span> <span class="mi">0</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">def</span> <span class="nf">md</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-</span><span class='line'>    <span class="k">if</span> <span class="n">leap_year</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-</span><span class='line'>        <span class="o">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="o">]</span>
-</span><span class='line'>    <span class="k">else</span>
-</span><span class='line'>        <span class="o">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="o">]</span>
-</span><span class='line'>    <span class="k">end</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">def</span> <span class="nf">days</span><span class="p">(</span><span class="n">date</span><span class="p">)</span>
-</span><span class='line'>    <span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="n">day</span> <span class="o">=</span> <span class="n">date</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:to_i</span><span class="p">)</span>
-</span><span class='line'>    <span class="k">return</span> <span class="kp">false</span> <span class="k">if</span> <span class="n">cheack_date_true</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="n">day</span><span class="p">)</span>
-</span><span class='line'>    <span class="n">y</span> <span class="o">=</span> <span class="n">year</span> <span class="o">-</span> <span class="mi">1</span>
-</span><span class='line'>    <span class="n">years</span>  <span class="o">=</span> <span class="n">y</span> <span class="o">*</span> <span class="mi">365</span> <span class="o">+</span> <span class="p">(</span><span class="n">y</span> <span class="o">/</span> <span class="mi">4</span> <span class="o">-</span> <span class="n">y</span> <span class="o">/</span> <span class="mi">100</span> <span class="o">+</span> <span class="n">y</span> <span class="o">/</span> <span class="mi">400</span><span class="p">)</span>
-</span><span class='line'>    <span class="n">months</span> <span class="o">=</span> <span class="n">md</span><span class="p">(</span><span class="n">year</span><span class="p">)</span><span class="o">[</span><span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="p">(</span><span class="n">month</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span><span class="o">].</span><span class="n">sum</span>
-</span><span class='line'>    <span class="n">years</span> <span class="o">+</span> <span class="n">months</span> <span class="o">+</span> <span class="n">day</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">def</span> <span class="nf">add_date</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">num</span><span class="p">)</span>
-</span><span class='line'>    <span class="k">return</span> <span class="no">Date</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">date</span><span class="p">)</span> <span class="k">if</span> <span class="n">num</span> <span class="o">==</span> <span class="mi">0</span>
-</span><span class='line'>    <span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="n">day</span> <span class="o">=</span> <span class="n">date</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:to_i</span><span class="p">)</span>
-</span><span class='line'>    <span class="k">return</span> <span class="kp">false</span> <span class="k">if</span> <span class="n">cheack_date_true</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="n">day</span><span class="p">)</span>
-</span><span class='line'>    <span class="n">left_year</span> <span class="o">=</span> <span class="n">md</span><span class="p">(</span><span class="n">year</span><span class="p">)</span><span class="o">[</span><span class="n">month</span><span class="o">.</span><span class="n">.</span><span class="mi">13</span><span class="o">].</span><span class="n">sum</span> <span class="o">-</span> <span class="n">day</span>
-</span><span class='line'>    <span class="k">if</span> <span class="n">num</span> <span class="o">&gt;</span> <span class="n">left_year</span>
-</span><span class='line'>        <span class="n">month</span> <span class="o">=</span> <span class="n">day</span> <span class="o">=</span> <span class="mi">0</span>
-</span><span class='line'>        <span class="n">num</span> <span class="o">-=</span> <span class="n">left_year</span>
-</span><span class='line'>        <span class="k">until</span> <span class="n">num</span> <span class="o">&lt;</span> <span class="n">leap_year_days</span><span class="p">(</span><span class="n">year</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
-</span><span class='line'>            <span class="n">num</span> <span class="o">-=</span> <span class="n">leap_year_days</span><span class="p">(</span><span class="n">year</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
-</span><span class='line'>            <span class="n">year</span> <span class="o">+=</span> <span class="mi">1</span>
-</span><span class='line'>        <span class="k">end</span>
-</span><span class='line'>        <span class="n">year</span> <span class="o">+=</span> <span class="mi">1</span>
-</span><span class='line'>    <span class="k">elsif</span> <span class="n">num</span> <span class="o">==</span> <span class="n">left_year</span>
-</span><span class='line'>        <span class="k">return</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">year</span><span class="si">}</span><span class="s2">/12/31&quot;</span>
-</span><span class='line'>    <span class="k">end</span>
-</span><span class='line'>    <span class="n">num</span> <span class="o">+=</span> <span class="n">day</span>
-</span><span class='line'>    <span class="n">md</span><span class="p">(</span><span class="n">year</span><span class="p">)</span><span class="o">.</span><span class="n">each_with_index</span> <span class="k">do</span> <span class="o">|</span><span class="n">d</span><span class="p">,</span> <span class="n">idx</span><span class="o">|</span>
-</span><span class='line'>        <span class="k">next</span> <span class="k">if</span> <span class="n">idx</span> <span class="o">&lt;</span> <span class="n">month</span>
-</span><span class='line'>        <span class="k">if</span> <span class="n">num</span> <span class="o">&lt;=</span> <span class="n">d</span>
-</span><span class='line'>            <span class="k">return</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">year</span><span class="si">}</span><span class="s2">/</span><span class="si">#{</span><span class="n">idx</span><span class="si">}</span><span class="s2">/</span><span class="si">#{</span><span class="n">num</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span class='line'>        <span class="k">else</span>
-</span><span class='line'>            <span class="n">num</span> <span class="o">-=</span> <span class="n">d</span>
-</span><span class='line'>        <span class="k">end</span>
-</span><span class='line'>    <span class="k">end</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">def</span> <span class="nf">between</span><span class="p">(</span><span class="n">sdate</span><span class="p">,</span> <span class="n">edate</span><span class="p">)</span>
-</span><span class='line'>    <span class="n">s</span> <span class="o">=</span> <span class="n">days</span><span class="p">(</span><span class="n">sdate</span><span class="p">)</span>
-</span><span class='line'>    <span class="n">e</span> <span class="o">=</span> <span class="n">days</span><span class="p">(</span><span class="n">edate</span><span class="p">)</span>
-</span><span class='line'>    <span class="n">s</span> <span class="ow">and</span> <span class="n">e</span> <span class="p">?</span> <span class="p">(</span><span class="n">days</span><span class="p">(</span><span class="n">edate</span><span class="p">)</span> <span class="o">-</span> <span class="n">days</span><span class="p">(</span><span class="n">sdate</span><span class="p">))</span><span class="o">.</span><span class="n">abs</span> <span class="p">:</span> <span class="kp">false</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1">#i = Time.now.to_i</span>
-</span><span class='line'><span class="c1">#t = Time.at(i)</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">adate</span> <span class="o">=</span> <span class="s1">&#39;1950/1/1&#39;</span>
-</span><span class='line'><span class="n">bdate</span> <span class="o">=</span> <span class="s1">&#39;1981/2/29&#39;</span>
-</span><span class='line'><span class="n">cdate</span> <span class="o">=</span> <span class="s1">&#39;2000/2/29&#39;</span>
-</span><span class='line'><span class="nb">p</span> <span class="n">days</span><span class="p">(</span><span class="n">adate</span><span class="p">)</span>
-</span><span class='line'><span class="nb">p</span> <span class="n">days</span><span class="p">(</span><span class="n">bdate</span><span class="p">)</span>
-</span><span class='line'><span class="nb">p</span> <span class="n">between</span><span class="p">(</span><span class="n">adate</span><span class="p">,</span> <span class="n">bdate</span><span class="p">)</span>
-</span><span class='line'><span class="nb">p</span> <span class="n">between</span><span class="p">(</span><span class="n">adate</span><span class="p">,</span> <span class="n">cdate</span><span class="p">)</span>
-</span><span class='line'><span class="nb">p</span> <span class="n">add_date</span><span class="p">(</span><span class="n">cdate</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure>
 
 ]]></content>
