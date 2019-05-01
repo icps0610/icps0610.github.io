@@ -1,0 +1,25 @@
+---
+layout: post
+title: "rimworld"
+date: 2019-04-11 20:46:04 +0800
+comments: true
+categories: uncategorized
+---
+
+HugsLib mod  
+Architect Sense mod  
+  
+Blueprints 複製建築  
+Defensive Positions 防禦位置  
+Conduit Deconstruct 拆除電線  
+Time-of-Day Switches 定時開關  
+RimFridge-1.0 小冰箱  
+EdB Prepare Carefuly 開場設定  
+Furnace 焚化爐  
+bridges 挖水坑  
+CleaningArea 清掃區域  
+Area Unlocker 增加區域  
+LT-DoorMat 地毯  
+Human Power Generator Mod 人力發電  
+Miniaturisation 允許將工作桌搬走  
+Replace Stuff 變更建築  

@@ -15,24 +15,35 @@ p hash
 #{"a"=>1, "b"=>2}
 
 tmp = [ "key" , "value" , "key1" , "value1"]
-p hash=Hash[tmp.each_slice(2).map{|i|[i[0],i[1]]}]
+p hash = Hash[tmp.each_slice(2).map{|i|[i[0], i[1]]}]
 #{"key"=>"value", "key1"=>"value1"}
 ```
 
 ### array項目內重複次數
 
 ``` ruby
-array=[1,2,2,3,3,4,4,4,]
-
-#Array重複次數最多的前nu個
-def arry_max_frequency(array,nu)
- return array.each_with_object(Hash.new(0)){|m,h|h[m]+=1}.sort_by{|k,v|v}.reverse.take(nu).map{|i|i[0]}
-end
-
-p arry_max_frequency(array,3)
-#[4, 3, 2]
+array = [1, 2, 2, 3, 3, 4, 4, 4]
 
 #Array項目內重複次數
-p array.each_with_object(Hash.new(0)){|m,h|h[m]+= 1}
-#{1=>1, 2=>2, 3=>2, 4=>3}
+def arry_max_frequency(array)
+    array.compact.group_by(&:itself).map { |k,v| [k, v.count] }
+end
+
+p arry_max_frequency(array)
+#[[1, 1], [2, 2], [3, 2], [4, 3]]
+
+```
+
+### 合併array
+``` ruby
+def zip_array(a, b)
+    t, v = a.transpose
+    t.zip(v.zip(b.transpose.last))
+end
+a = [[1, 5], [2, 10]]
+b = [[1, 4], [2, 8]]
+
+zip_array(a, b)
+#[[1, [5, 4]], [2, [10, 8]]]
+
 ```

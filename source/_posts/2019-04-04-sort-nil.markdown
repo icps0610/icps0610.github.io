@@ -1,0 +1,16 @@
+---
+layout: post
+title: "sort_nil"
+date: 2019-04-04 17:12:03 +0800
+comments: true
+categories: ruby
+---
+
+``` ruby
+s = [1, 0, 2, nil, 3]
+
+
+# sort index
+p s.map{|i|i == nil ? 1.0/0.0 : i}.map.with_index.sort.map(&:last)
+
+```
