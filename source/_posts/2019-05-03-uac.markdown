@@ -1,0 +1,18 @@
+---
+layout: post
+title: "uac"
+date: 2019-05-03 15:14:01 +0800
+comments: true
+categories: bat
+---
+
+``` bat
+@echo off
+echo Windows Registry Editor Version 5.00 > uac.reg
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System] >> uac.reg
+echo "EnableLUA"=dword:00000000 >> uac.reg
+regedit /s uac.reg
+REG QUERY HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System | find "EnableLUA"
+pause
+
+```
