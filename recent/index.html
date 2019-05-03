@@ -9,13 +9,16 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="HugsLib mod
-Architect Sense mod Blueprints 複製建築
-Defensive Positions 防禦位置
-Conduit Deconstruct 拆除電線
-Time-of-Day Switches 定時開關
-RimFridge-1.0 小冰箱
-EdB &hellip;">
+  <meta name="description" content="1
+2
+3
+4
+5
+6
+7
+@echo off
+echo Windows Registry Editor Version 5.00 &gt; uac.reg
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -74,6 +77,50 @@ EdB &hellip;">
       <div class="blog-index">
   
 
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2019/05/03/uac/">Uac</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2019-05-03T15:14:01+08:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>3</span><span class='date-suffix'>rd</span>, <span class='date-year'>2019</span></span> <span class='time'>3:14 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='bat'><span class='line'><span class="p">@</span><span class="k">echo</span> <span class="k">off</span>
+</span><span class='line'><span class="k">echo</span> Windows Registry Editor Version <span class="m">5</span>.<span class="m">00</span> <span class="p">&gt;</span> <span class="n">uac</span>.reg
+</span><span class='line'><span class="k">echo</span> [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System] &gt;<span class="p">&gt;</span> <span class="n">uac</span>.reg
+</span><span class='line'><span class="k">echo</span> <span class="s2">&quot;EnableLUA&quot;</span><span class="o">=</span>dword:00000000 &gt;<span class="p">&gt;</span> <span class="n">uac</span>.reg
+</span><span class='line'>regedit <span class="n">/s</span> uac.reg
+</span><span class='line'>REG QUERY HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System <span class="p">|</span> <span class="n">find</span> <span class="s2">&quot;EnableLUA&quot;</span>
+</span><span class='line'><span class="k">pause</span>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
+  
   
     <article>
       
@@ -218,41 +265,6 @@ A.where(created_at: date.midnight..date.end_of_day)</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2018/12/23/tor-privoxy/">Tor_privoxy</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2018-12-23T23:13:19+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2018</span></span> <span class='time'>11:13 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><code>apt-get install tor privoxy</code></p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>/etc/privoxy/config 
-</span><span class='line'>#785 listen-address :8118</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
     <a href="/blog/archives">Blog Archives</a>
@@ -265,7 +277,7 @@ A.where(created_at: date.midnight..date.end_of_day)</p>
   <h1>Categories</h1>
     <ul id="categories">
        <li class='category'><a href='/blog/categories/app/'>app (33)</a></li>
-<li class='category'><a href='/blog/categories/bat/'>bat (10)</a></li>
+<li class='category'><a href='/blog/categories/bat/'>bat (11)</a></li>
 <li class='category'><a href='/blog/categories/excel/'>excel (1)</a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (28)</a></li>
 <li class='category'><a href='/blog/categories/python/'>python (10)</a></li>
@@ -278,6 +290,10 @@ A.where(created_at: date.midnight..date.end_of_day)</p>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2019/05/03/uac/">Uac</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2019/04/11/rimworld/">Rimworld</a>
@@ -293,10 +309,6 @@ A.where(created_at: date.midnight..date.end_of_day)</p>
     
       <li class="post">
         <a href="/blog/2018/12/24/stacer/">Stacer</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2018/12/23/tor-privoxy/">Tor_privoxy</a>
       </li>
     
   </ul>

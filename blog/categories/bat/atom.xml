@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Bat | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/bat/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2019-05-01T21:26:33+08:00</updated>
+  <updated>2019-05-03T15:14:45+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,22 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Uac]]></title>
+    <link href="http://icps0610.github.io/blog/2019/05/03/uac/"/>
+    <updated>2019-05-03T15:14:01+08:00</updated>
+    <id>http://icps0610.github.io/blog/2019/05/03/uac</id>
+    <content type="html"><![CDATA[<pre><code class="bat">@echo off
+echo Windows Registry Editor Version 5.00 &gt; uac.reg
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System] &gt;&gt; uac.reg
+echo "EnableLUA"=dword:00000000 &gt;&gt; uac.reg
+regedit /s uac.reg
+REG QUERY HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System | find "EnableLUA"
+pause
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Powercfg]]></title>
@@ -115,20 +131,6 @@ ping 127.0.0.1 -n 10 > nul
 %UserDomain%: 包含使用者帳號的網域名稱, 或者電腦名稱<br/>
 %UserName%: 使用者帳號名稱<br/>
 %UserProfile%: 目前使用者的設定檔路徑</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Taskkill]]></title>
-    <link href="http://icps0610.github.io/blog/2016/06/17/taskkill/"/>
-    <updated>2016-06-17T00:22:40+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/06/17/taskkill</id>
-    <content type="html"><![CDATA[<pre><code>@echo off
-for /f "delims=" %%i in (file.list) do (
-  taskkill /F /IM "%%i"
-)
-</code></pre>
-
 ]]></content>
   </entry>
   

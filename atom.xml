@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2019-05-01T21:26:33+08:00</updated>
+  <updated>2019-05-03T15:14:45+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,30 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Uac]]></title>
+    <link href="http://icps0610.github.io/blog/2019/05/03/uac/"/>
+    <updated>2019-05-03T15:14:01+08:00</updated>
+    <id>http://icps0610.github.io/blog/2019/05/03/uac</id>
+    <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='bat'><span class='line'><span class="p">@</span><span class="k">echo</span> <span class="k">off</span>
+</span><span class='line'><span class="k">echo</span> Windows Registry Editor Version <span class="m">5</span>.<span class="m">00</span> <span class="p">&gt;</span> <span class="n">uac</span>.reg
+</span><span class='line'><span class="k">echo</span> [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System] &gt;<span class="p">&gt;</span> <span class="n">uac</span>.reg
+</span><span class='line'><span class="k">echo</span> <span class="s2">&quot;EnableLUA&quot;</span><span class="o">=</span>dword:00000000 &gt;<span class="p">&gt;</span> <span class="n">uac</span>.reg
+</span><span class='line'>regedit <span class="n">/s</span> uac.reg
+</span><span class='line'>REG QUERY HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System <span class="p">|</span> <span class="n">find</span> <span class="s2">&quot;EnableLUA&quot;</span>
+</span><span class='line'><span class="k">pause</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Rimworld]]></title>
@@ -572,42 +596,6 @@ add buildpacks:</p>
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">source</span> <span class="o">=</span> <span class="no">ARGV</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span>
 </span><span class='line'><span class="n">to</span>     <span class="o">=</span> <span class="no">ARGV</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span>
 </span><span class='line'><span class="nb">system</span><span class="p">(</span><span class="s2">&quot;rsync -aAXv </span><span class="si">#{</span><span class="n">source</span><span class="si">}</span><span class="s2">/* </span><span class="si">#{</span><span class="n">to</span><span class="si">}</span><span class="s2"> | pv -ls `find </span><span class="si">#{</span><span class="n">source</span><span class="si">}</span><span class="s2">|wc -l` &gt;/dev/null&quot;</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Debug]]></title>
-    <link href="http://icps0610.github.io/blog/2018/10/15/debug/"/>
-    <updated>2018-10-15T21:19:16+08:00</updated>
-    <id>http://icps0610.github.io/blog/2018/10/15/debug</id>
-    <content type="html"><![CDATA[<blockquote><blockquote><p>ref <a href="https://stackoverflow.com/questions/2603617/ruby-print-the-variable-name-and-then-its-value">https://stackoverflow.com/questions/2603617/ruby-print-the-variable-name-and-then-its-value</a></p></blockquote></blockquote>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">dbg</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="kp">nil</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">b</span><span class="p">)</span>
-</span><span class='line'>    <span class="k">begin</span>
-</span><span class='line'>        <span class="n">v</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">to_s</span><span class="p">,</span> <span class="n">b</span><span class="o">.</span><span class="n">binding</span><span class="p">)</span>
-</span><span class='line'>    <span class="k">rescue</span> <span class="no">Exception</span> <span class="o">=&gt;</span> <span class="n">e</span>
-</span><span class='line'>        <span class="n">v</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="n">to_s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">first</span>
-</span><span class='line'>    <span class="k">end</span>
-</span><span class='line'>    <span class="n">s</span> <span class="o">=</span> <span class="s2">&quot; ------ &quot;</span> <span class="k">if</span> <span class="n">s</span> <span class="o">==</span> <span class="mi">1</span>
-</span><span class='line'>    <span class="n">v</span> <span class="o">=</span> <span class="s2">&quot;nil&quot;</span> <span class="k">if</span> <span class="n">v</span><span class="o">.</span><span class="n">to_s</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span>
-</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">s</span><span class="si">}#{</span><span class="n">a</span><span class="si">}</span><span class="s2"> : </span><span class="si">#{</span><span class="n">v</span><span class="si">}#{</span><span class="n">s</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">if</span> <span class="ow">not</span> <span class="vi">@dbg</span> <span class="o">==</span> <span class="mi">0</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'><span class="c1">#dbg(:var) {}</span>
-</span><span class='line'><span class="c1">#@dbg = 0</span>
 </span></code></pre></td></tr></table></div></figure>
 
 ]]></content>
