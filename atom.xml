@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="http://icps0610.github.io/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2019-05-04T16:26:37+08:00</updated>
+  <updated>2019-05-04T16:27:12+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,15 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Testimg]]></title>
+    <link href="http://icps0610.github.io/blog/2019/05/04/testimg/"/>
+    <updated>2019-05-04T16:26:58+08:00</updated>
+    <id>http://icps0610.github.io/blog/2019/05/04/testimg</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Uac]]></title>
@@ -580,22 +589,6 @@ add buildpacks:</p>
 </span><span class='line'><span class="k">end</span>
 </span><span class='line'><span class="n">ext</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">file</span><span class="p">)</span><span class="o">.</span><span class="n">scan</span><span class="p">(</span><span class="sr">/\.(.*)/</span><span class="p">)</span><span class="o">.</span><span class="n">join</span>
 </span><span class='line'><span class="nb">puts</span> <span class="n">tar</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">ext</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Cpr]]></title>
-    <link href="http://icps0610.github.io/blog/2018/10/20/cpr/"/>
-    <updated>2018-10-20T23:09:11+08:00</updated>
-    <id>http://icps0610.github.io/blog/2018/10/20/cpr</id>
-    <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">source</span> <span class="o">=</span> <span class="no">ARGV</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span>
-</span><span class='line'><span class="n">to</span>     <span class="o">=</span> <span class="no">ARGV</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span>
-</span><span class='line'><span class="nb">system</span><span class="p">(</span><span class="s2">&quot;rsync -aAXv </span><span class="si">#{</span><span class="n">source</span><span class="si">}</span><span class="s2">/* </span><span class="si">#{</span><span class="n">to</span><span class="si">}</span><span class="s2"> | pv -ls `find </span><span class="si">#{</span><span class="n">source</span><span class="si">}</span><span class="s2">|wc -l` &gt;/dev/null&quot;</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure>
 
 ]]></content>
