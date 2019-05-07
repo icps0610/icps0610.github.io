@@ -3,7 +3,7 @@ layout: post
 title: "rimworld"
 date: 2019-04-11 20:46:04 +0800
 comments: true
-categories: uncategorized
+categories: app
 ---
 
 HugsLib mod  
