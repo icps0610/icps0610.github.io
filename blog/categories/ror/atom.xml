@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ror | icps]]></title>
   <link href="https://icps0610.github.io/blog/categories/ror/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2019-05-08T02:10:46+08:00</updated>
+  <updated>2019-05-08T02:12:54+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -96,9 +96,9 @@ development:
 
 <h3>wsl</h3>
 
-<blockquote><blockquote><p>ref <a href="https://github.com/Microsoft/WSL/issues/3863">https://github.com/Microsoft/WSL/issues/3863</a>
-<code>data_sync_retry = on</code>
-ref <a href="https://github.com/Microsoft/WSL/issues/1761">https://github.com/Microsoft/WSL/issues/1761</a>
+<blockquote><blockquote><p>ref <a href="https://github.com/Microsoft/WSL/issues/3863">https://github.com/Microsoft/WSL/issues/3863</a><br/>
+<code>data_sync_retry = on</code><br/>
+ref <a href="https://github.com/Microsoft/WSL/issues/1761">https://github.com/Microsoft/WSL/issues/1761</a><br/>
 <code>export RUNLEVEL=1</code></p></blockquote></blockquote>
 ]]></content>
   </entry>
