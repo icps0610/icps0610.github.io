@@ -1,7 +1,0 @@
----
-layout: post
-title: "testimg"
-date: 2019-05-04 16:26:58 +0800
-comments: true
-categories: uncategorized
----
