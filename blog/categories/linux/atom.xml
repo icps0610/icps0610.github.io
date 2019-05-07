@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2019-05-07T17:37:48+08:00</updated>
+  <updated>2019-05-07T17:38:46+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,25 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Wsl]]></title>
+    <link href="http://icps0610.github.io/blog/2019/05/07/wsl/"/>
+    <updated>2019-05-07T14:13:54+08:00</updated>
+    <id>http://icps0610.github.io/blog/2019/05/07/wsl</id>
+    <content type="html"><![CDATA[<pre><code class="shell">
+#powershell run
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
+
+# ms-windows-store://search/?query=WSL
+
+
+#x11
+apt-get install x11-apps
+echo "export DISPLAY=127.0.0.1:0" &gt;&gt; ~/.bashrc
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Network_interfaces]]></title>
@@ -78,21 +97,6 @@ deb-src http://raspbian.raspberrypi.org/raspbian/ stretch main contrib non-free 
 `bundle install`
 eval "$(ssh-agent)";
 </code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Locale]]></title>
-    <link href="http://icps0610.github.io/blog/2018/04/19/lc-all-cannot-change-locale/"/>
-    <updated>2018-04-19T20:23:27+08:00</updated>
-    <id>http://icps0610.github.io/blog/2018/04/19/lc-all-cannot-change-locale</id>
-    <content type="html"><![CDATA[<h3>LC_ALL_cannot_change_locale</h3>
-
-<p><code>export LANGUAGE=en_US.UTF-8</code><br/>
-<code>export LANG=en_US.UTF-8</code><br/>
-<code>export LC_ALL=en_US.UTF-8</code><br/>
-<code>locale-gen en_US.UTF-8</code><br/>
-<code>dpkg-reconfigure locales</code></p>
 ]]></content>
   </entry>
   
