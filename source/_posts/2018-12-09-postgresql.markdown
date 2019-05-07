@@ -37,3 +37,10 @@ development:
 
 ### rails
 `rails new myapp --database=postgresql`
+
+
+### wsl
+>>ref https://github.com/Microsoft/WSL/issues/3863
+`data_sync_retry = on`
+>>ref https://github.com/Microsoft/WSL/issues/1761
+`export RUNLEVEL=1`
