@@ -1,0 +1,19 @@
+---
+layout: post
+title: "wsl"
+date: 2019-05-07 14:13:54 +0800
+comments: true
+categories: linux
+---
+``` shell
+
+#powershell run
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
+
+# ms-windows-store://search/?query=WSL
+
+
+#x11
+apt-get install x11-apps
+echo "export DISPLAY=127.0.0.1:0" >> ~/.bashrc
+```
