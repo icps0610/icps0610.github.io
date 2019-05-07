@@ -4,7 +4,7 @@
   <title><![CDATA[Category: App | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/app/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2019-05-07T16:46:17+08:00</updated>
+  <updated>2019-05-07T16:48:02+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,31 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Rimworld]]></title>
+    <link href="http://icps0610.github.io/blog/2019/04/11/rimworld/"/>
+    <updated>2019-04-11T20:46:04+08:00</updated>
+    <id>http://icps0610.github.io/blog/2019/04/11/rimworld</id>
+    <content type="html"><![CDATA[<p>HugsLib mod<br/>
+Architect Sense mod</p>
+
+<p>Blueprints 複製建築<br/>
+Defensive Positions 防禦位置<br/>
+Conduit Deconstruct 拆除電線<br/>
+Time-of-Day Switches 定時開關<br/>
+RimFridge-1.0 小冰箱<br/>
+EdB Prepare Carefuly 開場設定<br/>
+Furnace 焚化爐<br/>
+bridges 挖水坑<br/>
+CleaningArea 清掃區域<br/>
+Area Unlocker 增加區域<br/>
+LT-DoorMat 地毯<br/>
+Human Power Generator Mod 人力發電<br/>
+Miniaturisation 允許將工作桌搬走<br/>
+Replace Stuff 變更建築</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Stacer]]></title>
@@ -61,16 +86,6 @@
     <updated>2018-09-27T02:46:01+08:00</updated>
     <id>http://icps0610.github.io/blog/2018/09/27/gmail</id>
     <content type="html"><![CDATA[<p><code>curl -u username:password --silent "https://mail.google.com/mail/feed/atom" | tr -d '\n' | awk -F '&lt;entry&gt;' '{for (i=2; i&lt;=NF; i++) {print $i}}' | sed -n "s/&lt;title&gt;\(.*\)&lt;\/title.*name&gt;\(.*\)&lt;\/name&gt;.*/\2 - \1/p"</code></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Ssh_server]]></title>
-    <link href="http://icps0610.github.io/blog/2018/04/25/ssh-server/"/>
-    <updated>2018-04-25T12:38:21+08:00</updated>
-    <id>http://icps0610.github.io/blog/2018/04/25/ssh-server</id>
-    <content type="html"><![CDATA[<p><code>https://github.com/krishnasrinivas/wetty</code><br/>
-<code>https://github.com/paradoxxxzero/butterfly</code></p>
 ]]></content>
   </entry>
   
