@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Bat | icps]]></title>
-  <link href="http://icps0610.github.io/blog/categories/bat/atom.xml" rel="self"/>
-  <link href="http://icps0610.github.io/"/>
-  <updated>2019-05-07T17:42:45+08:00</updated>
-  <id>http://icps0610.github.io/</id>
+  <link href="https://icps0610.github.io/blog/categories/bat/atom.xml" rel="self"/>
+  <link href="https://icps0610.github.io/"/>
+  <updated>2019-05-07T17:46:10+08:00</updated>
+  <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Uac]]></title>
-    <link href="http://icps0610.github.io/blog/2019/05/03/uac/"/>
+    <link href="https://icps0610.github.io/blog/2019/05/03/uac/"/>
     <updated>2019-05-03T15:14:01+08:00</updated>
-    <id>http://icps0610.github.io/blog/2019/05/03/uac</id>
+    <id>https://icps0610.github.io/blog/2019/05/03/uac</id>
     <content type="html"><![CDATA[<pre><code class="bat">@echo off
 echo Windows Registry Editor Version 5.00 &gt; uac.reg
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System] &gt;&gt; uac.reg
@@ -31,9 +31,9 @@ pause
   
   <entry>
     <title type="html"><![CDATA[Powercfg]]></title>
-    <link href="http://icps0610.github.io/blog/2018/05/30/powercfg/"/>
+    <link href="https://icps0610.github.io/blog/2018/05/30/powercfg/"/>
     <updated>2018-05-30T21:36:45+08:00</updated>
-    <id>http://icps0610.github.io/blog/2018/05/30/powercfg</id>
+    <id>https://icps0610.github.io/blog/2018/05/30/powercfg</id>
     <content type="html"><![CDATA[<p><code>powercfg –h off</code><br/>
 <code>powercfg /energy</code><br/>
 <code>   C:\ProgramData\Microsoft\Windows\Power Efficiency Diagnostics\energy-report.html</code><br/>
@@ -45,9 +45,9 @@ pause
   
   <entry>
     <title type="html"><![CDATA[Ping_lan2]]></title>
-    <link href="http://icps0610.github.io/blog/2016/08/24/ping-lan2/"/>
+    <link href="https://icps0610.github.io/blog/2016/08/24/ping-lan2/"/>
     <updated>2016-08-24T00:36:40+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/08/24/ping-lan2</id>
+    <id>https://icps0610.github.io/blog/2016/08/24/ping-lan2</id>
     <content type="html"><![CDATA[<pre><code class="bat">@echo off
 SETLOCAL ENABLEDELAYEDEXPANSION
 set l=192.168.0
@@ -77,9 +77,9 @@ FOR /F %%i in (ip.txt) do (
   
   <entry>
     <title type="html"><![CDATA[Route]]></title>
-    <link href="http://icps0610.github.io/blog/2016/06/18/route/"/>
+    <link href="https://icps0610.github.io/blog/2016/06/18/route/"/>
     <updated>2016-06-18T01:41:14+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/06/18/route</id>
+    <id>https://icps0610.github.io/blog/2016/06/18/route</id>
     <content type="html"><![CDATA[<pre><code>@echo off
 route delete 0.0.0.0
 route add 0.0.0.0 192.168.43.1 mask 0.0.0.0
@@ -92,9 +92,9 @@ ping 127.0.0.1 -n 10 > nul
   
   <entry>
     <title type="html"><![CDATA[System]]></title>
-    <link href="http://icps0610.github.io/blog/2016/06/17/system/"/>
+    <link href="https://icps0610.github.io/blog/2016/06/17/system/"/>
     <updated>2016-06-17T17:22:48+08:00</updated>
-    <id>http://icps0610.github.io/blog/2016/06/17/system</id>
+    <id>https://icps0610.github.io/blog/2016/06/17/system</id>
     <content type="html"><![CDATA[<p>%SystemDrive%: 系統磁碟機, 預設是 C:<br/>
 %SystemRoot%: 系統根目錄, 預設是 C:\WinNT 或 C:\Windows<br/>
 %SystemDirectory%: 系統目錄, 預設是 C:\WinNT\System32 或 C:\Windows\System32<br/>

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: App | icps]]></title>
-  <link href="http://icps0610.github.io/blog/categories/app/atom.xml" rel="self"/>
-  <link href="http://icps0610.github.io/"/>
-  <updated>2019-05-07T17:42:45+08:00</updated>
-  <id>http://icps0610.github.io/</id>
+  <link href="https://icps0610.github.io/blog/categories/app/atom.xml" rel="self"/>
+  <link href="https://icps0610.github.io/"/>
+  <updated>2019-05-07T17:46:10+08:00</updated>
+  <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Rimworld]]></title>
-    <link href="http://icps0610.github.io/blog/2019/04/11/rimworld/"/>
+    <link href="https://icps0610.github.io/blog/2019/04/11/rimworld/"/>
     <updated>2019-04-11T20:46:04+08:00</updated>
-    <id>http://icps0610.github.io/blog/2019/04/11/rimworld</id>
+    <id>https://icps0610.github.io/blog/2019/04/11/rimworld</id>
     <content type="html"><![CDATA[<p>HugsLib mod<br/>
 Architect Sense mod</p>
 
@@ -40,18 +40,18 @@ Replace Stuff 變更建築</p>
   
   <entry>
     <title type="html"><![CDATA[Stacer]]></title>
-    <link href="http://icps0610.github.io/blog/2018/12/24/stacer/"/>
+    <link href="https://icps0610.github.io/blog/2018/12/24/stacer/"/>
     <updated>2018-12-24T18:35:53+08:00</updated>
-    <id>http://icps0610.github.io/blog/2018/12/24/stacer</id>
+    <id>https://icps0610.github.io/blog/2018/12/24/stacer</id>
     <content type="html"><![CDATA[<p><code>https://github.com/oguzhaninan/Stacer/releases</code></p>
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[Tor_privoxy]]></title>
-    <link href="http://icps0610.github.io/blog/2018/12/23/tor-privoxy/"/>
+    <link href="https://icps0610.github.io/blog/2018/12/23/tor-privoxy/"/>
     <updated>2018-12-23T23:13:19+08:00</updated>
-    <id>http://icps0610.github.io/blog/2018/12/23/tor-privoxy</id>
+    <id>https://icps0610.github.io/blog/2018/12/23/tor-privoxy</id>
     <content type="html"><![CDATA[<p><code>apt-get install tor privoxy</code><br/>
 ```
 /etc/privoxy/config</p>
@@ -64,9 +64,9 @@ Replace Stuff 變更建築</p>
   
   <entry>
     <title type="html"><![CDATA[Minpony]]></title>
-    <link href="http://icps0610.github.io/blog/2018/12/23/minpony/"/>
+    <link href="https://icps0610.github.io/blog/2018/12/23/minpony/"/>
     <updated>2018-12-23T16:10:50+08:00</updated>
-    <id>http://icps0610.github.io/blog/2018/12/23/minpony</id>
+    <id>https://icps0610.github.io/blog/2018/12/23/minpony</id>
     <content type="html"><![CDATA[<p><code>apt-get install wine1.8</code><br/>
 <code>https://dl.winehq.org/wine/wine-mono/4.7.1/</code><br/>
 <code>apt install libmono-webbrowser4.0-cil</code></p>
@@ -82,9 +82,9 @@ Replace Stuff 變更建築</p>
   
   <entry>
     <title type="html"><![CDATA[Gmail]]></title>
-    <link href="http://icps0610.github.io/blog/2018/09/27/gmail/"/>
+    <link href="https://icps0610.github.io/blog/2018/09/27/gmail/"/>
     <updated>2018-09-27T02:46:01+08:00</updated>
-    <id>http://icps0610.github.io/blog/2018/09/27/gmail</id>
+    <id>https://icps0610.github.io/blog/2018/09/27/gmail</id>
     <content type="html"><![CDATA[<p><code>curl -u username:password --silent "https://mail.google.com/mail/feed/atom" | tr -d '\n' | awk -F '&lt;entry&gt;' '{for (i=2; i&lt;=NF; i++) {print $i}}' | sed -n "s/&lt;title&gt;\(.*\)&lt;\/title.*name&gt;\(.*\)&lt;\/name&gt;.*/\2 - \1/p"</code></p>
 ]]></content>
   </entry>

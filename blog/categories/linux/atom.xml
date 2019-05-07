@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Linux | icps]]></title>
-  <link href="http://icps0610.github.io/blog/categories/linux/atom.xml" rel="self"/>
-  <link href="http://icps0610.github.io/"/>
-  <updated>2019-05-07T17:42:45+08:00</updated>
-  <id>http://icps0610.github.io/</id>
+  <link href="https://icps0610.github.io/blog/categories/linux/atom.xml" rel="self"/>
+  <link href="https://icps0610.github.io/"/>
+  <updated>2019-05-07T17:46:10+08:00</updated>
+  <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Wsl]]></title>
-    <link href="http://icps0610.github.io/blog/2019/05/07/wsl/"/>
+    <link href="https://icps0610.github.io/blog/2019/05/07/wsl/"/>
     <updated>2019-05-07T14:13:54+08:00</updated>
-    <id>http://icps0610.github.io/blog/2019/05/07/wsl</id>
+    <id>https://icps0610.github.io/blog/2019/05/07/wsl</id>
     <content type="html"><![CDATA[<pre><code class="">
 #powershell run
 Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
@@ -34,9 +34,9 @@ echo "export DISPLAY=127.0.0.1:0" &gt;&gt; ~/.bashrc
   
   <entry>
     <title type="html"><![CDATA[Network_interfaces]]></title>
-    <link href="http://icps0610.github.io/blog/2018/10/28/network-interfaces/"/>
+    <link href="https://icps0610.github.io/blog/2018/10/28/network-interfaces/"/>
     <updated>2018-10-28T03:59:55+08:00</updated>
-    <id>http://icps0610.github.io/blog/2018/10/28/network-interfaces</id>
+    <id>https://icps0610.github.io/blog/2018/10/28/network-interfaces</id>
     <content type="html"><![CDATA[<p> <code>interface = /sys/class/net</code>
  <code>mac       =  /sys/class/net/*/address</code></p>
 ]]></content>
@@ -44,9 +44,9 @@ echo "export DISPLAY=127.0.0.1:0" &gt;&gt; ~/.bashrc
   
   <entry>
     <title type="html"><![CDATA[Test_disk]]></title>
-    <link href="http://icps0610.github.io/blog/2018/10/27/test_disk/"/>
+    <link href="https://icps0610.github.io/blog/2018/10/27/test_disk/"/>
     <updated>2018-10-27T06:34:36+08:00</updated>
-    <id>http://icps0610.github.io/blog/2018/10/27/test_disk</id>
+    <id>https://icps0610.github.io/blog/2018/10/27/test_disk</id>
     <content type="html"><![CDATA[<p><code>apt install smartmontools</code><br/>
 <code>smartctl -H /dev/sda</code><br/>
 <code>smartctl -A /dev/sda</code><br/>
@@ -56,9 +56,9 @@ echo "export DISPLAY=127.0.0.1:0" &gt;&gt; ~/.bashrc
   
   <entry>
     <title type="html"><![CDATA[Save_last_directory]]></title>
-    <link href="http://icps0610.github.io/blog/2018/10/04/save-last-directory/"/>
+    <link href="https://icps0610.github.io/blog/2018/10/04/save-last-directory/"/>
     <updated>2018-10-04T22:21:12+08:00</updated>
-    <id>http://icps0610.github.io/blog/2018/10/04/save-last-directory</id>
+    <id>https://icps0610.github.io/blog/2018/10/04/save-last-directory</id>
     <content type="html"><![CDATA[<h3>Save last working directory on Bash logout</h3>
 
 <blockquote><p>ref <a href="https://stackoverflow.com/questions/767040/save-last-working-directory-on-bash-logout">https://stackoverflow.com/questions/767040/save-last-working-directory-on-bash-logout</a></p></blockquote>
@@ -67,9 +67,9 @@ echo "export DISPLAY=127.0.0.1:0" &gt;&gt; ~/.bashrc
   
   <entry>
     <title type="html"><![CDATA[Raspberry_pi_3_plus]]></title>
-    <link href="http://icps0610.github.io/blog/2018/04/22/raspberry-pi-3-plus/"/>
+    <link href="https://icps0610.github.io/blog/2018/04/22/raspberry-pi-3-plus/"/>
     <updated>2018-04-22T01:21:33+08:00</updated>
-    <id>http://icps0610.github.io/blog/2018/04/22/raspberry-pi-3-plus</id>
+    <id>https://icps0610.github.io/blog/2018/04/22/raspberry-pi-3-plus</id>
     <content type="html"><![CDATA[<pre><code># /etc/apt/sources.list
 # Uncomment line below then 'apt-get update' to enable 'apt-get source'
 deb ftp://ftp.yzu.edu.tw/Linux/raspbian/raspbian/ wheezy main contrib non-free rpi

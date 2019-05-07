@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Ruby | icps]]></title>
-  <link href="http://icps0610.github.io/blog/categories/ruby/atom.xml" rel="self"/>
-  <link href="http://icps0610.github.io/"/>
-  <updated>2019-05-07T17:42:45+08:00</updated>
-  <id>http://icps0610.github.io/</id>
+  <link href="https://icps0610.github.io/blog/categories/ruby/atom.xml" rel="self"/>
+  <link href="https://icps0610.github.io/"/>
+  <updated>2019-05-07T17:46:10+08:00</updated>
+  <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Sort_nil]]></title>
-    <link href="http://icps0610.github.io/blog/2019/04/04/sort-nil/"/>
+    <link href="https://icps0610.github.io/blog/2019/04/04/sort-nil/"/>
     <updated>2019-04-04T17:12:03+08:00</updated>
-    <id>http://icps0610.github.io/blog/2019/04/04/sort-nil</id>
+    <id>https://icps0610.github.io/blog/2019/04/04/sort-nil</id>
     <content type="html"><![CDATA[<pre><code class="ruby">s = [1, 0, 2, nil, 3]
 
 
@@ -29,9 +29,9 @@ p s.map{|i|i == nil ? 1.0/0.0 : i}.map.with_index.sort.map(&amp;:last)
   
   <entry>
     <title type="html"><![CDATA[Weather_api]]></title>
-    <link href="http://icps0610.github.io/blog/2018/12/13/weather-api/"/>
+    <link href="https://icps0610.github.io/blog/2018/12/13/weather-api/"/>
     <updated>2018-12-13T17:53:26+08:00</updated>
-    <id>http://icps0610.github.io/blog/2018/12/13/weather-api</id>
+    <id>https://icps0610.github.io/blog/2018/12/13/weather-api</id>
     <content type="html"><![CDATA[<p><code>https://works.ioa.tw/weather/api/doc/index.html#api-Weather_API</code>
 <code>http://opendata2.epa.gov.tw/AQI.json</code></p>
 ]]></content>
@@ -39,9 +39,9 @@ p s.map{|i|i == nil ? 1.0/0.0 : i}.map.with_index.sort.map(&amp;:last)
   
   <entry>
     <title type="html"><![CDATA[Display]]></title>
-    <link href="http://icps0610.github.io/blog/2018/10/27/display/"/>
+    <link href="https://icps0610.github.io/blog/2018/10/27/display/"/>
     <updated>2018-10-27T17:59:06+08:00</updated>
-    <id>http://icps0610.github.io/blog/2018/10/27/display</id>
+    <id>https://icps0610.github.io/blog/2018/10/27/display</id>
     <content type="html"><![CDATA[<pre><code class="ruby">#!/usr/bin/env ruby
 # encoding: utf-8
 class Display
@@ -84,9 +84,9 @@ end
   
   <entry>
     <title type="html"><![CDATA[Array_empty]]></title>
-    <link href="http://icps0610.github.io/blog/2018/10/24/array-empty/"/>
+    <link href="https://icps0610.github.io/blog/2018/10/24/array-empty/"/>
     <updated>2018-10-24T11:12:57+08:00</updated>
-    <id>http://icps0610.github.io/blog/2018/10/24/array-empty</id>
+    <id>https://icps0610.github.io/blog/2018/10/24/array-empty</id>
     <content type="html"><![CDATA[<blockquote><blockquote><p>ref <a href="https://stackoverflow.com/questions/5878697/how-do-i-remove-blank-elements-from-an-array">https://stackoverflow.com/questions/5878697/how-do-i-remove-blank-elements-from-an-array</a>
 ``` ruby
 array = [[], &ldquo;&rdquo;, &ldquo;2&rdquo;, nil]
@@ -104,9 +104,9 @@ array.compact</p>
   
   <entry>
     <title type="html"><![CDATA[Ta]]></title>
-    <link href="http://icps0610.github.io/blog/2018/10/21/ta/"/>
+    <link href="https://icps0610.github.io/blog/2018/10/21/ta/"/>
     <updated>2018-10-21T16:37:50+08:00</updated>
-    <id>http://icps0610.github.io/blog/2018/10/21/ta</id>
+    <id>https://icps0610.github.io/blog/2018/10/21/ta</id>
     <content type="html"><![CDATA[<pre><code class="ruby">#!/usr/bin/env ruby
 # encoding: utf-8
 def tar(file, ext)

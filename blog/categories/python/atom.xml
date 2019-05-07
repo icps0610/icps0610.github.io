@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Python | icps]]></title>
-  <link href="http://icps0610.github.io/blog/categories/python/atom.xml" rel="self"/>
-  <link href="http://icps0610.github.io/"/>
-  <updated>2019-05-07T17:42:45+08:00</updated>
-  <id>http://icps0610.github.io/</id>
+  <link href="https://icps0610.github.io/blog/categories/python/atom.xml" rel="self"/>
+  <link href="https://icps0610.github.io/"/>
+  <updated>2019-05-07T17:46:10+08:00</updated>
+  <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Excel]]></title>
-    <link href="http://icps0610.github.io/blog/2018/04/04/excel/"/>
+    <link href="https://icps0610.github.io/blog/2018/04/04/excel/"/>
     <updated>2018-04-04T16:39:18+08:00</updated>
-    <id>http://icps0610.github.io/blog/2018/04/04/excel</id>
+    <id>https://icps0610.github.io/blog/2018/04/04/excel</id>
     <content type="html"><![CDATA[<h3>xlsxwriter</h3>
 
 <h4>write</h4>
@@ -85,9 +85,9 @@ wb.save("test.xls")
   
   <entry>
     <title type="html"><![CDATA[Flatten]]></title>
-    <link href="http://icps0610.github.io/blog/2017/11/24/list/"/>
+    <link href="https://icps0610.github.io/blog/2017/11/24/list/"/>
     <updated>2017-11-24T15:58:10+08:00</updated>
-    <id>http://icps0610.github.io/blog/2017/11/24/list</id>
+    <id>https://icps0610.github.io/blog/2017/11/24/list</id>
     <content type="html"><![CDATA[<pre><code class="python">from itertools import chain
 a = [[1, 2 ,3], [1, 2 ,3], None, []]
 a = filter(None, a)
@@ -100,9 +100,9 @@ print(array)
   
   <entry>
     <title type="html"><![CDATA[Unix_time]]></title>
-    <link href="http://icps0610.github.io/blog/2017/11/19/unix-time/"/>
+    <link href="https://icps0610.github.io/blog/2017/11/19/unix-time/"/>
     <updated>2017-11-19T21:05:36+08:00</updated>
-    <id>http://icps0610.github.io/blog/2017/11/19/unix-time</id>
+    <id>https://icps0610.github.io/blog/2017/11/19/unix-time</id>
     <content type="html"><![CDATA[<pre><code class="python">import time
 import datetime
 
@@ -118,9 +118,9 @@ print(u)
   
   <entry>
     <title type="html"><![CDATA[Map_pthon]]></title>
-    <link href="http://icps0610.github.io/blog/2017/11/14/map-pthon/"/>
+    <link href="https://icps0610.github.io/blog/2017/11/14/map-pthon/"/>
     <updated>2017-11-14T01:30:33+08:00</updated>
-    <id>http://icps0610.github.io/blog/2017/11/14/map-pthon</id>
+    <id>https://icps0610.github.io/blog/2017/11/14/map-pthon</id>
     <content type="html"><![CDATA[<pre><code class="python">#python
 s = [ "1", "2", "3" ]
 print( map(int, s) )
@@ -134,9 +134,9 @@ print( listmap(int, s) )
   
   <entry>
     <title type="html"><![CDATA[Argv]]></title>
-    <link href="http://icps0610.github.io/blog/2017/10/22/argv/"/>
+    <link href="https://icps0610.github.io/blog/2017/10/22/argv/"/>
     <updated>2017-10-22T21:24:03+08:00</updated>
-    <id>http://icps0610.github.io/blog/2017/10/22/argv</id>
+    <id>https://icps0610.github.io/blog/2017/10/22/argv</id>
     <content type="html"><![CDATA[<pre><code class="python">import sys, getopt
 #args = " " . join(map(lambda s: '"%s"' % s if ' ' in s else s, sys.argv[2:]))
 

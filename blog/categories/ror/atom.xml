@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Ror | icps]]></title>
-  <link href="http://icps0610.github.io/blog/categories/ror/atom.xml" rel="self"/>
-  <link href="http://icps0610.github.io/"/>
-  <updated>2019-05-07T17:42:45+08:00</updated>
-  <id>http://icps0610.github.io/</id>
+  <link href="https://icps0610.github.io/blog/categories/ror/atom.xml" rel="self"/>
+  <link href="https://icps0610.github.io/"/>
+  <updated>2019-05-07T17:46:10+08:00</updated>
+  <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Where_certain_day]]></title>
-    <link href="http://icps0610.github.io/blog/2019/01/12/where-certain-day/"/>
+    <link href="https://icps0610.github.io/blog/2019/01/12/where-certain-day/"/>
     <updated>2019-01-12T01:39:03+08:00</updated>
-    <id>http://icps0610.github.io/blog/2019/01/12/where-certain-day</id>
+    <id>https://icps0610.github.io/blog/2019/01/12/where-certain-day</id>
     <content type="html"><![CDATA[<p>date = A.last.created_at
 A.where(created_at: date.midnight..date.end_of_day)</p>
 ]]></content>
@@ -25,9 +25,9 @@ A.where(created_at: date.midnight..date.end_of_day)</p>
   
   <entry>
     <title type="html"><![CDATA[Print]]></title>
-    <link href="http://icps0610.github.io/blog/2018/12/21/print/"/>
+    <link href="https://icps0610.github.io/blog/2018/12/21/print/"/>
     <updated>2018-12-21T20:51:58+08:00</updated>
-    <id>http://icps0610.github.io/blog/2018/12/21/print</id>
+    <id>https://icps0610.github.io/blog/2018/12/21/print</id>
     <content type="html"><![CDATA[<p><code>gem "terminal-table"</code>
 <code>gem "hirb"</code>
 <code>gem "hirb-unicode"</code></p>
@@ -36,27 +36,27 @@ A.where(created_at: date.midnight..date.end_of_day)</p>
   
   <entry>
     <title type="html"><![CDATA[Form]]></title>
-    <link href="http://icps0610.github.io/blog/2018/12/20/form/"/>
+    <link href="https://icps0610.github.io/blog/2018/12/20/form/"/>
     <updated>2018-12-20T23:27:53+08:00</updated>
-    <id>http://icps0610.github.io/blog/2018/12/20/form</id>
+    <id>https://icps0610.github.io/blog/2018/12/20/form</id>
     <content type="html"><![CDATA[<p><code>&lt;%= token_tag %&gt;</code></p>
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[Mass_data_import_sql]]></title>
-    <link href="http://icps0610.github.io/blog/2018/12/15/mass-data-import-sql/"/>
+    <link href="https://icps0610.github.io/blog/2018/12/15/mass-data-import-sql/"/>
     <updated>2018-12-15T20:18:52+08:00</updated>
-    <id>http://icps0610.github.io/blog/2018/12/15/mass-data-import-sql</id>
+    <id>https://icps0610.github.io/blog/2018/12/15/mass-data-import-sql</id>
     <content type="html"><![CDATA[<p><code>https://github.com/zdennis/activerecord-import</code></p>
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[Postgresql]]></title>
-    <link href="http://icps0610.github.io/blog/2018/12/09/postgresql/"/>
+    <link href="https://icps0610.github.io/blog/2018/12/09/postgresql/"/>
     <updated>2018-12-09T17:55:32+08:00</updated>
-    <id>http://icps0610.github.io/blog/2018/12/09/postgresql</id>
+    <id>https://icps0610.github.io/blog/2018/12/09/postgresql</id>
     <content type="html"><![CDATA[<h3>install</h3>
 
 <p><code>apt-get install postgresql</code></p>
