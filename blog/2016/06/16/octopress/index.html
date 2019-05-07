@@ -1,0 +1,550 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Octopress - icps</title>
+  <meta name="author" content="icps">
+
+  
+  <meta name="description" content="install https://github.com/imathis/octopress git clone https://github.com/imathis/octopress
+bundle install
+rake install 開新的repo，名稱打上 username.github. &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://icps0610.github.io/blog/2016/06/16/octopress/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="icps" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<!--<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">-->
+<!--<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">-->
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">icps</a></h1>
+  
+    <h2>notes</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="icps0610.github.io">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/recent">Recent</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/blog/categories">Categories</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Octopress</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-06-16T20:45:44+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>8:45 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h2>install</h2>
+
+<p><a href="https://github.com/imathis/octopress">https://github.com/imathis/octopress</a></p>
+
+<p><code>git clone https://github.com/imathis/octopress</code><br/>
+<code>bundle install</code><br/>
+<code>rake install</code></p>
+
+<h6>開新的repo，名稱打上 username.github.io</h6>
+
+<p><code>rake setup_github_pages</code></p>
+
+<h6>輸入: git@github.com:username/username.github.io.git</h6>
+
+<p><code>rake generate</code><br/>
+<code>rake deploy</code>　　　=>　　　<code>rake gen_deploy</code></p>
+
+<p><code>git add .</code><br/>
+<code>git commit -am "ok"</code><br/>
+<code>git push origin source</code></p>
+
+<blockquote><p>! [rejected]        master -> master (non-fast-forward)<br/>
+<code>cd _deploy</code><br/>
+<code>git pull origin master</code><br/>
+<code>cd ..</code><br/>
+<code>rake deploy</code></p></blockquote>
+
+<h6>Custom Domains</h6>
+
+<p><code>echo 'your-domain.com' &gt;&gt; source/CNAME</code></p>
+
+<h6>rake preview</h6>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#Rakefile</span>
+</span><span class='line'><span class="c1">#28 </span>
+</span><span class='line'><span class="n">server_port</span>     <span class="o">=</span> <span class="s2">&quot;80&quot;</span>
+</span><span class='line'><span class="c1">#86 </span>
+</span><span class='line'><span class="n">rackupPid</span> <span class="o">=</span> <span class="no">Process</span><span class="o">.</span><span class="n">spawn</span><span class="p">(</span><span class="s2">&quot;rackup -o 0.0.0.0 --port </span><span class="si">#{</span><span class="n">server_port</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>debug</h2>
+
+<p><code>jekyll serve --trace</code></p>
+
+<blockquote><p>jekyll 2.5.3 | Error:  user bg.UAS doesn&rsquo;t exist
+rm source/images/~bg.UAS</p></blockquote>
+
+<h2>command</h2>
+
+<h5>產生文章</h5>
+
+<p><code>rake new_page["about"]</code><br/>
+<code>rake new_post["title"]</code><br/>
+<code>rake generate preview</code>
+<code>rake gen_deply</code></p>
+
+<h6>上傳</h6>
+
+<p><code>git add .</code><br/>
+<code>git commit -am "`date +%Y-%m-%d:%H:%M:%S`"</code><br/>
+<code>git push origin source</code><br/>
+<code>bundle exec rake gen_deploy</code></p>
+
+<h6>下載</h6>
+
+<p><code>git clone -b source git@github.com:username/username.github.io.git octopress</code><br/>
+<code>cd octopress</code><br/>
+<code>git clone git@github.com:username/username.github.io.git _deploy</code><br/>
+<code>git pull origin source</code><br/>
+<code>cd ./_deploy</code><br/>
+<code>git pull origin master</code></p>
+
+<h2>homepage</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#source/_includes/custom/navigation.html</span>
+</span><span class='line'><span class="o">&lt;</span><span class="n">ul</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;main-navigation&quot;</span><span class="o">&gt;</span>
+</span><span class='line'>  <span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;{{ root_url }}/&quot;</span><span class="o">&gt;</span><span class="no">Home</span><span class="o">&lt;</span><span class="sr">/a&gt;&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+</span><span class='line'>  <span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;{{ root_url }}/recent&quot;</span><span class="o">&gt;</span><span class="no">Recent</span><span class="o">&lt;</span><span class="sr">/a&gt;&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+</span><span class='line'>  <span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;{{ root_url }}/blog/archives&quot;</span><span class="o">&gt;</span><span class="no">Archives</span><span class="o">&lt;</span><span class="sr">/a&gt;&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+</span><span class='line'>  <span class="o">&lt;</span><span class="n">li</span><span class="o">&gt;&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;{{ root_url }}/blog/categories&quot;</span><span class="o">&gt;</span><span class="no">Categories</span><span class="o">&lt;</span><span class="sr">/a&gt;&lt;/</span><span class="n">li</span><span class="o">&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="sr">/ul&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#Rakefile</span>
+</span><span class='line'><span class="c1">#21</span>
+</span><span class='line'><span class="n">blog_index_dir</span>  <span class="o">=</span> <span class="s1">&#39;source/blog&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>mkdir source/recent</code><br/>
+<code>mv source/index.html source/recent/</code></p>
+
+<pre><code>#source/recent/index.html
+#7 
+{% for post in site.posts limit: site.recent_posts %}
+</code></pre>
+
+
+<p><code>rake new_page["index.html"]</code></p>
+
+<h2>Category</h2>
+
+<blockquote><p>ref  <a href="http://codemacro.com/2012/07/18/add-category-list-to-octopress/">http://codemacro.com/2012/07/18/add-category-list-to-octopress/</a> <br/>
+ref  <a href="https://github.com/shunnien/octopress-category-list">https://github.com/shunnien/octopress-category-list</a></p></blockquote>
+
+<h6>code</h6>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#plugins/category_list_tag.rb</span>
+</span><span class='line'><span class="k">module</span> <span class="nn">Jekyll</span>
+</span><span class='line'>  <span class="k">class</span> <span class="nc">CategoryList</span> <span class="o">&lt;</span> <span class="no">Liquid</span><span class="o">::</span><span class="no">Tag</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">render</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">html</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+</span><span class='line'>      <span class="n">categories</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">registers</span><span class="o">[</span><span class="ss">:site</span><span class="o">].</span><span class="n">categories</span><span class="o">.</span><span class="n">keys</span>
+</span><span class='line'>      <span class="n">categories</span><span class="o">.</span><span class="n">sort</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">category</span><span class="o">|</span>
+</span><span class='line'>        <span class="n">posts_in_category</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">registers</span><span class="o">[</span><span class="ss">:site</span><span class="o">].</span><span class="n">categories</span><span class="o">[</span><span class="n">category</span><span class="o">].</span><span class="n">size</span>
+</span><span class='line'>        <span class="n">category_dir</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">registers</span><span class="o">[</span><span class="ss">:site</span><span class="o">].</span><span class="n">config</span><span class="o">[</span><span class="s1">&#39;category_dir&#39;</span><span class="o">]</span>
+</span><span class='line'>        <span class="n">category_url</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">category_dir</span><span class="p">,</span> <span class="n">category</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="sr">/_|\P{Word}/</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="sr">/-{2,}/</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">downcase</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">html</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;&lt;li class=&#39;category&#39;&gt;&lt;a href=&#39;/</span><span class="si">#{</span><span class="n">category_url</span><span class="si">}</span><span class="s2">/&#39;&gt;</span><span class="si">#{</span><span class="n">category</span><span class="si">}</span><span class="s2"> (</span><span class="si">#{</span><span class="n">posts_in_category</span><span class="si">}</span><span class="s2">)&lt;/a&gt;&lt;/li&gt;</span><span class="se">\n</span><span class="s2">&quot;</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>      <span class="n">html</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>  <span class="k">class</span> <span class="nc">CategoryListTop</span> <span class="o">&lt;</span> <span class="no">Liquid</span><span class="o">::</span><span class="no">Tag</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">render</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">html</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+</span><span class='line'>      <span class="n">categories</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">registers</span><span class="o">[</span><span class="ss">:site</span><span class="o">].</span><span class="n">categories</span><span class="o">.</span><span class="n">keys</span>
+</span><span class='line'>      <span class="n">categories</span><span class="o">.</span><span class="n">sort</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">category</span><span class="o">|</span>
+</span><span class='line'>        <span class="n">category_dir</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">registers</span><span class="o">[</span><span class="ss">:site</span><span class="o">].</span><span class="n">config</span><span class="o">[</span><span class="s1">&#39;category_dir&#39;</span><span class="o">]</span>
+</span><span class='line'>        <span class="n">category_url</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">category_dir</span><span class="p">,</span> <span class="n">category</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="sr">/_|\P{Word}/</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="sr">/-{2,}/</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">downcase</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">html</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;&lt;h2 class=&#39;entry-title&#39;&gt;&lt;a href=&#39;/</span><span class="si">#{</span><span class="n">category_url</span><span class="si">}</span><span class="s2">/&#39;&gt;</span><span class="si">#{</span><span class="n">category</span><span class="si">}</span><span class="s2">&lt;/a&gt;&lt;/h2&gt;&quot;</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>      <span class="n">html</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="no">Liquid</span><span class="o">::</span><span class="no">Template</span><span class="o">.</span><span class="n">register_tag</span><span class="p">(</span><span class="s1">&#39;category_list_top&#39;</span><span class="p">,</span> <span class="no">Jekyll</span><span class="o">::</span><span class="no">CategoryListTop</span><span class="p">)</span>
+</span><span class='line'><span class="no">Liquid</span><span class="o">::</span><span class="no">Template</span><span class="o">.</span><span class="n">register_tag</span><span class="p">(</span><span class="s1">&#39;category_list&#39;</span><span class="p">,</span> <span class="no">Jekyll</span><span class="o">::</span><span class="no">CategoryList</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h6>asides</h6>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>#source/_includes/asides/category_list.html
+</span><span class='line'><span class="nt">&lt;section&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;h1&gt;</span>Categories<span class="nt">&lt;/h1&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;ul</span> <span class="na">id=</span><span class="s">&quot;categories&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>       {% category_list %}
+</span><span class='line'>    <span class="nt">&lt;/ul&gt;</span>
+</span><span class='line'><span class="nt">&lt;/section&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h6>在側邊加入連結</h6>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#_config.yml</span>
+</span><span class='line'><span class="c1">#56 </span>
+</span><span class='line'><span class="ss">default_asides</span><span class="p">:</span> <span class="o">[</span><span class="n">asides</span><span class="o">/</span><span class="n">category_list</span><span class="o">.</span><span class="n">html</span><span class="o">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h6>top</h6>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>#source/blog/categories/index.html
+</span><span class='line'>---
+</span><span class='line'>layout: page
+</span><span class='line'>title: Categories
+</span><span class='line'>footer: false
+</span><span class='line'>---
+</span><span class='line'><span class="nt">&lt;style&gt;</span>
+</span><span class='line'><span class="nt">a</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">text-decoration</span><span class="o">:</span><span class="k">none</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="nt">&lt;/style&gt;</span>
+</span><span class='line'><span class="nt">&lt;article&gt;</span>
+</span><span class='line'>  {% category_list_top %}
+</span><span class='line'><span class="nt">&lt;/article&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h6>在上方加入連結</h6>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>#source/_includes/custom/navigation.html
+</span><span class='line'><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;main-navigation&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;{{ root_url }}/blog/categories&quot;</span><span class="nt">&gt;</span>Categories<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+</span><span class='line'><span class="nt">&lt;/ul&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Background image in header</h2>
+
+<blockquote><p>ref <a href="https://github.com/imathis/octopress/issues/356">https://github.com/imathis/octopress/issues/356</a></p></blockquote>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#sass/custom/_styles.scss</span>
+</span><span class='line'><span class="n">header</span><span class="o">[</span><span class="n">role</span><span class="o">=</span><span class="s2">&quot;banner&quot;</span><span class="o">]</span> <span class="p">{</span>
+</span><span class='line'>     <span class="n">background</span><span class="o">-</span><span class="ss">image</span><span class="p">:</span> <span class="n">url</span><span class="p">(</span><span class="sr">/images/</span><span class="n">bg</span><span class="o">.</span><span class="n">png</span><span class="p">);</span>
+</span><span class='line'>     <span class="n">background</span><span class="o">-</span><span class="ss">repeat</span><span class="p">:</span> <span class="n">no</span><span class="o">-</span><span class="n">repeat</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>新產生的文章給予 uncategorized</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#Rackfile</span>
+</span><span class='line'><span class="c1">#117</span>
+</span><span class='line'><span class="n">post</span><span class="o">.</span><span class="n">puts</span> <span class="s2">&quot;categories: uncategorized&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<h2>貼語法語法</h2>
+
+<blockquote><p>ref  <a href="http://blog.slaks.net/2013-06-10/jekyll-endraw-in-code/">http://blog.slaks.net/2013-06-10/jekyll-endraw-in-code/</a></p></blockquote>
+
+<h6>若要顯示 {% category_list_top %}</h6>
+
+<pre><code>
+  {% raw %}<font color='red'>{% category_list_top %}</font>{% endraw %}
+
+</code></pre>
+
+
+<h6>若要顯示 {% raw %}{% endraw %}</h6>
+
+<pre><code>{% assign <font color='green'>oTag</font> = '{%' %}
+# 然後在貼下半部
+<font color='green'>{{ oTag }}</font><font color='red'>raw %}{% endraw %}</font>
+<font color='green'>{{ oTag }}</font><font color='red'>endraw %}{% endraw %}</font>
+</code></pre>
+
+
+<p></p>
+
+<h6>若要顯示  ` 前後用兩個 ` 包起來</h6>
+
+<pre><code>``git commit -am "`date +%Y-%m-%d:%H:%M:%S`"``  
+</code></pre>
+
+
+<h2>圖片</h2>
+
+<pre>
+  ![ping.png](/images/ping.png)
+</pre>
+
+
+<h2>連結</h2>
+
+<pre>
+  [Google](https://www.google.com.tw/)
+</pre>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">icps</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2016-06-16T20:45:44+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>8:45 pm</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/app/'>app</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2016/06/16/file/" title="Previous Post: file">&laquo; file</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2016/06/16/motion/" title="Next Post: motion">motion &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Categories</h1>
+    <ul id="categories">
+       <li class='category'><a href='/blog/categories/app/'>app (34)</a></li>
+<li class='category'><a href='/blog/categories/bat/'>bat (11)</a></li>
+<li class='category'><a href='/blog/categories/excel/'>excel (1)</a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (29)</a></li>
+<li class='category'><a href='/blog/categories/python/'>python (10)</a></li>
+<li class='category'><a href='/blog/categories/ror/'>ror (31)</a></li>
+<li class='category'><a href='/blog/categories/ruby/'>ruby (57)</a></li>
+
+    </ul>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2019/05/07/wsl/">Wsl</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2019/05/03/uac/">Uac</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2019/04/11/rimworld/">Rimworld</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2019/04/04/sort-nil/">Sort_nil</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2019/01/12/where-certain-day/">Where_certain_day</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2019 - icps -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

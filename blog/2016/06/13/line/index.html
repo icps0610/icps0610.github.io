@@ -1,0 +1,458 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Line-bot - icps</title>
+  <meta name="author" content="icps">
+
+  
+  <meta name="description" content="11/18 https://github.com/line/line-bot-sdk-ruby
+https://devdocs.line.me/en/#webhook-event-object
+https://business.line.me/zh-hant/ 1
+2
+3
+4
+5
+6
+7
+8
+9 &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://icps0610.github.io/blog/2016/06/13/line/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="icps" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<!--<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">-->
+<!--<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">-->
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">icps</a></h1>
+  
+    <h2>notes</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="icps0610.github.io">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/recent">Recent</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/blog/categories">Categories</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Line-bot</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-06-13T01:27:59+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>1:27 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h3>11/18</h3>
+
+<p><a href="https://github.com/line/line-bot-sdk-ruby">https://github.com/line/line-bot-sdk-ruby</a>
+<a href="https://devdocs.line.me/en/#webhook-event-object">https://devdocs.line.me/en/#webhook-event-object</a>
+<a href="https://business.line.me/zh-hant/">https://business.line.me/zh-hant/</a></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+<span class='line-number'>75</span>
+<span class='line-number'>76</span>
+<span class='line-number'>77</span>
+<span class='line-number'>78</span>
+<span class='line-number'>79</span>
+<span class='line-number'>80</span>
+<span class='line-number'>81</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">TO</span> <span class="o">=</span> <span class="s2">&quot;UXXXXXXXXXXX&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">client</span>
+</span><span class='line'>  <span class="n">client</span> <span class="o">=</span> <span class="no">Line</span><span class="o">::</span><span class="no">Bot</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
+</span><span class='line'>      <span class="n">config</span><span class="o">.</span><span class="n">channel_secret</span> <span class="o">=</span> <span class="s2">&quot;XXXXXXXXXXXXXXXXXXXX&quot;</span>
+</span><span class='line'>      <span class="n">config</span><span class="o">.</span><span class="n">channel_token</span>  <span class="o">=</span> <span class="s2">&quot;XXXXXXXXXXXXXXXXXXXX&quot;</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">text_msg</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+</span><span class='line'>  <span class="p">{</span>
+</span><span class='line'>    <span class="ss">type</span><span class="p">:</span> <span class="s1">&#39;text&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="ss">text</span><span class="p">:</span> <span class="n">text</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">jpg_msg</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>      <span class="ss">type</span><span class="p">:</span> <span class="s1">&#39;image&#39;</span><span class="p">,</span>
+</span><span class='line'>      <span class="ss">originalContentUrl</span><span class="p">:</span> <span class="n">image</span><span class="p">,</span>
+</span><span class='line'>      <span class="ss">previewImageUrl</span><span class="p">:</span> <span class="n">image</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">map_msg</span><span class="p">(</span><span class="n">address</span><span class="p">,</span><span class="n">lat</span><span class="p">,</span><span class="n">long</span><span class="p">)</span>
+</span><span class='line'> <span class="p">{</span>
+</span><span class='line'>    <span class="ss">type</span><span class="p">:</span> <span class="s2">&quot;location&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="ss">title</span><span class="p">:</span> <span class="n">address</span><span class="p">,</span>
+</span><span class='line'>    <span class="ss">address</span><span class="p">:</span> <span class="n">address</span><span class="p">,</span>
+</span><span class='line'>    <span class="ss">latitude</span><span class="p">:</span> <span class="n">lat</span><span class="p">,</span>
+</span><span class='line'>    <span class="ss">longitude</span><span class="p">:</span> <span class="n">long</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">sticker_msg</span><span class="p">(</span><span class="n">pid</span><span class="p">,</span><span class="n">sid</span><span class="p">)</span>
+</span><span class='line'>  <span class="p">{</span>
+</span><span class='line'>    <span class="ss">type</span><span class="p">:</span> <span class="s2">&quot;sticker&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="ss">packageId</span><span class="p">:</span> <span class="n">pid</span><span class="p">,</span>
+</span><span class='line'>    <span class="ss">stickerId</span><span class="p">:</span> <span class="n">sid</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">confirm_msg</span>
+</span><span class='line'> <span class="p">{</span>
+</span><span class='line'>  <span class="ss">type</span><span class="p">:</span> <span class="s2">&quot;template&quot;</span><span class="p">,</span>
+</span><span class='line'>  <span class="ss">altText</span><span class="p">:</span> <span class="s2">&quot;this is a confirm template&quot;</span><span class="p">,</span>
+</span><span class='line'>  <span class="ss">template</span><span class="p">:</span> <span class="p">{</span>
+</span><span class='line'>      <span class="ss">type</span><span class="p">:</span> <span class="s2">&quot;confirm&quot;</span><span class="p">,</span>
+</span><span class='line'>      <span class="ss">text</span><span class="p">:</span> <span class="s2">&quot;要不要去吃火鍋&quot;</span><span class="p">,</span>
+</span><span class='line'>      <span class="ss">actions</span><span class="p">:</span> <span class="o">[</span>
+</span><span class='line'>          <span class="p">{</span>
+</span><span class='line'>            <span class="ss">type</span><span class="p">:</span> <span class="s2">&quot;message&quot;</span><span class="p">,</span>
+</span><span class='line'>            <span class="ss">label</span><span class="p">:</span> <span class="s2">&quot;好&quot;</span><span class="p">,</span>
+</span><span class='line'>            <span class="ss">text</span><span class="p">:</span> <span class="s2">&quot;好&quot;</span>
+</span><span class='line'>          <span class="p">},</span>
+</span><span class='line'>          <span class="p">{</span>
+</span><span class='line'>            <span class="ss">type</span><span class="p">:</span> <span class="s2">&quot;message&quot;</span><span class="p">,</span>
+</span><span class='line'>            <span class="ss">label</span><span class="p">:</span> <span class="s2">&quot;不好&quot;</span><span class="p">,</span>
+</span><span class='line'>            <span class="ss">text</span><span class="p">:</span> <span class="s2">&quot;不好&quot;</span>
+</span><span class='line'>          <span class="p">}</span>
+</span><span class='line'>      <span class="o">]</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'><span class="n">message</span> <span class="o">=</span> <span class="s2">&quot;text&quot;</span>
+</span><span class='line'><span class="c1">#送訊息</span>
+</span><span class='line'><span class="nb">send</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">push_message</span><span class="p">(</span> <span class="no">TO</span><span class="p">,</span> <span class="n">message</span> <span class="p">)</span>
+</span><span class='line'><span class="c1">#userId</span>
+</span><span class='line'><span class="c1">#event[&#39;source&#39;][&#39;userId&#39;]</span>
+</span><span class='line'><span class="c1">#個人資料</span>
+</span><span class='line'><span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_profile</span><span class="p">(</span><span class="no">TO</span><span class="p">)</span>
+</span><span class='line'><span class="k">case</span> <span class="n">response</span>
+</span><span class='line'><span class="k">when</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTPSuccess</span> <span class="k">then</span>
+</span><span class='line'>  <span class="n">contact</span> <span class="o">=</span> <span class="no">JSON</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">body</span><span class="p">)</span>
+</span><span class='line'>  <span class="nb">p</span> <span class="n">contact</span><span class="o">[</span><span class="s1">&#39;displayName&#39;</span><span class="o">]</span>
+</span><span class='line'>  <span class="nb">p</span> <span class="n">contact</span><span class="o">[</span><span class="s1">&#39;pictureUrl&#39;</span><span class="o">]</span>
+</span><span class='line'>  <span class="nb">p</span> <span class="n">contact</span><span class="o">[</span><span class="s1">&#39;statusMessage&#39;</span><span class="o">]</span>
+</span><span class='line'><span class="k">else</span>
+</span><span class='line'>  <span class="nb">p</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">response</span><span class="o">.</span><span class="n">code</span><span class="si">}</span><span class="s2"> </span><span class="si">#{</span><span class="n">response</span><span class="o">.</span><span class="n">body</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<h4>old</h4>
+
+<p>:<a href="https://business.line.me/zh-hant/products/4/introduction">https://business.line.me/zh-hant/products/4/introduction</a><br />
+<a href="https://github.com/line/line-bot-sdk-ruby">https://github.com/line/line-bot-sdk-ruby</a><br />
+<a href="https://developers.line.me/bot-api/overview">https://developers.line.me/bot-api/overview</a><br />
+<a href="https://www.heroku.com/">https://www.heroku.com/</a><br /></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#routes.rb</span>
+</span><span class='line'><span class="no">Rails</span><span class="o">.</span><span class="n">application</span><span class="o">.</span><span class="n">routes</span><span class="o">.</span><span class="n">draw</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">root</span> <span class="ss">:to</span> <span class="o">=&gt;</span> <span class="s2">&quot;page#index&quot;</span>
+</span><span class='line'>  <span class="n">match</span> <span class="s1">&#39;/callback&#39;</span> <span class="o">=&gt;</span> <span class="s2">&quot;page#callback&quot;</span><span class="p">,</span> <span class="ss">:via</span> <span class="o">=&gt;</span> <span class="ss">:post</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#controller.rb</span>
+</span><span class='line'><span class="k">class</span> <span class="nc">PageController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+</span><span class='line'>  <span class="n">protect_from_forgery</span> <span class="ss">with</span><span class="p">:</span> <span class="ss">:null_session</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">index</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">callback</span>
+</span><span class='line'>    <span class="n">line_msg</span> <span class="o">=</span> <span class="n">params</span><span class="o">[</span><span class="ss">:result</span><span class="o">][</span><span class="mi">0</span><span class="o">]</span>
+</span><span class='line'>    <span class="n">username</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_user_profile</span><span class="p">(</span> <span class="n">line_msg</span><span class="o">[</span><span class="s2">&quot;content&quot;</span><span class="o">][</span><span class="s2">&quot;from&quot;</span><span class="o">]</span> <span class="p">)</span><span class="o">.</span><span class="n">contacts</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">display_name</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kp">private</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">client</span>
+</span><span class='line'>    <span class="no">Line</span><span class="o">::</span><span class="no">Bot</span><span class="o">::</span><span class="no">Client</span><span class="o">.</span><span class="n">new</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
+</span><span class='line'>      <span class="n">config</span><span class="o">.</span><span class="n">channel_id</span>     <span class="o">=</span> <span class="no">ENV</span><span class="o">[</span><span class="s2">&quot;LINE_CHANNEL_ID&quot;</span><span class="o">]</span>
+</span><span class='line'>      <span class="n">config</span><span class="o">.</span><span class="n">channel_secret</span> <span class="o">=</span> <span class="no">ENV</span><span class="o">[</span><span class="s2">&quot;LINE_CHANNEL_SECRET&quot;</span><span class="o">]</span>
+</span><span class='line'>      <span class="n">config</span><span class="o">.</span><span class="n">channel_mid</span>    <span class="o">=</span> <span class="no">ENV</span><span class="o">[</span><span class="s2">&quot;LINE_CHANNEL_MID&quot;</span><span class="o">]</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">icps</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2016-06-13T01:27:59+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>1:27 am</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/ror/'>ror</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+      
+        <a class="basic-alignment right" href="/blog/2016/06/13/fb-login/" title="Next Post: FB_login">FB_login &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Categories</h1>
+    <ul id="categories">
+       <li class='category'><a href='/blog/categories/app/'>app (34)</a></li>
+<li class='category'><a href='/blog/categories/bat/'>bat (11)</a></li>
+<li class='category'><a href='/blog/categories/excel/'>excel (1)</a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (29)</a></li>
+<li class='category'><a href='/blog/categories/python/'>python (10)</a></li>
+<li class='category'><a href='/blog/categories/ror/'>ror (31)</a></li>
+<li class='category'><a href='/blog/categories/ruby/'>ruby (57)</a></li>
+
+    </ul>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2019/05/07/wsl/">Wsl</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2019/05/03/uac/">Uac</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2019/04/11/rimworld/">Rimworld</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2019/04/04/sort-nil/">Sort_nil</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2019/01/12/where-certain-day/">Where_certain_day</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2019 - icps -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,296 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Config - icps</title>
+  <meta name="author" content="icps">
+
+  
+  <meta name="description" content="ssd UUID blkid -s UUID #/etc/fstab
+UUID=XX / ext4 noatime,nodiratime,discard,defaults,errors=remount-ro 0 1
+tmpfs /tmp tmpfs defaults,noatime,nosuid, &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://icps0610.github.io/blog/2016/06/15/config/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="icps" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<!--<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">-->
+<!--<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">-->
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">icps</a></h1>
+  
+    <h2>notes</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="icps0610.github.io">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/recent">Recent</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/blog/categories">Categories</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Config</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-06-15T20:16:01+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>8:16 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h4>ssd</h4>
+
+<h6>UUID</h6>
+
+<p><code>blkid -s UUID</code></p>
+
+<pre><code>#/etc/fstab
+UUID=XX / ext4 noatime,nodiratime,discard,defaults,errors=remount-ro 0 1
+tmpfs /tmp tmpfs defaults,noatime,nosuid,nodev,noexec,mode=1777,size=4G 0 0
+tmpfs /var/spool tmpfs defaults,noatime,mode=1777 0 0
+tmpfs /var/tmp tmpfs defaults,noatime,mode=1777 0 0
+tmpfs /var/log tmpfs defaults,noatime,mode=0755 0 0
+</code></pre>
+
+
+<h4>tab補完</h4>
+
+<pre><code>if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
+fi
+</code></pre>
+
+
+<h4>Repos</h4>
+
+<pre><code>#/etc/apt/sources.list
+<font color='grey'>#Kali</font>
+deb http://ftp.tku.edu.tw/kali kali main contrib non-free
+deb http://ftp.tku.edu.tw/kali-security kali main contrib non-free
+<font color='grey'>#Ubuntu Main Repos</font>
+deb http://free.nchc.org.tw/ubuntu/ trusty main restricted universe multiverse
+<font color='grey'>#Ubuntu Update Repos</font>
+deb http://free.nchc.org.tw/ubuntu/ trusty-security main restricted universe multiverse
+deb http://free.nchc.org.tw/ubuntu/ trusty-updates main restricted universe multiverse
+</code></pre>
+
+
+<h4>sudo no passwd</h4>
+
+<pre><code>visudo
+username ALL=(ALL) NOPASSWD:ALL
+</code></pre>
+
+
+<h4>vbox sharefile</h4>
+
+<p><code>mount -t vboxsf REKCAH /data/REKCAH</code></p>
+
+<h4>informatrion</h4>
+
+<p>linux版本 : <code>lsb_release -a</code>  <br/>
+cpu : <code>cat /proc/cpuinfo</code><br/>
+mem : <code>cat /proc/meminfo</code> <br/>
+記憶體使用狀況 : <code>free -m</code> <br/>
+硬體資訊 : <code>dmidecode</code><br/>
+顯示卡型號 : <code>lspci | grep VGA</code><br/>
+硬碟資訊 :  <code>smartctl -a /dev/sda</code><br/>
+USB :  <code>lsusb</code><br/>
+kernel版本 : <code>uname -a</code><br/>
+dmesg : <code>kernel logs</code></p>
+
+<h4>TimeZone</h4>
+
+<p><code>cp /usr/share/zoneinfo/Asia/Taipei /etc/localtime</code></p>
+
+<h3>#</h3>
+
+<p><code>find $PWD/test | xargs ls -d1</code></p>
+
+<h4>關閉傳送內部錯誤</h4>
+
+<p>/etc/default/apport
+enbable=0</p>
+
+<p><code>apt-get install gcc make libsqlite3-dev nodejs zlib1g-dev</code></p>
+
+<h4>顏色</h4>
+
+<p><code>force_color_prompt=yes</code></p>
+
+<h4>移除舊核心</h4>
+
+<p><code>apt-get remove $(dpkg -l|egrep '^ii  linux-(im|he)'|awk '{print $2}'|grep -v `uname -r`)</code></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">icps</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2016-06-15T20:16:01+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>8:16 pm</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/linux/'>linux</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2016/06/15/get-real-ip/" title="Previous Post: get_real_ip">&laquo; get_real_ip</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2016/06/15/battery-check/" title="Next Post: battery_check">battery_check &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Categories</h1>
+    <ul id="categories">
+       <li class='category'><a href='/blog/categories/app/'>app (34)</a></li>
+<li class='category'><a href='/blog/categories/bat/'>bat (11)</a></li>
+<li class='category'><a href='/blog/categories/excel/'>excel (1)</a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (29)</a></li>
+<li class='category'><a href='/blog/categories/python/'>python (10)</a></li>
+<li class='category'><a href='/blog/categories/ror/'>ror (31)</a></li>
+<li class='category'><a href='/blog/categories/ruby/'>ruby (57)</a></li>
+
+    </ul>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2019/05/07/wsl/">Wsl</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2019/05/03/uac/">Uac</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2019/04/11/rimworld/">Rimworld</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2019/04/04/sort-nil/">Sort_nil</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2019/01/12/where-certain-day/">Where_certain_day</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2019 - icps -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

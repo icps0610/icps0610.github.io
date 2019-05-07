@@ -1,0 +1,546 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Chat - icps</title>
+  <meta name="author" content="icps">
+
+  
+  <meta name="description" content="ref https://www.rails365.net/articles/websocket-zhi-actioncable-ru-men-qi
+ref https://www.pluralsight.com/guides/ruby-ruby-on-rails/creating-a-chat- &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://icps0610.github.io/blog/2017/01/11/chat/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="icps" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<!--<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">-->
+<!--<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">-->
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">icps</a></h1>
+  
+    <h2>notes</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="icps0610.github.io">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/recent">Recent</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/blog/categories">Categories</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Chat</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2017-01-11T03:36:38+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>3:36 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><blockquote><p>ref <a href="https://www.rails365.net/articles/websocket-zhi-actioncable-ru-men-qi">https://www.rails365.net/articles/websocket-zhi-actioncable-ru-men-qi</a><br/>
+ref <a href="https://www.pluralsight.com/guides/ruby-ruby-on-rails/creating-a-chat-using-rails-action-cable">https://www.pluralsight.com/guides/ruby-ruby-on-rails/creating-a-chat-using-rails-action-cable</a></p></blockquote>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#Gemfile</span>
+</span><span class='line'><span class="n">gem</span> <span class="s1">&#39;redis&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#application.rb</span>
+</span><span class='line'><span class="k">module</span> <span class="nn">Default</span>
+</span><span class='line'>  <span class="k">class</span> <span class="nc">Application</span> <span class="o">&lt;</span> <span class="no">Rails</span><span class="o">::</span><span class="no">Application</span>
+</span><span class='line'>      <span class="n">config</span><span class="o">.</span><span class="n">action_cable</span><span class="o">.</span><span class="n">disable_request_forgery_protection</span> <span class="o">=</span> <span class="kp">true</span>
+</span><span class='line'>      <span class="c1"># config.action_cable.allowed_request_origins = [&#39;http://192.168.0.200]</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#config/routes.rb</span>
+</span><span class='line'><span class="n">mount</span> <span class="no">ActionCable</span><span class="o">.</span><span class="n">server</span> <span class="o">=&gt;</span> <span class="s1">&#39;/cable&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>rails g model message content:text name:string</code><br/>
+<code>rake db:migrate</code><br/>
+<code>rails g controller chats</code></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#app/controllers/chats_controller.rb</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">index</span>
+</span><span class='line'>  <span class="vi">@messages</span> <span class="o">=</span> <span class="no">Message</span><span class="o">.</span><span class="n">all</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#app/views/rooms/index.erb</span>
+</span><span class='line'><span class="o">&lt;</span><span class="n">div</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;messages&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;messages&quot;</span><span class="o">&gt;</span>
+</span><span class='line'>  <span class="o">&lt;</span><span class="sx">%= render @messages %&gt;</span>
+</span><span class='line'><span class="sx">&lt;/div&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="sx">&lt;form id=</span><span class="s2">&quot;chat-from&quot;</span><span class="o">&gt;</span>
+</span><span class='line'>  <span class="o">&lt;</span><span class="n">label</span><span class="o">&gt;</span><span class="no">Say</span> <span class="p">:</span> <span class="o">&lt;</span><span class="sr">/label&gt;</span>
+</span><span class='line'><span class="sr">  &lt;input type=&quot;text&quot; data-behavior=&quot;chat_speaker&quot;&gt;</span>
+</span><span class='line'><span class="sr">&lt;/</span><span class="n">form</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='erb'><span class='line'><span class="x">#app/views/messages/_message.erb  </span>
+</span><span class='line'><span class="x">&lt;front id=&#39;message&#39;&gt;&lt;b&gt;</span><span class="cp">&lt;%=</span> <span class="n">message</span><span class="o">.</span><span class="n">name</span> <span class="cp">%&gt;</span><span class="x">&lt;/b&gt; : &lt;font id=&quot;content&quot;&gt;</span><span class="cp">&lt;%=</span> <span class="n">message</span><span class="o">.</span><span class="n">content</span> <span class="cp">%&gt;</span><span class="x">&lt;/font&gt;&lt;/font&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<p><code>rails g channel chat speak</code></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#app/assets/javascripts/cable.coffee</span>
+</span><span class='line'><span class="sr">//</span><span class="o">=</span> <span class="nb">require</span> <span class="n">action_cable</span>
+</span><span class='line'><span class="sr">//</span><span class="o">=</span> <span class="n">require_self</span>
+</span><span class='line'><span class="sr">//</span><span class="o">=</span> <span class="n">require_tree</span> <span class="o">.</span><span class="n">/channels</span>
+</span><span class='line'><span class="vi">@App</span> <span class="o">||=</span> <span class="p">{}</span>
+</span><span class='line'><span class="no">App</span><span class="o">.</span><span class="n">cable</span> <span class="o">=</span> <span class="no">ActionCable</span><span class="o">.</span><span class="n">createConsumer</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#app/views/layouts/application.html.erb</span>
+</span><span class='line'><span class="o">&lt;%=</span> <span class="n">action_cable_meta_tag</span> <span class="o">%&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#app/channels/application_cable/connection.rb</span>
+</span><span class='line'><span class="k">module</span> <span class="nn">ApplicationCable</span>
+</span><span class='line'>  <span class="k">class</span> <span class="nc">Connection</span> <span class="o">&lt;</span> <span class="no">ActionCable</span><span class="o">::</span><span class="no">Connection</span><span class="o">::</span><span class="no">Base</span>
+</span><span class='line'>      <span class="n">identified_by</span> <span class="ss">:current_user</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="k">def</span> <span class="nf">connect</span>
+</span><span class='line'>          <span class="nb">self</span><span class="o">.</span><span class="n">current_user</span> <span class="o">=</span> <span class="n">find_verified_user</span>
+</span><span class='line'>          <span class="n">logger</span><span class="o">.</span><span class="n">add_tags</span> <span class="s1">&#39;ActionCable&#39;</span><span class="p">,</span> <span class="n">current_user</span><span class="o">.</span><span class="n">email</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="kp">protected</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="k">def</span> <span class="nf">find_verified_user</span> <span class="c1"># this checks whether a user is authenticated with devise</span>
+</span><span class='line'>          <span class="k">if</span> <span class="n">verified_user</span> <span class="o">=</span> <span class="n">env</span><span class="o">[</span><span class="s1">&#39;warden&#39;</span><span class="o">].</span><span class="n">user</span>
+</span><span class='line'>              <span class="n">verified_user</span>
+</span><span class='line'>          <span class="k">else</span>
+</span><span class='line'>              <span class="n">reject_unauthorized_connection</span>
+</span><span class='line'>          <span class="k">end</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#app/channels/chat_channel.rb</span>
+</span><span class='line'><span class="k">class</span> <span class="nc">ChatChannel</span> <span class="o">&lt;</span> <span class="no">ApplicationCable</span><span class="o">::</span><span class="no">Channel</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">subscribed</span>
+</span><span class='line'>      <span class="n">stream_from</span> <span class="s2">&quot;chat_channel&quot;</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">unsubscribed</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">speak</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</span><span class='line'>      <span class="k">if</span> <span class="ow">not</span> <span class="n">data</span><span class="o">[</span><span class="s1">&#39;message&#39;</span><span class="o">]</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span>
+</span><span class='line'>          <span class="no">Message</span><span class="o">.</span><span class="n">create!</span> <span class="ss">content</span><span class="p">:</span> <span class="n">data</span><span class="o">[</span><span class="s1">&#39;message&#39;</span><span class="o">]</span><span class="p">,</span> <span class="nb">name</span><span class="p">:</span> <span class="n">current_user</span><span class="o">.</span><span class="n">name</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#app/assets/javascripts/channels/chat.coffee</span>
+</span><span class='line'><span class="no">App</span><span class="o">.</span><span class="n">chat</span> <span class="o">=</span> <span class="no">App</span><span class="o">.</span><span class="n">cable</span><span class="o">.</span><span class="n">subscriptions</span><span class="o">.</span><span class="n">create</span> <span class="s2">&quot;ChatChannel&quot;</span><span class="p">,</span>
+</span><span class='line'>  <span class="ss">connected</span><span class="p">:</span> <span class="o">-&gt;</span>
+</span><span class='line'>      <span class="err">$</span><span class="p">(</span><span class="s1">&#39;#messages&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">scrollTop</span><span class="p">(</span> <span class="err">$</span><span class="p">(</span><span class="s1">&#39;#messages&#39;</span><span class="p">)</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">scrollHeight</span> <span class="p">)</span>
+</span><span class='line'>  <span class="ss">disconnected</span><span class="p">:</span> <span class="o">-&gt;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="ss">received</span><span class="p">:</span> <span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">-&gt;</span>
+</span><span class='line'>    <span class="err">$</span><span class="p">(</span><span class="s1">&#39;#messages&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data</span><span class="o">[</span><span class="s1">&#39;message&#39;</span><span class="o">]</span><span class="p">)</span>
+</span><span class='line'>    <span class="err">$</span><span class="p">(</span><span class="s1">&#39;#messages&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">scrollTop</span><span class="p">(</span> <span class="err">$</span><span class="p">(</span><span class="s1">&#39;#messages&#39;</span><span class="p">)</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">scrollHeight</span> <span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="ss">speak</span><span class="p">:</span> <span class="p">(</span><span class="n">message</span><span class="p">)</span> <span class="o">-&gt;</span>
+</span><span class='line'>    <span class="vi">@perform</span> <span class="s1">&#39;speak&#39;</span><span class="p">,</span> <span class="ss">message</span><span class="p">:</span> <span class="n">message</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">$</span><span class="p">(</span><span class="n">document</span><span class="p">)</span><span class="o">.</span><span class="n">on</span> <span class="s1">&#39;keypress&#39;</span><span class="p">,</span> <span class="s1">&#39;[data-behavior~=chat_speaker]&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">event</span><span class="p">)</span> <span class="o">-&gt;</span>
+</span><span class='line'>  <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">keyCode</span> <span class="n">is</span> <span class="mi">13</span>
+</span><span class='line'>    <span class="no">App</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">speak</span> <span class="n">event</span><span class="o">.</span><span class="n">target</span><span class="o">.</span><span class="n">value</span>
+</span><span class='line'>    <span class="n">event</span><span class="o">.</span><span class="n">target</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+</span><span class='line'>    <span class="n">event</span><span class="o">.</span><span class="n">preventDefault</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>rails g job MessageBroadcast</code></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#app/jobs/message_broadcast_job.rb</span>
+</span><span class='line'><span class="k">class</span> <span class="nc">MessageBroadcastJob</span> <span class="o">&lt;</span> <span class="no">ApplicationJob</span>
+</span><span class='line'>  <span class="n">queue_as</span> <span class="ss">:default</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">perform</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+</span><span class='line'>      <span class="no">ActionCable</span><span class="o">.</span><span class="n">server</span><span class="o">.</span><span class="n">broadcast</span> <span class="s1">&#39;chat_channel&#39;</span><span class="p">,</span> <span class="ss">message</span><span class="p">:</span> <span class="n">render_message</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kp">private</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">render_message</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+</span><span class='line'>      <span class="no">ApplicationController</span><span class="o">.</span><span class="n">renderer</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="ss">partial</span><span class="p">:</span> <span class="s1">&#39;messages/message&#39;</span><span class="p">,</span> <span class="ss">locals</span><span class="p">:</span> <span class="p">{</span> <span class="ss">message</span><span class="p">:</span> <span class="n">message</span> <span class="p">})</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#app/models/message.rb</span>
+</span><span class='line'><span class="k">class</span> <span class="nc">Message</span> <span class="o">&lt;</span> <span class="no">ApplicationRecord</span>
+</span><span class='line'>  <span class="n">after_create_commit</span> <span class="p">{</span> <span class="no">MessageBroadcastJob</span><span class="o">.</span><span class="n">perform_later</span> <span class="nb">self</span> <span class="p">}</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+</pre></td><td class='code'><pre><code class='scss'><span class='line'><span class="nn">#scss</span>
+</span><span class='line'><span class="nn">#messages</span> <span class="p">{</span>
+</span><span class='line'>  <span class="na">overflow</span><span class="o">:</span> <span class="no">auto</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">position</span><span class="o">:</span> <span class="no">relative</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">margin-left</span><span class="o">:</span> <span class="mi">15</span><span class="kt">px</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">height</span><span class="o">:</span> <span class="mi">75</span><span class="kt">vh</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">width</span><span class="o">:</span> <span class="mi">90</span><span class="kt">%</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">margin-bottom</span><span class="o">:</span> <span class="mi">2</span><span class="kt">vh</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="nn">#message</span> <span class="p">{</span>
+</span><span class='line'>  <span class="na">margin-left</span><span class="o">:</span> <span class="mi">10</span><span class="kt">%</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">font-size</span><span class="o">:</span> <span class="mi">25</span><span class="kt">px</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">line-height</span><span class="o">:</span> <span class="mi">27</span><span class="kt">px</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">position</span><span class="o">:</span> <span class="no">relative</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="nn">#content</span> <span class="p">{</span>
+</span><span class='line'>  <span class="na">color</span><span class="o">:</span> <span class="n">grey</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">font-size</span><span class="o">:</span> <span class="mi">25</span><span class="kt">px</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">line-height</span><span class="o">:</span> <span class="mi">27</span><span class="kt">px</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nn">#chat-from</span> <span class="p">{</span>
+</span><span class='line'>  <span class="na">margin-left</span><span class="o">:</span> <span class="mi">10</span><span class="kt">%</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">margin-bottom</span><span class="o">:</span><span class="mi">20</span><span class="kt">px</span><span class="p">;</span>
+</span><span class='line'>  <span class="na">position</span><span class="o">:</span> <span class="no">relative</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">icps</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2017-01-11T03:36:38+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>3:36 am</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/ror/'>ror</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2017/01/05/longest/" title="Previous Post: 陣列中最長的元素">&laquo; 陣列中最長的元素</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2017/01/11/rails-hang/" title="Next Post: rails-hang">rails-hang &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Categories</h1>
+    <ul id="categories">
+       <li class='category'><a href='/blog/categories/app/'>app (34)</a></li>
+<li class='category'><a href='/blog/categories/bat/'>bat (11)</a></li>
+<li class='category'><a href='/blog/categories/excel/'>excel (1)</a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (29)</a></li>
+<li class='category'><a href='/blog/categories/python/'>python (10)</a></li>
+<li class='category'><a href='/blog/categories/ror/'>ror (31)</a></li>
+<li class='category'><a href='/blog/categories/ruby/'>ruby (57)</a></li>
+
+    </ul>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2019/05/07/wsl/">Wsl</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2019/05/03/uac/">Uac</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2019/04/11/rimworld/">Rimworld</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2019/04/04/sort-nil/">Sort_nil</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2019/01/12/where-certain-day/">Where_certain_day</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2019 - icps -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

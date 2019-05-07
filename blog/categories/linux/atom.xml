@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | icps]]></title>
   <link href="http://icps0610.github.io/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://icps0610.github.io/"/>
-  <updated>2019-05-07T17:38:46+08:00</updated>
+  <updated>2019-05-07T17:42:45+08:00</updated>
   <id>http://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -18,7 +18,7 @@
     <link href="http://icps0610.github.io/blog/2019/05/07/wsl/"/>
     <updated>2019-05-07T14:13:54+08:00</updated>
     <id>http://icps0610.github.io/blog/2019/05/07/wsl</id>
-    <content type="html"><![CDATA[<pre><code class="shell">
+    <content type="html"><![CDATA[<pre><code class="">
 #powershell run
 Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
 
