@@ -28,7 +28,6 @@ import (
  )
 ```
 ###### skip declared
-
 ``` go
 i := 1 
 _ = i
