@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | icps]]></title>
   <link href="https://icps0610.github.io/blog/categories/linux/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2019-05-08T02:12:54+08:00</updated>
+  <updated>2019-05-19T16:04:09+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -25,9 +25,12 @@ Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-L
 # ms-windows-store://search/?query=WSL
 
 
-#x11
+# x11
 apt-get install x11-apps
 echo "export DISPLAY=127.0.0.1:0" &gt;&gt; ~/.bashrc
+
+# terminal
+https://goreliu.github.io/wsl-terminal/
 </code></pre>
 ]]></content>
   </entry>

@@ -94,8 +94,14 @@ ref <a href="https://blog.gtwang.org/iot/raspberry-pi-tor-router-onion-pi-proxy/
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>#/etc/privoxy/config  
-</span><span class='line'>#forward-socks5t / 127.0.0.1:9050 .  
+</span><span class='line'>forward-socks5t / 127.0.0.1:9050 .  
+</span><span class='line'>
+</span><span class='line'>#listen-address  127.0.0.1:8118
+</span><span class='line'>#listen-address  [::1]:8118
 </span><span class='line'>listen-address :8080   </span></code></pre></td></tr></table></div></figure>
 
 </div>
@@ -153,10 +159,12 @@ ref <a href="https://blog.gtwang.org/iot/raspberry-pi-tor-router-onion-pi-proxy/
        <li class='category'><a href='/blog/categories/app/'>app (34)</a></li>
 <li class='category'><a href='/blog/categories/bat/'>bat (11)</a></li>
 <li class='category'><a href='/blog/categories/excel/'>excel (1)</a></li>
+<li class='category'><a href='/blog/categories/golang/'>golang (1)</a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (29)</a></li>
 <li class='category'><a href='/blog/categories/python/'>python (10)</a></li>
+<li class='category'><a href='/blog/categories/rails/'>rails (1)</a></li>
 <li class='category'><a href='/blog/categories/ror/'>ror (31)</a></li>
-<li class='category'><a href='/blog/categories/ruby/'>ruby (57)</a></li>
+<li class='category'><a href='/blog/categories/ruby/'>ruby (58)</a></li>
 
     </ul>
 </section>
@@ -165,23 +173,23 @@ ref <a href="https://blog.gtwang.org/iot/raspberry-pi-tor-router-onion-pi-proxy/
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2019/05/15/go/">Go</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2019/05/10/error-page/">Error_page</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2019/05/09/nokogiri/">Nokogiri</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2019/05/07/wsl/">Wsl</a>
       </li>
     
       <li class="post">
         <a href="/blog/2019/05/03/uac/">Uac</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2019/04/11/rimworld/">Rimworld</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2019/04/04/sort-nil/">Sort_nil</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2019/01/12/where-certain-day/">Where_certain_day</a>
       </li>
     
   </ul>

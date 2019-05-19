@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Rails | icps]]></title>
+  <link href="https://icps0610.github.io/blog/categories/rails/atom.xml" rel="self"/>
+  <link href="https://icps0610.github.io/"/>
+  <updated>2019-05-19T16:04:09+08:00</updated>
+  <id>https://icps0610.github.io/</id>
+  <author>
+    <name><![CDATA[icps]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Error_page]]></title>
+    <link href="https://icps0610.github.io/blog/2019/05/10/error-page/"/>
+    <updated>2019-05-10T15:02:36+08:00</updated>
+    <id>https://icps0610.github.io/blog/2019/05/10/error-page</id>
+    <content type="html"><![CDATA[<blockquote><blockquote><p>ref <a href="https://rubyplus.com/articles/4061-How-to-handle-exceptions-in-Rails-5">https://rubyplus.com/articles/4061-How-to-handle-exceptions-in-Rails-5</a>
+``` ruby</p>
+
+<h1>route.rb</h1></blockquote></blockquote>
+
+<p>match &ldquo;*path&rdquo;, to: &ldquo;page#catch_404&rdquo;, via: :all</p>
+
+<h1>application_controller.rb</h1>
+
+<p>rescue_from ActionController::RoutingError do |exception|
+ logger.error &lsquo;Routing error occurred&rsquo;
+ render plain: &lsquo;404 Not found&rsquo;, status: 404
+end</p>
+
+<h1>page_controller.rb</h1>
+
+<p>def catch_404
+  raise ActionController::RoutingError.new(params[:path])
+end</p>
+
+<p>```</p>
+]]></content>
+  </entry>
+  
+ </feed>

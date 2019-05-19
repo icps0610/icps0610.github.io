@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Golang | icps]]></title>
+  <link href="https://icps0610.github.io/blog/categories/golang/atom.xml" rel="self"/>
+  <link href="https://icps0610.github.io/"/>
+  <updated>2019-05-19T16:04:09+08:00</updated>
+  <id>https://icps0610.github.io/</id>
+  <author>
+    <name><![CDATA[icps]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Go]]></title>
+    <link href="https://icps0610.github.io/blog/2019/05/15/go/"/>
+    <updated>2019-05-15T15:34:10+08:00</updated>
+    <id>https://icps0610.github.io/blog/2019/05/15/go</id>
+    <content type="html"><![CDATA[<h3>cmd</h3>
+
+<h6>toEXE</h6>
+
+<p><code>GOOS=windows GOARCH=amd64 go build -o hello.exe hello.go</code></p>
+
+<h6>convert</h6>
+
+<p><code>https://mholt.github.io/curl-to-go/</code><br/>
+<code>https://github.com/Terry-Mao/paint</code></p>
+
+<h3>debug</h3>
+
+<h6>type class</h6>
+
+<pre><code class="go  ">import "reflect"  
+fmt.Println(reflect.TypeOf(doc))
+</code></pre>
+
+<h6>ignore not used</h6>
+
+<pre><code class="go">import (
+    _ "fmt" //imported and not used
+ )
+</code></pre>
+
+<h6>skip declared</h6>
+
+<pre><code class="go">i := 1 
+_ = i
+</code></pre>
+
+<h6>run time</h6>
+
+<pre><code class="go">start := time.Now()
+time.Now().sub(start)
+</code></pre>
+
+<h3>time</h3>
+
+<h6>time_format</h6>
+
+<pre><code class="go">func timeFormat(t time.Time) string {
+    return fmt.Sprintf("%d-%02d-%02d %02d:%02d:%02d", t.Year(), t.Month(), t.Day(), t.Hour(), t.Minute(), t.Second())
+}
+today := time.Now()
+timeFormat(today)
+</code></pre>
+
+<h3>string</h3>
+
+<h6>strip</h6>
+
+<pre><code class="go">strings.TrimSpace(s.Text())
+</code></pre>
+
+<h6>sting <-> int</h6>
+
+<pre><code class="go">i, err := strconv.Atoi(s)
+if err ! = nil {
+    //
+}
+s := strconv.Itoa(i)
+i := strconv.Itoa(s)
+</code></pre>
+
+<h6>fill_zero</h6>
+
+<pre><code class="go">func rjust(s string, n int, fill string) string {
+    return strings.Repeat(fill, n-len(s)) + s
+}
+func ljust(s string, n int, fill string) string {
+    return s + strings.Repeat(fill, n-len(s))
+}
+</code></pre>
+]]></content>
+  </entry>
+  
+ </feed>

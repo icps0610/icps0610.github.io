@@ -9,17 +9,8 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="1
-2
-3
-4
-5
-6
-7
-8
-9
-10 #powershell run
-Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux # ms-windows-store://search &hellip;">
+  <meta name="description" content="cmd toEXE GOOS=windows GOARCH=amd64 go build -o hello.exe hello.go convert https://mholt.github.io/curl-to-go/
+https://github.com/Terry-Mao/paint &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -83,6 +74,263 @@ Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-L
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2019/05/15/go/">Go</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2019-05-15T15:34:10+08:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2019</span></span> <span class='time'>3:34 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>cmd</h3>
+
+<h6>toEXE</h6>
+
+<p><code>GOOS=windows GOARCH=amd64 go build -o hello.exe hello.go</code></p>
+
+<h6>convert</h6>
+
+<p><code>https://mholt.github.io/curl-to-go/</code><br/>
+<code>https://github.com/Terry-Mao/paint</code></p>
+
+<h3>debug</h3>
+
+<h6>type class</h6>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kn">import</span> <span class="s">&quot;reflect&quot;</span>
+</span><span class='line'><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">reflect</span><span class="p">.</span><span class="nx">TypeOf</span><span class="p">(</span><span class="nx">doc</span><span class="p">))</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<h6>ignore not used</h6>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kn">import</span> <span class="p">(</span>
+</span><span class='line'>    <span class="nx">_</span> <span class="s">&quot;fmt&quot;</span> <span class="c1">//imported and not used</span>
+</span><span class='line'> <span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h6>skip declared</h6>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="nx">i</span> <span class="o">:=</span> <span class="mi">1</span>
+</span><span class='line'><span class="nx">_</span> <span class="p">=</span> <span class="nx">i</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h6>run time</h6>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="nx">start</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">()</span>
+</span><span class='line'><span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">().</span><span class="nx">sub</span><span class="p">(</span><span class="nx">start</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>time</h3>
+
+<h6>time_format</h6>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kd">func</span> <span class="nx">timeFormat</span><span class="p">(</span><span class="nx">t</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Time</span><span class="p">)</span> <span class="kt">string</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">return</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;%d-%02d-%02d %02d:%02d:%02d&quot;</span><span class="p">,</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Year</span><span class="p">(),</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Month</span><span class="p">(),</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Day</span><span class="p">(),</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Hour</span><span class="p">(),</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Minute</span><span class="p">(),</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Second</span><span class="p">())</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="nx">today</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">()</span>
+</span><span class='line'><span class="nx">timeFormat</span><span class="p">(</span><span class="nx">today</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>string</h3>
+
+<h6>strip</h6>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="nx">strings</span><span class="p">.</span><span class="nx">TrimSpace</span><span class="p">(</span><span class="nx">s</span><span class="p">.</span><span class="nx">Text</span><span class="p">())</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h6>sting <-> int</h6>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="nx">i</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">strconv</span><span class="p">.</span><span class="nx">Atoi</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
+</span><span class='line'><span class="k">if</span> <span class="nx">err</span> <span class="p">!</span> <span class="p">=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span><span class='line'>    <span class="c1">//</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="nx">s</span> <span class="o">:=</span> <span class="nx">strconv</span><span class="p">.</span><span class="nx">Itoa</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
+</span><span class='line'><span class="nx">i</span> <span class="o">:=</span> <span class="nx">strconv</span><span class="p">.</span><span class="nx">Itoa</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h6>fill_zero</h6>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kd">func</span> <span class="nx">rjust</span><span class="p">(</span><span class="nx">s</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">n</span> <span class="kt">int</span><span class="p">,</span> <span class="nx">fill</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">string</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">return</span> <span class="nx">strings</span><span class="p">.</span><span class="nx">Repeat</span><span class="p">(</span><span class="nx">fill</span><span class="p">,</span> <span class="nx">n</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="nx">s</span><span class="p">))</span> <span class="o">+</span> <span class="nx">s</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="kd">func</span> <span class="nx">ljust</span><span class="p">(</span><span class="nx">s</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">n</span> <span class="kt">int</span><span class="p">,</span> <span class="nx">fill</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">string</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">return</span> <span class="nx">s</span> <span class="o">+</span> <span class="nx">strings</span><span class="p">.</span><span class="nx">Repeat</span><span class="p">(</span><span class="nx">fill</span><span class="p">,</span> <span class="nx">n</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="nx">s</span><span class="p">))</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2019/05/10/error-page/">Error_page</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2019-05-10T15:02:36+08:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2019</span></span> <span class='time'>3:02 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><blockquote><blockquote><p>ref <a href="https://rubyplus.com/articles/4061-How-to-handle-exceptions-in-Rails-5">https://rubyplus.com/articles/4061-How-to-handle-exceptions-in-Rails-5</a></p></blockquote></blockquote>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># route.rb</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">match</span> <span class="s2">&quot;*path&quot;</span><span class="p">,</span> <span class="ss">to</span><span class="p">:</span> <span class="s2">&quot;page#catch_404&quot;</span><span class="p">,</span> <span class="ss">via</span><span class="p">:</span> <span class="ss">:all</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># application_controller.rb</span>
+</span><span class='line'><span class="n">rescue_from</span> <span class="no">ActionController</span><span class="o">::</span><span class="no">RoutingError</span> <span class="k">do</span> <span class="o">|</span><span class="n">exception</span><span class="o">|</span>
+</span><span class='line'> <span class="n">logger</span><span class="o">.</span><span class="n">error</span> <span class="s1">&#39;Routing error occurred&#39;</span>
+</span><span class='line'> <span class="n">render</span> <span class="ss">plain</span><span class="p">:</span> <span class="s1">&#39;404 Not found&#39;</span><span class="p">,</span> <span class="ss">status</span><span class="p">:</span> <span class="mi">404</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># page_controller.rb</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">catch_404</span>
+</span><span class='line'>  <span class="k">raise</span> <span class="no">ActionController</span><span class="o">::</span><span class="no">RoutingError</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:path</span><span class="o">]</span><span class="p">)</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2019/05/09/nokogiri/">Nokogiri</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2019-05-09T13:15:15+08:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2019</span></span> <span class='time'>1:15 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># split br</span>
+</span><span class='line'><span class="n">a</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;br&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">n</span><span class="o">|</span>
+</span><span class='line'>    <span class="n">n</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'><span class="n">a</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># &amp;nbsp remove</span>
+</span><span class='line'><span class="c1">#gsub(&quot;\u00A0&quot;, &quot;&quot;)</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">doc</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s2">&quot;.//p/text()&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:content</span><span class="p">)</span><span class="o">.</span><span class="n">select</span><span class="p">{</span><span class="o">|</span><span class="n">i</span><span class="o">|</span><span class="ow">not</span> <span class="n">i</span> <span class="o">==</span> <span class="s2">&quot;\u00A0&quot;</span><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2019/05/07/wsl/">Wsl</a></h1>
     
     
@@ -109,6 +357,9 @@ Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-L
 <span class='line-number'>8</span>
 <span class='line-number'>9</span>
 <span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>
 </span><span class='line'>#powershell run
 </span><span class='line'>Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
@@ -116,9 +367,12 @@ Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-L
 </span><span class='line'># ms-windows-store://search/?query=WSL
 </span><span class='line'>
 </span><span class='line'>
-</span><span class='line'>#x11
+</span><span class='line'># x11
 </span><span class='line'>apt-get install x11-apps
-</span><span class='line'>echo "export DISPLAY=127.0.0.1:0" &gt;&gt; ~/.bashrc</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'>echo "export DISPLAY=127.0.0.1:0" &gt;&gt; ~/.bashrc
+</span><span class='line'>
+</span><span class='line'># terminal
+</span><span class='line'>https://goreliu.github.io/wsl-terminal/</span></code></pre></td></tr></table></div></figure>
 
 </div>
   
@@ -171,121 +425,6 @@ Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-L
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2019/04/11/rimworld/">Rimworld</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2019-04-11T20:46:04+08:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2019</span></span> <span class='time'>8:46 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>HugsLib mod<br/>
-Architect Sense mod</p>
-
-<p>Blueprints 複製建築<br/>
-Defensive Positions 防禦位置<br/>
-Conduit Deconstruct 拆除電線<br/>
-Time-of-Day Switches 定時開關<br/>
-RimFridge-1.0 小冰箱<br/>
-EdB Prepare Carefuly 開場設定<br/>
-Furnace 焚化爐<br/>
-bridges 挖水坑<br/>
-CleaningArea 清掃區域<br/>
-Area Unlocker 增加區域<br/>
-LT-DoorMat 地毯<br/>
-Human Power Generator Mod 人力發電<br/>
-Miniaturisation 允許將工作桌搬走<br/>
-Replace Stuff 變更建築</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2019/04/04/sort-nil/">Sort_nil</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2019-04-04T17:12:03+08:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2019</span></span> <span class='time'>5:12 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">s</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="kp">nil</span><span class="p">,</span> <span class="mi">3</span><span class="o">]</span>
-</span><span class='line'>
-</span><span class='line'>
-</span><span class='line'><span class="c1"># sort index</span>
-</span><span class='line'><span class="nb">p</span> <span class="n">s</span><span class="o">.</span><span class="n">map</span><span class="p">{</span><span class="o">|</span><span class="n">i</span><span class="o">|</span><span class="n">i</span> <span class="o">==</span> <span class="kp">nil</span> <span class="p">?</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span><span class="o">/</span><span class="mi">0</span><span class="o">.</span><span class="mi">0</span> <span class="p">:</span> <span class="n">i</span><span class="p">}</span><span class="o">.</span><span class="n">map</span><span class="o">.</span><span class="n">with_index</span><span class="o">.</span><span class="n">sort</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:last</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2019/01/12/where-certain-day/">Where_certain_day</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2019-01-12T01:39:03+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2019</span></span> <span class='time'>1:39 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>date = A.last.created_at
-A.where(created_at: date.midnight..date.end_of_day)</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
     <a href="/blog/archives">Blog Archives</a>
@@ -300,10 +439,12 @@ A.where(created_at: date.midnight..date.end_of_day)</p>
        <li class='category'><a href='/blog/categories/app/'>app (34)</a></li>
 <li class='category'><a href='/blog/categories/bat/'>bat (11)</a></li>
 <li class='category'><a href='/blog/categories/excel/'>excel (1)</a></li>
+<li class='category'><a href='/blog/categories/golang/'>golang (1)</a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (29)</a></li>
 <li class='category'><a href='/blog/categories/python/'>python (10)</a></li>
+<li class='category'><a href='/blog/categories/rails/'>rails (1)</a></li>
 <li class='category'><a href='/blog/categories/ror/'>ror (31)</a></li>
-<li class='category'><a href='/blog/categories/ruby/'>ruby (57)</a></li>
+<li class='category'><a href='/blog/categories/ruby/'>ruby (58)</a></li>
 
     </ul>
 </section>
@@ -312,23 +453,23 @@ A.where(created_at: date.midnight..date.end_of_day)</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2019/05/15/go/">Go</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2019/05/10/error-page/">Error_page</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2019/05/09/nokogiri/">Nokogiri</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2019/05/07/wsl/">Wsl</a>
       </li>
     
       <li class="post">
         <a href="/blog/2019/05/03/uac/">Uac</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2019/04/11/rimworld/">Rimworld</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2019/04/04/sort-nil/">Sort_nil</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2019/01/12/where-certain-day/">Where_certain_day</a>
       </li>
     
   </ul>

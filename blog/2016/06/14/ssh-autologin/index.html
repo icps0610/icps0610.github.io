@@ -284,152 +284,164 @@
 <span class='line-number'>144</span>
 <span class='line-number'>145</span>
 <span class='line-number'>146</span>
+<span class='line-number'>147</span>
+<span class='line-number'>148</span>
+<span class='line-number'>149</span>
+<span class='line-number'>150</span>
+<span class='line-number'>151</span>
+<span class='line-number'>152</span>
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># encoding: utf-8</span>
-</span><span class='line'><span class="nb">require</span> <span class="s2">&quot;net/ssh&quot;</span>
-</span><span class='line'><span class="nb">require</span> <span class="s2">&quot;net/scp&quot;</span>
-</span><span class='line'><span class="k">class</span> <span class="nc">SSH</span>
+</span><span class='line'><span class="c1"># encoding: utf-8</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">one_n</span><span class="p">(</span><span class="n">remote_ip</span><span class="p">,</span> <span class="n">remote_user</span><span class="p">,</span> <span class="n">remote_passwd</span><span class="p">,</span> <span class="n">local_user</span><span class="p">,</span> <span class="n">local_ip</span><span class="p">)</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;IP列表為SSH主機, 使用者: </span><span class="si">#{</span><span class="n">local_user</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>    <span class="n">hostname</span> <span class="o">=</span> <span class="sb">`hostname`</span><span class="o">.</span><span class="n">chomp</span>
 </span><span class='line'>
-</span><span class='line'>    <span class="k">def</span> <span class="nf">initialize</span>
-</span><span class='line'>        <span class="n">local_ip</span><span class="p">,</span> <span class="n">local_user</span> <span class="o">=</span> <span class="n">set_local</span>
-</span><span class='line'>        <span class="n">set_remote</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">remote_ip</span><span class="p">,</span> <span class="n">remote_user</span><span class="p">,</span> <span class="n">remote_passwd</span><span class="o">|</span>
-</span><span class='line'>            <span class="n">one_n</span><span class="p">(</span><span class="n">remote_ip</span><span class="p">,</span> <span class="n">remote_user</span><span class="p">,</span> <span class="n">remote_passwd</span><span class="p">,</span> <span class="n">local_user</span><span class="p">,</span> <span class="n">local_ip</span><span class="p">)</span>
-</span><span class='line'>            <span class="n">n_one</span><span class="p">(</span><span class="n">remote_ip</span><span class="p">,</span> <span class="n">remote_user</span><span class="p">,</span> <span class="n">remote_passwd</span><span class="p">,</span> <span class="n">local_user</span><span class="p">,</span> <span class="n">local_ip</span><span class="p">)</span>
-</span><span class='line'>        <span class="k">end</span>
-</span><span class='line'>    <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">def</span> <span class="nf">one_n</span><span class="p">(</span><span class="n">remote_ip</span><span class="p">,</span> <span class="n">remote_user</span><span class="p">,</span> <span class="n">remote_passwd</span><span class="p">,</span> <span class="n">local_user</span><span class="p">,</span> <span class="n">local_ip</span><span class="p">)</span>
-</span><span class='line'>        <span class="nb">puts</span> <span class="s2">&quot;IP列表為SSH主機, 使用者: </span><span class="si">#{</span><span class="n">local_user</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span class='line'>        <span class="n">hostname</span> <span class="o">=</span> <span class="sb">`hostname`</span><span class="o">.</span><span class="n">chomp</span>
-</span><span class='line'>        <span class="nb">puts</span> <span class="s2">&quot;產生ssh key...&quot;</span>
-</span><span class='line'>        <span class="n">ssh_keygen</span><span class="p">(</span><span class="n">local_ip</span><span class="p">)</span>
-</span><span class='line'>        <span class="k">if</span> <span class="n">check_remote</span><span class="p">(</span><span class="n">remote_ip</span><span class="p">)</span>
-</span><span class='line'>            <span class="nb">puts</span> <span class="s2">&quot;&gt;&gt; </span><span class="si">#{</span><span class="n">remote_ip</span><span class="si">}</span><span class="s2">連線正常&quot;</span>
-</span><span class='line'>            <span class="nb">puts</span> <span class="s2">&quot;   上傳key到 </span><span class="si">#{</span><span class="n">remote_ip</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span class='line'>            <span class="n">upload_key</span><span class="p">(</span><span class="n">remote_ip</span><span class="p">,</span> <span class="n">remote_user</span><span class="p">,</span> <span class="n">remote_passwd</span><span class="p">,</span> <span class="n">local_ip</span><span class="p">)</span>
-</span><span class='line'>            <span class="nb">puts</span> <span class="s2">&quot;   </span><span class="si">#{</span><span class="n">remote_ip</span><span class="si">}</span><span class="s2"> 執行指令&quot;</span>
-</span><span class='line'>            <span class="n">one_n_script</span><span class="p">(</span><span class="n">remote_ip</span><span class="p">,</span> <span class="n">remote_user</span><span class="p">,</span> <span class="n">remote_passwd</span><span class="p">,</span> <span class="n">local_user</span><span class="p">,</span> <span class="n">hostname</span><span class="p">)</span>
-</span><span class='line'>            <span class="sb">`sed -i &#39;/HOST </span><span class="si">#{</span><span class="n">remote_ip</span><span class="si">}</span><span class="sb">/,+1d&#39; ~/.ssh/config 2&gt;/dev/null`</span>
-</span><span class='line'>            <span class="sb">`echo HOST </span><span class="si">#{</span><span class="n">remote_ip</span><span class="si">}</span><span class="sb"> &gt;&gt; </span><span class="si">#{</span><span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;HOME&#39;</span><span class="o">]</span><span class="si">}</span><span class="sb">/.ssh/config`</span>
-</span><span class='line'>            <span class="sb">`echo IdentityFile </span><span class="si">#{</span><span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;HOME&#39;</span><span class="o">]</span><span class="si">}</span><span class="sb">/.ssh/</span><span class="si">#{</span><span class="n">local_ip</span><span class="si">}</span><span class="sb"> &gt;&gt; </span><span class="si">#{</span><span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;HOME&#39;</span><span class="o">]</span><span class="si">}</span><span class="sb">/.ssh/config`</span>
-</span><span class='line'>            <span class="nb">puts</span> <span class="s2">&quot;   &gt;&gt; </span><span class="si">#{</span><span class="n">remote_user</span><span class="si">}</span><span class="s2">@</span><span class="si">#{</span><span class="n">remote_ip</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span class='line'>        <span class="k">else</span>
-</span><span class='line'>            <span class="nb">puts</span> <span class="s2">&quot;&gt;&gt; </span><span class="si">#{</span><span class="n">remote_ip</span><span class="si">}</span><span class="s2"> 沒有回應&quot;</span>
-</span><span class='line'>        <span class="k">end</span>
-</span><span class='line'>    <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">def</span> <span class="nf">upload_key</span><span class="p">(</span><span class="n">remote_ip</span><span class="p">,</span> <span class="n">remote_user</span><span class="p">,</span> <span class="n">remote_passwd</span><span class="p">,</span> <span class="n">local_ip</span><span class="p">)</span>
-</span><span class='line'>        <span class="no">Net</span><span class="o">::</span><span class="no">SCP</span><span class="o">.</span><span class="n">upload!</span><span class="p">(</span><span class="n">remote_ip</span><span class="p">,</span> <span class="n">remote_user</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;HOME&#39;</span><span class="o">]</span><span class="si">}</span><span class="s2">/.ssh/</span><span class="si">#{</span><span class="n">local_ip</span><span class="si">}</span><span class="s2">.pub&quot;</span><span class="p">,</span> <span class="s2">&quot;id_rsa.pub&quot;</span><span class="p">,</span>  <span class="ss">:ssh</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">:password</span> <span class="o">=&gt;</span> <span class="n">remote_passwd</span> <span class="p">})</span>
-</span><span class='line'>    <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">def</span> <span class="nf">one_n_script</span><span class="p">(</span><span class="n">remote_ip</span><span class="p">,</span> <span class="n">remote_user</span><span class="p">,</span> <span class="n">remote_passwd</span><span class="p">,</span> <span class="n">local_user</span><span class="p">,</span> <span class="n">hostname</span><span class="p">)</span>
-</span><span class='line'>        <span class="no">Net</span><span class="o">::</span><span class="no">SSH</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">remote_ip</span><span class="p">,</span> <span class="n">remote_user</span><span class="p">,</span> <span class="ss">:password</span> <span class="o">=&gt;</span> <span class="n">remote_passwd</span> <span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">ssh</span><span class="o">|</span>
-</span><span class='line'>            <span class="n">ssh</span><span class="o">.</span><span class="n">exec!</span><span class="p">(</span><span class="s2">&quot;mkdir ~/.ssh&quot;</span><span class="p">)</span>
-</span><span class='line'>            <span class="n">ssh</span><span class="o">.</span><span class="n">exec!</span><span class="p">(</span><span class="s2">&quot;touch ~/.ssh/authorized_keys&quot;</span><span class="p">)</span>
-</span><span class='line'>            <span class="n">ssh</span><span class="o">.</span><span class="n">exec!</span><span class="p">(</span><span class="s2">&quot;sed -i /</span><span class="si">#{</span><span class="n">local_user</span><span class="si">}</span><span class="s2">@</span><span class="si">#{</span><span class="n">hostname</span><span class="si">}</span><span class="s2">/d ~/.ssh/authorized_keys&quot;</span><span class="p">)</span>
-</span><span class='line'>            <span class="n">ssh</span><span class="o">.</span><span class="n">exec!</span><span class="p">(</span><span class="s2">&quot;cat id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys&quot;</span><span class="p">)</span>
-</span><span class='line'>            <span class="n">ssh</span><span class="o">.</span><span class="n">exec!</span><span class="p">(</span><span class="s2">&quot;chmod 700 ~/.ssh&quot;</span><span class="p">)</span>
-</span><span class='line'>            <span class="n">ssh</span><span class="o">.</span><span class="n">exec!</span><span class="p">(</span><span class="s2">&quot;chmod 400 ~/.ssh/authorized_keys&quot;</span><span class="p">)</span>
-</span><span class='line'>        <span class="k">end</span>
-</span><span class='line'>    <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">def</span> <span class="nf">n_one</span><span class="p">(</span><span class="n">remote_ip</span><span class="p">,</span> <span class="n">remote_user</span><span class="p">,</span> <span class="n">remote_passwd</span><span class="p">,</span> <span class="n">local_user</span><span class="p">,</span> <span class="n">local_ip</span><span class="p">)</span>
-</span><span class='line'>        <span class="nb">puts</span> <span class="s2">&quot;本地端為SSH主機,</span><span class="si">#{</span><span class="n">local_user</span><span class="si">}</span><span class="s2">@</span><span class="si">#{</span><span class="n">local_ip</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
-</span><span class='line'>        <span class="k">if</span> <span class="n">check_remote</span><span class="p">(</span><span class="n">remote_ip</span><span class="p">)</span>
-</span><span class='line'>            <span class="nb">puts</span> <span class="s2">&quot;&gt;&gt; </span><span class="si">#{</span><span class="n">remote_ip</span><span class="si">}</span><span class="s2">連線正常&quot;</span>
-</span><span class='line'>            <span class="nb">puts</span> <span class="s2">&quot;   </span><span class="si">#{</span><span class="n">remote_ip</span><span class="si">}</span><span class="s2">產生ssh key&quot;</span>
-</span><span class='line'>            <span class="k">if</span> <span class="n">remote_user</span> <span class="o">==</span> <span class="s2">&quot;root&quot;</span>
-</span><span class='line'>                <span class="n">home</span> <span class="o">=</span> <span class="s2">&quot;/root&quot;</span>
-</span><span class='line'>            <span class="k">else</span>
-</span><span class='line'>                <span class="n">home</span> <span class="o">=</span> <span class="s2">&quot;/home/</span><span class="si">#{</span><span class="n">remote_user</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span class='line'>            <span class="k">end</span>
-</span><span class='line'>            <span class="n">n_one_script</span><span class="p">(</span><span class="n">remote_ip</span><span class="p">,</span> <span class="n">remote_user</span><span class="p">,</span> <span class="n">remote_passwd</span><span class="p">,</span> <span class="n">home</span><span class="p">,</span> <span class="n">local_ip</span><span class="p">)</span>
-</span><span class='line'>            <span class="nb">puts</span> <span class="s2">&quot;   </span><span class="si">#{</span><span class="n">remote_ip</span><span class="si">}</span><span class="s2">下載ssh key&quot;</span>
-</span><span class='line'>            <span class="n">download_key</span><span class="p">(</span><span class="n">remote_ip</span><span class="p">,</span> <span class="n">remote_user</span><span class="p">,</span> <span class="n">remote_passwd</span><span class="p">,</span> <span class="n">home</span><span class="p">,</span> <span class="n">local_ip</span><span class="p">)</span>
-</span><span class='line'>            <span class="sb">`mkdir ~/.ssh 2&gt; /dev/null`</span>
-</span><span class='line'>            <span class="sb">`chmod 700 ~/.ssh`</span>
-</span><span class='line'>            <span class="sb">`chmod 600 ~/.ssh/authorized_keys`</span>
-</span><span class='line'>            <span class="sb">`sed -i /</span><span class="si">#{</span><span class="n">remote_user</span><span class="si">}</span><span class="sb">@</span><span class="si">#{</span><span class="vi">@hostname</span><span class="si">}</span><span class="sb">/d ~/.ssh/authorized_keys`</span>
-</span><span class='line'>            <span class="sb">`cat </span><span class="si">#{</span><span class="n">local_ip</span><span class="si">}</span><span class="sb">.pub &gt;&gt; ~/.ssh/authorized_keys`</span>
-</span><span class='line'>            <span class="sb">`rm </span><span class="si">#{</span><span class="n">local_ip</span><span class="si">}</span><span class="sb">.pub`</span>
-</span><span class='line'>            <span class="nb">puts</span> <span class="s2">&quot;   USER: </span><span class="si">#{</span><span class="n">remote_user</span><span class="si">}</span><span class="s2"> 已完成&quot;</span>
-</span><span class='line'>        <span class="k">else</span>
-</span><span class='line'>            <span class="nb">puts</span> <span class="s2">&quot;&gt;&gt; </span><span class="si">#{</span><span class="n">remote_ip</span><span class="si">}</span><span class="s2"> 沒有回應&quot;</span>
-</span><span class='line'>        <span class="k">end</span>
-</span><span class='line'>        <span class="nb">puts</span>
-</span><span class='line'>    <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">def</span> <span class="nf">download_key</span><span class="p">(</span><span class="n">remote_ip</span><span class="p">,</span> <span class="n">remote_user</span><span class="p">,</span> <span class="n">remote_passwd</span><span class="p">,</span> <span class="n">home</span><span class="p">,</span> <span class="n">local_ip</span><span class="p">)</span>
-</span><span class='line'>        <span class="no">Net</span><span class="o">::</span><span class="no">SCP</span><span class="o">.</span><span class="n">download!</span><span class="p">(</span><span class="n">remote_ip</span><span class="p">,</span> <span class="n">remote_user</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">home</span><span class="si">}</span><span class="s2">/.ssh/</span><span class="si">#{</span><span class="n">local_ip</span><span class="si">}</span><span class="s2">.pub&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">local_ip</span><span class="si">}</span><span class="s2">.pub&quot;</span><span class="p">,</span>  <span class="ss">:ssh</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">:password</span> <span class="o">=&gt;</span> <span class="n">remote_passwd</span> <span class="p">})</span>
-</span><span class='line'>    <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">def</span> <span class="nf">n_one_script</span><span class="p">(</span><span class="n">remote_ip</span><span class="p">,</span> <span class="n">remote_user</span><span class="p">,</span> <span class="n">remote_passwd</span><span class="p">,</span> <span class="n">home</span><span class="p">,</span> <span class="n">local_ip</span><span class="p">)</span>
-</span><span class='line'>        <span class="no">Net</span><span class="o">::</span><span class="no">SSH</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">remote_ip</span><span class="p">,</span> <span class="n">remote_user</span><span class="p">,</span> <span class="ss">:password</span> <span class="o">=&gt;</span> <span class="n">remote_passwd</span> <span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">ssh</span><span class="o">|</span>
-</span><span class='line'>            <span class="vi">@hostname</span> <span class="o">=</span> <span class="n">ssh</span><span class="o">.</span><span class="n">exec!</span><span class="p">(</span><span class="s2">&quot;hostname&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">chomp</span>
-</span><span class='line'>            <span class="n">ssh</span><span class="o">.</span><span class="n">exec!</span><span class="p">(</span><span class="s2">&quot;mkdir ~/.ssh&quot;</span><span class="p">)</span>
-</span><span class='line'>            <span class="n">ssh</span><span class="o">.</span><span class="n">exec!</span><span class="p">(</span><span class="s2">&quot;chmod 700 ~/.ssh&quot;</span><span class="p">)</span>
-</span><span class='line'>            <span class="n">ssh</span><span class="o">.</span><span class="n">exec!</span><span class="p">(</span><span class="s2">&quot;rm </span><span class="si">#{</span><span class="n">home</span><span class="si">}</span><span class="s2">/.ssh/</span><span class="si">#{</span><span class="n">local_ip</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span class='line'>            <span class="n">ssh</span><span class="o">.</span><span class="n">exec!</span><span class="p">(</span><span class="s2">&quot;rm </span><span class="si">#{</span><span class="n">home</span><span class="si">}</span><span class="s2">/.ssh/</span><span class="si">#{</span><span class="n">local_ip</span><span class="si">}</span><span class="s2">.pub&quot;</span><span class="p">)</span>
-</span><span class='line'>            <span class="n">ssh</span><span class="o">.</span><span class="n">exec!</span><span class="p">(</span><span class="s2">&quot;ssh-keygen -t rsa -f </span><span class="si">#{</span><span class="n">home</span><span class="si">}</span><span class="s2">/.ssh/</span><span class="si">#{</span><span class="n">local_ip</span><span class="si">}</span><span class="s2"> -N &#39;&#39; -q&quot;</span><span class="p">)</span>
-</span><span class='line'>            <span class="n">ssh</span><span class="o">.</span><span class="n">exec!</span><span class="p">(</span><span class="s2">&quot;sed -i &#39;/HOST </span><span class="si">#{</span><span class="n">local_ip</span><span class="si">}</span><span class="s2">/,+1d&#39; </span><span class="si">#{</span><span class="n">home</span><span class="si">}</span><span class="s2">/.ssh/config&quot;</span><span class="p">)</span>
-</span><span class='line'>            <span class="n">ssh</span><span class="o">.</span><span class="n">exec!</span><span class="p">(</span><span class="s2">&quot;echo HOST </span><span class="si">#{</span><span class="n">local_ip</span><span class="si">}</span><span class="s2"> &gt;&gt; </span><span class="si">#{</span><span class="n">home</span><span class="si">}</span><span class="s2">/.ssh/config&quot;</span><span class="p">)</span>
-</span><span class='line'>            <span class="n">ssh</span><span class="o">.</span><span class="n">exec!</span><span class="p">(</span><span class="s2">&quot;echo IdentityFile ~/.ssh/</span><span class="si">#{</span><span class="n">local_ip</span><span class="si">}</span><span class="s2"> &gt;&gt; </span><span class="si">#{</span><span class="n">home</span><span class="si">}</span><span class="s2">/.ssh/config&quot;</span><span class="p">)</span>
-</span><span class='line'>        <span class="k">end</span>
-</span><span class='line'>    <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">def</span> <span class="nf">set_remote</span>
-</span><span class='line'>        <span class="k">if</span> <span class="no">ARGV</span><span class="o">.</span><span class="n">count</span> <span class="o">==</span> <span class="mi">3</span>
-</span><span class='line'>            <span class="k">return</span> <span class="o">[</span><span class="no">ARGV</span><span class="o">]</span>
-</span><span class='line'>        <span class="k">elsif</span> <span class="no">ARGV</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">==</span> <span class="s2">&quot;group&quot;</span>
-</span><span class='line'>            <span class="o">[[</span><span class="s2">&quot;192.168.0.123&quot;</span><span class="p">,</span> <span class="s2">&quot;root&quot;</span><span class="p">,</span> <span class="s2">&quot;4567&quot;</span><span class="o">]]</span>
-</span><span class='line'>        <span class="k">else</span>
-</span><span class='line'>            <span class="nb">puts</span> <span class="s2">&quot;Remote_ip, Remote_user, Remote_passwd&quot;</span>
-</span><span class='line'>            <span class="nb">exit</span>
-</span><span class='line'>        <span class="k">end</span>
-</span><span class='line'>    <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">def</span> <span class="nf">set_local</span>
-</span><span class='line'>        <span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;SSH_AUTH_SOCK&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="sb">`ssh-agent`</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">scan</span><span class="p">(</span><span class="sr">/SSH_AUTH_SOCK=(.*); e/</span><span class="p">)</span><span class="o">.</span><span class="n">join</span>
-</span><span class='line'>        <span class="n">ips</span> <span class="o">=</span> <span class="sb">`ifconfig`</span><span class="o">.</span><span class="n">scan</span><span class="p">(</span><span class="sr">/inet (.*)\s+net/</span><span class="p">)</span><span class="o">.</span><span class="n">join</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
-</span><span class='line'>        <span class="k">if</span> <span class="n">ips</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="mi">1</span>
-</span><span class='line'>            <span class="n">local_ip</span> <span class="o">=</span> <span class="n">ips</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span>
-</span><span class='line'>        <span class="k">else</span>
-</span><span class='line'>            <span class="n">ips</span><span class="o">.</span><span class="n">each_with_index</span> <span class="k">do</span> <span class="o">|</span><span class="n">l</span><span class="p">,</span> <span class="n">i</span><span class="o">|</span>
-</span><span class='line'>                <span class="nb">puts</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">. </span><span class="si">#{</span><span class="n">l</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span class='line'>            <span class="k">end</span>
-</span><span class='line'>            <span class="nb">print</span> <span class="s2">&quot;&gt;&gt; &quot;</span>
-</span><span class='line'>            <span class="n">choice</span> <span class="o">=</span> <span class="no">STDIN</span><span class="o">.</span><span class="n">gets</span><span class="o">.</span><span class="n">chomp</span><span class="o">.</span><span class="n">to_i</span><span class="o">-</span><span class="mi">1</span>
-</span><span class='line'>            <span class="n">local_ip</span> <span class="o">=</span> <span class="n">ips</span><span class="o">[</span><span class="n">choice</span><span class="o">]</span>
-</span><span class='line'>        <span class="k">end</span>
-</span><span class='line'>        <span class="n">local_user</span> <span class="o">=</span> <span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;USER&#39;</span><span class="o">]</span>
-</span><span class='line'>        <span class="k">return</span> <span class="n">local_ip</span><span class="p">,</span> <span class="n">local_user</span>
-</span><span class='line'>    <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">def</span> <span class="nf">ssh_keygen</span><span class="p">(</span><span class="n">local_ip</span><span class="p">)</span>
-</span><span class='line'>        <span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;HOME&#39;</span><span class="o">]</span><span class="si">}</span><span class="s2">/.ssh/</span><span class="si">#{</span><span class="n">local_ip</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span class='line'>        <span class="k">if</span> <span class="ow">not</span> <span class="no">File</span><span class="o">.</span><span class="n">exist?</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-</span><span class='line'>            <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;ssh-keygen -t rsa -f </span><span class="si">#{</span><span class="n">path</span><span class="si">}</span><span class="s2"> -N &#39;&#39; -q&quot;</span><span class="p">)</span>
-</span><span class='line'>        <span class="k">end</span>
-</span><span class='line'>    <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">def</span> <span class="nf">check_remote_os_method</span><span class="p">(</span><span class="n">remote_ip</span><span class="p">)</span>
-</span><span class='line'>        <span class="k">if</span> <span class="ow">not</span> <span class="no">Gem</span><span class="o">::</span><span class="no">Platform</span><span class="o">.</span><span class="n">local</span><span class="o">.</span><span class="n">os</span> <span class="o">==</span> <span class="s1">&#39;linux&#39;</span>
-</span><span class='line'>            <span class="sb">`ping -n 1 -w 1 </span><span class="si">#{</span><span class="n">remote_ip</span><span class="si">}</span><span class="sb"> | grep 64`</span>
-</span><span class='line'>        <span class="k">else</span>
-</span><span class='line'>            <span class="sb">`ping -c 1 -w 1 </span><span class="si">#{</span><span class="n">remote_ip</span><span class="si">}</span><span class="sb"> | grep 64`</span>
-</span><span class='line'>        <span class="k">end</span>
-</span><span class='line'>    <span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">def</span> <span class="nf">check_remote</span><span class="p">(</span><span class="n">remote_ip</span><span class="p">)</span>
-</span><span class='line'>        <span class="c1">#system(&quot;nc -nz -w 1 #{remote_ip} 22&quot;) == true</span>
-</span><span class='line'>        <span class="k">if</span> <span class="n">check_remote_os_method</span><span class="p">(</span><span class="n">remote_ip</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span>
-</span><span class='line'>            <span class="k">return</span> <span class="kp">false</span>
-</span><span class='line'>        <span class="k">else</span>
-</span><span class='line'>            <span class="k">return</span> <span class="kp">true</span>
-</span><span class='line'>        <span class="k">end</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;產生ssh key...&quot;</span>
+</span><span class='line'>    <span class="n">ssh_keygen</span><span class="p">(</span><span class="n">local_ip</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">if</span> <span class="n">check_remote</span><span class="p">(</span><span class="n">remote_ip</span><span class="p">)</span>
+</span><span class='line'>        <span class="nb">puts</span> <span class="s2">&quot;&gt;&gt; </span><span class="si">#{</span><span class="n">remote_ip</span><span class="si">}</span><span class="s2">連線正常&quot;</span>
+</span><span class='line'>        <span class="nb">puts</span> <span class="s2">&quot;   上傳key到 </span><span class="si">#{</span><span class="n">remote_ip</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>        <span class="n">upload_key</span><span class="p">(</span><span class="n">remote_ip</span><span class="p">,</span> <span class="n">remote_user</span><span class="p">,</span> <span class="n">remote_passwd</span><span class="p">,</span> <span class="n">local_ip</span><span class="p">)</span>
+</span><span class='line'>        <span class="nb">puts</span> <span class="s2">&quot;   </span><span class="si">#{</span><span class="n">remote_ip</span><span class="si">}</span><span class="s2"> 執行指令&quot;</span>
+</span><span class='line'>        <span class="n">one_n_script</span><span class="p">(</span><span class="n">remote_ip</span><span class="p">,</span> <span class="n">remote_user</span><span class="p">,</span> <span class="n">remote_passwd</span><span class="p">,</span> <span class="n">local_user</span><span class="p">,</span> <span class="n">hostname</span><span class="p">)</span>
+</span><span class='line'>        <span class="sb">`sed -i &#39;/HOST </span><span class="si">#{</span><span class="n">remote_ip</span><span class="si">}</span><span class="sb">/,+1d&#39; ~/.ssh/config 2&gt;/dev/null`</span>
+</span><span class='line'>        <span class="sb">`echo HOST </span><span class="si">#{</span><span class="n">remote_ip</span><span class="si">}</span><span class="sb"> &gt;&gt; </span><span class="si">#{</span><span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;HOME&#39;</span><span class="o">]</span><span class="si">}</span><span class="sb">/.ssh/config`</span>
+</span><span class='line'>        <span class="sb">`echo IdentityFile </span><span class="si">#{</span><span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;HOME&#39;</span><span class="o">]</span><span class="si">}</span><span class="sb">/.ssh/</span><span class="si">#{</span><span class="n">local_ip</span><span class="si">}</span><span class="sb"> &gt;&gt; </span><span class="si">#{</span><span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;HOME&#39;</span><span class="o">]</span><span class="si">}</span><span class="sb">/.ssh/config`</span>
+</span><span class='line'>        <span class="nb">puts</span> <span class="s2">&quot;   &gt;&gt; </span><span class="si">#{</span><span class="n">remote_user</span><span class="si">}</span><span class="s2">@</span><span class="si">#{</span><span class="n">remote_ip</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>    <span class="k">else</span>
+</span><span class='line'>        <span class="nb">puts</span> <span class="s2">&quot;&gt;&gt; </span><span class="si">#{</span><span class="n">remote_ip</span><span class="si">}</span><span class="s2"> 沒有回應&quot;</span>
 </span><span class='line'>    <span class="k">end</span>
 </span><span class='line'><span class="k">end</span>
-</span><span class='line'><span class="no">SSH</span><span class="o">.</span><span class="n">new</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">upload_key</span><span class="p">(</span><span class="n">remote_ip</span><span class="p">,</span> <span class="n">remote_user</span><span class="p">,</span> <span class="n">remote_passwd</span><span class="p">,</span> <span class="n">local_ip</span><span class="p">)</span>
+</span><span class='line'>    <span class="no">Net</span><span class="o">::</span><span class="no">SCP</span><span class="o">.</span><span class="n">upload!</span><span class="p">(</span><span class="n">remote_ip</span><span class="p">,</span> <span class="n">remote_user</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;HOME&#39;</span><span class="o">]</span><span class="si">}</span><span class="s2">/.ssh/</span><span class="si">#{</span><span class="n">local_ip</span><span class="si">}</span><span class="s2">.pub&quot;</span><span class="p">,</span> <span class="s2">&quot;id_rsa.pub&quot;</span><span class="p">,</span>  <span class="ss">:ssh</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">:password</span> <span class="o">=&gt;</span> <span class="n">remote_passwd</span> <span class="p">})</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">one_n_script</span><span class="p">(</span><span class="n">remote_ip</span><span class="p">,</span> <span class="n">remote_user</span><span class="p">,</span> <span class="n">remote_passwd</span><span class="p">,</span> <span class="n">local_user</span><span class="p">,</span> <span class="n">hostname</span><span class="p">)</span>
+</span><span class='line'>    <span class="no">Net</span><span class="o">::</span><span class="no">SSH</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">remote_ip</span><span class="p">,</span> <span class="n">remote_user</span><span class="p">,</span> <span class="ss">:password</span> <span class="o">=&gt;</span> <span class="n">remote_passwd</span> <span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">ssh</span><span class="o">|</span>
+</span><span class='line'>        <span class="n">ssh</span><span class="o">.</span><span class="n">exec!</span><span class="p">(</span><span class="s2">&quot;mkdir ~/.ssh&quot;</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">ssh</span><span class="o">.</span><span class="n">exec!</span><span class="p">(</span><span class="s2">&quot;sed -i /</span><span class="si">#{</span><span class="n">local_user</span><span class="si">}</span><span class="s2">@</span><span class="si">#{</span><span class="n">hostname</span><span class="si">}</span><span class="s2">/d ~/.ssh/authorized_keys&quot;</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">ssh</span><span class="o">.</span><span class="n">exec!</span><span class="p">(</span><span class="s2">&quot;cat id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys&quot;</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">ssh</span><span class="o">.</span><span class="n">exec!</span><span class="p">(</span><span class="s2">&quot;chmod 700 ~/.ssh&quot;</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">ssh</span><span class="o">.</span><span class="n">exec!</span><span class="p">(</span><span class="s2">&quot;chmod 400 ~/.ssh/authorized_keys&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">n_one</span><span class="p">(</span><span class="n">remote_ip</span><span class="p">,</span> <span class="n">remote_user</span><span class="p">,</span> <span class="n">remote_passwd</span><span class="p">,</span> <span class="n">local_user</span><span class="p">,</span> <span class="n">local_ip</span><span class="p">)</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;本地端為SSH主機,</span><span class="si">#{</span><span class="n">local_user</span><span class="si">}</span><span class="s2">@</span><span class="si">#{</span><span class="n">local_ip</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+</span><span class='line'>    <span class="k">if</span> <span class="n">check_remote</span><span class="p">(</span><span class="n">remote_ip</span><span class="p">)</span>
+</span><span class='line'>        <span class="nb">puts</span> <span class="s2">&quot;&gt;&gt; </span><span class="si">#{</span><span class="n">remote_ip</span><span class="si">}</span><span class="s2">連線正常&quot;</span>
+</span><span class='line'>        <span class="nb">puts</span> <span class="s2">&quot;   </span><span class="si">#{</span><span class="n">remote_ip</span><span class="si">}</span><span class="s2">產生ssh key&quot;</span>
+</span><span class='line'>        <span class="k">if</span> <span class="n">remote_user</span> <span class="o">==</span> <span class="s2">&quot;root&quot;</span>
+</span><span class='line'>            <span class="n">home</span> <span class="o">=</span> <span class="s2">&quot;/root&quot;</span>
+</span><span class='line'>        <span class="k">else</span>
+</span><span class='line'>            <span class="n">home</span> <span class="o">=</span> <span class="s2">&quot;/home/</span><span class="si">#{</span><span class="n">remote_user</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>        <span class="k">end</span>
+</span><span class='line'>        <span class="n">n_one_script</span><span class="p">(</span><span class="n">remote_ip</span><span class="p">,</span> <span class="n">remote_user</span><span class="p">,</span> <span class="n">remote_passwd</span><span class="p">,</span> <span class="n">home</span><span class="p">,</span> <span class="n">local_ip</span><span class="p">)</span>
+</span><span class='line'>        <span class="nb">puts</span> <span class="s2">&quot;   </span><span class="si">#{</span><span class="n">remote_ip</span><span class="si">}</span><span class="s2">下載ssh key&quot;</span>
+</span><span class='line'>        <span class="n">download_key</span><span class="p">(</span><span class="n">remote_ip</span><span class="p">,</span> <span class="n">remote_user</span><span class="p">,</span> <span class="n">remote_passwd</span><span class="p">,</span> <span class="n">home</span><span class="p">,</span> <span class="n">local_ip</span><span class="p">)</span>
+</span><span class='line'>        <span class="sb">`mkdir ~/.ssh 2&gt; /dev/null`</span>
+</span><span class='line'>        <span class="sb">`chmod 700 ~/.ssh`</span>
+</span><span class='line'>        <span class="sb">`chmod 600 ~/.ssh/authorized_keys`</span>
+</span><span class='line'>        <span class="sb">`sed -i /</span><span class="si">#{</span><span class="n">remote_user</span><span class="si">}</span><span class="sb">@</span><span class="si">#{</span><span class="vi">@hostname</span><span class="si">}</span><span class="sb">/d ~/.ssh/authorized_keys`</span>
+</span><span class='line'>        <span class="sb">`cat </span><span class="si">#{</span><span class="n">local_ip</span><span class="si">}</span><span class="sb">.pub &gt;&gt; ~/.ssh/authorized_keys`</span>
+</span><span class='line'>        <span class="sb">`rm </span><span class="si">#{</span><span class="n">local_ip</span><span class="si">}</span><span class="sb">.pub`</span>
+</span><span class='line'>        <span class="nb">puts</span> <span class="s2">&quot;   USER: </span><span class="si">#{</span><span class="n">remote_user</span><span class="si">}</span><span class="s2"> 已完成&quot;</span>
+</span><span class='line'>    <span class="k">else</span>
+</span><span class='line'>        <span class="nb">puts</span> <span class="s2">&quot;&gt;&gt; </span><span class="si">#{</span><span class="n">remote_ip</span><span class="si">}</span><span class="s2"> 沒有回應&quot;</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>    <span class="nb">puts</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">download_key</span><span class="p">(</span><span class="n">remote_ip</span><span class="p">,</span> <span class="n">remote_user</span><span class="p">,</span> <span class="n">remote_passwd</span><span class="p">,</span> <span class="n">home</span><span class="p">,</span> <span class="n">local_ip</span><span class="p">)</span>
+</span><span class='line'>    <span class="no">Net</span><span class="o">::</span><span class="no">SCP</span><span class="o">.</span><span class="n">download!</span><span class="p">(</span><span class="n">remote_ip</span><span class="p">,</span> <span class="n">remote_user</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">home</span><span class="si">}</span><span class="s2">/.ssh/</span><span class="si">#{</span><span class="n">local_ip</span><span class="si">}</span><span class="s2">.pub&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">local_ip</span><span class="si">}</span><span class="s2">.pub&quot;</span><span class="p">,</span>  <span class="ss">:ssh</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="ss">:password</span> <span class="o">=&gt;</span> <span class="n">remote_passwd</span> <span class="p">})</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">n_one_script</span><span class="p">(</span><span class="n">remote_ip</span><span class="p">,</span> <span class="n">remote_user</span><span class="p">,</span> <span class="n">remote_passwd</span><span class="p">,</span> <span class="n">home</span><span class="p">,</span> <span class="n">local_ip</span><span class="p">)</span>
+</span><span class='line'>    <span class="no">Net</span><span class="o">::</span><span class="no">SSH</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">remote_ip</span><span class="p">,</span> <span class="n">remote_user</span><span class="p">,</span> <span class="ss">:password</span> <span class="o">=&gt;</span> <span class="n">remote_passwd</span> <span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">ssh</span><span class="o">|</span>
+</span><span class='line'>        <span class="vi">@hostname</span> <span class="o">=</span> <span class="n">ssh</span><span class="o">.</span><span class="n">exec!</span><span class="p">(</span><span class="s2">&quot;hostname&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">chomp</span>
+</span><span class='line'>        <span class="n">ssh</span><span class="o">.</span><span class="n">exec!</span><span class="p">(</span><span class="s2">&quot;mkdir ~/.ssh&quot;</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">ssh</span><span class="o">.</span><span class="n">exec!</span><span class="p">(</span><span class="s2">&quot;chmod 700 ~/.ssh&quot;</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">ssh</span><span class="o">.</span><span class="n">exec!</span><span class="p">(</span><span class="s2">&quot;rm </span><span class="si">#{</span><span class="n">home</span><span class="si">}</span><span class="s2">/.ssh/</span><span class="si">#{</span><span class="n">local_ip</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">ssh</span><span class="o">.</span><span class="n">exec!</span><span class="p">(</span><span class="s2">&quot;rm </span><span class="si">#{</span><span class="n">home</span><span class="si">}</span><span class="s2">/.ssh/</span><span class="si">#{</span><span class="n">local_ip</span><span class="si">}</span><span class="s2">.pub&quot;</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">ssh</span><span class="o">.</span><span class="n">exec!</span><span class="p">(</span><span class="s2">&quot;ssh-keygen -t rsa -f </span><span class="si">#{</span><span class="n">home</span><span class="si">}</span><span class="s2">/.ssh/</span><span class="si">#{</span><span class="n">local_ip</span><span class="si">}</span><span class="s2"> -N &#39;&#39; -q&quot;</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">ssh</span><span class="o">.</span><span class="n">exec!</span><span class="p">(</span><span class="s2">&quot;sed -i &#39;/HOST </span><span class="si">#{</span><span class="n">local_ip</span><span class="si">}</span><span class="s2">/,+1d&#39; </span><span class="si">#{</span><span class="n">home</span><span class="si">}</span><span class="s2">/.ssh/config&quot;</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">ssh</span><span class="o">.</span><span class="n">exec!</span><span class="p">(</span><span class="s2">&quot;echo HOST </span><span class="si">#{</span><span class="n">local_ip</span><span class="si">}</span><span class="s2"> &gt;&gt; </span><span class="si">#{</span><span class="n">home</span><span class="si">}</span><span class="s2">/.ssh/config&quot;</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">ssh</span><span class="o">.</span><span class="n">exec!</span><span class="p">(</span><span class="s2">&quot;echo IdentityFile ~/.ssh/</span><span class="si">#{</span><span class="n">local_ip</span><span class="si">}</span><span class="s2"> &gt;&gt; </span><span class="si">#{</span><span class="n">home</span><span class="si">}</span><span class="s2">/.ssh/config&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">set_remote</span>
+</span><span class='line'>    <span class="k">if</span> <span class="no">ARGV</span><span class="o">.</span><span class="n">count</span> <span class="o">==</span> <span class="mi">3</span>
+</span><span class='line'>        <span class="k">return</span> <span class="o">[</span><span class="no">ARGV</span><span class="o">]</span>
+</span><span class='line'>    <span class="k">elsif</span> <span class="no">ARGV</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">==</span> <span class="s2">&quot;group&quot;</span>
+</span><span class='line'>        <span class="o">[[</span> <span class="s2">&quot;192.168.0.200&quot;</span><span class="p">,</span> <span class="s2">&quot;root&quot;</span><span class="p">,</span> <span class="s2">&quot;341031&quot;</span> <span class="o">]</span><span class="p">,</span>
+</span><span class='line'>         <span class="o">[</span>        <span class="s2">&quot;ubuntu&quot;</span><span class="p">,</span> <span class="s2">&quot;root&quot;</span><span class="p">,</span> <span class="s2">&quot;341031&quot;</span> <span class="o">]</span><span class="p">,</span>
+</span><span class='line'>         <span class="o">[</span> <span class="s2">&quot;192.168.0.210&quot;</span><span class="p">,</span> <span class="s2">&quot;root&quot;</span><span class="p">,</span> <span class="s2">&quot;341031&quot;</span> <span class="o">]</span><span class="p">,</span>
+</span><span class='line'>         <span class="o">[</span>            <span class="s2">&quot;pi&quot;</span><span class="p">,</span> <span class="s2">&quot;root&quot;</span><span class="p">,</span> <span class="s2">&quot;341031&quot;</span> <span class="o">]</span><span class="p">,</span>
+</span><span class='line'>         <span class="o">]</span>
+</span><span class='line'>    <span class="k">else</span>
+</span><span class='line'>        <span class="nb">puts</span> <span class="s2">&quot;Remote_ip, Remote_user, Remote_passwd&quot;</span>
+</span><span class='line'>        <span class="nb">exit</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">set_local</span>
+</span><span class='line'>    <span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;SSH_AUTH_SOCK&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="sb">`ssh-agent`</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">scan</span><span class="p">(</span><span class="sr">/SSH_AUTH_SOCK=(.*); e/</span><span class="p">)</span><span class="o">.</span><span class="n">join</span>
+</span><span class='line'>    <span class="n">ips</span> <span class="o">=</span> <span class="sb">`ifconfig`</span><span class="o">.</span><span class="n">scan</span><span class="p">(</span><span class="sr">/inet (.*)\s+net/</span><span class="p">)</span><span class="o">.</span><span class="n">join</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span> <span class="o">-</span> <span class="o">[</span><span class="s2">&quot;127.0.0.1&quot;</span><span class="o">]</span>
+</span><span class='line'>    <span class="k">if</span> <span class="n">ips</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="mi">1</span>
+</span><span class='line'>        <span class="n">local_ip</span> <span class="o">=</span> <span class="n">ips</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span>
+</span><span class='line'>    <span class="k">else</span>
+</span><span class='line'>        <span class="n">ips</span><span class="o">.</span><span class="n">each_with_index</span> <span class="k">do</span> <span class="o">|</span><span class="n">l</span><span class="p">,</span> <span class="n">i</span><span class="o">|</span>
+</span><span class='line'>            <span class="nb">puts</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">. </span><span class="si">#{</span><span class="n">l</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>        <span class="k">end</span>
+</span><span class='line'>        <span class="nb">print</span> <span class="s2">&quot;&gt;&gt; &quot;</span>
+</span><span class='line'>        <span class="n">choice</span> <span class="o">=</span> <span class="no">STDIN</span><span class="o">.</span><span class="n">gets</span><span class="o">.</span><span class="n">chomp</span><span class="o">.</span><span class="n">to_i</span><span class="o">-</span><span class="mi">1</span>
+</span><span class='line'>        <span class="n">local_ip</span> <span class="o">=</span> <span class="n">ips</span><span class="o">[</span><span class="n">choice</span><span class="o">]</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>    <span class="n">local_user</span> <span class="o">=</span> <span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;USER&#39;</span><span class="o">]</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">local_ip</span><span class="p">,</span> <span class="n">local_user</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">ssh_keygen</span><span class="p">(</span><span class="n">local_ip</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;HOME&#39;</span><span class="o">]</span><span class="si">}</span><span class="s2">/.ssh/</span><span class="si">#{</span><span class="n">local_ip</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>    <span class="k">if</span> <span class="ow">not</span> <span class="no">File</span><span class="o">.</span><span class="n">exist?</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+</span><span class='line'>        <span class="nb">system</span><span class="p">(</span><span class="s2">&quot;ssh-keygen -t rsa -f </span><span class="si">#{</span><span class="n">path</span><span class="si">}</span><span class="s2"> -N &#39;&#39; -q&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">check_remote_os_method</span><span class="p">(</span><span class="n">remote_ip</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">if</span> <span class="ow">not</span> <span class="no">Gem</span><span class="o">::</span><span class="no">Platform</span><span class="o">.</span><span class="n">local</span><span class="o">.</span><span class="n">os</span> <span class="o">==</span> <span class="s1">&#39;linux&#39;</span>
+</span><span class='line'>        <span class="sb">`ping -n 1 -w 1 </span><span class="si">#{</span><span class="n">remote_ip</span><span class="si">}</span><span class="sb"> | grep 64`</span>
+</span><span class='line'>    <span class="k">else</span>
+</span><span class='line'>        <span class="sb">`ping -c 1 -w 1 </span><span class="si">#{</span><span class="n">remote_ip</span><span class="si">}</span><span class="sb"> | grep 64`</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">check_remote</span><span class="p">(</span><span class="n">remote_ip</span><span class="p">)</span>
+</span><span class='line'>    <span class="c1">#system(&quot;nc -nz -w 1 #{remote_ip} 22&quot;) == true</span>
+</span><span class='line'>    <span class="k">if</span> <span class="n">check_remote_os_method</span><span class="p">(</span><span class="n">remote_ip</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span>
+</span><span class='line'>        <span class="k">return</span> <span class="kp">false</span>
+</span><span class='line'>    <span class="k">else</span>
+</span><span class='line'>        <span class="k">return</span> <span class="kp">true</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">begin</span>
+</span><span class='line'>    <span class="nb">require</span> <span class="s2">&quot;net/ssh&quot;</span>
+</span><span class='line'>    <span class="nb">require</span> <span class="s2">&quot;net/scp&quot;</span>
+</span><span class='line'><span class="k">rescue</span> <span class="no">LoadError</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;缺少套件net-ssh net-scp 準備安裝..&quot;</span>
+</span><span class='line'>    <span class="sb">`gem install net-ssh net-scp --no-ri --no-rdoc`</span>
+</span><span class='line'>    <span class="k">retry</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">local_ip</span><span class="p">,</span> <span class="n">local_user</span> <span class="o">=</span> <span class="n">set_local</span>
+</span><span class='line'><span class="n">set_remote</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">remote_ip</span><span class="p">,</span> <span class="n">remote_user</span><span class="p">,</span> <span class="n">remote_passwd</span><span class="o">|</span>
+</span><span class='line'>    <span class="n">one_n</span><span class="p">(</span><span class="n">remote_ip</span><span class="p">,</span> <span class="n">remote_user</span><span class="p">,</span> <span class="n">remote_passwd</span><span class="p">,</span> <span class="n">local_user</span><span class="p">,</span> <span class="n">local_ip</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">n_one</span><span class="p">(</span><span class="n">remote_ip</span><span class="p">,</span> <span class="n">remote_user</span><span class="p">,</span> <span class="n">remote_passwd</span><span class="p">,</span> <span class="n">local_user</span><span class="p">,</span> <span class="n">local_ip</span><span class="p">)</span>
+</span><span class='line'><span class="k">end</span>
 </span></code></pre></td></tr></table></div></figure>
 
 </div>
@@ -487,10 +499,12 @@
        <li class='category'><a href='/blog/categories/app/'>app (34)</a></li>
 <li class='category'><a href='/blog/categories/bat/'>bat (11)</a></li>
 <li class='category'><a href='/blog/categories/excel/'>excel (1)</a></li>
+<li class='category'><a href='/blog/categories/golang/'>golang (1)</a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (29)</a></li>
 <li class='category'><a href='/blog/categories/python/'>python (10)</a></li>
+<li class='category'><a href='/blog/categories/rails/'>rails (1)</a></li>
 <li class='category'><a href='/blog/categories/ror/'>ror (31)</a></li>
-<li class='category'><a href='/blog/categories/ruby/'>ruby (57)</a></li>
+<li class='category'><a href='/blog/categories/ruby/'>ruby (58)</a></li>
 
     </ul>
 </section>
@@ -499,23 +513,23 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2019/05/15/go/">Go</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2019/05/10/error-page/">Error_page</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2019/05/09/nokogiri/">Nokogiri</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2019/05/07/wsl/">Wsl</a>
       </li>
     
       <li class="post">
         <a href="/blog/2019/05/03/uac/">Uac</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2019/04/11/rimworld/">Rimworld</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2019/04/04/sort-nil/">Sort_nil</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2019/01/12/where-certain-day/">Where_certain_day</a>
       </li>
     
   </ul>
