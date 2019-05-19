@@ -14,7 +14,10 @@ Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-L
 # ms-windows-store://search/?query=WSL
 
 
-#x11
+# x11
 apt-get install x11-apps
 echo "export DISPLAY=127.0.0.1:0" >> ~/.bashrc
+
+# terminal
+https://goreliu.github.io/wsl-terminal/
 ```

@@ -1,0 +1,23 @@
+---
+layout: post
+title: "nokogiri"
+date: 2019-05-09 13:15:15 +0800
+comments: true
+categories: ruby
+---
+
+``` ruby
+# split br
+a.search('br').each do |n|
+    n.replace("\n")
+end
+a.text.split("\n")
+```
+
+``` ruby
+
+# &nbsp remove
+#gsub("\u00A0", "")
+
+doc.xpath(".//p/text()").map(&:content).select{|i|not i == "\u00A0"}
+```

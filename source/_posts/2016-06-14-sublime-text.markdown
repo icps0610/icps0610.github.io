@@ -84,3 +84,6 @@ SublimeLinter-ruby
     "default_line_ending": "unix"
 }
 ```
+
+### gofmt
+`https://packagecontrol.io/packages/Gofmt`

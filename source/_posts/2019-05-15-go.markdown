@@ -1,0 +1,65 @@
+---
+layout: post
+title: "go"
+date: 2019-05-15 15:34:10 +0800
+comments: true
+categories: golang
+---
+
+### cmd
+######  toEXE  
+`GOOS=windows GOARCH=amd64 go build -o hello.exe hello.go`  
+######  convert  
+`https://mholt.github.io/curl-to-go/`  
+`https://github.com/Terry-Mao/paint`  
+
+### debug
+###### type class
+``` go  
+import "reflect"  
+fmt.Println(reflect.TypeOf(doc))
+```  
+######  ignore not used
+``` go
+import (
+    _ "fmt" //imported and not used
+ )
+```
+######  skip declared
+
+``` go
+i := 1 
+_ = i
+```
+
+######  run time
+``` go
+start := time.Now()
+time.Now().sub(start)
+```
+
+### time
+
+######  time_format
+``` go
+func timeFormat(t time.Time) string {
+    return fmt.Sprintf("%d-%02d-%02d %02d:%02d:%02d", t.Year(), t.Month(), t.Day(), t.Hour(), t.Minute(), t.Second())
+}
+today := time.Now()
+timeFormat(today)
+```
+
+### string
+#### strip
+``` go
+strings.TrimSpace(s.Text())
+```
+#### sting <-> int
+``` go
+i, err := strconv.Atoi(s)
+if err ! = nil {
+    //
+}
+s := strconv.Itoa(i)
+i := strconv.Itoa(s)
+```

@@ -1,0 +1,17 @@
+---
+layout: post
+title: "fill_zero"
+date: 2019-05-16 19:20:58 +0800
+comments: true
+categories: golang
+---
+``` go
+
+func rjust(s string, n int, fill string) string {
+    return strings.Repeat(fill, n-len(s)) + s
+}
+func ljust(s string, n int, fill string) string {
+    return s + strings.Repeat(fill, n-len(s))
+}
+
+```
