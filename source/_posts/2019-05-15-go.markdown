@@ -7,32 +7,33 @@ categories: golang
 ---
 
 ### cmd
-######  toEXE  
+
+###### toEXE  
 `GOOS=windows GOARCH=amd64 go build -o hello.exe hello.go`  
-######  convert  
+###### convert  
 `https://mholt.github.io/curl-to-go/`  
 `https://github.com/Terry-Mao/paint`  
 
 ### debug
+
 ###### type class
 ``` go  
 import "reflect"  
 fmt.Println(reflect.TypeOf(doc))
 ```  
-######  ignore not used
+###### ignore not used
 ``` go
 import (
     _ "fmt" //imported and not used
  )
 ```
-######  skip declared
+###### skip declared
 
 ``` go
 i := 1 
 _ = i
 ```
-
-######  run time
+###### run time
 ``` go
 start := time.Now()
 time.Now().sub(start)
@@ -40,7 +41,7 @@ time.Now().sub(start)
 
 ### time
 
-######  time_format
+###### time_format
 ``` go
 func timeFormat(t time.Time) string {
     return fmt.Sprintf("%d-%02d-%02d %02d:%02d:%02d", t.Year(), t.Month(), t.Day(), t.Hour(), t.Minute(), t.Second())
@@ -50,11 +51,12 @@ timeFormat(today)
 ```
 
 ### string
-#### strip
+
+###### strip
 ``` go
 strings.TrimSpace(s.Text())
 ```
-#### sting <-> int
+###### sting <-> int
 ``` go
 i, err := strconv.Atoi(s)
 if err ! = nil {
@@ -63,3 +65,13 @@ if err ! = nil {
 s := strconv.Itoa(i)
 i := strconv.Itoa(s)
 ```
+###### fill_zero
+``` go
+func rjust(s string, n int, fill string) string {
+    return strings.Repeat(fill, n-len(s)) + s
+}
+func ljust(s string, n int, fill string) string {
+    return s + strings.Repeat(fill, n-len(s))
+}
+```
+
