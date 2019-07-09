@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | icps]]></title>
   <link href="https://icps0610.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2019-07-09T19:33:16+08:00</updated>
+  <updated>2019-07-09T19:37:48+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -18,7 +18,7 @@
     <link href="https://icps0610.github.io/blog/2019/05/09/nokogiri/"/>
     <updated>2019-05-09T13:15:15+08:00</updated>
     <id>https://icps0610.github.io/blog/2019/05/09/nokogiri</id>
-    <content type="html"><![CDATA[<p><code>apt-get install libxslt-dev libxml2-dev</code>
+    <content type="html"><![CDATA[<p><code>apt-get install libxslt-dev libxml2-dev</code><br/>
 ``` ruby</p>
 
 <h1>split br</h1>
