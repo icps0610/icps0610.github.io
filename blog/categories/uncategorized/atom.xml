@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Uncategorized | icps]]></title>
+  <link href="https://icps0610.github.io/blog/categories/uncategorized/atom.xml" rel="self"/>
+  <link href="https://icps0610.github.io/"/>
+  <updated>2019-07-09T19:31:38+08:00</updated>
+  <id>https://icps0610.github.io/</id>
+  <author>
+    <name><![CDATA[icps]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Juniper]]></title>
+    <link href="https://icps0610.github.io/blog/2019/07/07/juniper/"/>
+    <updated>2019-07-07T19:28:04+08:00</updated>
+    <id>https://icps0610.github.io/blog/2019/07/07/juniper</id>
+    <content type="html"><![CDATA[<h3>linux</h3>
+
+<p><code>minicom</code></p>
+
+<h3>切換</h3>
+
+<p>%  cli  >  configure #</p>
+
+<h3>command</h3>
+
+<p><code>show configure</code>
+<code>load override terminal</code>
+<code>show system alarms</code>
+<code>show chassis environment</code></p>
+
+<h4>sop</h4>
+
+<pre>
+% cli
+> configure
+# delete
+load merge terminal
+^d
+</pre>
+
+]]></content>
+  </entry>
+  
+ </feed>

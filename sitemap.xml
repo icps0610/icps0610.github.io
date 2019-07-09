@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>https://icps0610.github.io/blog/2019/07/07/juniper/</loc>
+<lastmod>2019-07-07T19:28:04+08:00</lastmod>
+</url>
+<url>
+<loc>https://icps0610.github.io/blog/2019/05/21/package/</loc>
+<lastmod>2019-05-21T23:13:00+08:00</lastmod>
+</url>
+<url>
 <loc>https://icps0610.github.io/blog/2019/05/15/go/</loc>
 <lastmod>2019-05-15T15:34:10+08:00</lastmod>
 </url>
@@ -750,5 +758,8 @@
 </url>
 <url>
 <loc>https://icps0610.github.io/blog/categories/golang/</loc>
+</url>
+<url>
+<loc>https://icps0610.github.io/blog/categories/uncategorized/</loc>
 </url>
 </urlset>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Golang | icps]]></title>
   <link href="https://icps0610.github.io/blog/categories/golang/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2019-05-19T16:04:09+08:00</updated>
+  <updated>2019-07-09T19:31:38+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,17 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Package]]></title>
+    <link href="https://icps0610.github.io/blog/2019/05/21/package/"/>
+    <updated>2019-05-21T23:13:00+08:00</updated>
+    <id>https://icps0610.github.io/blog/2019/05/21/package</id>
+    <content type="html"><![CDATA[<h5>beauty print</h5>
+
+<p><code>github.com/go-ffmt/ffmt</code></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Go]]></title>
@@ -22,12 +33,131 @@
 
 <h6>toEXE</h6>
 
-<p><code>GOOS=windows GOARCH=amd64 go build -o hello.exe hello.go</code></p>
+<pre><code class="shell">windoes/linux amd64/386
+GOOS=windows GOARCH=amd64 go build -o hello.exe hello.go
+</code></pre>
 
 <h6>convert</h6>
 
 <p><code>https://mholt.github.io/curl-to-go/</code><br/>
+<code>https://mholt.github.io/json-to-go/</code>
 <code>https://github.com/Terry-Mao/paint</code></p>
+
+<h6>argv</h6>
+
+<p><code>os.Args[1]</code></p>
+
+<h6>curl</h6>
+
+<pre><code class="go">import (
+    "io/ioutil"
+)
+resp, err := http.Get(url)
+if err != nil {
+    // handle err
+}
+defer resp.Body.Close()
+body, e := ioutil.ReadAll(resp.Body)
+
+if e != nil {
+   // handle err
+}
+string(body)
+</code></pre>
+
+<h6>input</h6>
+
+<pre><code class="go">reader := bufio.NewReader(os.Stdin)
+fmt.Print("file: ")
+ipt, _ := reader.ReadString('\n')
+input := strings.TrimSuffix(ipt, "\n")
+return input
+</code></pre>
+
+<h5>continue</h5>
+
+<pre><code class="go">fmt.Print("Press 'Enter' to continue...")
+bufio.NewReader(os.Stdin).ReadBytes('\n')
+</code></pre>
+
+<h6>IO</h6>
+
+<pre><code class="go">func writeLines(lines []string, path string) error {
+    file, err := os.Create(path)
+    if err != nil {
+        return err
+    }
+    defer file.Close()
+
+    w := bufio.NewWriter(file)
+    for _, line := range lines {
+        fmt.Fprintln(w, line)
+    }
+    return w.Flush()
+}
+func readfile(path string) ([]string, error) {
+    file, err := os.Open(path)
+    if err != nil {
+        return nil, err
+    }
+    defer file.Close()
+    var lines []string
+    line := bufio.NewScanner(file)
+    for line.Scan() {
+        lines = append(lines, line.Text())
+    }
+    return lines, line.Err()
+}
+</code></pre>
+
+<h6>Json</h6>
+
+<pre><code class="go">imprt "encoding/json"
+type Employee struct {
+    Name string
+    Age  int
+}
+
+type List struct {
+    ID []*Employee
+}
+
+func writeJson(fname string, data []Employee) {
+    file, _ := json.MarshalIndent(data, "", " ")
+    _ = ioutil.WriteFile(fname, file, 0644)
+}
+func readJson(fname string) []Employee {
+    file, _ := ioutil.ReadFile(fname)
+    reaJson := []Employee{}
+    _ = json.Unmarshal([]byte(file), &amp;reaJson)
+    return reaJson
+}
+fname := "user.json"
+writeJson(fname, p)
+reaJson := readJson(fname)
+ffmt.Puts(reaJson[0].Name)
+</code></pre>
+
+<h6>filepath</h6>
+
+<pre><code class="go">import "path/filepath"
+dir, file := filepath.Split("/go/go.mod")
+
+fmt.Println(dir)
+fmt.Println(file)
+</code></pre>
+
+<h6>fileExist</h6>
+
+<pre><code class="go">func fileExist(file string) bool {
+  if _, err := os.Stat(file); err != nil {
+    if os.IsNotExist(err) {
+      return false
+    }
+  }
+  return true
+}
+</code></pre>
 
 <h3>debug</h3>
 
@@ -35,6 +165,11 @@
 
 <pre><code class="go  ">import "reflect"  
 fmt.Println(reflect.TypeOf(doc))
+
+import "github.com/go-ffmt/ffmt"
+ffmt.P(m)  // type
+ffmt.Puts  
+ffmt.Pjson 
 </code></pre>
 
 <h6>ignore not used</h6>
@@ -53,7 +188,7 @@ _ = i
 <h6>run time</h6>
 
 <pre><code class="go">start := time.Now()
-time.Now().sub(start)
+time.Now().Sub(start)
 </code></pre>
 
 <h3>time</h3>
@@ -67,12 +202,16 @@ today := time.Now()
 timeFormat(today)
 </code></pre>
 
+<h6>sleep</h6>
+
+<pre><code class="go">time.Sleep(1 * time.Second)
+</code></pre>
+
 <h3>string</h3>
 
 <h6>strip</h6>
 
-<pre><code class="go">strings.TrimSpace(s.Text())
-</code></pre>
+<p><code>strings.TrimSpace(str)</code></p>
 
 <h6>sting <-> int</h6>
 
@@ -81,7 +220,6 @@ if err ! = nil {
     //
 }
 s := strconv.Itoa(i)
-i := strconv.Itoa(s)
 </code></pre>
 
 <h6>fill_zero</h6>
@@ -92,6 +230,266 @@ i := strconv.Itoa(s)
 func ljust(s string, n int, fill string) string {
     return s + strings.Repeat(fill, n-len(s))
 }
+</code></pre>
+
+<h6>regexp</h6>
+
+<pre><code class="go">match, _ := regexp.MatchString(keyword, str)
+r, _ := regexp.Compile(keyword)
+
+//scan
+re := regexp.MustCompile(keyword)
+fmt.Println(re.FindAllStringSubmatch(str, -1))
+</code></pre>
+
+<h6>chr <-> ord</h6>
+
+<pre><code class="go">func ord(s string) int {
+    return int([]byte(s)[0])
+}
+func chr(i int) string {
+    return fmt.Sprintf("%c", rune(i))
+}
+</code></pre>
+
+<h6>string reverse</h6>
+
+<pre><code class="go">func strReverse(str string) string {
+    comb := ""
+    for i := len(str) - 1; i &gt;= 0; i-- {
+        comb += string(str[i])
+    }
+    return comb
+}
+</code></pre>
+
+<h6>index</h6>
+
+<pre><code class="go">func strIndex(str string, bstr string) int {
+    arr := strings.Split(str, "")
+    for i, e := range arr {
+        if bstr == string(e) {
+            return i
+        }
+    }
+    return -1
+}
+func strIndexS(str string, bstr string) []int {
+    arr := strings.Split(str, "")
+    is := []int{}
+    for i, e := range arr {
+        if bstr == string(e) {
+            is = append(is, i)
+        }
+    }
+    return is
+}
+</code></pre>
+
+<h5>slice ch string</h5>
+
+<pre><code class="go">func sliceChString(ch string, start int, end int) string {
+    var size int
+    var chs = []rune(ch)
+    if len(chs) &gt; end &amp;&amp; end &gt; start {
+        result := ""
+        for _, e := range chs {
+            str := string(e)
+            if ord(str) &gt; 127 {
+                size += 2
+            } else {
+                size += 1
+            }
+            result += str
+            if size &gt; (end-start)*2 {
+                break
+            }
+        }
+        return result
+    }
+    return ch
+}
+</code></pre>
+
+<h3>array</h3>
+
+<h6>eachSlice N part</h6>
+
+<pre><code class="go">func eachSlice(arr []string, l int) [][]string {
+    var ar [][]string
+    size := len(arr)
+    for i := 0; i &lt; size; i = i + l {
+        j := i + l
+        if j &gt; size {
+            j = size
+        }
+        fmt.Println(len(arr[i:j]))
+        ar = append(ar, arr[i:j])
+    }
+    return ar
+}
+</code></pre>
+
+<h6>index</h6>
+
+<pre><code class="go">func arrIndex(arr []string, str string) int {
+    for i, e := range arr {
+        if str == e {
+            return i
+        }
+    }
+    return -1
+}
+func arrIndexS(arr []string, str string) []int {
+    is := []int{}
+    for i, e := range arr {
+        if str == e {
+            is = append(is, i)
+        }
+    }
+    return is
+}
+</code></pre>
+
+<h6>bubbleSort</h6>
+
+<pre><code class="go">func bubbleSort(arr []int) {
+    size := len(arr)
+    for i := 0; i &lt; size; i++ {
+        for j := 1; j &lt; size; j++ {
+            if arr[j] &gt; arr[j-1] {
+                arr[j], arr[j-1] = arr[j-1], arr[j]
+            }
+        }
+    }
+}
+</code></pre>
+
+<h6>duplicate</h6>
+
+<pre><code class="go">type Count struct {
+    id    string
+    count int
+}
+func arrayDuplicate(arr []string) []Count {
+    cs := make(map[string]int)
+    for _, e := range arr {
+        _, exist := cs[e]
+        if exist {
+            cs[e] += 1
+        } else {
+            cs[e] = 1
+        }
+    }
+    count := []Count{}
+    for cc := range cs {
+        c := Count{str: cc, count: cs[cc]}
+        count = append(count, c)
+    }
+    bubbleSort(count)
+    return count
+}
+</code></pre>
+
+<h6>sub</h6>
+
+<pre><code class="go">func arrSub(arr1 []int, arr2 []int) []int {
+    r := []int{}
+    for _, e1 := range arr1 {
+        if !arrInclude(arr2, e1) {
+            r = append(r, e1)
+        }
+    }
+    return r
+}
+</code></pre>
+
+<h6>include</h6>
+
+<pre><code class="go">func arrInclude(arr []int, str int) bool {
+    for _, e := range arr {
+        if str == e {
+            return true
+        }
+    }
+    return false
+}
+func arr1InclueArr2(arr1 []int, arr2 []int) bool {
+    for _, e := range arr1 {
+        if !reflect.DeepEqual(e, arr2) {
+            return false
+        }
+
+    }
+    return true
+}
+</code></pre>
+
+<h5>Equal</h5>
+
+<p><code>reflect.DeepEqual(a, b)</code></p>
+
+<h3>math</h3>
+
+<h6>power</h6>
+
+<pre><code class="go">import "math"
+math.Pow(2, 5)
+</code></pre>
+
+<h6>bit</h6>
+
+<pre><code class="go">n, err := strconv.ParseUint(val, 16, 32)
+if err != nil {
+    panic(err)
+}
+</code></pre>
+
+<h6>d</h6>
+
+<pre><code class="go">math.Ceil(0.2)
+math.Floor(0.2)
+</code></pre>
+
+<h5>even odd</h5>
+
+<pre><code class="go">func evenBool(i int) bool {
+    return i%2 == 0
+}
+func oddBool(i int) bool {
+    return i%2 != 0
+}
+</code></pre>
+
+<h6>toHex</h6>
+
+<pre><code class="go">func toHex(i int) string {
+    return fmt.Sprintf("%x", i)
+}
+</code></pre>
+
+<h6>rand</h6>
+
+<pre><code class="go">rand.Seed(time.Now().UnixNano())
+rand.Intn(100)
+</code></pre>
+
+<h3>image</h3>
+
+<pre><code class="go">func rgbtoHex(i uint32) string {
+    hex := fmt.Sprintf("%x", i)
+    return hex[0:2]
+}
+
+func rgbaToPixel(r uint32, g uint32, b uint32, a uint32) string {
+    return rgbtoHex(r) + rgbtoHex(g) + rgbtoHex(b)
+}
+img, _, err := image.Decode(file)
+
+bounds := img.Bounds()
+width, height := bounds.Max.X, bounds.Max.Y
+
+pixel := rgbaToPixel(img.At(x, y).RGBA())
 </code></pre>
 ]]></content>
   </entry>
