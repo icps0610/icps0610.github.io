@@ -3,7 +3,7 @@ layout: post
 title: "juniper"
 date: 2019-07-07 19:28:04 +0800
 comments: true
-categories: uncategorized
+categories: juniper
 ---
 
 ### linux
@@ -18,6 +18,8 @@ categories: uncategorized
 `show system alarms`
 `show chassis environment`
 
+
+`request system power-off`
 
 
 
