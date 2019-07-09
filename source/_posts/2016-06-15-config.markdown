@@ -76,3 +76,11 @@ enbable=0
 
 #### 移除舊核心
 ``apt-get remove $(dpkg -l|egrep '^ii  linux-(im|he)'|awk '{print $2}'|grep -v `uname -r`)``
+
+
+#### ip forward
+ #/etc/sysctl.conf
+ net.ipv4.ip_forward=1
+
+#### save iptables
+apt install iptables-persistent

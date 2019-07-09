@@ -9,10 +9,122 @@ categories: golang
 ### cmd
 
 ###### toEXE  
-`GOOS=windows GOARCH=amd64 go build -o hello.exe hello.go`  
+``` shell
+windoes/linux amd64/386
+GOOS=windows GOARCH=amd64 go build -o hello.exe hello.go
+```
 ###### convert  
 `https://mholt.github.io/curl-to-go/`  
+`https://mholt.github.io/json-to-go/`
 `https://github.com/Terry-Mao/paint`  
+###### argv
+`os.Args[1]`
+###### curl
+``` go
+import (
+    "io/ioutil"
+)
+resp, err := http.Get(url)
+if err != nil {
+    // handle err
+}
+defer resp.Body.Close()
+body, e := ioutil.ReadAll(resp.Body)
+
+if e != nil {
+   // handle err
+}
+string(body)
+```
+###### input
+``` go
+reader := bufio.NewReader(os.Stdin)
+fmt.Print("file: ")
+ipt, _ := reader.ReadString('\n')
+input := strings.TrimSuffix(ipt, "\n")
+return input
+```
+##### continue
+``` go
+fmt.Print("Press 'Enter' to continue...")
+bufio.NewReader(os.Stdin).ReadBytes('\n')
+```
+###### IO
+``` go
+func writeLines(lines []string, path string) error {
+    file, err := os.Create(path)
+    if err != nil {
+        return err
+    }
+    defer file.Close()
+
+    w := bufio.NewWriter(file)
+    for _, line := range lines {
+        fmt.Fprintln(w, line)
+    }
+    return w.Flush()
+}
+func readfile(path string) ([]string, error) {
+    file, err := os.Open(path)
+    if err != nil {
+        return nil, err
+    }
+    defer file.Close()
+    var lines []string
+    line := bufio.NewScanner(file)
+    for line.Scan() {
+        lines = append(lines, line.Text())
+    }
+    return lines, line.Err()
+}
+```
+###### Json
+``` go
+imprt "encoding/json"
+type Employee struct {
+    Name string
+    Age  int
+}
+
+type List struct {
+    ID []*Employee
+}
+
+func writeJson(fname string, data []Employee) {
+    file, _ := json.MarshalIndent(data, "", " ")
+    _ = ioutil.WriteFile(fname, file, 0644)
+}
+func readJson(fname string) []Employee {
+    file, _ := ioutil.ReadFile(fname)
+    reaJson := []Employee{}
+    _ = json.Unmarshal([]byte(file), &reaJson)
+    return reaJson
+}
+fname := "user.json"
+writeJson(fname, p)
+reaJson := readJson(fname)
+ffmt.Puts(reaJson[0].Name)
+```
+###### filepath
+``` go
+import "path/filepath"
+dir, file := filepath.Split("/go/go.mod")
+
+fmt.Println(dir)
+fmt.Println(file)
+```
+###### fileExist
+``` go
+func fileExist(file string) bool {
+  if _, err := os.Stat(file); err != nil {
+    if os.IsNotExist(err) {
+      return false
+    }
+  }
+  return true
+}
+```
+
 
 ### debug
 
@@ -20,6 +132,13 @@ categories: golang
 ``` go  
 import "reflect"  
 fmt.Println(reflect.TypeOf(doc))
+
+import "github.com/go-ffmt/ffmt"
+ffmt.P(m)  // type
+ffmt.Puts  
+ffmt.Pjson 
+
+
 ```  
 ###### ignore not used
 ``` go
@@ -35,7 +154,7 @@ _ = i
 ###### run time
 ``` go
 start := time.Now()
-time.Now().sub(start)
+time.Now().Sub(start)
 ```
 
 ### time
@@ -48,13 +167,15 @@ func timeFormat(t time.Time) string {
 today := time.Now()
 timeFormat(today)
 ```
+###### sleep
+``` go
+time.Sleep(1 * time.Second)
+```
 
 ### string
 
 ###### strip
-``` go
-strings.TrimSpace(s.Text())
-```
+`strings.TrimSpace(str)`
 ###### sting <-> int
 ``` go
 i, err := strconv.Atoi(s)
@@ -62,7 +183,6 @@ if err ! = nil {
     //
 }
 s := strconv.Itoa(i)
-i := strconv.Itoa(s)
 ```
 ###### fill_zero
 ``` go
@@ -73,4 +193,248 @@ func ljust(s string, n int, fill string) string {
     return s + strings.Repeat(fill, n-len(s))
 }
 ```
+###### regexp
+``` go
+match, _ := regexp.MatchString(keyword, str)
+r, _ := regexp.Compile(keyword)
 
+//scan
+re := regexp.MustCompile(keyword)
+fmt.Println(re.FindAllStringSubmatch(str, -1))
+```
+###### chr <-> ord
+``` go
+func ord(s string) int {
+    return int([]byte(s)[0])
+}
+func chr(i int) string {
+    return fmt.Sprintf("%c", rune(i))
+}
+```
+###### string reverse
+``` go
+func strReverse(str string) string {
+    comb := ""
+    for i := len(str) - 1; i >= 0; i-- {
+        comb += string(str[i])
+    }
+    return comb
+}
+```
+###### index
+``` go
+func strIndex(str string, bstr string) int {
+    arr := strings.Split(str, "")
+    for i, e := range arr {
+        if bstr == string(e) {
+            return i
+        }
+    }
+    return -1
+}
+func strIndexS(str string, bstr string) []int {
+    arr := strings.Split(str, "")
+    is := []int{}
+    for i, e := range arr {
+        if bstr == string(e) {
+            is = append(is, i)
+        }
+    }
+    return is
+}
+```
+##### slice ch string
+``` go
+func sliceChString(ch string, start int, end int) string {
+    var size int
+    var chs = []rune(ch)
+    if len(chs) > end && end > start {
+        result := ""
+        for _, e := range chs {
+            str := string(e)
+            if ord(str) > 127 {
+                size += 2
+            } else {
+                size += 1
+            }
+            result += str
+            if size > (end-start)*2 {
+                break
+            }
+        }
+        return result
+    }
+    return ch
+}
+```
+### array
+###### eachSlice N part
+``` go
+func eachSlice(arr []string, l int) [][]string {
+    var ar [][]string
+    size := len(arr)
+    for i := 0; i < size; i = i + l {
+        j := i + l
+        if j > size {
+            j = size
+        }
+        fmt.Println(len(arr[i:j]))
+        ar = append(ar, arr[i:j])
+    }
+    return ar
+}
+```
+###### index
+``` go
+func arrIndex(arr []string, str string) int {
+    for i, e := range arr {
+        if str == e {
+            return i
+        }
+    }
+    return -1
+}
+func arrIndexS(arr []string, str string) []int {
+    is := []int{}
+    for i, e := range arr {
+        if str == e {
+            is = append(is, i)
+        }
+    }
+    return is
+}
+```
+###### bubbleSort
+``` go
+func bubbleSort(arr []int) {
+    size := len(arr)
+    for i := 0; i < size; i++ {
+        for j := 1; j < size; j++ {
+            if arr[j] > arr[j-1] {
+                arr[j], arr[j-1] = arr[j-1], arr[j]
+            }
+        }
+    }
+}
+```
+###### duplicate
+``` go
+type Count struct {
+    id    string
+    count int
+}
+func arrayDuplicate(arr []string) []Count {
+    cs := make(map[string]int)
+    for _, e := range arr {
+        _, exist := cs[e]
+        if exist {
+            cs[e] += 1
+        } else {
+            cs[e] = 1
+        }
+    }
+    count := []Count{}
+    for cc := range cs {
+        c := Count{str: cc, count: cs[cc]}
+        count = append(count, c)
+    }
+    bubbleSort(count)
+    return count
+}
+```
+###### sub
+``` go
+func arrSub(arr1 []int, arr2 []int) []int {
+    r := []int{}
+    for _, e1 := range arr1 {
+        if !arrInclude(arr2, e1) {
+            r = append(r, e1)
+        }
+    }
+    return r
+}
+```
+###### include
+``` go
+func arrInclude(arr []int, str int) bool {
+    for _, e := range arr {
+        if str == e {
+            return true
+        }
+    }
+    return false
+}
+func arr1InclueArr2(arr1 []int, arr2 []int) bool {
+    for _, e := range arr1 {
+        if !reflect.DeepEqual(e, arr2) {
+            return false
+        }
+
+    }
+    return true
+}
+```
+##### Equal
+`reflect.DeepEqual(a, b)`
+
+
+
+### math
+###### power
+``` go
+import "math"
+math.Pow(2, 5)
+```
+###### bit
+``` go
+n, err := strconv.ParseUint(val, 16, 32)
+if err != nil {
+    panic(err)
+}
+```
+######  d
+``` go
+math.Ceil(0.2)
+math.Floor(0.2)
+```
+##### even odd
+``` go
+func evenBool(i int) bool {
+    return i%2 == 0
+}
+func oddBool(i int) bool {
+    return i%2 != 0
+}
+```
+###### toHex
+``` go
+func toHex(i int) string {
+    return fmt.Sprintf("%x", i)
+}
+```
+###### rand
+``` go
+rand.Seed(time.Now().UnixNano())
+rand.Intn(100)
+```
+
+
+
+### image
+``` go
+func rgbtoHex(i uint32) string {
+    hex := fmt.Sprintf("%x", i)
+    return hex[0:2]
+}
+
+func rgbaToPixel(r uint32, g uint32, b uint32, a uint32) string {
+    return rgbtoHex(r) + rgbtoHex(g) + rgbtoHex(b)
+}
+img, _, err := image.Decode(file)
+
+bounds := img.Bounds()
+width, height := bounds.Max.X, bounds.Max.Y
+
+pixel := rgbaToPixel(img.At(x, y).RGBA())
+
+```

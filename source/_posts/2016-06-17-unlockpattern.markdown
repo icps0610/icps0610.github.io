@@ -23,15 +23,26 @@ def num_possible(num, l)
     end.compact
 end
 
+def check(pt, route)
+    if route.size > 0
+        last = route.last
+        if cross_two_num(last, pt) and not route.include?((last + pt)/2)
+            return false
+        end
+    end
+    return true
+end
+
 def dfs(pt, route=[], take=->(r) { yield(r) })
-    possible = num_possible(route, pt)
-    if route.size == 8 or possible.size > 0
+    if check(pt, route)
         route.push(pt)
         if route.size >= 4
-            take.call(route.join)
+            take.call(route)
         end
-        possible.each do |s|
-            dfs(s, route, take)
+        (1..9).each do |npt|
+            if not route.include?(npt)
+                dfs(npt, route, take)
+            end
         end
         route.pop
     end

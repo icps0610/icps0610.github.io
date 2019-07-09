@@ -1,0 +1,31 @@
+---
+layout: post
+title: "juniper"
+date: 2019-07-07 19:28:04 +0800
+comments: true
+categories: uncategorized
+---
+
+### linux
+`minicom`
+
+### 切換
+%  cli  >  configure #
+
+### command
+`show configure`
+`load override terminal`
+`show system alarms`
+`show chassis environment`
+
+
+
+
+#### sop
+<pre>
+% cli
+> configure
+# delete
+load merge terminal
+^d
+</pre>
