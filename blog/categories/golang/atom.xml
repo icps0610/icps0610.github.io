@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Golang | icps]]></title>
   <link href="https://icps0610.github.io/blog/categories/golang/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2019-07-09T19:31:38+08:00</updated>
+  <updated>2019-07-09T19:33:16+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -33,7 +33,7 @@
 
 <h6>toEXE</h6>
 
-<pre><code class="shell">windoes/linux amd64/386
+<pre><code class="">windoes/linux amd64/386
 GOOS=windows GOARCH=amd64 go build -o hello.exe hello.go
 </code></pre>
 
