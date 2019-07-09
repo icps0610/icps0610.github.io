@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Uncategorized | icps]]></title>
-  <link href="https://icps0610.github.io/blog/categories/uncategorized/atom.xml" rel="self"/>
+  <title><![CDATA[Category: Juniper | icps]]></title>
+  <link href="https://icps0610.github.io/blog/categories/juniper/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2019-07-09T19:37:48+08:00</updated>
+  <updated>2019-07-09T20:09:30+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -32,6 +32,8 @@
 <code>load override terminal</code>
 <code>show system alarms</code>
 <code>show chassis environment</code></p>
+
+<p><code>request system power-off</code></p>
 
 <h4>sop</h4>
 

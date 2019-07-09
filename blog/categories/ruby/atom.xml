@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | icps]]></title>
   <link href="https://icps0610.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2019-07-09T19:37:48+08:00</updated>
+  <updated>2019-07-09T20:09:30+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -18,16 +18,18 @@
     <link href="https://icps0610.github.io/blog/2019/05/09/nokogiri/"/>
     <updated>2019-05-09T13:15:15+08:00</updated>
     <id>https://icps0610.github.io/blog/2019/05/09/nokogiri</id>
-    <content type="html"><![CDATA[<p><code>apt-get install libxslt-dev libxml2-dev</code><br/>
-``` ruby</p>
+    <content type="html"><![CDATA[<h3>install</h3>
 
-<h1>split br</h1>
+<p><code>apt-get install libxslt-dev libxml2-dev</code></p>
 
-<p>a.search(&lsquo;br&rsquo;).each do |n|
-    n.replace(&ldquo;\n&rdquo;)
+<h3>s</h3>
+
+<pre><code class="ruby"># split br
+a.search('br').each do |n|
+    n.replace("\n")
 end
-a.text.split(&ldquo;\n&rdquo;)
-```</p>
+a.text.split("\n")
+</code></pre>
 
 <pre><code class="ruby">
 # &amp;nbsp remove

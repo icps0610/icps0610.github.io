@@ -266,6 +266,17 @@
 <span class='line-number'>126</span>
 <span class='line-number'>127</span>
 <span class='line-number'>128</span>
+<span class='line-number'>129</span>
+<span class='line-number'>130</span>
+<span class='line-number'>131</span>
+<span class='line-number'>132</span>
+<span class='line-number'>133</span>
+<span class='line-number'>134</span>
+<span class='line-number'>135</span>
+<span class='line-number'>136</span>
+<span class='line-number'>137</span>
+<span class='line-number'>138</span>
+<span class='line-number'>139</span>
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># encoding: utf-8</span>
 </span><span class='line'><span class="nb">require</span> <span class="s1">&#39;rmagick&#39;</span>
 </span><span class='line'>
@@ -282,15 +293,26 @@
 </span><span class='line'>    <span class="k">end</span><span class="o">.</span><span class="n">compact</span>
 </span><span class='line'><span class="k">end</span>
 </span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">check</span><span class="p">(</span><span class="n">pt</span><span class="p">,</span> <span class="n">route</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">if</span> <span class="n">route</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="mi">0</span>
+</span><span class='line'>        <span class="n">last</span> <span class="o">=</span> <span class="n">route</span><span class="o">.</span><span class="n">last</span>
+</span><span class='line'>        <span class="k">if</span> <span class="n">cross_two_num</span><span class="p">(</span><span class="n">last</span><span class="p">,</span> <span class="n">pt</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">route</span><span class="o">.</span><span class="n">include?</span><span class="p">((</span><span class="n">last</span> <span class="o">+</span> <span class="n">pt</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+</span><span class='line'>            <span class="k">return</span> <span class="kp">false</span>
+</span><span class='line'>        <span class="k">end</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>    <span class="k">return</span> <span class="kp">true</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
 </span><span class='line'><span class="k">def</span> <span class="nf">dfs</span><span class="p">(</span><span class="n">pt</span><span class="p">,</span> <span class="n">route</span><span class="o">=[]</span><span class="p">,</span> <span class="n">take</span><span class="o">=-&gt;</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="p">{</span> <span class="k">yield</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="p">})</span>
-</span><span class='line'>    <span class="n">possible</span> <span class="o">=</span> <span class="n">num_possible</span><span class="p">(</span><span class="n">route</span><span class="p">,</span> <span class="n">pt</span><span class="p">)</span>
-</span><span class='line'>    <span class="k">if</span> <span class="n">route</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="mi">8</span> <span class="ow">or</span> <span class="n">possible</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="mi">0</span>
+</span><span class='line'>    <span class="k">if</span> <span class="n">check</span><span class="p">(</span><span class="n">pt</span><span class="p">,</span> <span class="n">route</span><span class="p">)</span>
 </span><span class='line'>        <span class="n">route</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="n">pt</span><span class="p">)</span>
 </span><span class='line'>        <span class="k">if</span> <span class="n">route</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;=</span> <span class="mi">4</span>
-</span><span class='line'>            <span class="n">take</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">route</span><span class="o">.</span><span class="n">join</span><span class="p">)</span>
+</span><span class='line'>            <span class="n">take</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">route</span><span class="p">)</span>
 </span><span class='line'>        <span class="k">end</span>
-</span><span class='line'>        <span class="n">possible</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">s</span><span class="o">|</span>
-</span><span class='line'>            <span class="n">dfs</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">route</span><span class="p">,</span> <span class="n">take</span><span class="p">)</span>
+</span><span class='line'>        <span class="p">(</span><span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="mi">9</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">npt</span><span class="o">|</span>
+</span><span class='line'>            <span class="k">if</span> <span class="ow">not</span> <span class="n">route</span><span class="o">.</span><span class="n">include?</span><span class="p">(</span><span class="n">npt</span><span class="p">)</span>
+</span><span class='line'>                <span class="n">dfs</span><span class="p">(</span><span class="n">npt</span><span class="p">,</span> <span class="n">route</span><span class="p">,</span> <span class="n">take</span><span class="p">)</span>
+</span><span class='line'>            <span class="k">end</span>
 </span><span class='line'>        <span class="k">end</span>
 </span><span class='line'>        <span class="n">route</span><span class="o">.</span><span class="n">pop</span>
 </span><span class='line'>    <span class="k">end</span>
@@ -453,7 +475,8 @@
        <li class='category'><a href='/blog/categories/app/'>app (34)</a></li>
 <li class='category'><a href='/blog/categories/bat/'>bat (11)</a></li>
 <li class='category'><a href='/blog/categories/excel/'>excel (1)</a></li>
-<li class='category'><a href='/blog/categories/golang/'>golang (1)</a></li>
+<li class='category'><a href='/blog/categories/golang/'>golang (2)</a></li>
+<li class='category'><a href='/blog/categories/juniper/'>juniper (1)</a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (29)</a></li>
 <li class='category'><a href='/blog/categories/python/'>python (10)</a></li>
 <li class='category'><a href='/blog/categories/rails/'>rails (1)</a></li>
@@ -467,6 +490,14 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2019/07/07/juniper/">Juniper</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2019/05/21/package/">Package</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2019/05/15/go/">Go</a>
       </li>
     
@@ -476,14 +507,6 @@
     
       <li class="post">
         <a href="/blog/2019/05/09/nokogiri/">Nokogiri</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2019/05/07/wsl/">Wsl</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2019/05/03/uac/">Uac</a>
       </li>
     
   </ul>
