@@ -9,7 +9,7 @@ categories: golang
 ### cmd
 
 ###### toEXE  
-``` shell
+``` 
 windoes/linux amd64/386
 GOOS=windows GOARCH=amd64 go build -o hello.exe hello.go
 ```
