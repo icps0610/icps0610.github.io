@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="https://icps0610.github.io/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2019-07-09T20:09:30+08:00</updated>
+  <updated>2019-07-11T01:29:57+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -20,7 +20,8 @@
     <id>https://icps0610.github.io/blog/2019/07/07/juniper</id>
     <content type="html"><![CDATA[<h3>linux</h3>
 
-<p><code>minicom</code></p>
+<p><code>minicom</code>
+<code>^a + q</code></p>
 
 <h3>切換</h3>
 
@@ -28,12 +29,11 @@
 
 <h3>command</h3>
 
-<p><code>show configure</code>
-<code>load override terminal</code>
-<code>show system alarms</code>
-<code>show chassis environment</code></p>
-
-<p><code>request system power-off</code></p>
+<p><code>show configure</code><br/>
+<code>load override terminal</code><br/>
+<code>show system alarms</code><br/>
+<code>show chassis environment</code><br/>
+<code>request system power-off</code></p>
 
 <h4>sop</h4>
 
@@ -1238,10 +1238,12 @@ ref <a href="https://github.com/Microsoft/WSL/issues/1761">https://github.com/Mi
 
 <p><code>heroku restart; heroku pg:reset DATABASE --confirm `cat .git/config | grep heroku.com | awk -F [/.] '{print $6}'` &amp;&amp; heroku run rake db:migrate</code></p>
 
+<p><code>heroku run rails db:seed</code></p>
+
 <h3>rename app</h3>
 
 <p><code>git remote rm heroku</code><br/>
-<code>`heroku git:remote -a [new_app_name]</code></p>
+<code>heroku git:remote -a [new_app_name]</code></p>
 
 <h3>sync database</h3>
 

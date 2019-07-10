@@ -121,10 +121,12 @@ heroku create [name] app name cat .git/config | grep heroku.com | awk -F [/.] '{
 
 <p><code>heroku restart; heroku pg:reset DATABASE --confirm `cat .git/config | grep heroku.com | awk -F [/.] '{print $6}'` &amp;&amp; heroku run rake db:migrate</code></p>
 
+<p><code>heroku run rails db:seed</code></p>
+
 <h3>rename app</h3>
 
 <p><code>git remote rm heroku</code><br/>
-<code>`heroku git:remote -a [new_app_name]</code></p>
+<code>heroku git:remote -a [new_app_name]</code></p>
 
 <h3>sync database</h3>
 
@@ -226,8 +228,7 @@ add buildpacks:</p>
 <li class='category'><a href='/blog/categories/juniper/'>juniper (1)</a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (29)</a></li>
 <li class='category'><a href='/blog/categories/python/'>python (10)</a></li>
-<li class='category'><a href='/blog/categories/rails/'>rails (1)</a></li>
-<li class='category'><a href='/blog/categories/ror/'>ror (31)</a></li>
+<li class='category'><a href='/blog/categories/ror/'>ror (32)</a></li>
 <li class='category'><a href='/blog/categories/ruby/'>ruby (58)</a></li>
 
     </ul>

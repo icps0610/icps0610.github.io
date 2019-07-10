@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ror | icps]]></title>
   <link href="https://icps0610.github.io/blog/categories/ror/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2019-07-09T20:09:30+08:00</updated>
+  <updated>2019-07-11T01:29:57+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,35 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Error_page]]></title>
+    <link href="https://icps0610.github.io/blog/2019/05/10/error-page/"/>
+    <updated>2019-05-10T15:02:36+08:00</updated>
+    <id>https://icps0610.github.io/blog/2019/05/10/error-page</id>
+    <content type="html"><![CDATA[<blockquote><blockquote><p>ref <a href="https://rubyplus.com/articles/4061-How-to-handle-exceptions-in-Rails-5">https://rubyplus.com/articles/4061-How-to-handle-exceptions-in-Rails-5</a>
+``` ruby</p>
+
+<h1>route.rb</h1></blockquote></blockquote>
+
+<p>match &ldquo;*path&rdquo;, to: &ldquo;page#catch_404&rdquo;, via: :all</p>
+
+<h1>application_controller.rb</h1>
+
+<p>rescue_from ActionController::RoutingError do |exception|
+ logger.error &lsquo;Routing error occurred&rsquo;
+ render plain: &lsquo;404 Not found&rsquo;, status: 404
+end</p>
+
+<h1>page_controller.rb</h1>
+
+<p>def catch_404
+  raise ActionController::RoutingError.new(params[:path])
+end</p>
+
+<p>```</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Where_certain_day]]></title>
@@ -49,57 +78,6 @@ A.where(created_at: date.midnight..date.end_of_day)</p>
     <updated>2018-12-15T20:18:52+08:00</updated>
     <id>https://icps0610.github.io/blog/2018/12/15/mass-data-import-sql</id>
     <content type="html"><![CDATA[<p><code>https://github.com/zdennis/activerecord-import</code></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Postgresql]]></title>
-    <link href="https://icps0610.github.io/blog/2018/12/09/postgresql/"/>
-    <updated>2018-12-09T17:55:32+08:00</updated>
-    <id>https://icps0610.github.io/blog/2018/12/09/postgresql</id>
-    <content type="html"><![CDATA[<h3>install</h3>
-
-<p><code>apt-get install postgresql</code></p>
-
-<h3>change passwd</h3>
-
-<p><code>sudo -u postgres psql postgres</code><br/>
-<code>\password postgres</code></p>
-
-<h3>gem</h3>
-
-<p><code>gem install pg</code></p>
-
-<h3>database.yml</h3>
-
-<pre><code>default: &amp;default
-  adapter: postgresql
-  encoding: unicode
-  username: postgres
-  password: password
-  host: localhost
-  pool: 5
-
-development:
-  &lt;&lt;: *default
-  database: database_development
-</code></pre>
-
-<h3>heroku</h3>
-
-<p><code>su postgres</code>
-<code>PGUSER=postgres PGPASSWORD=password heroku pg:pull HEROKU_DATABASE_NAME LOCALDB --app sushi</code></p>
-
-<h3>rails</h3>
-
-<p><code>rails new myapp --database=postgresql</code></p>
-
-<h3>wsl</h3>
-
-<blockquote><blockquote><p>ref <a href="https://github.com/Microsoft/WSL/issues/3863">https://github.com/Microsoft/WSL/issues/3863</a><br/>
-<code>data_sync_retry = on</code><br/>
-ref <a href="https://github.com/Microsoft/WSL/issues/1761">https://github.com/Microsoft/WSL/issues/1761</a><br/>
-<code>export RUNLEVEL=1</code></p></blockquote></blockquote>
 ]]></content>
   </entry>
   
