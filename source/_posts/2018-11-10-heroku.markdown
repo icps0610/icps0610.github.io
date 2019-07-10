@@ -31,10 +31,11 @@ end
 ### reset base
 ``heroku restart; heroku pg:reset DATABASE --confirm `cat .git/config | grep heroku.com | awk -F [/.] '{print $6}'` && heroku run rake db:migrate``
 
+`heroku run rails db:seed`
 
 ### rename app
 `git remote rm heroku`  
-``heroku git:remote -a [new_app_name]`  
+`heroku git:remote -a [new_app_name]`  
 
 ### sync database
 `PGUSER=postgres PGPASSWORD=passwd heroku pg:push local_database heroku_datbase --app app`

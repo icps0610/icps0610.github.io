@@ -8,18 +8,17 @@ categories: juniper
 
 ### linux
 `minicom`
+`^a + q`
 
 ### 切換
 %  cli  >  configure #
 
 ### command
-`show configure`
-`load override terminal`
-`show system alarms`
-`show chassis environment`
-
-
-`request system power-off`
+`show configure`  
+`load override terminal`  
+`show system alarms`  
+`show chassis environment`  
+`request system power-off`  
 
 
 

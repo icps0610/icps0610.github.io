@@ -3,7 +3,7 @@ layout: post
 title: "error_page"
 date: 2019-05-10 15:02:36 +0800
 comments: true
-categories: rails
+categories: ror
 ---
 
 >> ref https://rubyplus.com/articles/4061-How-to-handle-exceptions-in-Rails-5
