@@ -7,11 +7,11 @@ categories: juniper
 ---
 
 ### linux
-`minicom`
-`^a + q`
+`minicom`  
+`^a + q`  
 
 ### 切換
-%  cli  >  configure #
+%  cli  >  configure #  
 
 ### command
 `show configure`  

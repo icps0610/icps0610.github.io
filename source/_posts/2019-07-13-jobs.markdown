@@ -1,0 +1,70 @@
+---
+layout: post
+title: "jobs"
+date: 2019-07-13 02:00:08 +0800
+comments: true
+categories: rails
+---
+
+```
+#Gemfile
+gem 'delayed_job_active_record'  
+```
+
+`rails generate delayed_job:active_record`  
+`table.integer :attempts, default: 3,`
+`rake db:migrate`  
+
+```
+#config/application.rb
+config.active_job.queue_adapter = :delayed_job
+config.eager_load_paths << Rails.root.join('app/jobs')
+```
+
+`rails g job OrderAdd`  
+
+```
+class OrderAddJob < ApplicationJob
+    queue_as :urgent
+    #queue_as :default
+    #queue_as :low_priority
+
+    def perform(order, customer, user)
+        
+    end
+end
+
+class OrdersController < ApplicationController
+def create
+    OrderAddJob.set(wait: 5.seconds).perform_later(@order, customer, current_user)
+    OrderAddJob.set(wait_until: Date.tomorrow.noon).perform_later(@order, customer, current_user)
+end
+```
+
+```
+#config/initializers/delayed_job_config.rb
+Delayed::Worker.logger = Logger.new(File.join(Rails.root, 'log', 'delayed_job.log'))
+```
+
+`touch log/delayed_job.log`  
+
+```
+#Gemfile
+gem 'daemons'
+```
+
+` bin/delayed_job start`  
+
+
+#### with heroku
+`https://devcenter.heroku.com/articles/delayed-job`  
+
+```
+#Procfile
+worker: rake jobs:work
+```
+
+###### debog
+`heroku ps`  
+`heroku ps:scale worker=1`  
+`Delayed::Job.destroy_all`
