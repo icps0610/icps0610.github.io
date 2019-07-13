@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Rails | icps]]></title>
+  <link href="https://icps0610.github.io/blog/categories/rails/atom.xml" rel="self"/>
+  <link href="https://icps0610.github.io/"/>
+  <updated>2019-07-13T22:05:58+08:00</updated>
+  <id>https://icps0610.github.io/</id>
+  <author>
+    <name><![CDATA[icps]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Scaffold]]></title>
+    <link href="https://icps0610.github.io/blog/2019/07/13/scaffold/"/>
+    <updated>2019-07-13T20:42:01+08:00</updated>
+    <id>https://icps0610.github.io/blog/2019/07/13/scaffold</id>
+    <content type="html"><![CDATA[<p>mkdier -p lib/templates/erb/scaffold/</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Db_save_restore]]></title>
+    <link href="https://icps0610.github.io/blog/2019/07/13/db-save-restore/"/>
+    <updated>2019-07-13T20:24:04+08:00</updated>
+    <id>https://icps0610.github.io/blog/2019/07/13/db-save-restore</id>
+    <content type="html"><![CDATA[<pre><code class="ruby">data = Order.pluck.map{|i|i.map(&amp;:to_s)}
+col  = Order.column_names
+
+data = data.map do |table|
+    "Order.create" + table.each_with_index.map do |c, i|
+        "#{col[i]}: \"#{c}\""
+    end.join(",")
+end;nil
+puts data
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Jobs]]></title>
+    <link href="https://icps0610.github.io/blog/2019/07/13/jobs/"/>
+    <updated>2019-07-13T02:00:08+08:00</updated>
+    <id>https://icps0610.github.io/blog/2019/07/13/jobs</id>
+    <content type="html"><![CDATA[<pre><code>#Gemfile
+gem 'delayed_job_active_record'  
+</code></pre>
+
+<p><code>rails generate delayed_job:active_record</code><br/>
+<code>table.integer :attempts, default: 3,</code>
+<code>rake db:migrate</code></p>
+
+<pre><code>#config/application.rb
+config.active_job.queue_adapter = :delayed_job
+config.eager_load_paths &lt;&lt; Rails.root.join('app/jobs')
+</code></pre>
+
+<p><code>rails g job OrderAdd</code></p>
+
+<pre><code>class OrderAddJob &lt; ApplicationJob
+    queue_as :urgent
+    #queue_as :default
+    #queue_as :low_priority
+
+    def perform(order, customer, user)
+
+    end
+end
+
+class OrdersController &lt; ApplicationController
+def create
+    OrderAddJob.set(wait: 5.seconds).perform_later(@order, customer, current_user)
+    OrderAddJob.set(wait_until: Date.tomorrow.noon).perform_later(@order, customer, current_user)
+end
+</code></pre>
+
+<pre><code>#config/initializers/delayed_job_config.rb
+Delayed::Worker.logger = Logger.new(File.join(Rails.root, 'log', 'delayed_job.log'))
+</code></pre>
+
+<p><code>touch log/delayed_job.log</code></p>
+
+<pre><code>#Gemfile
+gem 'daemons'
+</code></pre>
+
+<p><code>bin/delayed_job start</code></p>
+
+<h4>with heroku</h4>
+
+<p><code>https://devcenter.heroku.com/articles/delayed-job</code></p>
+
+<pre><code>#Procfile
+worker: rake jobs:work
+</code></pre>
+
+<h6>debog</h6>
+
+<p><code>heroku ps</code><br/>
+<code>heroku ps:scale worker=1</code><br/>
+<code>Delayed::Job.destroy_all</code></p>
+]]></content>
+  </entry>
+  
+ </feed>

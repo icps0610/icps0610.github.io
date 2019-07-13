@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="https://icps0610.github.io/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2019-07-11T01:29:57+08:00</updated>
+  <updated>2019-07-13T22:05:58+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -14,13 +14,143 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Scaffold]]></title>
+    <link href="https://icps0610.github.io/blog/2019/07/13/scaffold/"/>
+    <updated>2019-07-13T20:42:01+08:00</updated>
+    <id>https://icps0610.github.io/blog/2019/07/13/scaffold</id>
+    <content type="html"><![CDATA[<p>mkdier -p lib/templates/erb/scaffold/</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Db_save_restore]]></title>
+    <link href="https://icps0610.github.io/blog/2019/07/13/db-save-restore/"/>
+    <updated>2019-07-13T20:24:04+08:00</updated>
+    <id>https://icps0610.github.io/blog/2019/07/13/db-save-restore</id>
+    <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">data</span> <span class="o">=</span> <span class="no">Order</span><span class="o">.</span><span class="n">pluck</span><span class="o">.</span><span class="n">map</span><span class="p">{</span><span class="o">|</span><span class="n">i</span><span class="o">|</span><span class="n">i</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:to_s</span><span class="p">)}</span>
+</span><span class='line'><span class="n">col</span>  <span class="o">=</span> <span class="no">Order</span><span class="o">.</span><span class="n">column_names</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">map</span> <span class="k">do</span> <span class="o">|</span><span class="n">table</span><span class="o">|</span>
+</span><span class='line'>    <span class="s2">&quot;Order.create&quot;</span> <span class="o">+</span> <span class="n">table</span><span class="o">.</span><span class="n">each_with_index</span><span class="o">.</span><span class="n">map</span> <span class="k">do</span> <span class="o">|</span><span class="n">c</span><span class="p">,</span> <span class="n">i</span><span class="o">|</span>
+</span><span class='line'>        <span class="s2">&quot;</span><span class="si">#{</span><span class="n">col</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="si">}</span><span class="s2">: </span><span class="se">\&quot;</span><span class="si">#{</span><span class="n">c</span><span class="si">}</span><span class="se">\&quot;</span><span class="s2">&quot;</span>
+</span><span class='line'>    <span class="k">end</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="k">end</span><span class="p">;</span><span class="kp">nil</span>
+</span><span class='line'><span class="nb">puts</span> <span class="n">data</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Jobs]]></title>
+    <link href="https://icps0610.github.io/blog/2019/07/13/jobs/"/>
+    <updated>2019-07-13T02:00:08+08:00</updated>
+    <id>https://icps0610.github.io/blog/2019/07/13/jobs</id>
+    <content type="html"><![CDATA[<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>#Gemfile
+</span><span class='line'>gem 'delayed_job_active_record'  </span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>rails generate delayed_job:active_record</code><br/>
+<code>table.integer :attempts, default: 3,</code>
+<code>rake db:migrate</code></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>#config/application.rb
+</span><span class='line'>config.active_job.queue_adapter = :delayed_job
+</span><span class='line'>config.eager_load_paths &lt;&lt; Rails.root.join('app/jobs')</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>rails g job OrderAdd</code></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>class OrderAddJob &lt; ApplicationJob
+</span><span class='line'>    queue_as :urgent
+</span><span class='line'>    #queue_as :default
+</span><span class='line'>    #queue_as :low_priority
+</span><span class='line'>
+</span><span class='line'>    def perform(order, customer, user)
+</span><span class='line'>        
+</span><span class='line'>    end
+</span><span class='line'>end
+</span><span class='line'>
+</span><span class='line'>class OrdersController &lt; ApplicationController
+</span><span class='line'>def create
+</span><span class='line'>    OrderAddJob.set(wait: 5.seconds).perform_later(@order, customer, current_user)
+</span><span class='line'>    OrderAddJob.set(wait_until: Date.tomorrow.noon).perform_later(@order, customer, current_user)
+</span><span class='line'>end</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>#config/initializers/delayed_job_config.rb
+</span><span class='line'>Delayed::Worker.logger = Logger.new(File.join(Rails.root, 'log', 'delayed_job.log'))</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>touch log/delayed_job.log</code></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>#Gemfile
+</span><span class='line'>gem 'daemons'</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>bin/delayed_job start</code></p>
+
+<h4>with heroku</h4>
+
+<p><code>https://devcenter.heroku.com/articles/delayed-job</code></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>#Procfile
+</span><span class='line'>worker: rake jobs:work</span></code></pre></td></tr></table></div></figure>
+
+
+<h6>debog</h6>
+
+<p><code>heroku ps</code><br/>
+<code>heroku ps:scale worker=1</code><br/>
+<code>Delayed::Job.destroy_all</code></p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Juniper]]></title>
     <link href="https://icps0610.github.io/blog/2019/07/07/juniper/"/>
     <updated>2019-07-07T19:28:04+08:00</updated>
     <id>https://icps0610.github.io/blog/2019/07/07/juniper</id>
     <content type="html"><![CDATA[<h3>linux</h3>
 
-<p><code>minicom</code>
+<p><code>minicom</code><br/>
 <code>^a + q</code></p>
 
 <h3>切換</h3>
@@ -1134,191 +1264,6 @@ A.where(created_at: date.midnight..date.end_of_day)</p>
     <id>https://icps0610.github.io/blog/2018/12/13/weather-api</id>
     <content type="html"><![CDATA[<p><code>https://works.ioa.tw/weather/api/doc/index.html#api-Weather_API</code>
 <code>http://opendata2.epa.gov.tw/AQI.json</code></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Postgresql]]></title>
-    <link href="https://icps0610.github.io/blog/2018/12/09/postgresql/"/>
-    <updated>2018-12-09T17:55:32+08:00</updated>
-    <id>https://icps0610.github.io/blog/2018/12/09/postgresql</id>
-    <content type="html"><![CDATA[<h3>install</h3>
-
-<p><code>apt-get install postgresql</code></p>
-
-<h3>change passwd</h3>
-
-<p><code>sudo -u postgres psql postgres</code><br/>
-<code>\password postgres</code></p>
-
-<h3>gem</h3>
-
-<p><code>gem install pg</code></p>
-
-<h3>database.yml</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>default: &default
-</span><span class='line'>  adapter: postgresql
-</span><span class='line'>  encoding: unicode
-</span><span class='line'>  username: postgres
-</span><span class='line'>  password: password
-</span><span class='line'>  host: localhost
-</span><span class='line'>  pool: 5
-</span><span class='line'>
-</span><span class='line'>development:
-</span><span class='line'>  &lt;&lt;: *default
-</span><span class='line'>  database: database_development</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>heroku</h3>
-
-<p><code>su postgres</code>
-<code>PGUSER=postgres PGPASSWORD=password heroku pg:pull HEROKU_DATABASE_NAME LOCALDB --app sushi</code></p>
-
-<h3>rails</h3>
-
-<p><code>rails new myapp --database=postgresql</code></p>
-
-<h3>wsl</h3>
-
-<blockquote><blockquote><p>ref <a href="https://github.com/Microsoft/WSL/issues/3863">https://github.com/Microsoft/WSL/issues/3863</a><br/>
-<code>data_sync_retry = on</code><br/>
-ref <a href="https://github.com/Microsoft/WSL/issues/1761">https://github.com/Microsoft/WSL/issues/1761</a><br/>
-<code>export RUNLEVEL=1</code></p></blockquote></blockquote>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Heroku]]></title>
-    <link href="https://icps0610.github.io/blog/2018/11/10/heroku/"/>
-    <updated>2018-11-10T15:29:15+08:00</updated>
-    <id>https://icps0610.github.io/blog/2018/11/10/heroku</id>
-    <content type="html"><![CDATA[<h3>build</h3>
-
-<p><code>heroku login</code><br/>
-<code>heroku create [name]</code></p>
-
-<h3>app name</h3>
-
-<p><code>cat .git/config | grep heroku.com | awk -F [/.] '{print $6}'</code></p>
-
-<p><code>heroku git:remote -a `cat .git/config | grep heroku.com | awk -F [/.] '{print $6}'`</code><br/>
-<code>git init</code></p>
-
-<h3>upload</h3>
-
-<p><code>git commit -am '`date +%Y-%m-%d:%H:%M:%S`'</code><br/>
-<code>git push heroku master</code></p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#Gemfile</span>
-</span><span class='line'><span class="n">group</span> <span class="ss">:production</span> <span class="k">do</span>
-</span><span class='line'>    <span class="n">gem</span> <span class="s1">&#39;rails_12factor&#39;</span>
-</span><span class='line'>    <span class="n">gem</span> <span class="s1">&#39;pg&#39;</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>reset base</h3>
-
-<p><code>heroku restart; heroku pg:reset DATABASE --confirm `cat .git/config | grep heroku.com | awk -F [/.] '{print $6}'` &amp;&amp; heroku run rake db:migrate</code></p>
-
-<p><code>heroku run rails db:seed</code></p>
-
-<h3>rename app</h3>
-
-<p><code>git remote rm heroku</code><br/>
-<code>heroku git:remote -a [new_app_name]</code></p>
-
-<h3>sync database</h3>
-
-<p><code>PGUSER=postgres PGPASSWORD=passwd heroku pg:push local_database heroku_datbase --app app</code>
-<code>PGUSER=postgres PGPASSWORD=passwd heroku pg:pull heroku_datbase local_database --app app</code></p>
-
-<h3>watir</h3>
-
-<p>ref >> <a href="https://www.simon-neutert.de/2018/watir-chrome-heroku/">https://www.simon-neutert.de/2018/watir-chrome-heroku/</a>
-add buildpacks:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="ss">https</span><span class="p">:</span><span class="sr">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">heroku</span><span class="o">/</span><span class="n">heroku</span><span class="o">-</span><span class="n">buildpack</span><span class="o">-</span><span class="n">google</span><span class="o">-</span><span class="n">chrome</span>
-</span><span class='line'><span class="ss">https</span><span class="p">:</span><span class="sr">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">heroku</span><span class="o">/</span><span class="n">heroku</span><span class="o">-</span><span class="n">buildpack</span><span class="o">-</span><span class="n">chromedriver</span>
-</span><span class='line'><span class="n">gem</span> <span class="s1">&#39;waitr&#39;</span>
-</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;watir&#39;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>switch</h3>
-
-<p>ref >> <a href="https://github.com/heroku/heroku-accounts">https://github.com/heroku/heroku-accounts</a></p>
-
-<h5>add accounts</h5>
-
-<p><code>heroku accounts:add username</code></p>
-
-<h5>switch accounts</h5>
-
-<p><code>heroku accounts:set username</code></p>
-
-<h5>list accounts</h5>
-
-<p><code>heroku accounts</code></p>
-
-<h2>No migration with version number</h2>
-
-<p><code>heroku pg:psql</code>
-<code>delete from schema_migrations where version= 'XXXXXXXXXXX';</code></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Devise_use_name]]></title>
-    <link href="https://icps0610.github.io/blog/2018/11/01/devise-use-name/"/>
-    <updated>2018-11-01T16:30:18+08:00</updated>
-    <id>https://icps0610.github.io/blog/2018/11/01/devise-use-name</id>
-    <content type="html"><![CDATA[<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>#config\initalizers\devise.rb
-</span><span class='line'>config.authentication_keys = [:name]
-</span><span class='line'>
-</span><span class='line'>#app\model\user.rb
-</span><span class='line'>devise :database_authenticatable, :registerable,
-</span><span class='line'>    :recoverable, :rememberable, :trackable, :validatable,
-</span><span class='line'>    :omniauthable, authentication_keys: [:name]
-</span><span class='line'>
-</span><span class='line'>def email_required?
-</span><span class='line'>    false
-</span><span class='line'>end</span></code></pre></td></tr></table></div></figure>
-
-
-
 ]]></content>
   </entry>
   

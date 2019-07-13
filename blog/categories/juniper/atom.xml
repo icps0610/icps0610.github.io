@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Juniper | icps]]></title>
   <link href="https://icps0610.github.io/blog/categories/juniper/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2019-07-11T01:29:57+08:00</updated>
+  <updated>2019-07-13T22:05:58+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -20,7 +20,7 @@
     <id>https://icps0610.github.io/blog/2019/07/07/juniper</id>
     <content type="html"><![CDATA[<h3>linux</h3>
 
-<p><code>minicom</code>
+<p><code>minicom</code><br/>
 <code>^a + q</code></p>
 
 <h3>切換</h3>
