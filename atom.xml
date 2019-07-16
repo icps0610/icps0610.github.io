@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="https://icps0610.github.io/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2019-07-13T22:05:58+08:00</updated>
+  <updated>2019-07-16T22:44:09+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -23,34 +23,6 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Db_save_restore]]></title>
-    <link href="https://icps0610.github.io/blog/2019/07/13/db-save-restore/"/>
-    <updated>2019-07-13T20:24:04+08:00</updated>
-    <id>https://icps0610.github.io/blog/2019/07/13/db-save-restore</id>
-    <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">data</span> <span class="o">=</span> <span class="no">Order</span><span class="o">.</span><span class="n">pluck</span><span class="o">.</span><span class="n">map</span><span class="p">{</span><span class="o">|</span><span class="n">i</span><span class="o">|</span><span class="n">i</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:to_s</span><span class="p">)}</span>
-</span><span class='line'><span class="n">col</span>  <span class="o">=</span> <span class="no">Order</span><span class="o">.</span><span class="n">column_names</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">map</span> <span class="k">do</span> <span class="o">|</span><span class="n">table</span><span class="o">|</span>
-</span><span class='line'>    <span class="s2">&quot;Order.create&quot;</span> <span class="o">+</span> <span class="n">table</span><span class="o">.</span><span class="n">each_with_index</span><span class="o">.</span><span class="n">map</span> <span class="k">do</span> <span class="o">|</span><span class="n">c</span><span class="p">,</span> <span class="n">i</span><span class="o">|</span>
-</span><span class='line'>        <span class="s2">&quot;</span><span class="si">#{</span><span class="n">col</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="si">}</span><span class="s2">: </span><span class="se">\&quot;</span><span class="si">#{</span><span class="n">c</span><span class="si">}</span><span class="se">\&quot;</span><span class="s2">&quot;</span>
-</span><span class='line'>    <span class="k">end</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
-</span><span class='line'><span class="k">end</span><span class="p">;</span><span class="kp">nil</span>
-</span><span class='line'><span class="nb">puts</span> <span class="n">data</span>
-</span></code></pre></td></tr></table></div></figure>
-
-]]></content>
-  </entry>
-  
-  <entry>
     <title type="html"><![CDATA[Jobs]]></title>
     <link href="https://icps0610.github.io/blog/2019/07/13/jobs/"/>
     <updated>2019-07-13T02:00:08+08:00</updated>
@@ -62,7 +34,7 @@
 
 
 <p><code>rails generate delayed_job:active_record</code><br/>
-<code>table.integer :attempts, default: 3,</code>
+<code>table.integer :attempts, default: 3,</code><br/>
 <code>rake db:migrate</code></p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -140,6 +112,42 @@
 <p><code>heroku ps</code><br/>
 <code>heroku ps:scale worker=1</code><br/>
 <code>Delayed::Job.destroy_all</code></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Db Save Restore]]></title>
+    <link href="https://icps0610.github.io/blog/2019/07/13/db-save-restore/"/>
+    <updated>2019-07-13T00:00:00+08:00</updated>
+    <id>https://icps0610.github.io/blog/2019/07/13/db-save-restore</id>
+    <content type="html"><![CDATA[<hr />
+
+<p>layout: post
+title: &ldquo;db_save_restore&rdquo;
+date: 2019-07-13 20:24:04 +0800
+comments: true
+categories: ror</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">data</span> <span class="o">=</span> <span class="no">Order</span><span class="o">.</span><span class="n">pluck</span><span class="o">.</span><span class="n">map</span><span class="p">{</span><span class="o">|</span><span class="n">i</span><span class="o">|</span><span class="n">i</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:to_s</span><span class="p">)}</span>
+</span><span class='line'><span class="n">col</span>  <span class="o">=</span> <span class="no">Order</span><span class="o">.</span><span class="n">column_names</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">map</span> <span class="k">do</span> <span class="o">|</span><span class="n">table</span><span class="o">|</span>
+</span><span class='line'>    <span class="s2">&quot;Order.create&quot;</span> <span class="o">+</span> <span class="n">table</span><span class="o">.</span><span class="n">each_with_index</span><span class="o">.</span><span class="n">map</span> <span class="k">do</span> <span class="o">|</span><span class="n">c</span><span class="p">,</span> <span class="n">i</span><span class="o">|</span>
+</span><span class='line'>        <span class="s2">&quot;</span><span class="si">#{</span><span class="n">col</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="si">}</span><span class="s2">: </span><span class="se">\&quot;</span><span class="si">#{</span><span class="n">c</span><span class="si">}</span><span class="se">\&quot;</span><span class="s2">&quot;</span>
+</span><span class='line'>    <span class="k">end</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="k">end</span><span class="p">;</span><span class="kp">nil</span>
+</span><span class='line'><span class="nb">puts</span> <span class="n">data</span>
+</span></code></pre></td></tr></table></div></figure>
+
 ]]></content>
   </entry>
   
