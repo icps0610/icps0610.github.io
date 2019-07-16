@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="https://icps0610.github.io/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2019-07-16T22:44:09+08:00</updated>
+  <updated>2019-07-16T22:49:57+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -137,13 +137,13 @@ categories: ror</p>
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
 <span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">data</span> <span class="o">=</span> <span class="no">Order</span><span class="o">.</span><span class="n">pluck</span><span class="o">.</span><span class="n">map</span><span class="p">{</span><span class="o">|</span><span class="n">i</span><span class="o">|</span><span class="n">i</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:to_s</span><span class="p">)}</span>
-</span><span class='line'><span class="n">col</span>  <span class="o">=</span> <span class="no">Order</span><span class="o">.</span><span class="n">column_names</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">data</span> <span class="o">=</span> <span class="no">Order</span><span class="o">.</span><span class="n">order</span><span class="p">(</span><span class="s2">&quot;id asc&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">pluck</span><span class="o">.</span><span class="n">map</span><span class="p">{</span><span class="o">|</span><span class="n">i</span><span class="o">|</span><span class="n">i</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:to_s</span><span class="p">)</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="mi">1</span><span class="p">)}</span>
+</span><span class='line'><span class="n">col</span>  <span class="o">=</span> <span class="no">Order</span><span class="o">.</span><span class="n">column_names</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1">#id</span>
 </span><span class='line'>
 </span><span class='line'><span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">map</span> <span class="k">do</span> <span class="o">|</span><span class="n">table</span><span class="o">|</span>
-</span><span class='line'>    <span class="s2">&quot;Order.create&quot;</span> <span class="o">+</span> <span class="n">table</span><span class="o">.</span><span class="n">each_with_index</span><span class="o">.</span><span class="n">map</span> <span class="k">do</span> <span class="o">|</span><span class="n">c</span><span class="p">,</span> <span class="n">i</span><span class="o">|</span>
+</span><span class='line'>    <span class="s2">&quot;Order.create &quot;</span> <span class="o">+</span> <span class="n">table</span><span class="o">.</span><span class="n">each_with_index</span><span class="o">.</span><span class="n">map</span> <span class="k">do</span> <span class="o">|</span><span class="n">c</span><span class="p">,</span> <span class="n">i</span><span class="o">|</span>
 </span><span class='line'>        <span class="s2">&quot;</span><span class="si">#{</span><span class="n">col</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="si">}</span><span class="s2">: </span><span class="se">\&quot;</span><span class="si">#{</span><span class="n">c</span><span class="si">}</span><span class="se">\&quot;</span><span class="s2">&quot;</span>
-</span><span class='line'>    <span class="k">end</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">end</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;, &quot;</span><span class="p">)</span>
 </span><span class='line'><span class="k">end</span><span class="p">;</span><span class="kp">nil</span>
 </span><span class='line'><span class="nb">puts</span> <span class="n">data</span>
 </span></code></pre></td></tr></table></div></figure>
