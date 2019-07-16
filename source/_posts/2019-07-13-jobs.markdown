@@ -3,7 +3,7 @@ layout: post
 title: "jobs"
 date: 2019-07-13 02:00:08 +0800
 comments: true
-categories: rails
+categories: ror
 ---
 
 ```
@@ -12,7 +12,7 @@ gem 'delayed_job_active_record'
 ```
 
 `rails generate delayed_job:active_record`  
-`table.integer :attempts, default: 3,`
+`table.integer :attempts, default: 3,`  
 `rake db:migrate`  
 
 ```

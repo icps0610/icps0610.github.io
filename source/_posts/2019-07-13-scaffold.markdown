@@ -3,6 +3,6 @@ layout: post
 title: "scaffold"
 date: 2019-07-13 20:42:01 +0800
 comments: true
-categories: rails
+categories: ror
 ---
 mkdier -p lib/templates/erb/scaffold/

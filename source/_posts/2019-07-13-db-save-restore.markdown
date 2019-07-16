@@ -3,8 +3,7 @@ layout: post
 title: "db_save_restore"
 date: 2019-07-13 20:24:04 +0800
 comments: true
-categories: rails
----
+categories: ror
 ``` ruby
 data = Order.pluck.map{|i|i.map(&:to_s)}
 col  = Order.column_names
