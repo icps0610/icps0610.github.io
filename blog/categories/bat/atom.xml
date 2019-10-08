@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Bat | icps]]></title>
   <link href="https://icps0610.github.io/blog/categories/bat/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2019-07-16T23:10:39+08:00</updated>
+  <updated>2019-10-09T05:12:58+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -131,6 +131,26 @@ ping 127.0.0.1 -n 10 > nul
 %UserDomain%: 包含使用者帳號的網域名稱, 或者電腦名稱<br/>
 %UserName%: 使用者帳號名稱<br/>
 %UserProfile%: 目前使用者的設定檔路徑</p>
+
+<p>協助工具選項          control access.cpl
+加入新的硬體              control sysdm.cpl add new hardware
+新增/移除程式            control appwiz.cpl
+日期/時間內容           control timedate.cpl
+顯示內容             control desk.cpl
+字型資料夾                   control fonts
+網際網路內容            control inetcpl.cpl
+搖桿內容            control joy.cpl
+鍵盤內容            control main.cpl keyboard
+Microsoft Exchange             control mlcfg32.cpl
+滑鼠內容               control main.cpl
+多媒體內容          control mmsys.cpl
+網路內容             control netcpl.cpl
+電源管理              control powercfg.cpl
+印表機資料夾                control printers
+地區設定              control intl.cpl
+掃描器與數位相機           control sticpl.cpl
+音效內容               control mmsys.cpl sounds
+系統內容              control sysdm.cpl</p>
 ]]></content>
   </entry>
   

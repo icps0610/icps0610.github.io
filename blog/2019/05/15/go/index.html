@@ -110,6 +110,58 @@ https:// &hellip;">
 
 <p><code>os.Args[1]</code></p>
 
+<h5>run command</h5>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="nx">cmd</span> <span class="o">:=</span> <span class="nx">exec</span><span class="p">.</span><span class="nx">Command</span><span class="p">(</span><span class="s">&quot;ipconfig&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="nx">_</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">cmd</span><span class="p">.</span><span class="nx">CombinedOutput</span><span class="p">()</span>
+</span><span class='line'><span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>ipconfig</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="nx">ifaces</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">net</span><span class="p">.</span><span class="nx">Interfaces</span><span class="p">()</span>
+</span><span class='line'><span class="c1">// handle err</span>
+</span><span class='line'><span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">i</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">ifaces</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">addrs</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">i</span><span class="p">.</span><span class="nx">Addrs</span><span class="p">()</span>
+</span><span class='line'>    <span class="c1">// handle err</span>
+</span><span class='line'>    <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">addr</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">addrs</span> <span class="p">{</span>
+</span><span class='line'>        <span class="kd">var</span> <span class="nx">ip</span> <span class="nx">net</span><span class="p">.</span><span class="nx">IP</span>
+</span><span class='line'>        <span class="k">switch</span> <span class="nx">v</span> <span class="o">:=</span> <span class="nx">addr</span><span class="p">.(</span><span class="kd">type</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">case</span> <span class="o">*</span><span class="nx">net</span><span class="p">.</span><span class="nx">IPNet</span><span class="p">:</span>
+</span><span class='line'>            <span class="nx">ip</span> <span class="p">=</span> <span class="nx">v</span><span class="p">.</span><span class="nx">IP</span>
+</span><span class='line'>        <span class="k">case</span> <span class="o">*</span><span class="nx">net</span><span class="p">.</span><span class="nx">IPAddr</span><span class="p">:</span>
+</span><span class='line'>            <span class="nx">ip</span> <span class="p">=</span> <span class="nx">v</span><span class="p">.</span><span class="nx">IP</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">ip</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
 <h6>curl</h6>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -195,19 +247,20 @@ https:// &hellip;">
 <span class='line-number'>24</span>
 <span class='line-number'>25</span>
 <span class='line-number'>26</span>
-</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kd">func</span> <span class="nx">writeLines</span><span class="p">(</span><span class="nx">lines</span> <span class="p">[]</span><span class="kt">string</span><span class="p">,</span> <span class="nx">path</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kd">func</span> <span class="nx">writeLines</span><span class="p">(</span><span class="nx">lines</span> <span class="p">[]</span><span class="kt">string</span><span class="p">,</span> <span class="nx">path</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
 </span><span class='line'>    <span class="nx">file</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Create</span><span class="p">(</span><span class="nx">path</span><span class="p">)</span>
 </span><span class='line'>    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-</span><span class='line'>        <span class="k">return</span> <span class="nx">err</span>
+</span><span class='line'>        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
 </span><span class='line'>    <span class="p">}</span>
 </span><span class='line'>    <span class="k">defer</span> <span class="nx">file</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="nx">w</span> <span class="o">:=</span> <span class="nx">bufio</span><span class="p">.</span><span class="nx">NewWriter</span><span class="p">(</span><span class="nx">file</span><span class="p">)</span>
 </span><span class='line'>    <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">line</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">lines</span> <span class="p">{</span>
-</span><span class='line'>        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Fprintln</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span> <span class="nx">line</span><span class="p">)</span>
+</span><span class='line'>        <span class="nx">file</span><span class="p">.</span><span class="nx">WriteString</span><span class="p">(</span><span class="nx">line</span> <span class="o">+</span> <span class="s">&quot;\n&quot;</span><span class="p">)</span>
 </span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>    <span class="k">return</span> <span class="nx">w</span><span class="p">.</span><span class="nx">Flush</span><span class="p">()</span>
 </span><span class='line'><span class="p">}</span>
+</span><span class='line'>
 </span><span class='line'><span class="kd">func</span> <span class="nx">readfile</span><span class="p">(</span><span class="nx">path</span> <span class="kt">string</span><span class="p">)</span> <span class="p">([]</span><span class="kt">string</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
 </span><span class='line'>    <span class="nx">file</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Open</span><span class="p">(</span><span class="nx">path</span><span class="p">)</span>
 </span><span class='line'>    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
@@ -221,6 +274,11 @@ https:// &hellip;">
 </span><span class='line'>    <span class="p">}</span>
 </span><span class='line'>    <span class="k">return</span> <span class="nx">lines</span><span class="p">,</span> <span class="nx">line</span><span class="p">.</span><span class="nx">Err</span><span class="p">()</span>
 </span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">#</span><span class="nx">win</span> <span class="nx">utf</span><span class="o">-</span><span class="mi">16</span> <span class="nx">le</span> <span class="nx">to</span> <span class="nx">utf</span><span class="o">-</span><span class="mi">8</span>
+</span><span class='line'><span class="kn">import</span> <span class="s">&quot;github.com/malexdev/utfutil&quot;</span>
+</span><span class='line'><span class="nx">d</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">utfutil</span><span class="p">.</span><span class="nx">ReadFile</span><span class="p">(</span><span class="s">&quot;txt&quot;</span><span class="p">,</span> <span class="nx">utfutil</span><span class="p">.</span><span class="nx">UTF8</span><span class="p">)</span>
+</span><span class='line'><span class="nx">c</span> <span class="o">:=</span> <span class="nb">string</span><span class="p">(</span><span class="nx">d</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -313,6 +371,15 @@ https:// &hellip;">
 </span></code></pre></td></tr></table></div></figure>
 
 
+<h6>exec</h6>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="nx">cmd</span> <span class="o">:=</span> <span class="nx">exec</span><span class="p">.</span><span class="nx">Command</span><span class="p">(</span><span class="s">&quot;sleep&quot;</span><span class="p">,</span> <span class="s">&quot;1&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="nx">err</span> <span class="o">:=</span> <span class="nx">cmd</span><span class="p">.</span><span class="nx">Run</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
 <h3>debug</h3>
 
 <h6>type class</h6>
@@ -365,6 +432,23 @@ https:// &hellip;">
 </span></code></pre></td></tr></table></div></figure>
 
 
+<h5>screen</h5>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kn">import</span> <span class="s">&quot;github.com/inancgumus/screen&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">func</span> <span class="nx">cleanScreen</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">screen</span><span class="p">.</span><span class="nx">Clear</span><span class="p">()</span>
+</span><span class='line'>    <span class="nx">screen</span><span class="p">.</span><span class="nx">MoveTopLeft</span><span class="p">()</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
 <h3>time</h3>
 
 <h6>time_format</h6>
@@ -385,7 +469,15 @@ https:// &hellip;">
 <h6>sleep</h6>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
 </pre></td><td class='code'><pre><code class='go'><span class='line'><span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="mi">1</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">func</span> <span class="nx">sleep</span><span class="p">(</span><span class="nx">t</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Duration</span><span class="p">(</span><span class="nx">t</span><span class="p">)</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Millisecond</span><span class="p">)</span>
+</span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -435,12 +527,18 @@ https:// &hellip;">
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
 </pre></td><td class='code'><pre><code class='go'><span class='line'><span class="nx">match</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">regexp</span><span class="p">.</span><span class="nx">MatchString</span><span class="p">(</span><span class="nx">keyword</span><span class="p">,</span> <span class="nx">str</span><span class="p">)</span>
 </span><span class='line'><span class="nx">r</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">regexp</span><span class="p">.</span><span class="nx">Compile</span><span class="p">(</span><span class="nx">keyword</span><span class="p">)</span>
 </span><span class='line'>
 </span><span class='line'><span class="c1">//scan</span>
 </span><span class='line'><span class="nx">re</span> <span class="o">:=</span> <span class="nx">regexp</span><span class="p">.</span><span class="nx">MustCompile</span><span class="p">(</span><span class="nx">keyword</span><span class="p">)</span>
-</span><span class='line'><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">re</span><span class="p">.</span><span class="nx">FindAllStringSubmatch</span><span class="p">(</span><span class="nx">str</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+</span><span class='line'><span class="nx">match</span> <span class="o">:=</span> <span class="nx">re</span><span class="p">.</span><span class="nx">FindStringSubmatch</span><span class="p">(</span><span class="nx">l</span><span class="p">)</span>
+</span><span class='line'><span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nx">match</span><span class="p">)</span> <span class="p">&gt;</span> <span class="mi">0</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">match</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -847,7 +945,11 @@ https:// &hellip;">
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="nx">rand</span><span class="p">.</span><span class="nx">Seed</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">().</span><span class="nx">UnixNano</span><span class="p">())</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kn">import</span> <span class="s">&quot;math/rand&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">rand</span><span class="p">.</span><span class="nx">Seed</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">().</span><span class="nx">UnixNano</span><span class="p">())</span>
 </span><span class='line'><span class="nx">rand</span><span class="p">.</span><span class="nx">Intn</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure>
 
@@ -939,18 +1041,26 @@ https:// &hellip;">
        <li class='category'><a href='/blog/categories/app/'>app (34)</a></li>
 <li class='category'><a href='/blog/categories/bat/'>bat (11)</a></li>
 <li class='category'><a href='/blog/categories/excel/'>excel (1)</a></li>
-<li class='category'><a href='/blog/categories/golang/'>golang (2)</a></li>
+<li class='category'><a href='/blog/categories/golang/'>golang (3)</a></li>
 <li class='category'><a href='/blog/categories/juniper/'>juniper (1)</a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (29)</a></li>
 <li class='category'><a href='/blog/categories/python/'>python (10)</a></li>
 <li class='category'><a href='/blog/categories/ror/'>ror (35)</a></li>
-<li class='category'><a href='/blog/categories/ruby/'>ruby (58)</a></li>
+<li class='category'><a href='/blog/categories/ruby/'>ruby (59)</a></li>
 
     </ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2019/08/06/getweeknumber/">getWeekNumber</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2019/07/17/irb-noprompt/">Irb_noprompt</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2019/07/13/scaffold/">Scaffold</a>
@@ -962,14 +1072,6 @@ https:// &hellip;">
     
       <li class="post">
         <a href="/blog/2019/07/13/jobs/">Jobs</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2019/07/07/juniper/">Juniper</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2019/05/21/package/">Package</a>
       </li>
     
   </ul>

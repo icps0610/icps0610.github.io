@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Golang | icps]]></title>
   <link href="https://icps0610.github.io/blog/categories/golang/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2019-07-16T23:10:39+08:00</updated>
+  <updated>2019-10-09T05:12:58+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,34 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[getWeekNumber]]></title>
+    <link href="https://icps0610.github.io/blog/2019/08/06/getweeknumber/"/>
+    <updated>2019-08-06T00:49:19+08:00</updated>
+    <id>https://icps0610.github.io/blog/2019/08/06/getweeknumber</id>
+    <content type="html"><![CDATA[<pre><code class="go">func leapYear(y int) bool {
+    if (y%4 == 0 &amp;&amp; y%100 != 0) || (y%400 == 0 &amp;&amp; y%3200 != 0) {
+        return true
+    }
+    return false
+}
+func getWeek(y, m, d int) int {
+    monthTable := []int{6, 2, 2, 5, 0, 3, 5, 1, 4, 6, 2, 4}
+    centuryTable := []int{0, 5, 3, 1}
+    monthValue := monthTable[m-1]
+    yearValue := y % 100
+    yearOver := yearValue / 4
+    centuryValue := centuryTable[(y/100)%4]
+    w := d + monthValue + yearValue + yearOver + centuryValue
+    if leapYear(y) {
+        w -= 1
+    }
+    return w % 7
+}
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Package]]></title>
@@ -46,6 +74,35 @@ GOOS=windows GOARCH=amd64 go build -o hello.exe hello.go
 <h6>argv</h6>
 
 <p><code>os.Args[1]</code></p>
+
+<h5>run command</h5>
+
+<pre><code class="go">cmd := exec.Command("ipconfig")
+_, err := cmd.CombinedOutput()
+if err != nil {
+    fmt.Println(err)
+}
+</code></pre>
+
+<h3>ipconfig</h3>
+
+<pre><code class="go">ifaces, _ := net.Interfaces()
+// handle err
+for _, i := range ifaces {
+    addrs, _ := i.Addrs()
+    // handle err
+    for _, addr := range addrs {
+        var ip net.IP
+        switch v := addr.(type) {
+        case *net.IPNet:
+            ip = v.IP
+        case *net.IPAddr:
+            ip = v.IP
+        }
+        fmt.Println(ip)
+    }
+}
+</code></pre>
 
 <h6>curl</h6>
 
@@ -82,19 +139,18 @@ bufio.NewReader(os.Stdin).ReadBytes('\n')
 
 <h6>IO</h6>
 
-<pre><code class="go">func writeLines(lines []string, path string) error {
+<pre><code class="go">
+func writeLines(lines []string, path string) {
     file, err := os.Create(path)
     if err != nil {
-        return err
+        fmt.Println(err)
     }
     defer file.Close()
-
-    w := bufio.NewWriter(file)
     for _, line := range lines {
-        fmt.Fprintln(w, line)
+        file.WriteString(line + "\n")
     }
-    return w.Flush()
 }
+
 func readfile(path string) ([]string, error) {
     file, err := os.Open(path)
     if err != nil {
@@ -108,6 +164,11 @@ func readfile(path string) ([]string, error) {
     }
     return lines, line.Err()
 }
+
+#win utf-16 le to utf-8
+import "github.com/malexdev/utfutil"
+d, _ := utfutil.ReadFile("txt", utfutil.UTF8)
+c := string(d)
 </code></pre>
 
 <h6>Json</h6>
@@ -159,6 +220,12 @@ fmt.Println(file)
 }
 </code></pre>
 
+<h6>exec</h6>
+
+<pre><code class="go">cmd := exec.Command("sleep", "1")
+err := cmd.Run()
+</code></pre>
+
 <h3>debug</h3>
 
 <h6>type class</h6>
@@ -191,6 +258,16 @@ _ = i
 time.Now().Sub(start)
 </code></pre>
 
+<h5>screen</h5>
+
+<pre><code class="go">import "github.com/inancgumus/screen"
+
+func cleanScreen() {
+    screen.Clear()
+    screen.MoveTopLeft()
+}
+</code></pre>
+
 <h3>time</h3>
 
 <h6>time_format</h6>
@@ -205,6 +282,10 @@ timeFormat(today)
 <h6>sleep</h6>
 
 <pre><code class="go">time.Sleep(1 * time.Second)
+
+func sleep(t int) {
+    time.Sleep(time.Duration(t) * time.Millisecond)
+}
 </code></pre>
 
 <h3>string</h3>
@@ -239,7 +320,10 @@ r, _ := regexp.Compile(keyword)
 
 //scan
 re := regexp.MustCompile(keyword)
-fmt.Println(re.FindAllStringSubmatch(str, -1))
+match := re.FindStringSubmatch(l)
+if len(match) &gt; 0 {
+    fmt.Println(match[1])
+}
 </code></pre>
 
 <h6>chr <-> ord</h6>
@@ -470,7 +554,9 @@ func oddBool(i int) bool {
 
 <h6>rand</h6>
 
-<pre><code class="go">rand.Seed(time.Now().UnixNano())
+<pre><code class="go">import "math/rand"
+
+rand.Seed(time.Now().UnixNano())
 rand.Intn(100)
 </code></pre>
 

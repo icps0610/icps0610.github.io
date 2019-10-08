@@ -9,8 +9,26 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="mkdier -p lib/templates/erb/scaffold/
-">
+  <meta name="description" content="1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+func leapYear(y int) bool { if (y%4 == 0 &amp;&amp; y%100 != 0) || (y%400 == 0 &amp;&amp; y%3200 != 0 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -74,6 +92,113 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2019/08/06/getweeknumber/">getWeekNumber</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2019-08-06T00:49:19+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2019</span></span> <span class='time'>12:49 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kd">func</span> <span class="nx">leapYear</span><span class="p">(</span><span class="nx">y</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">bool</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="nx">y</span><span class="o">%</span><span class="mi">4</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="nx">y</span><span class="o">%</span><span class="mi">100</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">||</span> <span class="p">(</span><span class="nx">y</span><span class="o">%</span><span class="mi">400</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="nx">y</span><span class="o">%</span><span class="mi">3200</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="kc">true</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="k">return</span> <span class="kc">false</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="kd">func</span> <span class="nx">getWeek</span><span class="p">(</span><span class="nx">y</span><span class="p">,</span> <span class="nx">m</span><span class="p">,</span> <span class="nx">d</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">monthTable</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">}</span>
+</span><span class='line'>    <span class="nx">centuryTable</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">}</span>
+</span><span class='line'>    <span class="nx">monthValue</span> <span class="o">:=</span> <span class="nx">monthTable</span><span class="p">[</span><span class="nx">m</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</span><span class='line'>    <span class="nx">yearValue</span> <span class="o">:=</span> <span class="nx">y</span> <span class="o">%</span> <span class="mi">100</span>
+</span><span class='line'>    <span class="nx">yearOver</span> <span class="o">:=</span> <span class="nx">yearValue</span> <span class="o">/</span> <span class="mi">4</span>
+</span><span class='line'>    <span class="nx">centuryValue</span> <span class="o">:=</span> <span class="nx">centuryTable</span><span class="p">[(</span><span class="nx">y</span><span class="o">/</span><span class="mi">100</span><span class="p">)</span><span class="o">%</span><span class="mi">4</span><span class="p">]</span>
+</span><span class='line'>    <span class="nx">w</span> <span class="o">:=</span> <span class="nx">d</span> <span class="o">+</span> <span class="nx">monthValue</span> <span class="o">+</span> <span class="nx">yearValue</span> <span class="o">+</span> <span class="nx">yearOver</span> <span class="o">+</span> <span class="nx">centuryValue</span>
+</span><span class='line'>    <span class="k">if</span> <span class="nx">leapYear</span><span class="p">(</span><span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nx">w</span> <span class="o">-=</span> <span class="mi">1</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="k">return</span> <span class="nx">w</span> <span class="o">%</span> <span class="mi">7</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2019/07/17/irb-noprompt/">Irb_noprompt</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2019-07-17T21:24:16+08:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2019</span></span> <span class='time'>9:24 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>irb</h3>
+
+<p><code>'irb --noprompt</code></p>
+
+<h3>rails console</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>~/.irbrc  
+</span><span class='line'>IRB.conf[:PROMPT_MODE] = :XMP   </span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2019/07/13/scaffold/">Scaffold</a></h1>
     
     
@@ -119,7 +244,9 @@
   </header>
 
 
-  <div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+  <div class="entry-content"><h3></h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -259,92 +386,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2019/07/07/juniper/">Juniper</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2019-07-07T19:28:04+08:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2019</span></span> <span class='time'>7:28 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3>linux</h3>
-
-<p><code>minicom</code><br/>
-<code>^a + q</code></p>
-
-<h3>切換</h3>
-
-<p>%  cli  >  configure #</p>
-
-<h3>command</h3>
-
-<p><code>show configure</code><br/>
-<code>load override terminal</code><br/>
-<code>show system alarms</code><br/>
-<code>show chassis environment</code><br/>
-<code>request system power-off</code></p>
-
-<h4>sop</h4>
-
-<pre>
-% cli
-> configure
-# delete
-load merge terminal
-^d
-</pre>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2019/05/21/package/">Package</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2019-05-21T23:13:00+08:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2019</span></span> <span class='time'>11:13 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h5>beauty print</h5>
-
-<p><code>github.com/go-ffmt/ffmt</code></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
     <a href="/blog/archives">Blog Archives</a>
@@ -359,18 +400,26 @@ load merge terminal
        <li class='category'><a href='/blog/categories/app/'>app (34)</a></li>
 <li class='category'><a href='/blog/categories/bat/'>bat (11)</a></li>
 <li class='category'><a href='/blog/categories/excel/'>excel (1)</a></li>
-<li class='category'><a href='/blog/categories/golang/'>golang (2)</a></li>
+<li class='category'><a href='/blog/categories/golang/'>golang (3)</a></li>
 <li class='category'><a href='/blog/categories/juniper/'>juniper (1)</a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (29)</a></li>
 <li class='category'><a href='/blog/categories/python/'>python (10)</a></li>
 <li class='category'><a href='/blog/categories/ror/'>ror (35)</a></li>
-<li class='category'><a href='/blog/categories/ruby/'>ruby (58)</a></li>
+<li class='category'><a href='/blog/categories/ruby/'>ruby (59)</a></li>
 
     </ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2019/08/06/getweeknumber/">getWeekNumber</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2019/07/17/irb-noprompt/">Irb_noprompt</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2019/07/13/scaffold/">Scaffold</a>
@@ -382,14 +431,6 @@ load merge terminal
     
       <li class="post">
         <a href="/blog/2019/07/13/jobs/">Jobs</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2019/07/07/juniper/">Juniper</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2019/05/21/package/">Package</a>
       </li>
     
   </ul>

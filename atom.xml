@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="https://icps0610.github.io/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2019-07-16T23:10:39+08:00</updated>
+  <updated>2019-10-09T05:12:58+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,73 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[getWeekNumber]]></title>
+    <link href="https://icps0610.github.io/blog/2019/08/06/getweeknumber/"/>
+    <updated>2019-08-06T00:49:19+08:00</updated>
+    <id>https://icps0610.github.io/blog/2019/08/06/getweeknumber</id>
+    <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kd">func</span> <span class="nx">leapYear</span><span class="p">(</span><span class="nx">y</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">bool</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="nx">y</span><span class="o">%</span><span class="mi">4</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="nx">y</span><span class="o">%</span><span class="mi">100</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">||</span> <span class="p">(</span><span class="nx">y</span><span class="o">%</span><span class="mi">400</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="nx">y</span><span class="o">%</span><span class="mi">3200</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="kc">true</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="k">return</span> <span class="kc">false</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="kd">func</span> <span class="nx">getWeek</span><span class="p">(</span><span class="nx">y</span><span class="p">,</span> <span class="nx">m</span><span class="p">,</span> <span class="nx">d</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">monthTable</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">}</span>
+</span><span class='line'>    <span class="nx">centuryTable</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">}</span>
+</span><span class='line'>    <span class="nx">monthValue</span> <span class="o">:=</span> <span class="nx">monthTable</span><span class="p">[</span><span class="nx">m</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</span><span class='line'>    <span class="nx">yearValue</span> <span class="o">:=</span> <span class="nx">y</span> <span class="o">%</span> <span class="mi">100</span>
+</span><span class='line'>    <span class="nx">yearOver</span> <span class="o">:=</span> <span class="nx">yearValue</span> <span class="o">/</span> <span class="mi">4</span>
+</span><span class='line'>    <span class="nx">centuryValue</span> <span class="o">:=</span> <span class="nx">centuryTable</span><span class="p">[(</span><span class="nx">y</span><span class="o">/</span><span class="mi">100</span><span class="p">)</span><span class="o">%</span><span class="mi">4</span><span class="p">]</span>
+</span><span class='line'>    <span class="nx">w</span> <span class="o">:=</span> <span class="nx">d</span> <span class="o">+</span> <span class="nx">monthValue</span> <span class="o">+</span> <span class="nx">yearValue</span> <span class="o">+</span> <span class="nx">yearOver</span> <span class="o">+</span> <span class="nx">centuryValue</span>
+</span><span class='line'>    <span class="k">if</span> <span class="nx">leapYear</span><span class="p">(</span><span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nx">w</span> <span class="o">-=</span> <span class="mi">1</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="k">return</span> <span class="nx">w</span> <span class="o">%</span> <span class="mi">7</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Irb_noprompt]]></title>
+    <link href="https://icps0610.github.io/blog/2019/07/17/irb-noprompt/"/>
+    <updated>2019-07-17T21:24:16+08:00</updated>
+    <id>https://icps0610.github.io/blog/2019/07/17/irb-noprompt</id>
+    <content type="html"><![CDATA[<h3>irb</h3>
+
+<p><code>'irb --noprompt</code></p>
+
+<h3>rails console</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>~/.irbrc  
+</span><span class='line'>IRB.conf[:PROMPT_MODE] = :XMP   </span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Scaffold]]></title>
@@ -27,7 +94,9 @@
     <link href="https://icps0610.github.io/blog/2019/07/13/db-save-restore/"/>
     <updated>2019-07-13T20:24:04+08:00</updated>
     <id>https://icps0610.github.io/blog/2019/07/13/db-save-restore</id>
-    <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+    <content type="html"><![CDATA[<h3></h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -214,6 +283,58 @@ load merge terminal
 
 <p><code>os.Args[1]</code></p>
 
+<h5>run command</h5>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="nx">cmd</span> <span class="o">:=</span> <span class="nx">exec</span><span class="p">.</span><span class="nx">Command</span><span class="p">(</span><span class="s">&quot;ipconfig&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="nx">_</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">cmd</span><span class="p">.</span><span class="nx">CombinedOutput</span><span class="p">()</span>
+</span><span class='line'><span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>ipconfig</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="nx">ifaces</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">net</span><span class="p">.</span><span class="nx">Interfaces</span><span class="p">()</span>
+</span><span class='line'><span class="c1">// handle err</span>
+</span><span class='line'><span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">i</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">ifaces</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">addrs</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">i</span><span class="p">.</span><span class="nx">Addrs</span><span class="p">()</span>
+</span><span class='line'>    <span class="c1">// handle err</span>
+</span><span class='line'>    <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">addr</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">addrs</span> <span class="p">{</span>
+</span><span class='line'>        <span class="kd">var</span> <span class="nx">ip</span> <span class="nx">net</span><span class="p">.</span><span class="nx">IP</span>
+</span><span class='line'>        <span class="k">switch</span> <span class="nx">v</span> <span class="o">:=</span> <span class="nx">addr</span><span class="p">.(</span><span class="kd">type</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">case</span> <span class="o">*</span><span class="nx">net</span><span class="p">.</span><span class="nx">IPNet</span><span class="p">:</span>
+</span><span class='line'>            <span class="nx">ip</span> <span class="p">=</span> <span class="nx">v</span><span class="p">.</span><span class="nx">IP</span>
+</span><span class='line'>        <span class="k">case</span> <span class="o">*</span><span class="nx">net</span><span class="p">.</span><span class="nx">IPAddr</span><span class="p">:</span>
+</span><span class='line'>            <span class="nx">ip</span> <span class="p">=</span> <span class="nx">v</span><span class="p">.</span><span class="nx">IP</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">ip</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
 <h6>curl</h6>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -299,19 +420,20 @@ load merge terminal
 <span class='line-number'>24</span>
 <span class='line-number'>25</span>
 <span class='line-number'>26</span>
-</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kd">func</span> <span class="nx">writeLines</span><span class="p">(</span><span class="nx">lines</span> <span class="p">[]</span><span class="kt">string</span><span class="p">,</span> <span class="nx">path</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kd">func</span> <span class="nx">writeLines</span><span class="p">(</span><span class="nx">lines</span> <span class="p">[]</span><span class="kt">string</span><span class="p">,</span> <span class="nx">path</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
 </span><span class='line'>    <span class="nx">file</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Create</span><span class="p">(</span><span class="nx">path</span><span class="p">)</span>
 </span><span class='line'>    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-</span><span class='line'>        <span class="k">return</span> <span class="nx">err</span>
+</span><span class='line'>        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
 </span><span class='line'>    <span class="p">}</span>
 </span><span class='line'>    <span class="k">defer</span> <span class="nx">file</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="nx">w</span> <span class="o">:=</span> <span class="nx">bufio</span><span class="p">.</span><span class="nx">NewWriter</span><span class="p">(</span><span class="nx">file</span><span class="p">)</span>
 </span><span class='line'>    <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">line</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">lines</span> <span class="p">{</span>
-</span><span class='line'>        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Fprintln</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span> <span class="nx">line</span><span class="p">)</span>
+</span><span class='line'>        <span class="nx">file</span><span class="p">.</span><span class="nx">WriteString</span><span class="p">(</span><span class="nx">line</span> <span class="o">+</span> <span class="s">&quot;\n&quot;</span><span class="p">)</span>
 </span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>    <span class="k">return</span> <span class="nx">w</span><span class="p">.</span><span class="nx">Flush</span><span class="p">()</span>
 </span><span class='line'><span class="p">}</span>
+</span><span class='line'>
 </span><span class='line'><span class="kd">func</span> <span class="nx">readfile</span><span class="p">(</span><span class="nx">path</span> <span class="kt">string</span><span class="p">)</span> <span class="p">([]</span><span class="kt">string</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
 </span><span class='line'>    <span class="nx">file</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Open</span><span class="p">(</span><span class="nx">path</span><span class="p">)</span>
 </span><span class='line'>    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
@@ -325,6 +447,11 @@ load merge terminal
 </span><span class='line'>    <span class="p">}</span>
 </span><span class='line'>    <span class="k">return</span> <span class="nx">lines</span><span class="p">,</span> <span class="nx">line</span><span class="p">.</span><span class="nx">Err</span><span class="p">()</span>
 </span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">#</span><span class="nx">win</span> <span class="nx">utf</span><span class="o">-</span><span class="mi">16</span> <span class="nx">le</span> <span class="nx">to</span> <span class="nx">utf</span><span class="o">-</span><span class="mi">8</span>
+</span><span class='line'><span class="kn">import</span> <span class="s">&quot;github.com/malexdev/utfutil&quot;</span>
+</span><span class='line'><span class="nx">d</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">utfutil</span><span class="p">.</span><span class="nx">ReadFile</span><span class="p">(</span><span class="s">&quot;txt&quot;</span><span class="p">,</span> <span class="nx">utfutil</span><span class="p">.</span><span class="nx">UTF8</span><span class="p">)</span>
+</span><span class='line'><span class="nx">c</span> <span class="o">:=</span> <span class="nb">string</span><span class="p">(</span><span class="nx">d</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -417,6 +544,15 @@ load merge terminal
 </span></code></pre></td></tr></table></div></figure>
 
 
+<h6>exec</h6>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="nx">cmd</span> <span class="o">:=</span> <span class="nx">exec</span><span class="p">.</span><span class="nx">Command</span><span class="p">(</span><span class="s">&quot;sleep&quot;</span><span class="p">,</span> <span class="s">&quot;1&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="nx">err</span> <span class="o">:=</span> <span class="nx">cmd</span><span class="p">.</span><span class="nx">Run</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
 <h3>debug</h3>
 
 <h6>type class</h6>
@@ -469,6 +605,23 @@ load merge terminal
 </span></code></pre></td></tr></table></div></figure>
 
 
+<h5>screen</h5>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kn">import</span> <span class="s">&quot;github.com/inancgumus/screen&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">func</span> <span class="nx">cleanScreen</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">screen</span><span class="p">.</span><span class="nx">Clear</span><span class="p">()</span>
+</span><span class='line'>    <span class="nx">screen</span><span class="p">.</span><span class="nx">MoveTopLeft</span><span class="p">()</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
 <h3>time</h3>
 
 <h6>time_format</h6>
@@ -489,7 +642,15 @@ load merge terminal
 <h6>sleep</h6>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
 </pre></td><td class='code'><pre><code class='go'><span class='line'><span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="mi">1</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">func</span> <span class="nx">sleep</span><span class="p">(</span><span class="nx">t</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Duration</span><span class="p">(</span><span class="nx">t</span><span class="p">)</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Millisecond</span><span class="p">)</span>
+</span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -539,12 +700,18 @@ load merge terminal
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
 </pre></td><td class='code'><pre><code class='go'><span class='line'><span class="nx">match</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">regexp</span><span class="p">.</span><span class="nx">MatchString</span><span class="p">(</span><span class="nx">keyword</span><span class="p">,</span> <span class="nx">str</span><span class="p">)</span>
 </span><span class='line'><span class="nx">r</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">regexp</span><span class="p">.</span><span class="nx">Compile</span><span class="p">(</span><span class="nx">keyword</span><span class="p">)</span>
 </span><span class='line'>
 </span><span class='line'><span class="c1">//scan</span>
 </span><span class='line'><span class="nx">re</span> <span class="o">:=</span> <span class="nx">regexp</span><span class="p">.</span><span class="nx">MustCompile</span><span class="p">(</span><span class="nx">keyword</span><span class="p">)</span>
-</span><span class='line'><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">re</span><span class="p">.</span><span class="nx">FindAllStringSubmatch</span><span class="p">(</span><span class="nx">str</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+</span><span class='line'><span class="nx">match</span> <span class="o">:=</span> <span class="nx">re</span><span class="p">.</span><span class="nx">FindStringSubmatch</span><span class="p">(</span><span class="nx">l</span><span class="p">)</span>
+</span><span class='line'><span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nx">match</span><span class="p">)</span> <span class="p">&gt;</span> <span class="mi">0</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">match</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -951,7 +1118,11 @@ load merge terminal
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="nx">rand</span><span class="p">.</span><span class="nx">Seed</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">().</span><span class="nx">UnixNano</span><span class="p">())</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kn">import</span> <span class="s">&quot;math/rand&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">rand</span><span class="p">.</span><span class="nx">Seed</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">().</span><span class="nx">UnixNano</span><span class="p">())</span>
 </span><span class='line'><span class="nx">rand</span><span class="p">.</span><span class="nx">Intn</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure>
 
@@ -1245,25 +1416,6 @@ A.where(created_at: date.midnight..date.end_of_day)</p>
     <updated>2018-12-20T23:27:53+08:00</updated>
     <id>https://icps0610.github.io/blog/2018/12/20/form</id>
     <content type="html"><![CDATA[<p><code>&lt;%= token_tag %&gt;</code></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Mass_data_import_sql]]></title>
-    <link href="https://icps0610.github.io/blog/2018/12/15/mass-data-import-sql/"/>
-    <updated>2018-12-15T20:18:52+08:00</updated>
-    <id>https://icps0610.github.io/blog/2018/12/15/mass-data-import-sql</id>
-    <content type="html"><![CDATA[<p><code>https://github.com/zdennis/activerecord-import</code></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Weather_api]]></title>
-    <link href="https://icps0610.github.io/blog/2018/12/13/weather-api/"/>
-    <updated>2018-12-13T17:53:26+08:00</updated>
-    <id>https://icps0610.github.io/blog/2018/12/13/weather-api</id>
-    <content type="html"><![CDATA[<p><code>https://works.ioa.tw/weather/api/doc/index.html#api-Weather_API</code>
-<code>http://opendata2.epa.gov.tw/AQI.json</code></p>
 ]]></content>
   </entry>
   

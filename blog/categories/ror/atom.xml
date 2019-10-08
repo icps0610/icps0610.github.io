@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ror | icps]]></title>
   <link href="https://icps0610.github.io/blog/categories/ror/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2019-07-16T23:10:39+08:00</updated>
+  <updated>2019-10-09T05:12:58+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -27,7 +27,9 @@
     <link href="https://icps0610.github.io/blog/2019/07/13/db-save-restore/"/>
     <updated>2019-07-13T20:24:04+08:00</updated>
     <id>https://icps0610.github.io/blog/2019/07/13/db-save-restore</id>
-    <content type="html"><![CDATA[<pre><code class="ruby">data = Order.order("id asc").pluck.map{|i|i.map(&amp;:to_s).drop(1)}
+    <content type="html"><![CDATA[<h3></h3>
+
+<pre><code class="ruby">data = Order.order("id asc").pluck.map{|i|i.map(&amp;:to_s).drop(1)}
 col  = Order.column_names.drop(1) #id
 
 data = data.map do |table|
