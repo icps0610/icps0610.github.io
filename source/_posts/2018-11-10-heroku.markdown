@@ -64,3 +64,10 @@ ref >> https://github.com/heroku/heroku-accounts
 ## No migration with version number 
 `heroku pg:psql`
 `delete from schema_migrations where version= 'XXXXXXXXXXX';`
+
+### get rows
+`heroku pg:info`
+
+`heroku plugins:install heroku-pg-extras`
+`heroku pg:index_usage`
+

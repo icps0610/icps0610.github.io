@@ -6,6 +6,8 @@ comments: true
 categories: app
 ---
 
+`%AppData%\Sublime Text 3\Packages\User\snippets`  
+
 sublime 3 
 - ChineseLocalizations 中文化
 - BracketHighlighter   括弧
