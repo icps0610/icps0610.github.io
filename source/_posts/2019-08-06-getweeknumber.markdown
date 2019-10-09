@@ -20,7 +20,7 @@ func getWeek(y, m, d int) int {
     yearOver := yearValue / 4
     centuryValue := centuryTable[(y/100)%4]
     w := d + monthValue + yearValue + yearOver + centuryValue
-    if leapYear(y) {
+    if leapYear(y) && m <= 2 {
         w -= 1
     }
     return w % 7

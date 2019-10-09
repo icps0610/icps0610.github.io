@@ -47,8 +47,6 @@ for _, i := range ifaces {
 }
 ```
 
-
-
 ###### curl
 ``` go
 import (
@@ -107,7 +105,7 @@ func readfile(path string) ([]string, error) {
     return lines, line.Err()
 }
 
-#win utf-16 le to utf-8
+//win utf-16 le to utf-8
 import "github.com/malexdev/utfutil"
 d, _ := utfutil.ReadFile("txt", utfutil.UTF8)
 c := string(d)
