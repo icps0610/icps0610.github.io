@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Golang | icps]]></title>
   <link href="https://icps0610.github.io/blog/categories/golang/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2019-10-09T05:12:58+08:00</updated>
+  <updated>2019-10-09T16:33:04+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -32,7 +32,7 @@ func getWeek(y, m, d int) int {
     yearOver := yearValue / 4
     centuryValue := centuryTable[(y/100)%4]
     w := d + monthValue + yearValue + yearOver + centuryValue
-    if leapYear(y) {
+    if leapYear(y) &amp;&amp; m &lt;= 2 {
         w -= 1
     }
     return w % 7
@@ -165,7 +165,7 @@ func readfile(path string) ([]string, error) {
     return lines, line.Err()
 }
 
-#win utf-16 le to utf-8
+//win utf-16 le to utf-8
 import "github.com/malexdev/utfutil"
 d, _ := utfutil.ReadFile("txt", utfutil.UTF8)
 c := string(d)

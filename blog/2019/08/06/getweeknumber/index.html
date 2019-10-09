@@ -138,7 +138,7 @@ func leapYear(y int) bool { if (y%4 == 0 &amp;&amp; y%100 != 0) || (y%400 == 0 &
 </span><span class='line'>    <span class="nx">yearOver</span> <span class="o">:=</span> <span class="nx">yearValue</span> <span class="o">/</span> <span class="mi">4</span>
 </span><span class='line'>    <span class="nx">centuryValue</span> <span class="o">:=</span> <span class="nx">centuryTable</span><span class="p">[(</span><span class="nx">y</span><span class="o">/</span><span class="mi">100</span><span class="p">)</span><span class="o">%</span><span class="mi">4</span><span class="p">]</span>
 </span><span class='line'>    <span class="nx">w</span> <span class="o">:=</span> <span class="nx">d</span> <span class="o">+</span> <span class="nx">monthValue</span> <span class="o">+</span> <span class="nx">yearValue</span> <span class="o">+</span> <span class="nx">yearOver</span> <span class="o">+</span> <span class="nx">centuryValue</span>
-</span><span class='line'>    <span class="k">if</span> <span class="nx">leapYear</span><span class="p">(</span><span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">if</span> <span class="nx">leapYear</span><span class="p">(</span><span class="nx">y</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nx">m</span> <span class="o">&lt;=</span> <span class="mi">2</span> <span class="p">{</span>
 </span><span class='line'>        <span class="nx">w</span> <span class="o">-=</span> <span class="mi">1</span>
 </span><span class='line'>    <span class="p">}</span>
 </span><span class='line'>    <span class="k">return</span> <span class="nx">w</span> <span class="o">%</span> <span class="mi">7</span>
