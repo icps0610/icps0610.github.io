@@ -91,19 +91,27 @@ func writeLines(lines []string, path string) {
     }
 }
 
-func readfile(path string) ([]string, error) {
+import(
+    "golang.org/x/text/encoding/traditionalchinese"
+    "golang.org/x/text/transform"
+)
+
+func readfile(path string) []string {
     file, err := os.Open(path)
     if err != nil {
-        return nil, err
+        fmt.Println(err)
     }
     defer file.Close()
     var lines []string
     line := bufio.NewScanner(file)
     for line.Scan() {
+        //str, _, _ := transform.String(traditionalchinese.Big5.NewDecoder(), str2)
+        //str2, _, _ := transform.String(traditionalchinese.Big5.NewEncoder(), str)
         lines = append(lines, line.Text())
     }
-    return lines, line.Err()
+    return lines
 }
+
 
 //win utf-16 le to utf-8
 import "github.com/malexdev/utfutil"
@@ -339,7 +347,7 @@ func eachSlice(arr []string, l int) [][]string {
 ```
 ###### index
 ``` go
-func arrIndex(arr []string, str string) int {
+func arrIncludeIndex(arr []string, str string) int {
     for i, e := range arr {
         if str == e {
             return i
@@ -355,6 +363,11 @@ func arrIndexS(arr []string, str string) []int {
         }
     }
     return is
+}
+
+func arrRemoveByIndex(arr []string, idx int) []string {
+    arr[idx] = arr[len(arr)-1]
+    return arr[:len(arr)-1]
 }
 ```
 ###### bubbleSort
@@ -376,6 +389,18 @@ type Count struct {
     id    string
     count int
 }
+
+func bubbleSort(arr []Count) {
+    size := len(arr)
+    for i := 0; i < size; i++ {
+        for j := 1; j < size; j++ {
+            if arr[j].count > arr[j-1].count {
+                arr[j], arr[j-1] = arr[j-1], arr[j]
+            }
+        }
+    }
+}
+
 func arrayDuplicate(arr []string) []Count {
     cs := make(map[string]int)
     for _, e := range arr {
@@ -388,12 +413,13 @@ func arrayDuplicate(arr []string) []Count {
     }
     count := []Count{}
     for cc := range cs {
-        c := Count{str: cc, count: cs[cc]}
+        c := Count{cc, cs[cc]}
         count = append(count, c)
     }
     bubbleSort(count)
     return count
 }
+
 ```
 ###### sub
 ``` go
@@ -430,6 +456,22 @@ func arr1InclueArr2(arr1 []int, arr2 []int) bool {
 ##### Equal
 `reflect.DeepEqual(a, b)`
 
+##### compare
+``` go
+func arrCompare(a1, a2 []string) ([]string, []string, []string) {
+    var d1, same []string
+    for _, e1 := range a1 {
+        idx := arrIncludeIndex(a2, e1)
+        if idx != -1 {
+            same = append(same, e1)
+            a2 = arrRemoveByIndex(a2, idx)
+        } else {
+            d1 = append(d1, e1)
+        }
+    }
+    return d1, a2, same
+}
+```
 
 
 ### math
@@ -473,8 +515,6 @@ rand.Seed(time.Now().UnixNano())
 rand.Intn(100)
 ```
 
-
-
 ### image
 ``` go
 func rgbtoHex(i uint32) string {
@@ -492,4 +532,81 @@ width, height := bounds.Max.X, bounds.Max.Y
 
 pixel := rgbaToPixel(img.At(x, y).RGBA())
 
+```
+
+
+### gin
+
+##### soup
+``` go
+import(
+    "github.com/anaskhan96/soup"
+)
+func getResp(url string) string {
+    req, e := http.NewRequest("GET", url, nil)
+    if e != nil {
+        os.Exit(11)
+    }
+    //cookie := http.Cookie{
+    //    Name:  "over18",
+    //    Value: "1",
+    //}
+    //req.AddCookie(&cookie)
+    res, e := http.DefaultClient.Do(req)
+    if e != nil {
+        os.Exit(12)
+    }
+    if res.StatusCode != http.StatusOK {
+        os.Exit(13)
+    }
+    body, e := ioutil.ReadAll(res.Body)
+    if e != nil {
+        os.Exit(14)
+    }
+    return string(body)
+}
+func main (){
+    resp := getResp(url)
+    doc := soup.HTMLParse(resp)
+}
+```
+
+##### table
+``` go
+data := [][]string
+info := doc.Find("table", "class", "auto-style4")
+table := info.FindAll("tr")
+for _, tr := range table {
+    var tmp []string
+    for _, td := range tr.FindAll("td", "class", "auto-style5") {
+        tmp = append(tmp, td)
+    }
+    data = append(data, tmp)
+}
+```
+##### br 
+``` go
+data := [][]string
+for _, t := range td.Children() {
+    if t.NodeValue != "br" {
+        data = append(data, t.NodeValue)
+    }
+}
+```
+
+##### nbsp
+``` go
+func removeNbsp(s string) string {
+    return strings.Replace(s, "\u00A0", "", -1)
+}
+
+func removeNbsp(s string) string {
+    var txt string
+    for _, b := range []byte(s) {
+        if b != 194 && b != 160 {
+            txt += string(b)
+        }
+    }
+    return txt
+}
 ```
