@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Go | icps]]></title>
+  <link href="https://icps0610.github.io/blog/categories/go/atom.xml" rel="self"/>
+  <link href="https://icps0610.github.io/"/>
+  <updated>2019-10-25T03:54:43+08:00</updated>
+  <id>https://icps0610.github.io/</id>
+  <author>
+    <name><![CDATA[icps]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[secureRandom]]></title>
+    <link href="https://icps0610.github.io/blog/2019/10/25/securerandom/"/>
+    <updated>2019-10-25T02:01:38+08:00</updated>
+    <id>https://icps0610.github.io/blog/2019/10/25/securerandom</id>
+    <content type="html"><![CDATA[<pre><code class="go">func chrTable() string {
+    var aZ string
+    for i := 65; i &lt;= 90; i++ {
+        aZ += string(rune(i))
+    }
+    for i := 97; i &lt;= 122; i++ {
+        aZ += string(rune(i))
+    }
+    for i := 0; i &lt;= 9; i++ {
+        aZ += strconv.Itoa(i)
+    }
+    return aZ
+}
+
+func secureRandom(n int) string {
+    rand.Seed(time.Now().UnixNano())
+    var str string
+    table := chrTable()
+    for i := 0; i &lt; n; i++ {
+        r := rand.Intn(len(table))
+        str += string(table[r])
+    }
+    return str
+}
+</code></pre>
+]]></content>
+  </entry>
+  
+ </feed>

@@ -10,9 +10,8 @@
 
   
   <meta name="description" content="install apt-get install motion config #/etc/motion/motion.conf
-#306 ffmpeg_video_codec mpeg4 #418 target_dir /motion
-#503 webcontrol_localhost on
-# &hellip;">
+#293 ffmpeg_output_movies on
+#336 ffmpeg_video_codec mpeg4 #450 target_dir /tmp/motion &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -96,10 +95,23 @@
 <h2>config</h2>
 
 <pre><code>#/etc/motion/motion.conf
-#306    ffmpeg_video_codec mpeg4  
-#418    target_dir /motion
-#503    webcontrol_localhost on
-#628    on_movie_end ruby /motion/motion.rb %f
+#293    ffmpeg_output_movies on
+#336    ffmpeg_video_codec mpeg4  
+#450    target_dir /tmp/motion/
+#473    movie_filename %m%d_%H%M
+
+#Live Stream
+#449    stream_port 8081
+#504    stream_localhost off
+#HTTP Based Control
+#534    webcontrol_port 8080 
+#537    webcontrol_localhost off
+#sound
+#640    on_event_start arecord -f cd -D sysdefault:CARD=1 /tmp/motion/%m%d_%H%M.wav
+#645    on_event_end ps -ef | grep arecord  | awk '{print $2}' | xargs kill -9
+#245    post_capture 25
+#253    event_gap 1
+#662    on_movie_end ruby /motion/motion.rb %f
 </code></pre>
 
 
@@ -222,18 +234,28 @@ start_motion_daemon=<font color='red'>yes</font>
        <li class='category'><a href='/blog/categories/app/'>app (34)</a></li>
 <li class='category'><a href='/blog/categories/bat/'>bat (11)</a></li>
 <li class='category'><a href='/blog/categories/excel/'>excel (1)</a></li>
+<li class='category'><a href='/blog/categories/go/'>go (1)</a></li>
 <li class='category'><a href='/blog/categories/golang/'>golang (3)</a></li>
 <li class='category'><a href='/blog/categories/juniper/'>juniper (1)</a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (29)</a></li>
 <li class='category'><a href='/blog/categories/python/'>python (10)</a></li>
 <li class='category'><a href='/blog/categories/ror/'>ror (35)</a></li>
 <li class='category'><a href='/blog/categories/ruby/'>ruby (59)</a></li>
+<li class='category'><a href='/blog/categories/uncategorized/'>uncategorized (1)</a></li>
 
     </ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2019/10/25/securerandom/">secureRandom</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2019/10/22/gin/">Gin</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2019/08/06/getweeknumber/">getWeekNumber</a>
@@ -245,14 +267,6 @@ start_motion_daemon=<font color='red'>yes</font>
     
       <li class="post">
         <a href="/blog/2019/07/13/scaffold/">Scaffold</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2019/07/13/db-save-restore/">Db_save_restore</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2019/07/13/jobs/">Jobs</a>
       </li>
     
   </ul>
