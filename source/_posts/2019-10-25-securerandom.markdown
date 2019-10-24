@@ -3,7 +3,7 @@ layout: post
 title: "secureRandom"
 date: 2019-10-25 02:01:38 +0800
 comments: true
-categories: go
+categories: golang
 ---
 ``` go
 func chrTable() string {
