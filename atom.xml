@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="https://icps0610.github.io/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2019-10-25T04:08:37+08:00</updated>
+  <updated>2019-12-12T23:30:51+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,17 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Kb_update]]></title>
+    <link href="https://icps0610.github.io/blog/2019/12/12/kb-update/"/>
+    <updated>2019-12-12T23:29:01+08:00</updated>
+    <id>https://icps0610.github.io/blog/2019/12/12/kb-update</id>
+    <content type="html"><![CDATA[<p>wmic qfe > list
+diff -a list list2
+wusa /uninstall /kb:1234567 /quiet /norestar</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[secureRandom]]></title>
@@ -329,6 +340,10 @@ load merge terminal
     <content type="html"><![CDATA[<h5>beauty print</h5>
 
 <p><code>github.com/go-ffmt/ffmt</code></p>
+
+<h4>igo</h4>
+
+<p><code>go get github.com/sbinet/go-eval/</code></p>
 ]]></content>
   </entry>
   
@@ -372,7 +387,7 @@ load merge terminal
 </span></code></pre></td></tr></table></div></figure>
 
 
-<h3>ipconfig</h3>
+<h5>ipconfig</h5>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -598,6 +613,25 @@ load merge terminal
 </span></code></pre></td></tr></table></div></figure>
 
 
+<h5>pwd</h5>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kn">import</span><span class="p">(</span>
+</span><span class='line'>    <span class="s">&quot;os&quot;</span>
+</span><span class='line'>    <span class="s">&quot;path/filepath&quot;</span>
+</span><span class='line'><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">dir</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">filepath</span><span class="p">.</span><span class="nx">Abs</span><span class="p">(</span><span class="nx">filepath</span><span class="p">.</span><span class="nx">Dir</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Args</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+</span><span class='line'><span class="nx">dir</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Getwd</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
 <h6>filepath</h6>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -644,6 +678,21 @@ load merge terminal
 
 
 <h3>debug</h3>
+
+<h5>time</h5>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kd">func</span> <span class="nx">debug</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;=&gt; &quot;</span><span class="p">,</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">().</span><span class="nx">Sub</span><span class="p">(</span><span class="nx">start</span><span class="p">))</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">start</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <h6>type class</h6>
 
@@ -1673,24 +1722,6 @@ A.where(created_at: date.midnight..date.end_of_day)</p>
 </pre></td><td class='code'><pre><code class=''><span class='line'>/etc/privoxy/config 
 </span><span class='line'>#785 listen-address :8118</span></code></pre></td></tr></table></div></figure>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Minpony]]></title>
-    <link href="https://icps0610.github.io/blog/2018/12/23/minpony/"/>
-    <updated>2018-12-23T16:10:50+08:00</updated>
-    <id>https://icps0610.github.io/blog/2018/12/23/minpony</id>
-    <content type="html"><![CDATA[<p><code>apt-get install wine1.8</code><br/>
-<code>https://dl.winehq.org/wine/wine-mono/4.7.1/</code><br/>
-<code>apt install libmono-webbrowser4.0-cil</code></p>
-
-<h3>winetricks</h3>
-
-<p><code>https://wiki.winehq.org/Winetricks</code><br/>
-<code>wget  https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks</code><br/>
-<code>chmod +x winetricks</code><br/>
-<code>winetricks gdiplus fontfix dotnet40, ie8</code></p>
 ]]></content>
   </entry>
   

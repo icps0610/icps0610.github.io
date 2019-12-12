@@ -4,7 +4,7 @@
   <title><![CDATA[Category: App | icps]]></title>
   <link href="https://icps0610.github.io/blog/categories/app/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2019-10-25T04:08:37+08:00</updated>
+  <updated>2019-12-12T23:30:51+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,17 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Kb_update]]></title>
+    <link href="https://icps0610.github.io/blog/2019/12/12/kb-update/"/>
+    <updated>2019-12-12T23:29:01+08:00</updated>
+    <id>https://icps0610.github.io/blog/2019/12/12/kb-update</id>
+    <content type="html"><![CDATA[<p>wmic qfe > list
+diff -a list list2
+wusa /uninstall /kb:1234567 /quiet /norestar</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Rimworld]]></title>
@@ -77,15 +88,6 @@ Replace Stuff 變更建築</p>
 <code>wget  https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks</code><br/>
 <code>chmod +x winetricks</code><br/>
 <code>winetricks gdiplus fontfix dotnet40, ie8</code></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Gmail]]></title>
-    <link href="https://icps0610.github.io/blog/2018/09/27/gmail/"/>
-    <updated>2018-09-27T02:46:01+08:00</updated>
-    <id>https://icps0610.github.io/blog/2018/09/27/gmail</id>
-    <content type="html"><![CDATA[<p><code>curl -u username:password --silent "https://mail.google.com/mail/feed/atom" | tr -d '\n' | awk -F '&lt;entry&gt;' '{for (i=2; i&lt;=NF; i++) {print $i}}' | sed -n "s/&lt;title&gt;\(.*\)&lt;\/title.*name&gt;\(.*\)&lt;\/name&gt;.*/\2 - \1/p"</code></p>
 ]]></content>
   </entry>
   

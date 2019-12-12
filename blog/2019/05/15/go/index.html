@@ -125,7 +125,7 @@ https:// &hellip;">
 </span></code></pre></td></tr></table></div></figure>
 
 
-<h3>ipconfig</h3>
+<h5>ipconfig</h5>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -351,6 +351,25 @@ https:// &hellip;">
 </span></code></pre></td></tr></table></div></figure>
 
 
+<h5>pwd</h5>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kn">import</span><span class="p">(</span>
+</span><span class='line'>    <span class="s">&quot;os&quot;</span>
+</span><span class='line'>    <span class="s">&quot;path/filepath&quot;</span>
+</span><span class='line'><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">dir</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">filepath</span><span class="p">.</span><span class="nx">Abs</span><span class="p">(</span><span class="nx">filepath</span><span class="p">.</span><span class="nx">Dir</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Args</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+</span><span class='line'><span class="nx">dir</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Getwd</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
 <h6>filepath</h6>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -397,6 +416,21 @@ https:// &hellip;">
 
 
 <h3>debug</h3>
+
+<h5>time</h5>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kd">func</span> <span class="nx">debug</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;=&gt; &quot;</span><span class="p">,</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">().</span><span class="nx">Sub</span><span class="p">(</span><span class="nx">start</span><span class="p">))</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">start</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <h6>type class</h6>
 
@@ -1259,7 +1293,7 @@ https:// &hellip;">
     <section>
   <h1>Categories</h1>
     <ul id="categories">
-       <li class='category'><a href='/blog/categories/app/'>app (34)</a></li>
+       <li class='category'><a href='/blog/categories/app/'>app (35)</a></li>
 <li class='category'><a href='/blog/categories/bat/'>bat (11)</a></li>
 <li class='category'><a href='/blog/categories/excel/'>excel (1)</a></li>
 <li class='category'><a href='/blog/categories/golang/'>golang (4)</a></li>
@@ -1277,6 +1311,10 @@ https:// &hellip;">
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2019/12/12/kb-update/">Kb_update</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2019/10/25/securerandom/">secureRandom</a>
       </li>
     
@@ -1290,10 +1328,6 @@ https:// &hellip;">
     
       <li class="post">
         <a href="/blog/2019/07/17/irb-noprompt/">Irb_noprompt</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2019/07/13/scaffold/">Scaffold</a>
       </li>
     
   </ul>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Golang | icps]]></title>
   <link href="https://icps0610.github.io/blog/categories/golang/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2019-10-25T04:08:37+08:00</updated>
+  <updated>2019-12-12T23:30:51+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -82,6 +82,10 @@ func getWeek(y, m, d int) int {
     <content type="html"><![CDATA[<h5>beauty print</h5>
 
 <p><code>github.com/go-ffmt/ffmt</code></p>
+
+<h4>igo</h4>
+
+<p><code>go get github.com/sbinet/go-eval/</code></p>
 ]]></content>
   </entry>
   
@@ -117,7 +121,7 @@ if err != nil {
 }
 </code></pre>
 
-<h3>ipconfig</h3>
+<h5>ipconfig</h5>
 
 <pre><code class="go">ifaces, _ := net.Interfaces()
 // handle err
@@ -240,6 +244,17 @@ reaJson := readJson(fname)
 ffmt.Puts(reaJson[0].Name)
 </code></pre>
 
+<h5>pwd</h5>
+
+<pre><code class="go">import(
+    "os"
+    "path/filepath"
+)
+
+dir, err := filepath.Abs(filepath.Dir(os.Args[0]))
+dir, err := os.Getwd()
+</code></pre>
+
 <h6>filepath</h6>
 
 <pre><code class="go">import "path/filepath"
@@ -268,6 +283,15 @@ err := cmd.Run()
 </code></pre>
 
 <h3>debug</h3>
+
+<h5>time</h5>
+
+<pre><code class="go">func debug() {
+    fmt.Println("=&gt; ", time.Now().Sub(start))
+}
+
+start := time.Now()
+</code></pre>
 
 <h6>type class</h6>
 
