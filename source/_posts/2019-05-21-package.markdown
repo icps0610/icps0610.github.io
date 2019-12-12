@@ -8,3 +8,6 @@ categories: golang
 
 ##### beauty print
 `github.com/go-ffmt/ffmt`
+
+#### igo
+`go get github.com/sbinet/go-eval/`

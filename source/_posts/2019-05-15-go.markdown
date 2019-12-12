@@ -27,7 +27,7 @@ if err != nil {
     fmt.Println(err)
 }
 ```
-### ipconfig
+##### ipconfig
 ``` go
 ifaces, _ := net.Interfaces()
 // handle err
@@ -145,6 +145,16 @@ writeJson(fname, p)
 reaJson := readJson(fname)
 ffmt.Puts(reaJson[0].Name)
 ```
+##### pwd
+``` go
+import(
+    "os"
+    "path/filepath"
+)
+
+dir, err := filepath.Abs(filepath.Dir(os.Args[0]))
+dir, err := os.Getwd()
+```
 ###### filepath
 ``` go
 import "path/filepath"
@@ -153,6 +163,7 @@ dir, file := filepath.Split("/go/go.mod")
 fmt.Println(dir)
 fmt.Println(file)
 ```
+
 ###### fileExist
 ``` go
 func fileExist(file string) bool {
@@ -172,6 +183,15 @@ err := cmd.Run()
 
 
 ### debug
+
+##### time
+``` go
+func debug() {
+    fmt.Println("=> ", time.Now().Sub(start))
+}
+
+start := time.Now()
+```
 
 ###### type class
 ``` go  
