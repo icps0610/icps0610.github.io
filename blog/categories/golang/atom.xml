@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Golang | icps]]></title>
   <link href="https://icps0610.github.io/blog/categories/golang/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2019-12-12T23:30:51+08:00</updated>
+  <updated>2020-03-21T13:44:48+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -141,6 +141,63 @@ for _, i := range ifaces {
 }
 </code></pre>
 
+<h5>screenShot</h5>
+
+<pre><code class="go">"github.com/kbinani/screenshot"
+"github.com/oliamb/cutter"
+"image"
+"image/png"
+
+func getScreenshot(px, py, width, height int, imageName string) {
+    bounds := screenshot.GetDisplayBounds(0)
+
+    img, err := screenshot.CaptureRect(bounds)
+    if err != nil {
+        fmt.Println(err)
+    }
+    file, _ := os.Create(imageName)
+    defer file.Close()
+
+    croppedImg, err := cutter.Crop(img, cutter.Config{
+        Anchor: image.Point{px, py},
+        Width:  width,
+        Height: height,
+    })
+
+    png.Encode(file, croppedImg)
+    sleep(delay)
+}
+</code></pre>
+
+<pre><code class="go">"github.com/oliamb/cutter"
+"github.com/sclevine/agouti"
+"image"
+"image/png"
+func getScreenshot(page *agouti.Page, px, py, width, height int, imageName string) {
+    page.Screenshot(imageName)
+
+    f, err := os.Open(imageName)
+    if err != nil {
+        fmt.Println("Cannot open file", err)
+    }
+    img, _, err := image.Decode(f)
+    if err != nil {
+        fmt.Println("Cannot decode image:", err)
+    }
+    file, _ := os.Create(imageName)
+    defer file.Close()
+
+    croppedImg, err := cutter.Crop(img, cutter.Config{
+        Anchor: image.Point{px, py},
+        Width:  width,
+        Height: height,
+    })
+
+    png.Encode(file, croppedImg)
+    sleep(delay)
+}
+</code></pre>
+
 <h6>curl</h6>
 
 <pre><code class="go">import (
@@ -176,7 +233,10 @@ bufio.NewReader(os.Stdin).ReadBytes('\n')
 
 <h6>IO</h6>
 
-<pre><code class="go">
+<pre><code class="go">data := []byte("hello\ngo\n")
+err := ioutil.WriteFile("/tmp/data", data, 0644)
+
+
 func writeLines(lines []string, path string) {
     file, err := os.Create(path)
     if err != nil {
@@ -214,6 +274,20 @@ func readfile(path string) []string {
 import "github.com/malexdev/utfutil"
 d, _ := utfutil.ReadFile("txt", utfutil.UTF8)
 c := string(d)
+
+
+func appendFile(path string, data []string) {
+    f, err := os.OpenFile(path, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+    if err != nil {
+        log.Println(err)
+    }
+    defer f.Close()
+
+    for _, line := range data {
+        f.WriteString(line + "n")
+    }
+
+}
 </code></pre>
 
 <h6>Json</h6>
@@ -242,6 +316,21 @@ fname := "user.json"
 writeJson(fname, p)
 reaJson := readJson(fname)
 ffmt.Puts(reaJson[0].Name)
+</code></pre>
+
+<pre><code class="go">var c map[string][]map[string]interface{}
+var cs []string
+json.Unmarshal([]byte(str), &amp;c)
+
+t := c["content_elements"]
+
+for _, e := range t {
+    c := e["content"]
+    if c != nil {
+        cs = append(cs, fmt.Sprintf("%s", c))
+    }
+}
+return cs
 </code></pre>
 
 <h5>pwd</h5>
@@ -353,19 +442,75 @@ func sleep(t int) {
 }
 </code></pre>
 
+<h6>unix</h6>
+
+<pre><code class="go">func unixTime(y, m, d, h, m int) int {
+    date := fmt.Sprintf("%v-%.2v-%.2vT%.2v:%.2v:00.000Z", y, m, d, h, m)
+    t, _ := time.Parse(time.RFC3339, date)
+    return int(t.Unix())
+}
+</code></pre>
+
+<h5>date cal</h5>
+
+<pre><code class="go">package main
+
+import (
+    "fmt"
+    "time"
+)
+
+var _ = fmt.Println
+
+var (
+    y1, m1, d1 = 2019, 9, 2
+    y2, m2, d2 = 2020, 7, 20
+)
+
+func main() {
+    days := getTwoDate(y1, m1, d1, y2, m2, d2)
+    fmt.Println(days)
+
+    y3, m3, d3 := getAfterDays(y1, m1, d1, days)
+    fmt.Println(y3, m3, d3)
+}
+
+func unixTime(y, m, d int) int {
+    date := fmt.Sprintf("%v-%.2v-%.2vT00:00:00.000Z", y, m, d)
+    t, _ := time.Parse(time.RFC3339, date)
+    return int(t.Unix())
+}
+
+func getTwoDate(y1, m1, d1, y2, m2, d2 int) int {
+    s := unixTime(y2, m2, d2) - unixTime(y1, m1, d1)
+    return s / 86400
+}
+
+func getAfterDays(y, m, d, days int) (int, int, int) {
+    unix := int64(unixTime(y, m, d) + days*60*60*24 - 60*60*8)
+    t := time.Unix(unix, 0)
+    return t.Year(), int(t.Month()), t.Day()
+}
+</code></pre>
+
 <h3>string</h3>
 
 <h6>strip</h6>
 
 <p><code>strings.TrimSpace(str)</code></p>
 
-<h6>sting <-> int</h6>
+<h6>string <-> to_int</h6>
 
 <pre><code class="go">i, err := strconv.Atoi(s)
 if err ! = nil {
     //
 }
 s := strconv.Itoa(i)
+</code></pre>
+
+<h6>sting <-> to_float</h6>
+
+<pre><code class="go">fn, err := strconv.ParseFloat(cell, 64
 </code></pre>
 
 <h6>fill_zero</h6>
@@ -457,6 +602,23 @@ func strIndexS(str string, bstr string) []int {
         return result
     }
     return ch
+}
+</code></pre>
+
+<h3>#</h3>
+
+<pre><code class="go">func strEachSlice(str string, l int) []string {
+    arr := strings.Split(str, "")
+    var ar []string
+    size := len(arr)
+    for i := 0; i &lt; size; i = i + l {
+        j := i + l
+        if j &gt; size {
+            j = size
+        }
+        ar = append(ar, strings.Join(arr[i:j], ""))
+    }
+    return ar
 }
 </code></pre>
 
@@ -618,6 +780,13 @@ func arr1InclueArr2(arr1 []int, arr2 []int) bool {
 
 <pre><code class="go">import "math"
 math.Pow(2, 5)
+
+func pow(n, p int) int {
+    if p == 1 {
+        return n
+    }
+    return n * pow(n, p-1)
+}
 </code></pre>
 
 <h6>bit</h6>
@@ -653,10 +822,18 @@ func oddBool(i int) bool {
 
 <h6>rand</h6>
 
-<pre><code class="go">import "math/rand"
+<pre><code class="go">"math/rand"
 
-rand.Seed(time.Now().UnixNano())
-rand.Intn(100)
+func randNumStr(min, max float64) string {
+    rand.Seed(time.Now().UnixNano())
+    n := min + rand.Float64()*(max-min)
+    return fmt.Sprintf("%.1f", n)
+}
+
+func randNumInt(min, max int) int {
+    rand.Seed(time.Now().UnixNano())
+    return min + rand.Intn(max-min+1)
+}
 </code></pre>
 
 <h3>image</h3>
@@ -675,6 +852,16 @@ bounds := img.Bounds()
 width, height := bounds.Max.X, bounds.Max.Y
 
 pixel := rgbaToPixel(img.At(x, y).RGBA())
+</code></pre>
+
+<pre><code class="go">
+  f, err = os.Open(input)
+        img, _, err = image.Decode(f)
+        if err != nil {
+            fmt.Println(err)
+            os.Exit(1)
+        }
+img = image.NewRGBA(image.Rect(0, 0, width, width))
 </code></pre>
 
 <h3>gin</h3>

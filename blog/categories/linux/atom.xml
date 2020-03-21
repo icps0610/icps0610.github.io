@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | icps]]></title>
   <link href="https://icps0610.github.io/blog/categories/linux/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2019-12-12T23:30:51+08:00</updated>
+  <updated>2020-03-21T13:44:48+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,15 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Upgrade_excludet_specific_package]]></title>
+    <link href="https://icps0610.github.io/blog/2020/03/19/upgrade-excludet-specific-package/"/>
+    <updated>2020-03-19T16:05:53+08:00</updated>
+    <id>https://icps0610.github.io/blog/2020/03/19/upgrade-excludet-specific-package</id>
+    <content type="html"><![CDATA[<p><code>apt-mark hold package-name</code></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Wsl]]></title>
@@ -65,41 +74,6 @@ https://goreliu.github.io/wsl-terminal/
     <content type="html"><![CDATA[<h3>Save last working directory on Bash logout</h3>
 
 <blockquote><p>ref <a href="https://stackoverflow.com/questions/767040/save-last-working-directory-on-bash-logout">https://stackoverflow.com/questions/767040/save-last-working-directory-on-bash-logout</a></p></blockquote>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Raspberry_pi_3_plus]]></title>
-    <link href="https://icps0610.github.io/blog/2018/04/22/raspberry-pi-3-plus/"/>
-    <updated>2018-04-22T01:21:33+08:00</updated>
-    <id>https://icps0610.github.io/blog/2018/04/22/raspberry-pi-3-plus</id>
-    <content type="html"><![CDATA[<pre><code># /etc/apt/sources.list
-# Uncomment line below then 'apt-get update' to enable 'apt-get source'
-deb ftp://ftp.yzu.edu.tw/Linux/raspbian/raspbian/ wheezy main contrib non-free rpi
-deb http://raspbian.raspberrypi.org/raspbian/ stretch main contrib non-free rpi
-deb-src http://raspbian.raspberrypi.org/raspbian/ stretch main contrib non-free rp
-</code></pre>
-
-<h3>LC_ALL_cannot_change_locale</h3>
-
-<pre><code>`export LANGUAGE=en_US.UTF-8`
-`export LANG=en_US.UTF-8`
-`export LC_ALL=en_US.UTF-8`
-`locale-gen en_US.UTF-8`
-`dpkg-reconfigure locales`
-</code></pre>
-
-<h2>#</h2>
-
-<pre><code>`apt-get install ruby-dev libsqlite3-dev minicom fuse ntfs-3g`
-# fix mount usb =&gt; read only
-# ==&gt; fuse ntfs-3g
-
-`gem install sinatra`
-`gem install bundle`
-`bundle install`
-eval "$(ssh-agent)";
-</code></pre>
 ]]></content>
   </entry>
   

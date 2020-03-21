@@ -4,7 +4,7 @@
   <title><![CDATA[Category: App | icps]]></title>
   <link href="https://icps0610.github.io/blog/categories/app/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2019-12-12T23:30:51+08:00</updated>
+  <updated>2020-03-21T13:44:48+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,24 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Vpn]]></title>
+    <link href="https://icps0610.github.io/blog/2020/03/16/vpn/"/>
+    <updated>2020-03-16T15:22:14+08:00</updated>
+    <id>https://icps0610.github.io/blog/2020/03/16/vpn</id>
+    <content type="html"><![CDATA[<h5>win</h5>
+
+<p>rasdial [VPN] [USER] [PASSWD]
+rasdial /disconnect</p>
+
+<h5>linux</h5>
+
+<p>/etc/NetworkManager/system-connections/[VPN]
+nmcli con up id [VPN]
+nmcli con down id [VPN]</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Kb_update]]></title>
@@ -70,24 +88,6 @@ Replace Stuff 變更建築</p>
 <h1>785 listen-address :8118</h1>
 
 <p>```</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Minpony]]></title>
-    <link href="https://icps0610.github.io/blog/2018/12/23/minpony/"/>
-    <updated>2018-12-23T16:10:50+08:00</updated>
-    <id>https://icps0610.github.io/blog/2018/12/23/minpony</id>
-    <content type="html"><![CDATA[<p><code>apt-get install wine1.8</code><br/>
-<code>https://dl.winehq.org/wine/wine-mono/4.7.1/</code><br/>
-<code>apt install libmono-webbrowser4.0-cil</code></p>
-
-<h3>winetricks</h3>
-
-<p><code>https://wiki.winehq.org/Winetricks</code><br/>
-<code>wget  https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks</code><br/>
-<code>chmod +x winetricks</code><br/>
-<code>winetricks gdiplus fontfix dotnet40, ie8</code></p>
 ]]></content>
   </entry>
   
