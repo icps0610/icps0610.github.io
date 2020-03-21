@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Golang | icps]]></title>
   <link href="https://icps0610.github.io/blog/categories/golang/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2020-03-21T13:44:48+08:00</updated>
+  <updated>2020-03-21T13:48:58+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,45 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Post]]></title>
+    <link href="https://icps0610.github.io/blog/2019/12/17/post/"/>
+    <updated>2019-12-17T17:55:34+08:00</updated>
+    <id>https://icps0610.github.io/blog/2019/12/17/post</id>
+    <content type="html"><![CDATA[<blockquote><blockquote><p>ref <a href="https://ithelp.ithome.com.tw/articles/10159383">https://ithelp.ithome.com.tw/articles/10159383</a></p></blockquote></blockquote>
+
+<pre><code class="go">func get() {
+    resp, err := http.Get("https://123/456.php?q=789")
+    if err != nil {
+        // handle error
+    }
+    defer resp.Body.Close()
+    body, err := ioutil.ReadAll(resp.Body)
+    if err != nil {
+        // handle error
+    }
+    html := string(body)
+    doc := soup.HTMLParse(html)
+}
+
+func post() {
+    resp, err := http.PostForm("https://123", url.Values{"SN": {word}})
+    if err != nil {
+        // handle error
+    }
+    resp.Header.Set("Content-Type", "application/x-www-form-urlencoded;application/json; charset=utf-8")
+    defer resp.Body.Close()
+    body, err := ioutil.ReadAll(resp.Body)
+    if err != nil {
+        // handle error
+    }
+    html := string(body)
+    doc := soup.HTMLParse(html)
+}
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[secureRandom]]></title>

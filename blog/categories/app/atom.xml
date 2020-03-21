@@ -4,7 +4,7 @@
   <title><![CDATA[Category: App | icps]]></title>
   <link href="https://icps0610.github.io/blog/categories/app/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2020-03-21T13:44:48+08:00</updated>
+  <updated>2020-03-21T13:48:58+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,22 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Chrome_headless_crontab]]></title>
+    <link href="https://icps0610.github.io/blog/2020/03/19/chrome-headless-crontab/"/>
+    <updated>2020-03-19T13:45:44+08:00</updated>
+    <id>https://icps0610.github.io/blog/2020/03/19/chrome-headless-crontab</id>
+    <content type="html"><![CDATA[<pre><code class="">
+
+# app xvfb
+
+#### /etc/crontab
+
+#### SHELL=/bin/bash  
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Vpn]]></title>
@@ -36,9 +52,9 @@ nmcli con down id [VPN]</p>
     <link href="https://icps0610.github.io/blog/2019/12/12/kb-update/"/>
     <updated>2019-12-12T23:29:01+08:00</updated>
     <id>https://icps0610.github.io/blog/2019/12/12/kb-update</id>
-    <content type="html"><![CDATA[<p>wmic qfe > list
-diff -a list list2
-wusa /uninstall /kb:1234567 /quiet /norestar</p>
+    <content type="html"><![CDATA[<p><code>wmic qfe &gt; list</code>
+<code>diff -a list list2</code>
+<code>wusa /uninstall /kb:1234567 /quiet /norestar</code></p>
 ]]></content>
   </entry>
   
@@ -73,21 +89,6 @@ Replace Stuff 變更建築</p>
     <updated>2018-12-24T18:35:53+08:00</updated>
     <id>https://icps0610.github.io/blog/2018/12/24/stacer</id>
     <content type="html"><![CDATA[<p><code>https://github.com/oguzhaninan/Stacer/releases</code></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Tor_privoxy]]></title>
-    <link href="https://icps0610.github.io/blog/2018/12/23/tor-privoxy/"/>
-    <updated>2018-12-23T23:13:19+08:00</updated>
-    <id>https://icps0610.github.io/blog/2018/12/23/tor-privoxy</id>
-    <content type="html"><![CDATA[<p><code>apt-get install tor privoxy</code><br/>
-```
-/etc/privoxy/config</p>
-
-<h1>785 listen-address :8118</h1>
-
-<p>```</p>
 ]]></content>
   </entry>
   
