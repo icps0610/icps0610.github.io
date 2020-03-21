@@ -5,9 +5,10 @@ date: 2019-12-12 23:29:01 +0800
 comments: true
 categories: app
 ---
-wmic qfe > list
-diff -a list list2
-wusa /uninstall /kb:1234567 /quiet /norestar
+
+`wmic qfe > list`
+`diff -a list list2`
+`wusa /uninstall /kb:1234567 /quiet /norestar`
 
 
 

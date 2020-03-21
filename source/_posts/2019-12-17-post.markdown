@@ -3,7 +3,7 @@ layout: post
 title: "post"
 date: 2019-12-17 17:55:34 +0800
 comments: true
-categories: uncategorized
+categories: golang
 ---
 
 >> ref https://ithelp.ithome.com.tw/articles/10159383
