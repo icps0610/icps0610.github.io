@@ -3,7 +3,7 @@ layout: post
 title: "gin"
 date: 2019-10-22 22:15:44 +0800
 comments: true
-categories: uncategorized
+categories: golang
 ---
 
 ``` go

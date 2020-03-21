@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "upgrade_excludet_specific_package"
+title: "特定APP不升級"
 date: 2020-03-19 16:05:53 +0800
 comments: true
 categories: linux

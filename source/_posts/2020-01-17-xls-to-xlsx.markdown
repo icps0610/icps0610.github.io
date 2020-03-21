@@ -3,10 +3,11 @@ layout: post
 title: "xls_to_xlsx"
 date: 2020-01-17 20:58:21 +0800
 comments: true
-categories: uncategorized
+categories: excel
 ---
 
-``` vba
+###### vba
+``` ruby
 Dim iFile(1 To 100000) As String
 Dim count As Integer
 Sub xls2xlsx()
