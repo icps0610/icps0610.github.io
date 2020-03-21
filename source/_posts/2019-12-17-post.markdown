@@ -1,0 +1,40 @@
+---
+layout: post
+title: "post"
+date: 2019-12-17 17:55:34 +0800
+comments: true
+categories: uncategorized
+---
+
+>> ref https://ithelp.ithome.com.tw/articles/10159383
+
+``` go
+func get() {
+    resp, err := http.Get("https://123/456.php?q=789")
+    if err != nil {
+        // handle error
+    }
+    defer resp.Body.Close()
+    body, err := ioutil.ReadAll(resp.Body)
+    if err != nil {
+        // handle error
+    }
+    html := string(body)
+    doc := soup.HTMLParse(html)
+}
+
+func post() {
+    resp, err := http.PostForm("https://123", url.Values{"SN": {word}})
+    if err != nil {
+        // handle error
+    }
+    resp.Header.Set("Content-Type", "application/x-www-form-urlencoded;application/json; charset=utf-8")
+    defer resp.Body.Close()
+    body, err := ioutil.ReadAll(resp.Body)
+    if err != nil {
+        // handle error
+    }
+    html := string(body)
+    doc := soup.HTMLParse(html)
+}
+```

@@ -46,6 +46,63 @@ for _, i := range ifaces {
     }
 }
 ```
+##### screenShot
+``` go
+"github.com/kbinani/screenshot"
+"github.com/oliamb/cutter"
+"image"
+"image/png"
+
+func getScreenshot(px, py, width, height int, imageName string) {
+    bounds := screenshot.GetDisplayBounds(0)
+
+    img, err := screenshot.CaptureRect(bounds)
+    if err != nil {
+        fmt.Println(err)
+    }
+    file, _ := os.Create(imageName)
+    defer file.Close()
+
+    croppedImg, err := cutter.Crop(img, cutter.Config{
+        Anchor: image.Point{px, py},
+        Width:  width,
+        Height: height,
+    })
+
+    png.Encode(file, croppedImg)
+    sleep(delay)
+}
+```
+``` go
+"github.com/oliamb/cutter"
+"github.com/sclevine/agouti"
+"image"
+"image/png"
+func getScreenshot(page *agouti.Page, px, py, width, height int, imageName string) {
+    page.Screenshot(imageName)
+
+    f, err := os.Open(imageName)
+    if err != nil {
+        fmt.Println("Cannot open file", err)
+    }
+    img, _, err := image.Decode(f)
+    if err != nil {
+        fmt.Println("Cannot decode image:", err)
+    }
+    file, _ := os.Create(imageName)
+    defer file.Close()
+
+    croppedImg, err := cutter.Crop(img, cutter.Config{
+        Anchor: image.Point{px, py},
+        Width:  width,
+        Height: height,
+    })
+
+    png.Encode(file, croppedImg)
+    sleep(delay)
+}
+
+```
 
 ###### curl
 ``` go
@@ -79,6 +136,9 @@ bufio.NewReader(os.Stdin).ReadBytes('\n')
 ```
 ###### IO
 ``` go
+data := []byte("hello\ngo\n")
+err := ioutil.WriteFile("/tmp/data", data, 0644)
+
 
 func writeLines(lines []string, path string) {
     file, err := os.Create(path)
@@ -117,6 +177,20 @@ func readfile(path string) []string {
 import "github.com/malexdev/utfutil"
 d, _ := utfutil.ReadFile("txt", utfutil.UTF8)
 c := string(d)
+
+
+func appendFile(path string, data []string) {
+    f, err := os.OpenFile(path, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+    if err != nil {
+        log.Println(err)
+    }
+    defer f.Close()
+
+    for _, line := range data {
+        f.WriteString(line + "n")
+    }
+
+}
 ```
 ###### Json
 ``` go
@@ -145,6 +219,22 @@ writeJson(fname, p)
 reaJson := readJson(fname)
 ffmt.Puts(reaJson[0].Name)
 ```
+``` go
+var c map[string][]map[string]interface{}
+var cs []string
+json.Unmarshal([]byte(str), &c)
+
+t := c["content_elements"]
+
+for _, e := range t {
+    c := e["content"]
+    if c != nil {
+        cs = append(cs, fmt.Sprintf("%s", c))
+    }
+}
+return cs
+```
+
 ##### pwd
 ``` go
 import(
@@ -249,18 +339,74 @@ func sleep(t int) {
     time.Sleep(time.Duration(t) * time.Millisecond)
 }
 ```
+###### unix
+``` go
+func unixTime(y, m, d, h, m int) int {
+    date := fmt.Sprintf("%v-%.2v-%.2vT%.2v:%.2v:00.000Z", y, m, d, h, m)
+    t, _ := time.Parse(time.RFC3339, date)
+    return int(t.Unix())
+}
+```
+
+##### date cal
+``` go
+package main
+
+import (
+    "fmt"
+    "time"
+)
+
+var _ = fmt.Println
+
+var (
+    y1, m1, d1 = 2019, 9, 2
+    y2, m2, d2 = 2020, 7, 20
+)
+
+func main() {
+    days := getTwoDate(y1, m1, d1, y2, m2, d2)
+    fmt.Println(days)
+
+    y3, m3, d3 := getAfterDays(y1, m1, d1, days)
+    fmt.Println(y3, m3, d3)
+}
+
+func unixTime(y, m, d int) int {
+    date := fmt.Sprintf("%v-%.2v-%.2vT00:00:00.000Z", y, m, d)
+    t, _ := time.Parse(time.RFC3339, date)
+    return int(t.Unix())
+}
+
+func getTwoDate(y1, m1, d1, y2, m2, d2 int) int {
+    s := unixTime(y2, m2, d2) - unixTime(y1, m1, d1)
+    return s / 86400
+}
+
+func getAfterDays(y, m, d, days int) (int, int, int) {
+    unix := int64(unixTime(y, m, d) + days*60*60*24 - 60*60*8)
+    t := time.Unix(unix, 0)
+    return t.Year(), int(t.Month()), t.Day()
+}
+
+```
+
 
 ### string
 
 ###### strip
 `strings.TrimSpace(str)`
-###### sting <-> int
+###### string <-> to_int
 ``` go
 i, err := strconv.Atoi(s)
 if err ! = nil {
     //
 }
 s := strconv.Itoa(i)
+```
+###### sting <-> to_float
+``` go
+fn, err := strconv.ParseFloat(cell, 64
 ```
 ###### fill_zero
 ``` go
@@ -348,6 +494,26 @@ func sliceChString(ch string, start int, end int) string {
     return ch
 }
 ```
+####
+``` go
+func strEachSlice(str string, l int) []string {
+    arr := strings.Split(str, "")
+    var ar []string
+    size := len(arr)
+    for i := 0; i < size; i = i + l {
+        j := i + l
+        if j > size {
+            j = size
+        }
+        ar = append(ar, strings.Join(arr[i:j], ""))
+    }
+    return ar
+}
+
+```
+
+
+
 ### array
 ###### eachSlice N part
 ``` go
@@ -499,6 +665,13 @@ func arrCompare(a1, a2 []string) ([]string, []string, []string) {
 ``` go
 import "math"
 math.Pow(2, 5)
+
+func pow(n, p int) int {
+    if p == 1 {
+        return n
+    }
+    return n * pow(n, p-1)
+}
 ```
 ###### bit
 ``` go
@@ -529,10 +702,19 @@ func toHex(i int) string {
 ```
 ###### rand
 ``` go
-import "math/rand"
+"math/rand"
 
-rand.Seed(time.Now().UnixNano())
-rand.Intn(100)
+func randNumStr(min, max float64) string {
+    rand.Seed(time.Now().UnixNano())
+    n := min + rand.Float64()*(max-min)
+    return fmt.Sprintf("%.1f", n)
+}
+
+func randNumInt(min, max int) int {
+    rand.Seed(time.Now().UnixNano())
+    return min + rand.Intn(max-min+1)
+}
+
 ```
 
 ### image
@@ -553,8 +735,17 @@ width, height := bounds.Max.X, bounds.Max.Y
 pixel := rgbaToPixel(img.At(x, y).RGBA())
 
 ```
+``` go
 
+  f, err = os.Open(input)
+        img, _, err = image.Decode(f)
+        if err != nil {
+            fmt.Println(err)
+            os.Exit(1)
+        }
+img = image.NewRGBA(image.Rect(0, 0, width, width))
 
+```
 ### gin
 
 ##### soup

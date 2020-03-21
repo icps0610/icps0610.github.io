@@ -84,3 +84,12 @@ enbable=0
 
 #### save iptables
 apt install iptables-persistent
+
+
+#### crontab
+sudo nano /etc/rsyslog.d/50-default.conf 
+cron.* /var/log/cron.log 去掉#
+
+/etc/init.d/rsyslog restart
+/etc/init.d/cron restart
+
