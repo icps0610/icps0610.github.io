@@ -162,6 +162,116 @@ https:// &hellip;">
 </span></code></pre></td></tr></table></div></figure>
 
 
+<h5>screenShot</h5>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="s">&quot;github.com/kbinani/screenshot&quot;</span>
+</span><span class='line'><span class="s">&quot;github.com/oliamb/cutter&quot;</span>
+</span><span class='line'><span class="s">&quot;image&quot;</span>
+</span><span class='line'><span class="s">&quot;image/png&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">func</span> <span class="nx">getScreenshot</span><span class="p">(</span><span class="nx">px</span><span class="p">,</span> <span class="nx">py</span><span class="p">,</span> <span class="nx">width</span><span class="p">,</span> <span class="nx">height</span> <span class="kt">int</span><span class="p">,</span> <span class="nx">imageName</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">bounds</span> <span class="o">:=</span> <span class="nx">screenshot</span><span class="p">.</span><span class="nx">GetDisplayBounds</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">img</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">screenshot</span><span class="p">.</span><span class="nx">CaptureRect</span><span class="p">(</span><span class="nx">bounds</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="nx">file</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Create</span><span class="p">(</span><span class="nx">imageName</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">defer</span> <span class="nx">file</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">croppedImg</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">cutter</span><span class="p">.</span><span class="nx">Crop</span><span class="p">(</span><span class="nx">img</span><span class="p">,</span> <span class="nx">cutter</span><span class="p">.</span><span class="nx">Config</span><span class="p">{</span>
+</span><span class='line'>        <span class="nx">Anchor</span><span class="p">:</span> <span class="nx">image</span><span class="p">.</span><span class="nx">Point</span><span class="p">{</span><span class="nx">px</span><span class="p">,</span> <span class="nx">py</span><span class="p">},</span>
+</span><span class='line'>        <span class="nx">Width</span><span class="p">:</span>  <span class="nx">width</span><span class="p">,</span>
+</span><span class='line'>        <span class="nx">Height</span><span class="p">:</span> <span class="nx">height</span><span class="p">,</span>
+</span><span class='line'>    <span class="p">})</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">png</span><span class="p">.</span><span class="nx">Encode</span><span class="p">(</span><span class="nx">file</span><span class="p">,</span> <span class="nx">croppedImg</span><span class="p">)</span>
+</span><span class='line'>    <span class="nx">sleep</span><span class="p">(</span><span class="nx">delay</span><span class="p">)</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="s">&quot;github.com/oliamb/cutter&quot;</span>
+</span><span class='line'><span class="s">&quot;github.com/sclevine/agouti&quot;</span>
+</span><span class='line'><span class="s">&quot;image&quot;</span>
+</span><span class='line'><span class="s">&quot;image/png&quot;</span>
+</span><span class='line'><span class="kd">func</span> <span class="nx">getScreenshot</span><span class="p">(</span><span class="nx">page</span> <span class="o">*</span><span class="nx">agouti</span><span class="p">.</span><span class="nx">Page</span><span class="p">,</span> <span class="nx">px</span><span class="p">,</span> <span class="nx">py</span><span class="p">,</span> <span class="nx">width</span><span class="p">,</span> <span class="nx">height</span> <span class="kt">int</span><span class="p">,</span> <span class="nx">imageName</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">page</span><span class="p">.</span><span class="nx">Screenshot</span><span class="p">(</span><span class="nx">imageName</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">f</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Open</span><span class="p">(</span><span class="nx">imageName</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Cannot open file&quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="nx">img</span><span class="p">,</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">image</span><span class="p">.</span><span class="nx">Decode</span><span class="p">(</span><span class="nx">f</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Cannot decode image:&quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="nx">file</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Create</span><span class="p">(</span><span class="nx">imageName</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">defer</span> <span class="nx">file</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">croppedImg</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">cutter</span><span class="p">.</span><span class="nx">Crop</span><span class="p">(</span><span class="nx">img</span><span class="p">,</span> <span class="nx">cutter</span><span class="p">.</span><span class="nx">Config</span><span class="p">{</span>
+</span><span class='line'>        <span class="nx">Anchor</span><span class="p">:</span> <span class="nx">image</span><span class="p">.</span><span class="nx">Point</span><span class="p">{</span><span class="nx">px</span><span class="p">,</span> <span class="nx">py</span><span class="p">},</span>
+</span><span class='line'>        <span class="nx">Width</span><span class="p">:</span>  <span class="nx">width</span><span class="p">,</span>
+</span><span class='line'>        <span class="nx">Height</span><span class="p">:</span> <span class="nx">height</span><span class="p">,</span>
+</span><span class='line'>    <span class="p">})</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">png</span><span class="p">.</span><span class="nx">Encode</span><span class="p">(</span><span class="nx">file</span><span class="p">,</span> <span class="nx">croppedImg</span><span class="p">)</span>
+</span><span class='line'>    <span class="nx">sleep</span><span class="p">(</span><span class="nx">delay</span><span class="p">)</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
 <h6>curl</h6>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -258,7 +368,29 @@ https:// &hellip;">
 <span class='line-number'>35</span>
 <span class='line-number'>36</span>
 <span class='line-number'>37</span>
-</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kd">func</span> <span class="nx">writeLines</span><span class="p">(</span><span class="nx">lines</span> <span class="p">[]</span><span class="kt">string</span><span class="p">,</span> <span class="nx">path</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="nx">data</span> <span class="o">:=</span> <span class="p">[]</span><span class="nb">byte</span><span class="p">(</span><span class="s">&quot;hello\ngo\n&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="nx">err</span> <span class="o">:=</span> <span class="nx">ioutil</span><span class="p">.</span><span class="nx">WriteFile</span><span class="p">(</span><span class="s">&quot;/tmp/data&quot;</span><span class="p">,</span> <span class="nx">data</span><span class="p">,</span> <span class="mo">0644</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="kd">func</span> <span class="nx">writeLines</span><span class="p">(</span><span class="nx">lines</span> <span class="p">[]</span><span class="kt">string</span><span class="p">,</span> <span class="nx">path</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
 </span><span class='line'>    <span class="nx">file</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Create</span><span class="p">(</span><span class="nx">path</span><span class="p">)</span>
 </span><span class='line'>    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
 </span><span class='line'>        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
@@ -295,6 +427,20 @@ https:// &hellip;">
 </span><span class='line'><span class="kn">import</span> <span class="s">&quot;github.com/malexdev/utfutil&quot;</span>
 </span><span class='line'><span class="nx">d</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">utfutil</span><span class="p">.</span><span class="nx">ReadFile</span><span class="p">(</span><span class="s">&quot;txt&quot;</span><span class="p">,</span> <span class="nx">utfutil</span><span class="p">.</span><span class="nx">UTF8</span><span class="p">)</span>
 </span><span class='line'><span class="nx">c</span> <span class="o">:=</span> <span class="nb">string</span><span class="p">(</span><span class="nx">d</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="kd">func</span> <span class="nx">appendFile</span><span class="p">(</span><span class="nx">path</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">data</span> <span class="p">[]</span><span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">f</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">OpenFile</span><span class="p">(</span><span class="nx">path</span><span class="p">,</span> <span class="nx">os</span><span class="p">.</span><span class="nx">O_APPEND</span><span class="p">|</span><span class="nx">os</span><span class="p">.</span><span class="nx">O_CREATE</span><span class="p">|</span><span class="nx">os</span><span class="p">.</span><span class="nx">O_WRONLY</span><span class="p">,</span> <span class="mo">0644</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nx">log</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="k">defer</span> <span class="nx">f</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">line</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">data</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nx">f</span><span class="p">.</span><span class="nx">WriteString</span><span class="p">(</span><span class="nx">line</span> <span class="o">+</span> <span class="s">&quot;n&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -348,6 +494,35 @@ https:// &hellip;">
 </span><span class='line'><span class="nx">writeJson</span><span class="p">(</span><span class="nx">fname</span><span class="p">,</span> <span class="nx">p</span><span class="p">)</span>
 </span><span class='line'><span class="nx">reaJson</span> <span class="o">:=</span> <span class="nx">readJson</span><span class="p">(</span><span class="nx">fname</span><span class="p">)</span>
 </span><span class='line'><span class="nx">ffmt</span><span class="p">.</span><span class="nx">Puts</span><span class="p">(</span><span class="nx">reaJson</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">Name</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kd">var</span> <span class="nx">c</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">][]</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kd">interface</span><span class="p">{}</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">cs</span> <span class="p">[]</span><span class="kt">string</span>
+</span><span class='line'><span class="nx">json</span><span class="p">.</span><span class="nx">Unmarshal</span><span class="p">([]</span><span class="nb">byte</span><span class="p">(</span><span class="nx">str</span><span class="p">),</span> <span class="o">&amp;</span><span class="nx">c</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">t</span> <span class="o">:=</span> <span class="nx">c</span><span class="p">[</span><span class="s">&quot;content_elements&quot;</span><span class="p">]</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">e</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">t</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">c</span> <span class="o">:=</span> <span class="nx">e</span><span class="p">[</span><span class="s">&quot;content&quot;</span><span class="p">]</span>
+</span><span class='line'>    <span class="k">if</span> <span class="nx">c</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nx">cs</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">cs</span><span class="p">,</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span> <span class="nx">c</span><span class="p">))</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="k">return</span> <span class="nx">cs</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -531,13 +706,109 @@ https:// &hellip;">
 </span></code></pre></td></tr></table></div></figure>
 
 
+<h6>unix</h6>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kd">func</span> <span class="nx">unixTime</span><span class="p">(</span><span class="nx">y</span><span class="p">,</span> <span class="nx">m</span><span class="p">,</span> <span class="nx">d</span><span class="p">,</span> <span class="nx">h</span><span class="p">,</span> <span class="nx">m</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">date</span> <span class="o">:=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;%v-%.2v-%.2vT%.2v:%.2v:00.000Z&quot;</span><span class="p">,</span> <span class="nx">y</span><span class="p">,</span> <span class="nx">m</span><span class="p">,</span> <span class="nx">d</span><span class="p">,</span> <span class="nx">h</span><span class="p">,</span> <span class="nx">m</span><span class="p">)</span>
+</span><span class='line'>    <span class="nx">t</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Parse</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">RFC3339</span><span class="p">,</span> <span class="nx">date</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="nx">t</span><span class="p">.</span><span class="nx">Unix</span><span class="p">())</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h5>date cal</h5>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kn">package</span> <span class="nx">main</span>
+</span><span class='line'>
+</span><span class='line'><span class="kn">import</span> <span class="p">(</span>
+</span><span class='line'>    <span class="s">&quot;fmt&quot;</span>
+</span><span class='line'>    <span class="s">&quot;time&quot;</span>
+</span><span class='line'><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">var</span> <span class="nx">_</span> <span class="p">=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">var</span> <span class="p">(</span>
+</span><span class='line'>    <span class="nx">y1</span><span class="p">,</span> <span class="nx">m1</span><span class="p">,</span> <span class="nx">d1</span> <span class="p">=</span> <span class="mi">2019</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">2</span>
+</span><span class='line'>    <span class="nx">y2</span><span class="p">,</span> <span class="nx">m2</span><span class="p">,</span> <span class="nx">d2</span> <span class="p">=</span> <span class="mi">2020</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">20</span>
+</span><span class='line'><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">days</span> <span class="o">:=</span> <span class="nx">getTwoDate</span><span class="p">(</span><span class="nx">y1</span><span class="p">,</span> <span class="nx">m1</span><span class="p">,</span> <span class="nx">d1</span><span class="p">,</span> <span class="nx">y2</span><span class="p">,</span> <span class="nx">m2</span><span class="p">,</span> <span class="nx">d2</span><span class="p">)</span>
+</span><span class='line'>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">days</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">y3</span><span class="p">,</span> <span class="nx">m3</span><span class="p">,</span> <span class="nx">d3</span> <span class="o">:=</span> <span class="nx">getAfterDays</span><span class="p">(</span><span class="nx">y1</span><span class="p">,</span> <span class="nx">m1</span><span class="p">,</span> <span class="nx">d1</span><span class="p">,</span> <span class="nx">days</span><span class="p">)</span>
+</span><span class='line'>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">y3</span><span class="p">,</span> <span class="nx">m3</span><span class="p">,</span> <span class="nx">d3</span><span class="p">)</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">func</span> <span class="nx">unixTime</span><span class="p">(</span><span class="nx">y</span><span class="p">,</span> <span class="nx">m</span><span class="p">,</span> <span class="nx">d</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">date</span> <span class="o">:=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;%v-%.2v-%.2vT00:00:00.000Z&quot;</span><span class="p">,</span> <span class="nx">y</span><span class="p">,</span> <span class="nx">m</span><span class="p">,</span> <span class="nx">d</span><span class="p">)</span>
+</span><span class='line'>    <span class="nx">t</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Parse</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">RFC3339</span><span class="p">,</span> <span class="nx">date</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="nx">t</span><span class="p">.</span><span class="nx">Unix</span><span class="p">())</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">func</span> <span class="nx">getTwoDate</span><span class="p">(</span><span class="nx">y1</span><span class="p">,</span> <span class="nx">m1</span><span class="p">,</span> <span class="nx">d1</span><span class="p">,</span> <span class="nx">y2</span><span class="p">,</span> <span class="nx">m2</span><span class="p">,</span> <span class="nx">d2</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">s</span> <span class="o">:=</span> <span class="nx">unixTime</span><span class="p">(</span><span class="nx">y2</span><span class="p">,</span> <span class="nx">m2</span><span class="p">,</span> <span class="nx">d2</span><span class="p">)</span> <span class="o">-</span> <span class="nx">unixTime</span><span class="p">(</span><span class="nx">y1</span><span class="p">,</span> <span class="nx">m1</span><span class="p">,</span> <span class="nx">d1</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">return</span> <span class="nx">s</span> <span class="o">/</span> <span class="mi">86400</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">func</span> <span class="nx">getAfterDays</span><span class="p">(</span><span class="nx">y</span><span class="p">,</span> <span class="nx">m</span><span class="p">,</span> <span class="nx">d</span><span class="p">,</span> <span class="nx">days</span> <span class="kt">int</span><span class="p">)</span> <span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">unix</span> <span class="o">:=</span> <span class="nb">int64</span><span class="p">(</span><span class="nx">unixTime</span><span class="p">(</span><span class="nx">y</span><span class="p">,</span> <span class="nx">m</span><span class="p">,</span> <span class="nx">d</span><span class="p">)</span> <span class="o">+</span> <span class="nx">days</span><span class="o">*</span><span class="mi">60</span><span class="o">*</span><span class="mi">60</span><span class="o">*</span><span class="mi">24</span> <span class="o">-</span> <span class="mi">60</span><span class="o">*</span><span class="mi">60</span><span class="o">*</span><span class="mi">8</span><span class="p">)</span>
+</span><span class='line'>    <span class="nx">t</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Unix</span><span class="p">(</span><span class="nx">unix</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">return</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Year</span><span class="p">(),</span> <span class="nb">int</span><span class="p">(</span><span class="nx">t</span><span class="p">.</span><span class="nx">Month</span><span class="p">()),</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Day</span><span class="p">()</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
 <h3>string</h3>
 
 <h6>strip</h6>
 
 <p><code>strings.TrimSpace(str)</code></p>
 
-<h6>sting <-> int</h6>
+<h6>string <-> to_int</h6>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -549,6 +820,13 @@ https:// &hellip;">
 </span><span class='line'>    <span class="c1">//</span>
 </span><span class='line'><span class="p">}</span>
 </span><span class='line'><span class="nx">s</span> <span class="o">:=</span> <span class="nx">strconv</span><span class="p">.</span><span class="nx">Itoa</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h6>sting <-> to_float</h6>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="nx">fn</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">strconv</span><span class="p">.</span><span class="nx">ParseFloat</span><span class="p">(</span><span class="nx">cell</span><span class="p">,</span> <span class="mi">64</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -714,6 +992,37 @@ https:// &hellip;">
 </span><span class='line'>        <span class="k">return</span> <span class="nx">result</span>
 </span><span class='line'>    <span class="p">}</span>
 </span><span class='line'>    <span class="k">return</span> <span class="nx">ch</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>#</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kd">func</span> <span class="nx">strEachSlice</span><span class="p">(</span><span class="nx">str</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">l</span> <span class="kt">int</span><span class="p">)</span> <span class="p">[]</span><span class="kt">string</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">arr</span> <span class="o">:=</span> <span class="nx">strings</span><span class="p">.</span><span class="nx">Split</span><span class="p">(</span><span class="nx">str</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">ar</span> <span class="p">[]</span><span class="kt">string</span>
+</span><span class='line'>    <span class="nx">size</span> <span class="o">:=</span> <span class="nb">len</span><span class="p">(</span><span class="nx">arr</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">size</span><span class="p">;</span> <span class="nx">i</span> <span class="p">=</span> <span class="nx">i</span> <span class="o">+</span> <span class="nx">l</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nx">j</span> <span class="o">:=</span> <span class="nx">i</span> <span class="o">+</span> <span class="nx">l</span>
+</span><span class='line'>        <span class="k">if</span> <span class="nx">j</span> <span class="p">&gt;</span> <span class="nx">size</span> <span class="p">{</span>
+</span><span class='line'>            <span class="nx">j</span> <span class="p">=</span> <span class="nx">size</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>        <span class="nx">ar</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">ar</span><span class="p">,</span> <span class="nx">strings</span><span class="p">.</span><span class="nx">Join</span><span class="p">(</span><span class="nx">arr</span><span class="p">[</span><span class="nx">i</span><span class="p">:</span><span class="nx">j</span><span class="p">],</span> <span class="s">&quot;&quot;</span><span class="p">))</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="k">return</span> <span class="nx">ar</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
@@ -1001,8 +1310,22 @@ https:// &hellip;">
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
 </pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kn">import</span> <span class="s">&quot;math&quot;</span>
 </span><span class='line'><span class="nx">math</span><span class="p">.</span><span class="nx">Pow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">func</span> <span class="nx">pow</span><span class="p">(</span><span class="nx">n</span><span class="p">,</span> <span class="nx">p</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">if</span> <span class="nx">p</span> <span class="o">==</span> <span class="mi">1</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="nx">n</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="k">return</span> <span class="nx">n</span> <span class="o">*</span> <span class="nx">pow</span><span class="p">(</span><span class="nx">n</span><span class="p">,</span> <span class="nx">p</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -1062,10 +1385,26 @@ https:// &hellip;">
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kn">import</span> <span class="s">&quot;math/rand&quot;</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="s">&quot;math/rand&quot;</span>
 </span><span class='line'>
-</span><span class='line'><span class="nx">rand</span><span class="p">.</span><span class="nx">Seed</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">().</span><span class="nx">UnixNano</span><span class="p">())</span>
-</span><span class='line'><span class="nx">rand</span><span class="p">.</span><span class="nx">Intn</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+</span><span class='line'><span class="kd">func</span> <span class="nx">randNumStr</span><span class="p">(</span><span class="nx">min</span><span class="p">,</span> <span class="nx">max</span> <span class="kt">float64</span><span class="p">)</span> <span class="kt">string</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">rand</span><span class="p">.</span><span class="nx">Seed</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">().</span><span class="nx">UnixNano</span><span class="p">())</span>
+</span><span class='line'>    <span class="nx">n</span> <span class="o">:=</span> <span class="nx">min</span> <span class="o">+</span> <span class="nx">rand</span><span class="p">.</span><span class="nx">Float64</span><span class="p">()</span><span class="o">*</span><span class="p">(</span><span class="nx">max</span><span class="o">-</span><span class="nx">min</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">return</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;%.1f&quot;</span><span class="p">,</span> <span class="nx">n</span><span class="p">)</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">func</span> <span class="nx">randNumInt</span><span class="p">(</span><span class="nx">min</span><span class="p">,</span> <span class="nx">max</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">rand</span><span class="p">.</span><span class="nx">Seed</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">().</span><span class="nx">UnixNano</span><span class="p">())</span>
+</span><span class='line'>    <span class="k">return</span> <span class="nx">min</span> <span class="o">+</span> <span class="nx">rand</span><span class="p">.</span><span class="nx">Intn</span><span class="p">(</span><span class="nx">max</span><span class="o">-</span><span class="nx">min</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+</span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -1099,6 +1438,23 @@ https:// &hellip;">
 </span><span class='line'><span class="nx">width</span><span class="p">,</span> <span class="nx">height</span> <span class="o">:=</span> <span class="nx">bounds</span><span class="p">.</span><span class="nx">Max</span><span class="p">.</span><span class="nx">X</span><span class="p">,</span> <span class="nx">bounds</span><span class="p">.</span><span class="nx">Max</span><span class="p">.</span><span class="nx">Y</span>
 </span><span class='line'>
 </span><span class='line'><span class="nx">pixel</span> <span class="o">:=</span> <span class="nx">rgbaToPixel</span><span class="p">(</span><span class="nx">img</span><span class="p">.</span><span class="nx">At</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">).</span><span class="nx">RGBA</span><span class="p">())</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'>  <span class="nx">f</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Open</span><span class="p">(</span><span class="nx">input</span><span class="p">)</span>
+</span><span class='line'>        <span class="nx">img</span><span class="p">,</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">image</span><span class="p">.</span><span class="nx">Decode</span><span class="p">(</span><span class="nx">f</span><span class="p">)</span>
+</span><span class='line'>        <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span><span class='line'>            <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span><span class='line'>            <span class="nx">os</span><span class="p">.</span><span class="nx">Exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'><span class="nx">img</span> <span class="p">=</span> <span class="nx">image</span><span class="p">.</span><span class="nx">NewRGBA</span><span class="p">(</span><span class="nx">image</span><span class="p">.</span><span class="nx">Rect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">width</span><span class="p">,</span> <span class="nx">width</span><span class="p">))</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -1293,16 +1649,15 @@ https:// &hellip;">
     <section>
   <h1>Categories</h1>
     <ul id="categories">
-       <li class='category'><a href='/blog/categories/app/'>app (35)</a></li>
+       <li class='category'><a href='/blog/categories/app/'>app (37)</a></li>
 <li class='category'><a href='/blog/categories/bat/'>bat (11)</a></li>
-<li class='category'><a href='/blog/categories/excel/'>excel (1)</a></li>
-<li class='category'><a href='/blog/categories/golang/'>golang (4)</a></li>
+<li class='category'><a href='/blog/categories/excel/'>excel (2)</a></li>
+<li class='category'><a href='/blog/categories/golang/'>golang (6)</a></li>
 <li class='category'><a href='/blog/categories/juniper/'>juniper (1)</a></li>
-<li class='category'><a href='/blog/categories/linux/'>linux (29)</a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (30)</a></li>
 <li class='category'><a href='/blog/categories/python/'>python (10)</a></li>
 <li class='category'><a href='/blog/categories/ror/'>ror (35)</a></li>
 <li class='category'><a href='/blog/categories/ruby/'>ruby (59)</a></li>
-<li class='category'><a href='/blog/categories/uncategorized/'>uncategorized (1)</a></li>
 
     </ul>
 </section>
@@ -1311,23 +1666,23 @@ https:// &hellip;">
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2019/12/12/kb-update/">Kb_update</a>
+        <a href="/blog/2020/03/19/upgrade-excludet-specific-package/">特定APP不升級</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2019/10/25/securerandom/">secureRandom</a>
+        <a href="/blog/2020/03/19/chrome-headless-crontab/">Chrome_headless_crontab</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2019/10/22/gin/">Gin</a>
+        <a href="/blog/2020/03/16/vpn/">Vpn</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2019/08/06/getweeknumber/">getWeekNumber</a>
+        <a href="/blog/2020/01/17/xls-to-xlsx/">Xls_to_xlsx</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2019/07/17/irb-noprompt/">Irb_noprompt</a>
+        <a href="/blog/2019/12/17/post/">Post</a>
       </li>
     
   </ul>
@@ -1344,7 +1699,7 @@ https:// &hellip;">
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2019 - icps -
+  Copyright &copy; 2020 - icps -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
