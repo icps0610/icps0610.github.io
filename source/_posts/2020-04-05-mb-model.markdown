@@ -1,0 +1,9 @@
+---
+layout: post
+title: "主機板型號"
+date: 2020-04-05 21:00:49 +0800
+comments: true
+categories: bat
+---
+
+`>wmic baseboard get product,Manufacturer,version,serialnumber`
