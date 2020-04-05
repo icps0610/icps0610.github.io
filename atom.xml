@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="https://icps0610.github.io/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2020-03-21T13:57:48+08:00</updated>
+  <updated>2020-04-05T21:01:35+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,24 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[主機板型號]]></title>
+    <link href="https://icps0610.github.io/blog/2020/04/05/mb-model/"/>
+    <updated>2020-04-05T21:00:49+08:00</updated>
+    <id>https://icps0610.github.io/blog/2020/04/05/mb-model</id>
+    <content type="html"><![CDATA[<p><code>&gt;wmic baseboard get product,Manufacturer,version,serialnumber</code></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Oni]]></title>
+    <link href="https://icps0610.github.io/blog/2020/03/27/oni/"/>
+    <updated>2020-03-27T22:12:37+08:00</updated>
+    <id>https://icps0610.github.io/blog/2020/03/27/oni</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[特定APP不升級]]></title>
@@ -572,11 +590,23 @@ load merge terminal
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
 </pre></td><td class='code'><pre><code class='go'><span class='line'><span class="nx">cmd</span> <span class="o">:=</span> <span class="nx">exec</span><span class="p">.</span><span class="nx">Command</span><span class="p">(</span><span class="s">&quot;ipconfig&quot;</span><span class="p">)</span>
 </span><span class='line'><span class="nx">_</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">cmd</span><span class="p">.</span><span class="nx">CombinedOutput</span><span class="p">()</span>
 </span><span class='line'><span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
 </span><span class='line'>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
 </span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="nx">cmd</span> <span class="o">:=</span> <span class="s">&quot;ping -c 1 127.0.0.1 | grep icmp_seq&quot;</span>
+</span><span class='line'><span class="nx">out</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">exec</span><span class="p">.</span><span class="nx">Command</span><span class="p">(</span><span class="s">&quot;bash&quot;</span><span class="p">,</span> <span class="s">&quot;-c&quot;</span><span class="p">,</span> <span class="nx">cmd</span><span class="p">).</span><span class="nx">Output</span><span class="p">()</span>
+</span><span class='line'><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">out</span><span class="p">))</span>
+</span><span class='line'><span class="nx">printError</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -1137,12 +1167,10 @@ load merge terminal
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kd">func</span> <span class="nx">timeFormat</span><span class="p">(</span><span class="nx">t</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Time</span><span class="p">)</span> <span class="kt">string</span> <span class="p">{</span>
-</span><span class='line'>    <span class="k">return</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;%d-%02d-%02d %02d:%02d:%02d&quot;</span><span class="p">,</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Year</span><span class="p">(),</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Month</span><span class="p">(),</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Day</span><span class="p">(),</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Hour</span><span class="p">(),</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Minute</span><span class="p">(),</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Second</span><span class="p">())</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kd">func</span> <span class="nx">timeFormat</span><span class="p">()</span> <span class="kt">string</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">t</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">()</span>
+</span><span class='line'>    <span class="k">return</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;%d-%02d-%02d&quot;</span><span class="p">,</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Year</span><span class="p">(),</span> <span class="nb">int</span><span class="p">(</span><span class="nx">t</span><span class="p">.</span><span class="nx">Month</span><span class="p">()),</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Day</span><span class="p">())</span>
 </span><span class='line'><span class="p">}</span>
-</span><span class='line'><span class="nx">today</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">()</span>
-</span><span class='line'><span class="nx">timeFormat</span><span class="p">(</span><span class="nx">today</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -2131,65 +2159,6 @@ load merge terminal
 </span><span class='line'><span class="c1">#gsub(&quot;\u00A0&quot;, &quot;&quot;)</span>
 </span><span class='line'>
 </span><span class='line'><span class="n">doc</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s2">&quot;.//p/text()&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:content</span><span class="p">)</span><span class="o">.</span><span class="n">select</span><span class="p">{</span><span class="o">|</span><span class="n">i</span><span class="o">|</span><span class="ow">not</span> <span class="n">i</span> <span class="o">==</span> <span class="s2">&quot;\u00A0&quot;</span><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Wsl]]></title>
-    <link href="https://icps0610.github.io/blog/2019/05/07/wsl/"/>
-    <updated>2019-05-07T14:13:54+08:00</updated>
-    <id>https://icps0610.github.io/blog/2019/05/07/wsl</id>
-    <content type="html"><![CDATA[<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>
-</span><span class='line'>#powershell run
-</span><span class='line'>Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
-</span><span class='line'>
-</span><span class='line'># ms-windows-store://search/?query=WSL
-</span><span class='line'>
-</span><span class='line'>
-</span><span class='line'># x11
-</span><span class='line'>apt-get install x11-apps
-</span><span class='line'>echo "export DISPLAY=127.0.0.1:0" &gt;&gt; ~/.bashrc
-</span><span class='line'>
-</span><span class='line'># terminal
-</span><span class='line'>https://goreliu.github.io/wsl-terminal/</span></code></pre></td></tr></table></div></figure>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Uac]]></title>
-    <link href="https://icps0610.github.io/blog/2019/05/03/uac/"/>
-    <updated>2019-05-03T15:14:01+08:00</updated>
-    <id>https://icps0610.github.io/blog/2019/05/03/uac</id>
-    <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='bat'><span class='line'><span class="p">@</span><span class="k">echo</span> <span class="k">off</span>
-</span><span class='line'><span class="k">echo</span> Windows Registry Editor Version <span class="m">5</span>.<span class="m">00</span> <span class="p">&gt;</span> <span class="n">uac</span>.reg
-</span><span class='line'><span class="k">echo</span> [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System] &gt;<span class="p">&gt;</span> <span class="n">uac</span>.reg
-</span><span class='line'><span class="k">echo</span> <span class="s2">&quot;EnableLUA&quot;</span><span class="o">=</span>dword:00000000 &gt;<span class="p">&gt;</span> <span class="n">uac</span>.reg
-</span><span class='line'>regedit <span class="n">/s</span> uac.reg
-</span><span class='line'>REG QUERY HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System <span class="p">|</span> <span class="n">find</span> <span class="s2">&quot;EnableLUA&quot;</span>
-</span><span class='line'><span class="k">pause</span>
 </span></code></pre></td></tr></table></div></figure>
 
 ]]></content>

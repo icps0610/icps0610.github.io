@@ -117,11 +117,23 @@ https:// &hellip;">
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
 </pre></td><td class='code'><pre><code class='go'><span class='line'><span class="nx">cmd</span> <span class="o">:=</span> <span class="nx">exec</span><span class="p">.</span><span class="nx">Command</span><span class="p">(</span><span class="s">&quot;ipconfig&quot;</span><span class="p">)</span>
 </span><span class='line'><span class="nx">_</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">cmd</span><span class="p">.</span><span class="nx">CombinedOutput</span><span class="p">()</span>
 </span><span class='line'><span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
 </span><span class='line'>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
 </span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="nx">cmd</span> <span class="o">:=</span> <span class="s">&quot;ping -c 1 127.0.0.1 | grep icmp_seq&quot;</span>
+</span><span class='line'><span class="nx">out</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">exec</span><span class="p">.</span><span class="nx">Command</span><span class="p">(</span><span class="s">&quot;bash&quot;</span><span class="p">,</span> <span class="s">&quot;-c&quot;</span><span class="p">,</span> <span class="nx">cmd</span><span class="p">).</span><span class="nx">Output</span><span class="p">()</span>
+</span><span class='line'><span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">out</span><span class="p">))</span>
+</span><span class='line'><span class="nx">printError</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -682,12 +694,10 @@ https:// &hellip;">
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kd">func</span> <span class="nx">timeFormat</span><span class="p">(</span><span class="nx">t</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Time</span><span class="p">)</span> <span class="kt">string</span> <span class="p">{</span>
-</span><span class='line'>    <span class="k">return</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;%d-%02d-%02d %02d:%02d:%02d&quot;</span><span class="p">,</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Year</span><span class="p">(),</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Month</span><span class="p">(),</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Day</span><span class="p">(),</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Hour</span><span class="p">(),</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Minute</span><span class="p">(),</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Second</span><span class="p">())</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kd">func</span> <span class="nx">timeFormat</span><span class="p">()</span> <span class="kt">string</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">t</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">()</span>
+</span><span class='line'>    <span class="k">return</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;%d-%02d-%02d&quot;</span><span class="p">,</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Year</span><span class="p">(),</span> <span class="nb">int</span><span class="p">(</span><span class="nx">t</span><span class="p">.</span><span class="nx">Month</span><span class="p">()),</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Day</span><span class="p">())</span>
 </span><span class='line'><span class="p">}</span>
-</span><span class='line'><span class="nx">today</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">()</span>
-</span><span class='line'><span class="nx">timeFormat</span><span class="p">(</span><span class="nx">today</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -1650,7 +1660,7 @@ https:// &hellip;">
   <h1>Categories</h1>
     <ul id="categories">
        <li class='category'><a href='/blog/categories/app/'>app (37)</a></li>
-<li class='category'><a href='/blog/categories/bat/'>bat (11)</a></li>
+<li class='category'><a href='/blog/categories/bat/'>bat (12)</a></li>
 <li class='category'><a href='/blog/categories/excel/'>excel (2)</a></li>
 <li class='category'><a href='/blog/categories/golang/'>golang (6)</a></li>
 <li class='category'><a href='/blog/categories/juniper/'>juniper (1)</a></li>
@@ -1658,12 +1668,21 @@ https:// &hellip;">
 <li class='category'><a href='/blog/categories/python/'>python (10)</a></li>
 <li class='category'><a href='/blog/categories/ror/'>ror (35)</a></li>
 <li class='category'><a href='/blog/categories/ruby/'>ruby (59)</a></li>
+<li class='category'><a href='/blog/categories/uncategorized/'>uncategorized (1)</a></li>
 
     </ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2020/04/05/mb-model/">主機板型號</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2020/03/27/oni/">Oni</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2020/03/19/upgrade-excludet-specific-package/">特定APP不升級</a>
@@ -1675,14 +1694,6 @@ https:// &hellip;">
     
       <li class="post">
         <a href="/blog/2020/03/16/vpn/">Vpn</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2020/01/17/xls-to-xlsx/">Xls_to_xlsx</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2019/12/17/post/">Post</a>
       </li>
     
   </ul>

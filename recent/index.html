@@ -9,7 +9,7 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="apt-mark hold package-name
+  <meta name="description" content="&gt;wmic baseboard get product,Manufacturer,version,serialnumber
 ">
   
 
@@ -69,6 +69,64 @@
       <div class="blog-index">
   
 
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2020/04/05/mb-model/">主機板型號</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2020-04-05T21:00:49+08:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2020</span></span> <span class='time'>9:00 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><code>&gt;wmic baseboard get product,Manufacturer,version,serialnumber</code></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2020/03/27/oni/">Oni</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2020-03-27T22:12:37+08:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>27</span><span class='date-suffix'>th</span>, <span class='date-year'>2020</span></span> <span class='time'>10:12 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">
+</div>
+  
+  
+
+
+    </article>
+  
   
     <article>
       
@@ -182,186 +240,6 @@ nmcli con down id [VPN]</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2020/01/17/xls-to-xlsx/">Xls_to_xlsx</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2020-01-17T20:58:21+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2020</span></span> <span class='time'>8:58 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h6>vba</h6>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Dim</span> <span class="n">iFile</span><span class="p">(</span><span class="mi">1</span> <span class="no">To</span> <span class="mi">100000</span><span class="p">)</span> <span class="no">As</span> <span class="nb">String</span>
-</span><span class='line'><span class="no">Dim</span> <span class="n">count</span> <span class="no">As</span> <span class="nb">Integer</span>
-</span><span class='line'><span class="no">Sub</span> <span class="n">xls2xlsx</span><span class="p">()</span>
-</span><span class='line'> <span class="n">iPath</span> <span class="o">=</span> <span class="no">ThisWorkbook</span><span class="o">.</span><span class="n">Path</span>
-</span><span class='line'> <span class="no">On</span> <span class="no">Error</span> <span class="no">Resume</span> <span class="no">Next</span>
-</span><span class='line'> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
-</span><span class='line'> <span class="n">zdir</span> <span class="n">iPath</span>
-</span><span class='line'> <span class="no">For</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span> <span class="no">To</span> <span class="n">count</span>
-</span><span class='line'> <span class="no">If</span> <span class="n">iFile</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="no">Like</span> <span class="s2">&quot;*.xls&quot;</span> <span class="no">And</span> <span class="n">iFile</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">&lt;&gt;</span> <span class="no">ThisWorkbook</span><span class="o">.</span><span class="n">FullName</span> <span class="no">Then</span>
-</span><span class='line'> <span class="no">MyFile</span> <span class="o">=</span> <span class="n">iFile</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-</span><span class='line'> <span class="no">FilePath</span> <span class="o">=</span> <span class="no">Replace</span><span class="p">(</span><span class="no">MyFile</span><span class="p">,</span> <span class="s2">&quot;.xls&quot;</span><span class="p">,</span> <span class="s2">&quot;.xlsx&quot;</span><span class="p">)</span>
-</span><span class='line'> <span class="no">If</span> <span class="no">Dir</span><span class="p">(</span><span class="no">FilePath</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span> <span class="o">=</span> <span class="no">Empty</span> <span class="no">Then</span>
-</span><span class='line'> <span class="no">Set</span> <span class="no">WBookOther</span> <span class="o">=</span> <span class="no">Workbooks</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="no">MyFile</span><span class="p">)</span>
-</span><span class='line'> <span class="no">Application</span><span class="o">.</span><span class="n">ScreenUpdating</span> <span class="o">=</span> <span class="no">False</span>
-</span><span class='line'> <span class="no">ActiveWorkbook</span><span class="o">.</span><span class="n">SaveAs</span> <span class="ss">Filename</span><span class="p">:</span><span class="o">=</span><span class="no">FilePath</span><span class="p">,</span> <span class="ss">FileFormat</span><span class="p">:</span><span class="o">=</span><span class="n">xlOpenXMLWorkbook</span><span class="p">,</span> <span class="ss">CreateBackup</span><span class="p">:</span><span class="o">=</span><span class="no">False</span>
-</span><span class='line'> <span class="no">WBookOther</span><span class="o">.</span><span class="n">Close</span> <span class="ss">SaveChanges</span><span class="p">:</span><span class="o">=</span><span class="no">False</span>
-</span><span class='line'> <span class="no">Application</span><span class="o">.</span><span class="n">ScreenUpdating</span> <span class="o">=</span> <span class="no">True</span>
-</span><span class='line'> <span class="no">End</span> <span class="no">If</span>
-</span><span class='line'> <span class="no">End</span> <span class="no">If</span>
-</span><span class='line'> <span class="no">Next</span>
-</span><span class='line'><span class="no">End</span> <span class="no">Sub</span>
-</span><span class='line'><span class="no">Sub</span> <span class="n">zdir</span><span class="p">(</span><span class="nb">p</span><span class="p">)</span>
-</span><span class='line'> <span class="no">Set</span> <span class="n">fs</span> <span class="o">=</span> <span class="no">CreateObject</span><span class="p">(</span><span class="s2">&quot;scripting.filesystemobject&quot;</span><span class="p">)</span>
-</span><span class='line'> <span class="no">For</span> <span class="no">Each</span> <span class="n">f</span> <span class="no">In</span> <span class="n">fs</span><span class="o">.</span><span class="n">GetFolder</span><span class="p">(</span><span class="nb">p</span><span class="p">)</span><span class="o">.</span><span class="n">Files</span>
-</span><span class='line'> <span class="no">If</span> <span class="n">f</span> <span class="o">&lt;&gt;</span> <span class="no">ThisWorkbook</span><span class="o">.</span><span class="n">FullName</span> <span class="no">Then</span> <span class="n">count</span> <span class="o">=</span> <span class="n">count</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:</span> <span class="n">iFile</span><span class="p">(</span><span class="n">count</span><span class="p">)</span> <span class="o">=</span> <span class="n">f</span>
-</span><span class='line'> <span class="no">Next</span>
-</span><span class='line'> <span class="no">For</span> <span class="no">Each</span> <span class="n">m</span> <span class="no">In</span> <span class="n">fs</span><span class="o">.</span><span class="n">GetFolder</span><span class="p">(</span><span class="nb">p</span><span class="p">)</span><span class="o">.</span><span class="n">SubFolders</span>
-</span><span class='line'> <span class="n">zdir</span> <span class="n">m</span>
-</span><span class='line'> <span class="no">Next</span>
-</span><span class='line'><span class="no">End</span> <span class="no">Sub</span>
-</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2019/12/17/post/">Post</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2019-12-17T17:55:34+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2019</span></span> <span class='time'>5:55 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><blockquote><blockquote><p>ref <a href="https://ithelp.ithome.com.tw/articles/10159383">https://ithelp.ithome.com.tw/articles/10159383</a></p></blockquote></blockquote>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kd">func</span> <span class="nx">get</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>    <span class="nx">resp</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">Get</span><span class="p">(</span><span class="s">&quot;https://123/456.php?q=789&quot;</span><span class="p">)</span>
-</span><span class='line'>    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-</span><span class='line'>        <span class="c1">// handle error</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>    <span class="k">defer</span> <span class="nx">resp</span><span class="p">.</span><span class="nx">Body</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
-</span><span class='line'>    <span class="nx">body</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">ioutil</span><span class="p">.</span><span class="nx">ReadAll</span><span class="p">(</span><span class="nx">resp</span><span class="p">.</span><span class="nx">Body</span><span class="p">)</span>
-</span><span class='line'>    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-</span><span class='line'>        <span class="c1">// handle error</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>    <span class="nx">html</span> <span class="o">:=</span> <span class="nb">string</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span>
-</span><span class='line'>    <span class="nx">doc</span> <span class="o">:=</span> <span class="nx">soup</span><span class="p">.</span><span class="nx">HTMLParse</span><span class="p">(</span><span class="nx">html</span><span class="p">)</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">func</span> <span class="nx">post</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>    <span class="nx">resp</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">PostForm</span><span class="p">(</span><span class="s">&quot;https://123&quot;</span><span class="p">,</span> <span class="nx">url</span><span class="p">.</span><span class="nx">Values</span><span class="p">{</span><span class="s">&quot;SN&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nx">word</span><span class="p">}})</span>
-</span><span class='line'>    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-</span><span class='line'>        <span class="c1">// handle error</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>    <span class="nx">resp</span><span class="p">.</span><span class="nx">Header</span><span class="p">.</span><span class="nx">Set</span><span class="p">(</span><span class="s">&quot;Content-Type&quot;</span><span class="p">,</span> <span class="s">&quot;application/x-www-form-urlencoded;application/json; charset=utf-8&quot;</span><span class="p">)</span>
-</span><span class='line'>    <span class="k">defer</span> <span class="nx">resp</span><span class="p">.</span><span class="nx">Body</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
-</span><span class='line'>    <span class="nx">body</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">ioutil</span><span class="p">.</span><span class="nx">ReadAll</span><span class="p">(</span><span class="nx">resp</span><span class="p">.</span><span class="nx">Body</span><span class="p">)</span>
-</span><span class='line'>    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-</span><span class='line'>        <span class="c1">// handle error</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>    <span class="nx">html</span> <span class="o">:=</span> <span class="nb">string</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span>
-</span><span class='line'>    <span class="nx">doc</span> <span class="o">:=</span> <span class="nx">soup</span><span class="p">.</span><span class="nx">HTMLParse</span><span class="p">(</span><span class="nx">html</span><span class="p">)</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
     <a href="/blog/archives">Blog Archives</a>
@@ -374,7 +252,7 @@ nmcli con down id [VPN]</p>
   <h1>Categories</h1>
     <ul id="categories">
        <li class='category'><a href='/blog/categories/app/'>app (37)</a></li>
-<li class='category'><a href='/blog/categories/bat/'>bat (11)</a></li>
+<li class='category'><a href='/blog/categories/bat/'>bat (12)</a></li>
 <li class='category'><a href='/blog/categories/excel/'>excel (2)</a></li>
 <li class='category'><a href='/blog/categories/golang/'>golang (6)</a></li>
 <li class='category'><a href='/blog/categories/juniper/'>juniper (1)</a></li>
@@ -382,12 +260,21 @@ nmcli con down id [VPN]</p>
 <li class='category'><a href='/blog/categories/python/'>python (10)</a></li>
 <li class='category'><a href='/blog/categories/ror/'>ror (35)</a></li>
 <li class='category'><a href='/blog/categories/ruby/'>ruby (59)</a></li>
+<li class='category'><a href='/blog/categories/uncategorized/'>uncategorized (1)</a></li>
 
     </ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2020/04/05/mb-model/">主機板型號</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2020/03/27/oni/">Oni</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2020/03/19/upgrade-excludet-specific-package/">特定APP不升級</a>
@@ -399,14 +286,6 @@ nmcli con down id [VPN]</p>
     
       <li class="post">
         <a href="/blog/2020/03/16/vpn/">Vpn</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2020/01/17/xls-to-xlsx/">Xls_to_xlsx</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2019/12/17/post/">Post</a>
       </li>
     
   </ul>
