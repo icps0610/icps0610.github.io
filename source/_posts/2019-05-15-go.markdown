@@ -287,6 +287,9 @@ func debug() {
 }
 
 start := time.Now()
+monthTab := []string{"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"}
+
+mTab := []string{"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"}
 ```
 
 ###### type class
