@@ -5,11 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Category: Uncategorized - icps</title>
+  <title>Backup - icps</title>
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="Category: uncategorized">
+  <meta name="description" content="sudo rsync -a / /bk/bk_$(date +"%m%d%Y") --exclude=/bk --exclude=/media/* --exclude=/sys/* --exclude=/proc/* --exclude=/mnt/* --exclude=/tmp/*
+sudo &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="https://icps0610.github.io/blog/categories/uncategorized/">
+  <link rel="canonical" href="https://icps0610.github.io/blog/2020/04/14/backup/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="icps" type="application/atom+xml">
@@ -66,35 +67,77 @@
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Category: Uncategorized</h1>
+    
+      <h1 class="entry-title">Backup</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2020-04-14T09:16:20+08:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2020</span></span> <span class='time'>9:16 am</span></time>
+        
+      </p>
     
   </header>
-  
-  <div id="blog-archives" class="category">
 
 
+<div class="entry-content"><p><code>sudo rsync -a / /bk/bk_$(date +"%m%d%Y") --exclude=/bk --exclude=/media/* --exclude=/sys/* --exclude=/proc/* --exclude=/mnt/* --exclude=/tmp/*</code>
+<code>sudo rsync -a bk_04142020 /</code></p>
 
-  
-  <h2>2020</h2>
+<h5>run/user/1000/gvfs" failed: Permission denied</h5>
 
-<article>
-  
-<h1><a href="/blog/2020/03/27/oni/">Oni</a></h1>
-<time datetime="2020-03-27T22:12:37+08:00" pubdate><span class='month'>Mar</span> <span class='day'>27</span> <span class='year'>2020</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/uncategorized/'>uncategorized</a></span>
-</footer>
-
-
-</article>
-
+<blockquote><blockquote><p>ref <a href="https://blog.csdn.net/codemacket/article/details/77864770">https://blog.csdn.net/codemacket/article/details/77864770</a>
+<code>sudo umount /run/user/1000/gvfs</code>
+<code>rm -rf /run/user/1000/gvfs</code></p></blockquote></blockquote>
 </div>
 
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">icps</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2020-04-14T09:16:20+08:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2020</span></span> <span class='time'>9:16 am</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/linux/'>linux</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2020/04/10/aria2c/" title="Previous Post: aria2c">&laquo; aria2c</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2020/04/15/remove-onedrive/" title="Next Post: remove_onedrive">remove_onedrive &raquo;</a>
+      
+    </p>
+  </footer>
 </article>
 
 </div>
@@ -104,16 +147,16 @@
     <section>
   <h1>Categories</h1>
     <ul id="categories">
-       <li class='category'><a href='/blog/categories/app/'>app (37)</a></li>
+       <li class='category'><a href='/blog/categories/app/'>app (38)</a></li>
 <li class='category'><a href='/blog/categories/bat/'>bat (12)</a></li>
 <li class='category'><a href='/blog/categories/excel/'>excel (2)</a></li>
 <li class='category'><a href='/blog/categories/golang/'>golang (6)</a></li>
 <li class='category'><a href='/blog/categories/juniper/'>juniper (1)</a></li>
-<li class='category'><a href='/blog/categories/linux/'>linux (30)</a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (31)</a></li>
 <li class='category'><a href='/blog/categories/python/'>python (10)</a></li>
 <li class='category'><a href='/blog/categories/ror/'>ror (35)</a></li>
 <li class='category'><a href='/blog/categories/ruby/'>ruby (59)</a></li>
-<li class='category'><a href='/blog/categories/uncategorized/'>uncategorized (1)</a></li>
+<li class='category'><a href='/blog/categories/win/'>win (1)</a></li>
 
     </ul>
 </section>
@@ -122,23 +165,23 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2020/04/15/remove-onedrive/">Remove_onedrive</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2020/04/14/backup/">Backup</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2020/04/10/aria2c/">Aria2c</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2020/04/05/mb-model/">主機板型號</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2020/03/27/oni/">Oni</a>
-      </li>
-    
-      <li class="post">
         <a href="/blog/2020/03/19/upgrade-excludet-specific-package/">特定APP不升級</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2020/03/19/chrome-headless-crontab/">Chrome_headless_crontab</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2020/03/16/vpn/">Vpn</a>
       </li>
     
   </ul>

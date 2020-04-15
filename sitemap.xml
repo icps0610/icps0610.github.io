@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
-<loc>https://icps0610.github.io/blog/2020/04/05/mb-model/</loc>
-<lastmod>2020-04-05T21:00:49+08:00</lastmod>
+<loc>https://icps0610.github.io/blog/2020/04/15/remove-onedrive/</loc>
+<lastmod>2020-04-15T12:37:32+08:00</lastmod>
 </url>
 <url>
-<loc>https://icps0610.github.io/blog/2020/03/27/oni/</loc>
-<lastmod>2020-03-27T22:12:37+08:00</lastmod>
+<loc>https://icps0610.github.io/blog/2020/04/14/backup/</loc>
+<lastmod>2020-04-14T09:16:20+08:00</lastmod>
+</url>
+<url>
+<loc>https://icps0610.github.io/blog/2020/04/10/aria2c/</loc>
+<lastmod>2020-04-10T05:21:11+08:00</lastmod>
+</url>
+<url>
+<loc>https://icps0610.github.io/blog/2020/04/05/mb-model/</loc>
+<lastmod>2020-04-05T21:00:49+08:00</lastmod>
 </url>
 <url>
 <loc>https://icps0610.github.io/blog/2020/03/19/upgrade-excludet-specific-package/</loc>
@@ -820,6 +828,6 @@
 <loc>https://icps0610.github.io/blog/categories/juniper/</loc>
 </url>
 <url>
-<loc>https://icps0610.github.io/blog/categories/uncategorized/</loc>
+<loc>https://icps0610.github.io/blog/categories/win/</loc>
 </url>
 </urlset>

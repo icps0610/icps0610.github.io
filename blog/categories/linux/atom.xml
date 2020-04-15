@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | icps]]></title>
   <link href="https://icps0610.github.io/blog/categories/linux/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2020-04-09T21:00:03+08:00</updated>
+  <updated>2020-04-15T12:42:55+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,22 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Backup]]></title>
+    <link href="https://icps0610.github.io/blog/2020/04/14/backup/"/>
+    <updated>2020-04-14T09:16:20+08:00</updated>
+    <id>https://icps0610.github.io/blog/2020/04/14/backup</id>
+    <content type="html"><![CDATA[<p><code>sudo rsync -a / /bk/bk_$(date +"%m%d%Y") --exclude=/bk --exclude=/media/* --exclude=/sys/* --exclude=/proc/* --exclude=/mnt/* --exclude=/tmp/*</code>
+<code>sudo rsync -a bk_04142020 /</code></p>
+
+<h5>run/user/1000/gvfs" failed: Permission denied</h5>
+
+<blockquote><blockquote><p>ref <a href="https://blog.csdn.net/codemacket/article/details/77864770">https://blog.csdn.net/codemacket/article/details/77864770</a>
+<code>sudo umount /run/user/1000/gvfs</code>
+<code>rm -rf /run/user/1000/gvfs</code></p></blockquote></blockquote>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[特定APP不升級]]></title>
@@ -63,17 +79,6 @@ https://goreliu.github.io/wsl-terminal/
 <code>smartctl -H /dev/sda</code><br/>
 <code>smartctl -A /dev/sda</code><br/>
 <code>badblocks -vs /dev/sda</code></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Save_last_directory]]></title>
-    <link href="https://icps0610.github.io/blog/2018/10/04/save-last-directory/"/>
-    <updated>2018-10-04T22:21:12+08:00</updated>
-    <id>https://icps0610.github.io/blog/2018/10/04/save-last-directory</id>
-    <content type="html"><![CDATA[<h3>Save last working directory on Bash logout</h3>
-
-<blockquote><p>ref <a href="https://stackoverflow.com/questions/767040/save-last-working-directory-on-bash-logout">https://stackoverflow.com/questions/767040/save-last-working-directory-on-bash-logout</a></p></blockquote>
 ]]></content>
   </entry>
   

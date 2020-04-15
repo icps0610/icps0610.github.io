@@ -4,7 +4,7 @@
   <title><![CDATA[Category: App | icps]]></title>
   <link href="https://icps0610.github.io/blog/categories/app/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2020-04-09T21:00:03+08:00</updated>
+  <updated>2020-04-15T12:42:55+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,21 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Aria2c]]></title>
+    <link href="https://icps0610.github.io/blog/2020/04/10/aria2c/"/>
+    <updated>2020-04-10T05:21:11+08:00</updated>
+    <id>https://icps0610.github.io/blog/2020/04/10/aria2c</id>
+    <content type="html"><![CDATA[<pre><code class="bash">./configre
+make
+make install
+cp src/aria2c /usr/local/bin
+
+aria2c -x 16 -i url.txt --save-session=log.txt
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Chrome_headless_crontab]]></title>
@@ -80,15 +95,6 @@ LT-DoorMat 地毯<br/>
 Human Power Generator Mod 人力發電<br/>
 Miniaturisation 允許將工作桌搬走<br/>
 Replace Stuff 變更建築</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Stacer]]></title>
-    <link href="https://icps0610.github.io/blog/2018/12/24/stacer/"/>
-    <updated>2018-12-24T18:35:53+08:00</updated>
-    <id>https://icps0610.github.io/blog/2018/12/24/stacer</id>
-    <content type="html"><![CDATA[<p><code>https://github.com/oguzhaninan/Stacer/releases</code></p>
 ]]></content>
   </entry>
   

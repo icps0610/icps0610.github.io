@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="https://icps0610.github.io/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2020-04-09T21:00:03+08:00</updated>
+  <updated>2020-04-15T12:42:55+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -14,20 +14,77 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Remove_onedrive]]></title>
+    <link href="https://icps0610.github.io/blog/2020/04/15/remove-onedrive/"/>
+    <updated>2020-04-15T12:37:32+08:00</updated>
+    <id>https://icps0610.github.io/blog/2020/04/15/remove-onedrive</id>
+    <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='bat'><span class='line'>Windows Registry Editor Version <span class="m">5</span>.<span class="m">00</span>
+</span><span class='line'>
+</span><span class='line'>[HKEY_CLASSES_ROOT\Wow<span class="m">6432</span>Node\CLSID\{<span class="m">018</span>D<span class="m">5</span>C<span class="m">66-4533-4307-9</span>B<span class="m">53-224</span>DE<span class="m">2</span>ED<span class="m">1</span>FE<span class="m">6</span>}]
+</span><span class='line'><span class="p">@</span><span class="o">=</span><span class="s2">&quot;OneDrive&quot;</span>
+</span><span class='line'><span class="s2">&quot;System.IsPinnedToNameSpaceTree&quot;</span><span class="o">=</span>dword:00000000
+</span><span class='line'>
+</span><span class='line'>[HKEY_CLASSES_ROOT\CLSID\{<span class="m">018</span>D<span class="m">5</span>C<span class="m">66-4533-4307-9</span>B<span class="m">53-224</span>DE<span class="m">2</span>ED<span class="m">1</span>FE<span class="m">6</span>}]
+</span><span class='line'><span class="p">@</span><span class="o">=</span><span class="s2">&quot;OneDrive&quot;</span>
+</span><span class='line'><span class="s2">&quot;System.IsPinnedToNameSpaceTree&quot;</span><span class="o">=</span>dword:00000000
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Backup]]></title>
+    <link href="https://icps0610.github.io/blog/2020/04/14/backup/"/>
+    <updated>2020-04-14T09:16:20+08:00</updated>
+    <id>https://icps0610.github.io/blog/2020/04/14/backup</id>
+    <content type="html"><![CDATA[<p><code>sudo rsync -a / /bk/bk_$(date +"%m%d%Y") --exclude=/bk --exclude=/media/* --exclude=/sys/* --exclude=/proc/* --exclude=/mnt/* --exclude=/tmp/*</code>
+<code>sudo rsync -a bk_04142020 /</code></p>
+
+<h5>run/user/1000/gvfs" failed: Permission denied</h5>
+
+<blockquote><blockquote><p>ref <a href="https://blog.csdn.net/codemacket/article/details/77864770">https://blog.csdn.net/codemacket/article/details/77864770</a>
+<code>sudo umount /run/user/1000/gvfs</code>
+<code>rm -rf /run/user/1000/gvfs</code></p></blockquote></blockquote>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Aria2c]]></title>
+    <link href="https://icps0610.github.io/blog/2020/04/10/aria2c/"/>
+    <updated>2020-04-10T05:21:11+08:00</updated>
+    <id>https://icps0610.github.io/blog/2020/04/10/aria2c</id>
+    <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>./configre
+</span><span class='line'>make
+</span><span class='line'>make install
+</span><span class='line'>cp src/aria2c /usr/local/bin
+</span><span class='line'>
+</span><span class='line'>aria2c -x <span class="m">16</span> -i url.txt --save-session<span class="o">=</span>log.txt
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[主機板型號]]></title>
     <link href="https://icps0610.github.io/blog/2020/04/05/mb-model/"/>
     <updated>2020-04-05T21:00:49+08:00</updated>
     <id>https://icps0610.github.io/blog/2020/04/05/mb-model</id>
     <content type="html"><![CDATA[<p><code>&gt;wmic baseboard get product,Manufacturer,version,serialnumber</code></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Oni]]></title>
-    <link href="https://icps0610.github.io/blog/2020/03/27/oni/"/>
-    <updated>2020-03-27T22:12:37+08:00</updated>
-    <id>https://icps0610.github.io/blog/2020/03/27/oni</id>
-    <content type="html"><![CDATA[
 ]]></content>
   </entry>
   
@@ -647,6 +704,31 @@ load merge terminal
 </span></code></pre></td></tr></table></div></figure>
 
 
+<h5>checkUrl</h5>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kd">func</span> <span class="nx">checkUrl</span><span class="p">(</span><span class="nx">url</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">bool</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">resp</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">Head</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="kc">false</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="k">if</span> <span class="nx">resp</span><span class="p">.</span><span class="nx">StatusCode</span> <span class="o">!=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">StatusOK</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="kc">false</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="k">return</span> <span class="kc">true</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
 <h5>screenShot</h5>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -871,8 +953,14 @@ load merge terminal
 <span class='line-number'>53</span>
 <span class='line-number'>54</span>
 <span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
 </pre></td><td class='code'><pre><code class='go'><span class='line'><span class="nx">data</span> <span class="o">:=</span> <span class="p">[]</span><span class="nb">byte</span><span class="p">(</span><span class="s">&quot;hello\ngo\n&quot;</span><span class="p">)</span>
 </span><span class='line'><span class="nx">err</span> <span class="o">:=</span> <span class="nx">ioutil</span><span class="p">.</span><span class="nx">WriteFile</span><span class="p">(</span><span class="s">&quot;/tmp/data&quot;</span><span class="p">,</span> <span class="nx">data</span><span class="p">,</span> <span class="mo">0644</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">dat</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">ioutil</span><span class="p">.</span><span class="nx">ReadFile</span><span class="p">(</span><span class="s">&quot;/tmp/dat&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="nx">fmt</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">dat</span><span class="p">))</span>
 </span><span class='line'>
 </span><span class='line'>
 </span><span class='line'><span class="kd">func</span> <span class="nx">writeLines</span><span class="p">(</span><span class="nx">lines</span> <span class="p">[]</span><span class="kt">string</span><span class="p">,</span> <span class="nx">path</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
@@ -925,6 +1013,35 @@ load merge terminal
 </span><span class='line'>        <span class="nx">f</span><span class="p">.</span><span class="nx">WriteString</span><span class="p">(</span><span class="nx">line</span> <span class="o">+</span> <span class="s">&quot;n&quot;</span><span class="p">)</span>
 </span><span class='line'>    <span class="p">}</span>
 </span><span class='line'>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<blockquote><blockquote><p>ref <a href="https://stackoverflow.com/questions/20875336/how-can-i-get-a-files-ctime-atime-mtime-and-change-them">https://stackoverflow.com/questions/20875336/how-can-i-get-a-files-ctime-atime-mtime-and-change-them</a></p>
+
+<h5>mtime</h5></blockquote></blockquote>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kd">func</span> <span class="nx">statTimes</span><span class="p">(</span><span class="nx">name</span> <span class="kt">string</span><span class="p">)</span> <span class="p">(</span><span class="nx">atime</span><span class="p">,</span> <span class="nx">mtime</span><span class="p">,</span> <span class="nx">ctime</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Time</span><span class="p">,</span> <span class="nx">err</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">fi</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Stat</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="nx">mtime</span> <span class="p">=</span> <span class="nx">fi</span><span class="p">.</span><span class="nx">ModTime</span><span class="p">()</span>
+</span><span class='line'>    <span class="nx">stat</span> <span class="o">:=</span> <span class="nx">fi</span><span class="p">.</span><span class="nx">Sys</span><span class="p">().(</span><span class="o">*</span><span class="nx">syscall</span><span class="p">.</span><span class="nx">Stat_t</span><span class="p">)</span>
+</span><span class='line'>    <span class="nx">atime</span> <span class="p">=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Unix</span><span class="p">(</span><span class="nb">int64</span><span class="p">(</span><span class="nx">stat</span><span class="p">.</span><span class="nx">Atim</span><span class="p">.</span><span class="nx">Sec</span><span class="p">),</span> <span class="nb">int64</span><span class="p">(</span><span class="nx">stat</span><span class="p">.</span><span class="nx">Atim</span><span class="p">.</span><span class="nx">Nsec</span><span class="p">))</span>
+</span><span class='line'>    <span class="nx">ctime</span> <span class="p">=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Unix</span><span class="p">(</span><span class="nb">int64</span><span class="p">(</span><span class="nx">stat</span><span class="p">.</span><span class="nx">Ctim</span><span class="p">.</span><span class="nx">Sec</span><span class="p">),</span> <span class="nb">int64</span><span class="p">(</span><span class="nx">stat</span><span class="p">.</span><span class="nx">Ctim</span><span class="p">.</span><span class="nx">Nsec</span><span class="p">))</span>
+</span><span class='line'>    <span class="k">return</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
@@ -1093,7 +1210,7 @@ load merge terminal
 </span><span class='line'>
 </span><span class='line'><span class="nx">start</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">()</span>
 </span><span class='line'><span class="nx">monthTab</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;January&quot;</span><span class="p">,</span> <span class="s">&quot;February&quot;</span><span class="p">,</span> <span class="s">&quot;March&quot;</span><span class="p">,</span> <span class="s">&quot;April&quot;</span><span class="p">,</span> <span class="s">&quot;May&quot;</span><span class="p">,</span> <span class="s">&quot;June&quot;</span><span class="p">,</span> <span class="s">&quot;July&quot;</span><span class="p">,</span> <span class="s">&quot;August&quot;</span><span class="p">,</span> <span class="s">&quot;September&quot;</span><span class="p">,</span> <span class="s">&quot;October&quot;</span><span class="p">,</span> <span class="s">&quot;November&quot;</span><span class="p">,</span> <span class="s">&quot;December&quot;</span><span class="p">}</span>
-</span><span class='line'>
+</span><span class='line'><span class="nx">monthTab</span> <span class="p">=</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;january&quot;</span><span class="p">,</span> <span class="s">&quot;february&quot;</span><span class="p">,</span> <span class="s">&quot;march&quot;</span><span class="p">,</span> <span class="s">&quot;april&quot;</span><span class="p">,</span> <span class="s">&quot;may&quot;</span><span class="p">,</span> <span class="s">&quot;june&quot;</span><span class="p">,</span> <span class="s">&quot;july&quot;</span><span class="p">,</span> <span class="s">&quot;august&quot;</span><span class="p">,</span> <span class="s">&quot;september&quot;</span><span class="p">,</span> <span class="s">&quot;october&quot;</span><span class="p">,</span> <span class="s">&quot;november&quot;</span><span class="p">,</span> <span class="s">&quot;december&quot;</span><span class="p">}</span>
 </span><span class='line'><span class="nx">mTab</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;Jan&quot;</span><span class="p">,</span> <span class="s">&quot;Feb&quot;</span><span class="p">,</span> <span class="s">&quot;Mar&quot;</span><span class="p">,</span> <span class="s">&quot;Apr&quot;</span><span class="p">,</span> <span class="s">&quot;May&quot;</span><span class="p">,</span> <span class="s">&quot;Jun&quot;</span><span class="p">,</span> <span class="s">&quot;Jul&quot;</span><span class="p">,</span> <span class="s">&quot;Aug&quot;</span><span class="p">,</span> <span class="s">&quot;Sep&quot;</span><span class="p">,</span> <span class="s">&quot;Oct&quot;</span><span class="p">,</span> <span class="s">&quot;Nov&quot;</span><span class="p">,</span> <span class="s">&quot;Dec&quot;</span><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
@@ -1175,7 +1292,7 @@ load merge terminal
 <span class='line-number'>4</span>
 </pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kd">func</span> <span class="nx">timeFormat</span><span class="p">()</span> <span class="kt">string</span> <span class="p">{</span>
 </span><span class='line'>    <span class="nx">t</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">()</span>
-</span><span class='line'>    <span class="k">return</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;%d-%02d-%02d&quot;</span><span class="p">,</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Year</span><span class="p">(),</span> <span class="nb">int</span><span class="p">(</span><span class="nx">t</span><span class="p">.</span><span class="nx">Month</span><span class="p">()),</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Day</span><span class="p">())</span>
+</span><span class='line'>    <span class="k">return</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;%d-%02d-%02d %02d:%02d:%02d&quot;</span><span class="p">,</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Year</span><span class="p">(),</span> <span class="nb">int</span><span class="p">(</span><span class="nx">t</span><span class="p">.</span><span class="nx">Month</span><span class="p">()),</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Day</span><span class="p">(),</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Hour</span><span class="p">(),</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Minute</span><span class="p">(),</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Second</span><span class="p">())</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
@@ -2084,87 +2201,6 @@ load merge terminal
 </span><span class='line'>    <span class="p">}</span>
 </span><span class='line'>    <span class="k">return</span> <span class="nx">txt</span>
 </span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Error_page]]></title>
-    <link href="https://icps0610.github.io/blog/2019/05/10/error-page/"/>
-    <updated>2019-05-10T15:02:36+08:00</updated>
-    <id>https://icps0610.github.io/blog/2019/05/10/error-page</id>
-    <content type="html"><![CDATA[<blockquote><blockquote><p>ref <a href="https://rubyplus.com/articles/4061-How-to-handle-exceptions-in-Rails-5">https://rubyplus.com/articles/4061-How-to-handle-exceptions-in-Rails-5</a></p></blockquote></blockquote>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># route.rb</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">match</span> <span class="s2">&quot;*path&quot;</span><span class="p">,</span> <span class="ss">to</span><span class="p">:</span> <span class="s2">&quot;page#catch_404&quot;</span><span class="p">,</span> <span class="ss">via</span><span class="p">:</span> <span class="ss">:all</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1"># application_controller.rb</span>
-</span><span class='line'><span class="n">rescue_from</span> <span class="no">ActionController</span><span class="o">::</span><span class="no">RoutingError</span> <span class="k">do</span> <span class="o">|</span><span class="n">exception</span><span class="o">|</span>
-</span><span class='line'> <span class="n">logger</span><span class="o">.</span><span class="n">error</span> <span class="s1">&#39;Routing error occurred&#39;</span>
-</span><span class='line'> <span class="n">render</span> <span class="ss">plain</span><span class="p">:</span> <span class="s1">&#39;404 Not found&#39;</span><span class="p">,</span> <span class="ss">status</span><span class="p">:</span> <span class="mi">404</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1"># page_controller.rb</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">def</span> <span class="nf">catch_404</span>
-</span><span class='line'>  <span class="k">raise</span> <span class="no">ActionController</span><span class="o">::</span><span class="no">RoutingError</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:path</span><span class="o">]</span><span class="p">)</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Nokogiri]]></title>
-    <link href="https://icps0610.github.io/blog/2019/05/09/nokogiri/"/>
-    <updated>2019-05-09T13:15:15+08:00</updated>
-    <id>https://icps0610.github.io/blog/2019/05/09/nokogiri</id>
-    <content type="html"><![CDATA[<h3>install</h3>
-
-<p><code>apt-get install libxslt-dev libxml2-dev</code></p>
-
-<h3>s</h3>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># split br</span>
-</span><span class='line'><span class="n">a</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;br&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">n</span><span class="o">|</span>
-</span><span class='line'>    <span class="n">n</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'><span class="n">a</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># &amp;nbsp remove</span>
-</span><span class='line'><span class="c1">#gsub(&quot;\u00A0&quot;, &quot;&quot;)</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">doc</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s2">&quot;.//p/text()&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:content</span><span class="p">)</span><span class="o">.</span><span class="n">select</span><span class="p">{</span><span class="o">|</span><span class="n">i</span><span class="o">|</span><span class="ow">not</span> <span class="n">i</span> <span class="o">==</span> <span class="s2">&quot;\u00A0&quot;</span><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
 ]]></content>
