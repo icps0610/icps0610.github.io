@@ -1,0 +1,19 @@
+---
+layout: post
+title: "remove_onedrive"
+date: 2020-04-15 12:37:32 +0800
+comments: true
+categories: win
+---
+
+``` bat
+Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\Wow6432Node\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}]
+@="OneDrive"
+"System.IsPinnedToNameSpaceTree"=dword:00000000
+
+[HKEY_CLASSES_ROOT\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}]
+@="OneDrive"
+"System.IsPinnedToNameSpaceTree"=dword:00000000
+```

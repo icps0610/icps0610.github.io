@@ -1,0 +1,16 @@
+---
+layout: post
+title: "aria2c"
+date: 2020-04-10 05:21:11 +0800
+comments: true
+categories: app
+---
+
+``` bash
+./configre
+make
+make install
+cp src/aria2c /usr/local/bin
+
+aria2c -x 16 -i url.txt --save-session=log.txt
+```

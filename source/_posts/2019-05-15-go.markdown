@@ -52,6 +52,22 @@ for _, i := range ifaces {
     }
 }
 ```
+
+#####  checkUrl
+``` go
+func checkUrl(url string) bool {
+    resp, err := http.Head(url)
+    if err != nil {
+        return false
+    }
+    if resp.StatusCode != http.StatusOK {
+        return false
+    }
+    return true
+}
+```
+
+
 ##### screenShot
 ``` go
 "github.com/kbinani/screenshot"
@@ -145,6 +161,9 @@ bufio.NewReader(os.Stdin).ReadBytes('\n')
 data := []byte("hello\ngo\n")
 err := ioutil.WriteFile("/tmp/data", data, 0644)
 
+dat, err := ioutil.ReadFile("/tmp/dat")
+fmt.Print(string(dat))
+
 
 func writeLines(lines []string, path string) {
     file, err := os.Create(path)
@@ -198,6 +217,24 @@ func appendFile(path string, data []string) {
 
 }
 ```
+>>ref https://stackoverflow.com/questions/20875336/how-can-i-get-a-files-ctime-atime-mtime-and-change-them
+##### mtime
+
+``` go
+func statTimes(name string) (atime, mtime, ctime time.Time, err error) {
+    fi, err := os.Stat(name)
+    if err != nil {
+        fmt.Println(err)
+    }
+    mtime = fi.ModTime()
+    stat := fi.Sys().(*syscall.Stat_t)
+    atime = time.Unix(int64(stat.Atim.Sec), int64(stat.Atim.Nsec))
+    ctime = time.Unix(int64(stat.Ctim.Sec), int64(stat.Ctim.Nsec))
+    return
+}
+```
+
+
 ###### Json
 ``` go
 imprt "encoding/json"
@@ -288,7 +325,7 @@ func debug() {
 
 start := time.Now()
 monthTab := []string{"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"}
-
+monthTab = []string{"january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"}
 mTab := []string{"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"}
 ```
 
@@ -337,7 +374,7 @@ func cleanScreen() {
 ``` go
 func timeFormat() string {
     t := time.Now()
-    return fmt.Sprintf("%d-%02d-%02d", t.Year(), int(t.Month()), t.Day())
+    return fmt.Sprintf("%d-%02d-%02d %02d:%02d:%02d", t.Year(), int(t.Month()), t.Day(), t.Hour(), t.Minute(), t.Second())
 }
 ```
 ###### sleep

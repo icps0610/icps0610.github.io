@@ -1,0 +1,14 @@
+---
+layout: post
+title: "backup"
+date: 2020-04-14 09:16:20 +0800
+comments: true
+categories: linux
+---
+`sudo rsync -a / /bk/bk_$(date +"%m%d%Y") --exclude=/bk --exclude=/media/* --exclude=/sys/* --exclude=/proc/* --exclude=/mnt/* --exclude=/tmp/* `
+`sudo rsync -a bk_04142020 /`
+
+##### run/user/1000/gvfs" failed: Permission denied
+>> ref https://blog.csdn.net/codemacket/article/details/77864770
+`sudo umount /run/user/1000/gvfs`
+`rm -rf /run/user/1000/gvfs`
