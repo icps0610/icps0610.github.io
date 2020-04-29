@@ -1,0 +1,108 @@
+---
+layout: post
+title: "color"
+date: 2020-04-29 10:29:50 +0800
+comments: true
+categories: uncategorized
+---
+
+```
+// x0 代表第一球中心x位置
+// x1 代表第二球中心x位置
+// y0 代表第一二球中心y位置
+// grid 幾格
+// dt 等待時間
+
+for 3
+    x0 = 267
+    x1 = 369
+    y0 = 515
+    grid = 2
+    dt = 160
+    call find()
+next
+
+for 7
+    x0 = 218
+    x1 = 316
+    y0 = 462
+    grid = 3
+    dt = 160
+    call find()
+next
+
+for 10
+    x0 = 198
+    x1 = 279
+    y0 = 443
+    grid = 4
+    dt = 160
+    call find()
+next
+
+for 14
+    x0 = 198
+    x1 = 261    
+    y0 = 446
+    grid = 5
+    dt = 160
+    call find()
+next
+
+for 13
+    x0 = 187
+    x1 = 240
+    y0 = 431
+    grid = 6
+    dt = 160
+    call find()
+next
+
+for 200
+    x0 = 182
+    x1 = 227
+    y0 = 427
+    grid = 7
+    dt = 30
+    call find()
+Next
+
+sub find()
+    width = x1 - x0
+    ws = grid * grid
+    ci = 0
+    Dim colors(49)
+    For yi = 0 to grid-1
+        For xi = 0 to grid-1
+            x = x0 + xi * width
+            y = y0 + yi * width
+            ci = xi + yi * grid
+            c = GetPixelColor(x, y)
+            vbs colors(ci) = c
+            if ci >= 2 then
+                if ci = 2 then
+                    if colors(0) <> colors(1) and colors(0) <> colors(2)
+                        ci = 0
+                        goto click
+                    elseif colors(1) <> colors(0) and colors(1) <> colors(2)
+                        ci = 1
+                        goto click
+                    end if
+                end if 
+                if colors(ci) <> colors(ci-1) and colors(ci) <> colors(ci-2) then
+                    moveto x, y
+                    goto exitnext
+                end if
+            end if
+        Next
+    Next
+    rem click
+    y = ci \ grid
+    x = ci mod grid
+    MoveTo x0 + x * width, y0 + y * width
+    rem exitnext
+    LeftClick 1
+    Delay dt
+end sub
+
+```
