@@ -8,10 +8,10 @@ categories: app
 
 ##### win
 
-rasdial [VPN] [USER] [PASSWD]
-rasdial /disconnect
+`rasdial [VPN] [USER] [PASSWD]`  
+`rasdial /disconnect`  
 
 ##### linux
-/etc/NetworkManager/system-connections/[VPN]
-nmcli con up id [VPN]
-nmcli con down id [VPN]
+`/etc/NetworkManager/system-connections/[VPN]`  
+`nmcli con up id [VPN]`  
+`nmcli con down id [VPN]  

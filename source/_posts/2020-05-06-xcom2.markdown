@@ -1,0 +1,18 @@
+---
+layout: post
+title: "xcom2"
+date: 2020-05-06 09:42:42 +0800
+comments: true
+categories: uncategorized
+---
+
+```
+全部撤離         https://steamcommunity.com/sharedfiles/filedetails/?id=618669868
+全部撤離 WOTC    https://steamcommunity.com/sharedfiles/filedetails/?id=1126395106
+一鍵監視         https://steamcommunity.com/sharedfiles/filedetails/?id=621695447
+一鍵監視 WOTC    https://steamcommunity.com/sharedfiles/filedetails/?id=1133368143
+為了上面兩個     https://steamcommunity.com/sharedfiles/filedetails/?id=694455263
+顯示黑市物品說明 https://steamcommunity.com/sharedfiles/filedetails/?id=648410303
+血量數字化       https://steamcommunity.com/sharedfiles/filedetails/?id=617015579
+血量數字化 WOTC  https://steamcommunity.com/sharedfiles/filedetails/?id=1123174832
+```

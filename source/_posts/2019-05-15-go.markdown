@@ -95,6 +95,20 @@ func getScreenshot(px, py, width, height int, imageName string) {
     sleep(delay)
 }
 ```
+#### list file
+``` go
+//"path/filepath"
+func listFile(path string) []string {
+    var files []string
+    err := filepath.Walk(path, func(p string, info os.FileInfo, err error) error {
+        files = append(files, p)
+        return nil
+    })
+    printError(err)
+    return files
+}
+```
+
 ``` go
 "github.com/oliamb/cutter"
 "github.com/sclevine/agouti"
@@ -182,21 +196,16 @@ import(
 )
 
 func readfile(path string) []string {
-    file, err := os.Open(path)
-    if err != nil {
-        fmt.Println(err)
-    }
-    defer file.Close()
+    dat, err := ioutil.ReadFile(path)
+    printError(err)
     var lines []string
-    line := bufio.NewScanner(file)
-    for line.Scan() {
+    for _, l := range strings.Split(string(dat), "\n") {
         //str, _, _ := transform.String(traditionalchinese.Big5.NewDecoder(), str2)
         //str2, _, _ := transform.String(traditionalchinese.Big5.NewEncoder(), str)
-        lines = append(lines, line.Text())
+        lines = append(lines, l)
     }
     return lines
 }
-
 
 //win utf-16 le to utf-8
 import "github.com/malexdev/utfutil"
