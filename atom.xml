@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="https://icps0610.github.io/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2020-04-29T10:33:06+08:00</updated>
+  <updated>2020-05-20T19:13:16+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,31 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Xcom2]]></title>
+    <link href="https://icps0610.github.io/blog/2020/05/06/xcom2/"/>
+    <updated>2020-05-06T09:42:42+08:00</updated>
+    <id>https://icps0610.github.io/blog/2020/05/06/xcom2</id>
+    <content type="html"><![CDATA[<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>全部撤離         https://steamcommunity.com/sharedfiles/filedetails/?id=618669868
+</span><span class='line'>全部撤離 WOTC    https://steamcommunity.com/sharedfiles/filedetails/?id=1126395106
+</span><span class='line'>一鍵監視         https://steamcommunity.com/sharedfiles/filedetails/?id=621695447
+</span><span class='line'>一鍵監視 WOTC    https://steamcommunity.com/sharedfiles/filedetails/?id=1133368143
+</span><span class='line'>為了上面兩個     https://steamcommunity.com/sharedfiles/filedetails/?id=694455263
+</span><span class='line'>顯示黑市物品說明 https://steamcommunity.com/sharedfiles/filedetails/?id=648410303
+</span><span class='line'>血量數字化       https://steamcommunity.com/sharedfiles/filedetails/?id=617015579
+</span><span class='line'>血量數字化 WOTC  https://steamcommunity.com/sharedfiles/filedetails/?id=1123174832</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Color]]></title>
@@ -334,14 +359,14 @@
     <id>https://icps0610.github.io/blog/2020/03/16/vpn</id>
     <content type="html"><![CDATA[<h5>win</h5>
 
-<p>rasdial [VPN] [USER] [PASSWD]
-rasdial /disconnect</p>
+<p><code>rasdial [VPN] [USER] [PASSWD]</code><br/>
+<code>rasdial /disconnect</code></p>
 
 <h5>linux</h5>
 
-<p>/etc/NetworkManager/system-connections/[VPN]
-nmcli con up id [VPN]
-nmcli con down id [VPN]</p>
+<p><code>/etc/NetworkManager/system-connections/[VPN]</code><br/>
+<code>nmcli con up id [VPN]</code><br/>
+`nmcli con down id [VPN]</p>
 ]]></content>
   </entry>
   
@@ -801,21 +826,6 @@ load merge terminal
 ^d
 </pre>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Package]]></title>
-    <link href="https://icps0610.github.io/blog/2019/05/21/package/"/>
-    <updated>2019-05-21T23:13:00+08:00</updated>
-    <id>https://icps0610.github.io/blog/2019/05/21/package</id>
-    <content type="html"><![CDATA[<h5>beauty print</h5>
-
-<p><code>github.com/go-ffmt/ffmt</code></p>
-
-<h4>igo</h4>
-
-<p><code>go get github.com/sbinet/go-eval/</code></p>
 ]]></content>
   </entry>
   

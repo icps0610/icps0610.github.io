@@ -120,6 +120,187 @@ dkms &hellip;">
 </span><span class='line'>
 </span><span class='line'>`https://icps0610.github.io/blog/2018/03/21/wifi-ap/`</span></code></pre></td></tr></table></div></figure>
 
+
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+<span class='line-number'>75</span>
+<span class='line-number'>76</span>
+<span class='line-number'>77</span>
+<span class='line-number'>78</span>
+<span class='line-number'>79</span>
+<span class='line-number'>80</span>
+<span class='line-number'>81</span>
+<span class='line-number'>82</span>
+<span class='line-number'>83</span>
+<span class='line-number'>84</span>
+<span class='line-number'>85</span>
+<span class='line-number'>86</span>
+<span class='line-number'>87</span>
+<span class='line-number'>88</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>#語言
+</span><span class='line'>apt-get install language-pack-gnome-zh-hant language-pack-gnome-zh-hans language-pack-zh-hant language-pack-zh-hans
+</span><span class='line'>rm /var/lib/locales/supported.d/*
+</span><span class='line'>echo "zh_TW.UTF-8 UTF-8" &gt; /var/lib/locales/supported.d/local
+</span><span class='line'>echo "en_US.UTF-8 UTF-8" &gt;&gt; /var/lib/locales/supported.d/local
+</span><span class='line'>echo "zh_TW BIG5" &gt;&gt; /var/lib/locales/supported.d/local
+</span><span class='line'>locale-gen
+</span><span class='line'>
+</span><span class='line'>echo "export LANG=\"zh_TW.UTF-8\""&gt;&gt; /etc/environment
+</span><span class='line'>echo "export LANGUAGE=\"zh_TW:zh\""&gt;&gt; /etc/environment
+</span><span class='line'>echo "export LC_ALL=\"zh_TW.UTF-8\""&gt;&gt; /etc/environment
+</span><span class='line'>dpkg-reconfigure locales
+</span><span class='line'>update-locale
+</span><span class='line'>#設定時間
+</span><span class='line'>ln -sf /usr/share/zoneinfo/Asia/Taipei /etc/localtime
+</span><span class='line'>
+</span><span class='line'>#sourlist
+</span><span class='line'>sed -i 's/tw.archive.ubuntu.com/free.nchc.org.tw/g' /etc/apt/sources.list
+</span><span class='line'>#deb http://ftp.tku.edu.tw/kali kali main contrib non-free
+</span><span class='line'>#deb http://ftp.tku.edu.tw/kali-security kali main contrib non-free
+</span><span class='line'>#google
+</span><span class='line'>wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - 
+</span><span class='line'>sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" &gt;&gt; /etc/apt/sources.list.d/google.list'
+</span><span class='line'>add-apt-repository ppa:fcitx-team/nightly
+</span><span class='line'>
+</span><span class='line'>#桌布
+</span><span class='line'>/usr/share/backgrounds/warty-final-ubuntu.png 
+</span><span class='line'>
+</span><span class='line'>#安裝
+</span><span class='line'>apt-get install -y google-chrome-stable qrencode zbar-tools medusa hydra hydra-gtk john ettercap-graphical ophcrack ruby ruby-dev bundler netcat-traditional bkhive samdump2 reaver build-essential aircrack-ng wifite nmap netdiscover chntpw git rdesktop wireshark pv deborphan  bleachbit  crunch gparted 
+</span><span class='line'>apt install curl
+</span><span class='line'>
+</span><span class='line'>#nc -e option
+</span><span class='line'>rm /etc/alternatives/nc && ln -s /bin/nc.traditional /etc/alternatives/nc
+</span><span class='line'>
+</span><span class='line'>#移除
+</span><span class='line'>apt purge -y firefox thunderbird  gnome-keyring empathy aisleriot  landscape-client-ui-install brasero
+</span><span class='line'>
+</span><span class='line'>#clean
+</span><span class='line'>#!/usr/bin/env ruby
+</span><span class='line'># encoding: UTF-8
+</span><span class='line'>#apt-get purge -y `deborphan --nice-mode --guess-all`
+</span><span class='line'>print "upgrade? "
+</span><span class='line'>system "apt-get update && apt-get dist-upgrade" if gets.chomp.downcase == "y"
+</span><span class='line'>system "apt-get autoclean"
+</span><span class='line'>system "apt-get clean"
+</span><span class='line'>system "apt-get autoremove"
+</span><span class='line'>system "apt-get --purge autoremove -y"
+</span><span class='line'>system "rm /var/cache/apt/archives/* 2&gt;/dev/nul"
+</span><span class='line'>system "rm /var/cache/apt/archives/partial/* 2&gt;/dev/nul"
+</span><span class='line'>system "rm -R /var/log/* 2&gt;/dev/nul"
+</span><span class='line'>system "rm -R /tmp/* 2&gt;/dev/nul"
+</span><span class='line'>system "rm /root/.local/share/Trash/files/* 2&gt;/dev/nul"
+</span><span class='line'>system "updatedb"
+</span><span class='line'>system "rm /root/.bash_history 2&gt;/dev/nul"
+</span><span class='line'>exit
+</span><span class='line'>
+</span><span class='line'>#~/.bashrc
+</span><span class='line'>#if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
+</span><span class='line'>#    . /etc/bash_completion
+</span><span class='line'>#fi
+</span><span class='line'>
+</span><span class='line'>sudo apt-get remove ibus
+</span><span class='line'>sudo add-apt-repository ppa:fcitx-team/nightly
+</span><span class='line'>sudo apt-get update
+</span><span class='line'>sudo apt-get install fcitx fcitx-config-gtk fcitx-chewing
+</span><span class='line'>im-switch -s fcitx -z default
+</span><span class='line'>
+</span><span class='line'>echo "enabled=0" &gt; /etc/default/apport
+</span><span class='line'>gem install headless nokogiri colorize watir-webdriver  sinatra  net-ssh net-scp --no-ri --no-rdoc shotgun
+</span><span class='line'>
+</span><span class='line'>sudo apt-get -y update
+</span><span class='line'>sudo apt-get -y install build-essential zlib1g-dev libssl-dev libreadline6-dev libyaml-dev
+</span><span class='line'>cd /tmp
+</span><span class='line'>wget http://cache.ruby-lang.org/pub/ruby/2.0/ruby-2.0.0-p481.tar.gz
+</span><span class='line'>tar -xvzf ruby-2.0.0-p481.tar.gz
+</span><span class='line'>cd ruby-2.0.0-p481/
+</span><span class='line'>./configure --prefix=/usr/local
+</span><span class='line'>make
+</span><span class='line'>sudo make install
+</span><span class='line'>
+</span><span class='line'>wget http://c758482.r82.cf2.rackcdn.com/sublime-text_build-3083_amd64.deb
+</span><span class='line'>
+</span><span class='line'>Open your Software Center
+</span><span class='line'>In the search, type: "midori-granite"
+</span><span class='line'>Just click in "Remove" button of this item.
+</span><span class='line'>
+</span><span class='line'>/usr/share/applications/pantheon-files.desktop
+</span></code></pre></td></tr></table></div></figure>
+
 </div>
 
 
@@ -181,7 +362,7 @@ dkms &hellip;">
 <li class='category'><a href='/blog/categories/python/'>python (10)</a></li>
 <li class='category'><a href='/blog/categories/ror/'>ror (35)</a></li>
 <li class='category'><a href='/blog/categories/ruby/'>ruby (59)</a></li>
-<li class='category'><a href='/blog/categories/uncategorized/'>uncategorized (1)</a></li>
+<li class='category'><a href='/blog/categories/uncategorized/'>uncategorized (2)</a></li>
 <li class='category'><a href='/blog/categories/win/'>win (1)</a></li>
 
     </ul>
@@ -189,6 +370,10 @@ dkms &hellip;">
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2020/05/06/xcom2/">Xcom2</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2020/04/29/color/">Color</a>
@@ -204,10 +389,6 @@ dkms &hellip;">
     
       <li class="post">
         <a href="/blog/2020/04/10/aria2c/">Aria2c</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2020/04/05/mb-model/">主機板型號</a>
       </li>
     
   </ul>

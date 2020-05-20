@@ -252,6 +252,33 @@ https:// &hellip;">
 </span></code></pre></td></tr></table></div></figure>
 
 
+<h4>list file</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="c1">//&quot;path/filepath&quot;</span>
+</span><span class='line'><span class="kd">func</span> <span class="nx">listFile</span><span class="p">(</span><span class="nx">path</span> <span class="kt">string</span><span class="p">)</span> <span class="p">[]</span><span class="kt">string</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">files</span> <span class="p">[]</span><span class="kt">string</span>
+</span><span class='line'>    <span class="nx">err</span> <span class="o">:=</span> <span class="nx">filepath</span><span class="p">.</span><span class="nx">Walk</span><span class="p">(</span><span class="nx">path</span><span class="p">,</span> <span class="kd">func</span><span class="p">(</span><span class="nx">p</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">info</span> <span class="nx">os</span><span class="p">.</span><span class="nx">FileInfo</span><span class="p">,</span> <span class="nx">err</span> <span class="kt">error</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nx">files</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">files</span><span class="p">,</span> <span class="nx">p</span><span class="p">)</span>
+</span><span class='line'>        <span class="k">return</span> <span class="kc">nil</span>
+</span><span class='line'>    <span class="p">})</span>
+</span><span class='line'>    <span class="nx">printError</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">return</span> <span class="nx">files</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -421,11 +448,6 @@ https:// &hellip;">
 <span class='line-number'>51</span>
 <span class='line-number'>52</span>
 <span class='line-number'>53</span>
-<span class='line-number'>54</span>
-<span class='line-number'>55</span>
-<span class='line-number'>56</span>
-<span class='line-number'>57</span>
-<span class='line-number'>58</span>
 </pre></td><td class='code'><pre><code class='go'><span class='line'><span class="nx">data</span> <span class="o">:=</span> <span class="p">[]</span><span class="nb">byte</span><span class="p">(</span><span class="s">&quot;hello\ngo\n&quot;</span><span class="p">)</span>
 </span><span class='line'><span class="nx">err</span> <span class="o">:=</span> <span class="nx">ioutil</span><span class="p">.</span><span class="nx">WriteFile</span><span class="p">(</span><span class="s">&quot;/tmp/data&quot;</span><span class="p">,</span> <span class="nx">data</span><span class="p">,</span> <span class="mo">0644</span><span class="p">)</span>
 </span><span class='line'>
@@ -450,21 +472,16 @@ https:// &hellip;">
 </span><span class='line'><span class="p">)</span>
 </span><span class='line'>
 </span><span class='line'><span class="kd">func</span> <span class="nx">readfile</span><span class="p">(</span><span class="nx">path</span> <span class="kt">string</span><span class="p">)</span> <span class="p">[]</span><span class="kt">string</span> <span class="p">{</span>
-</span><span class='line'>    <span class="nx">file</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Open</span><span class="p">(</span><span class="nx">path</span><span class="p">)</span>
-</span><span class='line'>    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-</span><span class='line'>        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>    <span class="k">defer</span> <span class="nx">file</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
+</span><span class='line'>    <span class="nx">dat</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">ioutil</span><span class="p">.</span><span class="nx">ReadFile</span><span class="p">(</span><span class="nx">path</span><span class="p">)</span>
+</span><span class='line'>    <span class="nx">printError</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
 </span><span class='line'>    <span class="kd">var</span> <span class="nx">lines</span> <span class="p">[]</span><span class="kt">string</span>
-</span><span class='line'>    <span class="nx">line</span> <span class="o">:=</span> <span class="nx">bufio</span><span class="p">.</span><span class="nx">NewScanner</span><span class="p">(</span><span class="nx">file</span><span class="p">)</span>
-</span><span class='line'>    <span class="k">for</span> <span class="nx">line</span><span class="p">.</span><span class="nx">Scan</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">l</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">strings</span><span class="p">.</span><span class="nx">Split</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">dat</span><span class="p">),</span> <span class="s">&quot;\n&quot;</span><span class="p">)</span> <span class="p">{</span>
 </span><span class='line'>        <span class="c1">//str, _, _ := transform.String(traditionalchinese.Big5.NewDecoder(), str2)</span>
 </span><span class='line'>        <span class="c1">//str2, _, _ := transform.String(traditionalchinese.Big5.NewEncoder(), str)</span>
-</span><span class='line'>        <span class="nx">lines</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">lines</span><span class="p">,</span> <span class="nx">line</span><span class="p">.</span><span class="nx">Text</span><span class="p">())</span>
+</span><span class='line'>        <span class="nx">lines</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">lines</span><span class="p">,</span> <span class="nx">l</span><span class="p">)</span>
 </span><span class='line'>    <span class="p">}</span>
 </span><span class='line'>    <span class="k">return</span> <span class="nx">lines</span>
 </span><span class='line'><span class="p">}</span>
-</span><span class='line'>
 </span><span class='line'>
 </span><span class='line'><span class="c1">//win utf-16 le to utf-8</span>
 </span><span class='line'><span class="kn">import</span> <span class="s">&quot;github.com/malexdev/utfutil&quot;</span>
@@ -1734,7 +1751,7 @@ https:// &hellip;">
 <li class='category'><a href='/blog/categories/python/'>python (10)</a></li>
 <li class='category'><a href='/blog/categories/ror/'>ror (35)</a></li>
 <li class='category'><a href='/blog/categories/ruby/'>ruby (59)</a></li>
-<li class='category'><a href='/blog/categories/uncategorized/'>uncategorized (1)</a></li>
+<li class='category'><a href='/blog/categories/uncategorized/'>uncategorized (2)</a></li>
 <li class='category'><a href='/blog/categories/win/'>win (1)</a></li>
 
     </ul>
@@ -1742,6 +1759,10 @@ https:// &hellip;">
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2020/05/06/xcom2/">Xcom2</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2020/04/29/color/">Color</a>
@@ -1757,10 +1778,6 @@ https:// &hellip;">
     
       <li class="post">
         <a href="/blog/2020/04/10/aria2c/">Aria2c</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2020/04/05/mb-model/">主機板型號</a>
       </li>
     
   </ul>

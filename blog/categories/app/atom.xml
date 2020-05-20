@@ -4,7 +4,7 @@
   <title><![CDATA[Category: App | icps]]></title>
   <link href="https://icps0610.github.io/blog/categories/app/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2020-04-29T10:33:06+08:00</updated>
+  <updated>2020-05-20T19:13:16+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -51,14 +51,14 @@ aria2c -x 16 -i url.txt --save-session=log.txt
     <id>https://icps0610.github.io/blog/2020/03/16/vpn</id>
     <content type="html"><![CDATA[<h5>win</h5>
 
-<p>rasdial [VPN] [USER] [PASSWD]
-rasdial /disconnect</p>
+<p><code>rasdial [VPN] [USER] [PASSWD]</code><br/>
+<code>rasdial /disconnect</code></p>
 
 <h5>linux</h5>
 
-<p>/etc/NetworkManager/system-connections/[VPN]
-nmcli con up id [VPN]
-nmcli con down id [VPN]</p>
+<p><code>/etc/NetworkManager/system-connections/[VPN]</code><br/>
+<code>nmcli con up id [VPN]</code><br/>
+`nmcli con down id [VPN]</p>
 ]]></content>
   </entry>
   
