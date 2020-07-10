@@ -448,6 +448,7 @@ https:// &hellip;">
 <span class='line-number'>51</span>
 <span class='line-number'>52</span>
 <span class='line-number'>53</span>
+<span class='line-number'>54</span>
 </pre></td><td class='code'><pre><code class='go'><span class='line'><span class="nx">data</span> <span class="o">:=</span> <span class="p">[]</span><span class="nb">byte</span><span class="p">(</span><span class="s">&quot;hello\ngo\n&quot;</span><span class="p">)</span>
 </span><span class='line'><span class="nx">err</span> <span class="o">:=</span> <span class="nx">ioutil</span><span class="p">.</span><span class="nx">WriteFile</span><span class="p">(</span><span class="s">&quot;/tmp/data&quot;</span><span class="p">,</span> <span class="nx">data</span><span class="p">,</span> <span class="mo">0644</span><span class="p">)</span>
 </span><span class='line'>
@@ -470,8 +471,9 @@ https:// &hellip;">
 </span><span class='line'>    <span class="s">&quot;golang.org/x/text/encoding/traditionalchinese&quot;</span>
 </span><span class='line'>    <span class="s">&quot;golang.org/x/text/transform&quot;</span>
 </span><span class='line'><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">func</span> <span class="nx">readfile</span><span class="p">(</span><span class="nx">path</span> <span class="kt">string</span><span class="p">)</span> <span class="p">[]</span><span class="kt">string</span> <span class="p">{</span>
+</span><span class='line'><span class="s">&quot;io/ioutil&quot;</span>
+</span><span class='line'><span class="s">&quot;strings&quot;</span>
+</span><span class='line'><span class="kd">func</span> <span class="nx">readFile</span><span class="p">(</span><span class="nx">path</span> <span class="kt">string</span><span class="p">)</span> <span class="p">[]</span><span class="kt">string</span> <span class="p">{</span>
 </span><span class='line'>    <span class="nx">dat</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">ioutil</span><span class="p">.</span><span class="nx">ReadFile</span><span class="p">(</span><span class="nx">path</span><span class="p">)</span>
 </span><span class='line'>    <span class="nx">printError</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
 </span><span class='line'>    <span class="kd">var</span> <span class="nx">lines</span> <span class="p">[]</span><span class="kt">string</span>
@@ -906,20 +908,16 @@ https:// &hellip;">
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="nx">i</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">strconv</span><span class="p">.</span><span class="nx">Atoi</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
-</span><span class='line'><span class="k">if</span> <span class="nx">err</span> <span class="p">!</span> <span class="p">=</span> <span class="kc">nil</span> <span class="p">{</span>
-</span><span class='line'>    <span class="c1">//</span>
-</span><span class='line'><span class="p">}</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="nx">i</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">strconv</span><span class="p">.</span><span class="nx">Atoi</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
+</span><span class='line'>
 </span><span class='line'><span class="nx">s</span> <span class="o">:=</span> <span class="nx">strconv</span><span class="p">.</span><span class="nx">Itoa</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<h6>sting <-> to_float</h6>
+<h6>string <-> to_float</h6>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="nx">fn</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">strconv</span><span class="p">.</span><span class="nx">ParseFloat</span><span class="p">(</span><span class="nx">cell</span><span class="p">,</span> <span class="mi">64</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="nx">fn</span><span class="p">,</span> <span class="nx">_</span>  <span class="o">:=</span> <span class="nx">strconv</span><span class="p">.</span><span class="nx">ParseFloat</span><span class="p">(</span><span class="nx">cell</span><span class="p">,</span> <span class="mi">64</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -951,8 +949,17 @@ https:// &hellip;">
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
 <span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="nx">match</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">regexp</span><span class="p">.</span><span class="nx">MatchString</span><span class="p">(</span><span class="nx">keyword</span><span class="p">,</span> <span class="nx">str</span><span class="p">)</span>
-</span><span class='line'><span class="nx">r</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">regexp</span><span class="p">.</span><span class="nx">Compile</span><span class="p">(</span><span class="nx">keyword</span><span class="p">)</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kd">func</span> <span class="nx">regexMatch</span><span class="p">(</span><span class="nx">str</span><span class="p">,</span> <span class="nx">keyword</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">bool</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">match</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">regexp</span><span class="p">.</span><span class="nx">MatchString</span><span class="p">(</span><span class="nx">keyword</span><span class="p">,</span> <span class="nx">str</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">return</span> <span class="nx">match</span>
+</span><span class='line'><span class="p">}</span>
 </span><span class='line'>
 </span><span class='line'><span class="c1">//scan</span>
 </span><span class='line'><span class="nx">re</span> <span class="o">:=</span> <span class="nx">regexp</span><span class="p">.</span><span class="nx">MustCompile</span><span class="p">(</span><span class="nx">keyword</span><span class="p">)</span>
@@ -960,6 +967,11 @@ https:// &hellip;">
 </span><span class='line'><span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nx">match</span><span class="p">)</span> <span class="p">&gt;</span> <span class="mi">0</span> <span class="p">{</span>
 </span><span class='line'>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">match</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 </span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">//replace</span>
+</span><span class='line'><span class="nx">keyword</span> <span class="o">:=</span> <span class="s">`&quot;(.*)&quot;, &quot;(.*)&quot;`</span>
+</span><span class='line'><span class="nx">re</span> <span class="o">:=</span> <span class="nx">regexp</span><span class="p">.</span><span class="nx">MustCompile</span><span class="p">(</span><span class="nx">keyword</span><span class="p">)</span>
+</span><span class='line'><span class="nx">s</span> <span class="o">:=</span> <span class="nx">re</span><span class="p">.</span><span class="nx">ReplaceAllString</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="s">` $1 $2`</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -1689,6 +1701,73 @@ https:// &hellip;">
 </span><span class='line'>    <span class="k">return</span> <span class="nx">txt</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
+
+
+<h5>excel</h5>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kd">func</span> <span class="nx">readXlsx</span><span class="p">(</span><span class="nx">path</span> <span class="kt">string</span><span class="p">)</span> <span class="p">[][]</span><span class="kt">string</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">f</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">excelize</span><span class="p">.</span><span class="nx">OpenFile</span><span class="p">(</span><span class="nx">path</span><span class="p">)</span>
+</span><span class='line'>    <span class="nx">printError</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">datas</span> <span class="p">[][]</span><span class="kt">string</span>
+</span><span class='line'>    <span class="nx">sheet1</span> <span class="o">:=</span> <span class="nx">f</span><span class="p">.</span><span class="nx">GetSheetMap</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
+</span><span class='line'>    <span class="nx">rows</span> <span class="o">:=</span> <span class="nx">f</span><span class="p">.</span><span class="nx">GetRows</span><span class="p">(</span><span class="nx">sheet1</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">row</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">rows</span> <span class="p">{</span>
+</span><span class='line'>        <span class="kd">var</span> <span class="nx">data</span> <span class="p">[]</span><span class="kt">string</span>
+</span><span class='line'>        <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">cell</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">row</span> <span class="p">{</span>
+</span><span class='line'>            <span class="nx">cell</span> <span class="p">=</span> <span class="nx">strings</span><span class="p">.</span><span class="nx">TrimSpace</span><span class="p">(</span><span class="nx">cell</span><span class="p">)</span>
+</span><span class='line'>            <span class="nx">data</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">cell</span><span class="p">)</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>        <span class="nx">datas</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">datas</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="k">return</span> <span class="nx">datas</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">func</span> <span class="nx">writeXlsx</span><span class="p">(</span><span class="nx">path</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">data</span> <span class="p">[][]</span><span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">f</span> <span class="o">:=</span> <span class="nx">excelize</span><span class="p">.</span><span class="nx">NewFile</span><span class="p">()</span>
+</span><span class='line'>    <span class="nx">index</span> <span class="o">:=</span> <span class="nx">f</span><span class="p">.</span><span class="nx">NewSheet</span><span class="p">(</span><span class="s">&quot;Sheet1&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">for</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">row</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">data</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">for</span> <span class="nx">j</span><span class="p">,</span> <span class="nx">cell</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">row</span> <span class="p">{</span>
+</span><span class='line'>            <span class="nx">c</span> <span class="o">:=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;%c%v&quot;</span><span class="p">,</span> <span class="nb">rune</span><span class="p">(</span><span class="nx">j</span><span class="o">+</span><span class="mi">65</span><span class="p">),</span> <span class="nx">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+</span><span class='line'>            <span class="nx">f</span><span class="p">.</span><span class="nx">SetCellValue</span><span class="p">(</span><span class="s">&quot;Sheet1&quot;</span><span class="p">,</span> <span class="nx">c</span><span class="p">,</span> <span class="nx">cell</span><span class="p">)</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="nx">f</span><span class="p">.</span><span class="nx">SetActiveSheet</span><span class="p">(</span><span class="nx">index</span><span class="p">)</span>
+</span><span class='line'>    <span class="nx">err</span> <span class="o">:=</span> <span class="nx">f</span><span class="p">.</span><span class="nx">SaveAs</span><span class="p">(</span><span class="nx">path</span><span class="p">)</span>
+</span><span class='line'>    <span class="nx">printError</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
 
 </div>
 

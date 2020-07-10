@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="https://icps0610.github.io/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2020-05-20T19:13:16+08:00</updated>
+  <updated>2020-07-10T17:08:53+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -366,7 +366,7 @@
 
 <p><code>/etc/NetworkManager/system-connections/[VPN]</code><br/>
 <code>nmcli con up id [VPN]</code><br/>
-`nmcli con down id [VPN]</p>
+<code>nmcli con down id [VPN]</code></p>
 ]]></content>
   </entry>
   
