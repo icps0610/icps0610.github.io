@@ -194,8 +194,9 @@ import(
     "golang.org/x/text/encoding/traditionalchinese"
     "golang.org/x/text/transform"
 )
-
-func readfile(path string) []string {
+"io/ioutil"
+"strings"
+func readFile(path string) []string {
     dat, err := ioutil.ReadFile(path)
     printError(err)
     var lines []string
@@ -453,15 +454,13 @@ func getAfterDays(y, m, d, days int) (int, int, int) {
 `strings.TrimSpace(str)`
 ###### string <-> to_int
 ``` go
-i, err := strconv.Atoi(s)
-if err ! = nil {
-    //
-}
+i, _ := strconv.Atoi(s)
+
 s := strconv.Itoa(i)
 ```
-###### sting <-> to_float
+###### string <-> to_float
 ``` go
-fn, err := strconv.ParseFloat(cell, 64
+fn, _  := strconv.ParseFloat(cell, 64
 ```
 ###### fill_zero
 ``` go
@@ -474,8 +473,10 @@ func ljust(s string, n int, fill string) string {
 ```
 ###### regexp
 ``` go
-match, _ := regexp.MatchString(keyword, str)
-r, _ := regexp.Compile(keyword)
+func regexMatch(str, keyword string) bool {
+    match, _ := regexp.MatchString(keyword, str)
+    return match
+}
 
 //scan
 re := regexp.MustCompile(keyword)
@@ -483,6 +484,11 @@ match := re.FindStringSubmatch(l)
 if len(match) > 0 {
     fmt.Println(match[1])
 }
+
+//replace
+keyword := `"(.*)", "(.*)"`
+re := regexp.MustCompile(keyword)
+s := re.ReplaceAllString(e, ` $1 $2`)
 ```
 ###### chr <-> ord
 ``` go
@@ -875,4 +881,40 @@ func removeNbsp(s string) string {
     }
     return txt
 }
+
 ```
+
+##### excel
+``` go
+func readXlsx(path string) [][]string {
+    f, err := excelize.OpenFile(path)
+    printError(err)
+    var datas [][]string
+    sheet1 := f.GetSheetMap()[1]
+    rows := f.GetRows(sheet1)
+    for _, row := range rows {
+        var data []string
+        for _, cell := range row {
+            cell = strings.TrimSpace(cell)
+            data = append(data, cell)
+        }
+        datas = append(datas, data)
+    }
+    return datas
+}
+
+func writeXlsx(path string, data [][]string) {
+    f := excelize.NewFile()
+    index := f.NewSheet("Sheet1")
+    for i, row := range data {
+        for j, cell := range row {
+            c := fmt.Sprintf("%c%v", rune(j+65), i+1)
+            f.SetCellValue("Sheet1", c, cell)
+        }
+    }
+    f.SetActiveSheet(index)
+    err := f.SaveAs(path)
+    printError(err)
+}
+```
+

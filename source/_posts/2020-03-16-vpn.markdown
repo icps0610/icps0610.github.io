@@ -14,4 +14,4 @@ categories: app
 ##### linux
 `/etc/NetworkManager/system-connections/[VPN]`  
 `nmcli con up id [VPN]`  
-`nmcli con down id [VPN]  
+`nmcli con down id [VPN]`  
