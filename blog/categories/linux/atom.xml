@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | icps]]></title>
   <link href="https://icps0610.github.io/blog/categories/linux/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2020-07-10T17:08:53+08:00</updated>
+  <updated>2020-07-31T22:17:56+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,22 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Ubuntu]]></title>
+    <link href="https://icps0610.github.io/blog/2020/07/18/ubuntu/"/>
+    <updated>2020-07-18T05:12:46+08:00</updated>
+    <id>https://icps0610.github.io/blog/2020/07/18/ubuntu</id>
+    <content type="html"><![CDATA[<pre><code class="">sudo apt install qrencode zbar-tools medusa hydra hydra-gtk john netcat-traditional bkhive samdump2 wifite nmap netdiscover chntpw git rdesktop gparted
+
+#nc -e option
+rm /etc/alternatives/nc &amp;&amp; ln -s /bin/nc.traditional /etc/alternatives/nc
+
+#移除
+apt purge -y thunderbird  gnome-keyring empathy aisleriot  landscape-client-ui-install brasero
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Backup]]></title>
@@ -67,18 +83,6 @@ https://goreliu.github.io/wsl-terminal/
     <id>https://icps0610.github.io/blog/2018/10/28/network-interfaces</id>
     <content type="html"><![CDATA[<p> <code>interface = /sys/class/net</code>
  <code>mac       =  /sys/class/net/*/address</code></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Test_disk]]></title>
-    <link href="https://icps0610.github.io/blog/2018/10/27/test_disk/"/>
-    <updated>2018-10-27T06:34:36+08:00</updated>
-    <id>https://icps0610.github.io/blog/2018/10/27/test_disk</id>
-    <content type="html"><![CDATA[<p><code>apt install smartmontools</code><br/>
-<code>smartctl -H /dev/sda</code><br/>
-<code>smartctl -A /dev/sda</code><br/>
-<code>badblocks -vs /dev/sda</code></p>
 ]]></content>
   </entry>
   

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Uncategorized | icps]]></title>
   <link href="https://icps0610.github.io/blog/categories/uncategorized/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2020-07-10T17:08:53+08:00</updated>
+  <updated>2020-07-31T22:17:56+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,22 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[U2_fb_id]]></title>
+    <link href="https://icps0610.github.io/blog/2020/07/18/u2_fb_id/"/>
+    <updated>2020-07-18T14:17:16+08:00</updated>
+    <id>https://icps0610.github.io/blog/2020/07/18/u2_fb_id</id>
+    <content type="html"><![CDATA[<blockquote><blockquote><p>ref <code>https://stackoverflow.com/questions/6903823/regex-for-youtube-id</code></p></blockquote></blockquote>
+
+<pre><code class="">(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&amp;]v=)|youtu\.be\/)([A-Za-z0-9_-]{11})
+
+https:\/\/www\.facebook\.com\/(story\.php\?(story)_fbid=(\w+)\&amp;id=(\w+)(\&amp;|))
+https:\/\/www\.facebook\.com\/(\w+)\/(videos|posts)\/([a-zA-Z0-9\.]+)
+https:\/\/www\.facebook\.com\/((photo)\.php\?fbid=(\w+)(\&amp;|)|(\w+)\/(photos)\/([a-zA-Z0-9\.]+))
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Xcom2]]></title>

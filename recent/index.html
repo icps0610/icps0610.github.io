@@ -9,16 +9,12 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="1
+  <meta name="description" content="ref https://stackoverflow.com/questions/6903823/regex-for-youtube-id 1
 2
 3
 4
 5
-6
-7
-8
-全部撤離 https://steamcommunity.com/sharedfiles/filedetails/?id=618669868
-全部撤離 WOTC https://steamcommunity.com/sharedfiles/filedetails/? &hellip;">
+(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,6 +73,92 @@
       <div class="blog-index">
   
 
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2020/07/18/u2_fb_id/">U2_fb_id</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2020-07-18T14:17:16+08:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2020</span></span> <span class='time'>2:17 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><blockquote><blockquote><p>ref <code>https://stackoverflow.com/questions/6903823/regex-for-youtube-id</code></p></blockquote></blockquote>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([A-Za-z0-9_-]{11})
+</span><span class='line'>
+</span><span class='line'>https:\/\/www\.facebook\.com\/(story\.php\?(story)_fbid=(\w+)\&id=(\w+)(\&|))
+</span><span class='line'>https:\/\/www\.facebook\.com\/(\w+)\/(videos|posts)\/([a-zA-Z0-9\.]+)
+</span><span class='line'>https:\/\/www\.facebook\.com\/((photo)\.php\?fbid=(\w+)(\&|)|(\w+)\/(photos)\/([a-zA-Z0-9\.]+))
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2020/07/18/ubuntu/">Ubuntu</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2020-07-18T05:12:46+08:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2020</span></span> <span class='time'>5:12 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>sudo apt install qrencode zbar-tools medusa hydra hydra-gtk john netcat-traditional bkhive samdump2 wifite nmap netdiscover chntpw git rdesktop gparted
+</span><span class='line'>
+</span><span class='line'>#nc -e option
+</span><span class='line'>rm /etc/alternatives/nc && ln -s /bin/nc.traditional /etc/alternatives/nc
+</span><span class='line'>
+</span><span class='line'>#移除
+</span><span class='line'>apt purge -y thunderbird  gnome-keyring empathy aisleriot  landscape-client-ui-install brasero
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
+  
   
     <article>
       
@@ -394,84 +476,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2020/04/14/backup/">Backup</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2020-04-14T09:16:20+08:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2020</span></span> <span class='time'>9:16 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><code>sudo rsync -a / /bk/bk_$(date +"%m%d%Y") --exclude=/bk --exclude=/media/* --exclude=/sys/* --exclude=/proc/* --exclude=/mnt/* --exclude=/tmp/*</code>
-<code>sudo rsync -a bk_04142020 /</code></p>
-
-<h5>run/user/1000/gvfs" failed: Permission denied</h5>
-
-<blockquote><blockquote><p>ref <a href="https://blog.csdn.net/codemacket/article/details/77864770">https://blog.csdn.net/codemacket/article/details/77864770</a>
-<code>sudo umount /run/user/1000/gvfs</code>
-<code>rm -rf /run/user/1000/gvfs</code></p></blockquote></blockquote>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2020/04/10/aria2c/">Aria2c</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2020-04-10T05:21:11+08:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2020</span></span> <span class='time'>5:21 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>./configre
-</span><span class='line'>make
-</span><span class='line'>make install
-</span><span class='line'>cp src/aria2c /usr/local/bin
-</span><span class='line'>
-</span><span class='line'>aria2c -x <span class="m">16</span> -i url.txt --save-session<span class="o">=</span>log.txt
-</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
     <a href="/blog/archives">Blog Archives</a>
@@ -488,11 +492,11 @@
 <li class='category'><a href='/blog/categories/excel/'>excel (2)</a></li>
 <li class='category'><a href='/blog/categories/golang/'>golang (6)</a></li>
 <li class='category'><a href='/blog/categories/juniper/'>juniper (1)</a></li>
-<li class='category'><a href='/blog/categories/linux/'>linux (31)</a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (32)</a></li>
 <li class='category'><a href='/blog/categories/python/'>python (10)</a></li>
 <li class='category'><a href='/blog/categories/ror/'>ror (35)</a></li>
 <li class='category'><a href='/blog/categories/ruby/'>ruby (59)</a></li>
-<li class='category'><a href='/blog/categories/uncategorized/'>uncategorized (2)</a></li>
+<li class='category'><a href='/blog/categories/uncategorized/'>uncategorized (3)</a></li>
 <li class='category'><a href='/blog/categories/win/'>win (1)</a></li>
 
     </ul>
@@ -500,6 +504,14 @@
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2020/07/18/u2_fb_id/">U2_fb_id</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2020/07/18/ubuntu/">Ubuntu</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2020/05/06/xcom2/">Xcom2</a>
@@ -511,14 +523,6 @@
     
       <li class="post">
         <a href="/blog/2020/04/15/remove-onedrive/">Remove_onedrive</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2020/04/14/backup/">Backup</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2020/04/10/aria2c/">Aria2c</a>
       </li>
     
   </ul>
