@@ -1,0 +1,18 @@
+---
+layout: post
+title: "ubuntu"
+date: 2020-07-18 05:12:46 +0800
+comments: true
+categories: linux
+---
+
+``` 
+sudo apt install qrencode zbar-tools medusa hydra hydra-gtk john netcat-traditional bkhive samdump2 wifite nmap netdiscover chntpw git rdesktop gparted
+
+#nc -e option
+rm /etc/alternatives/nc && ln -s /bin/nc.traditional /etc/alternatives/nc
+
+#移除
+apt purge -y thunderbird  gnome-keyring empathy aisleriot  landscape-client-ui-install brasero
+
+```

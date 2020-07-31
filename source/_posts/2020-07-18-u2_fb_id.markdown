@@ -1,0 +1,19 @@
+---
+layout: post
+title: "u2_fb_id"
+date: 2020-07-18 14:17:16 +0800
+comments: true
+categories: uncategorized
+---
+
+
+>>ref `https://stackoverflow.com/questions/6903823/regex-for-youtube-id`
+
+``` 
+(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([A-Za-z0-9_-]{11})
+
+https:\/\/www\.facebook\.com\/(story\.php\?(story)_fbid=(\w+)\&id=(\w+)(\&|))
+https:\/\/www\.facebook\.com\/(\w+)\/(videos|posts)\/([a-zA-Z0-9\.]+)
+https:\/\/www\.facebook\.com\/((photo)\.php\?fbid=(\w+)(\&|)|(\w+)\/(photos)\/([a-zA-Z0-9\.]+))
+
+```
