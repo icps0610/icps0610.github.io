@@ -6,6 +6,26 @@ comments: true
 categories: golang
 ---
 
+###### PrintError
+```
+"runtime"
+
+func printError(err error, es ...string) {
+    if err != nil {
+        pc, _, _, _ := runtime.Caller(1)
+        fmt.Printf("----- ")
+        for _, e := range es {
+            fmt.Printf(e + " ")
+        }
+        fmt.Printf("\n")
+        fmt.Println(runtime.FuncForPC(pc).Name())
+        fmt.Println(err)
+    }
+}
+
+```
+
+
 ### cmd
 
 ###### toEXE  
@@ -100,15 +120,18 @@ func getScreenshot(px, py, width, height int, imageName string) {
 #### list file
 ``` go
 //"path/filepath"
-func listFile(path string) []string {
+func listFile(root string) []string {
     var files []string
-    err := filepath.Walk(path, func(p string, info os.FileInfo, err error) error {
-        files = append(files, p)
+    err := filepath.Walk(root, func(path string, info os.FileInfo, err error) error {
+        if regexMatch(path, `.*\.jpg`) {
+            files = append(files, path)
+        }
         return nil
     })
     printError(err)
-    return files
+    return files[1:]
 }
+
 ```
 
 ``` go
@@ -161,11 +184,22 @@ string(body)
 ```
 ###### input
 ``` go
+
+func getInput ()  {
+    var key string
+   fmt.Scanln(&key)
+ return key
+}
+
+
 reader := bufio.NewReader(os.Stdin)
 fmt.Print("file: ")
 ipt, _ := reader.ReadString('\n')
 input := strings.TrimSuffix(ipt, "\n")
 return input
+
+
+
 ```
 ##### continue
 ``` go
@@ -185,7 +219,7 @@ func writeLines(lines []string, path string) {
     file, err := os.Create(path)
     printError(err)
     defer file.Close()
-    file.WriteString("\xEF\xBB\xBF")
+    //file.WriteString("\xEF\xBB\xBF")
     for _, line := range lines {
         file.WriteString(line + "\n")
     }
@@ -362,8 +396,31 @@ func fileExist(file string) bool {
 cmd := exec.Command("sleep", "1")
 err := cmd.Run()
 ```
+######　list Fo;e
+```
+ "path/filepath"
 
+func listFile(root string) []string {
+    var files []string
+    err := filepath.Walk(root, func(path string, info os.FileInfo, err error) error {
+        files = append(files, path)
+        return nil
+    })
+    printError(err)
+    return files[1:]
+}
 
+```
+##### imageSize
+
+```
+func getImageSize(file string) (string, string) {
+    cmd = fmt.Sprintf(`identify %s`, file)
+    c := runCmd(cmd)
+    size := strings.Split(strings.Split(c, " ")[2], "x")
+    return size[0], size[1]
+}
+```
 ### debug
 
 ##### time
@@ -524,13 +581,17 @@ func regexMatch(str, keyword string) bool {
 }
 
 //scan
-func regexScan(str, keyword string, i int) string {
+func regexScans(str, keyword string, is ...int) []string {
+    var txts []string
     re := regexp.MustCompile(keyword)
     match := re.FindStringSubmatch(str)
+    fmt.Println(match)
     if len(match) > 0 {
-        return match[i]
+        for _, i := range is {
+            txts = append(txts, match[i])
+        }
     }
-    return ""
+    return txts
 }
 
 //replace
@@ -990,5 +1051,26 @@ func writeXlsx(path string, data [][]string) {
     err := f.SaveAs(path)
     printError(err)
 }
+
+
 ```
 
+``` go
+func moniterExit() {
+    c := make(chan os.Signal)
+    signal.Notify(c)
+
+    go func() {
+        for s := range c {
+            switch s {
+            case syscall.SIGHUP, syscall.SIGINT, syscall.SIGTERM:
+                fmt.Println(s)
+                ExitFunc()
+            default:
+                fmt.Println(s)
+            }
+        }
+    }()
+}
+
+```
