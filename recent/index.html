@@ -182,24 +182,13 @@
 <span class='line-number'>32</span>
 <span class='line-number'>33</span>
 <span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-<span class='line-number'>41</span>
-<span class='line-number'>42</span>
-<span class='line-number'>43</span>
-<span class='line-number'>44</span>
-<span class='line-number'>45</span>
-</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kd">func</span> <span class="nx">checkIDCode</span><span class="p">(</span><span class="nx">num</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">bool</span> <span class="p">{</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kd">func</span> <span class="nx">checkIDCode</span><span class="p">(</span><span class="nx">IDNum</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">bool</span> <span class="p">{</span>
 </span><span class='line'>    <span class="kd">var</span> <span class="nx">sum</span> <span class="kt">int</span>
-</span><span class='line'>    <span class="nx">idTableCh</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;F&quot;</span><span class="p">,</span> <span class="s">&quot;B&quot;</span><span class="p">,</span> <span class="s">&quot;E&quot;</span><span class="p">,</span> <span class="s">&quot;A&quot;</span><span class="p">,</span> <span class="s">&quot;H&quot;</span><span class="p">,</span> <span class="s">&quot;D&quot;</span><span class="p">,</span> <span class="s">&quot;N&quot;</span><span class="p">,</span> <span class="s">&quot;T&quot;</span><span class="p">,</span> <span class="s">&quot;P&quot;</span><span class="p">,</span> <span class="s">&quot;J&quot;</span><span class="p">,</span> <span class="s">&quot;K&quot;</span><span class="p">,</span> <span class="s">&quot;Q&quot;</span><span class="p">,</span> <span class="s">&quot;M&quot;</span><span class="p">,</span> <span class="s">&quot;G&quot;</span><span class="p">,</span> <span class="s">&quot;O&quot;</span><span class="p">,</span> <span class="s">&quot;C&quot;</span><span class="p">,</span> <span class="s">&quot;U&quot;</span><span class="p">,</span> <span class="s">&quot;I&quot;</span><span class="p">,</span> <span class="s">&quot;V&quot;</span><span class="p">,</span> <span class="s">&quot;W&quot;</span><span class="p">,</span> <span class="s">&quot;X&quot;</span><span class="p">,</span> <span class="s">&quot;Z&quot;</span><span class="p">}</span>
+</span><span class='line'>    <span class="nx">idTableCh</span> <span class="o">:=</span> <span class="nx">strings</span><span class="p">.</span><span class="nx">Split</span><span class="p">(</span><span class="s">&quot;FBEAHDNTPJKQMGOCUIVWXZ&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">)</span>
 </span><span class='line'>    <span class="nx">idTableValue</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">15</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">27</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">33</span><span class="p">}</span>
 </span><span class='line'>
 </span><span class='line'>    <span class="k">for</span> <span class="nx">idx</span><span class="p">,</span> <span class="nx">c</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">idTableCh</span> <span class="p">{</span>
-</span><span class='line'>        <span class="k">if</span> <span class="nx">c</span> <span class="o">==</span> <span class="nb">string</span><span class="p">(</span><span class="nx">num</span><span class="p">[:</span><span class="mi">1</span><span class="p">])</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">if</span> <span class="nx">c</span> <span class="o">==</span> <span class="nb">string</span><span class="p">(</span><span class="nx">IDNum</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="p">{</span>
 </span><span class='line'>            <span class="nx">v</span> <span class="o">:=</span> <span class="nx">idTableValue</span><span class="p">[</span><span class="nx">idx</span><span class="p">]</span>
 </span><span class='line'>            <span class="nx">s</span> <span class="o">:=</span> <span class="p">(</span><span class="nx">v</span><span class="o">%</span><span class="mi">10</span><span class="p">)</span><span class="o">*</span><span class="mi">9</span> <span class="o">+</span> <span class="p">(</span><span class="nx">v</span> <span class="o">/</span> <span class="mi">10</span><span class="p">)</span>
 </span><span class='line'>            <span class="nx">sum</span> <span class="o">+=</span> <span class="nx">s</span>
@@ -207,16 +196,13 @@
 </span><span class='line'>        <span class="p">}</span>
 </span><span class='line'>    <span class="p">}</span>
 </span><span class='line'>
-</span><span class='line'>    <span class="k">for</span> <span class="nx">idx</span><span class="p">,</span> <span class="nx">n</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">num</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">9</span><span class="p">]</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">for</span> <span class="nx">idx</span><span class="p">,</span> <span class="nx">n</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">IDNum</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">9</span><span class="p">]</span> <span class="p">{</span>
 </span><span class='line'>        <span class="nx">i</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">strconv</span><span class="p">.</span><span class="nx">Atoi</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">n</span><span class="p">))</span>
 </span><span class='line'>        <span class="nx">sum</span> <span class="o">+=</span> <span class="nx">i</span> <span class="o">*</span> <span class="p">(</span><span class="mi">8</span> <span class="o">-</span> <span class="nx">idx</span><span class="p">)</span>
 </span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>    <span class="nx">i</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">strconv</span><span class="p">.</span><span class="nx">Atoi</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">num</span><span class="p">[</span><span class="mi">9</span><span class="p">:]))</span>
+</span><span class='line'>    <span class="nx">i</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">strconv</span><span class="p">.</span><span class="nx">Atoi</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">IDNum</span><span class="p">[</span><span class="mi">9</span><span class="p">]))</span>
 </span><span class='line'>    <span class="nx">sum</span> <span class="o">+=</span> <span class="nx">i</span>
-</span><span class='line'>    <span class="k">if</span> <span class="nx">sum</span><span class="o">%</span><span class="mi">10</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
-</span><span class='line'>        <span class="k">return</span> <span class="kc">true</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>    <span class="k">return</span> <span class="kc">false</span>
+</span><span class='line'>    <span class="k">return</span> <span class="p">(</span><span class="nx">sum</span><span class="o">%</span><span class="mi">10</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
 </span><span class='line'><span class="p">}</span>
 </span><span class='line'>
 </span><span class='line'><span class="kd">func</span> <span class="nx">checkCompanyCode</span><span class="p">(</span><span class="nx">num</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">bool</span> <span class="p">{</span>
@@ -225,18 +211,10 @@
 </span><span class='line'>
 </span><span class='line'>    <span class="k">for</span> <span class="nx">idx</span><span class="p">,</span> <span class="nx">e</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">num</span> <span class="p">{</span>
 </span><span class='line'>        <span class="nx">s</span> <span class="o">:=</span> <span class="nb">int</span><span class="p">((</span><span class="nx">e</span> <span class="o">-</span> <span class="mi">48</span><span class="p">))</span> <span class="o">*</span> <span class="nx">cc</span><span class="p">[</span><span class="nx">idx</span><span class="p">]</span>
-</span><span class='line'>        <span class="nx">t</span> <span class="o">:=</span> <span class="nx">tzAdd</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
+</span><span class='line'>        <span class="nx">t</span> <span class="o">:=</span> <span class="nx">s</span><span class="o">/</span><span class="mi">10</span> <span class="o">+</span> <span class="nx">s</span><span class="o">%</span><span class="mi">10</span>
 </span><span class='line'>        <span class="nx">sum</span> <span class="o">+=</span> <span class="nx">t</span>
 </span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>    <span class="k">if</span> <span class="nb">string</span><span class="p">(</span><span class="nx">num</span><span class="p">[</span><span class="mi">6</span><span class="p">])</span> <span class="o">==</span> <span class="s">&quot;7&quot;</span> <span class="p">{</span>
-</span><span class='line'>        <span class="k">if</span> <span class="p">(</span><span class="nx">sum</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">%</span><span class="mi">10</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
-</span><span class='line'>            <span class="k">return</span> <span class="kc">true</span>
-</span><span class='line'>        <span class="p">}</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="nx">sum</span><span class="p">)</span><span class="o">%</span><span class="mi">10</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
-</span><span class='line'>        <span class="k">return</span> <span class="kc">true</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>    <span class="k">return</span> <span class="kc">false</span>
+</span><span class='line'>    <span class="k">return</span> <span class="p">(</span><span class="nx">sum</span><span class="p">)</span><span class="o">%</span><span class="mi">10</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">||</span> <span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">num</span><span class="p">[</span><span class="mi">6</span><span class="p">])</span> <span class="o">==</span> <span class="s">&quot;7&quot;</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="nx">sum</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">%</span><span class="mi">10</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
