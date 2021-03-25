@@ -1,0 +1,54 @@
+---
+layout: post
+title: "faker"
+date: 2021-02-05 02:17:12 +0800
+comments: true
+categories: go
+---
+``` go
+func checkIDCode(num string) bool {
+    var sum int
+    idTableCh := []string{"F", "B", "E", "A", "H", "D", "N", "T", "P", "J", "K", "Q", "M", "G", "O", "C", "U", "I", "V", "W", "X", "Z"}
+    idTableValue := []int{15, 11, 14, 10, 17, 13, 22, 27, 23, 18, 19, 24, 21, 16, 35, 12, 28, 34, 29, 32, 30, 33}
+
+    for idx, c := range idTableCh {
+        if c == string(num[:1]) {
+            v := idTableValue[idx]
+            s := (v%10)*9 + (v / 10)
+            sum += s
+            break
+        }
+    }
+
+    for idx, n := range num[1:9] {
+        i, _ := strconv.Atoi(string(n))
+        sum += i * (8 - idx)
+    }
+    i, _ := strconv.Atoi(string(num[9:]))
+    sum += i
+    if sum%10 == 0 {
+        return true
+    }
+    return false
+}
+
+func checkCompanyCode(num string) bool {
+    cc := []int{1, 2, 1, 2, 1, 2, 4, 1}
+    var sum int
+
+    for idx, e := range num {
+        s := int((e - 48)) * cc[idx]
+        t := tzAdd(s)
+        sum += t
+    }
+    if string(num[6]) == "7" {
+        if (sum-1)%10 == 0 {
+            return true
+        }
+    }
+    if (sum)%10 == 0 {
+        return true
+    }
+    return false
+}
+```

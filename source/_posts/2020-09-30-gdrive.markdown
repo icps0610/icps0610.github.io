@@ -1,0 +1,25 @@
+---
+layout: post
+title: "gdrive"
+date: 2020-09-30 12:24:48 +0800
+comments: true
+categories: gdrive
+---
+
+`https://github.com/prasmussen/gdrive`
+
+>>ref https://atceiling.blogspot.com/2020/02/raspberry-pi-57google-drive.html
+
+`https://console.developers.google.com/`
+```
+##handlers_drive.go
+
+const ClientId = "ClientId"
+const ClientSecret = "ClientSecret"
+
+```
+
+`go get github.com/prasmussen/gdrive`-
+`go build -ldflags '-w -s'`
+`sudo mv gdrive /usr/local/bin/gdrive`
+`sudo chmod a+x /usr/local/bin/gdrive`
