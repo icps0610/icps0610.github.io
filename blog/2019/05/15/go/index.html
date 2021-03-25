@@ -167,8 +167,8 @@
 <span class='line-number'>10</span>
 <span class='line-number'>11</span>
 </pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kd">func</span> <span class="nx">runCmd</span><span class="p">(</span><span class="nx">cmd</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>    <span class="nx">cmd</span> <span class="o">:=</span> <span class="nx">exec</span><span class="p">.</span><span class="nx">Command</span><span class="p">(</span><span class="s">&quot;ipconfig&quot;</span><span class="p">)</span>
-</span><span class='line'>    <span class="nx">_</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">cmd</span><span class="p">.</span><span class="nx">CombinedOutput</span><span class="p">()</span>
+</span><span class='line'>    <span class="nx">c</span> <span class="o">:=</span> <span class="nx">exec</span><span class="p">.</span><span class="nx">Command</span><span class="p">(</span><span class="nx">cmd</span><span class="p">)</span>
+</span><span class='line'>    <span class="nx">_</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">c</span><span class="p">.</span><span class="nx">CombinedOutput</span><span class="p">()</span>
 </span><span class='line'>    <span class="nx">printError</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
 </span><span class='line'><span class="p">}</span>
 </span><span class='line'>
@@ -519,11 +519,24 @@
 <span class='line-number'>61</span>
 <span class='line-number'>62</span>
 <span class='line-number'>63</span>
-</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="nx">data</span> <span class="o">:=</span> <span class="p">[]</span><span class="nb">byte</span><span class="p">(</span><span class="s">&quot;hello\ngo\n&quot;</span><span class="p">)</span>
-</span><span class='line'><span class="nx">err</span> <span class="o">:=</span> <span class="nx">ioutil</span><span class="p">.</span><span class="nx">WriteFile</span><span class="p">(</span><span class="s">&quot;/tmp/data&quot;</span><span class="p">,</span> <span class="nx">data</span><span class="p">,</span> <span class="mo">0644</span><span class="p">)</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="s">&quot;io/ioutil&quot;</span>
 </span><span class='line'>
-</span><span class='line'><span class="nx">dat</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">ioutil</span><span class="p">.</span><span class="nx">ReadFile</span><span class="p">(</span><span class="s">&quot;/tmp/dat&quot;</span><span class="p">)</span>
-</span><span class='line'><span class="nx">fmt</span><span class="p">.</span><span class="nx">Print</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">dat</span><span class="p">))</span>
+</span><span class='line'><span class="err">#</span><span class="nx">save</span><span class="o">&amp;</span><span class="nx">read</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">func</span> <span class="nx">save</span><span class="p">(</span><span class="nx">content</span><span class="p">,</span> <span class="nx">path</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">data</span> <span class="o">:=</span> <span class="p">[]</span><span class="nb">byte</span><span class="p">(</span><span class="nx">content</span><span class="p">)</span>
+</span><span class='line'>    <span class="nx">err</span> <span class="o">:=</span> <span class="nx">ioutil</span><span class="p">.</span><span class="nx">WriteFile</span><span class="p">(</span><span class="nx">path</span><span class="p">,</span> <span class="nx">data</span><span class="p">,</span> <span class="mo">0644</span><span class="p">)</span>
+</span><span class='line'>    <span class="nx">printError</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">func</span> <span class="nx">read</span><span class="p">(</span><span class="nx">path</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">string</span><span class="p">{</span>
+</span><span class='line'>    <span class="nx">dat</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">ioutil</span><span class="p">.</span><span class="nx">ReadFile</span><span class="p">(</span><span class="nx">path</span><span class="p">)</span>
+</span><span class='line'>    <span class="nx">printError</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">return</span> <span class="nb">string</span><span class="p">(</span><span class="nx">dat</span><span class="p">)</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
 </span><span class='line'>
 </span><span class='line'>
 </span><span class='line'><span class="kd">func</span> <span class="nx">writeLines</span><span class="p">(</span><span class="nx">lines</span> <span class="p">[]</span><span class="kt">string</span><span class="p">,</span> <span class="nx">path</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
@@ -573,15 +586,6 @@
 </span><span class='line'>    <span class="p">}</span>
 </span><span class='line'>
 </span><span class='line'><span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'>
-</span><span class='line'><span class="s">&quot;encoding/csv&quot;</span>
-</span><span class='line'><span class="kd">func</span> <span class="nx">readCsv</span><span class="p">(</span><span class="nx">path</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>    <span class="nx">f</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Open</span><span class="p">(</span><span class="nx">path</span><span class="p">)</span>
-</span><span class='line'>    <span class="nx">printError</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-</span><span class='line'>    <span class="nx">lines</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">csv</span><span class="p">.</span><span class="nx">NewReader</span><span class="p">(</span><span class="nx">f</span><span class="p">).</span><span class="nx">ReadAll</span><span class="p">()</span>
-</span><span class='line'>    <span class="k">return</span> <span class="nx">lines</span>
-</span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -610,6 +614,25 @@
 </span><span class='line'>    <span class="nx">atime</span> <span class="p">=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Unix</span><span class="p">(</span><span class="nb">int64</span><span class="p">(</span><span class="nx">stat</span><span class="p">.</span><span class="nx">Atim</span><span class="p">.</span><span class="nx">Sec</span><span class="p">),</span> <span class="nb">int64</span><span class="p">(</span><span class="nx">stat</span><span class="p">.</span><span class="nx">Atim</span><span class="p">.</span><span class="nx">Nsec</span><span class="p">))</span>
 </span><span class='line'>    <span class="nx">ctime</span> <span class="p">=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Unix</span><span class="p">(</span><span class="nb">int64</span><span class="p">(</span><span class="nx">stat</span><span class="p">.</span><span class="nx">Ctim</span><span class="p">.</span><span class="nx">Sec</span><span class="p">),</span> <span class="nb">int64</span><span class="p">(</span><span class="nx">stat</span><span class="p">.</span><span class="nx">Ctim</span><span class="p">.</span><span class="nx">Nsec</span><span class="p">))</span>
 </span><span class='line'>    <span class="k">return</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h5>stringCH</h5>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kd">func</span> <span class="nx">checkWordsCH</span><span class="p">(</span><span class="nx">words</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">w</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">words</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">if</span> <span class="nx">unicode</span><span class="p">.</span><span class="nx">Is</span><span class="p">(</span><span class="nx">unicode</span><span class="p">.</span><span class="nx">Han</span><span class="p">,</span> <span class="nx">w</span><span class="p">)</span> <span class="o">==</span> <span class="kc">true</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>    <span class="p">}</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
@@ -726,7 +749,9 @@
 <span class='line-number'>14</span>
 <span class='line-number'>15</span>
 <span class='line-number'>16</span>
-</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kd">func</span> <span class="nx">readCsv</span><span class="p">(</span><span class="nx">path</span> <span class="kt">string</span><span class="p">)</span> <span class="p">[][]</span><span class="kt">string</span> <span class="p">{</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="s">&quot;encoding/csv&quot;</span>
+</span><span class='line'><span class="kd">func</span> <span class="nx">readCsv</span><span class="p">(</span><span class="nx">path</span> <span class="kt">string</span><span class="p">)</span> <span class="p">[][]</span><span class="kt">string</span> <span class="p">{</span>
 </span><span class='line'>    <span class="nx">f</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Open</span><span class="p">(</span><span class="nx">path</span><span class="p">)</span>
 </span><span class='line'>    <span class="nx">printError</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
 </span><span class='line'>    <span class="nx">lines</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">csv</span><span class="p">.</span><span class="nx">NewReader</span><span class="p">(</span><span class="nx">f</span><span class="p">).</span><span class="nx">ReadAll</span><span class="p">()</span>
@@ -954,21 +979,6 @@
 </pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kd">func</span> <span class="nx">timeFormat</span><span class="p">()</span> <span class="kt">string</span> <span class="p">{</span>
 </span><span class='line'>    <span class="nx">t</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">()</span>
 </span><span class='line'>    <span class="k">return</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;%d-%02d-%02d %02d:%02d:%02d&quot;</span><span class="p">,</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Year</span><span class="p">(),</span> <span class="nb">int</span><span class="p">(</span><span class="nx">t</span><span class="p">.</span><span class="nx">Month</span><span class="p">()),</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Day</span><span class="p">(),</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Hour</span><span class="p">(),</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Minute</span><span class="p">(),</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Second</span><span class="p">())</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h6>sleep</h6>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="mi">1</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">func</span> <span class="nx">sleep</span><span class="p">(</span><span class="nx">t</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>    <span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Duration</span><span class="p">(</span><span class="nx">t</span><span class="p">)</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Millisecond</span><span class="p">)</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
@@ -1830,46 +1840,61 @@
 <span class='line-number'>41</span>
 <span class='line-number'>42</span>
 </pre></td><td class='code'><pre><code class='go'><span class='line'><span class="s">&quot;github.com/anaskhan96/soup&quot;</span>
+</span><span class='line'><span class="s">&quot;fmt&quot;</span>
+</span><span class='line'><span class="s">&quot;io/ioutil&quot;</span>
+</span><span class='line'><span class="s">&quot;net/http&quot;</span>
+</span><span class='line'><span class="s">&quot;os&quot;</span>
+</span><span class='line'><span class="s">&quot;runtime&quot;</span>
 </span><span class='line'>
-</span><span class='line'><span class="kd">func</span> <span class="nx">getResp</span><span class="p">(</span><span class="nx">url</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">string</span> <span class="p">{</span>
+</span><span class='line'><span class="kd">func</span> <span class="nx">getDoc</span><span class="p">(</span><span class="nx">url</span> <span class="kt">string</span><span class="p">)</span> <span class="nx">soup</span><span class="p">.</span><span class="nx">Root</span> <span class="p">{</span>
 </span><span class='line'>    <span class="nx">req</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">NewRequest</span><span class="p">(</span><span class="s">&quot;GET&quot;</span><span class="p">,</span> <span class="nx">url</span><span class="p">,</span> <span class="kc">nil</span><span class="p">)</span>
-</span><span class='line'>    <span class="c1">//cookie := http.Cookie{</span>
-</span><span class='line'>    <span class="c1">//    Name:  &quot;over18&quot;,</span>
-</span><span class='line'>    <span class="c1">//    Value: &quot;1&quot;,</span>
-</span><span class='line'>    <span class="c1">//}</span>
-</span><span class='line'>    <span class="c1">//req.AddCookie(&amp;cookie)</span>
 </span><span class='line'>    <span class="nx">res</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">DefaultClient</span><span class="p">.</span><span class="nx">Do</span><span class="p">(</span><span class="nx">req</span><span class="p">)</span>
-</span><span class='line'>    <span class="k">if</span> <span class="nx">res</span><span class="p">.</span><span class="nx">StatusCode</span> <span class="o">!=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">StatusOK</span> <span class="p">{</span>
-</span><span class='line'>        <span class="nx">os</span><span class="p">.</span><span class="nx">Exit</span><span class="p">(</span><span class="mi">13</span><span class="p">)</span>
-</span><span class='line'>    <span class="p">}</span>
 </span><span class='line'>    <span class="nx">body</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">ioutil</span><span class="p">.</span><span class="nx">ReadAll</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">Body</span><span class="p">)</span>
-</span><span class='line'>    <span class="k">return</span> <span class="nb">string</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span>
+</span><span class='line'>    <span class="nx">resp</span> <span class="o">:=</span> <span class="nb">string</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">return</span> <span class="nx">soup</span><span class="p">.</span><span class="nx">HTMLParse</span><span class="p">(</span><span class="nx">resp</span><span class="p">)</span>
 </span><span class='line'><span class="p">}</span>
 </span><span class='line'>
 </span><span class='line'><span class="s">&quot;github.com/sclevine/agouti&quot;</span>
-</span><span class='line'><span class="kd">func</span> <span class="nx">open_browser</span><span class="p">(</span><span class="nx">url</span> <span class="kt">string</span><span class="p">)</span> <span class="p">(</span><span class="o">*</span><span class="nx">agouti</span><span class="p">.</span><span class="nx">Page</span><span class="p">,</span> <span class="o">*</span><span class="nx">agouti</span><span class="p">.</span><span class="nx">WebDriver</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>    <span class="cm">/*    driver := agouti.ChromeDriver(</span>
-</span><span class='line'><span class="cm">          agouti.ChromeOptions(&quot;args&quot;, []string{&quot;--headless&quot;}),</span>
-</span><span class='line'><span class="cm">      )*/</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">func</span> <span class="nx">openBrowser</span><span class="p">()</span> <span class="p">(</span><span class="o">*</span><span class="nx">agouti</span><span class="p">.</span><span class="nx">Page</span><span class="p">,</span> <span class="o">*</span><span class="nx">agouti</span><span class="p">.</span><span class="nx">WebDriver</span><span class="p">)</span> <span class="p">{</span>
 </span><span class='line'>    <span class="nx">driver</span> <span class="o">:=</span> <span class="nx">agouti</span><span class="p">.</span><span class="nx">ChromeDriver</span><span class="p">(</span>
+</span><span class='line'>        <span class="c1">// agouti.ChromeOptions(&quot;args&quot;, []string{&quot;--window-size=1980,1020&quot;, &quot;headless&quot;}),</span>
 </span><span class='line'>        <span class="nx">agouti</span><span class="p">.</span><span class="nx">ChromeOptions</span><span class="p">(</span><span class="s">&quot;args&quot;</span><span class="p">,</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;--window-size=1980,1020&quot;</span><span class="p">}),</span>
 </span><span class='line'>    <span class="p">)</span>
-</span><span class='line'>
 </span><span class='line'>    <span class="nx">err</span> <span class="o">:=</span> <span class="nx">driver</span><span class="p">.</span><span class="nx">Start</span><span class="p">()</span>
 </span><span class='line'>    <span class="nx">printError</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-</span><span class='line'>
 </span><span class='line'>    <span class="nx">page</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">driver</span><span class="p">.</span><span class="nx">NewPage</span><span class="p">()</span>
-</span><span class='line'>    <span class="nx">printError</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="nx">err</span> <span class="p">=</span> <span class="nx">page</span><span class="p">.</span><span class="nx">Navigate</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span>
 </span><span class='line'>    <span class="nx">printError</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
 </span><span class='line'>    <span class="k">return</span> <span class="nx">page</span><span class="p">,</span> <span class="nx">driver</span>
 </span><span class='line'><span class="p">}</span>
+</span><span class='line'>
 </span><span class='line'><span class="kd">func</span> <span class="nx">main</span> <span class="p">(){</span>
-</span><span class='line'>    <span class="nx">page</span><span class="p">,</span> <span class="nx">driver</span> <span class="o">:=</span> <span class="nx">open_browser</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span>
+</span><span class='line'>    <span class="nx">page</span><span class="p">,</span> <span class="nx">driver</span> <span class="o">:=</span> <span class="nx">openBrowser</span><span class="p">()</span>
 </span><span class='line'>    <span class="k">defer</span> <span class="nx">driver</span><span class="p">.</span><span class="nx">Stop</span><span class="p">()</span>
+</span><span class='line'>    <span class="nx">page</span><span class="p">.</span><span class="nx">Navigate</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span>
 </span><span class='line'>    <span class="nx">resp</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">page</span><span class="p">.</span><span class="nx">HTML</span><span class="p">()</span>
 </span><span class='line'>    <span class="nx">doc</span> <span class="o">:=</span> <span class="nx">soup</span><span class="p">.</span><span class="nx">HTMLParse</span><span class="p">(</span><span class="nx">resp</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">func</span> <span class="nx">runJs</span><span class="p">(</span><span class="nx">page</span> <span class="o">*</span><span class="nx">agouti</span><span class="p">.</span><span class="nx">Page</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">js</span> <span class="o">:=</span> <span class="s">`window.scrollTo(0,window.scrollY+window.innerHeight*.9);`</span>
+</span><span class='line'>    <span class="nx">page</span><span class="p">.</span><span class="nx">RunScript</span><span class="p">(</span><span class="nx">js</span><span class="p">,</span> <span class="kc">nil</span><span class="p">,</span> <span class="kc">nil</span><span class="p">)</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h6>sleep</h6>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="mi">1</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">func</span> <span class="nx">sleep</span><span class="p">(</span><span class="nx">t</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Duration</span><span class="p">(</span><span class="nx">t</span><span class="p">)</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Millisecond</span><span class="p">)</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
@@ -2102,15 +2127,17 @@
     <ul id="categories">
        <li class='category'><a href='/blog/categories/app/'>app (38)</a></li>
 <li class='category'><a href='/blog/categories/bat/'>bat (12)</a></li>
-<li class='category'><a href='/blog/categories/cmd/'>cmd (1)</a></li>
+<li class='category'><a href='/blog/categories/cmd/'>cmd (2)</a></li>
 <li class='category'><a href='/blog/categories/excel/'>excel (2)</a></li>
-<li class='category'><a href='/blog/categories/golang/'>golang (6)</a></li>
+<li class='category'><a href='/blog/categories/gdrive/'>gdrive (1)</a></li>
+<li class='category'><a href='/blog/categories/go/'>go (1)</a></li>
+<li class='category'><a href='/blog/categories/golang/'>golang (7)</a></li>
 <li class='category'><a href='/blog/categories/juniper/'>juniper (1)</a></li>
-<li class='category'><a href='/blog/categories/linux/'>linux (32)</a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (33)</a></li>
 <li class='category'><a href='/blog/categories/python/'>python (10)</a></li>
 <li class='category'><a href='/blog/categories/ror/'>ror (35)</a></li>
 <li class='category'><a href='/blog/categories/ruby/'>ruby (59)</a></li>
-<li class='category'><a href='/blog/categories/uncategorized/'>uncategorized (4)</a></li>
+<li class='category'><a href='/blog/categories/uncategorized/'>uncategorized (5)</a></li>
 <li class='category'><a href='/blog/categories/win/'>win (1)</a></li>
 
     </ul>
@@ -2120,23 +2147,23 @@
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2020/08/15/wsl-display/">wsl_DISPLAY</a>
+        <a href="/blog/2021/03/25/cmd-beep-sound/">Cmd_beep_sound</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2020/08/07/regedit/">Regedit</a>
+        <a href="/blog/2021/02/10/displayimageterminal/">displayImageTerminal</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2020/07/18/u2_fb_id/">U2_fb_id</a>
+        <a href="/blog/2021/02/05/faker/">Faker</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2020/07/18/ubuntu/">Ubuntu</a>
+        <a href="/blog/2020/11/05/imagemagick/">imageMagick</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2020/05/06/xcom2/">Xcom2</a>
+        <a href="/blog/2020/10/01/convert/">Convert</a>
       </li>
     
   </ul>
@@ -2153,7 +2180,7 @@
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2020 - icps -
+  Copyright &copy; 2021 - icps -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Go | icps]]></title>
+  <link href="https://icps0610.github.io/blog/categories/go/atom.xml" rel="self"/>
+  <link href="https://icps0610.github.io/"/>
+  <updated>2021-03-25T19:47:36+08:00</updated>
+  <id>https://icps0610.github.io/</id>
+  <author>
+    <name><![CDATA[icps]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Faker]]></title>
+    <link href="https://icps0610.github.io/blog/2021/02/05/faker/"/>
+    <updated>2021-02-05T02:17:12+08:00</updated>
+    <id>https://icps0610.github.io/blog/2021/02/05/faker</id>
+    <content type="html"><![CDATA[<pre><code class="go">func checkIDCode(num string) bool {
+    var sum int
+    idTableCh := []string{"F", "B", "E", "A", "H", "D", "N", "T", "P", "J", "K", "Q", "M", "G", "O", "C", "U", "I", "V", "W", "X", "Z"}
+    idTableValue := []int{15, 11, 14, 10, 17, 13, 22, 27, 23, 18, 19, 24, 21, 16, 35, 12, 28, 34, 29, 32, 30, 33}
+
+    for idx, c := range idTableCh {
+        if c == string(num[:1]) {
+            v := idTableValue[idx]
+            s := (v%10)*9 + (v / 10)
+            sum += s
+            break
+        }
+    }
+
+    for idx, n := range num[1:9] {
+        i, _ := strconv.Atoi(string(n))
+        sum += i * (8 - idx)
+    }
+    i, _ := strconv.Atoi(string(num[9:]))
+    sum += i
+    if sum%10 == 0 {
+        return true
+    }
+    return false
+}
+
+func checkCompanyCode(num string) bool {
+    cc := []int{1, 2, 1, 2, 1, 2, 4, 1}
+    var sum int
+
+    for idx, e := range num {
+        s := int((e - 48)) * cc[idx]
+        t := tzAdd(s)
+        sum += t
+    }
+    if string(num[6]) == "7" {
+        if (sum-1)%10 == 0 {
+            return true
+        }
+    }
+    if (sum)%10 == 0 {
+        return true
+    }
+    return false
+}
+</code></pre>
+]]></content>
+  </entry>
+  
+ </feed>

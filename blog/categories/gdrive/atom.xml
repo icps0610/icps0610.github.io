@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Gdrive | icps]]></title>
+  <link href="https://icps0610.github.io/blog/categories/gdrive/atom.xml" rel="self"/>
+  <link href="https://icps0610.github.io/"/>
+  <updated>2021-03-25T19:47:36+08:00</updated>
+  <id>https://icps0610.github.io/</id>
+  <author>
+    <name><![CDATA[icps]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Gdrive]]></title>
+    <link href="https://icps0610.github.io/blog/2020/09/30/gdrive/"/>
+    <updated>2020-09-30T12:24:48+08:00</updated>
+    <id>https://icps0610.github.io/blog/2020/09/30/gdrive</id>
+    <content type="html"><![CDATA[<p><code>https://github.com/prasmussen/gdrive</code></p>
+
+<blockquote><blockquote><p>ref <a href="https://atceiling.blogspot.com/2020/02/raspberry-pi-57google-drive.html">https://atceiling.blogspot.com/2020/02/raspberry-pi-57google-drive.html</a></p></blockquote></blockquote>
+
+<p><code>https://console.developers.google.com/</code>
+```</p>
+
+<h2>handlers_drive.go</h2>
+
+<p>const ClientId = &ldquo;ClientId&rdquo;
+const ClientSecret = &ldquo;ClientSecret&rdquo;</p>
+
+<p>```</p>
+
+<p><code>go get github.com/prasmussen/gdrive</code>-
+<code>go build -ldflags '-w -s'</code>
+<code>sudo mv gdrive /usr/local/bin/gdrive</code>
+<code>sudo chmod a+x /usr/local/bin/gdrive</code></p>
+]]></content>
+  </entry>
+  
+ </feed>

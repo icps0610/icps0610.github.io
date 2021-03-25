@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="https://icps0610.github.io/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2020-09-28T09:34:20+08:00</updated>
+  <updated>2021-03-25T19:47:36+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,171 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Cmd_beep_sound]]></title>
+    <link href="https://icps0610.github.io/blog/2021/03/25/cmd-beep-sound/"/>
+    <updated>2021-03-25T19:46:15+08:00</updated>
+    <id>https://icps0610.github.io/blog/2021/03/25/cmd-beep-sound</id>
+    <content type="html"><![CDATA[<p><code>Set-PSReadlineOption -BellStyle Visual</code></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[displayImageTerminal]]></title>
+    <link href="https://icps0610.github.io/blog/2021/02/10/displayimageterminal/"/>
+    <updated>2021-02-10T10:19:56+08:00</updated>
+    <id>https://icps0610.github.io/blog/2021/02/10/displayimageterminal</id>
+    <content type="html"><![CDATA[<pre><code class="go"></code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Faker]]></title>
+    <link href="https://icps0610.github.io/blog/2021/02/05/faker/"/>
+    <updated>2021-02-05T02:17:12+08:00</updated>
+    <id>https://icps0610.github.io/blog/2021/02/05/faker</id>
+    <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kd">func</span> <span class="nx">checkIDCode</span><span class="p">(</span><span class="nx">num</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">bool</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">sum</span> <span class="kt">int</span>
+</span><span class='line'>    <span class="nx">idTableCh</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&quot;F&quot;</span><span class="p">,</span> <span class="s">&quot;B&quot;</span><span class="p">,</span> <span class="s">&quot;E&quot;</span><span class="p">,</span> <span class="s">&quot;A&quot;</span><span class="p">,</span> <span class="s">&quot;H&quot;</span><span class="p">,</span> <span class="s">&quot;D&quot;</span><span class="p">,</span> <span class="s">&quot;N&quot;</span><span class="p">,</span> <span class="s">&quot;T&quot;</span><span class="p">,</span> <span class="s">&quot;P&quot;</span><span class="p">,</span> <span class="s">&quot;J&quot;</span><span class="p">,</span> <span class="s">&quot;K&quot;</span><span class="p">,</span> <span class="s">&quot;Q&quot;</span><span class="p">,</span> <span class="s">&quot;M&quot;</span><span class="p">,</span> <span class="s">&quot;G&quot;</span><span class="p">,</span> <span class="s">&quot;O&quot;</span><span class="p">,</span> <span class="s">&quot;C&quot;</span><span class="p">,</span> <span class="s">&quot;U&quot;</span><span class="p">,</span> <span class="s">&quot;I&quot;</span><span class="p">,</span> <span class="s">&quot;V&quot;</span><span class="p">,</span> <span class="s">&quot;W&quot;</span><span class="p">,</span> <span class="s">&quot;X&quot;</span><span class="p">,</span> <span class="s">&quot;Z&quot;</span><span class="p">}</span>
+</span><span class='line'>    <span class="nx">idTableValue</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">15</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">27</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">33</span><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">for</span> <span class="nx">idx</span><span class="p">,</span> <span class="nx">c</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">idTableCh</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">if</span> <span class="nx">c</span> <span class="o">==</span> <span class="nb">string</span><span class="p">(</span><span class="nx">num</span><span class="p">[:</span><span class="mi">1</span><span class="p">])</span> <span class="p">{</span>
+</span><span class='line'>            <span class="nx">v</span> <span class="o">:=</span> <span class="nx">idTableValue</span><span class="p">[</span><span class="nx">idx</span><span class="p">]</span>
+</span><span class='line'>            <span class="nx">s</span> <span class="o">:=</span> <span class="p">(</span><span class="nx">v</span><span class="o">%</span><span class="mi">10</span><span class="p">)</span><span class="o">*</span><span class="mi">9</span> <span class="o">+</span> <span class="p">(</span><span class="nx">v</span> <span class="o">/</span> <span class="mi">10</span><span class="p">)</span>
+</span><span class='line'>            <span class="nx">sum</span> <span class="o">+=</span> <span class="nx">s</span>
+</span><span class='line'>            <span class="k">break</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">for</span> <span class="nx">idx</span><span class="p">,</span> <span class="nx">n</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">num</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">9</span><span class="p">]</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nx">i</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">strconv</span><span class="p">.</span><span class="nx">Atoi</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">n</span><span class="p">))</span>
+</span><span class='line'>        <span class="nx">sum</span> <span class="o">+=</span> <span class="nx">i</span> <span class="o">*</span> <span class="p">(</span><span class="mi">8</span> <span class="o">-</span> <span class="nx">idx</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="nx">i</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">strconv</span><span class="p">.</span><span class="nx">Atoi</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">num</span><span class="p">[</span><span class="mi">9</span><span class="p">:]))</span>
+</span><span class='line'>    <span class="nx">sum</span> <span class="o">+=</span> <span class="nx">i</span>
+</span><span class='line'>    <span class="k">if</span> <span class="nx">sum</span><span class="o">%</span><span class="mi">10</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="kc">true</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="k">return</span> <span class="kc">false</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">func</span> <span class="nx">checkCompanyCode</span><span class="p">(</span><span class="nx">num</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">bool</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">cc</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">}</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">sum</span> <span class="kt">int</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">for</span> <span class="nx">idx</span><span class="p">,</span> <span class="nx">e</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">num</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nx">s</span> <span class="o">:=</span> <span class="nb">int</span><span class="p">((</span><span class="nx">e</span> <span class="o">-</span> <span class="mi">48</span><span class="p">))</span> <span class="o">*</span> <span class="nx">cc</span><span class="p">[</span><span class="nx">idx</span><span class="p">]</span>
+</span><span class='line'>        <span class="nx">t</span> <span class="o">:=</span> <span class="nx">tzAdd</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
+</span><span class='line'>        <span class="nx">sum</span> <span class="o">+=</span> <span class="nx">t</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="k">if</span> <span class="nb">string</span><span class="p">(</span><span class="nx">num</span><span class="p">[</span><span class="mi">6</span><span class="p">])</span> <span class="o">==</span> <span class="s">&quot;7&quot;</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">if</span> <span class="p">(</span><span class="nx">sum</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">%</span><span class="mi">10</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
+</span><span class='line'>            <span class="k">return</span> <span class="kc">true</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="nx">sum</span><span class="p">)</span><span class="o">%</span><span class="mi">10</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="kc">true</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="k">return</span> <span class="kc">false</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[imageMagick]]></title>
+    <link href="https://icps0610.github.io/blog/2020/11/05/imagemagick/"/>
+    <updated>2020-11-05T15:28:16+08:00</updated>
+    <id>https://icps0610.github.io/blog/2020/11/05/imagemagick</id>
+    <content type="html"><![CDATA[<p><code>find /tmp/tmp/cc -name "*.JPG" -exec mogrify -format png {} \;</code></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Convert]]></title>
+    <link href="https://icps0610.github.io/blog/2020/10/01/convert/"/>
+    <updated>2020-10-01T17:03:54+08:00</updated>
+    <id>https://icps0610.github.io/blog/2020/10/01/convert</id>
+    <content type="html"><![CDATA[<p>convert [path] -trim +repage -quality 80 -resize &lsquo;800x600&rsquo; -gravity center -background transparent -extent 800x600 [path]</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Gdrive]]></title>
+    <link href="https://icps0610.github.io/blog/2020/09/30/gdrive/"/>
+    <updated>2020-09-30T12:24:48+08:00</updated>
+    <id>https://icps0610.github.io/blog/2020/09/30/gdrive</id>
+    <content type="html"><![CDATA[<p><code>https://github.com/prasmussen/gdrive</code></p>
+
+<blockquote><blockquote><p>ref <a href="https://atceiling.blogspot.com/2020/02/raspberry-pi-57google-drive.html">https://atceiling.blogspot.com/2020/02/raspberry-pi-57google-drive.html</a></p></blockquote></blockquote>
+
+<p><code>https://console.developers.google.com/</code></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>##handlers_drive.go
+</span><span class='line'>
+</span><span class='line'>const ClientId = "ClientId"
+</span><span class='line'>const ClientSecret = "ClientSecret"
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>go get github.com/prasmussen/gdrive</code>-
+<code>go build -ldflags '-w -s'</code>
+<code>sudo mv gdrive /usr/local/bin/gdrive</code>
+<code>sudo chmod a+x /usr/local/bin/gdrive</code></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[wsl_DISPLAY]]></title>
@@ -503,226 +668,6 @@
 </span><span class='line'> <span class="no">Next</span>
 </span><span class='line'><span class="no">End</span> <span class="no">Sub</span>
 </span></code></pre></td></tr></table></div></figure>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Post]]></title>
-    <link href="https://icps0610.github.io/blog/2019/12/17/post/"/>
-    <updated>2019-12-17T17:55:34+08:00</updated>
-    <id>https://icps0610.github.io/blog/2019/12/17/post</id>
-    <content type="html"><![CDATA[<blockquote><blockquote><p>ref <a href="https://ithelp.ithome.com.tw/articles/10159383">https://ithelp.ithome.com.tw/articles/10159383</a></p></blockquote></blockquote>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kd">func</span> <span class="nx">get</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>    <span class="nx">resp</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">Get</span><span class="p">(</span><span class="s">&quot;https://123/456.php?q=789&quot;</span><span class="p">)</span>
-</span><span class='line'>    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-</span><span class='line'>        <span class="c1">// handle error</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>    <span class="k">defer</span> <span class="nx">resp</span><span class="p">.</span><span class="nx">Body</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
-</span><span class='line'>    <span class="nx">body</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">ioutil</span><span class="p">.</span><span class="nx">ReadAll</span><span class="p">(</span><span class="nx">resp</span><span class="p">.</span><span class="nx">Body</span><span class="p">)</span>
-</span><span class='line'>    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-</span><span class='line'>        <span class="c1">// handle error</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>    <span class="nx">html</span> <span class="o">:=</span> <span class="nb">string</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span>
-</span><span class='line'>    <span class="nx">doc</span> <span class="o">:=</span> <span class="nx">soup</span><span class="p">.</span><span class="nx">HTMLParse</span><span class="p">(</span><span class="nx">html</span><span class="p">)</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">func</span> <span class="nx">post</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>    <span class="nx">resp</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">PostForm</span><span class="p">(</span><span class="s">&quot;https://123&quot;</span><span class="p">,</span> <span class="nx">url</span><span class="p">.</span><span class="nx">Values</span><span class="p">{</span><span class="s">&quot;SN&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nx">word</span><span class="p">}})</span>
-</span><span class='line'>    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-</span><span class='line'>        <span class="c1">// handle error</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>    <span class="nx">resp</span><span class="p">.</span><span class="nx">Header</span><span class="p">.</span><span class="nx">Set</span><span class="p">(</span><span class="s">&quot;Content-Type&quot;</span><span class="p">,</span> <span class="s">&quot;application/x-www-form-urlencoded;application/json; charset=utf-8&quot;</span><span class="p">)</span>
-</span><span class='line'>    <span class="k">defer</span> <span class="nx">resp</span><span class="p">.</span><span class="nx">Body</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
-</span><span class='line'>    <span class="nx">body</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">ioutil</span><span class="p">.</span><span class="nx">ReadAll</span><span class="p">(</span><span class="nx">resp</span><span class="p">.</span><span class="nx">Body</span><span class="p">)</span>
-</span><span class='line'>    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-</span><span class='line'>        <span class="c1">// handle error</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>    <span class="nx">html</span> <span class="o">:=</span> <span class="nb">string</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span>
-</span><span class='line'>    <span class="nx">doc</span> <span class="o">:=</span> <span class="nx">soup</span><span class="p">.</span><span class="nx">HTMLParse</span><span class="p">(</span><span class="nx">html</span><span class="p">)</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Kb_update]]></title>
-    <link href="https://icps0610.github.io/blog/2019/12/12/kb-update/"/>
-    <updated>2019-12-12T23:29:01+08:00</updated>
-    <id>https://icps0610.github.io/blog/2019/12/12/kb-update</id>
-    <content type="html"><![CDATA[<p><code>wmic qfe &gt; list</code>
-<code>diff -a list list2</code>
-<code>wusa /uninstall /kb:1234567 /quiet /norestar</code></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[secureRandom]]></title>
-    <link href="https://icps0610.github.io/blog/2019/10/25/securerandom/"/>
-    <updated>2019-10-25T02:01:38+08:00</updated>
-    <id>https://icps0610.github.io/blog/2019/10/25/securerandom</id>
-    <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kd">func</span> <span class="nx">chrTable</span><span class="p">()</span> <span class="kt">string</span> <span class="p">{</span>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">aZ</span> <span class="kt">string</span>
-</span><span class='line'>    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">65</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;=</span> <span class="mi">90</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
-</span><span class='line'>        <span class="nx">aZ</span> <span class="o">+=</span> <span class="nb">string</span><span class="p">(</span><span class="nb">rune</span><span class="p">(</span><span class="nx">i</span><span class="p">))</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">97</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;=</span> <span class="mi">122</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
-</span><span class='line'>        <span class="nx">aZ</span> <span class="o">+=</span> <span class="nb">string</span><span class="p">(</span><span class="nb">rune</span><span class="p">(</span><span class="nx">i</span><span class="p">))</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;=</span> <span class="mi">9</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
-</span><span class='line'>        <span class="nx">aZ</span> <span class="o">+=</span> <span class="nx">strconv</span><span class="p">.</span><span class="nx">Itoa</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>    <span class="k">return</span> <span class="nx">aZ</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">func</span> <span class="nx">secureRandom</span><span class="p">(</span><span class="nx">n</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">string</span> <span class="p">{</span>
-</span><span class='line'>    <span class="nx">rand</span><span class="p">.</span><span class="nx">Seed</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">().</span><span class="nx">UnixNano</span><span class="p">())</span>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">str</span> <span class="kt">string</span>
-</span><span class='line'>    <span class="nx">table</span> <span class="o">:=</span> <span class="nx">chrTable</span><span class="p">()</span>
-</span><span class='line'>    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">n</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
-</span><span class='line'>        <span class="nx">r</span> <span class="o">:=</span> <span class="nx">rand</span><span class="p">.</span><span class="nx">Intn</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nx">table</span><span class="p">))</span>
-</span><span class='line'>        <span class="nx">str</span> <span class="o">+=</span> <span class="nb">string</span><span class="p">(</span><span class="nx">table</span><span class="p">[</span><span class="nx">r</span><span class="p">])</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>    <span class="k">return</span> <span class="nx">str</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Gin]]></title>
-    <link href="https://icps0610.github.io/blog/2019/10/22/gin/"/>
-    <updated>2019-10-22T22:15:44+08:00</updated>
-    <id>https://icps0610.github.io/blog/2019/10/22/gin</id>
-    <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="nx">form</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">c</span><span class="p">.</span><span class="nx">MultipartForm</span><span class="p">()</span>
-</span><span class='line'><span class="nx">check</span> <span class="o">:=</span> <span class="nx">form</span><span class="p">.</span><span class="nx">Value</span><span class="p">[</span><span class="s">&quot;idx&quot;</span><span class="p">]</span>
-</span><span class='line'><span class="nx">files</span> <span class="o">:=</span> <span class="nx">form</span><span class="p">.</span><span class="nx">File</span><span class="p">[</span><span class="s">&quot;uploads&quot;</span><span class="p">]</span>
-</span></code></pre></td></tr></table></div></figure>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[getWeekNumber]]></title>
-    <link href="https://icps0610.github.io/blog/2019/08/06/getweeknumber/"/>
-    <updated>2019-08-06T00:49:19+08:00</updated>
-    <id>https://icps0610.github.io/blog/2019/08/06/getweeknumber</id>
-    <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kd">func</span> <span class="nx">leapYear</span><span class="p">(</span><span class="nx">y</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">bool</span> <span class="p">{</span>
-</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="nx">y</span><span class="o">%</span><span class="mi">4</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="nx">y</span><span class="o">%</span><span class="mi">100</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">||</span> <span class="p">(</span><span class="nx">y</span><span class="o">%</span><span class="mi">400</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="nx">y</span><span class="o">%</span><span class="mi">3200</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>        <span class="k">return</span> <span class="kc">true</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>    <span class="k">return</span> <span class="kc">false</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'><span class="kd">func</span> <span class="nx">getWeek</span><span class="p">(</span><span class="nx">y</span><span class="p">,</span> <span class="nx">m</span><span class="p">,</span> <span class="nx">d</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
-</span><span class='line'>    <span class="nx">monthTable</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">}</span>
-</span><span class='line'>    <span class="nx">centuryTable</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">}</span>
-</span><span class='line'>    <span class="nx">monthValue</span> <span class="o">:=</span> <span class="nx">monthTable</span><span class="p">[</span><span class="nx">m</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-</span><span class='line'>    <span class="nx">yearValue</span> <span class="o">:=</span> <span class="nx">y</span> <span class="o">%</span> <span class="mi">100</span>
-</span><span class='line'>    <span class="nx">yearOver</span> <span class="o">:=</span> <span class="nx">yearValue</span> <span class="o">/</span> <span class="mi">4</span>
-</span><span class='line'>    <span class="nx">centuryValue</span> <span class="o">:=</span> <span class="nx">centuryTable</span><span class="p">[(</span><span class="nx">y</span><span class="o">/</span><span class="mi">100</span><span class="p">)</span><span class="o">%</span><span class="mi">4</span><span class="p">]</span>
-</span><span class='line'>    <span class="nx">w</span> <span class="o">:=</span> <span class="nx">d</span> <span class="o">+</span> <span class="nx">monthValue</span> <span class="o">+</span> <span class="nx">yearValue</span> <span class="o">+</span> <span class="nx">yearOver</span> <span class="o">+</span> <span class="nx">centuryValue</span>
-</span><span class='line'>    <span class="k">if</span> <span class="nx">leapYear</span><span class="p">(</span><span class="nx">y</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nx">m</span> <span class="o">&lt;=</span> <span class="mi">2</span> <span class="p">{</span>
-</span><span class='line'>        <span class="nx">w</span> <span class="o">-=</span> <span class="mi">1</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>    <span class="k">return</span> <span class="nx">w</span> <span class="o">%</span> <span class="mi">7</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Irb_noprompt]]></title>
-    <link href="https://icps0610.github.io/blog/2019/07/17/irb-noprompt/"/>
-    <updated>2019-07-17T21:24:16+08:00</updated>
-    <id>https://icps0610.github.io/blog/2019/07/17/irb-noprompt</id>
-    <content type="html"><![CDATA[<h3>irb</h3>
-
-<p><code>'irb --noprompt</code></p>
-
-<h3>rails console</h3>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>~/.irbrc  
-</span><span class='line'>IRB.conf[:PROMPT_MODE] = :XMP   </span></code></pre></td></tr></table></div></figure>
 
 ]]></content>
   </entry>
