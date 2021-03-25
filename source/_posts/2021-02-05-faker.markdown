@@ -6,13 +6,13 @@ comments: true
 categories: go
 ---
 ``` go
-func checkIDCode(num string) bool {
+func checkIDCode(IDNum string) bool {
     var sum int
-    idTableCh := []string{"F", "B", "E", "A", "H", "D", "N", "T", "P", "J", "K", "Q", "M", "G", "O", "C", "U", "I", "V", "W", "X", "Z"}
+    idTableCh := strings.Split("FBEAHDNTPJKQMGOCUIVWXZ", "")
     idTableValue := []int{15, 11, 14, 10, 17, 13, 22, 27, 23, 18, 19, 24, 21, 16, 35, 12, 28, 34, 29, 32, 30, 33}
 
     for idx, c := range idTableCh {
-        if c == string(num[:1]) {
+        if c == string(IDNum[0]) {
             v := idTableValue[idx]
             s := (v%10)*9 + (v / 10)
             sum += s
@@ -20,16 +20,13 @@ func checkIDCode(num string) bool {
         }
     }
 
-    for idx, n := range num[1:9] {
+    for idx, n := range IDNum[1:9] {
         i, _ := strconv.Atoi(string(n))
         sum += i * (8 - idx)
     }
-    i, _ := strconv.Atoi(string(num[9:]))
+    i, _ := strconv.Atoi(string(IDNum[9]))
     sum += i
-    if sum%10 == 0 {
-        return true
-    }
-    return false
+    return (sum%10 == 0)
 }
 
 func checkCompanyCode(num string) bool {
@@ -38,17 +35,10 @@ func checkCompanyCode(num string) bool {
 
     for idx, e := range num {
         s := int((e - 48)) * cc[idx]
-        t := tzAdd(s)
+        t := s/10 + s%10
         sum += t
     }
-    if string(num[6]) == "7" {
-        if (sum-1)%10 == 0 {
-            return true
-        }
-    }
-    if (sum)%10 == 0 {
-        return true
-    }
-    return false
+    return (sum)%10 == 0 || (string(num[6]) == "7" && (sum+1)%10 == 0)
 }
+
 ```
