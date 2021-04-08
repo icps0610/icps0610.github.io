@@ -10,18 +10,17 @@ categories: golang
 ```
 "runtime"
 
-func printError(err error, es ...string) {
+func printError(err error, str ...string) {
     if err != nil {
         pc, _, _, _ := runtime.Caller(1)
-        fmt.Printf("----- ")
-        for _, e := range es {
-            fmt.Printf(e + " ")
-        }
-        fmt.Printf("\n")
         fmt.Println(runtime.FuncForPC(pc).Name())
         fmt.Println(err)
+        for _, s := range str {
+            fmt.Println(s)
+        }
     }
 }
+
 
 ```
 
