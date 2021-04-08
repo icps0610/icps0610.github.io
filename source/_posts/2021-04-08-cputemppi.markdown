@@ -6,12 +6,14 @@ comments: true
 categories: linux
 ---
 
-### pi
 
-### >> Ref https://www.raspberrypi.org/forums/viewtopic.php?t=121125
-###  https://github.com/raspberrypi/userland
 
-``` shell
+>> Ref https://github.com/raspberrypi/userland
+>> Ref https://www.raspberrypi.org/forums/viewtopic.php?t=121125
+     
+     
+
+``` 
 git clone https://github.com/raspberrypi/userland
 cd userland
 ./buildme
