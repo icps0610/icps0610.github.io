@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="https://icps0610.github.io/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2021-04-08T19:27:46+08:00</updated>
+  <updated>2021-04-08T19:29:38+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -18,7 +18,7 @@
     <link href="https://icps0610.github.io/blog/2021/04/08/cputemppi/"/>
     <updated>2021-04-08T19:15:11+08:00</updated>
     <id>https://icps0610.github.io/blog/2021/04/08/cputemppi</id>
-    <content type="html"><![CDATA[<blockquote><blockquote><p>Ref <a href="https://github.com/raspberrypi/userland">https://github.com/raspberrypi/userland</a>
+    <content type="html"><![CDATA[<blockquote><blockquote><p>Ref <a href="https://github.com/raspberrypi/userland">https://github.com/raspberrypi/userland</a><br/>
 Ref <a href="https://www.raspberrypi.org/forums/viewtopic.php?t=121125">https://www.raspberrypi.org/forums/viewtopic.php?t=121125</a></p></blockquote></blockquote>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
