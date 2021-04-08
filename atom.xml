@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="https://icps0610.github.io/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2021-04-01T16:58:41+08:00</updated>
+  <updated>2021-04-08T19:27:46+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,32 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[cpuTemp_pi]]></title>
+    <link href="https://icps0610.github.io/blog/2021/04/08/cputemppi/"/>
+    <updated>2021-04-08T19:15:11+08:00</updated>
+    <id>https://icps0610.github.io/blog/2021/04/08/cputemppi</id>
+    <content type="html"><![CDATA[<blockquote><blockquote><p>Ref <a href="https://github.com/raspberrypi/userland">https://github.com/raspberrypi/userland</a>
+Ref <a href="https://www.raspberrypi.org/forums/viewtopic.php?t=121125">https://www.raspberrypi.org/forums/viewtopic.php?t=121125</a></p></blockquote></blockquote>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git clone https://github.com/raspberrypi/userland
+</span><span class='line'>cd userland
+</span><span class='line'>./buildme
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>echo $((`cat /sys/class/thermal/thermal_zone0/temp`/1000))°C</span></code></pre></td></tr></table></div></figure>
+
+
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[HIDScript]]></title>
@@ -621,24 +647,6 @@
 </span><span class='line'>
 </span></code></pre></td></tr></table></div></figure>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Vpn]]></title>
-    <link href="https://icps0610.github.io/blog/2020/03/16/vpn/"/>
-    <updated>2020-03-16T15:22:14+08:00</updated>
-    <id>https://icps0610.github.io/blog/2020/03/16/vpn</id>
-    <content type="html"><![CDATA[<h5>win</h5>
-
-<p><code>rasdial [VPN] [USER] [PASSWD]</code><br/>
-<code>rasdial /disconnect</code></p>
-
-<h5>linux</h5>
-
-<p><code>/etc/NetworkManager/system-connections/[VPN]</code><br/>
-<code>nmcli con up id [VPN]</code><br/>
-<code>nmcli con down id [VPN]</code></p>
 ]]></content>
   </entry>
   

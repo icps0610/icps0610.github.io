@@ -22,8 +22,7 @@
 11
 12
 13
-14
-"runtime" func printError(err error, es ...string) { if err != nil { pc, _, _, _ := runtime.Caller(1) fmt &hellip;">
+"runtime" func printError(err error, str ...string) { if err != nil { pc, _, _, _ := runtime.Caller(1) fmt. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -115,21 +114,19 @@
 <span class='line-number'>11</span>
 <span class='line-number'>12</span>
 <span class='line-number'>13</span>
-<span class='line-number'>14</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>"runtime"
 </span><span class='line'>
-</span><span class='line'>func printError(err error, es ...string) {
+</span><span class='line'>func printError(err error, str ...string) {
 </span><span class='line'>    if err != nil {
 </span><span class='line'>        pc, _, _, _ := runtime.Caller(1)
-</span><span class='line'>        fmt.Printf("----- ")
-</span><span class='line'>        for _, e := range es {
-</span><span class='line'>            fmt.Printf(e + " ")
-</span><span class='line'>        }
-</span><span class='line'>        fmt.Printf("\n")
 </span><span class='line'>        fmt.Println(runtime.FuncForPC(pc).Name())
 </span><span class='line'>        fmt.Println(err)
+</span><span class='line'>        for _, s := range str {
+</span><span class='line'>            fmt.Println(s)
+</span><span class='line'>        }
 </span><span class='line'>    }
 </span><span class='line'>}
+</span><span class='line'>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -2133,7 +2130,7 @@
 <li class='category'><a href='/blog/categories/go/'>go (1)</a></li>
 <li class='category'><a href='/blog/categories/golang/'>golang (7)</a></li>
 <li class='category'><a href='/blog/categories/juniper/'>juniper (1)</a></li>
-<li class='category'><a href='/blog/categories/linux/'>linux (33)</a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (34)</a></li>
 <li class='category'><a href='/blog/categories/powershell/'>powershell (1)</a></li>
 <li class='category'><a href='/blog/categories/python/'>python (10)</a></li>
 <li class='category'><a href='/blog/categories/ror/'>ror (35)</a></li>
@@ -2146,6 +2143,10 @@
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2021/04/08/cputemppi/">cpuTemp_pi</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2021/04/01/hidscript/">HIDScript</a>
@@ -2161,10 +2162,6 @@
     
       <li class="post">
         <a href="/blog/2021/02/05/faker/">Faker</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2020/11/05/imagemagick/">imageMagick</a>
       </li>
     
   </ul>
