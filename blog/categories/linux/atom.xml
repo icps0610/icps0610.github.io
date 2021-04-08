@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | icps]]></title>
   <link href="https://icps0610.github.io/blog/categories/linux/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2021-04-01T16:58:41+08:00</updated>
+  <updated>2021-04-08T19:17:39+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,25 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[cpuTempPi]]></title>
+    <link href="https://icps0610.github.io/blog/2021/04/08/cputemppi/"/>
+    <updated>2021-04-08T19:15:11+08:00</updated>
+    <id>https://icps0610.github.io/blog/2021/04/08/cputemppi</id>
+    <content type="html"><![CDATA[<h3>>> Ref <a href="https://www.raspberrypi.org/forums/viewtopic.php?t=121125">https://www.raspberrypi.org/forums/viewtopic.php?t=121125</a></h3>
+
+<h3><a href="https://github.com/raspberrypi/userland">https://github.com/raspberrypi/userland</a></h3>
+
+<pre><code class="shell">git clone https://github.com/raspberrypi/userland
+cd userland
+./buildme
+
+
+echo $((`cat /sys/class/thermal/thermal_zone0/temp`/1000))°C
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Convert]]></title>
@@ -60,28 +79,6 @@ apt purge -y thunderbird  gnome-keyring empathy aisleriot  landscape-client-ui-i
     <updated>2020-03-19T16:05:53+08:00</updated>
     <id>https://icps0610.github.io/blog/2020/03/19/upgrade-excludet-specific-package</id>
     <content type="html"><![CDATA[<p><code>apt-mark hold package-name</code></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Wsl]]></title>
-    <link href="https://icps0610.github.io/blog/2019/05/07/wsl/"/>
-    <updated>2019-05-07T14:13:54+08:00</updated>
-    <id>https://icps0610.github.io/blog/2019/05/07/wsl</id>
-    <content type="html"><![CDATA[<pre><code class="">
-#powershell run
-Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
-
-# ms-windows-store://search/?query=WSL
-
-
-# x11
-apt-get install x11-apps
-echo "export DISPLAY=127.0.0.1:0" &gt;&gt; ~/.bashrc
-
-# terminal
-https://goreliu.github.io/wsl-terminal/
-</code></pre>
 ]]></content>
   </entry>
   
