@@ -20,7 +20,7 @@
 9
 10
 11
-12 func generatorPassword(n int) string { rand.Seed(time.Now().UnixNano()) table := " &hellip;">
+func generatorPassword(n int) string { rand.Seed(time.Now().UnixNano()) table := &quot; &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -100,7 +100,7 @@
   </header>
 
 
-  <div class="entry-content"><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+  <div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -111,19 +111,18 @@
 <span class='line-number'>9</span>
 <span class='line-number'>10</span>
 <span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>
-</span><span class='line'>func generatorPassword(n int) string {
-</span><span class='line'>    rand.Seed(time.Now().UnixNano())
-</span><span class='line'>    table := "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
-</span><span class='line'>    var str string
-</span><span class='line'>    table := chrTable()
-</span><span class='line'>    for i := 0; i &lt; n; i++ {
-</span><span class='line'>        r := rand.Intn(len(table))
-</span><span class='line'>        str += string(table[r])
-</span><span class='line'>    }
-</span><span class='line'>    return str
-</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kd">func</span> <span class="nx">generatorPassword</span><span class="p">(</span><span class="nx">n</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">string</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">rand</span><span class="p">.</span><span class="nx">Seed</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">().</span><span class="nx">UnixNano</span><span class="p">())</span>
+</span><span class='line'>    <span class="nx">table</span> <span class="o">:=</span> <span class="s">&quot;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789&quot;</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">str</span> <span class="kt">string</span>
+</span><span class='line'>    <span class="nx">table</span> <span class="o">:=</span> <span class="nx">chrTable</span><span class="p">()</span>
+</span><span class='line'>    <span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nx">n</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nx">r</span> <span class="o">:=</span> <span class="nx">rand</span><span class="p">.</span><span class="nx">Intn</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nx">table</span><span class="p">))</span>
+</span><span class='line'>        <span class="nx">str</span> <span class="o">+=</span> <span class="nb">string</span><span class="p">(</span><span class="nx">table</span><span class="p">[</span><span class="nx">r</span><span class="p">])</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="k">return</span> <span class="nx">str</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 </div>
   

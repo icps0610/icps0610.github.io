@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Golang | icps]]></title>
   <link href="https://icps0610.github.io/blog/categories/golang/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2021-04-24T14:39:07+08:00</updated>
+  <updated>2021-04-24T14:43:20+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -18,7 +18,7 @@
     <link href="https://icps0610.github.io/blog/2021/04/24/generatorpassword/"/>
     <updated>2021-04-24T13:31:47+08:00</updated>
     <id>https://icps0610.github.io/blog/2021/04/24/generatorpassword</id>
-    <content type="html"><![CDATA[<pre><code>
+    <content type="html"><![CDATA[<pre><code class="go">
 func generatorPassword(n int) string {
     rand.Seed(time.Now().UnixNano())
     table := "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
