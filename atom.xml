@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="https://icps0610.github.io/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2021-04-08T19:29:38+08:00</updated>
+  <updated>2021-04-24T14:39:07+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,39 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[GeneratorPassword]]></title>
+    <link href="https://icps0610.github.io/blog/2021/04/24/generatorpassword/"/>
+    <updated>2021-04-24T13:31:47+08:00</updated>
+    <id>https://icps0610.github.io/blog/2021/04/24/generatorpassword</id>
+    <content type="html"><![CDATA[<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>
+</span><span class='line'>func generatorPassword(n int) string {
+</span><span class='line'>    rand.Seed(time.Now().UnixNano())
+</span><span class='line'>    table := "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+</span><span class='line'>    var str string
+</span><span class='line'>    table := chrTable()
+</span><span class='line'>    for i := 0; i &lt; n; i++ {
+</span><span class='line'>        r := rand.Intn(len(table))
+</span><span class='line'>        str += string(table[r])
+</span><span class='line'>    }
+</span><span class='line'>    return str
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[cpuTemp_pi]]></title>
@@ -109,15 +142,6 @@ Ref <a href="https://www.raspberrypi.org/forums/viewtopic.php?t=121125">https://
     <updated>2021-03-25T19:46:15+08:00</updated>
     <id>https://icps0610.github.io/blog/2021/03/25/cmd-beep-sound</id>
     <content type="html"><![CDATA[<p><code>Set-PSReadlineOption -BellStyle Visual</code></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[displayImageTerminal]]></title>
-    <link href="https://icps0610.github.io/blog/2021/02/10/displayimageterminal/"/>
-    <updated>2021-02-10T10:19:56+08:00</updated>
-    <id>https://icps0610.github.io/blog/2021/02/10/displayimageterminal</id>
-    <content type="html"><![CDATA[<pre><code class="go"></code></pre>
 ]]></content>
   </entry>
   

@@ -9,14 +9,18 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="Ref https://github.com/raspberrypi/userland
-Ref https://www.raspberrypi.org/forums/viewtopic.php?t=121125 1
+  <meta name="description" content="1
 2
 3
 4
 5
 6
-git clone https://github.com/ &hellip;">
+7
+8
+9
+10
+11
+12 func generatorPassword(n int) string { rand.Seed(time.Now().UnixNano()) table := " &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -75,6 +79,59 @@ git clone https://github.com/ &hellip;">
       <div class="blog-index">
   
 
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2021/04/24/generatorpassword/">GeneratorPassword</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2021-04-24T13:31:47+08:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>24</span><span class='date-suffix'>th</span>, <span class='date-year'>2021</span></span> <span class='time'>1:31 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>
+</span><span class='line'>func generatorPassword(n int) string {
+</span><span class='line'>    rand.Seed(time.Now().UnixNano())
+</span><span class='line'>    table := "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+</span><span class='line'>    var str string
+</span><span class='line'>    table := chrTable()
+</span><span class='line'>    for i := 0; i &lt; n; i++ {
+</span><span class='line'>        r := rand.Intn(len(table))
+</span><span class='line'>        str += string(table[r])
+</span><span class='line'>    }
+</span><span class='line'>    return str
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
+  
   
     <article>
       
@@ -239,35 +296,6 @@ Ref <a href="https://www.raspberrypi.org/forums/viewtopic.php?t=121125">https://
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2021/02/10/displayimageterminal/">displayImageTerminal</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2021-02-10T10:19:56+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2021</span></span> <span class='time'>10:19 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><pre><code class="go"></code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
       <h1 class="entry-title"><a href="/blog/2021/02/05/faker/">Faker</a></h1>
     
     
@@ -377,7 +405,8 @@ Ref <a href="https://www.raspberrypi.org/forums/viewtopic.php?t=121125">https://
 <li class='category'><a href='/blog/categories/cmd/'>cmd (2)</a></li>
 <li class='category'><a href='/blog/categories/excel/'>excel (2)</a></li>
 <li class='category'><a href='/blog/categories/gdrive/'>gdrive (1)</a></li>
-<li class='category'><a href='/blog/categories/golang/'>golang (8)</a></li>
+<li class='category'><a href='/blog/categories/go/'>go (1)</a></li>
+<li class='category'><a href='/blog/categories/golang/'>golang (6)</a></li>
 <li class='category'><a href='/blog/categories/juniper/'>juniper (1)</a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (34)</a></li>
 <li class='category'><a href='/blog/categories/powershell/'>powershell (1)</a></li>
@@ -394,6 +423,10 @@ Ref <a href="https://www.raspberrypi.org/forums/viewtopic.php?t=121125">https://
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2021/04/24/generatorpassword/">GeneratorPassword</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2021/04/08/cputemppi/">cpuTemp_pi</a>
       </li>
     
@@ -403,10 +436,6 @@ Ref <a href="https://www.raspberrypi.org/forums/viewtopic.php?t=121125">https://
     
       <li class="post">
         <a href="/blog/2021/03/25/cmd-beep-sound/">Cmd_beep_sound</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2021/02/10/displayimageterminal/">displayImageTerminal</a>
       </li>
     
       <li class="post">

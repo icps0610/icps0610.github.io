@@ -21,7 +21,6 @@
 10
 11
 12
-13
 "runtime" func printError(err error, str ...string) { if err != nil { pc, _, _, _ := runtime.Caller(1) fmt. &hellip;">
   
 
@@ -113,7 +112,6 @@
 <span class='line-number'>10</span>
 <span class='line-number'>11</span>
 <span class='line-number'>12</span>
-<span class='line-number'>13</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>"runtime"
 </span><span class='line'>
 </span><span class='line'>func printError(err error, str ...string) {
@@ -126,7 +124,6 @@
 </span><span class='line'>        }
 </span><span class='line'>    }
 </span><span class='line'>}
-</span><span class='line'>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -142,7 +139,7 @@
 
 <h6>convert</h6>
 
-<p><code>https://mholt.github.io/curl-to-go/</code><br/>
+<p><code>https://mholt.github.io/curl-to-go/</code> <br/>
 <code>https://mholt.github.io/json-to-go/</code>
 <code>https://github.com/Terry-Mao/paint</code></p>
 
@@ -1152,6 +1149,7 @@
 <span class='line-number'>21</span>
 <span class='line-number'>22</span>
 <span class='line-number'>23</span>
+<span class='line-number'>24</span>
 </pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kd">func</span> <span class="nx">regexMatch</span><span class="p">(</span><span class="nx">str</span><span class="p">,</span> <span class="nx">keyword</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">bool</span> <span class="p">{</span>
 </span><span class='line'>    <span class="nx">match</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">regexp</span><span class="p">.</span><span class="nx">MatchString</span><span class="p">(</span><span class="nx">keyword</span><span class="p">,</span> <span class="nx">str</span><span class="p">)</span>
 </span><span class='line'>    <span class="k">return</span> <span class="nx">match</span>
@@ -1162,6 +1160,7 @@
 </span><span class='line'>    <span class="kd">var</span> <span class="nx">txts</span> <span class="p">[]</span><span class="kt">string</span>
 </span><span class='line'>    <span class="nx">re</span> <span class="o">:=</span> <span class="nx">regexp</span><span class="p">.</span><span class="nx">MustCompile</span><span class="p">(</span><span class="nx">keyword</span><span class="p">)</span>
 </span><span class='line'>    <span class="nx">match</span> <span class="o">:=</span> <span class="nx">re</span><span class="p">.</span><span class="nx">FindStringSubmatch</span><span class="p">(</span><span class="nx">str</span><span class="p">)</span>
+</span><span class='line'>    <span class="c1">//.FindAllStringSubmatch</span>
 </span><span class='line'>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">match</span><span class="p">)</span>
 </span><span class='line'>    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nx">match</span><span class="p">)</span> <span class="p">&gt;</span> <span class="mi">0</span> <span class="p">{</span>
 </span><span class='line'>        <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">i</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">is</span> <span class="p">{</span>
@@ -2090,7 +2089,7 @@
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/golang/'>golang</a>
+    <a class='category' href='/blog/categories/go/'>go</a>
   
 </span>
 
@@ -2127,7 +2126,8 @@
 <li class='category'><a href='/blog/categories/cmd/'>cmd (2)</a></li>
 <li class='category'><a href='/blog/categories/excel/'>excel (2)</a></li>
 <li class='category'><a href='/blog/categories/gdrive/'>gdrive (1)</a></li>
-<li class='category'><a href='/blog/categories/golang/'>golang (8)</a></li>
+<li class='category'><a href='/blog/categories/go/'>go (1)</a></li>
+<li class='category'><a href='/blog/categories/golang/'>golang (6)</a></li>
 <li class='category'><a href='/blog/categories/juniper/'>juniper (1)</a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (34)</a></li>
 <li class='category'><a href='/blog/categories/powershell/'>powershell (1)</a></li>
@@ -2144,6 +2144,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2021/04/24/generatorpassword/">GeneratorPassword</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2021/04/08/cputemppi/">cpuTemp_pi</a>
       </li>
     
@@ -2153,10 +2157,6 @@
     
       <li class="post">
         <a href="/blog/2021/03/25/cmd-beep-sound/">Cmd_beep_sound</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2021/02/10/displayimageterminal/">displayImageTerminal</a>
       </li>
     
       <li class="post">

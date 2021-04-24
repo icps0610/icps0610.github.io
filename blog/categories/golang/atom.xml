@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Golang | icps]]></title>
   <link href="https://icps0610.github.io/blog/categories/golang/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2021-04-08T19:29:38+08:00</updated>
+  <updated>2021-04-24T14:39:07+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -14,11 +14,23 @@
 
   
   <entry>
-    <title type="html"><![CDATA[displayImageTerminal]]></title>
-    <link href="https://icps0610.github.io/blog/2021/02/10/displayimageterminal/"/>
-    <updated>2021-02-10T10:19:56+08:00</updated>
-    <id>https://icps0610.github.io/blog/2021/02/10/displayimageterminal</id>
-    <content type="html"><![CDATA[<pre><code class="go"></code></pre>
+    <title type="html"><![CDATA[GeneratorPassword]]></title>
+    <link href="https://icps0610.github.io/blog/2021/04/24/generatorpassword/"/>
+    <updated>2021-04-24T13:31:47+08:00</updated>
+    <id>https://icps0610.github.io/blog/2021/04/24/generatorpassword</id>
+    <content type="html"><![CDATA[<pre><code>
+func generatorPassword(n int) string {
+    rand.Seed(time.Now().UnixNano())
+    table := "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+    var str string
+    table := chrTable()
+    for i := 0; i &lt; n; i++ {
+        r := rand.Intn(len(table))
+        str += string(table[r])
+    }
+    return str
+}
+</code></pre>
 ]]></content>
   </entry>
   
@@ -105,39 +117,6 @@ func post() {
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[secureRandom]]></title>
-    <link href="https://icps0610.github.io/blog/2019/10/25/securerandom/"/>
-    <updated>2019-10-25T02:01:38+08:00</updated>
-    <id>https://icps0610.github.io/blog/2019/10/25/securerandom</id>
-    <content type="html"><![CDATA[<pre><code class="go">func chrTable() string {
-    var aZ string
-    for i := 65; i &lt;= 90; i++ {
-        aZ += string(rune(i))
-    }
-    for i := 97; i &lt;= 122; i++ {
-        aZ += string(rune(i))
-    }
-    for i := 0; i &lt;= 9; i++ {
-        aZ += strconv.Itoa(i)
-    }
-    return aZ
-}
-
-func secureRandom(n int) string {
-    rand.Seed(time.Now().UnixNano())
-    var str string
-    table := chrTable()
-    for i := 0; i &lt; n; i++ {
-        r := rand.Intn(len(table))
-        str += string(table[r])
-    }
-    return str
-}
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
     <title type="html"><![CDATA[Gin]]></title>
     <link href="https://icps0610.github.io/blog/2019/10/22/gin/"/>
     <updated>2019-10-22T22:15:44+08:00</updated>
@@ -145,6 +124,34 @@ func secureRandom(n int) string {
     <content type="html"><![CDATA[<pre><code class="go">form, _ := c.MultipartForm()
 check := form.Value["idx"]
 files := form.File["uploads"]
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[getWeekNumber]]></title>
+    <link href="https://icps0610.github.io/blog/2019/08/06/getweeknumber/"/>
+    <updated>2019-08-06T00:49:19+08:00</updated>
+    <id>https://icps0610.github.io/blog/2019/08/06/getweeknumber</id>
+    <content type="html"><![CDATA[<pre><code class="go">func leapYear(y int) bool {
+    if (y%4 == 0 &amp;&amp; y%100 != 0) || (y%400 == 0 &amp;&amp; y%3200 != 0) {
+        return true
+    }
+    return false
+}
+func getWeek(y, m, d int) int {
+    monthTable := []int{6, 2, 2, 5, 0, 3, 5, 1, 4, 6, 2, 4}
+    centuryTable := []int{0, 5, 3, 1}
+    monthValue := monthTable[m-1]
+    yearValue := y % 100
+    yearOver := yearValue / 4
+    centuryValue := centuryTable[(y/100)%4]
+    w := d + monthValue + yearValue + yearOver + centuryValue
+    if leapYear(y) &amp;&amp; m &lt;= 2 {
+        w -= 1
+    }
+    return w % 7
+}
 </code></pre>
 ]]></content>
   </entry>
