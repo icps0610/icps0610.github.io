@@ -5,7 +5,7 @@ date: 2021-04-24 13:31:47 +0800
 comments: true
 categories: golang
 ---
-```
+``` go
 
 func generatorPassword(n int) string {
     rand.Seed(time.Now().UnixNano())
