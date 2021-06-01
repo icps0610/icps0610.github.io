@@ -23,7 +23,7 @@ sleep(delay)
 //文字
 page.AllByClass("quantumWizTextinputPaperinputInput").At(2).Fill(earTemp)
 sleep(delay)
-//選單
+//選擇
 page.AllByClass("appsMaterialWizToggleRadiogroupOffRadio").At(2).Click()
 sleep(delay)
 //送出
