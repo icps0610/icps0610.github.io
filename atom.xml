@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="https://icps0610.github.io/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2021-06-01T14:03:44+08:00</updated>
+  <updated>2021-06-01T14:05:25+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -14,10 +14,10 @@
 
   
   <entry>
-    <title type="html"><![CDATA[googleForm]]></title>
-    <link href="https://icps0610.github.io/blog/2021/06/01/googleform/"/>
+    <title type="html"><![CDATA[googleForms]]></title>
+    <link href="https://icps0610.github.io/blog/2021/06/01/googleforms/"/>
     <updated>2021-06-01T13:52:18+08:00</updated>
-    <id>https://icps0610.github.io/blog/2021/06/01/googleform</id>
+    <id>https://icps0610.github.io/blog/2021/06/01/googleforms</id>
     <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
