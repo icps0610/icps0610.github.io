@@ -17,6 +17,16 @@ func main() {
     delay := 100
 
     list = page.AllByClass("freebirdFormviewerViewNumberedItemContainer")
+
+    fillAnswer("select", "業務支援部")
+    
+    radios := strings.Split("211110021111", "")
+    for _, radio := range radios {
+        fillAnswer("radio", radio)
+    }
+
+    page.AllByClass("appsMaterialWizButtonPaperbuttonLabel").At(0).Click()
+
 }
 
 func fillAnswer(cate, ans string) {
