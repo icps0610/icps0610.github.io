@@ -31,8 +31,13 @@
 20
 21
 22
-//&quot;github.com/sclevine/agouti&quot; page, driver := openBrowser(600, 700)
-defer driver. &hellip;">
+23
+24
+25
+26
+27
+28
+//&quot;github.com/sclevine/agouti&quot; func main() { page, driver := &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -131,28 +136,40 @@ defer driver. &hellip;">
 <span class='line-number'>20</span>
 <span class='line-number'>21</span>
 <span class='line-number'>22</span>
-</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="c1">//&quot;github.com/sclevine/agouti&quot;  </span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="c1">//&quot;github.com/sclevine/agouti&quot; </span>
 </span><span class='line'>
-</span><span class='line'><span class="nx">page</span><span class="p">,</span> <span class="nx">driver</span> <span class="o">:=</span> <span class="nx">openBrowser</span><span class="p">(</span><span class="mi">600</span><span class="p">,</span> <span class="mi">700</span><span class="p">)</span>
-</span><span class='line'><span class="k">defer</span> <span class="nx">driver</span><span class="p">.</span><span class="nx">Stop</span><span class="p">()</span>
-</span><span class='line'><span class="nx">page</span><span class="p">.</span><span class="nx">Navigate</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span>
-</span><span class='line'><span class="nx">sleep</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
-</span><span class='line'><span class="nx">delay</span> <span class="o">:=</span> <span class="mi">100</span>
+</span><span class='line'><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">page</span><span class="p">,</span> <span class="nx">driver</span> <span class="o">:=</span> <span class="nx">openBrowser</span><span class="p">(</span><span class="mi">600</span><span class="p">,</span> <span class="mi">700</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">defer</span> <span class="nx">driver</span><span class="p">.</span><span class="nx">Stop</span><span class="p">()</span>
+</span><span class='line'>    <span class="nx">page</span><span class="p">.</span><span class="nx">Navigate</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span>
+</span><span class='line'>    <span class="nx">sleep</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+</span><span class='line'>    <span class="nx">delay</span> <span class="o">:=</span> <span class="mi">100</span>
 </span><span class='line'>
-</span><span class='line'><span class="c1">//日期</span>
-</span><span class='line'><span class="nx">page</span><span class="p">.</span><span class="nx">AllByClass</span><span class="p">(</span><span class="s">&quot;quantumWizTextinputPaperinputInput&quot;</span><span class="p">).</span><span class="nx">At</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="nx">Fill</span><span class="p">(</span><span class="nx">getToday</span><span class="p">())</span>
-</span><span class='line'><span class="nx">sleep</span><span class="p">(</span><span class="nx">delay</span><span class="p">)</span>
-</span><span class='line'><span class="c1">//下拉式選單</span>
-</span><span class='line'><span class="nx">page</span><span class="p">.</span><span class="nx">AllByClass</span><span class="p">(</span><span class="s">&quot;quantumWizMenuPaperselectEl&quot;</span><span class="p">).</span><span class="nx">At</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="nx">AllByClass</span><span class="p">(</span><span class="s">&quot;quantumWizMenuPaperselectOption&quot;</span><span class="p">).</span><span class="nx">At</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="nx">Fill</span><span class="p">(</span><span class="s">&quot;業務支援部&quot;</span><span class="p">)</span>
-</span><span class='line'><span class="nx">sleep</span><span class="p">(</span><span class="nx">delay</span><span class="p">)</span>
-</span><span class='line'><span class="c1">//文字</span>
-</span><span class='line'><span class="nx">page</span><span class="p">.</span><span class="nx">AllByClass</span><span class="p">(</span><span class="s">&quot;quantumWizTextinputPaperinputInput&quot;</span><span class="p">).</span><span class="nx">At</span><span class="p">(</span><span class="mi">2</span><span class="p">).</span><span class="nx">Fill</span><span class="p">(</span><span class="nx">earTemp</span><span class="p">)</span>
-</span><span class='line'><span class="nx">sleep</span><span class="p">(</span><span class="nx">delay</span><span class="p">)</span>
-</span><span class='line'><span class="c1">//選擇</span>
-</span><span class='line'><span class="nx">page</span><span class="p">.</span><span class="nx">AllByClass</span><span class="p">(</span><span class="s">&quot;appsMaterialWizToggleRadiogroupOffRadio&quot;</span><span class="p">).</span><span class="nx">At</span><span class="p">(</span><span class="mi">2</span><span class="p">).</span><span class="nx">Click</span><span class="p">()</span>
-</span><span class='line'><span class="nx">sleep</span><span class="p">(</span><span class="nx">delay</span><span class="p">)</span>
-</span><span class='line'><span class="c1">//送出</span>
-</span><span class='line'><span class="nx">page</span><span class="p">.</span><span class="nx">AllByClass</span><span class="p">(</span><span class="s">&quot;appsMaterialWizButtonPaperbuttonLabel&quot;</span><span class="p">).</span><span class="nx">At</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="nx">Click</span><span class="p">()</span>
+</span><span class='line'>    <span class="nx">list</span> <span class="p">=</span> <span class="nx">page</span><span class="p">.</span><span class="nx">AllByClass</span><span class="p">(</span><span class="s">&quot;freebirdFormviewerViewNumberedItemContainer&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">func</span> <span class="nx">fillAnswer</span><span class="p">(</span><span class="nx">cate</span><span class="p">,</span> <span class="nx">ans</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">switch</span> <span class="nx">cate</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">case</span> <span class="s">&quot;text&quot;</span><span class="p">:</span>
+</span><span class='line'>        <span class="c1">//文字</span>
+</span><span class='line'>        <span class="nx">list</span><span class="p">.</span><span class="nx">At</span><span class="p">(</span><span class="nx">idx</span><span class="p">).</span><span class="nx">FirstByClass</span><span class="p">(</span><span class="s">&quot;quantumWizTextinputPaperinputInput&quot;</span><span class="p">).</span><span class="nx">Fill</span><span class="p">(</span><span class="nx">ans</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">case</span> <span class="s">&quot;select&quot;</span><span class="p">:</span>
+</span><span class='line'>        <span class="c1">//下拉選單</span>
+</span><span class='line'>        <span class="nx">list</span><span class="p">.</span><span class="nx">At</span><span class="p">(</span><span class="nx">idx</span><span class="p">).</span><span class="nx">FirstByClass</span><span class="p">(</span><span class="s">&quot;quantumWizMenuPaperselectOption&quot;</span><span class="p">).</span><span class="nx">Fill</span><span class="p">(</span><span class="nx">ans</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">case</span> <span class="s">&quot;radio&quot;</span><span class="p">:</span>
+</span><span class='line'>        <span class="c1">//選擇</span>
+</span><span class='line'>        <span class="nx">i</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">strconv</span><span class="p">.</span><span class="nx">Atoi</span><span class="p">(</span><span class="nx">ans</span><span class="p">)</span>
+</span><span class='line'>        <span class="nx">list</span><span class="p">.</span><span class="nx">At</span><span class="p">(</span><span class="nx">idx</span><span class="p">).</span><span class="nx">AllByClass</span><span class="p">(</span><span class="s">&quot;appsMaterialWizToggleRadiogroupOffRadio&quot;</span><span class="p">).</span><span class="nx">At</span><span class="p">(</span><span class="nx">i</span><span class="p">).</span><span class="nx">Click</span><span class="p">()</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="nx">idx</span> <span class="o">+=</span> <span class="mi">1</span>
+</span><span class='line'>    <span class="nx">sleep</span><span class="p">(</span><span class="nx">delay</span><span class="p">)</span>
+</span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
