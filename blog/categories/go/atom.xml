@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Go | icps]]></title>
   <link href="https://icps0610.github.io/blog/categories/go/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2021-04-24T14:43:20+08:00</updated>
+  <updated>2021-06-01T13:55:39+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -983,7 +983,22 @@ func getDoc(url string) soup.Root {
     resp := string(body)
     return soup.HTMLParse(resp)
 }
+/*func getDoc(url string) soup.Root {
+    tr := &amp;http.Transport{TLSClientConfig: &amp;tls.Config{InsecureSkipVerify: true}}
+    client := &amp;http.Client{
+        Timeout:   15 * time.Second,
+        Transport: tr,
+    }
+    req, err := http.NewRequest("GET", url, nil)
+    req.Header.Set("User-Agent", "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0")
+    printError(err)
+    resp, err := client.Do(req)
+    printError(err)
 
+    body, err := ioutil.ReadAll(resp.Body)
+    printError(err)
+    return soup.HTMLParse(string(body))
+}*/
 "github.com/sclevine/agouti"
 
 func openBrowser() (*agouti.Page, *agouti.WebDriver) {

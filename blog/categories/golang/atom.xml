@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Golang | icps]]></title>
   <link href="https://icps0610.github.io/blog/categories/golang/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2021-04-24T14:43:20+08:00</updated>
+  <updated>2021-06-01T13:55:39+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,37 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[googleForm]]></title>
+    <link href="https://icps0610.github.io/blog/2021/06/01/googleform/"/>
+    <updated>2021-06-01T13:52:18+08:00</updated>
+    <id>https://icps0610.github.io/blog/2021/06/01/googleform</id>
+    <content type="html"><![CDATA[<pre><code class="golang">//"github.com/sclevine/agouti"
+
+page, driver := openBrowser(600, 700)
+defer driver.Stop()
+page.Navigate(url)
+sleep(1000)
+delay := 100
+
+//日期
+page.AllByClass("quantumWizTextinputPaperinputInput").At(0).Fill(getToday())
+sleep(delay)
+//下拉式選單
+page.AllByClass("quantumWizMenuPaperselectEl").At(0).AllByClass("quantumWizMenuPaperselectOption").At(0).Fill("業務支援部")
+sleep(delay)
+//文字
+page.AllByClass("quantumWizTextinputPaperinputInput").At(2).Fill(earTemp)
+sleep(delay)
+//選擇
+page.AllByClass("appsMaterialWizToggleRadiogroupOffRadio").At(2).Click()
+sleep(delay)
+//送出
+page.AllByClass("appsMaterialWizButtonPaperbuttonLabel").At(0).Click()
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[GeneratorPassword]]></title>
@@ -124,34 +155,6 @@ func post() {
     <content type="html"><![CDATA[<pre><code class="go">form, _ := c.MultipartForm()
 check := form.Value["idx"]
 files := form.File["uploads"]
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[getWeekNumber]]></title>
-    <link href="https://icps0610.github.io/blog/2019/08/06/getweeknumber/"/>
-    <updated>2019-08-06T00:49:19+08:00</updated>
-    <id>https://icps0610.github.io/blog/2019/08/06/getweeknumber</id>
-    <content type="html"><![CDATA[<pre><code class="go">func leapYear(y int) bool {
-    if (y%4 == 0 &amp;&amp; y%100 != 0) || (y%400 == 0 &amp;&amp; y%3200 != 0) {
-        return true
-    }
-    return false
-}
-func getWeek(y, m, d int) int {
-    monthTable := []int{6, 2, 2, 5, 0, 3, 5, 1, 4, 6, 2, 4}
-    centuryTable := []int{0, 5, 3, 1}
-    monthValue := monthTable[m-1]
-    yearValue := y % 100
-    yearOver := yearValue / 4
-    centuryValue := centuryTable[(y/100)%4]
-    w := d + monthValue + yearValue + yearOver + centuryValue
-    if leapYear(y) &amp;&amp; m &lt;= 2 {
-        w -= 1
-    }
-    return w % 7
-}
 </code></pre>
 ]]></content>
   </entry>
