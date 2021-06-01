@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Golang | icps]]></title>
   <link href="https://icps0610.github.io/blog/categories/golang/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2021-06-01T20:14:36+08:00</updated>
+  <updated>2021-06-01T20:18:01+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -28,6 +28,16 @@ func main() {
     delay := 100
 
     list = page.AllByClass("freebirdFormviewerViewNumberedItemContainer")
+
+    fillAnswer("select", "業務支援部")
+
+    radios := strings.Split("211110021111", "")
+    for _, radio := range radios {
+        fillAnswer("radio", radio)
+    }
+
+    page.AllByClass("appsMaterialWizButtonPaperbuttonLabel").At(0).Click()
+
 }
 
 func fillAnswer(cate, ans string) {

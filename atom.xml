@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="https://icps0610.github.io/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2021-06-01T20:14:36+08:00</updated>
+  <updated>2021-06-01T20:18:01+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -46,6 +46,16 @@
 <span class='line-number'>26</span>
 <span class='line-number'>27</span>
 <span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
 </pre></td><td class='code'><pre><code class='go'><span class='line'><span class="c1">//&quot;github.com/sclevine/agouti&quot; </span>
 </span><span class='line'>
 </span><span class='line'><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
@@ -56,6 +66,16 @@
 </span><span class='line'>    <span class="nx">delay</span> <span class="o">:=</span> <span class="mi">100</span>
 </span><span class='line'>
 </span><span class='line'>    <span class="nx">list</span> <span class="p">=</span> <span class="nx">page</span><span class="p">.</span><span class="nx">AllByClass</span><span class="p">(</span><span class="s">&quot;freebirdFormviewerViewNumberedItemContainer&quot;</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">fillAnswer</span><span class="p">(</span><span class="s">&quot;select&quot;</span><span class="p">,</span> <span class="s">&quot;業務支援部&quot;</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">radios</span> <span class="o">:=</span> <span class="nx">strings</span><span class="p">.</span><span class="nx">Split</span><span class="p">(</span><span class="s">&quot;211110021111&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">radio</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">radios</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nx">fillAnswer</span><span class="p">(</span><span class="s">&quot;radio&quot;</span><span class="p">,</span> <span class="nx">radio</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">page</span><span class="p">.</span><span class="nx">AllByClass</span><span class="p">(</span><span class="s">&quot;appsMaterialWizButtonPaperbuttonLabel&quot;</span><span class="p">).</span><span class="nx">At</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="nx">Click</span><span class="p">()</span>
+</span><span class='line'>
 </span><span class='line'><span class="p">}</span>
 </span><span class='line'>
 </span><span class='line'><span class="kd">func</span> <span class="nx">fillAnswer</span><span class="p">(</span><span class="nx">cate</span><span class="p">,</span> <span class="nx">ans</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
