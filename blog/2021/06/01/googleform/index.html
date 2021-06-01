@@ -1,0 +1,284 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>googleForm - icps</title>
+  <meta name="author" content="icps">
+
+  
+  <meta name="description" content="1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+//&quot;github.com/sclevine/agouti&quot; page, driver := openBrowser(600, 700)
+defer driver. &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="https://icps0610.github.io/blog/2021/06/01/googleform/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="icps" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<!--<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">-->
+<!--<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">-->
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">icps</a></h1>
+  
+    <h2>notes</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="icps0610.github.io">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/recent">Recent</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/blog/categories">Categories</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">googleForm</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2021-06-01T13:52:18+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2021</span></span> <span class='time'>1:52 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="c1">//&quot;github.com/sclevine/agouti&quot;  </span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">page</span><span class="p">,</span> <span class="nx">driver</span> <span class="o">:=</span> <span class="nx">openBrowser</span><span class="p">(</span><span class="mi">600</span><span class="p">,</span> <span class="mi">700</span><span class="p">)</span>
+</span><span class='line'><span class="k">defer</span> <span class="nx">driver</span><span class="p">.</span><span class="nx">Stop</span><span class="p">()</span>
+</span><span class='line'><span class="nx">page</span><span class="p">.</span><span class="nx">Navigate</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span>
+</span><span class='line'><span class="nx">sleep</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+</span><span class='line'><span class="nx">delay</span> <span class="o">:=</span> <span class="mi">100</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">//日期</span>
+</span><span class='line'><span class="nx">page</span><span class="p">.</span><span class="nx">AllByClass</span><span class="p">(</span><span class="s">&quot;quantumWizTextinputPaperinputInput&quot;</span><span class="p">).</span><span class="nx">At</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="nx">Fill</span><span class="p">(</span><span class="nx">getToday</span><span class="p">())</span>
+</span><span class='line'><span class="nx">sleep</span><span class="p">(</span><span class="nx">delay</span><span class="p">)</span>
+</span><span class='line'><span class="c1">//下拉式選單</span>
+</span><span class='line'><span class="nx">page</span><span class="p">.</span><span class="nx">AllByClass</span><span class="p">(</span><span class="s">&quot;quantumWizMenuPaperselectEl&quot;</span><span class="p">).</span><span class="nx">At</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="nx">AllByClass</span><span class="p">(</span><span class="s">&quot;quantumWizMenuPaperselectOption&quot;</span><span class="p">).</span><span class="nx">At</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="nx">Fill</span><span class="p">(</span><span class="s">&quot;業務支援部&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="nx">sleep</span><span class="p">(</span><span class="nx">delay</span><span class="p">)</span>
+</span><span class='line'><span class="c1">//文字</span>
+</span><span class='line'><span class="nx">page</span><span class="p">.</span><span class="nx">AllByClass</span><span class="p">(</span><span class="s">&quot;quantumWizTextinputPaperinputInput&quot;</span><span class="p">).</span><span class="nx">At</span><span class="p">(</span><span class="mi">2</span><span class="p">).</span><span class="nx">Fill</span><span class="p">(</span><span class="nx">earTemp</span><span class="p">)</span>
+</span><span class='line'><span class="nx">sleep</span><span class="p">(</span><span class="nx">delay</span><span class="p">)</span>
+</span><span class='line'><span class="c1">//選擇</span>
+</span><span class='line'><span class="nx">page</span><span class="p">.</span><span class="nx">AllByClass</span><span class="p">(</span><span class="s">&quot;appsMaterialWizToggleRadiogroupOffRadio&quot;</span><span class="p">).</span><span class="nx">At</span><span class="p">(</span><span class="mi">2</span><span class="p">).</span><span class="nx">Click</span><span class="p">()</span>
+</span><span class='line'><span class="nx">sleep</span><span class="p">(</span><span class="nx">delay</span><span class="p">)</span>
+</span><span class='line'><span class="c1">//送出</span>
+</span><span class='line'><span class="nx">page</span><span class="p">.</span><span class="nx">AllByClass</span><span class="p">(</span><span class="s">&quot;appsMaterialWizButtonPaperbuttonLabel&quot;</span><span class="p">).</span><span class="nx">At</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="nx">Click</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">icps</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2021-06-01T13:52:18+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2021</span></span> <span class='time'>1:52 pm</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/golang/'>golang</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2021/04/24/generatorpassword/" title="Previous Post: GeneratorPassword">&laquo; GeneratorPassword</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Categories</h1>
+    <ul id="categories">
+       <li class='category'><a href='/blog/categories/app/'>app (38)</a></li>
+<li class='category'><a href='/blog/categories/bat/'>bat (12)</a></li>
+<li class='category'><a href='/blog/categories/cmd/'>cmd (2)</a></li>
+<li class='category'><a href='/blog/categories/excel/'>excel (2)</a></li>
+<li class='category'><a href='/blog/categories/gdrive/'>gdrive (1)</a></li>
+<li class='category'><a href='/blog/categories/go/'>go (1)</a></li>
+<li class='category'><a href='/blog/categories/golang/'>golang (7)</a></li>
+<li class='category'><a href='/blog/categories/juniper/'>juniper (1)</a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (34)</a></li>
+<li class='category'><a href='/blog/categories/powershell/'>powershell (1)</a></li>
+<li class='category'><a href='/blog/categories/python/'>python (10)</a></li>
+<li class='category'><a href='/blog/categories/ror/'>ror (35)</a></li>
+<li class='category'><a href='/blog/categories/ruby/'>ruby (59)</a></li>
+<li class='category'><a href='/blog/categories/uncategorized/'>uncategorized (5)</a></li>
+<li class='category'><a href='/blog/categories/win/'>win (1)</a></li>
+
+    </ul>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2021/06/01/googleform/">googleForm</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2021/04/24/generatorpassword/">GeneratorPassword</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2021/04/08/cputemppi/">cpuTemp_pi</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2021/04/01/hidscript/">HIDScript</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2021/03/25/cmd-beep-sound/">Cmd_beep_sound</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2021 - icps -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

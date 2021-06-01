@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Golang | icps]]></title>
   <link href="https://icps0610.github.io/blog/categories/golang/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2021-06-01T13:55:39+08:00</updated>
+  <updated>2021-06-01T14:00:17+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -18,7 +18,7 @@
     <link href="https://icps0610.github.io/blog/2021/06/01/googleform/"/>
     <updated>2021-06-01T13:52:18+08:00</updated>
     <id>https://icps0610.github.io/blog/2021/06/01/googleform</id>
-    <content type="html"><![CDATA[<pre><code class="golang">//"github.com/sclevine/agouti"
+    <content type="html"><![CDATA[<pre><code class="go  ">//"github.com/sclevine/agouti"  
 
 page, driver := openBrowser(600, 700)
 defer driver.Stop()

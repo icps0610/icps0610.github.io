@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="https://icps0610.github.io/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2021-04-24T14:43:20+08:00</updated>
+  <updated>2021-06-01T14:00:17+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,62 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[googleForm]]></title>
+    <link href="https://icps0610.github.io/blog/2021/06/01/googleform/"/>
+    <updated>2021-06-01T13:52:18+08:00</updated>
+    <id>https://icps0610.github.io/blog/2021/06/01/googleform</id>
+    <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="c1">//&quot;github.com/sclevine/agouti&quot;  </span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">page</span><span class="p">,</span> <span class="nx">driver</span> <span class="o">:=</span> <span class="nx">openBrowser</span><span class="p">(</span><span class="mi">600</span><span class="p">,</span> <span class="mi">700</span><span class="p">)</span>
+</span><span class='line'><span class="k">defer</span> <span class="nx">driver</span><span class="p">.</span><span class="nx">Stop</span><span class="p">()</span>
+</span><span class='line'><span class="nx">page</span><span class="p">.</span><span class="nx">Navigate</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span>
+</span><span class='line'><span class="nx">sleep</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+</span><span class='line'><span class="nx">delay</span> <span class="o">:=</span> <span class="mi">100</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">//日期</span>
+</span><span class='line'><span class="nx">page</span><span class="p">.</span><span class="nx">AllByClass</span><span class="p">(</span><span class="s">&quot;quantumWizTextinputPaperinputInput&quot;</span><span class="p">).</span><span class="nx">At</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="nx">Fill</span><span class="p">(</span><span class="nx">getToday</span><span class="p">())</span>
+</span><span class='line'><span class="nx">sleep</span><span class="p">(</span><span class="nx">delay</span><span class="p">)</span>
+</span><span class='line'><span class="c1">//下拉式選單</span>
+</span><span class='line'><span class="nx">page</span><span class="p">.</span><span class="nx">AllByClass</span><span class="p">(</span><span class="s">&quot;quantumWizMenuPaperselectEl&quot;</span><span class="p">).</span><span class="nx">At</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="nx">AllByClass</span><span class="p">(</span><span class="s">&quot;quantumWizMenuPaperselectOption&quot;</span><span class="p">).</span><span class="nx">At</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="nx">Fill</span><span class="p">(</span><span class="s">&quot;業務支援部&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="nx">sleep</span><span class="p">(</span><span class="nx">delay</span><span class="p">)</span>
+</span><span class='line'><span class="c1">//文字</span>
+</span><span class='line'><span class="nx">page</span><span class="p">.</span><span class="nx">AllByClass</span><span class="p">(</span><span class="s">&quot;quantumWizTextinputPaperinputInput&quot;</span><span class="p">).</span><span class="nx">At</span><span class="p">(</span><span class="mi">2</span><span class="p">).</span><span class="nx">Fill</span><span class="p">(</span><span class="nx">earTemp</span><span class="p">)</span>
+</span><span class='line'><span class="nx">sleep</span><span class="p">(</span><span class="nx">delay</span><span class="p">)</span>
+</span><span class='line'><span class="c1">//選擇</span>
+</span><span class='line'><span class="nx">page</span><span class="p">.</span><span class="nx">AllByClass</span><span class="p">(</span><span class="s">&quot;appsMaterialWizToggleRadiogroupOffRadio&quot;</span><span class="p">).</span><span class="nx">At</span><span class="p">(</span><span class="mi">2</span><span class="p">).</span><span class="nx">Click</span><span class="p">()</span>
+</span><span class='line'><span class="nx">sleep</span><span class="p">(</span><span class="nx">delay</span><span class="p">)</span>
+</span><span class='line'><span class="c1">//送出</span>
+</span><span class='line'><span class="nx">page</span><span class="p">.</span><span class="nx">AllByClass</span><span class="p">(</span><span class="s">&quot;appsMaterialWizButtonPaperbuttonLabel&quot;</span><span class="p">).</span><span class="nx">At</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="nx">Click</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[GeneratorPassword]]></title>
@@ -644,32 +700,6 @@ Ref <a href="https://www.raspberrypi.org/forums/viewtopic.php?t=121125">https://
     <updated>2020-03-19T16:05:53+08:00</updated>
     <id>https://icps0610.github.io/blog/2020/03/19/upgrade-excludet-specific-package</id>
     <content type="html"><![CDATA[<p><code>apt-mark hold package-name</code></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Chrome_headless_crontab]]></title>
-    <link href="https://icps0610.github.io/blog/2020/03/19/chrome-headless-crontab/"/>
-    <updated>2020-03-19T13:45:44+08:00</updated>
-    <id>https://icps0610.github.io/blog/2020/03/19/chrome-headless-crontab</id>
-    <content type="html"><![CDATA[<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>
-</span><span class='line'>
-</span><span class='line'># app xvfb
-</span><span class='line'>
-</span><span class='line'>#### /etc/crontab
-</span><span class='line'>
-</span><span class='line'>#### SHELL=/bin/bash  
-</span><span class='line'>
-</span></code></pre></td></tr></table></div></figure>
-
 ]]></content>
   </entry>
   

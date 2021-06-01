@@ -1835,6 +1835,21 @@
 <span class='line-number'>40</span>
 <span class='line-number'>41</span>
 <span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
 </pre></td><td class='code'><pre><code class='go'><span class='line'><span class="s">&quot;github.com/anaskhan96/soup&quot;</span>
 </span><span class='line'><span class="s">&quot;fmt&quot;</span>
 </span><span class='line'><span class="s">&quot;io/ioutil&quot;</span>
@@ -1849,7 +1864,22 @@
 </span><span class='line'>    <span class="nx">resp</span> <span class="o">:=</span> <span class="nb">string</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span>
 </span><span class='line'>    <span class="k">return</span> <span class="nx">soup</span><span class="p">.</span><span class="nx">HTMLParse</span><span class="p">(</span><span class="nx">resp</span><span class="p">)</span>
 </span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="cm">/*func getDoc(url string) soup.Root {</span>
+</span><span class='line'><span class="cm">    tr := &amp;http.Transport{TLSClientConfig: &amp;tls.Config{InsecureSkipVerify: true}}</span>
+</span><span class='line'><span class="cm">    client := &amp;http.Client{</span>
+</span><span class='line'><span class="cm">        Timeout:   15 * time.Second,</span>
+</span><span class='line'><span class="cm">        Transport: tr,</span>
+</span><span class='line'><span class="cm">    }</span>
+</span><span class='line'><span class="cm">    req, err := http.NewRequest(&quot;GET&quot;, url, nil)</span>
+</span><span class='line'><span class="cm">    req.Header.Set(&quot;User-Agent&quot;, &quot;Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0&quot;)</span>
+</span><span class='line'><span class="cm">    printError(err)</span>
+</span><span class='line'><span class="cm">    resp, err := client.Do(req)</span>
+</span><span class='line'><span class="cm">    printError(err)</span>
 </span><span class='line'>
+</span><span class='line'><span class="cm">    body, err := ioutil.ReadAll(resp.Body)</span>
+</span><span class='line'><span class="cm">    printError(err)</span>
+</span><span class='line'><span class="cm">    return soup.HTMLParse(string(body))</span>
+</span><span class='line'><span class="cm">}*/</span>
 </span><span class='line'><span class="s">&quot;github.com/sclevine/agouti&quot;</span>
 </span><span class='line'>
 </span><span class='line'><span class="kd">func</span> <span class="nx">openBrowser</span><span class="p">()</span> <span class="p">(</span><span class="o">*</span><span class="nx">agouti</span><span class="p">.</span><span class="nx">Page</span><span class="p">,</span> <span class="o">*</span><span class="nx">agouti</span><span class="p">.</span><span class="nx">WebDriver</span><span class="p">)</span> <span class="p">{</span>
@@ -2127,7 +2157,7 @@
 <li class='category'><a href='/blog/categories/excel/'>excel (2)</a></li>
 <li class='category'><a href='/blog/categories/gdrive/'>gdrive (1)</a></li>
 <li class='category'><a href='/blog/categories/go/'>go (1)</a></li>
-<li class='category'><a href='/blog/categories/golang/'>golang (6)</a></li>
+<li class='category'><a href='/blog/categories/golang/'>golang (7)</a></li>
 <li class='category'><a href='/blog/categories/juniper/'>juniper (1)</a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (34)</a></li>
 <li class='category'><a href='/blog/categories/powershell/'>powershell (1)</a></li>
@@ -2144,6 +2174,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2021/06/01/googleform/">googleForm</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2021/04/24/generatorpassword/">GeneratorPassword</a>
       </li>
     
@@ -2157,10 +2191,6 @@
     
       <li class="post">
         <a href="/blog/2021/03/25/cmd-beep-sound/">Cmd_beep_sound</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2021/02/05/faker/">Faker</a>
       </li>
     
   </ul>
