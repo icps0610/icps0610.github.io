@@ -18,8 +18,9 @@ func main() {
 
     list = page.AllByClass("freebirdFormviewerViewNumberedItemContainer")
 
+    fillAnswer("text", getToday())
     fillAnswer("select", "業務支援部")
-    
+
     radios := strings.Split("211110021111", "")
     for _, radio := range radios {
         fillAnswer("radio", radio)
