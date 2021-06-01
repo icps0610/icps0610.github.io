@@ -5,8 +5,9 @@ date: 2021-06-01 13:52:18 +0800
 comments: true
 categories: golang
 ---
-``` golang
-//"github.com/sclevine/agouti"
+
+``` go  
+//"github.com/sclevine/agouti"  
 
 page, driver := openBrowser(600, 700)
 defer driver.Stop()
@@ -30,4 +31,4 @@ sleep(delay)
 page.AllByClass("appsMaterialWizButtonPaperbuttonLabel").At(0).Click()
 
 
-```
+```  
