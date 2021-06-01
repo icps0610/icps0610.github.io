@@ -93,3 +93,13 @@ cron.* /var/log/cron.log 去掉#
 /etc/init.d/rsyslog restart
 /etc/init.d/cron restart
 
+#### nat
+`sudo sh -c "echo 1 > /proc/sys/net/ipv4/ip_forward"`  
+`wlan=`  
+`lan=` 
+`sudo iptables -t nat -A POSTROUTING -o $wlan -j MASQUERADE`  
+`sudo iptables -A FORWARD -i $wlan -o $lan -m state --state RELATED,ESTABLISHED -j ACCEPT`  
+`sudo iptables -A FORWARD -i $lan -o $wlan -j ACCEPT`  
+
+
+
