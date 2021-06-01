@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "googleForm"
+title: "googleForms"
 date: 2021-06-01 13:52:18 +0800
 comments: true
 categories: golang
