@@ -1,0 +1,21 @@
+---
+layout: post
+title: "countdown"
+date: 2021-06-15 19:09:06 +0800
+comments: true
+categories: uncategorized
+---
+### `https://soundoftext.com/`  
+``` bash
+
+ffmpeg -y -i run.mp3 -vn -ar 48000 -ac 2 -b:a 320k run.mp3
+
+sox -n -r 48000 -c 2 slice.wav trim 0 0.8
+ffmpeg -y -i slice.wav -vn -ar 48000 -ac 2 -b:a 320k s.mp3
+
+cat run.mp3 s.mp3 5.mp3 s.mp3 4.mp3 s.mp3 3.mp3 s.mp3 2.mp3 s.mp3 1.mp3 54321.mp3
+ffmpeg -i "concat:run.mp3|s.mp3|5.mp3|s.mp3|4.mp3|s.mp3|3.mp3|s.mp3|2.mp3|s.mp3|1.mp3" -acodec copy 54321.mp3
+copy /b run.mp3+s.mp3+5.mp3+s.mp3+4.mp3+s.mp3+3.mp3+s.mp3+2.mp3+s.mp3+1.mp3 54321.mp3
+```
+
+

@@ -223,7 +223,7 @@ func read(path string) string{
 
 
 
-func writeLines(lines []string, path string) {
+func saveLines(lines []string, path string) {
     file, err := os.Create(path)
     printError(err)
     defer file.Close()
@@ -325,13 +325,13 @@ func readJson(path string) []City {
     return reaJson
 }
 
-func writeJson(data []Image, path string) {
+func saveJson(data []Image, path string) {
     file, err := json.MarshalIndent(data, "", " ")
     printError(err)
     _ = ioutil.WriteFile(path, file, 0644)
 }
 fname := "user.json"
-writeJson(fname, p)
+saveJson(fname, p)
 reaJson := readJson(fname)
 ffmt.Puts(reaJson[0].Name)
 ```
