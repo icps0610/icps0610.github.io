@@ -998,6 +998,17 @@ func runJs(page *agouti.Page) {
     js := `window.scrollTo(0,window.scrollY+window.innerHeight*.9);`
     page.RunScript(js, nil, nil)
 }
+
+func sendKeys(page *agouti.Page, key string) {
+    var k string
+    switch key {
+    case "Home":
+        k = "\uE011"
+    case "pageDown":
+        k = "\uE00F"
+    }
+    page.Find("html").SendKeys(k)
+}
 ```
 ###### sleep
 ``` go
