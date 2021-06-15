@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Uncategorized | icps]]></title>
   <link href="https://icps0610.github.io/blog/categories/uncategorized/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2021-06-01T20:19:45+08:00</updated>
+  <updated>2021-06-15T17:23:29+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -19,6 +19,8 @@
     <updated>2020-11-05T15:28:16+08:00</updated>
     <id>https://icps0610.github.io/blog/2020/11/05/imagemagick</id>
     <content type="html"><![CDATA[<p><code>find /tmp/tmp/cc -name "*.JPG" -exec mogrify -format png {} \;</code></p>
+
+<p><code>convert /tmp/covid19.png -gravity southeast -pointsize 20 label:"2021/06/03 14:54" -composite /tmp/covid191.png</code></p>
 ]]></content>
   </entry>
   

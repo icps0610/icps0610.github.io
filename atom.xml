@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="https://icps0610.github.io/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2021-06-01T20:19:45+08:00</updated>
+  <updated>2021-06-15T17:23:29+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,44 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[工作排程器]]></title>
+    <link href="https://icps0610.github.io/blog/2021/06/15/gong-zuo-pai-cheng/"/>
+    <updated>2021-06-15T16:52:08+08:00</updated>
+    <id>https://icps0610.github.io/blog/2021/06/15/gong-zuo-pai-cheng</id>
+    <content type="html"><![CDATA[<h3>taskschd.msc</h3>
+
+<h3>schtask</h3>
+
+<h5><a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/schtasks-change">https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/schtasks-change</a></h5>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='bat'><span class='line'><span class="n">//列出</span>
+</span><span class='line'>schtasks <span class="n">/query</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">//查詢LineSend</span>
+</span><span class='line'>schtasks <span class="n">/query</span> <span class="n">/fo</span> LIST <span class="n">/v</span> <span class="n">/tn</span> LineSend
+</span><span class='line'>
+</span><span class='line'>變更
+</span><span class='line'>schtasks <span class="n">/TN</span> LineSend <span class="n">/CHANGE</span> <span class="n">/ST</span> <span class="m">14</span><span class="nl">:00</span>
+</span><span class='line'>
+</span><span class='line'>不需密碼
+</span><span class='line'><span class="n">/RU</span> SYSTEM
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[googleForms]]></title>
@@ -318,6 +356,8 @@ Ref <a href="https://www.raspberrypi.org/forums/viewtopic.php?t=121125">https://
     <updated>2020-11-05T15:28:16+08:00</updated>
     <id>https://icps0610.github.io/blog/2020/11/05/imagemagick</id>
     <content type="html"><![CDATA[<p><code>find /tmp/tmp/cc -name "*.JPG" -exec mogrify -format png {} \;</code></p>
+
+<p><code>convert /tmp/covid19.png -gravity southeast -pointsize 20 label:"2021/06/03 14:54" -composite /tmp/covid191.png</code></p>
 ]]></content>
   </entry>
   
@@ -725,15 +765,6 @@ Ref <a href="https://www.raspberrypi.org/forums/viewtopic.php?t=121125">https://
     <updated>2020-04-05T21:00:49+08:00</updated>
     <id>https://icps0610.github.io/blog/2020/04/05/mb-model</id>
     <content type="html"><![CDATA[<p><code>&gt;wmic baseboard get product,Manufacturer,version,serialnumber</code></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[特定APP不升級]]></title>
-    <link href="https://icps0610.github.io/blog/2020/03/19/upgrade-excludet-specific-package/"/>
-    <updated>2020-03-19T16:05:53+08:00</updated>
-    <id>https://icps0610.github.io/blog/2020/03/19/upgrade-excludet-specific-package</id>
-    <content type="html"><![CDATA[<p><code>apt-mark hold package-name</code></p>
 ]]></content>
   </entry>
   

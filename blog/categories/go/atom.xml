@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Go | icps]]></title>
   <link href="https://icps0610.github.io/blog/categories/go/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2021-06-01T20:19:45+08:00</updated>
+  <updated>2021-06-15T17:23:29+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -1025,6 +1025,17 @@ func main (){
 func runJs(page *agouti.Page) {
     js := `window.scrollTo(0,window.scrollY+window.innerHeight*.9);`
     page.RunScript(js, nil, nil)
+}
+
+func sendKeys(page *agouti.Page, key string) {
+    var k string
+    switch key {
+    case "Home":
+        k = "\uE011"
+    case "pageDown":
+        k = "\uE00F"
+    }
+    page.Find("html").SendKeys(k)
 }
 </code></pre>
 

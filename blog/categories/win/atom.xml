@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Win | icps]]></title>
   <link href="https://icps0610.github.io/blog/categories/win/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2021-06-01T20:19:45+08:00</updated>
+  <updated>2021-06-15T17:23:29+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,32 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[工作排程器]]></title>
+    <link href="https://icps0610.github.io/blog/2021/06/15/gong-zuo-pai-cheng/"/>
+    <updated>2021-06-15T16:52:08+08:00</updated>
+    <id>https://icps0610.github.io/blog/2021/06/15/gong-zuo-pai-cheng</id>
+    <content type="html"><![CDATA[<h3>taskschd.msc</h3>
+
+<h3>schtask</h3>
+
+<h5><a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/schtasks-change">https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/schtasks-change</a></h5>
+
+<pre><code class="bat">//列出
+schtasks /query  
+
+//查詢LineSend
+schtasks /query /fo LIST /v /tn LineSend
+
+變更
+schtasks /TN LineSend /CHANGE /ST 14:00  
+
+不需密碼
+/RU SYSTEM
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Remove_onedrive]]></title>

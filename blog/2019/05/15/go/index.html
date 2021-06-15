@@ -1850,6 +1850,17 @@
 <span class='line-number'>55</span>
 <span class='line-number'>56</span>
 <span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
 </pre></td><td class='code'><pre><code class='go'><span class='line'><span class="s">&quot;github.com/anaskhan96/soup&quot;</span>
 </span><span class='line'><span class="s">&quot;fmt&quot;</span>
 </span><span class='line'><span class="s">&quot;io/ioutil&quot;</span>
@@ -1906,6 +1917,17 @@
 </span><span class='line'><span class="kd">func</span> <span class="nx">runJs</span><span class="p">(</span><span class="nx">page</span> <span class="o">*</span><span class="nx">agouti</span><span class="p">.</span><span class="nx">Page</span><span class="p">)</span> <span class="p">{</span>
 </span><span class='line'>    <span class="nx">js</span> <span class="o">:=</span> <span class="s">`window.scrollTo(0,window.scrollY+window.innerHeight*.9);`</span>
 </span><span class='line'>    <span class="nx">page</span><span class="p">.</span><span class="nx">RunScript</span><span class="p">(</span><span class="nx">js</span><span class="p">,</span> <span class="kc">nil</span><span class="p">,</span> <span class="kc">nil</span><span class="p">)</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">func</span> <span class="nx">sendKeys</span><span class="p">(</span><span class="nx">page</span> <span class="o">*</span><span class="nx">agouti</span><span class="p">.</span><span class="nx">Page</span><span class="p">,</span> <span class="nx">key</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">k</span> <span class="kt">string</span>
+</span><span class='line'>    <span class="k">switch</span> <span class="nx">key</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">case</span> <span class="s">&quot;Home&quot;</span><span class="p">:</span>
+</span><span class='line'>        <span class="nx">k</span> <span class="p">=</span> <span class="s">&quot;\uE011&quot;</span>
+</span><span class='line'>    <span class="k">case</span> <span class="s">&quot;pageDown&quot;</span><span class="p">:</span>
+</span><span class='line'>        <span class="nx">k</span> <span class="p">=</span> <span class="s">&quot;\uE00F&quot;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="nx">page</span><span class="p">.</span><span class="nx">Find</span><span class="p">(</span><span class="s">&quot;html&quot;</span><span class="p">).</span><span class="nx">SendKeys</span><span class="p">(</span><span class="nx">k</span><span class="p">)</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
@@ -2165,13 +2187,17 @@
 <li class='category'><a href='/blog/categories/ror/'>ror (35)</a></li>
 <li class='category'><a href='/blog/categories/ruby/'>ruby (59)</a></li>
 <li class='category'><a href='/blog/categories/uncategorized/'>uncategorized (5)</a></li>
-<li class='category'><a href='/blog/categories/win/'>win (1)</a></li>
+<li class='category'><a href='/blog/categories/win/'>win (2)</a></li>
 
     </ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2021/06/15/gong-zuo-pai-cheng/">工作排程器</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2021/06/01/googleforms/">googleForms</a>
@@ -2187,10 +2213,6 @@
     
       <li class="post">
         <a href="/blog/2021/04/01/hidscript/">HIDScript</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2021/03/25/cmd-beep-sound/">Cmd_beep_sound</a>
       </li>
     
   </ul>
