@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Uncategorized | icps]]></title>
   <link href="https://icps0610.github.io/blog/categories/uncategorized/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2021-06-15T17:23:29+08:00</updated>
+  <updated>2021-06-15T20:03:26+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,26 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Countdown]]></title>
+    <link href="https://icps0610.github.io/blog/2021/06/15/sound/"/>
+    <updated>2021-06-15T19:09:06+08:00</updated>
+    <id>https://icps0610.github.io/blog/2021/06/15/sound</id>
+    <content type="html"><![CDATA[<h3><code>https://soundoftext.com/</code></h3>
+
+<pre><code class="bash">
+ffmpeg -y -i run.mp3 -vn -ar 48000 -ac 2 -b:a 320k run.mp3
+
+sox -n -r 48000 -c 2 slice.wav trim 0 0.8
+ffmpeg -y -i slice.wav -vn -ar 48000 -ac 2 -b:a 320k s.mp3
+
+cat run.mp3 s.mp3 5.mp3 s.mp3 4.mp3 s.mp3 3.mp3 s.mp3 2.mp3 s.mp3 1.mp3 54321.mp3
+ffmpeg -i "concat:run.mp3|s.mp3|5.mp3|s.mp3|4.mp3|s.mp3|3.mp3|s.mp3|2.mp3|s.mp3|1.mp3" -acodec copy 54321.mp3
+copy /b run.mp3+s.mp3+5.mp3+s.mp3+4.mp3+s.mp3+3.mp3+s.mp3+2.mp3+s.mp3+1.mp3 54321.mp3
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[imageMagick]]></title>
@@ -62,112 +82,6 @@ https:\/\/www\.facebook\.com\/((photo)\.php\?fbid=(\w+)(\&amp;|)|(\w+)\/(photos)
 顯示黑市物品說明 https://steamcommunity.com/sharedfiles/filedetails/?id=648410303
 血量數字化       https://steamcommunity.com/sharedfiles/filedetails/?id=617015579
 血量數字化 WOTC  https://steamcommunity.com/sharedfiles/filedetails/?id=1123174832
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Color]]></title>
-    <link href="https://icps0610.github.io/blog/2020/04/29/color/"/>
-    <updated>2020-04-29T10:29:50+08:00</updated>
-    <id>https://icps0610.github.io/blog/2020/04/29/color</id>
-    <content type="html"><![CDATA[<pre><code>// x0 代表第一球中心x位置
-// x1 代表第二球中心x位置
-// y0 代表第一二球中心y位置
-// grid 幾格
-// dt 等待時間
-
-for 3
-    x0 = 267
-    x1 = 369
-    y0 = 515
-    grid = 2
-    dt = 160
-    call find()
-next
-
-for 7
-    x0 = 218
-    x1 = 316
-    y0 = 462
-    grid = 3
-    dt = 160
-    call find()
-next
-
-for 10
-    x0 = 198
-    x1 = 279
-    y0 = 443
-    grid = 4
-    dt = 160
-    call find()
-next
-
-for 14
-    x0 = 198
-    x1 = 261    
-    y0 = 446
-    grid = 5
-    dt = 160
-    call find()
-next
-
-for 13
-    x0 = 187
-    x1 = 240
-    y0 = 431
-    grid = 6
-    dt = 160
-    call find()
-next
-
-for 200
-    x0 = 182
-    x1 = 227
-    y0 = 427
-    grid = 7
-    dt = 30
-    call find()
-Next
-
-sub find()
-    width = x1 - x0
-    ws = grid * grid
-    ci = 0
-    Dim colors(49)
-    For yi = 0 to grid-1
-        For xi = 0 to grid-1
-            x = x0 + xi * width
-            y = y0 + yi * width
-            ci = xi + yi * grid
-            c = GetPixelColor(x, y)
-            vbs colors(ci) = c
-            if ci &gt;= 2 then
-                if ci = 2 then
-                    if colors(0) &lt;&gt; colors(1) and colors(0) &lt;&gt; colors(2)
-                        ci = 0
-                        goto click
-                    elseif colors(1) &lt;&gt; colors(0) and colors(1) &lt;&gt; colors(2)
-                        ci = 1
-                        goto click
-                    end if
-                end if 
-                if colors(ci) &lt;&gt; colors(ci-1) and colors(ci) &lt;&gt; colors(ci-2) then
-                    moveto x, y
-                    goto exitnext
-                end if
-            end if
-        Next
-    Next
-    rem click
-    y = ci \ grid
-    x = ci mod grid
-    MoveTo x0 + x * width, y0 + y * width
-    rem exitnext
-    LeftClick 1
-    Delay dt
-end sub
 </code></pre>
 ]]></content>
   </entry>

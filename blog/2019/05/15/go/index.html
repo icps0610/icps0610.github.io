@@ -533,7 +533,7 @@
 </span><span class='line'>
 </span><span class='line'>
 </span><span class='line'>
-</span><span class='line'><span class="kd">func</span> <span class="nx">writeLines</span><span class="p">(</span><span class="nx">lines</span> <span class="p">[]</span><span class="kt">string</span><span class="p">,</span> <span class="nx">path</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'><span class="kd">func</span> <span class="nx">saveLines</span><span class="p">(</span><span class="nx">lines</span> <span class="p">[]</span><span class="kt">string</span><span class="p">,</span> <span class="nx">path</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
 </span><span class='line'>    <span class="nx">file</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Create</span><span class="p">(</span><span class="nx">path</span><span class="p">)</span>
 </span><span class='line'>    <span class="nx">printError</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
 </span><span class='line'>    <span class="k">defer</span> <span class="nx">file</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
@@ -684,13 +684,13 @@
 </span><span class='line'>    <span class="k">return</span> <span class="nx">reaJson</span>
 </span><span class='line'><span class="p">}</span>
 </span><span class='line'>
-</span><span class='line'><span class="kd">func</span> <span class="nx">writeJson</span><span class="p">(</span><span class="nx">data</span> <span class="p">[]</span><span class="nx">Image</span><span class="p">,</span> <span class="nx">path</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'><span class="kd">func</span> <span class="nx">saveJson</span><span class="p">(</span><span class="nx">data</span> <span class="p">[]</span><span class="nx">Image</span><span class="p">,</span> <span class="nx">path</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
 </span><span class='line'>    <span class="nx">file</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">json</span><span class="p">.</span><span class="nx">MarshalIndent</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">,</span> <span class="s">&quot; &quot;</span><span class="p">)</span>
 </span><span class='line'>    <span class="nx">printError</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
 </span><span class='line'>    <span class="nx">_</span> <span class="p">=</span> <span class="nx">ioutil</span><span class="p">.</span><span class="nx">WriteFile</span><span class="p">(</span><span class="nx">path</span><span class="p">,</span> <span class="nx">file</span><span class="p">,</span> <span class="mo">0644</span><span class="p">)</span>
 </span><span class='line'><span class="p">}</span>
 </span><span class='line'><span class="nx">fname</span> <span class="o">:=</span> <span class="s">&quot;user.json&quot;</span>
-</span><span class='line'><span class="nx">writeJson</span><span class="p">(</span><span class="nx">fname</span><span class="p">,</span> <span class="nx">p</span><span class="p">)</span>
+</span><span class='line'><span class="nx">saveJson</span><span class="p">(</span><span class="nx">fname</span><span class="p">,</span> <span class="nx">p</span><span class="p">)</span>
 </span><span class='line'><span class="nx">reaJson</span> <span class="o">:=</span> <span class="nx">readJson</span><span class="p">(</span><span class="nx">fname</span><span class="p">)</span>
 </span><span class='line'><span class="nx">ffmt</span><span class="p">.</span><span class="nx">Puts</span><span class="p">(</span><span class="nx">reaJson</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">Name</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure>
@@ -2186,7 +2186,7 @@
 <li class='category'><a href='/blog/categories/python/'>python (10)</a></li>
 <li class='category'><a href='/blog/categories/ror/'>ror (35)</a></li>
 <li class='category'><a href='/blog/categories/ruby/'>ruby (59)</a></li>
-<li class='category'><a href='/blog/categories/uncategorized/'>uncategorized (5)</a></li>
+<li class='category'><a href='/blog/categories/uncategorized/'>uncategorized (6)</a></li>
 <li class='category'><a href='/blog/categories/win/'>win (2)</a></li>
 
     </ul>
@@ -2194,6 +2194,10 @@
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2021/06/15/sound/">Countdown</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2021/06/15/gong-zuo-pai-cheng/">工作排程器</a>
@@ -2209,10 +2213,6 @@
     
       <li class="post">
         <a href="/blog/2021/04/08/cputemppi/">cpuTemp_pi</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2021/04/01/hidscript/">HIDScript</a>
       </li>
     
   </ul>

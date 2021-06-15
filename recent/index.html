@@ -9,7 +9,7 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="taskschd.msc schtask https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/schtasks-change 1
+  <meta name="description" content="https://soundoftext.com/ 1
 2
 3
 4
@@ -17,10 +17,8 @@
 6
 7
 8
-9
-10
-11
-//列出 &hellip;">
+ffmpeg -y -i run.mp3 -vn -ar 48000 -ac 2 -b:a 320k run.mp3 sox -n -r 48000 -c 2 slice.wav trim 0 0.8
+ffmpeg &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -79,6 +77,56 @@
       <div class="blog-index">
   
 
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2021/06/15/sound/">Countdown</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2021-06-15T19:09:06+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2021</span></span> <span class='time'>7:09 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3><code>https://soundoftext.com/</code></h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>ffmpeg -y -i run.mp3 -vn -ar <span class="m">48000</span> -ac <span class="m">2</span> -b:a 320k run.mp3
+</span><span class='line'>
+</span><span class='line'>sox -n -r <span class="m">48000</span> -c <span class="m">2</span> slice.wav trim <span class="m">0</span> 0.8
+</span><span class='line'>ffmpeg -y -i slice.wav -vn -ar <span class="m">48000</span> -ac <span class="m">2</span> -b:a 320k s.mp3
+</span><span class='line'>
+</span><span class='line'>cat run.mp3 s.mp3 5.mp3 s.mp3 4.mp3 s.mp3 3.mp3 s.mp3 2.mp3 s.mp3 1.mp3 54321.mp3
+</span><span class='line'>ffmpeg -i <span class="s2">&quot;concat:run.mp3|s.mp3|5.mp3|s.mp3|4.mp3|s.mp3|3.mp3|s.mp3|2.mp3|s.mp3|1.mp3&quot;</span> -acodec copy 54321.mp3
+</span><span class='line'>copy /b run.mp3+s.mp3+5.mp3+s.mp3+4.mp3+s.mp3+3.mp3+s.mp3+2.mp3+s.mp3+1.mp3 54321.mp3
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+</div>
+  
+  
+
+
+    </article>
+  
   
     <article>
       
@@ -345,90 +393,6 @@ Ref <a href="https://www.raspberrypi.org/forums/viewtopic.php?t=121125">https://
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2021/04/01/hidscript/">HIDScript</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2021-04-01T16:41:26+08:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2021</span></span> <span class='time'>4:41 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-</pre></td><td class='code'><pre><code class='powershell'><span class='line'><span class="c">## getWiFiPassWd</span>
-</span><span class='line'>
-</span><span class='line'><span class="nv">$ws</span><span class="p">=(</span><span class="n">netsh</span> <span class="n">wlan</span> <span class="n">show</span> <span class="n">profiles</span><span class="p">)</span> <span class="o">-match</span> <span class="s2">&quot; : &quot;</span><span class="p">;</span><span class="k">foreach</span><span class="p">(</span><span class="nv">$s</span> <span class="k">in</span> <span class="nv">$ws</span><span class="p">){</span><span class="nv">$ssid</span><span class="p">=</span><span class="nv">$s</span><span class="p">.</span><span class="n">Split</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">)[</span><span class="n">1</span><span class="p">].</span><span class="n">Trim</span><span class="p">();</span><span class="nv">$pw</span><span class="p">=(</span><span class="n">netsh</span> <span class="n">wlan</span> <span class="n">show</span> <span class="n">profiles</span> <span class="n">name</span><span class="p">=</span><span class="nv">$ssid</span> <span class="n">key</span><span class="p">=</span><span class="n">clear</span><span class="p">);</span>
-</span><span class='line'><span class="nv">$c</span><span class="p">=</span><span class="n">0</span><span class="p">;</span><span class="k">foreach</span><span class="p">(</span><span class="nv">$p</span> <span class="k">in</span> <span class="nv">$pw</span><span class="p">){;</span><span class="k">if</span><span class="p">(</span><span class="nv">$c</span> <span class="o">-eq</span> <span class="s2">&quot;32&quot;</span><span class="p">){</span><span class="nv">$pass</span><span class="p">=</span><span class="nv">$p</span><span class="p">.</span><span class="n">Split</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">)[</span><span class="n">1</span><span class="p">].</span><span class="n">Trim</span><span class="p">();}</span><span class="nv">$c</span><span class="p">+=</span><span class="n">1</span><span class="p">}</span><span class="n">echo</span> <span class="s2">&quot;$ssid $pass&quot;</span> <span class="p">&gt;&gt;</span> <span class="n">passwd</span><span class="p">.</span><span class="n">txt</span><span class="p">}</span>
-</span><span class='line'><span class="n">type</span> <span class="n">passwd</span><span class="p">.</span><span class="n">txt</span>
-</span><span class='line'>
-</span><span class='line'>
-</span><span class='line'>
-</span><span class='line'><span class="c">## uploadFiles</span>
-</span><span class='line'>
-</span><span class='line'><span class="nv">$FilePath</span><span class="p">=</span><span class="s2">&quot;C:/Windows/Temp/files.zip&quot;</span>
-</span><span class='line'><span class="nv">$Url</span><span class="p">=</span><span class="s2">&quot;http://172.16.0.1/&quot;</span>
-</span><span class='line'><span class="nv">$fileName</span><span class="p">=</span><span class="no">[System.IO.Path]</span><span class="p">::</span><span class="n">GetFileName</span><span class="p">(</span><span class="nv">$filePath</span><span class="p">)</span>
-</span><span class='line'><span class="nv">$fileBytes</span><span class="p">=(</span><span class="no">[System.IO.File]</span><span class="p">::</span><span class="n">ReadAllBytes</span><span class="p">(</span><span class="nv">$FilePath</span><span class="p">))</span>
-</span><span class='line'><span class="nv">$fileEnc</span><span class="p">=</span><span class="no">[System.Text.Encoding]</span><span class="p">::</span><span class="n">GetEncoding</span><span class="p">(</span><span class="s2">&quot;iso-8859-1&quot;</span><span class="p">).</span><span class="n">GetString</span><span class="p">(</span><span class="nv">$fileBytes</span><span class="p">)</span>
-</span><span class='line'><span class="nv">$boundary</span><span class="p">=</span><span class="no">[System.Guid]</span><span class="p">::</span><span class="n">NewGuid</span><span class="p">().</span><span class="n">ToString</span><span class="p">()</span>
-</span><span class='line'><span class="nv">$lf</span><span class="p">=</span><span class="s2">&quot;</span><span class="se">`r`n</span><span class="s2">&quot;</span>
-</span><span class='line'><span class="nv">$bodyLines</span><span class="p">=(</span><span class="s2">&quot;--$boundary&quot;</span><span class="p">,</span><span class="s2">&quot;Content-Disposition: form-data; name=</span><span class="se">`&quot;</span><span class="s2">uploads</span><span class="se">`&quot;</span><span class="s2">; filename=</span><span class="se">`&quot;</span><span class="s2">$FileName</span><span class="se">`&quot;</span><span class="s2">&quot;</span><span class="p">,</span><span class="s2">&quot;Content-Type: application/octet-stream$lf&quot;</span><span class="p">,</span><span class="nv">$fileEnc</span><span class="p">,</span><span class="s2">&quot;--$boundary--$lf&quot;</span><span class="p">)</span> <span class="n">-join</span> <span class="nv">$lf</span>
-</span><span class='line'><span class="nb">Invoke-RestMethod</span> <span class="n">-Uri</span> <span class="nv">$Url</span> <span class="n">-Method</span> <span class="n">Post</span> <span class="n">-ContentType</span> <span class="s2">&quot;multipart/form-data; boundary=</span><span class="se">`&quot;</span><span class="s2">$boundary</span><span class="se">`&quot;</span><span class="s2">&quot;</span> <span class="n">-Body</span> <span class="nv">$bodyLines</span>
-</span><span class='line'>
-</span><span class='line'>
-</span><span class='line'>
-</span><span class='line'><span class="c">## downloadFiles</span>
-</span><span class='line'>
-</span><span class='line'><span class="nv">$Source</span><span class="p">=</span><span class="s2">&quot;http://172.16.0.1/uploads/dFiles.7z&quot;</span>
-</span><span class='line'><span class="nv">$Destination</span><span class="p">=</span><span class="s2">&quot;C:/Windows/Temp/dFiles.7z&quot;</span>
-</span><span class='line'><span class="nb">Invoke-WebRequest</span> <span class="n">-Uri</span> <span class="nv">$Source</span> <span class="n">-OutFile</span> <span class="nv">$Destination</span>
-</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
     <a href="/blog/archives">Blog Archives</a>
@@ -453,7 +417,7 @@ Ref <a href="https://www.raspberrypi.org/forums/viewtopic.php?t=121125">https://
 <li class='category'><a href='/blog/categories/python/'>python (10)</a></li>
 <li class='category'><a href='/blog/categories/ror/'>ror (35)</a></li>
 <li class='category'><a href='/blog/categories/ruby/'>ruby (59)</a></li>
-<li class='category'><a href='/blog/categories/uncategorized/'>uncategorized (5)</a></li>
+<li class='category'><a href='/blog/categories/uncategorized/'>uncategorized (6)</a></li>
 <li class='category'><a href='/blog/categories/win/'>win (2)</a></li>
 
     </ul>
@@ -461,6 +425,10 @@ Ref <a href="https://www.raspberrypi.org/forums/viewtopic.php?t=121125">https://
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2021/06/15/sound/">Countdown</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2021/06/15/gong-zuo-pai-cheng/">工作排程器</a>
@@ -476,10 +444,6 @@ Ref <a href="https://www.raspberrypi.org/forums/viewtopic.php?t=121125">https://
     
       <li class="post">
         <a href="/blog/2021/04/08/cputemppi/">cpuTemp_pi</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2021/04/01/hidscript/">HIDScript</a>
       </li>
     
   </ul>
