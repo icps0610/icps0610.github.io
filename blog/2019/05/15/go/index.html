@@ -1897,49 +1897,6 @@
 <span class='line-number'>102</span>
 <span class='line-number'>103</span>
 <span class='line-number'>104</span>
-<span class='line-number'>105</span>
-<span class='line-number'>106</span>
-<span class='line-number'>107</span>
-<span class='line-number'>108</span>
-<span class='line-number'>109</span>
-<span class='line-number'>110</span>
-<span class='line-number'>111</span>
-<span class='line-number'>112</span>
-<span class='line-number'>113</span>
-<span class='line-number'>114</span>
-<span class='line-number'>115</span>
-<span class='line-number'>116</span>
-<span class='line-number'>117</span>
-<span class='line-number'>118</span>
-<span class='line-number'>119</span>
-<span class='line-number'>120</span>
-<span class='line-number'>121</span>
-<span class='line-number'>122</span>
-<span class='line-number'>123</span>
-<span class='line-number'>124</span>
-<span class='line-number'>125</span>
-<span class='line-number'>126</span>
-<span class='line-number'>127</span>
-<span class='line-number'>128</span>
-<span class='line-number'>129</span>
-<span class='line-number'>130</span>
-<span class='line-number'>131</span>
-<span class='line-number'>132</span>
-<span class='line-number'>133</span>
-<span class='line-number'>134</span>
-<span class='line-number'>135</span>
-<span class='line-number'>136</span>
-<span class='line-number'>137</span>
-<span class='line-number'>138</span>
-<span class='line-number'>139</span>
-<span class='line-number'>140</span>
-<span class='line-number'>141</span>
-<span class='line-number'>142</span>
-<span class='line-number'>143</span>
-<span class='line-number'>144</span>
-<span class='line-number'>145</span>
-<span class='line-number'>146</span>
-<span class='line-number'>147</span>
 </pre></td><td class='code'><pre><code class='go'><span class='line'><span class="s">&quot;github.com/anaskhan96/soup&quot;</span>
 </span><span class='line'><span class="s">&quot;fmt&quot;</span>
 </span><span class='line'><span class="s">&quot;io/ioutil&quot;</span>
@@ -2022,70 +1979,27 @@
 </span><span class='line'>    <span class="p">}</span>
 </span><span class='line'>    <span class="nx">page</span><span class="p">.</span><span class="nx">Find</span><span class="p">(</span><span class="s">&quot;html&quot;</span><span class="p">).</span><span class="nx">SendKeys</span><span class="p">(</span><span class="nx">k</span><span class="p">)</span>
 </span><span class='line'>
-</span><span class='line'>    <span class="c1">// NULL            = &quot;\uE000&quot;</span>
-</span><span class='line'>    <span class="c1">// CANCEL          = &quot;\uE001&quot;</span>
-</span><span class='line'>    <span class="c1">// HELP            = &quot;\uE002&quot;</span>
-</span><span class='line'>    <span class="c1">// BACK_SPACE      = &quot;\uE003&quot;</span>
-</span><span class='line'>    <span class="c1">// TAB             = &quot;\uE004&quot;</span>
-</span><span class='line'>    <span class="c1">// CLEAR           = &quot;\uE005&quot;</span>
-</span><span class='line'>    <span class="c1">// RETURN          = &quot;\uE006&quot;</span>
-</span><span class='line'>    <span class="c1">// ENTER           = &quot;\uE007&quot;</span>
-</span><span class='line'>    <span class="c1">// SHIFT           = &quot;\uE008&quot;</span>
-</span><span class='line'>    <span class="c1">// LEFT_SHIFT      = &quot;\uE008&quot;</span>
-</span><span class='line'>    <span class="c1">// CONTROL         = &quot;\uE009&quot;</span>
-</span><span class='line'>    <span class="c1">// LEFT_CONTROL    = &quot;\uE009&quot;</span>
-</span><span class='line'>    <span class="c1">// ALT             = &quot;\uE00A&quot;</span>
-</span><span class='line'>    <span class="c1">// LEFT_ALT        = &quot;\uE00A&quot;</span>
-</span><span class='line'>    <span class="c1">// PAUSE           = &quot;\uE00B&quot;</span>
-</span><span class='line'>    <span class="c1">// ESCAPE          = &quot;\uE00C&quot;</span>
-</span><span class='line'>    <span class="c1">// SPACE           = &quot;\uE00D&quot;</span>
-</span><span class='line'>    <span class="c1">// PAGE_UP         = &quot;\uE00E&quot;</span>
-</span><span class='line'>    <span class="c1">// PAGE_DOWN       = &quot;\uE00F&quot;</span>
-</span><span class='line'>    <span class="c1">// END             = &quot;\uE010&quot;</span>
-</span><span class='line'>    <span class="c1">// HOME            = &quot;\uE011&quot;</span>
-</span><span class='line'>    <span class="c1">// LEFT            = &quot;\uE012&quot;</span>
-</span><span class='line'>    <span class="c1">// ARROW_LEFT      = &quot;\uE012&quot;</span>
-</span><span class='line'>    <span class="c1">// UP              = &quot;\uE013&quot;</span>
-</span><span class='line'>    <span class="c1">// ARROW_UP        = &quot;\uE013&quot;</span>
-</span><span class='line'>    <span class="c1">// RIGHT           = &quot;\uE014&quot;</span>
-</span><span class='line'>    <span class="c1">// ARROW_RIGHT     = &quot;\uE014&quot;</span>
-</span><span class='line'>    <span class="c1">// DOWN            = &quot;\uE015&quot;</span>
-</span><span class='line'>    <span class="c1">// ARROW_DOWN      = &quot;\uE015&quot;</span>
-</span><span class='line'>    <span class="c1">// INSERT          = &quot;\uE016&quot;</span>
-</span><span class='line'>    <span class="c1">// DELETE          = &quot;\uE017&quot;</span>
-</span><span class='line'>    <span class="c1">// SEMICOLON       = &quot;\uE018&quot;</span>
-</span><span class='line'>    <span class="c1">// EQUALS          = &quot;\uE019&quot;</span>
-</span><span class='line'>    <span class="c1">// NUMPAD0         = &quot;\uE01A&quot;</span>
-</span><span class='line'>    <span class="c1">// NUMPAD1         = &quot;\uE01B&quot;</span>
-</span><span class='line'>    <span class="c1">// NUMPAD2         = &quot;\uE01C&quot;</span>
-</span><span class='line'>    <span class="c1">// NUMPAD3         = &quot;\uE01D&quot;</span>
-</span><span class='line'>    <span class="c1">// NUMPAD4         = &quot;\uE01E&quot;</span>
-</span><span class='line'>    <span class="c1">// NUMPAD5         = &quot;\uE01F&quot;</span>
-</span><span class='line'>    <span class="c1">// NUMPAD6         = &quot;\uE020&quot;</span>
-</span><span class='line'>    <span class="c1">// NUMPAD7         = &quot;\uE021&quot;</span>
-</span><span class='line'>    <span class="c1">// NUMPAD8         = &quot;\uE022&quot;</span>
-</span><span class='line'>    <span class="c1">// NUMPAD9         = &quot;\uE023&quot;</span>
-</span><span class='line'>    <span class="c1">// MULTIPLY        = &quot;\uE024&quot;</span>
-</span><span class='line'>    <span class="c1">// ADD             = &quot;\uE025&quot;</span>
-</span><span class='line'>    <span class="c1">// SEPARATOR       = &quot;\uE026&quot;</span>
-</span><span class='line'>    <span class="c1">// SUBTRACT        = &quot;\uE027&quot;</span>
-</span><span class='line'>    <span class="c1">// DECIMAL         = &quot;\uE028&quot;</span>
-</span><span class='line'>    <span class="c1">// DIVIDE          = &quot;\uE029&quot;</span>
-</span><span class='line'>    <span class="c1">// F1              = &quot;\uE031&quot;</span>
-</span><span class='line'>    <span class="c1">// F2              = &quot;\uE032&quot;</span>
-</span><span class='line'>    <span class="c1">// F3              = &quot;\uE033&quot;</span>
-</span><span class='line'>    <span class="c1">// F4              = &quot;\uE034&quot;</span>
-</span><span class='line'>    <span class="c1">// F5              = &quot;\uE035&quot;</span>
-</span><span class='line'>    <span class="c1">// F6              = &quot;\uE036&quot;</span>
-</span><span class='line'>    <span class="c1">// F7              = &quot;\uE037&quot;</span>
-</span><span class='line'>    <span class="c1">// F8              = &quot;\uE038&quot;</span>
-</span><span class='line'>    <span class="c1">// F9              = &quot;\uE039&quot;</span>
-</span><span class='line'>    <span class="c1">// F10             = &quot;\uE03A&quot;</span>
-</span><span class='line'>    <span class="c1">// F11             = &quot;\uE03B&quot;</span>
-</span><span class='line'>    <span class="c1">// F12             = &quot;\uE03C&quot;</span>
-</span><span class='line'>    <span class="c1">// META            = &quot;\uE03D&quot;</span>
-</span><span class='line'>    <span class="c1">// COMMAND         = &quot;\uE03D&quot;</span>
-</span><span class='line'>    <span class="c1">// ZENKAKU_HANKAKU = &quot;\uE040&quot;</span>
+</span><span class='line'> <span class="c1">// NULL        = &quot;\uE000&quot;, CANCEL     = &quot;\uE001&quot;, HELP     = &quot;\uE002&quot;</span>
+</span><span class='line'> <span class="c1">// BACK_SPACE  = &quot;\uE003&quot;, TAB        = &quot;\uE004&quot;, CLEAR    = &quot;\uE005&quot;</span>
+</span><span class='line'> <span class="c1">// RETURN      = &quot;\uE006&quot;, ENTER      = &quot;\uE007&quot;, SHIFT    = &quot;\uE008&quot;</span>
+</span><span class='line'> <span class="c1">// CONTROL     = &quot;\uE009&quot;, ALT        = &quot;\uE00A&quot;, PAUSE    = &quot;\uE00B&quot;</span>
+</span><span class='line'> <span class="c1">// ESCAPE      = &quot;\uE00C&quot;, SPACE      = &quot;\uE00D&quot;, PAGE_UP  = &quot;\uE00E&quot;</span>
+</span><span class='line'> <span class="c1">// PAGE_DOWN   = &quot;\uE00F&quot;, END        = &quot;\uE010&quot;, HOME     = &quot;\uE011&quot;</span>
+</span><span class='line'> <span class="c1">// LEFT        = &quot;\uE012&quot;, ARROW_LEFT = &quot;\uE012&quot;, ARROW_UP = &quot;\uE013&quot;</span>
+</span><span class='line'> <span class="c1">// ARROW_RIGHT = &quot;\uE014&quot;, ARROW_DOWN = &quot;\uE015&quot;, INSERT   = &quot;\uE016&quot;</span>
+</span><span class='line'> <span class="c1">// DELETE      = &quot;\uE017&quot;, SEMICOLON  = &quot;\uE018&quot;, EQUALS   = &quot;\uE019&quot;</span>
+</span><span class='line'> <span class="c1">// NUMPAD0     = &quot;\uE01A&quot;, NUMPAD1    = &quot;\uE01B&quot;, NUMPAD2  = &quot;\uE01C&quot;</span>
+</span><span class='line'> <span class="c1">// NUMPAD3     = &quot;\uE01D&quot;, NUMPAD4    = &quot;\uE01E&quot;, NUMPAD5  = &quot;\uE01F&quot;</span>
+</span><span class='line'> <span class="c1">// NUMPAD6     = &quot;\uE020&quot;, NUMPAD7    = &quot;\uE021&quot;, NUMPAD8  = &quot;\uE022&quot;</span>
+</span><span class='line'> <span class="c1">// NUMPAD9     = &quot;\uE023&quot;, MULTIPLY   = &quot;\uE024&quot;, ADD      = &quot;\uE025&quot;</span>
+</span><span class='line'> <span class="c1">// SEPARATOR   = &quot;\uE026&quot;, SUBTRACT   = &quot;\uE027&quot;, DECIMAL  = &quot;\uE028&quot;</span>
+</span><span class='line'> <span class="c1">// DIVIDE      = &quot;\uE029&quot;, F1         = &quot;\uE031&quot;, F2       = &quot;\uE032&quot;</span>
+</span><span class='line'> <span class="c1">// F3          = &quot;\uE033&quot;, F4         = &quot;\uE034&quot;, F5       = &quot;\uE035&quot;</span>
+</span><span class='line'> <span class="c1">// F6          = &quot;\uE036&quot;, F7         = &quot;\uE037&quot;, F8       = &quot;\uE038&quot;</span>
+</span><span class='line'> <span class="c1">// F9          = &quot;\uE039&quot;, F10        = &quot;\uE03A&quot;, F11      = &quot;\uE03B&quot;</span>
+</span><span class='line'> <span class="c1">// F12         = &quot;\uE03C&quot;, META       = &quot;\uE03D&quot;, COMMAND  = &quot;\uE03D&quot;</span>
+</span><span class='line'>
+</span><span class='line'>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
