@@ -22,4 +22,5 @@ schtasks /TN LineSend /CHANGE /ST 14:00
 
 不需密碼
 /RU SYSTEM
+/ru user /rp passswd
 ```
