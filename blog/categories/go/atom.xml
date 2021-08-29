@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Go | icps]]></title>
   <link href="https://icps0610.github.io/blog/categories/go/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2021-06-18T03:42:06+08:00</updated>
+  <updated>2021-08-29T17:00:46+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -40,6 +40,9 @@ func printError(err error, str ...string) {
 
 <pre><code class="">windoes/linux amd64/386
 GOOS=windows GOARCH=amd64 go build -o hello.exe hello.go
+
+GOOS=windows GOARCH=amd64 go build  -ldflags -H=windowsgui -o hello.exe hello.go
+//hide windows
 </code></pre>
 
 <h6>convert</h6>
@@ -64,8 +67,8 @@ func runCmd(cmd string) {
 
 func runCmd(cmd string) {
     c, err := exec.Command("bash", "-c", cmd).Output()
-    fmt.Println(string(c))
-    printError(err)
+    fmt.Println()
+    printError(err, string(c))
 }
 </code></pre>
 
@@ -224,8 +227,7 @@ bufio.NewReader(os.Stdin).ReadBytes('\n')
 #save&amp;read
 
 func save(content, path string) {
-    data := []byte(content)
-    err := ioutil.WriteFile(path, data, 0644)
+    err := ioutil.WriteFile(path, []byte(content), 0644)
     printError(err)
 }
 
@@ -1198,6 +1200,50 @@ func addText(dc *gg.Context, str string, x, y, s float64) {
     dc.LoadFontFace("/data/font/msjh.ttc", s)
     dc.SetRGB(150, 150, 150)
     dc.DrawStringAnchored(str, x, y, 0, 0)
+}
+</code></pre>
+
+<h3>robotgo</h3>
+
+<pre><code class="go">"github.com/go-vgo/robotgo"
+
+robotgo.MoveMouseSmooth(21, 297, 0.5, 1.0)
+robotgo.MouseClick("left", true)
+robotgo.KeyTap("o", "ctrl")
+robotgo.KeyTap(`r`, `command`)
+
+func findpic(pic string, tryTime int, try ...int) (int, int) {
+    cs := robotgo.CaptureScreen()
+    sx, sy := robotgo.FindPic(pic, cs, 0.1)
+    if len(try) == 0 {
+        try = append(try, 0)
+    }
+    last := try[len(try)-1]
+    if (sx != -1 &amp;&amp; sy != -1) || last &gt; tryTime {
+        return sx, sy
+    }
+    return findpic(pic, tryTime, last+1)
+}
+</code></pre>
+
+<h3>mp3</h3>
+
+<pre><code class="go">"github.com/faiface/beep/mp3"
+"github.com/faiface/beep/speaker"
+
+func mp3Play(path string, sec ...int) {
+    f, err := os.Open(path)
+    printError(err)
+    streamer, format, err := mp3.Decode(f)
+    printError(err)
+    defer streamer.Close()
+    speaker.Init(format.SampleRate, format.SampleRate.N(time.Second/10))
+    speaker.Play(streamer)
+    if len(sec) &gt; 0 {
+        sleep(sec[0])
+    } else {
+        sleep(1000)
+    }
 }
 </code></pre>
 ]]></content>
