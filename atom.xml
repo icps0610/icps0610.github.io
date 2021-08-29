@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="https://icps0610.github.io/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2021-08-29T17:14:39+08:00</updated>
+  <updated>2021-08-29T17:19:03+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,214 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Vaccine]]></title>
+    <link href="https://icps0610.github.io/blog/2021/08/29/vaccine/"/>
+    <updated>2021-08-29T16:41:07+08:00</updated>
+    <id>https://icps0610.github.io/blog/2021/08/29/vaccine</id>
+    <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+<span class='line-number'>75</span>
+<span class='line-number'>76</span>
+<span class='line-number'>77</span>
+<span class='line-number'>78</span>
+<span class='line-number'>79</span>
+<span class='line-number'>80</span>
+<span class='line-number'>81</span>
+<span class='line-number'>82</span>
+<span class='line-number'>83</span>
+<span class='line-number'>84</span>
+<span class='line-number'>85</span>
+<span class='line-number'>86</span>
+<span class='line-number'>87</span>
+<span class='line-number'>88</span>
+<span class='line-number'>89</span>
+<span class='line-number'>90</span>
+<span class='line-number'>91</span>
+<span class='line-number'>92</span>
+<span class='line-number'>93</span>
+<span class='line-number'>94</span>
+<span class='line-number'>95</span>
+<span class='line-number'>96</span>
+<span class='line-number'>97</span>
+<span class='line-number'>98</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kn">package</span> <span class="nx">main</span>
+</span><span class='line'>
+</span><span class='line'><span class="kn">import</span> <span class="p">(</span>
+</span><span class='line'>    <span class="s">&quot;fmt&quot;</span>
+</span><span class='line'>    <span class="s">&quot;github.com/anaskhan96/soup&quot;</span>
+</span><span class='line'>    <span class="s">&quot;io/ioutil&quot;</span>
+</span><span class='line'>    <span class="s">&quot;net/http&quot;</span>
+</span><span class='line'>    <span class="s">&quot;os&quot;</span>
+</span><span class='line'>    <span class="s">&quot;os/exec&quot;</span>
+</span><span class='line'>    <span class="s">&quot;regexp&quot;</span>
+</span><span class='line'>    <span class="s">&quot;runtime&quot;</span>
+</span><span class='line'><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">var</span> <span class="p">(</span>
+</span><span class='line'>    <span class="nx">path</span>      <span class="p">=</span> <span class="s">&quot;/data/go/covid19/vaccine.txt&quot;</span>
+</span><span class='line'>    <span class="nx">matsuhUrl</span> <span class="p">=</span> <span class="s">&quot;&quot;</span>
+</span><span class='line'>    <span class="nx">record</span>    <span class="p">=</span> <span class="nx">readFile</span><span class="p">(</span><span class="nx">path</span><span class="p">)</span>
+</span><span class='line'><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">content</span> <span class="kt">string</span>
+</span><span class='line'>    <span class="nx">doc</span> <span class="o">:=</span> <span class="nx">getDoc</span><span class="p">(</span><span class="nx">matsuhUrl</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">ul</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">doc</span><span class="p">.</span><span class="nx">FindAll</span><span class="p">(</span><span class="s">&quot;ul&quot;</span><span class="p">,</span> <span class="s">&quot;class&quot;</span><span class="p">,</span> <span class="s">&quot;newsList&quot;</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">li</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">ul</span><span class="p">.</span><span class="nx">FindAll</span><span class="p">(</span><span class="s">&quot;li&quot;</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>            <span class="nx">a</span> <span class="o">:=</span> <span class="nx">li</span><span class="p">.</span><span class="nx">Find</span><span class="p">(</span><span class="s">&quot;a&quot;</span><span class="p">)</span>
+</span><span class='line'>            <span class="nx">title</span> <span class="o">:=</span> <span class="nx">a</span><span class="p">.</span><span class="nx">Find</span><span class="p">(</span><span class="s">&quot;p&quot;</span><span class="p">).</span><span class="nx">Text</span><span class="p">()</span>
+</span><span class='line'>            <span class="k">if</span> <span class="nx">regexMatch</span><span class="p">(</span><span class="nx">title</span><span class="p">,</span> <span class="s">&quot;接種通知&quot;</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>                <span class="nx">url</span> <span class="o">:=</span> <span class="nx">a</span><span class="p">.</span><span class="nx">Attrs</span><span class="p">()[</span><span class="s">&quot;href&quot;</span><span class="p">]</span>
+</span><span class='line'>                <span class="nx">date</span> <span class="o">:=</span> <span class="nx">a</span><span class="p">.</span><span class="nx">Find</span><span class="p">(</span><span class="s">&quot;date&quot;</span><span class="p">).</span><span class="nx">Text</span><span class="p">()</span>
+</span><span class='line'>                <span class="nx">text</span> <span class="o">:=</span> <span class="nx">getPageContent</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span>
+</span><span class='line'>                <span class="nx">content</span> <span class="o">+=</span> <span class="p">(</span><span class="nx">date</span> <span class="o">+</span> <span class="nx">text</span><span class="p">)</span>
+</span><span class='line'>                <span class="k">break</span>
+</span><span class='line'>            <span class="p">}</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">if</span> <span class="nx">record</span> <span class="o">!=</span> <span class="nx">content</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nx">lineMessage</span><span class="p">(</span><span class="nx">content</span><span class="p">)</span>
+</span><span class='line'>        <span class="nx">saveFile</span><span class="p">(</span><span class="nx">content</span><span class="p">,</span> <span class="nx">path</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">func</span> <span class="nx">getPageContent</span><span class="p">(</span><span class="nx">url</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">string</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">text</span> <span class="kt">string</span>
+</span><span class='line'>    <span class="nx">doc2</span> <span class="o">:=</span> <span class="nx">getDoc</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">for</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">tag</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">doc2</span><span class="p">.</span><span class="nx">Find</span><span class="p">(</span><span class="s">&quot;article&quot;</span><span class="p">).</span><span class="nx">Children</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">if</span> <span class="nx">i</span> <span class="o">&lt;=</span> <span class="mi">4</span> <span class="p">{</span>
+</span><span class='line'>            <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">ta</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">tag</span><span class="p">.</span><span class="nx">Children</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>                <span class="nx">text</span> <span class="o">+=</span> <span class="s">&quot;\n\n&quot;</span> <span class="o">+</span> <span class="nx">ta</span><span class="p">.</span><span class="nx">FullText</span><span class="p">()</span>
+</span><span class='line'>            <span class="p">}</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="k">return</span> <span class="nx">text</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">func</span> <span class="nx">lineMessage</span><span class="p">(</span><span class="nx">message</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">cmd</span> <span class="o">:=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">`/data/go/lineMessage/lineMessage me &quot;%s&quot;`</span><span class="p">,</span> <span class="nx">message</span><span class="p">)</span>
+</span><span class='line'>    <span class="nx">_</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">exec</span><span class="p">.</span><span class="nx">Command</span><span class="p">(</span><span class="s">&quot;bash&quot;</span><span class="p">,</span> <span class="s">&quot;-c&quot;</span><span class="p">,</span> <span class="nx">cmd</span><span class="p">).</span><span class="nx">Output</span><span class="p">()</span>
+</span><span class='line'>    <span class="nx">printError</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">func</span> <span class="nx">getDoc</span><span class="p">(</span><span class="nx">url</span> <span class="kt">string</span><span class="p">)</span> <span class="nx">soup</span><span class="p">.</span><span class="nx">Root</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">req</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">NewRequest</span><span class="p">(</span><span class="s">&quot;GET&quot;</span><span class="p">,</span> <span class="nx">url</span><span class="p">,</span> <span class="kc">nil</span><span class="p">)</span>
+</span><span class='line'>    <span class="nx">printError</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span><span class='line'>    <span class="nx">res</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">DefaultClient</span><span class="p">.</span><span class="nx">Do</span><span class="p">(</span><span class="nx">req</span><span class="p">)</span>
+</span><span class='line'>    <span class="nx">printError</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span><span class='line'>    <span class="nx">body</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">ioutil</span><span class="p">.</span><span class="nx">ReadAll</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">Body</span><span class="p">)</span>
+</span><span class='line'>    <span class="nx">printError</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span><span class='line'>    <span class="nx">resp</span> <span class="o">:=</span> <span class="nb">string</span><span class="p">(</span><span class="nx">body</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">return</span> <span class="nx">soup</span><span class="p">.</span><span class="nx">HTMLParse</span><span class="p">(</span><span class="nx">resp</span><span class="p">)</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">func</span> <span class="nx">regexMatch</span><span class="p">(</span><span class="nx">str</span><span class="p">,</span> <span class="nx">keyword</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">bool</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">match</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">regexp</span><span class="p">.</span><span class="nx">MatchString</span><span class="p">(</span><span class="nx">keyword</span><span class="p">,</span> <span class="nx">str</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">return</span> <span class="nx">match</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">func</span> <span class="nx">readFile</span><span class="p">(</span><span class="nx">path</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">string</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">dat</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">ioutil</span><span class="p">.</span><span class="nx">ReadFile</span><span class="p">(</span><span class="nx">path</span><span class="p">)</span>
+</span><span class='line'>    <span class="nx">printError</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">return</span> <span class="nb">string</span><span class="p">(</span><span class="nx">dat</span><span class="p">)</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">func</span> <span class="nx">saveFile</span><span class="p">(</span><span class="nx">content</span><span class="p">,</span> <span class="nx">path</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">err</span> <span class="o">:=</span> <span class="nx">ioutil</span><span class="p">.</span><span class="nx">WriteFile</span><span class="p">(</span><span class="nx">path</span><span class="p">,</span> <span class="p">[]</span><span class="nb">byte</span><span class="p">(</span><span class="nx">content</span><span class="p">),</span> <span class="mo">0644</span><span class="p">)</span>
+</span><span class='line'>    <span class="nx">printError</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">func</span> <span class="nx">printError</span><span class="p">(</span><span class="nx">err</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nx">pc</span><span class="p">,</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">runtime</span><span class="p">.</span><span class="nx">Caller</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span><span class='line'>        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">runtime</span><span class="p">.</span><span class="nx">FuncForPC</span><span class="p">(</span><span class="nx">pc</span><span class="p">).</span><span class="nx">Name</span><span class="p">())</span>
+</span><span class='line'>        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">var</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">_</span> <span class="p">=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">,</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Exit</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Notify]]></title>
@@ -958,22 +1166,6 @@ Ref <a href="https://www.raspberrypi.org/forums/viewtopic.php?t=121125">https://
 </span><span class='line'><span class="s2">&quot;System.IsPinnedToNameSpaceTree&quot;</span><span class="o">=</span>dword:00000000
 </span></code></pre></td></tr></table></div></figure>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Backup]]></title>
-    <link href="https://icps0610.github.io/blog/2020/04/14/backup/"/>
-    <updated>2020-04-14T09:16:20+08:00</updated>
-    <id>https://icps0610.github.io/blog/2020/04/14/backup</id>
-    <content type="html"><![CDATA[<p><code>sudo rsync -a / /bk/bk_$(date +"%m%d%Y") --exclude=/bk --exclude=/media/* --exclude=/sys/* --exclude=/proc/* --exclude=/mnt/* --exclude=/tmp/*</code>
-<code>sudo rsync -a bk_04142020 /</code></p>
-
-<h5>run/user/1000/gvfs" failed: Permission denied</h5>
-
-<blockquote><blockquote><p>ref <a href="https://blog.csdn.net/codemacket/article/details/77864770">https://blog.csdn.net/codemacket/article/details/77864770</a>
-<code>sudo umount /run/user/1000/gvfs</code>
-<code>rm -rf /run/user/1000/gvfs</code></p></blockquote></blockquote>
 ]]></content>
   </entry>
   
