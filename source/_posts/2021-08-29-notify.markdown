@@ -1,11 +1,12 @@
 ---
 layout: post
-title: "vaccine"
+title: "notify"
 date: 2021-08-29 16:41:07 +0800
 comments: true
 categories: golang
 ---
-``` go
+
+``` go  
 
 package main
 
@@ -21,7 +22,7 @@ import (
 )
 
 var (
-    path      = "/data/go/covid19/vaccine.txt"
+    path      = "/data/go/covid19/notify.txt"
     matsuhUrl = ""
     record    = readFile(path)
 )
@@ -106,4 +107,4 @@ func printError(err error) {
 
 var _, _ = fmt.Println, os.Exit
 
-```
+```  
