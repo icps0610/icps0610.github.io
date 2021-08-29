@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Uncategorized | icps]]></title>
   <link href="https://icps0610.github.io/blog/categories/uncategorized/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2021-08-29T17:00:46+08:00</updated>
+  <updated>2021-08-29T17:03:47+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,114 +12,6 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
-  
-  <entry>
-    <title type="html"><![CDATA[Vaccine]]></title>
-    <link href="https://icps0610.github.io/blog/2021/08/29/vaccine/"/>
-    <updated>2021-08-29T16:41:07+08:00</updated>
-    <id>https://icps0610.github.io/blog/2021/08/29/vaccine</id>
-    <content type="html"><![CDATA[<pre><code class="golang">
-package main
-
-import (
-    "fmt"
-    "github.com/anaskhan96/soup"
-    "io/ioutil"
-    "net/http"
-    "os"
-    "os/exec"
-    "regexp"
-    "runtime"
-)
-
-var (
-    path      = "/data/go/covid19/vaccine.txt"
-    matsuhUrl = ""
-    record    = readFile(path)
-)
-
-func main() {
-    var content string
-    doc := getDoc(matsuhUrl)
-    for _, ul := range doc.FindAll("ul", "class", "newsList") {
-        for i, li := range ul.FindAll("li") {
-            a := li.Find("a")
-            title := a.Find("p").Text()
-            if regexMatch(title, "接種通知") {
-                url := a.Attrs()["href"]
-                date := a.Find("date").Text()
-                text := getPageContent(url)
-                content += (date + text)
-                break
-            }
-        }
-    }
-
-    if record != content {
-        lineMessage(content)
-        saveFile(content, path)
-    }
-
-}
-
-func getPageContent(url string) string {
-    var text string
-    doc2 := getDoc(url)
-    for i, tag := range doc2.Find("article").Children() {
-        if i &lt;= 4 {
-            for _, ta := range tag.Children() {
-                text += "\n\n" + ta.FullText()
-            }
-        }
-    }
-    return text
-}
-
-func lineMessage(message string) {
-    cmd := fmt.Sprintf(`/data/go/lineMessage/lineMessage me "%s"`, message)
-    _, err := exec.Command("bash", "-c", cmd).Output()
-    printError(err)
-}
-
-func getDoc(url string) soup.Root {
-    req, err := http.NewRequest("GET", url, nil)
-    printError(err)
-    res, err := http.DefaultClient.Do(req)
-    printError(err)
-    body, err := ioutil.ReadAll(res.Body)
-    printError(err)
-    resp := string(body)
-    return soup.HTMLParse(resp)
-}
-
-func regexMatch(str, keyword string) bool {
-    match, _ := regexp.MatchString(keyword, str)
-    return match
-}
-
-func readFile(path string) string {
-    dat, err := ioutil.ReadFile(path)
-    printError(err)
-    return string(dat)
-}
-
-func saveFile(content, path string) {
-    err := ioutil.WriteFile(path, []byte(content), 0644)
-    printError(err)
-}
-
-func printError(err error) {
-    if err != nil {
-        pc, _, _, _ := runtime.Caller(1)
-        fmt.Println(runtime.FuncForPC(pc).Name())
-        fmt.Println(err)
-    }
-}
-
-var _, _ = fmt.Println, os.Exit
-</code></pre>
-]]></content>
-  </entry>
   
   <entry>
     <title type="html"><![CDATA[Countdown]]></title>
@@ -173,6 +65,23 @@ copy /b run.mp3+s.mp3+5.mp3+s.mp3+4.mp3+s.mp3+3.mp3+s.mp3+2.mp3+s.mp3+1.mp3 5432
 https:\/\/www\.facebook\.com\/(story\.php\?(story)_fbid=(\w+)\&amp;id=(\w+)(\&amp;|))
 https:\/\/www\.facebook\.com\/(\w+)\/(videos|posts)\/([a-zA-Z0-9\.]+)
 https:\/\/www\.facebook\.com\/((photo)\.php\?fbid=(\w+)(\&amp;|)|(\w+)\/(photos)\/([a-zA-Z0-9\.]+))
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Xcom2]]></title>
+    <link href="https://icps0610.github.io/blog/2020/05/06/xcom2/"/>
+    <updated>2020-05-06T09:42:42+08:00</updated>
+    <id>https://icps0610.github.io/blog/2020/05/06/xcom2</id>
+    <content type="html"><![CDATA[<pre><code>全部撤離         https://steamcommunity.com/sharedfiles/filedetails/?id=618669868
+全部撤離 WOTC    https://steamcommunity.com/sharedfiles/filedetails/?id=1126395106
+一鍵監視         https://steamcommunity.com/sharedfiles/filedetails/?id=621695447
+一鍵監視 WOTC    https://steamcommunity.com/sharedfiles/filedetails/?id=1133368143
+為了上面兩個     https://steamcommunity.com/sharedfiles/filedetails/?id=694455263
+顯示黑市物品說明 https://steamcommunity.com/sharedfiles/filedetails/?id=648410303
+血量數字化       https://steamcommunity.com/sharedfiles/filedetails/?id=617015579
+血量數字化 WOTC  https://steamcommunity.com/sharedfiles/filedetails/?id=1123174832
 </code></pre>
 ]]></content>
   </entry>

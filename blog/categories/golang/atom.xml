@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Golang | icps]]></title>
   <link href="https://icps0610.github.io/blog/categories/golang/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2021-08-29T17:00:46+08:00</updated>
+  <updated>2021-08-29T17:03:47+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,114 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Vaccine]]></title>
+    <link href="https://icps0610.github.io/blog/2021/08/29/vaccine/"/>
+    <updated>2021-08-29T16:41:07+08:00</updated>
+    <id>https://icps0610.github.io/blog/2021/08/29/vaccine</id>
+    <content type="html"><![CDATA[<pre><code class="golang">
+package main
+
+import (
+    "fmt"
+    "github.com/anaskhan96/soup"
+    "io/ioutil"
+    "net/http"
+    "os"
+    "os/exec"
+    "regexp"
+    "runtime"
+)
+
+var (
+    path      = "/data/go/covid19/vaccine.txt"
+    matsuhUrl = ""
+    record    = readFile(path)
+)
+
+func main() {
+    var content string
+    doc := getDoc(matsuhUrl)
+    for _, ul := range doc.FindAll("ul", "class", "newsList") {
+        for i, li := range ul.FindAll("li") {
+            a := li.Find("a")
+            title := a.Find("p").Text()
+            if regexMatch(title, "接種通知") {
+                url := a.Attrs()["href"]
+                date := a.Find("date").Text()
+                text := getPageContent(url)
+                content += (date + text)
+                break
+            }
+        }
+    }
+
+    if record != content {
+        lineMessage(content)
+        saveFile(content, path)
+    }
+
+}
+
+func getPageContent(url string) string {
+    var text string
+    doc2 := getDoc(url)
+    for i, tag := range doc2.Find("article").Children() {
+        if i &lt;= 4 {
+            for _, ta := range tag.Children() {
+                text += "\n\n" + ta.FullText()
+            }
+        }
+    }
+    return text
+}
+
+func lineMessage(message string) {
+    cmd := fmt.Sprintf(`/data/go/lineMessage/lineMessage me "%s"`, message)
+    _, err := exec.Command("bash", "-c", cmd).Output()
+    printError(err)
+}
+
+func getDoc(url string) soup.Root {
+    req, err := http.NewRequest("GET", url, nil)
+    printError(err)
+    res, err := http.DefaultClient.Do(req)
+    printError(err)
+    body, err := ioutil.ReadAll(res.Body)
+    printError(err)
+    resp := string(body)
+    return soup.HTMLParse(resp)
+}
+
+func regexMatch(str, keyword string) bool {
+    match, _ := regexp.MatchString(keyword, str)
+    return match
+}
+
+func readFile(path string) string {
+    dat, err := ioutil.ReadFile(path)
+    printError(err)
+    return string(dat)
+}
+
+func saveFile(content, path string) {
+    err := ioutil.WriteFile(path, []byte(content), 0644)
+    printError(err)
+}
+
+func printError(err error) {
+    if err != nil {
+        pc, _, _, _ := runtime.Caller(1)
+        fmt.Println(runtime.FuncForPC(pc).Name())
+        fmt.Println(err)
+    }
+}
+
+var _, _ = fmt.Println, os.Exit
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[googleForms]]></title>
@@ -160,18 +268,6 @@ func post() {
     html := string(body)
     doc := soup.HTMLParse(html)
 }
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Gin]]></title>
-    <link href="https://icps0610.github.io/blog/2019/10/22/gin/"/>
-    <updated>2019-10-22T22:15:44+08:00</updated>
-    <id>https://icps0610.github.io/blog/2019/10/22/gin</id>
-    <content type="html"><![CDATA[<pre><code class="go">form, _ := c.MultipartForm()
-check := form.Value["idx"]
-files := form.File["uploads"]
 </code></pre>
 ]]></content>
   </entry>
