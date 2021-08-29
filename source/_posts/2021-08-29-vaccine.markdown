@@ -3,7 +3,7 @@ layout: post
 title: "vaccine"
 date: 2021-08-29 16:41:07 +0800
 comments: true
-categories: uncategorized
+categories: golang
 ---
 ``` golang
 
