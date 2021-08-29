@@ -133,8 +133,14 @@
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>windoes/linux amd64/386
-</span><span class='line'>GOOS=windows GOARCH=amd64 go build -o hello.exe hello.go</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'>GOOS=windows GOARCH=amd64 go build -o hello.exe hello.go
+</span><span class='line'>
+</span><span class='line'>GOOS=windows GOARCH=amd64 go build  -ldflags -H=windowsgui -o hello.exe hello.go
+</span><span class='line'>//hide windows</span></code></pre></td></tr></table></div></figure>
 
 
 <h6>convert</h6>
@@ -168,8 +174,8 @@
 </span><span class='line'>
 </span><span class='line'><span class="kd">func</span> <span class="nx">runCmd</span><span class="p">(</span><span class="nx">cmd</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
 </span><span class='line'>    <span class="nx">c</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">exec</span><span class="p">.</span><span class="nx">Command</span><span class="p">(</span><span class="s">&quot;bash&quot;</span><span class="p">,</span> <span class="s">&quot;-c&quot;</span><span class="p">,</span> <span class="nx">cmd</span><span class="p">).</span><span class="nx">Output</span><span class="p">()</span>
-</span><span class='line'>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">c</span><span class="p">))</span>
-</span><span class='line'>    <span class="nx">printError</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span><span class='line'>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">()</span>
+</span><span class='line'>    <span class="nx">printError</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nb">string</span><span class="p">(</span><span class="nx">c</span><span class="p">))</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
@@ -514,14 +520,12 @@
 <span class='line-number'>62</span>
 <span class='line-number'>63</span>
 <span class='line-number'>64</span>
-<span class='line-number'>65</span>
 </pre></td><td class='code'><pre><code class='go'><span class='line'><span class="s">&quot;io/ioutil&quot;</span>
 </span><span class='line'>
 </span><span class='line'><span class="err">#</span><span class="nx">save</span><span class="o">&amp;</span><span class="nx">read</span>
 </span><span class='line'>
 </span><span class='line'><span class="kd">func</span> <span class="nx">save</span><span class="p">(</span><span class="nx">content</span><span class="p">,</span> <span class="nx">path</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>    <span class="nx">data</span> <span class="o">:=</span> <span class="p">[]</span><span class="nb">byte</span><span class="p">(</span><span class="nx">content</span><span class="p">)</span>
-</span><span class='line'>    <span class="nx">err</span> <span class="o">:=</span> <span class="nx">ioutil</span><span class="p">.</span><span class="nx">WriteFile</span><span class="p">(</span><span class="nx">path</span><span class="p">,</span> <span class="nx">data</span><span class="p">,</span> <span class="mo">0644</span><span class="p">)</span>
+</span><span class='line'>    <span class="nx">err</span> <span class="o">:=</span> <span class="nx">ioutil</span><span class="p">.</span><span class="nx">WriteFile</span><span class="p">(</span><span class="nx">path</span><span class="p">,</span> <span class="p">[]</span><span class="nb">byte</span><span class="p">(</span><span class="nx">content</span><span class="p">),</span> <span class="mo">0644</span><span class="p">)</span>
 </span><span class='line'>    <span class="nx">printError</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
 </span><span class='line'><span class="p">}</span>
 </span><span class='line'>
@@ -2238,6 +2242,88 @@
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
+
+<h3>robotgo</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="s">&quot;github.com/go-vgo/robotgo&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">robotgo</span><span class="p">.</span><span class="nx">MoveMouseSmooth</span><span class="p">(</span><span class="mi">21</span><span class="p">,</span> <span class="mi">297</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+</span><span class='line'><span class="nx">robotgo</span><span class="p">.</span><span class="nx">MouseClick</span><span class="p">(</span><span class="s">&quot;left&quot;</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
+</span><span class='line'><span class="nx">robotgo</span><span class="p">.</span><span class="nx">KeyTap</span><span class="p">(</span><span class="s">&quot;o&quot;</span><span class="p">,</span> <span class="s">&quot;ctrl&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="nx">robotgo</span><span class="p">.</span><span class="nx">KeyTap</span><span class="p">(</span><span class="s">`r`</span><span class="p">,</span> <span class="s">`command`</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">func</span> <span class="nx">findpic</span><span class="p">(</span><span class="nx">pic</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">tryTime</span> <span class="kt">int</span><span class="p">,</span> <span class="nx">try</span> <span class="o">...</span><span class="kt">int</span><span class="p">)</span> <span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">cs</span> <span class="o">:=</span> <span class="nx">robotgo</span><span class="p">.</span><span class="nx">CaptureScreen</span><span class="p">()</span>
+</span><span class='line'>    <span class="nx">sx</span><span class="p">,</span> <span class="nx">sy</span> <span class="o">:=</span> <span class="nx">robotgo</span><span class="p">.</span><span class="nx">FindPic</span><span class="p">(</span><span class="nx">pic</span><span class="p">,</span> <span class="nx">cs</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nx">try</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nx">try</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">try</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="nx">last</span> <span class="o">:=</span> <span class="nx">try</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="nx">try</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="nx">sx</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="nx">sy</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">||</span> <span class="nx">last</span> <span class="p">&gt;</span> <span class="nx">tryTime</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="nx">sx</span><span class="p">,</span> <span class="nx">sy</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="k">return</span> <span class="nx">findpic</span><span class="p">(</span><span class="nx">pic</span><span class="p">,</span> <span class="nx">tryTime</span><span class="p">,</span> <span class="nx">last</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>mp3</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="s">&quot;github.com/faiface/beep/mp3&quot;</span>
+</span><span class='line'><span class="s">&quot;github.com/faiface/beep/speaker&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">func</span> <span class="nx">mp3Play</span><span class="p">(</span><span class="nx">path</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">sec</span> <span class="o">...</span><span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">f</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Open</span><span class="p">(</span><span class="nx">path</span><span class="p">)</span>
+</span><span class='line'>    <span class="nx">printError</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span><span class='line'>    <span class="nx">streamer</span><span class="p">,</span> <span class="nx">format</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">mp3</span><span class="p">.</span><span class="nx">Decode</span><span class="p">(</span><span class="nx">f</span><span class="p">)</span>
+</span><span class='line'>    <span class="nx">printError</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">defer</span> <span class="nx">streamer</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
+</span><span class='line'>    <span class="nx">speaker</span><span class="p">.</span><span class="nx">Init</span><span class="p">(</span><span class="nx">format</span><span class="p">.</span><span class="nx">SampleRate</span><span class="p">,</span> <span class="nx">format</span><span class="p">.</span><span class="nx">SampleRate</span><span class="p">.</span><span class="nx">N</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="o">/</span><span class="mi">10</span><span class="p">))</span>
+</span><span class='line'>    <span class="nx">speaker</span><span class="p">.</span><span class="nx">Play</span><span class="p">(</span><span class="nx">streamer</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nx">sec</span><span class="p">)</span> <span class="p">&gt;</span> <span class="mi">0</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nx">sleep</span><span class="p">(</span><span class="nx">sec</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</span><span class='line'>    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nx">sleep</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
 </div>
 
 
@@ -2296,7 +2382,7 @@
 <li class='category'><a href='/blog/categories/excel/'>excel (2)</a></li>
 <li class='category'><a href='/blog/categories/gdrive/'>gdrive (1)</a></li>
 <li class='category'><a href='/blog/categories/go/'>go (1)</a></li>
-<li class='category'><a href='/blog/categories/golang/'>golang (7)</a></li>
+<li class='category'><a href='/blog/categories/golang/'>golang (8)</a></li>
 <li class='category'><a href='/blog/categories/juniper/'>juniper (1)</a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (34)</a></li>
 <li class='category'><a href='/blog/categories/powershell/'>powershell (1)</a></li>
@@ -2313,6 +2399,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2021/08/29/vaccine/">Vaccine</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2021/06/15/sound/">Countdown</a>
       </li>
     
@@ -2326,10 +2416,6 @@
     
       <li class="post">
         <a href="/blog/2021/04/24/generatorpassword/">GeneratorPassword</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2021/04/08/cputemppi/">cpuTemp_pi</a>
       </li>
     
   </ul>
