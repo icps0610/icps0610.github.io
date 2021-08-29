@@ -1,0 +1,109 @@
+---
+layout: post
+title: "vaccine"
+date: 2021-08-29 16:41:07 +0800
+comments: true
+categories: uncategorized
+---
+``` golang
+
+package main
+
+import (
+    "fmt"
+    "github.com/anaskhan96/soup"
+    "io/ioutil"
+    "net/http"
+    "os"
+    "os/exec"
+    "regexp"
+    "runtime"
+)
+
+var (
+    path      = "/data/go/covid19/vaccine.txt"
+    matsuhUrl = ""
+    record    = readFile(path)
+)
+
+func main() {
+    var content string
+    doc := getDoc(matsuhUrl)
+    for _, ul := range doc.FindAll("ul", "class", "newsList") {
+        for i, li := range ul.FindAll("li") {
+            a := li.Find("a")
+            title := a.Find("p").Text()
+            if regexMatch(title, "接種通知") {
+                url := a.Attrs()["href"]
+                date := a.Find("date").Text()
+                text := getPageContent(url)
+                content += (date + text)
+                break
+            }
+        }
+    }
+
+    if record != content {
+        lineMessage(content)
+        saveFile(content, path)
+    }
+
+}
+
+func getPageContent(url string) string {
+    var text string
+    doc2 := getDoc(url)
+    for i, tag := range doc2.Find("article").Children() {
+        if i <= 4 {
+            for _, ta := range tag.Children() {
+                text += "\n\n" + ta.FullText()
+            }
+        }
+    }
+    return text
+}
+
+func lineMessage(message string) {
+    cmd := fmt.Sprintf(`/data/go/lineMessage/lineMessage me "%s"`, message)
+    _, err := exec.Command("bash", "-c", cmd).Output()
+    printError(err)
+}
+
+func getDoc(url string) soup.Root {
+    req, err := http.NewRequest("GET", url, nil)
+    printError(err)
+    res, err := http.DefaultClient.Do(req)
+    printError(err)
+    body, err := ioutil.ReadAll(res.Body)
+    printError(err)
+    resp := string(body)
+    return soup.HTMLParse(resp)
+}
+
+func regexMatch(str, keyword string) bool {
+    match, _ := regexp.MatchString(keyword, str)
+    return match
+}
+
+func readFile(path string) string {
+    dat, err := ioutil.ReadFile(path)
+    printError(err)
+    return string(dat)
+}
+
+func saveFile(content, path string) {
+    err := ioutil.WriteFile(path, []byte(content), 0644)
+    printError(err)
+}
+
+func printError(err error) {
+    if err != nil {
+        pc, _, _, _ := runtime.Caller(1)
+        fmt.Println(runtime.FuncForPC(pc).Name())
+        fmt.Println(err)
+    }
+}
+
+var _, _ = fmt.Println, os.Exit
+
+```

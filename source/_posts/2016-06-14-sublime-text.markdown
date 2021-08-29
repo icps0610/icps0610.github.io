@@ -6,6 +6,12 @@ comments: true
 categories: app
 ---
 
+### 常用
+ctrl + shift + L 多行模式
+ctrl + shift + n 遞增
+
+
+
 `%AppData%\Sublime Text 3\Packages\User\snippets`  
 
 sublime 3 
