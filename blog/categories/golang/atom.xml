@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Golang | icps]]></title>
   <link href="https://icps0610.github.io/blog/categories/golang/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2021-08-29T17:19:03+08:00</updated>
+  <updated>2021-08-29T17:21:20+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,114 +12,6 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
-  
-  <entry>
-    <title type="html"><![CDATA[Vaccine]]></title>
-    <link href="https://icps0610.github.io/blog/2021/08/29/vaccine/"/>
-    <updated>2021-08-29T16:41:07+08:00</updated>
-    <id>https://icps0610.github.io/blog/2021/08/29/vaccine</id>
-    <content type="html"><![CDATA[<pre><code class="go  ">
-package main
-
-import (
-    "fmt"
-    "github.com/anaskhan96/soup"
-    "io/ioutil"
-    "net/http"
-    "os"
-    "os/exec"
-    "regexp"
-    "runtime"
-)
-
-var (
-    path      = "/data/go/covid19/vaccine.txt"
-    matsuhUrl = ""
-    record    = readFile(path)
-)
-
-func main() {
-    var content string
-    doc := getDoc(matsuhUrl)
-    for _, ul := range doc.FindAll("ul", "class", "newsList") {
-        for _, li := range ul.FindAll("li") {
-            a := li.Find("a")
-            title := a.Find("p").Text()
-            if regexMatch(title, "接種通知") {
-                url := a.Attrs()["href"]
-                date := a.Find("date").Text()
-                text := getPageContent(url)
-                content += (date + text)
-                break
-            }
-        }
-    }
-
-    if record != content {
-        lineMessage(content)
-        saveFile(content, path)
-    }
-
-}
-
-func getPageContent(url string) string {
-    var text string
-    doc2 := getDoc(url)
-    for i, tag := range doc2.Find("article").Children() {
-        if i &lt;= 4 {
-            for _, ta := range tag.Children() {
-                text += "\n\n" + ta.FullText()
-            }
-        }
-    }
-    return text
-}
-
-func lineMessage(message string) {
-    cmd := fmt.Sprintf(`/data/go/lineMessage/lineMessage me "%s"`, message)
-    _, err := exec.Command("bash", "-c", cmd).Output()
-    printError(err)
-}
-
-func getDoc(url string) soup.Root {
-    req, err := http.NewRequest("GET", url, nil)
-    printError(err)
-    res, err := http.DefaultClient.Do(req)
-    printError(err)
-    body, err := ioutil.ReadAll(res.Body)
-    printError(err)
-    resp := string(body)
-    return soup.HTMLParse(resp)
-}
-
-func regexMatch(str, keyword string) bool {
-    match, _ := regexp.MatchString(keyword, str)
-    return match
-}
-
-func readFile(path string) string {
-    dat, err := ioutil.ReadFile(path)
-    printError(err)
-    return string(dat)
-}
-
-func saveFile(content, path string) {
-    err := ioutil.WriteFile(path, []byte(content), 0644)
-    printError(err)
-}
-
-func printError(err error) {
-    if err != nil {
-        pc, _, _, _ := runtime.Caller(1)
-        fmt.Println(runtime.FuncForPC(pc).Name())
-        fmt.Println(err)
-    }
-}
-
-var _, _ = fmt.Println, os.Exit
-</code></pre>
-]]></content>
-  </entry>
   
   <entry>
     <title type="html"><![CDATA[Notify]]></title>
@@ -150,7 +42,7 @@ func main() {
     var content string
     doc := getDoc(matsuhUrl)
     for _, ul := range doc.FindAll("ul", "class", "newsList") {
-        for i, li := range ul.FindAll("li") {
+        for _, li := range ul.FindAll("li") {
             a := li.Find("a")
             title := a.Find("p").Text()
             if regexMatch(title, "接種通知") {
@@ -336,6 +228,45 @@ func checkCompanyCode(num string) bool {
         sum += t
     }
     return (sum)%10 == 0 || (string(num[6]) == "7" &amp;&amp; (sum+1)%10 == 0)
+}
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Post]]></title>
+    <link href="https://icps0610.github.io/blog/2019/12/17/post/"/>
+    <updated>2019-12-17T17:55:34+08:00</updated>
+    <id>https://icps0610.github.io/blog/2019/12/17/post</id>
+    <content type="html"><![CDATA[<blockquote><blockquote><p>ref <a href="https://ithelp.ithome.com.tw/articles/10159383">https://ithelp.ithome.com.tw/articles/10159383</a></p></blockquote></blockquote>
+
+<pre><code class="go">func get() {
+    resp, err := http.Get("https://123/456.php?q=789")
+    if err != nil {
+        // handle error
+    }
+    defer resp.Body.Close()
+    body, err := ioutil.ReadAll(resp.Body)
+    if err != nil {
+        // handle error
+    }
+    html := string(body)
+    doc := soup.HTMLParse(html)
+}
+
+func post() {
+    resp, err := http.PostForm("https://123", url.Values{"SN": {word}})
+    if err != nil {
+        // handle error
+    }
+    resp.Header.Set("Content-Type", "application/x-www-form-urlencoded;application/json; charset=utf-8")
+    defer resp.Body.Close()
+    body, err := ioutil.ReadAll(resp.Body)
+    if err != nil {
+        // handle error
+    }
+    html := string(body)
+    doc := soup.HTMLParse(html)
 }
 </code></pre>
 ]]></content>

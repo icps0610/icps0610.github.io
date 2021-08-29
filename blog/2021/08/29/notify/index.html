@@ -259,7 +259,7 @@
 </span><span class='line'>    <span class="kd">var</span> <span class="nx">content</span> <span class="kt">string</span>
 </span><span class='line'>    <span class="nx">doc</span> <span class="o">:=</span> <span class="nx">getDoc</span><span class="p">(</span><span class="nx">matsuhUrl</span><span class="p">)</span>
 </span><span class='line'>    <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">ul</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">doc</span><span class="p">.</span><span class="nx">FindAll</span><span class="p">(</span><span class="s">&quot;ul&quot;</span><span class="p">,</span> <span class="s">&quot;class&quot;</span><span class="p">,</span> <span class="s">&quot;newsList&quot;</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>        <span class="k">for</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">li</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">ul</span><span class="p">.</span><span class="nx">FindAll</span><span class="p">(</span><span class="s">&quot;li&quot;</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">li</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">ul</span><span class="p">.</span><span class="nx">FindAll</span><span class="p">(</span><span class="s">&quot;li&quot;</span><span class="p">)</span> <span class="p">{</span>
 </span><span class='line'>            <span class="nx">a</span> <span class="o">:=</span> <span class="nx">li</span><span class="p">.</span><span class="nx">Find</span><span class="p">(</span><span class="s">&quot;a&quot;</span><span class="p">)</span>
 </span><span class='line'>            <span class="nx">title</span> <span class="o">:=</span> <span class="nx">a</span><span class="p">.</span><span class="nx">Find</span><span class="p">(</span><span class="s">&quot;p&quot;</span><span class="p">).</span><span class="nx">Text</span><span class="p">()</span>
 </span><span class='line'>            <span class="k">if</span> <span class="nx">regexMatch</span><span class="p">(</span><span class="nx">title</span><span class="p">,</span> <span class="s">&quot;接種通知&quot;</span><span class="p">)</span> <span class="p">{</span>
@@ -377,8 +377,6 @@
         <a class="basic-alignment left" href="/blog/2021/06/15/sound/" title="Previous Post: countdown">&laquo; countdown</a>
       
       
-        <a class="basic-alignment right" href="/blog/2021/08/29/vaccine/" title="Next Post: vaccine">vaccine &raquo;</a>
-      
     </p>
   </footer>
 </article>
@@ -396,7 +394,7 @@
 <li class='category'><a href='/blog/categories/excel/'>excel (2)</a></li>
 <li class='category'><a href='/blog/categories/gdrive/'>gdrive (1)</a></li>
 <li class='category'><a href='/blog/categories/go/'>go (1)</a></li>
-<li class='category'><a href='/blog/categories/golang/'>golang (9)</a></li>
+<li class='category'><a href='/blog/categories/golang/'>golang (8)</a></li>
 <li class='category'><a href='/blog/categories/juniper/'>juniper (1)</a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (34)</a></li>
 <li class='category'><a href='/blog/categories/powershell/'>powershell (1)</a></li>
@@ -413,10 +411,6 @@
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2021/08/29/vaccine/">Vaccine</a>
-      </li>
-    
-      <li class="post">
         <a href="/blog/2021/08/29/notify/">Notify</a>
       </li>
     
@@ -430,6 +424,10 @@
     
       <li class="post">
         <a href="/blog/2021/06/01/googleforms/">googleForms</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2021/04/24/generatorpassword/">GeneratorPassword</a>
       </li>
     
   </ul>
