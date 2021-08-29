@@ -31,7 +31,7 @@ func main() {
     var content string
     doc := getDoc(matsuhUrl)
     for _, ul := range doc.FindAll("ul", "class", "newsList") {
-        for i, li := range ul.FindAll("li") {
+        for _, li := range ul.FindAll("li") {
             a := li.Find("a")
             title := a.Find("p").Text()
             if regexMatch(title, "接種通知") {
