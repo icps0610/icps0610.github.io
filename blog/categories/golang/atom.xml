@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Golang | icps]]></title>
   <link href="https://icps0610.github.io/blog/categories/golang/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2021-08-29T17:05:00+08:00</updated>
+  <updated>2021-08-29T17:10:21+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -14,11 +14,11 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Vaccine]]></title>
-    <link href="https://icps0610.github.io/blog/2021/08/29/vaccine/"/>
+    <title type="html"><![CDATA[Notify]]></title>
+    <link href="https://icps0610.github.io/blog/2021/08/29/notify/"/>
     <updated>2021-08-29T16:41:07+08:00</updated>
-    <id>https://icps0610.github.io/blog/2021/08/29/vaccine</id>
-    <content type="html"><![CDATA[<pre><code class="go">
+    <id>https://icps0610.github.io/blog/2021/08/29/notify</id>
+    <content type="html"><![CDATA[<pre><code class="go  ">
 package main
 
 import (
@@ -33,7 +33,7 @@ import (
 )
 
 var (
-    path      = "/data/go/covid19/vaccine.txt"
+    path      = "/data/go/covid19/notify.txt"
     matsuhUrl = ""
     record    = readFile(path)
 )

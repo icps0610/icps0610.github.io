@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="https://icps0610.github.io/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2021-08-29T17:05:00+08:00</updated>
+  <updated>2021-08-29T17:10:21+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -14,10 +14,10 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Vaccine]]></title>
-    <link href="https://icps0610.github.io/blog/2021/08/29/vaccine/"/>
+    <title type="html"><![CDATA[Notify]]></title>
+    <link href="https://icps0610.github.io/blog/2021/08/29/notify/"/>
     <updated>2021-08-29T16:41:07+08:00</updated>
-    <id>https://icps0610.github.io/blog/2021/08/29/vaccine</id>
+    <id>https://icps0610.github.io/blog/2021/08/29/notify</id>
     <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -130,7 +130,7 @@
 </span><span class='line'><span class="p">)</span>
 </span><span class='line'>
 </span><span class='line'><span class="kd">var</span> <span class="p">(</span>
-</span><span class='line'>    <span class="nx">path</span>      <span class="p">=</span> <span class="s">&quot;/data/go/covid19/vaccine.txt&quot;</span>
+</span><span class='line'>    <span class="nx">path</span>      <span class="p">=</span> <span class="s">&quot;/data/go/covid19/notify.txt&quot;</span>
 </span><span class='line'>    <span class="nx">matsuhUrl</span> <span class="p">=</span> <span class="s">&quot;&quot;</span>
 </span><span class='line'>    <span class="nx">record</span>    <span class="p">=</span> <span class="nx">readFile</span><span class="p">(</span><span class="nx">path</span><span class="p">)</span>
 </span><span class='line'><span class="p">)</span>
@@ -216,6 +216,8 @@
 </span><span class='line'><span class="kd">var</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">_</span> <span class="p">=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">,</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Exit</span>
 </span></code></pre></td></tr></table></div></figure>
 
+
+<p></p>
 ]]></content>
   </entry>
   
