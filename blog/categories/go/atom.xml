@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Go | icps]]></title>
   <link href="https://icps0610.github.io/blog/categories/go/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2021-08-29T17:21:20+08:00</updated>
+  <updated>2021-09-25T23:54:43+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -1244,6 +1244,67 @@ func mp3Play(path string, sec ...int) {
     } else {
         sleep(1000)
     }
+}
+</code></pre>
+
+<h4>win UI</h4>
+
+<p><code>https://github.com/harry1453/go-common-file-dialog</code></p>
+
+<pre><code class="go">"github.com/harry1453/go-common-file-dialog/cfd"
+"github.com/harry1453/go-common-file-dialog/cfdutil"
+
+func openFile() string {
+    result, _ := cfdutil.ShowOpenFileDialog(cfd.DialogConfig{
+        Title: "Open A xlsx File",
+        Role:  "Open A xlsx File",
+        FileFilters: []cfd.FileFilter{
+            {
+                DisplayName: "*.xlsx",
+                Pattern:     "*.xlsx",
+            },
+            {
+                DisplayName: "All Files (*.*)",
+                Pattern:     "*.*",
+            },
+        },
+        SelectedFileFilterIndex: 2,
+        FileName:                "*.xlsx",
+        DefaultExtension:        "xlsx",
+    })
+
+    return result
+}
+</code></pre>
+
+<h3>Msgbox</h3>
+
+<pre><code class="go">
+"syscall"
+
+
+func MessageBox(title, caption string) {
+    syscall.NewLazyDLL("user32.dll").NewProc("MessageBoxW").Call(
+        uintptr(0),
+        uintptr(unsafe.Pointer(syscall.StringToUTF16Ptr(caption))),
+        uintptr(unsafe.Pointer(syscall.StringToUTF16Ptr(title))),
+        uintptr(0))
+}
+</code></pre>
+
+<h3>barCode</h3>
+
+<pre><code class="go">
+"github.com/makiuchi-d/gozxing"
+"github.com/makiuchi-d/gozxing/oned"
+
+func genCode128(id string) {
+    enc := oned.NewCode128Writer()
+    img, _ := enc.Encode(id, gozxing.BarcodeFormat_CODE_128, 250, 50, nil)
+    path := genPath(id)
+    file, _ := os.Create(path)
+    defer file.Close()
+    png.Encode(file, img)
 }
 </code></pre>
 ]]></content>

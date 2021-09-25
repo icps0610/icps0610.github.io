@@ -2324,6 +2324,115 @@
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
+
+<h4>win UI</h4>
+
+<p><code>https://github.com/harry1453/go-common-file-dialog</code></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="s">&quot;github.com/harry1453/go-common-file-dialog/cfd&quot;</span>
+</span><span class='line'><span class="s">&quot;github.com/harry1453/go-common-file-dialog/cfdutil&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">func</span> <span class="nx">openFile</span><span class="p">()</span> <span class="kt">string</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">result</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">cfdutil</span><span class="p">.</span><span class="nx">ShowOpenFileDialog</span><span class="p">(</span><span class="nx">cfd</span><span class="p">.</span><span class="nx">DialogConfig</span><span class="p">{</span>
+</span><span class='line'>        <span class="nx">Title</span><span class="p">:</span> <span class="s">&quot;Open A xlsx File&quot;</span><span class="p">,</span>
+</span><span class='line'>        <span class="nx">Role</span><span class="p">:</span>  <span class="s">&quot;Open A xlsx File&quot;</span><span class="p">,</span>
+</span><span class='line'>        <span class="nx">FileFilters</span><span class="p">:</span> <span class="p">[]</span><span class="nx">cfd</span><span class="p">.</span><span class="nx">FileFilter</span><span class="p">{</span>
+</span><span class='line'>            <span class="p">{</span>
+</span><span class='line'>                <span class="nx">DisplayName</span><span class="p">:</span> <span class="s">&quot;*.xlsx&quot;</span><span class="p">,</span>
+</span><span class='line'>                <span class="nx">Pattern</span><span class="p">:</span>     <span class="s">&quot;*.xlsx&quot;</span><span class="p">,</span>
+</span><span class='line'>            <span class="p">},</span>
+</span><span class='line'>            <span class="p">{</span>
+</span><span class='line'>                <span class="nx">DisplayName</span><span class="p">:</span> <span class="s">&quot;All Files (*.*)&quot;</span><span class="p">,</span>
+</span><span class='line'>                <span class="nx">Pattern</span><span class="p">:</span>     <span class="s">&quot;*.*&quot;</span><span class="p">,</span>
+</span><span class='line'>            <span class="p">},</span>
+</span><span class='line'>        <span class="p">},</span>
+</span><span class='line'>        <span class="nx">SelectedFileFilterIndex</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+</span><span class='line'>        <span class="nx">FileName</span><span class="p">:</span>                <span class="s">&quot;*.xlsx&quot;</span><span class="p">,</span>
+</span><span class='line'>        <span class="nx">DefaultExtension</span><span class="p">:</span>        <span class="s">&quot;xlsx&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="p">})</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">return</span> <span class="nx">result</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<h3>Msgbox</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="s">&quot;syscall&quot;</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="kd">func</span> <span class="nx">MessageBox</span><span class="p">(</span><span class="nx">title</span><span class="p">,</span> <span class="nx">caption</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">syscall</span><span class="p">.</span><span class="nx">NewLazyDLL</span><span class="p">(</span><span class="s">&quot;user32.dll&quot;</span><span class="p">).</span><span class="nx">NewProc</span><span class="p">(</span><span class="s">&quot;MessageBoxW&quot;</span><span class="p">).</span><span class="nx">Call</span><span class="p">(</span>
+</span><span class='line'>        <span class="nb">uintptr</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span>
+</span><span class='line'>        <span class="nb">uintptr</span><span class="p">(</span><span class="nx">unsafe</span><span class="p">.</span><span class="nx">Pointer</span><span class="p">(</span><span class="nx">syscall</span><span class="p">.</span><span class="nx">StringToUTF16Ptr</span><span class="p">(</span><span class="nx">caption</span><span class="p">))),</span>
+</span><span class='line'>        <span class="nb">uintptr</span><span class="p">(</span><span class="nx">unsafe</span><span class="p">.</span><span class="nx">Pointer</span><span class="p">(</span><span class="nx">syscall</span><span class="p">.</span><span class="nx">StringToUTF16Ptr</span><span class="p">(</span><span class="nx">title</span><span class="p">))),</span>
+</span><span class='line'>        <span class="nb">uintptr</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>barCode</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="s">&quot;github.com/makiuchi-d/gozxing&quot;</span>
+</span><span class='line'><span class="s">&quot;github.com/makiuchi-d/gozxing/oned&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">func</span> <span class="nx">genCode128</span><span class="p">(</span><span class="nx">id</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">enc</span> <span class="o">:=</span> <span class="nx">oned</span><span class="p">.</span><span class="nx">NewCode128Writer</span><span class="p">()</span>
+</span><span class='line'>    <span class="nx">img</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">enc</span><span class="p">.</span><span class="nx">Encode</span><span class="p">(</span><span class="nx">id</span><span class="p">,</span> <span class="nx">gozxing</span><span class="p">.</span><span class="nx">BarcodeFormat_CODE_128</span><span class="p">,</span> <span class="mi">250</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="kc">nil</span><span class="p">)</span>
+</span><span class='line'>    <span class="nx">path</span> <span class="o">:=</span> <span class="nx">genPath</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span>
+</span><span class='line'>    <span class="nx">file</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Create</span><span class="p">(</span><span class="nx">path</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">defer</span> <span class="nx">file</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
+</span><span class='line'>    <span class="nx">png</span><span class="p">.</span><span class="nx">Encode</span><span class="p">(</span><span class="nx">file</span><span class="p">,</span> <span class="nx">img</span><span class="p">)</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
 </div>
 
 
@@ -2382,7 +2491,7 @@
 <li class='category'><a href='/blog/categories/excel/'>excel (2)</a></li>
 <li class='category'><a href='/blog/categories/gdrive/'>gdrive (1)</a></li>
 <li class='category'><a href='/blog/categories/go/'>go (1)</a></li>
-<li class='category'><a href='/blog/categories/golang/'>golang (8)</a></li>
+<li class='category'><a href='/blog/categories/golang/'>golang (10)</a></li>
 <li class='category'><a href='/blog/categories/juniper/'>juniper (1)</a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (34)</a></li>
 <li class='category'><a href='/blog/categories/powershell/'>powershell (1)</a></li>
@@ -2399,6 +2508,14 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2021/09/25/idbarcode/">IDBarcode</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2021/09/25/icon/">Icon</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2021/08/29/notify/">Notify</a>
       </li>
     
@@ -2408,14 +2525,6 @@
     
       <li class="post">
         <a href="/blog/2021/06/15/gong-zuo-pai-cheng/">工作排程器</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2021/06/01/googleforms/">googleForms</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2021/04/24/generatorpassword/">GeneratorPassword</a>
       </li>
     
   </ul>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Golang | icps]]></title>
   <link href="https://icps0610.github.io/blog/categories/golang/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2021-08-29T17:21:20+08:00</updated>
+  <updated>2021-09-25T23:54:43+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,190 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[IDBarcode]]></title>
+    <link href="https://icps0610.github.io/blog/2021/09/25/idbarcode/"/>
+    <updated>2021-09-25T17:07:49+08:00</updated>
+    <id>https://icps0610.github.io/blog/2021/09/25/idbarcode</id>
+    <content type="html"><![CDATA[<pre><code class="go">package main
+
+import (
+    "github.com/harry1453/go-common-file-dialog/cfd"
+    "github.com/harry1453/go-common-file-dialog/cfdutil"
+    "github.com/makiuchi-d/gozxing"
+    "github.com/makiuchi-d/gozxing/oned"
+    "github.com/xuri/excelize/v2"
+
+    "fmt"
+    "image/png"
+    "os"
+    "os/exec"
+    "path/filepath"
+    "runtime"
+    "strconv"
+    "strings"
+    "syscall"
+    "unsafe"
+)
+
+var (
+    temp = "temp"
+)
+
+func main() {
+    targetPath := openFile()
+    targetDir := filepath.Dir(targetPath) + "\\"
+
+    targetFileName := filepath.Base(targetPath)
+
+    outputPath := targetDir + "barcode_" + targetFileName
+
+    cmd := fmt.Sprintf(`mkdir %s`, temp)
+    runCmd(cmd)
+
+    f, err := excelize.OpenFile(targetPath)
+    printError(err)
+
+    sheet := f.GetSheetMap()[1]
+    rows, _ := f.GetRows(sheet)
+    for i, row := range rows {
+        if len(row) &gt; 1 {
+            id := row[1]
+            if checkIDCode(id) != "" {
+                f.SetRowHeight(sheet, i+1, 30)
+                genCode128(id)
+            }
+        }
+    }
+
+    for i, row := range rows {
+        for j, cell := range row {
+            l := rune(j + 65 + 2)
+            location := fmt.Sprintf("%c%v", l, i+1)
+            if j == 1 {
+                f.AddPicture(sheet, location, genPath(cell), `{"y_offset": 6, "x_scale": 0.5, "y_scale": 0.5, "positioning": "oneCell"}`)
+            }
+        }
+    }
+    cmd = fmt.Sprintf(`del /q %s`, temp)
+    runCmd(cmd)
+
+    cmd = fmt.Sprintf(`rmdir %s`, temp)
+    runCmd(cmd)
+
+    err = f.SaveAs(outputPath)
+    if err == nil {
+        //MessageBox("產生", "檔案已產生  " + outputPath)
+        cmd = fmt.Sprintf(`explorer /select, %s`, outputPath)
+        runCmd(cmd)
+    } else {
+        MessageBox("錯誤 !!!", err.Error())
+    }
+
+}
+
+func checkIDCode(num string) string {
+    var sum int
+    idTableCh := strings.Split("FBEAHDNTPJKQMGOCUIVWXZ", "")
+    idTableValue := []int{15, 11, 14, 10, 17, 13, 22, 27, 23, 18, 19, 24, 21, 16, 35, 12, 28, 34, 29, 32, 30, 33}
+
+    for idx, c := range idTableCh {
+        if c == string(num[:1]) {
+            v := idTableValue[idx]
+            s := (v%10)*9 + (v / 10)
+            sum += s
+            break
+        }
+    }
+
+    for idx, n := range num[1:9] {
+        i, _ := strconv.Atoi(string(n))
+        sum += i * (8 - idx)
+    }
+    i, _ := strconv.Atoi(string(num[9:]))
+    sum += i
+    if sum%10 == 0 {
+        return num
+    }
+    return ""
+}
+
+func openFile() string {
+    result, _ := cfdutil.ShowOpenFileDialog(cfd.DialogConfig{
+        Title: "Open A xlsx File",
+        Role:  "Open A xlsx File",
+        FileFilters: []cfd.FileFilter{
+            {
+                DisplayName: "*.xlsx",
+                Pattern:     "*.xlsx",
+            },
+            {
+                DisplayName: "All Files (*.*)",
+                Pattern:     "*.*",
+            },
+        },
+        SelectedFileFilterIndex: 2,
+        FileName:                "*.xlsx",
+        DefaultExtension:        "xlsx",
+    })
+
+    return result
+}
+
+func genCode128(id string) {
+    enc := oned.NewCode128Writer()
+    img, _ := enc.Encode(id, gozxing.BarcodeFormat_CODE_128, 250, 50, nil)
+    path := genPath(id)
+    file, _ := os.Create(path)
+    defer file.Close()
+    png.Encode(file, img)
+}
+
+func genPath(id string) string {
+    return fmt.Sprintf(`%s\%s.png`, temp, id)
+}
+
+func MessageBox(title, caption string) {
+    syscall.NewLazyDLL("user32.dll").NewProc("MessageBoxW").Call(
+        uintptr(0),
+        uintptr(unsafe.Pointer(syscall.StringToUTF16Ptr(caption))),
+        uintptr(unsafe.Pointer(syscall.StringToUTF16Ptr(title))),
+        uintptr(0))
+}
+
+func runCmd(cmd string) {
+    exec.Command("cmd.exe", "/C", cmd).CombinedOutput()
+}
+
+func printError(err error) {
+    if err != nil {
+        pc, _, _, _ := runtime.Caller(1)
+        fmt.Println(runtime.FuncForPC(pc).Name())
+        fmt.Println(err)
+    }
+}
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Icon]]></title>
+    <link href="https://icps0610.github.io/blog/2021/09/25/icon/"/>
+    <updated>2021-09-25T15:06:51+08:00</updated>
+    <id>https://icps0610.github.io/blog/2021/09/25/icon</id>
+    <content type="html"><![CDATA[<p><code>https://github.com/akavel/rsrc</code></p>
+
+<p><code>https://docs.microsoft.com/zh-tw/cpp/mfc/build-requirements-for-windows-vista-common-controls?view=msvc-160</code></p>
+
+<pre><code>#ico.manifest
+&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;&lt;assembly xmlns="urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0"&gt;&lt;assemblyIdentity version="1.0.0.0" processorArchitecture="amd64" name=" controls" type="win32"&gt;&lt;/assemblyIdentity&gt;&lt;dependency&gt;&lt;dependentAssembly&gt;&lt;assemblyIdentity type="win32" name="Microsoft.Windows.Common-Controls" version="6.0.0.0" processorArchitecture="*" publicKeyToken="6595b64144ccf1df" language="*"&gt;&lt;/assemblyIdentity&gt;&lt;/dependentAssembly&gt;&lt;/dependency&gt;&lt;/assembly&gt;
+</code></pre>
+
+<p><code>rsrc.exe -manifest ico.manifest -ico app.ico</code><br/>
+<code>go build -o ibc.exe</code></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Notify]]></title>
@@ -185,88 +369,6 @@ func generatorPassword(n int) string {
         str += string(table[r])
     }
     return str
-}
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Faker]]></title>
-    <link href="https://icps0610.github.io/blog/2021/02/05/faker/"/>
-    <updated>2021-02-05T02:17:12+08:00</updated>
-    <id>https://icps0610.github.io/blog/2021/02/05/faker</id>
-    <content type="html"><![CDATA[<pre><code class="go">func checkIDCode(IDNum string) bool {
-    var sum int
-    idTableCh := strings.Split("FBEAHDNTPJKQMGOCUIVWXZ", "")
-    idTableValue := []int{15, 11, 14, 10, 17, 13, 22, 27, 23, 18, 19, 24, 21, 16, 35, 12, 28, 34, 29, 32, 30, 33}
-
-    for idx, c := range idTableCh {
-        if c == string(IDNum[0]) {
-            v := idTableValue[idx]
-            s := (v%10)*9 + (v / 10)
-            sum += s
-            break
-        }
-    }
-
-    for idx, n := range IDNum[1:9] {
-        i, _ := strconv.Atoi(string(n))
-        sum += i * (8 - idx)
-    }
-    i, _ := strconv.Atoi(string(IDNum[9]))
-    sum += i
-    return (sum%10 == 0)
-}
-
-func checkCompanyCode(num string) bool {
-    cc := []int{1, 2, 1, 2, 1, 2, 4, 1}
-    var sum int
-
-    for idx, e := range num {
-        s := int((e - 48)) * cc[idx]
-        t := s/10 + s%10
-        sum += t
-    }
-    return (sum)%10 == 0 || (string(num[6]) == "7" &amp;&amp; (sum+1)%10 == 0)
-}
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Post]]></title>
-    <link href="https://icps0610.github.io/blog/2019/12/17/post/"/>
-    <updated>2019-12-17T17:55:34+08:00</updated>
-    <id>https://icps0610.github.io/blog/2019/12/17/post</id>
-    <content type="html"><![CDATA[<blockquote><blockquote><p>ref <a href="https://ithelp.ithome.com.tw/articles/10159383">https://ithelp.ithome.com.tw/articles/10159383</a></p></blockquote></blockquote>
-
-<pre><code class="go">func get() {
-    resp, err := http.Get("https://123/456.php?q=789")
-    if err != nil {
-        // handle error
-    }
-    defer resp.Body.Close()
-    body, err := ioutil.ReadAll(resp.Body)
-    if err != nil {
-        // handle error
-    }
-    html := string(body)
-    doc := soup.HTMLParse(html)
-}
-
-func post() {
-    resp, err := http.PostForm("https://123", url.Values{"SN": {word}})
-    if err != nil {
-        // handle error
-    }
-    resp.Header.Set("Content-Type", "application/x-www-form-urlencoded;application/json; charset=utf-8")
-    defer resp.Body.Close()
-    body, err := ioutil.ReadAll(resp.Body)
-    if err != nil {
-        // handle error
-    }
-    html := string(body)
-    doc := soup.HTMLParse(html)
 }
 </code></pre>
 ]]></content>
