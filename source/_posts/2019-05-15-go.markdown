@@ -1228,11 +1228,11 @@ func mp3Play(path string, sec ...int) {
 
 #### win UI
 `https://github.com/harry1453/go-common-file-dialog`  
-``` go
 
+
+``` go
 "github.com/harry1453/go-common-file-dialog/cfd"
 "github.com/harry1453/go-common-file-dialog/cfdutil"
-
 
 func openFile() string {
     result, _ := cfdutil.ShowOpenFileDialog(cfd.DialogConfig{
