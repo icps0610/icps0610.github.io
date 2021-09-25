@@ -1,0 +1,20 @@
+---
+layout: post
+title: "icon"
+date: 2021-09-25 15:06:51 +0800
+comments: true
+categories: golang
+---
+
+`https://github.com/akavel/rsrc`   
+
+`https://docs.microsoft.com/zh-tw/cpp/mfc/build-requirements-for-windows-vista-common-controls?view=msvc-160`
+
+```
+#ico.manifest
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?><assembly xmlns="urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0"><assemblyIdentity version="1.0.0.0" processorArchitecture="amd64" name=" controls" type="win32"></assemblyIdentity><dependency><dependentAssembly><assemblyIdentity type="win32" name="Microsoft.Windows.Common-Controls" version="6.0.0.0" processorArchitecture="*" publicKeyToken="6595b64144ccf1df" language="*"></assemblyIdentity></dependentAssembly></dependency></assembly>
+
+```
+
+`rsrc.exe -manifest ico.manifest -ico app.ico`  
+`go build -o ibc.exe`  
