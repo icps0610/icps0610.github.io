@@ -34,19 +34,49 @@ var (
 
 func main() {
     targetPath := openFile()
+    buildTemp()
+    process(targetPath)
+    rmTemp()
+}
+
+func openFile() string {
+    result, _ := cfdutil.ShowOpenFileDialog(cfd.DialogConfig{
+        Title: "Open A xlsx File",
+        Role:  "Open A xlsx File",
+        FileFilters: []cfd.FileFilter{
+            {
+                DisplayName: "*.xlsx",
+                Pattern:     "*.xlsx",
+            },
+            {
+                DisplayName: "All Files (*.*)",
+                Pattern:     "*.*",
+            },
+        },
+        SelectedFileFilterIndex: 0,
+        FileName:                "*.xlsx",
+        DefaultExtension:        "xlsx",
+    })
+
+    return result
+}
+
+func process(targetPath string) {
     targetDir := filepath.Dir(targetPath) + "\\"
-
     targetFileName := filepath.Base(targetPath)
-
     outputPath := targetDir + "barcode_" + targetFileName
-
-    cmd := fmt.Sprintf(`mkdir %s`, temp)
-    runCmd(cmd)
-
     f, err := excelize.OpenFile(targetPath)
+    if err != nil {
+        rmTemp()
+    }
     printError(err)
-
-    sheet := f.GetSheetMap()[1]
+    //選第一個工作表
+    var sheet string
+    for _, value := range f.GetSheetMap() {
+        sheet = value
+        break
+    }
+    //產生圖片
     rows, _ := f.GetRows(sheet)
     for i, row := range rows {
         if len(row) > 1 {
@@ -57,7 +87,7 @@ func main() {
             }
         }
     }
-
+    //插入圖片
     for i, row := range rows {
         for j, cell := range row {
             l := rune(j + 65 + 2)
@@ -67,21 +97,14 @@ func main() {
             }
         }
     }
-    cmd = fmt.Sprintf(`del /q %s`, temp)
-    runCmd(cmd)
-
-    cmd = fmt.Sprintf(`rmdir %s`, temp)
-    runCmd(cmd)
-
     err = f.SaveAs(outputPath)
     if err == nil {
         //MessageBox("產生", "檔案已產生  " + outputPath)
-        cmd = fmt.Sprintf(`explorer /select, %s`, outputPath)
+        cmd := fmt.Sprintf(`explorer /select, %s`, outputPath)
         runCmd(cmd)
     } else {
         MessageBox("錯誤 !!!", err.Error())
     }
-
 }
 
 func checkIDCode(num string) string {
@@ -110,28 +133,6 @@ func checkIDCode(num string) string {
     return ""
 }
 
-func openFile() string {
-    result, _ := cfdutil.ShowOpenFileDialog(cfd.DialogConfig{
-        Title: "Open A xlsx File",
-        Role:  "Open A xlsx File",
-        FileFilters: []cfd.FileFilter{
-            {
-                DisplayName: "*.xlsx",
-                Pattern:     "*.xlsx",
-            },
-            {
-                DisplayName: "All Files (*.*)",
-                Pattern:     "*.*",
-            },
-        },
-        SelectedFileFilterIndex: 2,
-        FileName:                "*.xlsx",
-        DefaultExtension:        "xlsx",
-    })
-
-    return result
-}
-
 func genCode128(id string) {
     enc := oned.NewCode128Writer()
     img, _ := enc.Encode(id, gozxing.BarcodeFormat_CODE_128, 250, 50, nil)
@@ -157,6 +158,19 @@ func runCmd(cmd string) {
     exec.Command("cmd.exe", "/C", cmd).CombinedOutput()
 }
 
+func buildTemp() {
+    cmd := fmt.Sprintf(`mkdir %s`, temp)
+    runCmd(cmd)
+}
+
+func rmTemp() {
+    cmd := fmt.Sprintf(`del /q %s`, temp)
+    runCmd(cmd)
+
+    cmd = fmt.Sprintf(`rmdir %s`, temp)
+    runCmd(cmd)
+}
+
 func printError(err error) {
     if err != nil {
         pc, _, _, _ := runtime.Caller(1)
@@ -164,5 +178,6 @@ func printError(err error) {
         fmt.Println(err)
     }
 }
+
 
 ```
