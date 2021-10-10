@@ -201,6 +201,29 @@ cron.* /var/log/cron.log 去掉#</p>
 <code>sudo iptables -t nat -A POSTROUTING -o $wlan -j MASQUERADE</code><br/>
 <code>sudo iptables -A FORWARD -i $wlan -o $lan -m state --state RELATED,ESTABLISHED -j ACCEPT</code><br/>
 <code>sudo iptables -A FORWARD -i $lan -o $wlan -j ACCEPT</code></p>
+
+<h4>network</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>#/etc/udev/rules.d/
+</span><span class='line'>SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*", ATTR{address}=="00:00:00:00:00:00", ATTR{dev_id}=="0x0", ATTR{type}=="1", KERNEL=="eth*", NAME="eth0"
+</span><span class='line'>
+</span><span class='line'>#/etc/network/interfaces
+</span><span class='line'>allow-hotplug eth0
+</span><span class='line'>iface eth0 inet static
+</span><span class='line'>  address 192.168.0.1
+</span><span class='line'>  network 255.255.255.0
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
 </div>
 
 

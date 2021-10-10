@@ -688,7 +688,7 @@
 </span><span class='line'>    <span class="k">return</span> <span class="nx">reaJson</span>
 </span><span class='line'><span class="p">}</span>
 </span><span class='line'>
-</span><span class='line'><span class="kd">func</span> <span class="nx">saveJson</span><span class="p">(</span><span class="nx">data</span> <span class="p">[]</span><span class="nx">Image</span><span class="p">,</span> <span class="nx">path</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'><span class="kd">func</span> <span class="nx">saveJson</span><span class="p">(</span><span class="nx">data</span> <span class="kd">interface</span><span class="p">{},</span> <span class="nx">path</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
 </span><span class='line'>    <span class="nx">file</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">json</span><span class="p">.</span><span class="nx">MarshalIndent</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">,</span> <span class="s">&quot; &quot;</span><span class="p">)</span>
 </span><span class='line'>    <span class="nx">printError</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
 </span><span class='line'>    <span class="nx">_</span> <span class="p">=</span> <span class="nx">ioutil</span><span class="p">.</span><span class="nx">WriteFile</span><span class="p">(</span><span class="nx">path</span><span class="p">,</span> <span class="nx">file</span><span class="p">,</span> <span class="mo">0644</span><span class="p">)</span>
