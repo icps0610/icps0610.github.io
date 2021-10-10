@@ -327,7 +327,7 @@ func readJson(path string) []City {
     return reaJson
 }
 
-func saveJson(data []Image, path string) {
+func saveJson(data interface{}, path string) {
     file, err := json.MarshalIndent(data, "", " ")
     printError(err)
     _ = ioutil.WriteFile(path, file, 0644)

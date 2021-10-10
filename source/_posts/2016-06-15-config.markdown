@@ -102,4 +102,16 @@ cron.* /var/log/cron.log 去掉#
 `sudo iptables -A FORWARD -i $lan -o $wlan -j ACCEPT`  
 
 
+#### network
+``` 
+#/etc/udev/rules.d/
+SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*", ATTR{address}=="00:00:00:00:00:00", ATTR{dev_id}=="0x0", ATTR{type}=="1", KERNEL=="eth*", NAME="eth0"
+
+#/etc/network/interfaces
+allow-hotplug eth0
+iface eth0 inet static
+  address 192.168.0.1
+  network 255.255.255.0
+
+```   
 

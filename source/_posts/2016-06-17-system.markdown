@@ -5,59 +5,62 @@ date: 2016-06-17 17:22:48 +0800
 comments: true
 categories: bat
 ---
-%SystemDrive%: 系統磁碟機, 預設是 C:  
-%SystemRoot%: 系統根目錄, 預設是 C:\WinNT 或 C:\Windows  
-%SystemDirectory%: 系統目錄, 預設是 C:\WinNT\System32 或 C:\Windows\System32  
-%WinDir%: Windows 目錄, 預設是 C:\WinNT 或 C:\Windows  
-%ProgramFiles%: 應用程式目錄, 預設是 C:\Program Files  
-%Temp%、%Tmp%: 暫存檔目錄, 預設是 C:\Documents and Settings\User\Local Settings\Temp  
-%HomeDrive%: 使用者目錄的磁碟機, 預設是 C:  
-%HomePath%: 使用者家目錄, 預設是 C:\Documents and Settings\User  
-%AllUsersProfile%: All Users 設定檔的資料夾位置  
-%AppData%: 目前使用者的 Application Data 資料夾位置  
-%CD%: 目前的工作資料夾  
-%ClientName%: 目前使用者的 NetBios 電腦名稱  
-%CmdCmdLine%: 處理目前命令提示字元視窗命令的 cmd.exe 的完整路徑  
-%CmeExtVersion%: 目前 Command Processor Extensions 的版本  
-%CommonProgramFiles%: Common Files 資料夾的路徑  
-%ComputerName%: 電腦名稱  
-%ComSpec%:: 命令提示字元視窗的解譯程式路徑, 通常與 %CmdCmdLine% 相同  
-%Date%: 目前的系統日期  
-%ErrorLevel%: 最近執行過的命令的錯誤碼; 非零的值表示發生過的錯誤碼  
-%HomeShare%: 目前使用者共用資料夾的網路路徑  
-%LogonServer%: 目前使用者所登入的網路控制器名稱  
-%Number_of_Processors%: 電腦的處理器數量  
-%OS%: 作業系統名稱, 其值固定為 Windows_NT  
-%Path%: 執行檔的搜尋路徑  
-%PathExt%: 作業系統是為執行檔的副檔名  
-%Processor_Architecture%: 處理器的架構名稱, 例如x86  
-%Processor_Identfier%: 說明處理器的文字 (不一定會有此環境變數)  
-%Processor_Level%: 處理器的 Model Number  
-%Processor_Revision%: 處理器的 Revision Number  
-%Prompt%: 目前解譯程式的命令提示字串  
-%Random%: 顯示 0 ~ 32767 之間的十進位整數亂數  
-%Sessionname%: 連上終端伺服器的 Session Names  
-%Time%: 目前的系統時間  
-%UserDomain%: 包含使用者帳號的網域名稱, 或者電腦名稱  
-%UserName%: 使用者帳號名稱  
-%UserProfile%: 目前使用者的設定檔路徑  
 
-協助工具選項          control access.cpl
-加入新的硬體              control sysdm.cpl add new hardware
-新增/移除程式            control appwiz.cpl
-日期/時間內容           control timedate.cpl
-顯示內容             control desk.cpl
-字型資料夾                   control fonts
-網際網路內容            control inetcpl.cpl
-搖桿內容            control joy.cpl
-鍵盤內容            control main.cpl keyboard
-Microsoft Exchange             control mlcfg32.cpl
-滑鼠內容               control main.cpl
-多媒體內容          control mmsys.cpl
-網路內容             control netcpl.cpl
-電源管理              control powercfg.cpl
-印表機資料夾                control printers
-地區設定              control intl.cpl
-掃描器與數位相機           control sticpl.cpl
-音效內容               control mmsys.cpl sounds
-系統內容              control sysdm.cpl
+網路介面卡            control ncpa.cpl  
+系統內容              control sysdm.cpl  
+印表機資料夾          control printers  
+
+%SystemDrive%: 系統磁碟機, 預設是 C:    
+%SystemRoot%: 系統根目錄, 預設是 C:\WinNT 或 C:\Windows    
+%SystemDirectory%: 系統目錄, 預設是 C:\WinNT\System32 或 C:\Windows\System32    
+%WinDir%: Windows 目錄, 預設是 C:\WinNT 或 C:\Windows    
+%ProgramFiles%: 應用程式目錄, 預設是 C:\Program Files    
+%Temp%、%Tmp%: 暫存檔目錄, 預設是 C:\Documents and Settings\User\Local Settings\Temp    
+%HomeDrive%: 使用者目錄的磁碟機, 預設是 C:    
+%HomePath%: 使用者家目錄, 預設是 C:\Documents and Settings\User    
+%AllUsersProfile%: All Users 設定檔的資料夾位置    
+%AppData%: 目前使用者的 Application Data 資料夾位置    
+%CD%: 目前的工作資料夾    
+%ClientName%: 目前使用者的 NetBios 電腦名稱    
+%CmdCmdLine%: 處理目前命令提示字元視窗命令的 cmd.exe 的完整路徑    
+%CmeExtVersion%: 目前 Command Processor Extensions 的版本    
+%CommonProgramFiles%: Common Files 資料夾的路徑    
+%ComputerName%: 電腦名稱    
+%ComSpec%:: 命令提示字元視窗的解譯程式路徑, 通常與 %CmdCmdLine% 相同    
+%Date%: 目前的系統日期    
+%ErrorLevel%: 最近執行過的命令的錯誤碼; 非零的值表示發生過的錯誤碼    
+%HomeShare%: 目前使用者共用資料夾的網路路徑    
+%LogonServer%: 目前使用者所登入的網路控制器名稱    
+%Number_of_Processors%: 電腦的處理器數量    
+%OS%: 作業系統名稱, 其值固定為 Windows_NT    
+%Path%: 執行檔的搜尋路徑    
+%PathExt%: 作業系統是為執行檔的副檔名    
+%Processor_Architecture%: 處理器的架構名稱, 例如x86    
+%Processor_Identfier%: 說明處理器的文字 (不一定會有此環境變數)    
+%Processor_Level%: 處理器的 Model Number    
+%Processor_Revision%: 處理器的 Revision Number    
+%Prompt%: 目前解譯程式的命令提示字串    
+%Random%: 顯示 0 ~ 32767 之間的十進位整數亂數    
+%Sessionname%: 連上終端伺服器的 Session Names    
+%Time%: 目前的系統時間    
+%UserDomain%: 包含使用者帳號的網域名稱, 或者電腦名稱    
+%UserName%: 使用者帳號名稱    
+%UserProfile%: 目前使用者的設定檔路徑    
+  
+協助工具選項          control access.cpl  
+加入新的硬體          control sysdm.cpl add new hardware  
+新增/移除程式         control appwiz.cpl  
+日期/時間內容         control timedate.cpl  
+顯示內容              control desk.cpl  
+字型資料夾            control fonts  
+網際網路內容          control inetcpl.cpl  
+搖桿內容              control joy.cpl  
+鍵盤內容              control main.cpl keyboard  
+Microsoft Exchange   control mlcfg32.cpl  
+滑鼠內容              control main.cpl  
+多媒體內容            control mmsys.cpl  
+網路內容              control netcpl.cpl  
+電源管理              control powercfg.cpl  
+地區設定              control intl.cpl  
+掃描器與數位相機       control sticpl.cpl  
+音效內容              control mmsys.cpl sounds  
