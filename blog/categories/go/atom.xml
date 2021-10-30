@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Go | icps]]></title>
   <link href="https://icps0610.github.io/blog/categories/go/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2021-10-11T00:45:41+08:00</updated>
+  <updated>2021-10-30T21:55:04+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -61,12 +61,16 @@ GOOS=windows GOARCH=amd64 go build  -ldflags -H=windowsgui -o hello.exe hello.go
 
 func runCmd(cmd string) {
     c := exec.Command(cmd)
-    _, err := c.CombinedOutput()
+    _, err := c.Output()
     printError(err)
 }
-
 func runCmd(cmd string) {
-    c, err := exec.Command("bash", "-c", cmd).Output()
+    c, err := exec.Command("cmd", "/c", cmd).CombinedOutput()
+    fmt.Println()
+    printError(err, string(c))
+}
+func runCmd(cmd string) {
+    c, err := exec.Command("bash", "-c", cmd).CombinedOutput()
     fmt.Println()
     printError(err, string(c))
 }
@@ -507,7 +511,8 @@ func cleanScreen() {
 
 <h6>time_format</h6>
 
-<pre><code class="go">func timeFormat() string {
+<pre><code class="go">time.Now().Unix()
+func timeFormat() string {
     t := time.Now()
     return fmt.Sprintf("%d-%02d-%02d %02d:%02d:%02d", t.Year(), int(t.Month()), t.Day(), t.Hour(), t.Minute(), t.Second())
 }

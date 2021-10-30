@@ -166,14 +166,22 @@
 <span class='line-number'>9</span>
 <span class='line-number'>10</span>
 <span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
 </pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kd">func</span> <span class="nx">runCmd</span><span class="p">(</span><span class="nx">cmd</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
 </span><span class='line'>    <span class="nx">c</span> <span class="o">:=</span> <span class="nx">exec</span><span class="p">.</span><span class="nx">Command</span><span class="p">(</span><span class="nx">cmd</span><span class="p">)</span>
-</span><span class='line'>    <span class="nx">_</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">c</span><span class="p">.</span><span class="nx">CombinedOutput</span><span class="p">()</span>
+</span><span class='line'>    <span class="nx">_</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">c</span><span class="p">.</span><span class="nx">Output</span><span class="p">()</span>
 </span><span class='line'>    <span class="nx">printError</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
 </span><span class='line'><span class="p">}</span>
-</span><span class='line'>
 </span><span class='line'><span class="kd">func</span> <span class="nx">runCmd</span><span class="p">(</span><span class="nx">cmd</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>    <span class="nx">c</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">exec</span><span class="p">.</span><span class="nx">Command</span><span class="p">(</span><span class="s">&quot;bash&quot;</span><span class="p">,</span> <span class="s">&quot;-c&quot;</span><span class="p">,</span> <span class="nx">cmd</span><span class="p">).</span><span class="nx">Output</span><span class="p">()</span>
+</span><span class='line'>    <span class="nx">c</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">exec</span><span class="p">.</span><span class="nx">Command</span><span class="p">(</span><span class="s">&quot;cmd&quot;</span><span class="p">,</span> <span class="s">&quot;/c&quot;</span><span class="p">,</span> <span class="nx">cmd</span><span class="p">).</span><span class="nx">CombinedOutput</span><span class="p">()</span>
+</span><span class='line'>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">()</span>
+</span><span class='line'>    <span class="nx">printError</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nb">string</span><span class="p">(</span><span class="nx">c</span><span class="p">))</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="kd">func</span> <span class="nx">runCmd</span><span class="p">(</span><span class="nx">cmd</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">c</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">exec</span><span class="p">.</span><span class="nx">Command</span><span class="p">(</span><span class="s">&quot;bash&quot;</span><span class="p">,</span> <span class="s">&quot;-c&quot;</span><span class="p">,</span> <span class="nx">cmd</span><span class="p">).</span><span class="nx">CombinedOutput</span><span class="p">()</span>
 </span><span class='line'>    <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">()</span>
 </span><span class='line'>    <span class="nx">printError</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nb">string</span><span class="p">(</span><span class="nx">c</span><span class="p">))</span>
 </span><span class='line'><span class="p">}</span>
@@ -974,7 +982,9 @@
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kd">func</span> <span class="nx">timeFormat</span><span class="p">()</span> <span class="kt">string</span> <span class="p">{</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">().</span><span class="nx">Unix</span><span class="p">()</span>
+</span><span class='line'><span class="kd">func</span> <span class="nx">timeFormat</span><span class="p">()</span> <span class="kt">string</span> <span class="p">{</span>
 </span><span class='line'>    <span class="nx">t</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">()</span>
 </span><span class='line'>    <span class="k">return</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;%d-%02d-%02d %02d:%02d:%02d&quot;</span><span class="p">,</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Year</span><span class="p">(),</span> <span class="nb">int</span><span class="p">(</span><span class="nx">t</span><span class="p">.</span><span class="nx">Month</span><span class="p">()),</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Day</span><span class="p">(),</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Hour</span><span class="p">(),</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Minute</span><span class="p">(),</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Second</span><span class="p">())</span>
 </span><span class='line'><span class="p">}</span>
