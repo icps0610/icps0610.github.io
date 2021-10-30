@@ -45,12 +45,16 @@ GOOS=windows GOARCH=amd64 go build  -ldflags -H=windowsgui -o hello.exe hello.go
 
 func runCmd(cmd string) {
     c := exec.Command(cmd)
-    _, err := c.CombinedOutput()
+    _, err := c.Output()
     printError(err)
 }
-
 func runCmd(cmd string) {
-    c, err := exec.Command("bash", "-c", cmd).Output()
+    c, err := exec.Command("cmd", "/c", cmd).CombinedOutput()
+    fmt.Println()
+    printError(err, string(c))
+}
+func runCmd(cmd string) {
+    c, err := exec.Command("bash", "-c", cmd).CombinedOutput()
     fmt.Println()
     printError(err, string(c))
 }
@@ -493,6 +497,7 @@ func cleanScreen() {
 ###### time_format
 
 ``` go
+time.Now().Unix()
 func timeFormat() string {
     t := time.Now()
     return fmt.Sprintf("%d-%02d-%02d %02d:%02d:%02d", t.Year(), int(t.Month()), t.Day(), t.Hour(), t.Minute(), t.Second())
