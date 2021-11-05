@@ -24,14 +24,14 @@ End If
 
 CommandButton1.Enabled = False
 
-For I = 1 To mmax
-    If min >= I Then
+For i = 1 To mmax
+    If min >= i Then
         工作表1.Range("D9") = Race(Int((8) * Rnd()))
     End If
-    If max >= I Then
+    If max >= i Then
         工作表1.Range("I9") = Race(Int((8) * Rnd()))
     End If
-Next I
+Next i
 
 CommandButton1.Enabled = True
 End Sub
