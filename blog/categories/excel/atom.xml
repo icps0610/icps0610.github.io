@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Excel | icps]]></title>
   <link href="https://icps0610.github.io/blog/categories/excel/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2021-11-05T13:21:11+08:00</updated>
+  <updated>2021-11-06T00:49:27+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -22,29 +22,29 @@
 
 Race = Array("英格蘭", "中國", "法蘭西", "羅馬", "蒙古", "羅斯", "蘇丹", "阿拔斯")
 
-min = 400
-max = min * Int(2 * Rnd() + 2)
-mmax = max
-
-If Rnd() &gt; 0.5 Then
-    temp = max
-    max = min
-    min = temp
-End If
+Dim p1, p2 As Integer
+p1 = rand()
+p2 = rand()
 
 CommandButton1.Enabled = False
 
-For i = 1 To mmax
-    If min &gt;= i Then
-        工作表1.Range("D9") = Race(Int((8) * Rnd()))
+For i = 1 To 1500
+    If p1 &gt;= i Then
+        工作表1.Range("B9") = Race(Int((8) * Rnd()))
     End If
-    If max &gt;= i Then
-        工作表1.Range("I9") = Race(Int((8) * Rnd()))
+    If p2 &gt;= i Then
+        工作表1.Range("H9") = Race(Int((8) * Rnd()))
     End If
 Next i
 
 CommandButton1.Enabled = True
 End Sub
+
+Private Function rand() As Integer
+    Min = 500
+    Max = 1500
+    rand = Int((Max - Min + 1) * Rnd() + Min)
+End Function
 </code></pre>
 ]]></content>
   </entry>
