@@ -11,33 +11,30 @@ categories: excel
 Private Sub CommandButton1_Click()
 
 Race = Array("英格蘭", "中國", "法蘭西", "羅馬", "蒙古", "羅斯", "蘇丹", "阿拔斯")
-
-min = 400
-max = min * Int(2 * Rnd() + 2)
-mmax = max
-
-If Rnd() > 0.5 Then
-    temp = max
-    max = min
-    min = temp
-End If
+    
+Dim p1, p2 As Integer
+p1 = rand()
+p2 = rand()
 
 CommandButton1.Enabled = False
 
-For i = 1 To mmax
-    If min >= i Then
-        工作表1.Range("D9") = Race(Int((8) * Rnd()))
+For i = 1 To 1500
+    If p1 >= i Then
+        工作表1.Range("B9") = Race(Int((8) * Rnd()))
     End If
-    If max >= i Then
-        工作表1.Range("I9") = Race(Int((8) * Rnd()))
+    If p2 >= i Then
+        工作表1.Range("H9") = Race(Int((8) * Rnd()))
     End If
 Next i
 
 CommandButton1.Enabled = True
 End Sub
 
-
-
+Private Function rand() As Integer
+    Min = 500
+    Max = 1500
+    rand = Int((Max - Min + 1) * Rnd() + Min)
+End Function
 
 
 ```
