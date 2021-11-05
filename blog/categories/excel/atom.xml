@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Excel | icps]]></title>
   <link href="https://icps0610.github.io/blog/categories/excel/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2021-11-05T13:17:55+08:00</updated>
+  <updated>2021-11-05T13:21:11+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -34,14 +34,14 @@ End If
 
 CommandButton1.Enabled = False
 
-For I = 1 To mmax
-    If min &gt;= I Then
+For i = 1 To mmax
+    If min &gt;= i Then
         工作表1.Range("D9") = Race(Int((8) * Rnd()))
     End If
-    If max &gt;= I Then
+    If max &gt;= i Then
         工作表1.Range("I9") = Race(Int((8) * Rnd()))
     End If
-Next I
+Next i
 
 CommandButton1.Enabled = True
 End Sub

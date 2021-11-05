@@ -167,14 +167,14 @@ Private Sub CommandButton1_Click() Race = Array("英格蘭", "中國", "法蘭�
 </span><span class='line'>
 </span><span class='line'>CommandButton1.Enabled = False
 </span><span class='line'>
-</span><span class='line'>For I = 1 To mmax
-</span><span class='line'>    If min &gt;= I Then
+</span><span class='line'>For i = 1 To mmax
+</span><span class='line'>    If min &gt;= i Then
 </span><span class='line'>        工作表1.Range("D9") = Race(Int((8) * Rnd()))
 </span><span class='line'>    End If
-</span><span class='line'>    If max &gt;= I Then
+</span><span class='line'>    If max &gt;= i Then
 </span><span class='line'>        工作表1.Range("I9") = Race(Int((8) * Rnd()))
 </span><span class='line'>    End If
-</span><span class='line'>Next I
+</span><span class='line'>Next i
 </span><span class='line'>
 </span><span class='line'>CommandButton1.Enabled = True
 </span><span class='line'>End Sub
