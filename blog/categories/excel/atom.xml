@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Excel | icps]]></title>
   <link href="https://icps0610.github.io/blog/categories/excel/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2021-10-30T21:55:04+08:00</updated>
+  <updated>2021-11-05T13:17:55+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,42 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Button_to_rand]]></title>
+    <link href="https://icps0610.github.io/blog/2021/11/03/button-to-rand/"/>
+    <updated>2021-11-03T20:28:59+08:00</updated>
+    <id>https://icps0610.github.io/blog/2021/11/03/button-to-rand</id>
+    <content type="html"><![CDATA[<pre><code>Private Sub CommandButton1_Click()
+
+Race = Array("英格蘭", "中國", "法蘭西", "羅馬", "蒙古", "羅斯", "蘇丹", "阿拔斯")
+
+min = 400
+max = min * Int(2 * Rnd() + 2)
+mmax = max
+
+If Rnd() &gt; 0.5 Then
+    temp = max
+    max = min
+    min = temp
+End If
+
+CommandButton1.Enabled = False
+
+For I = 1 To mmax
+    If min &gt;= I Then
+        工作表1.Range("D9") = Race(Int((8) * Rnd()))
+    End If
+    If max &gt;= I Then
+        工作表1.Range("I9") = Race(Int((8) * Rnd()))
+    End If
+Next I
+
+CommandButton1.Enabled = True
+End Sub
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Xls_to_xlsx]]></title>

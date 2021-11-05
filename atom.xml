@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="https://icps0610.github.io/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2021-10-30T21:55:04+08:00</updated>
+  <updated>2021-11-05T13:17:55+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,78 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Button_to_rand]]></title>
+    <link href="https://icps0610.github.io/blog/2021/11/03/button-to-rand/"/>
+    <updated>2021-11-03T20:28:59+08:00</updated>
+    <id>https://icps0610.github.io/blog/2021/11/03/button-to-rand</id>
+    <content type="html"><![CDATA[<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Private Sub CommandButton1_Click()
+</span><span class='line'>
+</span><span class='line'>Race = Array("英格蘭", "中國", "法蘭西", "羅馬", "蒙古", "羅斯", "蘇丹", "阿拔斯")
+</span><span class='line'>
+</span><span class='line'>min = 400
+</span><span class='line'>max = min * Int(2 * Rnd() + 2)
+</span><span class='line'>mmax = max
+</span><span class='line'>
+</span><span class='line'>If Rnd() &gt; 0.5 Then
+</span><span class='line'>    temp = max
+</span><span class='line'>    max = min
+</span><span class='line'>    min = temp
+</span><span class='line'>End If
+</span><span class='line'>
+</span><span class='line'>CommandButton1.Enabled = False
+</span><span class='line'>
+</span><span class='line'>For I = 1 To mmax
+</span><span class='line'>    If min &gt;= I Then
+</span><span class='line'>        工作表1.Range("D9") = Race(Int((8) * Rnd()))
+</span><span class='line'>    End If
+</span><span class='line'>    If max &gt;= I Then
+</span><span class='line'>        工作表1.Range("I9") = Race(Int((8) * Rnd()))
+</span><span class='line'>    End If
+</span><span class='line'>Next I
+</span><span class='line'>
+</span><span class='line'>CommandButton1.Enabled = True
+</span><span class='line'>End Sub
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[IDBarcode]]></title>
@@ -1098,210 +1170,6 @@ Ref <a href="https://www.raspberrypi.org/forums/viewtopic.php?t=121125">https://
 </span><span class='line'>顯示黑市物品說明 https://steamcommunity.com/sharedfiles/filedetails/?id=648410303
 </span><span class='line'>血量數字化       https://steamcommunity.com/sharedfiles/filedetails/?id=617015579
 </span><span class='line'>血量數字化 WOTC  https://steamcommunity.com/sharedfiles/filedetails/?id=1123174832</span></code></pre></td></tr></table></div></figure>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Color]]></title>
-    <link href="https://icps0610.github.io/blog/2020/04/29/color/"/>
-    <updated>2020-04-29T10:29:50+08:00</updated>
-    <id>https://icps0610.github.io/blog/2020/04/29/color</id>
-    <content type="html"><![CDATA[<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-<span class='line-number'>41</span>
-<span class='line-number'>42</span>
-<span class='line-number'>43</span>
-<span class='line-number'>44</span>
-<span class='line-number'>45</span>
-<span class='line-number'>46</span>
-<span class='line-number'>47</span>
-<span class='line-number'>48</span>
-<span class='line-number'>49</span>
-<span class='line-number'>50</span>
-<span class='line-number'>51</span>
-<span class='line-number'>52</span>
-<span class='line-number'>53</span>
-<span class='line-number'>54</span>
-<span class='line-number'>55</span>
-<span class='line-number'>56</span>
-<span class='line-number'>57</span>
-<span class='line-number'>58</span>
-<span class='line-number'>59</span>
-<span class='line-number'>60</span>
-<span class='line-number'>61</span>
-<span class='line-number'>62</span>
-<span class='line-number'>63</span>
-<span class='line-number'>64</span>
-<span class='line-number'>65</span>
-<span class='line-number'>66</span>
-<span class='line-number'>67</span>
-<span class='line-number'>68</span>
-<span class='line-number'>69</span>
-<span class='line-number'>70</span>
-<span class='line-number'>71</span>
-<span class='line-number'>72</span>
-<span class='line-number'>73</span>
-<span class='line-number'>74</span>
-<span class='line-number'>75</span>
-<span class='line-number'>76</span>
-<span class='line-number'>77</span>
-<span class='line-number'>78</span>
-<span class='line-number'>79</span>
-<span class='line-number'>80</span>
-<span class='line-number'>81</span>
-<span class='line-number'>82</span>
-<span class='line-number'>83</span>
-<span class='line-number'>84</span>
-<span class='line-number'>85</span>
-<span class='line-number'>86</span>
-<span class='line-number'>87</span>
-<span class='line-number'>88</span>
-<span class='line-number'>89</span>
-<span class='line-number'>90</span>
-<span class='line-number'>91</span>
-<span class='line-number'>92</span>
-<span class='line-number'>93</span>
-<span class='line-number'>94</span>
-<span class='line-number'>95</span>
-<span class='line-number'>96</span>
-<span class='line-number'>97</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>// x0 代表第一球中心x位置
-</span><span class='line'>// x1 代表第二球中心x位置
-</span><span class='line'>// y0 代表第一二球中心y位置
-</span><span class='line'>// grid 幾格
-</span><span class='line'>// dt 等待時間
-</span><span class='line'>
-</span><span class='line'>for 3
-</span><span class='line'>    x0 = 267
-</span><span class='line'>    x1 = 369
-</span><span class='line'>    y0 = 515
-</span><span class='line'>    grid = 2
-</span><span class='line'>    dt = 160
-</span><span class='line'>    call find()
-</span><span class='line'>next
-</span><span class='line'>
-</span><span class='line'>for 7
-</span><span class='line'>    x0 = 218
-</span><span class='line'>    x1 = 316
-</span><span class='line'>    y0 = 462
-</span><span class='line'>    grid = 3
-</span><span class='line'>    dt = 160
-</span><span class='line'>    call find()
-</span><span class='line'>next
-</span><span class='line'>
-</span><span class='line'>for 10
-</span><span class='line'>    x0 = 198
-</span><span class='line'>    x1 = 279
-</span><span class='line'>    y0 = 443
-</span><span class='line'>    grid = 4
-</span><span class='line'>    dt = 160
-</span><span class='line'>    call find()
-</span><span class='line'>next
-</span><span class='line'>
-</span><span class='line'>for 14
-</span><span class='line'>    x0 = 198
-</span><span class='line'>    x1 = 261    
-</span><span class='line'>    y0 = 446
-</span><span class='line'>    grid = 5
-</span><span class='line'>    dt = 160
-</span><span class='line'>    call find()
-</span><span class='line'>next
-</span><span class='line'>
-</span><span class='line'>for 13
-</span><span class='line'>    x0 = 187
-</span><span class='line'>    x1 = 240
-</span><span class='line'>    y0 = 431
-</span><span class='line'>    grid = 6
-</span><span class='line'>    dt = 160
-</span><span class='line'>    call find()
-</span><span class='line'>next
-</span><span class='line'>
-</span><span class='line'>for 200
-</span><span class='line'>    x0 = 182
-</span><span class='line'>    x1 = 227
-</span><span class='line'>    y0 = 427
-</span><span class='line'>    grid = 7
-</span><span class='line'>    dt = 30
-</span><span class='line'>    call find()
-</span><span class='line'>Next
-</span><span class='line'>
-</span><span class='line'>sub find()
-</span><span class='line'>    width = x1 - x0
-</span><span class='line'>    ws = grid * grid
-</span><span class='line'>    ci = 0
-</span><span class='line'>    Dim colors(49)
-</span><span class='line'>    For yi = 0 to grid-1
-</span><span class='line'>        For xi = 0 to grid-1
-</span><span class='line'>            x = x0 + xi * width
-</span><span class='line'>            y = y0 + yi * width
-</span><span class='line'>            ci = xi + yi * grid
-</span><span class='line'>            c = GetPixelColor(x, y)
-</span><span class='line'>            vbs colors(ci) = c
-</span><span class='line'>            if ci &gt;= 2 then
-</span><span class='line'>                if ci = 2 then
-</span><span class='line'>                    if colors(0) &lt;&gt; colors(1) and colors(0) &lt;&gt; colors(2)
-</span><span class='line'>                        ci = 0
-</span><span class='line'>                        goto click
-</span><span class='line'>                    elseif colors(1) &lt;&gt; colors(0) and colors(1) &lt;&gt; colors(2)
-</span><span class='line'>                        ci = 1
-</span><span class='line'>                        goto click
-</span><span class='line'>                    end if
-</span><span class='line'>                end if 
-</span><span class='line'>                if colors(ci) &lt;&gt; colors(ci-1) and colors(ci) &lt;&gt; colors(ci-2) then
-</span><span class='line'>                    moveto x, y
-</span><span class='line'>                    goto exitnext
-</span><span class='line'>                end if
-</span><span class='line'>            end if
-</span><span class='line'>        Next
-</span><span class='line'>    Next
-</span><span class='line'>    rem click
-</span><span class='line'>    y = ci \ grid
-</span><span class='line'>    x = ci mod grid
-</span><span class='line'>    MoveTo x0 + x * width, y0 + y * width
-</span><span class='line'>    rem exitnext
-</span><span class='line'>    LeftClick 1
-</span><span class='line'>    Delay dt
-</span><span class='line'>end sub
-</span></code></pre></td></tr></table></div></figure>
 
 ]]></content>
   </entry>

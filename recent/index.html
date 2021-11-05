@@ -40,28 +40,7 @@
 29
 30
 31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53 &hellip;">
+Private Sub CommandButton1_Click() Race = Array("英格蘭", "中國", "法蘭西 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -120,6 +99,98 @@
       <div class="blog-index">
   
 
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2021/11/03/button-to-rand/">Button_to_rand</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2021-11-03T20:28:59+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>3</span><span class='date-suffix'>rd</span>, <span class='date-year'>2021</span></span> <span class='time'>8:28 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Private Sub CommandButton1_Click()
+</span><span class='line'>
+</span><span class='line'>Race = Array("英格蘭", "中國", "法蘭西", "羅馬", "蒙古", "羅斯", "蘇丹", "阿拔斯")
+</span><span class='line'>
+</span><span class='line'>min = 400
+</span><span class='line'>max = min * Int(2 * Rnd() + 2)
+</span><span class='line'>mmax = max
+</span><span class='line'>
+</span><span class='line'>If Rnd() &gt; 0.5 Then
+</span><span class='line'>    temp = max
+</span><span class='line'>    max = min
+</span><span class='line'>    min = temp
+</span><span class='line'>End If
+</span><span class='line'>
+</span><span class='line'>CommandButton1.Enabled = False
+</span><span class='line'>
+</span><span class='line'>For I = 1 To mmax
+</span><span class='line'>    If min &gt;= I Then
+</span><span class='line'>        工作表1.Range("D9") = Race(Int((8) * Rnd()))
+</span><span class='line'>    End If
+</span><span class='line'>    If max &gt;= I Then
+</span><span class='line'>        工作表1.Range("I9") = Race(Int((8) * Rnd()))
+</span><span class='line'>    End If
+</span><span class='line'>Next I
+</span><span class='line'>
+</span><span class='line'>CommandButton1.Enabled = True
+</span><span class='line'>End Sub
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
+  
   
     <article>
       
@@ -811,66 +882,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2021/06/15/gong-zuo-pai-cheng/">工作排程器</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2021-06-15T16:52:08+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2021</span></span> <span class='time'>4:52 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3>taskschd.msc</h3>
-
-<h3>schtask</h3>
-
-<h5><a href="https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/schtasks-change">https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/schtasks-change</a></h5>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class='bat'><span class='line'><span class="n">//列出</span>
-</span><span class='line'>schtasks <span class="n">/query</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">//查詢LineSend</span>
-</span><span class='line'>schtasks <span class="n">/query</span> <span class="n">/fo</span> LIST <span class="n">/v</span> <span class="n">/tn</span> LineSend
-</span><span class='line'>
-</span><span class='line'>變更
-</span><span class='line'>schtasks <span class="n">/TN</span> LineSend <span class="n">/CHANGE</span> <span class="n">/ST</span> <span class="m">14</span><span class="nl">:00</span>
-</span><span class='line'>
-</span><span class='line'>不需密碼
-</span><span class='line'><span class="n">/RU</span> SYSTEM
-</span><span class='line'><span class="n">/ru</span> user <span class="n">/rp</span> passswd
-</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
     <a href="/blog/archives">Blog Archives</a>
@@ -885,7 +896,7 @@
        <li class='category'><a href='/blog/categories/app/'>app (38)</a></li>
 <li class='category'><a href='/blog/categories/bat/'>bat (12)</a></li>
 <li class='category'><a href='/blog/categories/cmd/'>cmd (2)</a></li>
-<li class='category'><a href='/blog/categories/excel/'>excel (2)</a></li>
+<li class='category'><a href='/blog/categories/excel/'>excel (3)</a></li>
 <li class='category'><a href='/blog/categories/gdrive/'>gdrive (1)</a></li>
 <li class='category'><a href='/blog/categories/go/'>go (1)</a></li>
 <li class='category'><a href='/blog/categories/golang/'>golang (10)</a></li>
@@ -905,6 +916,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2021/11/03/button-to-rand/">Button_to_rand</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2021/09/25/idbarcode/">IDBarcode</a>
       </li>
     
@@ -918,10 +933,6 @@
     
       <li class="post">
         <a href="/blog/2021/06/15/sound/">Countdown</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2021/06/15/gong-zuo-pai-cheng/">工作排程器</a>
       </li>
     
   </ul>
