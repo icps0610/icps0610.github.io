@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="https://icps0610.github.io/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2021-11-06T00:49:27+08:00</updated>
+  <updated>2021-11-06T09:57:30+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -46,34 +46,42 @@
 <span class='line-number'>26</span>
 <span class='line-number'>27</span>
 <span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>Private Sub CommandButton1_Click()
 </span><span class='line'>
-</span><span class='line'>Race = Array("英格蘭", "中國", "法蘭西", "羅馬", "蒙古", "羅斯", "蘇丹", "阿拔斯")
-</span><span class='line'>    
-</span><span class='line'>Dim p1, p2 As Integer
-</span><span class='line'>p1 = rand()
-</span><span class='line'>p2 = rand()
+</span><span class='line'>Dim min As Integer, max As Integer, p1 As Integer, p2 As Integer
+</span><span class='line'>
+</span><span class='line'>min = 300
+</span><span class='line'>max = 1500
+</span><span class='line'>
+</span><span class='line'>p1 = rand(min, max)
+</span><span class='line'>p2 = rand(min, max)
 </span><span class='line'>
 </span><span class='line'>CommandButton1.Enabled = False
 </span><span class='line'>
 </span><span class='line'>For i = 1 To 1500
 </span><span class='line'>    If p1 &gt;= i Then
-</span><span class='line'>        工作表1.Range("B9") = Race(Int((8) * Rnd()))
+</span><span class='line'>        工作表1.Range("B9") = Race()
 </span><span class='line'>    End If
 </span><span class='line'>    If p2 &gt;= i Then
-</span><span class='line'>        工作表1.Range("H9") = Race(Int((8) * Rnd()))
+</span><span class='line'>        工作表1.Range("H9") = Race()
 </span><span class='line'>    End If
 </span><span class='line'>Next i
 </span><span class='line'>
 </span><span class='line'>CommandButton1.Enabled = True
 </span><span class='line'>End Sub
 </span><span class='line'>
-</span><span class='line'>Private Function rand() As Integer
-</span><span class='line'>    Min = 500
-</span><span class='line'>    Max = 1500
-</span><span class='line'>    rand = Int((Max - Min + 1) * Rnd() + Min)
+</span><span class='line'>Private Function rand(min As Integer, max As Integer) As Integer
+</span><span class='line'>    rand = Int((max - min + 1) * Rnd() + min)
 </span><span class='line'>End Function
 </span><span class='line'>
+</span><span class='line'>Private Function Race() As String
+</span><span class='line'>    ype = Array("英格蘭", "中國", "法蘭西", "羅馬", "蒙古", "羅斯", "蘇丹", "阿拔斯")
+</span><span class='line'>    Race = ype(Int((8) * Rnd()))
+</span><span class='line'>End Function
 </span></code></pre></td></tr></table></div></figure>
 
 ]]></content>
