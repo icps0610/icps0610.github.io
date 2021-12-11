@@ -9,28 +9,25 @@ categories: app
 ### 常用
 ctrl + shift + L 多行模式
 ctrl + shift + n 遞增
-
-
-
 `%AppData%\Sublime Text 3\Packages\User\snippets`  
 
-sublime 3 
-- ChineseLocalizations 中文化
-- BracketHighlighter   括弧
-- Insert Nums          插入行號
 
-sublime 2
+sublime 34
 
-- 中文化  %APPDATA%\Sublime Text 2\Packages\Default
-- 安裝套件 https://sublime.wbond.net/installation
 - ctrl +shit+p，然後輸入install Package <enter>
-- 多行編輯 ctrl + shift + L  
-`beautifyruby`
+- ChineseLocalizations 中文化
+    {
+        "version": "1.11.7",
+        "language": "ZH_TW",
+    }
+- Insert Nums          插入行號  
+- gofmt                格式化GO語法   
+- Sublime-HTMLPrettify 格式化Html語法  
+- BracketHighlighter   括弧  
 
-`"default_line_ending": "unix"`
-
-<pre><code>{
+<pre><code>
 #user
+{
 "bracket_styles": {
  
     "default": {
@@ -93,9 +90,21 @@ SublimeLinter-ruby
 }
 ```
 
-### gofmt
-`https://packagecontrol.io/packages/Gofmt`
+
 
 
 ### 
-`%AppData%\Sublime Text 3\Packages\User\snippets`
+
+
+
+
+
+sublime 2
+
+- 中文化  %APPDATA%\Sublime Text 2\Packages\Default
+- 安裝套件 https://sublime.wbond.net/installation
+- ctrl +shit+p，然後輸入install Package <enter>
+- 多行編輯 ctrl + shift + L  
+`beautifyruby`
+
+`"default_line_ending": "unix"`

@@ -567,15 +567,17 @@ func getAfterDays(y, m, d, days int) (int, int, int) {
 
 ###### strip
 `strings.TrimSpace(str)`
-###### string <-> to_int
+###### string <-> int float64
 ``` go
-i, _ := strconv.Atoi(s)
+func toI(s string) int {
+    i, _ := strconv.Atoi(s)
+    return i
+}
 
-s := strconv.Itoa(i)
-```
-###### string <-> to_float
-``` go
-fn, _  := strconv.ParseFloat(cell, 64
+func toF(s string) float64 {
+    fn, _ := strconv.ParseFloat(s, 64)
+    return fn
+}
 ```
 ###### fill_zero
 ``` go
@@ -1239,25 +1241,45 @@ func mp3Play(path string, sec ...int) {
 "github.com/harry1453/go-common-file-dialog/cfd"
 "github.com/harry1453/go-common-file-dialog/cfdutil"
 
-func openFile() string {
-    result, _ := cfdutil.ShowOpenFileDialog(cfd.DialogConfig{
-        Title: "Open A xlsx File",
-        Role:  "Open A xlsx File",
-        FileFilters: []cfd.FileFilter{
-            {
-                DisplayName: "*.xlsx",
-                Pattern:     "*.xlsx",
-            },
-            {
-                DisplayName: "All Files (*.*)",
-                Pattern:     "*.*",
-            },
-        },
-        SelectedFileFilterIndex: 2,
-        FileName:                "*.xlsx",
-        DefaultExtension:        "xlsx",
-    })
+func pickFile(title string, ffs ...string) string {
+    var fileFilters []cfd.FileFilter
+    for _, f := range ffs {
+        fileFilters = append(fileFilters, cfd.FileFilter{f, f})
+    }
+    all := "*.*"
+    fileFilters = append(fileFilters, cfd.FileFilter{all, all})
+    selectedFileName := ffs[0]
+    defaultExtension := strings.Split(selectedFileName, ".")[0]
 
+    result, err := cfdutil.ShowOpenFileDialog(cfd.DialogConfig{
+        Title:       title,
+        Role:        "OpenFileExample",
+        FileFilters: fileFilters,
+
+        SelectedFileFilterIndex: 0,
+        FileName:                selectedFileName,
+        DefaultExtension:        defaultExtension,
+    })
+    if err != nil && err.Error() == "cancelled by user" {
+        fmt.Println("Dialog was cancelled by the user.")
+        os.Exit(0)
+    }
+    return result
+}
+
+func pickFolder() string {
+    pickFolderDialog, err := cfd.NewSelectFolderDialog(cfd.DialogConfig{
+        Title: "PickFolder",
+        Role:  "PickFolderExample",
+    })
+    printError(err)
+    err = pickFolderDialog.Show()
+    printError(err)
+    result, err := pickFolderDialog.GetResult()
+  if err != nil && err.Error() == "cancelled by user" {
+        fmt.Println("Dialog was cancelled by the user.")
+        os.Exit(0)
+    }
     return result
 }
 ``` 
