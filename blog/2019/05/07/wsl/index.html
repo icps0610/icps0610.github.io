@@ -21,8 +21,25 @@
 10
 11
 12
-13 #powershell run
-Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux # ms-windows-store &hellip;">
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+#static_ip
+sed -i '/wsl/d' /mnt/c/Windows/System32/drivers/etc/hosts &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -112,7 +129,39 @@ Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-L
 <span class='line-number'>11</span>
 <span class='line-number'>12</span>
 <span class='line-number'>13</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>#static_ip
+</span><span class='line'>sed -i '/wsl/d' /mnt/c/Windows/System32/drivers/etc/hosts 
+</span><span class='line'>echo "$(ifconfig eth0 | grep 'broadcast' | cut -d " " -f 10) wsl" &gt;&gt; /mnt/c/Windows/System32/drivers/etc/hosts
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>#重啟wsl
+</span><span class='line'>powershell -command "Get-Service LxssManager | Restart-Service"
+</span><span class='line'>
+</span><span class='line'>powershell -command "Disable-MMAgent -mc"
+</span><span class='line'>NET STOP "LxssManager"
+</span><span class='line'>powershell -command "Enable-MMAgent -mc"
+</span><span class='line'>NET START "LxssManager"
+</span><span class='line'>
+</span><span class='line'>#wsl init
+</span><span class='line'>powershell -command  wsl sudo /bin/bash /etc/init.sh
+</span><span class='line'>
+</span><span class='line'>
 </span><span class='line'>#powershell run
 </span><span class='line'>Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
 </span><span class='line'>
@@ -146,7 +195,7 @@ Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-L
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/linux/'>linux</a>
+    <a class='category' href='/blog/categories/win/'>win</a>
   
 </span>
 
@@ -186,19 +235,27 @@ Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-L
 <li class='category'><a href='/blog/categories/go/'>go (1)</a></li>
 <li class='category'><a href='/blog/categories/golang/'>golang (10)</a></li>
 <li class='category'><a href='/blog/categories/juniper/'>juniper (1)</a></li>
-<li class='category'><a href='/blog/categories/linux/'>linux (34)</a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (33)</a></li>
 <li class='category'><a href='/blog/categories/powershell/'>powershell (1)</a></li>
 <li class='category'><a href='/blog/categories/python/'>python (10)</a></li>
 <li class='category'><a href='/blog/categories/ror/'>ror (35)</a></li>
 <li class='category'><a href='/blog/categories/ruby/'>ruby (59)</a></li>
 <li class='category'><a href='/blog/categories/uncategorized/'>uncategorized (6)</a></li>
-<li class='category'><a href='/blog/categories/win/'>win (2)</a></li>
+<li class='category'><a href='/blog/categories/win/'>win (4)</a></li>
 
     </ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2021/11/27/autologin/">Autologin</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2021/11/26/trendmicro/">trendMicro</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2021/11/03/button-to-rand/">Button_to_rand</a>
@@ -210,14 +267,6 @@ Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-L
     
       <li class="post">
         <a href="/blog/2021/09/25/icon/">Icon</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2021/08/29/notify/">Notify</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2021/06/15/sound/">Countdown</a>
       </li>
     
   </ul>

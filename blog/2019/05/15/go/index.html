@@ -1103,21 +1103,26 @@
 
 <p><code>strings.TrimSpace(str)</code></p>
 
-<h6>string <-> to_int</h6>
+<h6>string <-> int float64</h6>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="nx">i</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">strconv</span><span class="p">.</span><span class="nx">Atoi</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kd">func</span> <span class="nx">toI</span><span class="p">(</span><span class="nx">s</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">i</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">strconv</span><span class="p">.</span><span class="nx">Atoi</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">return</span> <span class="nx">i</span>
+</span><span class='line'><span class="p">}</span>
 </span><span class='line'>
-</span><span class='line'><span class="nx">s</span> <span class="o">:=</span> <span class="nx">strconv</span><span class="p">.</span><span class="nx">Itoa</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h6>string <-> to_float</h6>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="nx">fn</span><span class="p">,</span> <span class="nx">_</span>  <span class="o">:=</span> <span class="nx">strconv</span><span class="p">.</span><span class="nx">ParseFloat</span><span class="p">(</span><span class="nx">cell</span><span class="p">,</span> <span class="mi">64</span>
+</span><span class='line'><span class="kd">func</span> <span class="nx">toF</span><span class="p">(</span><span class="nx">s</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">float64</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">fn</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">strconv</span><span class="p">.</span><span class="nx">ParseFloat</span><span class="p">(</span><span class="nx">s</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">return</span> <span class="nx">fn</span>
+</span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -2363,28 +2368,68 @@
 <span class='line-number'>22</span>
 <span class='line-number'>23</span>
 <span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
 </pre></td><td class='code'><pre><code class='go'><span class='line'><span class="s">&quot;github.com/harry1453/go-common-file-dialog/cfd&quot;</span>
 </span><span class='line'><span class="s">&quot;github.com/harry1453/go-common-file-dialog/cfdutil&quot;</span>
 </span><span class='line'>
-</span><span class='line'><span class="kd">func</span> <span class="nx">openFile</span><span class="p">()</span> <span class="kt">string</span> <span class="p">{</span>
-</span><span class='line'>    <span class="nx">result</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">cfdutil</span><span class="p">.</span><span class="nx">ShowOpenFileDialog</span><span class="p">(</span><span class="nx">cfd</span><span class="p">.</span><span class="nx">DialogConfig</span><span class="p">{</span>
-</span><span class='line'>        <span class="nx">Title</span><span class="p">:</span> <span class="s">&quot;Open A xlsx File&quot;</span><span class="p">,</span>
-</span><span class='line'>        <span class="nx">Role</span><span class="p">:</span>  <span class="s">&quot;Open A xlsx File&quot;</span><span class="p">,</span>
-</span><span class='line'>        <span class="nx">FileFilters</span><span class="p">:</span> <span class="p">[]</span><span class="nx">cfd</span><span class="p">.</span><span class="nx">FileFilter</span><span class="p">{</span>
-</span><span class='line'>            <span class="p">{</span>
-</span><span class='line'>                <span class="nx">DisplayName</span><span class="p">:</span> <span class="s">&quot;*.xlsx&quot;</span><span class="p">,</span>
-</span><span class='line'>                <span class="nx">Pattern</span><span class="p">:</span>     <span class="s">&quot;*.xlsx&quot;</span><span class="p">,</span>
-</span><span class='line'>            <span class="p">},</span>
-</span><span class='line'>            <span class="p">{</span>
-</span><span class='line'>                <span class="nx">DisplayName</span><span class="p">:</span> <span class="s">&quot;All Files (*.*)&quot;</span><span class="p">,</span>
-</span><span class='line'>                <span class="nx">Pattern</span><span class="p">:</span>     <span class="s">&quot;*.*&quot;</span><span class="p">,</span>
-</span><span class='line'>            <span class="p">},</span>
-</span><span class='line'>        <span class="p">},</span>
-</span><span class='line'>        <span class="nx">SelectedFileFilterIndex</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
-</span><span class='line'>        <span class="nx">FileName</span><span class="p">:</span>                <span class="s">&quot;*.xlsx&quot;</span><span class="p">,</span>
-</span><span class='line'>        <span class="nx">DefaultExtension</span><span class="p">:</span>        <span class="s">&quot;xlsx&quot;</span><span class="p">,</span>
-</span><span class='line'>    <span class="p">})</span>
+</span><span class='line'><span class="kd">func</span> <span class="nx">pickFile</span><span class="p">(</span><span class="nx">title</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">ffs</span> <span class="o">...</span><span class="kt">string</span><span class="p">)</span> <span class="kt">string</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">fileFilters</span> <span class="p">[]</span><span class="nx">cfd</span><span class="p">.</span><span class="nx">FileFilter</span>
+</span><span class='line'>    <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">f</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">ffs</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nx">fileFilters</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">fileFilters</span><span class="p">,</span> <span class="nx">cfd</span><span class="p">.</span><span class="nx">FileFilter</span><span class="p">{</span><span class="nx">f</span><span class="p">,</span> <span class="nx">f</span><span class="p">})</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="nx">all</span> <span class="o">:=</span> <span class="s">&quot;*.*&quot;</span>
+</span><span class='line'>    <span class="nx">fileFilters</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">fileFilters</span><span class="p">,</span> <span class="nx">cfd</span><span class="p">.</span><span class="nx">FileFilter</span><span class="p">{</span><span class="nx">all</span><span class="p">,</span> <span class="nx">all</span><span class="p">})</span>
+</span><span class='line'>    <span class="nx">selectedFileName</span> <span class="o">:=</span> <span class="nx">ffs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span><span class='line'>    <span class="nx">defaultExtension</span> <span class="o">:=</span> <span class="nx">strings</span><span class="p">.</span><span class="nx">Split</span><span class="p">(</span><span class="nx">selectedFileName</span><span class="p">,</span> <span class="s">&quot;.&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 </span><span class='line'>
+</span><span class='line'>    <span class="nx">result</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">cfdutil</span><span class="p">.</span><span class="nx">ShowOpenFileDialog</span><span class="p">(</span><span class="nx">cfd</span><span class="p">.</span><span class="nx">DialogConfig</span><span class="p">{</span>
+</span><span class='line'>        <span class="nx">Title</span><span class="p">:</span>       <span class="nx">title</span><span class="p">,</span>
+</span><span class='line'>        <span class="nx">Role</span><span class="p">:</span>        <span class="s">&quot;OpenFileExample&quot;</span><span class="p">,</span>
+</span><span class='line'>        <span class="nx">FileFilters</span><span class="p">:</span> <span class="nx">fileFilters</span><span class="p">,</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="nx">SelectedFileFilterIndex</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+</span><span class='line'>        <span class="nx">FileName</span><span class="p">:</span>                <span class="nx">selectedFileName</span><span class="p">,</span>
+</span><span class='line'>        <span class="nx">DefaultExtension</span><span class="p">:</span>        <span class="nx">defaultExtension</span><span class="p">,</span>
+</span><span class='line'>    <span class="p">})</span>
+</span><span class='line'>    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="o">&amp;&amp;</span> <span class="nx">err</span><span class="p">.</span><span class="nx">Error</span><span class="p">()</span> <span class="o">==</span> <span class="s">&quot;cancelled by user&quot;</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Dialog was cancelled by the user.&quot;</span><span class="p">)</span>
+</span><span class='line'>        <span class="nx">os</span><span class="p">.</span><span class="nx">Exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="k">return</span> <span class="nx">result</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">func</span> <span class="nx">pickFolder</span><span class="p">()</span> <span class="kt">string</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">pickFolderDialog</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">cfd</span><span class="p">.</span><span class="nx">NewSelectFolderDialog</span><span class="p">(</span><span class="nx">cfd</span><span class="p">.</span><span class="nx">DialogConfig</span><span class="p">{</span>
+</span><span class='line'>        <span class="nx">Title</span><span class="p">:</span> <span class="s">&quot;PickFolder&quot;</span><span class="p">,</span>
+</span><span class='line'>        <span class="nx">Role</span><span class="p">:</span>  <span class="s">&quot;PickFolderExample&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="p">})</span>
+</span><span class='line'>    <span class="nx">printError</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span><span class='line'>    <span class="nx">err</span> <span class="p">=</span> <span class="nx">pickFolderDialog</span><span class="p">.</span><span class="nx">Show</span><span class="p">()</span>
+</span><span class='line'>    <span class="nx">printError</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span><span class='line'>    <span class="nx">result</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">pickFolderDialog</span><span class="p">.</span><span class="nx">GetResult</span><span class="p">()</span>
+</span><span class='line'>  <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="o">&amp;&amp;</span> <span class="nx">err</span><span class="p">.</span><span class="nx">Error</span><span class="p">()</span> <span class="o">==</span> <span class="s">&quot;cancelled by user&quot;</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Dialog was cancelled by the user.&quot;</span><span class="p">)</span>
+</span><span class='line'>        <span class="nx">os</span><span class="p">.</span><span class="nx">Exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">}</span>
 </span><span class='line'>    <span class="k">return</span> <span class="nx">result</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
@@ -2503,19 +2548,27 @@
 <li class='category'><a href='/blog/categories/go/'>go (1)</a></li>
 <li class='category'><a href='/blog/categories/golang/'>golang (10)</a></li>
 <li class='category'><a href='/blog/categories/juniper/'>juniper (1)</a></li>
-<li class='category'><a href='/blog/categories/linux/'>linux (34)</a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (33)</a></li>
 <li class='category'><a href='/blog/categories/powershell/'>powershell (1)</a></li>
 <li class='category'><a href='/blog/categories/python/'>python (10)</a></li>
 <li class='category'><a href='/blog/categories/ror/'>ror (35)</a></li>
 <li class='category'><a href='/blog/categories/ruby/'>ruby (59)</a></li>
 <li class='category'><a href='/blog/categories/uncategorized/'>uncategorized (6)</a></li>
-<li class='category'><a href='/blog/categories/win/'>win (2)</a></li>
+<li class='category'><a href='/blog/categories/win/'>win (4)</a></li>
 
     </ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2021/11/27/autologin/">Autologin</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2021/11/26/trendmicro/">trendMicro</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2021/11/03/button-to-rand/">Button_to_rand</a>
@@ -2527,14 +2580,6 @@
     
       <li class="post">
         <a href="/blog/2021/09/25/icon/">Icon</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2021/08/29/notify/">Notify</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2021/06/15/sound/">Countdown</a>
       </li>
     
   </ul>
