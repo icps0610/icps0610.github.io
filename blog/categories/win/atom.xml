@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Win | icps]]></title>
   <link href="https://icps0610.github.io/blog/categories/win/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2021-12-27T04:12:28+08:00</updated>
+  <updated>2021-12-27T04:23:42+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,18 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Port]]></title>
+    <link href="https://icps0610.github.io/blog/2021/12/27/port/"/>
+    <updated>2021-12-27T04:17:58+08:00</updated>
+    <id>https://icps0610.github.io/blog/2021/12/27/port</id>
+    <content type="html"><![CDATA[<p>netstat -aon | findstr &lsquo;[port_number]&rsquo;
+tasklist | findstr &lsquo;[PID]&rsquo;</p>
+
+<p>netsh interface portproxy show all</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Autologin]]></title>

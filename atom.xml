@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="https://icps0610.github.io/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2021-12-27T04:12:28+08:00</updated>
+  <updated>2021-12-27T04:23:42+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,18 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Port]]></title>
+    <link href="https://icps0610.github.io/blog/2021/12/27/port/"/>
+    <updated>2021-12-27T04:17:58+08:00</updated>
+    <id>https://icps0610.github.io/blog/2021/12/27/port</id>
+    <content type="html"><![CDATA[<p>netstat -aon | findstr &lsquo;[port_number]&rsquo;
+tasklist | findstr &lsquo;[PID]&rsquo;</p>
+
+<p>netsh interface portproxy show all</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Port_app]]></title>
@@ -1161,28 +1173,6 @@ Ref <a href="https://www.raspberrypi.org/forums/viewtopic.php?t=121125">https://
     <id>https://icps0610.github.io/blog/2020/08/07/regedit</id>
     <content type="html"><![CDATA[<p><code>powershell Get-ItemProperty 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Run'</code>
 <code>powershell Get-ItemProperty 'HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Run'</code></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[U2_fb_id]]></title>
-    <link href="https://icps0610.github.io/blog/2020/07/18/u2_fb_id/"/>
-    <updated>2020-07-18T14:17:16+08:00</updated>
-    <id>https://icps0610.github.io/blog/2020/07/18/u2_fb_id</id>
-    <content type="html"><![CDATA[<blockquote><blockquote><p>ref <code>https://stackoverflow.com/questions/6903823/regex-for-youtube-id</code></p></blockquote></blockquote>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([A-Za-z0-9_-]{11})
-</span><span class='line'>
-</span><span class='line'>https:\/\/www\.facebook\.com\/(story\.php\?(story)_fbid=(\w+)\&id=(\w+)(\&|))
-</span><span class='line'>https:\/\/www\.facebook\.com\/(\w+)\/(videos|posts)\/([a-zA-Z0-9\.]+)
-</span><span class='line'>https:\/\/www\.facebook\.com\/((photo)\.php\?fbid=(\w+)(\&|)|(\w+)\/(photos)\/([a-zA-Z0-9\.]+))
-</span></code></pre></td></tr></table></div></figure>
-
 ]]></content>
   </entry>
   
