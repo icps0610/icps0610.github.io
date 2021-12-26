@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="https://icps0610.github.io/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2021-12-27T04:23:42+08:00</updated>
+  <updated>2021-12-27T04:25:44+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -18,10 +18,10 @@
     <link href="https://icps0610.github.io/blog/2021/12/27/port/"/>
     <updated>2021-12-27T04:17:58+08:00</updated>
     <id>https://icps0610.github.io/blog/2021/12/27/port</id>
-    <content type="html"><![CDATA[<p>netstat -aon | findstr &lsquo;[port_number]&rsquo;
-tasklist | findstr &lsquo;[PID]&rsquo;</p>
+    <content type="html"><![CDATA[<p><code>netstat -aon | findstr '[port_number]'</code><br/>
+<code>tasklist | findstr '[PID]'</code></p>
 
-<p>netsh interface portproxy show all</p>
+<p><code>netsh interface portproxy show all</code></p>
 ]]></content>
   </entry>
   
