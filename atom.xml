@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="https://icps0610.github.io/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2021-11-06T09:57:30+08:00</updated>
+  <updated>2021-12-27T03:56:46+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,74 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Port_app]]></title>
+    <link href="https://icps0610.github.io/blog/2021/12/12/port_app/"/>
+    <updated>2021-12-12T00:00:00+08:00</updated>
+    <id>https://icps0610.github.io/blog/2021/12/12/port_app</id>
+    <content type="html"><![CDATA[<p>netstat -aon | findstr &lsquo;[port_number]&rsquo;
+tasklist | findstr &lsquo;[PID]&rsquo;</p>
+
+<p>netsh interface portproxy show all</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Autologin]]></title>
+    <link href="https://icps0610.github.io/blog/2021/11/27/autologin/"/>
+    <updated>2021-11-27T06:44:09+08:00</updated>
+    <id>https://icps0610.github.io/blog/2021/11/27/autologin</id>
+    <content type="html"><![CDATA[<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Windows Registry Editor Version 5.00
+</span><span class='line'>
+</span><span class='line'>[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\PasswordLess\Device]
+</span><span class='line'>"DevicePasswordLessBuildVersion"=dword:00000000
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>Windows Registry Editor Version 5.00
+</span><span class='line'>
+</span><span class='line'>[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon]
+</span><span class='line'>"AutoAdminLogon"="1"
+</span><span class='line'>"DefaultUserName"="abc"
+</span><span class='line'>"DefaultPassword"="123"
+</span><span class='line'>
+</span><span class='line'>netplwiz</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[trendMicro]]></title>
+    <link href="https://icps0610.github.io/blog/2021/11/26/trendmicro/"/>
+    <updated>2021-11-26T03:43:39+08:00</updated>
+    <id>https://icps0610.github.io/blog/2021/11/26/trendmicro</id>
+    <content type="html"><![CDATA[<h3>另外一個版本的產品已被安裝</h3>
+
+<p>HKLM\SOFTWARE\Wow6432Node\TrendMicro
+HKLM\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\
+HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Installer\UserData\S-1-5-18\Products\</p>
+
+<h3>Error 1316</h3>
+
+<p><a href="https://success.trendmicro.com/solution/000283081">https://success.trendmicro.com/solution/000283081</a>
+HKLM\SOFTWARE\Classes\Installer\Products\1EFA14817AB44D447800A6FC68A0E81D\SourceList\
+PackageName  XXX.msi</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Button_to_rand]]></title>
@@ -1087,15 +1155,6 @@ Ref <a href="https://www.raspberrypi.org/forums/viewtopic.php?t=121125">https://
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[wsl_DISPLAY]]></title>
-    <link href="https://icps0610.github.io/blog/2020/08/15/wsl-display/"/>
-    <updated>2020-08-15T15:15:05+08:00</updated>
-    <id>https://icps0610.github.io/blog/2020/08/15/wsl-display</id>
-    <content type="html"><![CDATA[
-]]></content>
-  </entry>
-  
-  <entry>
     <title type="html"><![CDATA[Regedit]]></title>
     <link href="https://icps0610.github.io/blog/2020/08/07/regedit/"/>
     <updated>2020-08-07T10:59:54+08:00</updated>
@@ -1123,55 +1182,6 @@ Ref <a href="https://www.raspberrypi.org/forums/viewtopic.php?t=121125">https://
 </span><span class='line'>https:\/\/www\.facebook\.com\/(\w+)\/(videos|posts)\/([a-zA-Z0-9\.]+)
 </span><span class='line'>https:\/\/www\.facebook\.com\/((photo)\.php\?fbid=(\w+)(\&|)|(\w+)\/(photos)\/([a-zA-Z0-9\.]+))
 </span></code></pre></td></tr></table></div></figure>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Ubuntu]]></title>
-    <link href="https://icps0610.github.io/blog/2020/07/18/ubuntu/"/>
-    <updated>2020-07-18T05:12:46+08:00</updated>
-    <id>https://icps0610.github.io/blog/2020/07/18/ubuntu</id>
-    <content type="html"><![CDATA[<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>sudo apt install qrencode zbar-tools medusa hydra hydra-gtk john netcat-traditional bkhive samdump2 wifite nmap netdiscover chntpw git rdesktop gparted
-</span><span class='line'>
-</span><span class='line'>#nc -e option
-</span><span class='line'>rm /etc/alternatives/nc && ln -s /bin/nc.traditional /etc/alternatives/nc
-</span><span class='line'>
-</span><span class='line'>#移除
-</span><span class='line'>apt purge -y thunderbird  gnome-keyring empathy aisleriot  landscape-client-ui-install brasero
-</span></code></pre></td></tr></table></div></figure>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Xcom2]]></title>
-    <link href="https://icps0610.github.io/blog/2020/05/06/xcom2/"/>
-    <updated>2020-05-06T09:42:42+08:00</updated>
-    <id>https://icps0610.github.io/blog/2020/05/06/xcom2</id>
-    <content type="html"><![CDATA[<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>全部撤離         https://steamcommunity.com/sharedfiles/filedetails/?id=618669868
-</span><span class='line'>全部撤離 WOTC    https://steamcommunity.com/sharedfiles/filedetails/?id=1126395106
-</span><span class='line'>一鍵監視         https://steamcommunity.com/sharedfiles/filedetails/?id=621695447
-</span><span class='line'>一鍵監視 WOTC    https://steamcommunity.com/sharedfiles/filedetails/?id=1133368143
-</span><span class='line'>為了上面兩個     https://steamcommunity.com/sharedfiles/filedetails/?id=694455263
-</span><span class='line'>顯示黑市物品說明 https://steamcommunity.com/sharedfiles/filedetails/?id=648410303
-</span><span class='line'>血量數字化       https://steamcommunity.com/sharedfiles/filedetails/?id=617015579
-</span><span class='line'>血量數字化 WOTC  https://steamcommunity.com/sharedfiles/filedetails/?id=1123174832</span></code></pre></td></tr></table></div></figure>
 
 ]]></content>
   </entry>

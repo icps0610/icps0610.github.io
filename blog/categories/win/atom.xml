@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Win | icps]]></title>
   <link href="https://icps0610.github.io/blog/categories/win/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2021-11-06T09:57:30+08:00</updated>
+  <updated>2021-12-27T03:56:46+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,29 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Autologin]]></title>
+    <link href="https://icps0610.github.io/blog/2021/11/27/autologin/"/>
+    <updated>2021-11-27T06:44:09+08:00</updated>
+    <id>https://icps0610.github.io/blog/2021/11/27/autologin</id>
+    <content type="html"><![CDATA[<pre><code>Windows Registry Editor Version 5.00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\PasswordLess\Device]
+"DevicePasswordLessBuildVersion"=dword:00000000
+
+
+Windows Registry Editor Version 5.00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon]
+"AutoAdminLogon"="1"
+"DefaultUserName"="abc"
+"DefaultPassword"="123"
+
+netplwiz
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[工作排程器]]></title>
@@ -54,6 +77,44 @@ schtasks /TN LineSend /CHANGE /ST 14:00
 [HKEY_CLASSES_ROOT\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}]
 @="OneDrive"
 "System.IsPinnedToNameSpaceTree"=dword:00000000
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Wsl]]></title>
+    <link href="https://icps0610.github.io/blog/2019/05/07/wsl/"/>
+    <updated>2019-05-07T14:13:54+08:00</updated>
+    <id>https://icps0610.github.io/blog/2019/05/07/wsl</id>
+    <content type="html"><![CDATA[<pre><code class="">#static_ip
+sed -i '/wsl/d' /mnt/c/Windows/System32/drivers/etc/hosts 
+echo "$(ifconfig eth0 | grep 'broadcast' | cut -d " " -f 10) wsl" &gt;&gt; /mnt/c/Windows/System32/drivers/etc/hosts
+
+
+#重啟wsl
+powershell -command "Get-Service LxssManager | Restart-Service"
+
+powershell -command "Disable-MMAgent -mc"
+NET STOP "LxssManager"
+powershell -command "Enable-MMAgent -mc"
+NET START "LxssManager"
+
+#wsl init
+powershell -command  wsl sudo /bin/bash /etc/init.sh
+
+
+#powershell run
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
+
+# ms-windows-store://search/?query=WSL
+
+
+# x11
+apt-get install x11-apps
+echo "export DISPLAY=127.0.0.1:0" &gt;&gt; ~/.bashrc
+
+# terminal
+https://goreliu.github.io/wsl-terminal/
 </code></pre>
 ]]></content>
   </entry>

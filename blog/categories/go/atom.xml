@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Go | icps]]></title>
   <link href="https://icps0610.github.io/blog/categories/go/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2021-11-06T09:57:30+08:00</updated>
+  <updated>2021-12-27T03:56:46+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -18,17 +18,26 @@
     <link href="https://icps0610.github.io/blog/2019/05/15/go/"/>
     <updated>2019-05-15T15:34:10+08:00</updated>
     <id>https://icps0610.github.io/blog/2019/05/15/go</id>
-    <content type="html"><![CDATA[<h6>PrintError</h6>
+    <content type="html"><![CDATA[<h6>sleep</h6>
 
-<pre><code>"runtime"
+<pre><code class="go">time.Sleep(1 * time.Second)
 
-func printError(err error, str ...string) {
+func sleep(t int) {
+    time.Sleep(time.Duration(t) * time.Millisecond)
+}
+</code></pre>
+
+<h6>PrintError</h6>
+
+<pre><code class="go">"runtime"
+
+func PrintError(err error, str ...string) {
     if err != nil {
         pc, _, _, _ := runtime.Caller(1)
-        fmt.Println(runtime.FuncForPC(pc).Name())
-        fmt.Println(err)
+        fmt.Println(" - ", runtime.FuncForPC(pc).Name())
+        fmt.Println("   - ", err)
         for _, s := range str {
-            fmt.Println(s)
+            fmt.Println("     - ", s)
         }
     }
 }
@@ -57,21 +66,17 @@ GOOS=windows GOARCH=amd64 go build  -ldflags -H=windowsgui -o hello.exe hello.go
 
 <h5>run command</h5>
 
-<pre><code class="go">
-
-func runCmd(cmd string) {
+<pre><code class="go">func runCmd(cmd string) {
     c := exec.Command(cmd)
     _, err := c.Output()
     printError(err)
 }
 func runCmd(cmd string) {
     c, err := exec.Command("cmd", "/c", cmd).CombinedOutput()
-    fmt.Println()
     printError(err, string(c))
 }
 func runCmd(cmd string) {
     c, err := exec.Command("bash", "-c", cmd).CombinedOutput()
-    fmt.Println()
     printError(err, string(c))
 }
 </code></pre>
@@ -520,7 +525,15 @@ func timeFormat() string {
 
 <h6>unix</h6>
 
-<pre><code class="go">func unixTime(y, m, d, h, mi int) int {
+<pre><code class="go">// RFC822      = "02 Jan 06 15:04 MST"
+// RFC822Z     = "02 Jan 06 15:04 -0700"
+// RFC850      = "Monday, 02-Jan-06 15:04:05 MST"
+// RFC1123     = "Mon, 02 Jan 2006 15:04:05 MST"
+// RFC1123Z    = "Mon, 02 Jan 2006 15:04:05 -0700"
+// RFC3339     = "2006-01-02T15:04:05Z07:00"
+// RFC3339Nano = "2006-01-02T15:04:05.999999999Z07:00"
+
+func unixTime(y, m, d, h, mi int) int {
     date := fmt.Sprintf("%v-%.2v-%.2vT%.2v:%.2v:00.000Z", y, m, d, h, mi)
     t, _ := time.Parse(time.RFC3339, date)
     unix := t.Unix() - 60*60*8
@@ -580,16 +593,17 @@ func getAfterDays(y, m, d, days int) (int, int, int) {
 
 <p><code>strings.TrimSpace(str)</code></p>
 
-<h6>string <-> to_int</h6>
+<h6>string <-> int float64</h6>
 
-<pre><code class="go">i, _ := strconv.Atoi(s)
+<pre><code class="go">func to_i(s string) int {
+    i, _ := strconv.Atoi(s)
+    return i
+}
 
-s := strconv.Itoa(i)
-</code></pre>
-
-<h6>string <-> to_float</h6>
-
-<pre><code class="go">fn, _  := strconv.ParseFloat(cell, 64
+func to_f(s string) float64 {
+    fn, _ := strconv.ParseFloat(s, 64)
+    return fn
+}
 </code></pre>
 
 <h6>fill_zero</h6>
@@ -886,7 +900,7 @@ func arr1InclueArr2(arr1 []int, arr2 []int) bool {
 
 <h6>power</h6>
 
-<pre><code class="go">import "math"
+<pre><code class="go">"math"
 math.Pow(2, 5)
 
 func pow(n, p int) int {
@@ -942,6 +956,10 @@ func randNumInt(min, max int) int {
     rand.Seed(time.Now().UnixNano())
     return min + rand.Intn(max-min+1)
 }
+
+func randChr(array []string) string {
+    return array[rand.Intn(len(array))]
+}
 </code></pre>
 
 <h3>image</h3>
@@ -960,9 +978,8 @@ bounds := img.Bounds()
 width, height := bounds.Max.X, bounds.Max.Y
 
 pixel := rgbaToPixel(img.At(x, y).RGBA())
-</code></pre>
 
-<pre><code class="go">
+
   f, err = os.Open(input)
         img, _, err = image.Decode(f)
         if err != nil {
@@ -1079,15 +1096,6 @@ func sendKeys(page *agouti.Page, key string) {
  // F12         = "\uE03C", META       = "\uE03D", COMMAND  = "\uE03D"
 
 
-}
-</code></pre>
-
-<h6>sleep</h6>
-
-<pre><code class="go">time.Sleep(1 * time.Second)
-
-func sleep(t int) {
-    time.Sleep(time.Duration(t) * time.Millisecond)
 }
 </code></pre>
 
@@ -1259,25 +1267,45 @@ func mp3Play(path string, sec ...int) {
 <pre><code class="go">"github.com/harry1453/go-common-file-dialog/cfd"
 "github.com/harry1453/go-common-file-dialog/cfdutil"
 
-func openFile() string {
-    result, _ := cfdutil.ShowOpenFileDialog(cfd.DialogConfig{
-        Title: "Open A xlsx File",
-        Role:  "Open A xlsx File",
-        FileFilters: []cfd.FileFilter{
-            {
-                DisplayName: "*.xlsx",
-                Pattern:     "*.xlsx",
-            },
-            {
-                DisplayName: "All Files (*.*)",
-                Pattern:     "*.*",
-            },
-        },
-        SelectedFileFilterIndex: 2,
-        FileName:                "*.xlsx",
-        DefaultExtension:        "xlsx",
-    })
+func pickFile(title string, ffs ...string) string {
+    var fileFilters []cfd.FileFilter
+    for _, f := range ffs {
+        fileFilters = append(fileFilters, cfd.FileFilter{f, f})
+    }
+    all := "*.*"
+    fileFilters = append(fileFilters, cfd.FileFilter{all, all})
+    selectedFileName := ffs[0]
+    defaultExtension := strings.Split(selectedFileName, ".")[0]
 
+    result, err := cfdutil.ShowOpenFileDialog(cfd.DialogConfig{
+        Title:       title,
+        Role:        "OpenFileExample",
+        FileFilters: fileFilters,
+
+        SelectedFileFilterIndex: 0,
+        FileName:                selectedFileName,
+        DefaultExtension:        defaultExtension,
+    })
+    if err != nil &amp;&amp; err.Error() == "cancelled by user" {
+        fmt.Println("Dialog was cancelled by the user.")
+        os.Exit(0)
+    }
+    return result
+}
+
+func pickFolder() string {
+    pickFolderDialog, err := cfd.NewSelectFolderDialog(cfd.DialogConfig{
+        Title: "PickFolder",
+        Role:  "PickFolderExample",
+    })
+    printError(err)
+    err = pickFolderDialog.Show()
+    printError(err)
+    result, err := pickFolderDialog.GetResult()
+  if err != nil &amp;&amp; err.Error() == "cancelled by user" {
+        fmt.Println("Dialog was cancelled by the user.")
+        os.Exit(0)
+    }
     return result
 }
 </code></pre>
@@ -1311,6 +1339,22 @@ func genCode128(id string) {
     defer file.Close()
     png.Encode(file, img)
 }
+</code></pre>
+
+<h3>ssh</h3>
+
+<pre><code class="go">"github.com/sfreiberg/simplessh"
+
+client, err := simplessh.ConnectWithKeyFile("192.168.0.201:22", "icps", "/home/icps/.ssh/192.168.0.201")
+defer client.Close()
+printError(err)
+
+output, err := client.Exec("uptime")
+printError(err)
+fmt.Println(string(output))
+
+err = client.Upload("/tmdp/weatherTmp", "/tmp/123")
+printError(err)
 </code></pre>
 ]]></content>
   </entry>
