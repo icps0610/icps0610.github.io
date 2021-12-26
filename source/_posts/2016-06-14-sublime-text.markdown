@@ -14,7 +14,7 @@ ctrl + shift + n 遞增
 
 sublime 34
 
-- ctrl +shit+p，然後輸入install Package <enter>
+- ctrl + shit + p，然後輸入install Package <enter>
 - ChineseLocalizations 中文化
     {
         "version": "1.11.7",
@@ -24,6 +24,10 @@ sublime 34
 - gofmt                格式化GO語法   
 - Sublime-HTMLPrettify 格式化Html語法  
 - BracketHighlighter   括弧  
+
+- ctrl + shit + p , prv
+- Package Resource Viewer: Open Resource
+- go
 
 <pre><code>
 #user

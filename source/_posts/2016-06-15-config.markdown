@@ -115,3 +115,8 @@ iface eth0 inet static
 
 ```   
 
+### ssh
+###### Could not load host key: /etc/ssh/ssh_host_rsa_key  
+
+`ls -al /etc/ssh/ssh*key`  
+`sudo dpkg-reconfigure openssh-server`  

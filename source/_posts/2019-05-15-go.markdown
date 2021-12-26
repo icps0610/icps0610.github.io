@@ -6,17 +6,26 @@ comments: true
 categories: go
 ---
 
+###### sleep
+``` go
+time.Sleep(1 * time.Second)
+
+func sleep(t int) {
+    time.Sleep(time.Duration(t) * time.Millisecond)
+}
+```
+
 ###### PrintError
 ```
 "runtime"
 
-func printError(err error, str ...string) {
+func PrintError(err error, str ...string) {
     if err != nil {
         pc, _, _, _ := runtime.Caller(1)
-        fmt.Println(runtime.FuncForPC(pc).Name())
-        fmt.Println(err)
+        fmt.Println(" - ", runtime.FuncForPC(pc).Name())
+        fmt.Println("   - ", err)
         for _, s := range str {
-            fmt.Println(s)
+            fmt.Println("     - ", s)
         }
     }
 }
@@ -50,12 +59,10 @@ func runCmd(cmd string) {
 }
 func runCmd(cmd string) {
     c, err := exec.Command("cmd", "/c", cmd).CombinedOutput()
-    fmt.Println()
     printError(err, string(c))
 }
 func runCmd(cmd string) {
     c, err := exec.Command("bash", "-c", cmd).CombinedOutput()
-    fmt.Println()
     printError(err, string(c))
 }
 ```
@@ -506,6 +513,14 @@ func timeFormat() string {
 
 ###### unix
 ``` go
+// RFC822      = "02 Jan 06 15:04 MST"
+// RFC822Z     = "02 Jan 06 15:04 -0700"
+// RFC850      = "Monday, 02-Jan-06 15:04:05 MST"
+// RFC1123     = "Mon, 02 Jan 2006 15:04:05 MST"
+// RFC1123Z    = "Mon, 02 Jan 2006 15:04:05 -0700"
+// RFC3339     = "2006-01-02T15:04:05Z07:00"
+// RFC3339Nano = "2006-01-02T15:04:05.999999999Z07:00"
+    
 func unixTime(y, m, d, h, mi int) int {
     date := fmt.Sprintf("%v-%.2v-%.2vT%.2v:%.2v:00.000Z", y, m, d, h, mi)
     t, _ := time.Parse(time.RFC3339, date)
@@ -569,12 +584,12 @@ func getAfterDays(y, m, d, days int) (int, int, int) {
 `strings.TrimSpace(str)`
 ###### string <-> int float64
 ``` go
-func toI(s string) int {
+func to_i(s string) int {
     i, _ := strconv.Atoi(s)
     return i
 }
 
-func toF(s string) float64 {
+func to_f(s string) float64 {
     fn, _ := strconv.ParseFloat(s, 64)
     return fn
 }
@@ -915,6 +930,9 @@ func randNumInt(min, max int) int {
     return min + rand.Intn(max-min+1)
 }
 
+func randChr(array []string) string {
+    return array[rand.Intn(len(array))]
+}
 ```
 
 ### image
@@ -1053,14 +1071,6 @@ func sendKeys(page *agouti.Page, key string) {
  // F12         = "\uE03C", META       = "\uE03D", COMMAND  = "\uE03D"
 
 
-}
-```
-###### sleep
-``` go
-time.Sleep(1 * time.Second)
-
-func sleep(t int) {
-    time.Sleep(time.Duration(t) * time.Millisecond)
 }
 ```
 ##### table
@@ -1317,5 +1327,24 @@ func genCode128(id string) {
     png.Encode(file, img)
 }
 
+
+```
+
+
+### ssh
+
+``` go
+"github.com/sfreiberg/simplessh"
+
+client, err := simplessh.ConnectWithKeyFile("192.168.0.201:22", "icps", "/home/icps/.ssh/192.168.0.201")
+defer client.Close()
+printError(err)
+
+output, err := client.Exec("uptime")
+printError(err)
+fmt.Println(string(output))
+
+err = client.Upload("/tmdp/weatherTmp", "/tmp/123")
+printError(err)
 
 ```

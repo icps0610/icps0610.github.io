@@ -1,0 +1,5 @@
+netstat -aon | findstr '[port_number]'
+tasklist | findstr '[PID]'
+
+
+netsh interface portproxy show all
