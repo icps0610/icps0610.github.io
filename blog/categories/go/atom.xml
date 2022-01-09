@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Go | icps]]></title>
   <link href="https://icps0610.github.io/blog/categories/go/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2022-01-09T14:51:48+08:00</updated>
+  <updated>2022-01-09T14:53:11+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -83,21 +83,26 @@ func runCmd(cmd string) {
 
 <h5>ipconfig</h5>
 
-<pre><code class="go">ifaces, _ := net.Interfaces()
-// handle err
-for _, i := range ifaces {
-    addrs, _ := i.Addrs()
-    // handle err
-    for _, addr := range addrs {
-        var ip net.IP
-        switch v := addr.(type) {
-        case *net.IPNet:
-            ip = v.IP
-        case *net.IPAddr:
-            ip = v.IP
+<pre><code class="go">func getLocalIp() []string {
+    var result []string
+    ifaces, _ := net.Interfaces()
+    for _, i := range ifaces {
+        addrs, _ := i.Addrs()
+        for _, addr := range addrs {
+            var gip net.IP
+            switch v := addr.(type) {
+            case *net.IPNet:
+                gip = v.IP
+            case *net.IPAddr:
+                gip = v.IP
+            }
+            ip := gip.To4()
+            if ip != nil &amp;&amp; !ip.IsLoopback() {
+                result = append(result, ip.String())
+            }
         }
-        fmt.Println(ip)
     }
+    return result
 }
 </code></pre>
 
@@ -235,12 +240,12 @@ bufio.NewReader(os.Stdin).ReadBytes('\n')
 
 #save&amp;read
 
-func save(content, path string) {
+func saveFile(path, content string) {
     err := ioutil.WriteFile(path, []byte(content), 0644)
     printError(err)
 }
 
-func read(path string) string{
+func readFile(path string) string{
     dat, err := ioutil.ReadFile(path)
     printError(err)
     return string(dat)
@@ -262,13 +267,21 @@ import(
     "golang.org/x/text/encoding/traditionalchinese"
     "golang.org/x/text/transform"
 )
+
 "io/ioutil"
 "strings"
+"bytes"
 
 func readFile(path string) []string {
     dat, err := ioutil.ReadFile(path)
     printError(err)
     var lines []string
+    win16be := unicode.UTF16(unicode.BigEndian, unicode.IgnoreBOM)
+    utf16bom := unicode.BOMOverride(win16be.NewDecoder())
+    unicodeReader := transform.NewReader(bytes.NewReader(dat), utf16bom)
+    decoded, err := ioutil.ReadAll(unicodeReader)
+    printError(err)
+
     for _, l := range strings.Split(string(dat), "\n") {
         //str, _, _ := transform.String(traditionalchinese.Big5.NewDecoder(), str2)
         //str2, _, _ := transform.String(traditionalchinese.Big5.NewEncoder(), str)

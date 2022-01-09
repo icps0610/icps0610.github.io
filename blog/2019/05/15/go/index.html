@@ -222,21 +222,31 @@ time.Sleep(1 * time.Second) func sleep(t int) { time.Sleep(time.Duration(t) * ti
 <span class='line-number'>14</span>
 <span class='line-number'>15</span>
 <span class='line-number'>16</span>
-</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="nx">ifaces</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">net</span><span class="p">.</span><span class="nx">Interfaces</span><span class="p">()</span>
-</span><span class='line'><span class="c1">// handle err</span>
-</span><span class='line'><span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">i</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">ifaces</span> <span class="p">{</span>
-</span><span class='line'>    <span class="nx">addrs</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">i</span><span class="p">.</span><span class="nx">Addrs</span><span class="p">()</span>
-</span><span class='line'>    <span class="c1">// handle err</span>
-</span><span class='line'>    <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">addr</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">addrs</span> <span class="p">{</span>
-</span><span class='line'>        <span class="kd">var</span> <span class="nx">ip</span> <span class="nx">net</span><span class="p">.</span><span class="nx">IP</span>
-</span><span class='line'>        <span class="k">switch</span> <span class="nx">v</span> <span class="o">:=</span> <span class="nx">addr</span><span class="p">.(</span><span class="kd">type</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>        <span class="k">case</span> <span class="o">*</span><span class="nx">net</span><span class="p">.</span><span class="nx">IPNet</span><span class="p">:</span>
-</span><span class='line'>            <span class="nx">ip</span> <span class="p">=</span> <span class="nx">v</span><span class="p">.</span><span class="nx">IP</span>
-</span><span class='line'>        <span class="k">case</span> <span class="o">*</span><span class="nx">net</span><span class="p">.</span><span class="nx">IPAddr</span><span class="p">:</span>
-</span><span class='line'>            <span class="nx">ip</span> <span class="p">=</span> <span class="nx">v</span><span class="p">.</span><span class="nx">IP</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kd">func</span> <span class="nx">getLocalIp</span><span class="p">()</span> <span class="p">[]</span><span class="kt">string</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">result</span> <span class="p">[]</span><span class="kt">string</span>
+</span><span class='line'>    <span class="nx">ifaces</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">net</span><span class="p">.</span><span class="nx">Interfaces</span><span class="p">()</span>
+</span><span class='line'>    <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">i</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">ifaces</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nx">addrs</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">i</span><span class="p">.</span><span class="nx">Addrs</span><span class="p">()</span>
+</span><span class='line'>        <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">addr</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">addrs</span> <span class="p">{</span>
+</span><span class='line'>            <span class="kd">var</span> <span class="nx">gip</span> <span class="nx">net</span><span class="p">.</span><span class="nx">IP</span>
+</span><span class='line'>            <span class="k">switch</span> <span class="nx">v</span> <span class="o">:=</span> <span class="nx">addr</span><span class="p">.(</span><span class="kd">type</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>            <span class="k">case</span> <span class="o">*</span><span class="nx">net</span><span class="p">.</span><span class="nx">IPNet</span><span class="p">:</span>
+</span><span class='line'>                <span class="nx">gip</span> <span class="p">=</span> <span class="nx">v</span><span class="p">.</span><span class="nx">IP</span>
+</span><span class='line'>            <span class="k">case</span> <span class="o">*</span><span class="nx">net</span><span class="p">.</span><span class="nx">IPAddr</span><span class="p">:</span>
+</span><span class='line'>                <span class="nx">gip</span> <span class="p">=</span> <span class="nx">v</span><span class="p">.</span><span class="nx">IP</span>
+</span><span class='line'>            <span class="p">}</span>
+</span><span class='line'>            <span class="nx">ip</span> <span class="o">:=</span> <span class="nx">gip</span><span class="p">.</span><span class="nx">To4</span><span class="p">()</span>
+</span><span class='line'>            <span class="k">if</span> <span class="nx">ip</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="o">&amp;&amp;</span> <span class="p">!</span><span class="nx">ip</span><span class="p">.</span><span class="nx">IsLoopback</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>                <span class="nx">result</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">result</span><span class="p">,</span> <span class="nx">ip</span><span class="p">.</span><span class="nx">String</span><span class="p">())</span>
+</span><span class='line'>            <span class="p">}</span>
 </span><span class='line'>        <span class="p">}</span>
-</span><span class='line'>        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">ip</span><span class="p">)</span>
 </span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="k">return</span> <span class="nx">result</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
@@ -544,16 +554,24 @@ time.Sleep(1 * time.Second) func sleep(t int) { time.Sleep(time.Duration(t) * ti
 <span class='line-number'>62</span>
 <span class='line-number'>63</span>
 <span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
 </pre></td><td class='code'><pre><code class='go'><span class='line'><span class="s">&quot;io/ioutil&quot;</span>
 </span><span class='line'>
 </span><span class='line'><span class="err">#</span><span class="nx">save</span><span class="o">&amp;</span><span class="nx">read</span>
 </span><span class='line'>
-</span><span class='line'><span class="kd">func</span> <span class="nx">save</span><span class="p">(</span><span class="nx">content</span><span class="p">,</span> <span class="nx">path</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'><span class="kd">func</span> <span class="nx">saveFile</span><span class="p">(</span><span class="nx">path</span><span class="p">,</span> <span class="nx">content</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
 </span><span class='line'>    <span class="nx">err</span> <span class="o">:=</span> <span class="nx">ioutil</span><span class="p">.</span><span class="nx">WriteFile</span><span class="p">(</span><span class="nx">path</span><span class="p">,</span> <span class="p">[]</span><span class="nb">byte</span><span class="p">(</span><span class="nx">content</span><span class="p">),</span> <span class="mo">0644</span><span class="p">)</span>
 </span><span class='line'>    <span class="nx">printError</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
 </span><span class='line'><span class="p">}</span>
 </span><span class='line'>
-</span><span class='line'><span class="kd">func</span> <span class="nx">read</span><span class="p">(</span><span class="nx">path</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">string</span><span class="p">{</span>
+</span><span class='line'><span class="kd">func</span> <span class="nx">readFile</span><span class="p">(</span><span class="nx">path</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">string</span><span class="p">{</span>
 </span><span class='line'>    <span class="nx">dat</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">ioutil</span><span class="p">.</span><span class="nx">ReadFile</span><span class="p">(</span><span class="nx">path</span><span class="p">)</span>
 </span><span class='line'>    <span class="nx">printError</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
 </span><span class='line'>    <span class="k">return</span> <span class="nb">string</span><span class="p">(</span><span class="nx">dat</span><span class="p">)</span>
@@ -575,13 +593,21 @@ time.Sleep(1 * time.Second) func sleep(t int) { time.Sleep(time.Duration(t) * ti
 </span><span class='line'>    <span class="s">&quot;golang.org/x/text/encoding/traditionalchinese&quot;</span>
 </span><span class='line'>    <span class="s">&quot;golang.org/x/text/transform&quot;</span>
 </span><span class='line'><span class="p">)</span>
+</span><span class='line'>
 </span><span class='line'><span class="s">&quot;io/ioutil&quot;</span>
 </span><span class='line'><span class="s">&quot;strings&quot;</span>
+</span><span class='line'><span class="s">&quot;bytes&quot;</span>
 </span><span class='line'>
 </span><span class='line'><span class="kd">func</span> <span class="nx">readFile</span><span class="p">(</span><span class="nx">path</span> <span class="kt">string</span><span class="p">)</span> <span class="p">[]</span><span class="kt">string</span> <span class="p">{</span>
 </span><span class='line'>    <span class="nx">dat</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">ioutil</span><span class="p">.</span><span class="nx">ReadFile</span><span class="p">(</span><span class="nx">path</span><span class="p">)</span>
 </span><span class='line'>    <span class="nx">printError</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
 </span><span class='line'>    <span class="kd">var</span> <span class="nx">lines</span> <span class="p">[]</span><span class="kt">string</span>
+</span><span class='line'>    <span class="nx">win16be</span> <span class="o">:=</span> <span class="nx">unicode</span><span class="p">.</span><span class="nx">UTF16</span><span class="p">(</span><span class="nx">unicode</span><span class="p">.</span><span class="nx">BigEndian</span><span class="p">,</span> <span class="nx">unicode</span><span class="p">.</span><span class="nx">IgnoreBOM</span><span class="p">)</span>
+</span><span class='line'>    <span class="nx">utf16bom</span> <span class="o">:=</span> <span class="nx">unicode</span><span class="p">.</span><span class="nx">BOMOverride</span><span class="p">(</span><span class="nx">win16be</span><span class="p">.</span><span class="nx">NewDecoder</span><span class="p">())</span>
+</span><span class='line'>    <span class="nx">unicodeReader</span> <span class="o">:=</span> <span class="nx">transform</span><span class="p">.</span><span class="nx">NewReader</span><span class="p">(</span><span class="nx">bytes</span><span class="p">.</span><span class="nx">NewReader</span><span class="p">(</span><span class="nx">dat</span><span class="p">),</span> <span class="nx">utf16bom</span><span class="p">)</span>
+</span><span class='line'>    <span class="nx">decoded</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">ioutil</span><span class="p">.</span><span class="nx">ReadAll</span><span class="p">(</span><span class="nx">unicodeReader</span><span class="p">)</span>
+</span><span class='line'>    <span class="nx">printError</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span><span class='line'>
 </span><span class='line'>    <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">l</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">strings</span><span class="p">.</span><span class="nx">Split</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">dat</span><span class="p">),</span> <span class="s">&quot;\n&quot;</span><span class="p">)</span> <span class="p">{</span>
 </span><span class='line'>        <span class="c1">//str, _, _ := transform.String(traditionalchinese.Big5.NewDecoder(), str2)</span>
 </span><span class='line'>        <span class="c1">//str2, _, _ := transform.String(traditionalchinese.Big5.NewEncoder(), str)</span>
