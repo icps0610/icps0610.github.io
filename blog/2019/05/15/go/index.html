@@ -9,13 +9,7 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="sleep 1
-2
-3
-4
-5
-time.Sleep(1 * time.Second) func sleep(t int) { time.Sleep(time.Duration(t) * time.Millisecond)
-} PrintError 1
+  <meta name="description" content="PrintError 1
 2
 3
 4
@@ -25,7 +19,9 @@ time.Sleep(1 * time.Second) func sleep(t int) { time.Sleep(time.Duration(t) * ti
 8
 9
 10
-11 &hellip;">
+11
+12
+&quot;runtime&quot; func printError(err error, str ...string) { if err != nil { pc, _, _, _ := runtime.Caller(1 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -102,22 +98,7 @@ time.Sleep(1 * time.Second) func sleep(t int) { time.Sleep(time.Duration(t) * ti
   </header>
 
 
-<div class="entry-content"><h6>sleep</h6>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="mi">1</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="kd">func</span> <span class="nx">sleep</span><span class="p">(</span><span class="nx">t</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>    <span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Duration</span><span class="p">(</span><span class="nx">t</span><span class="p">)</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Millisecond</span><span class="p">)</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h6>PrintError</h6>
+<div class="entry-content"><h6>PrintError</h6>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -133,7 +114,7 @@ time.Sleep(1 * time.Second) func sleep(t int) { time.Sleep(time.Duration(t) * ti
 <span class='line-number'>12</span>
 </pre></td><td class='code'><pre><code class='go'><span class='line'><span class="s">&quot;runtime&quot;</span>
 </span><span class='line'>
-</span><span class='line'><span class="kd">func</span> <span class="nx">PrintError</span><span class="p">(</span><span class="nx">err</span> <span class="kt">error</span><span class="p">,</span> <span class="nx">str</span> <span class="o">...</span><span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'><span class="kd">func</span> <span class="nx">printError</span><span class="p">(</span><span class="nx">err</span> <span class="kt">error</span><span class="p">,</span> <span class="nx">str</span> <span class="o">...</span><span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
 </span><span class='line'>    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
 </span><span class='line'>        <span class="nx">pc</span><span class="p">,</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">runtime</span><span class="p">.</span><span class="nx">Caller</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 </span><span class='line'>        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot; - &quot;</span><span class="p">,</span> <span class="nx">runtime</span><span class="p">.</span><span class="nx">FuncForPC</span><span class="p">(</span><span class="nx">pc</span><span class="p">).</span><span class="nx">Name</span><span class="p">())</span>
@@ -142,6 +123,21 @@ time.Sleep(1 * time.Second) func sleep(t int) { time.Sleep(time.Duration(t) * ti
 </span><span class='line'>            <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;     - &quot;</span><span class="p">,</span> <span class="nx">s</span><span class="p">)</span>
 </span><span class='line'>        <span class="p">}</span>
 </span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h6>sleep</h6>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="mi">1</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">func</span> <span class="nx">sleep</span><span class="p">(</span><span class="nx">t</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">time</span><span class="p">.</span><span class="nx">Sleep</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">Duration</span><span class="p">(</span><span class="nx">t</span><span class="p">)</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Millisecond</span><span class="p">)</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Go | icps]]></title>
   <link href="https://icps0610.github.io/blog/categories/go/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2022-01-09T14:53:11+08:00</updated>
+  <updated>2022-01-09T15:18:29+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -18,20 +18,11 @@
     <link href="https://icps0610.github.io/blog/2019/05/15/go/"/>
     <updated>2019-05-15T15:34:10+08:00</updated>
     <id>https://icps0610.github.io/blog/2019/05/15/go</id>
-    <content type="html"><![CDATA[<h6>sleep</h6>
-
-<pre><code class="go">time.Sleep(1 * time.Second)
-
-func sleep(t int) {
-    time.Sleep(time.Duration(t) * time.Millisecond)
-}
-</code></pre>
-
-<h6>PrintError</h6>
+    <content type="html"><![CDATA[<h6>PrintError</h6>
 
 <pre><code class="go">"runtime"
 
-func PrintError(err error, str ...string) {
+func printError(err error, str ...string) {
     if err != nil {
         pc, _, _, _ := runtime.Caller(1)
         fmt.Println(" - ", runtime.FuncForPC(pc).Name())
@@ -40,6 +31,15 @@ func PrintError(err error, str ...string) {
             fmt.Println("     - ", s)
         }
     }
+}
+</code></pre>
+
+<h6>sleep</h6>
+
+<pre><code class="go">time.Sleep(1 * time.Second)
+
+func sleep(t int) {
+    time.Sleep(time.Duration(t) * time.Millisecond)
 }
 </code></pre>
 
