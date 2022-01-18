@@ -9,8 +9,10 @@
   <meta name="author" content="icps">
 
   
-  <meta name="description" content="apt-get install tesseract-ocr tesseract-ocr-chi-tra tesseract image.jpg out -l chi_tra
-">
+  <meta name="description" content="apt-get install tesseract-ocr tesseract-ocr-chi-tra tesseract image.jpg out -l chi_tra golang go get github.com/otiai10/gosseract/v2 1
+2
+3
+tessbridge &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -90,6 +92,23 @@
 <div class="entry-content"><p><code>apt-get install tesseract-ocr tesseract-ocr-chi-tra</code></p>
 
 <p><code>tesseract image.jpg out -l chi_tra</code></p>
+
+<h2>golang</h2>
+
+<p><code>go get github.com/otiai10/gosseract/v2</code></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>tessbridge.cpp:5:10: fatal error: leptonica/allheaders.h: No such file or directory
+</span><span class='line'> <span class="c">#include &lt;leptonica/allheaders.h&gt;</span>
+</span><span class='line'>          ^~~~~~~~~~~~~~~~~~~~~~~~
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>#</h2>
+
+<p><code>sudo apt install libtesseract-dev</code></p>
 </div>
 
 
@@ -143,7 +162,7 @@
   <h1>Categories</h1>
     <ul id="categories">
        <li class='category'><a href='/blog/categories/app/'>app (38)</a></li>
-<li class='category'><a href='/blog/categories/bat/'>bat (12)</a></li>
+<li class='category'><a href='/blog/categories/bat/'>bat (13)</a></li>
 <li class='category'><a href='/blog/categories/cmd/'>cmd (2)</a></li>
 <li class='category'><a href='/blog/categories/excel/'>excel (3)</a></li>
 <li class='category'><a href='/blog/categories/gdrive/'>gdrive (1)</a></li>
@@ -165,6 +184,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2022/01/18/auto-hide-taskbar/">Auto_hide_taskbar</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2021/12/27/port/">Port</a>
       </li>
     
@@ -178,10 +201,6 @@
     
       <li class="post">
         <a href="/blog/2021/11/03/button-to-rand/">Button_to_rand</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2021/09/25/idbarcode/">IDBarcode</a>
       </li>
     
   </ul>

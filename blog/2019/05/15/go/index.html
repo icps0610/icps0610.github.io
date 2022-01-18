@@ -117,7 +117,7 @@
 </span><span class='line'><span class="kd">func</span> <span class="nx">printError</span><span class="p">(</span><span class="nx">err</span> <span class="kt">error</span><span class="p">,</span> <span class="nx">str</span> <span class="o">...</span><span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
 </span><span class='line'>    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
 </span><span class='line'>        <span class="nx">pc</span><span class="p">,</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">runtime</span><span class="p">.</span><span class="nx">Caller</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-</span><span class='line'>        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot; - &quot;</span><span class="p">,</span> <span class="nx">runtime</span><span class="p">.</span><span class="nx">FuncForPC</span><span class="p">(</span><span class="nx">pc</span><span class="p">).</span><span class="nx">Name</span><span class="p">())</span>
+</span><span class='line'>        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot; -&gt; &quot;</span><span class="p">,</span> <span class="nx">runtime</span><span class="p">.</span><span class="nx">FuncForPC</span><span class="p">(</span><span class="nx">pc</span><span class="p">).</span><span class="nx">Name</span><span class="p">())</span>
 </span><span class='line'>        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;   - &quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
 </span><span class='line'>        <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">s</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">str</span> <span class="p">{</span>
 </span><span class='line'>            <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;     - &quot;</span><span class="p">,</span> <span class="nx">s</span><span class="p">)</span>
@@ -913,11 +913,41 @@
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
 </pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kd">func</span> <span class="nx">getImageSize</span><span class="p">(</span><span class="nx">file</span> <span class="kt">string</span><span class="p">)</span> <span class="p">(</span><span class="kt">string</span><span class="p">,</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
 </span><span class='line'>    <span class="nx">cmd</span> <span class="p">=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">`identify %s`</span><span class="p">,</span> <span class="nx">file</span><span class="p">)</span>
 </span><span class='line'>    <span class="nx">c</span> <span class="o">:=</span> <span class="nx">runCmd</span><span class="p">(</span><span class="nx">cmd</span><span class="p">)</span>
 </span><span class='line'>    <span class="nx">size</span> <span class="o">:=</span> <span class="nx">strings</span><span class="p">.</span><span class="nx">Split</span><span class="p">(</span><span class="nx">strings</span><span class="p">.</span><span class="nx">Split</span><span class="p">(</span><span class="nx">c</span><span class="p">,</span> <span class="s">&quot; &quot;</span><span class="p">)[</span><span class="mi">2</span><span class="p">],</span> <span class="s">&quot;x&quot;</span><span class="p">)</span>
 </span><span class='line'>    <span class="k">return</span> <span class="nx">size</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nx">size</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">func</span> <span class="nx">getImageSize</span><span class="p">(</span><span class="nx">path</span> <span class="kt">string</span><span class="p">)</span> <span class="p">(</span><span class="nx">image</span><span class="p">.</span><span class="nx">Image</span><span class="p">,</span> <span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">f</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Open</span><span class="p">(</span><span class="nx">path</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">defer</span> <span class="nx">f</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">im</span><span class="p">,</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">image</span><span class="p">.</span><span class="nx">DecodeConfig</span><span class="p">(</span><span class="nx">f</span><span class="p">)</span>
+</span><span class='line'>    <span class="nx">printError</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">ioReader</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Open</span><span class="p">(</span><span class="nx">path</span><span class="p">)</span>
+</span><span class='line'>    <span class="nx">printError</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">img</span><span class="p">,</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">image</span><span class="p">.</span><span class="nx">Decode</span><span class="p">(</span><span class="nx">ioReader</span><span class="p">)</span>
+</span><span class='line'>    <span class="nx">printError</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">return</span> <span class="nx">img</span><span class="p">,</span> <span class="nx">im</span><span class="p">.</span><span class="nx">Width</span><span class="p">,</span> <span class="nx">im</span><span class="p">.</span><span class="nx">Height</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
@@ -2618,7 +2648,7 @@
   <h1>Categories</h1>
     <ul id="categories">
        <li class='category'><a href='/blog/categories/app/'>app (38)</a></li>
-<li class='category'><a href='/blog/categories/bat/'>bat (12)</a></li>
+<li class='category'><a href='/blog/categories/bat/'>bat (13)</a></li>
 <li class='category'><a href='/blog/categories/cmd/'>cmd (2)</a></li>
 <li class='category'><a href='/blog/categories/excel/'>excel (3)</a></li>
 <li class='category'><a href='/blog/categories/gdrive/'>gdrive (1)</a></li>
@@ -2640,6 +2670,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2022/01/18/auto-hide-taskbar/">Auto_hide_taskbar</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2021/12/27/port/">Port</a>
       </li>
     
@@ -2653,10 +2687,6 @@
     
       <li class="post">
         <a href="/blog/2021/11/03/button-to-rand/">Button_to_rand</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2021/09/25/idbarcode/">IDBarcode</a>
       </li>
     
   </ul>

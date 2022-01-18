@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Go | icps]]></title>
   <link href="https://icps0610.github.io/blog/categories/go/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2022-01-09T15:18:29+08:00</updated>
+  <updated>2022-01-18T20:04:27+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -25,7 +25,7 @@
 func printError(err error, str ...string) {
     if err != nil {
         pc, _, _, _ := runtime.Caller(1)
-        fmt.Println(" - ", runtime.FuncForPC(pc).Name())
+        fmt.Println(" -&gt; ", runtime.FuncForPC(pc).Name())
         fmt.Println("   - ", err)
         for _, s := range str {
             fmt.Println("     - ", s)
@@ -468,6 +468,21 @@ func listFile(root string) []string {
     c := runCmd(cmd)
     size := strings.Split(strings.Split(c, " ")[2], "x")
     return size[0], size[1]
+}
+
+func getImageSize(path string) (image.Image, int, int) {
+    f, err := os.Open(path)
+    defer f.Close()
+
+    im, _, err := image.DecodeConfig(f)
+    printError(err)
+
+    ioReader, err := os.Open(path)
+    printError(err)
+
+    img, _, err := image.Decode(ioReader)
+    printError(err)
+    return img, im.Width, im.Height
 }
 </code></pre>
 

@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="https://icps0610.github.io/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2022-01-09T15:18:29+08:00</updated>
+  <updated>2022-01-18T20:04:27+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,40 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Auto_hide_taskbar]]></title>
+    <link href="https://icps0610.github.io/blog/2022/01/18/auto-hide-taskbar/"/>
+    <updated>2022-01-18T20:03:25+08:00</updated>
+    <id>https://icps0610.github.io/blog/2022/01/18/auto-hide-taskbar</id>
+    <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='bat'><span class='line'><span class="p">@</span><span class="k">echo</span> <span class="k">off</span>
+</span><span class='line'><span class="k">set</span> <span class="nv">logPath</span><span class="o">=</span><span class="s2">&quot;z:\taskbar.log&quot;</span>
+</span><span class='line'><span class="k">set</span> <span class="n">/p</span> log<span class="o">=</span>&lt; <span class="nv">%logPath%</span>
+</span><span class='line'><span class="k">set</span> <span class="nv">cmd1</span><span class="o">=</span><span class="s2">&quot;&amp;{$p=&#39;HKCU:SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\StuckRects3&#39;;$v=(Get-ItemProperty -Path $p).Settings;$v[8]=&quot;</span>
+</span><span class='line'><span class="k">set</span> <span class="nv">cmd2</span><span class="o">=</span><span class="s2">&quot;;&amp;Set-ItemProperty -Path $p -Name Settings -Value $v;&amp;Stop-Process -f -ProcessName explorer}&quot;</span>
+</span><span class='line'><span class="k">if</span> <span class="nv">%log%</span> <span class="o">==</span> <span class="m">1</span> (
+</span><span class='line'>    powershell -command <span class="nv">%cmd1%</span><span class="m">3</span><span class="nv">%cmd2%</span>
+</span><span class='line'>    <span class="k">echo</span> <span class="m">0</span> &gt; <span class="nv">%logPath%</span>
+</span><span class='line'>) <span class="k">else</span> (
+</span><span class='line'>    powershell -command <span class="nv">%cmd1%</span><span class="m">2</span><span class="nv">%cmd2%</span>
+</span><span class='line'>    <span class="k">echo</span> <span class="m">1</span> &gt; <span class="nv">%logPath%</span>
+</span><span class='line'>)
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Port]]></title>
@@ -1161,28 +1195,6 @@ Ref <a href="https://www.raspberrypi.org/forums/viewtopic.php?t=121125">https://
     <id>https://icps0610.github.io/blog/2020/08/07/regedit</id>
     <content type="html"><![CDATA[<p><code>powershell Get-ItemProperty 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Run'</code>
 <code>powershell Get-ItemProperty 'HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Run'</code></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[U2_fb_id]]></title>
-    <link href="https://icps0610.github.io/blog/2020/07/18/u2_fb_id/"/>
-    <updated>2020-07-18T14:17:16+08:00</updated>
-    <id>https://icps0610.github.io/blog/2020/07/18/u2_fb_id</id>
-    <content type="html"><![CDATA[<blockquote><blockquote><p>ref <code>https://stackoverflow.com/questions/6903823/regex-for-youtube-id</code></p></blockquote></blockquote>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([A-Za-z0-9_-]{11})
-</span><span class='line'>
-</span><span class='line'>https:\/\/www\.facebook\.com\/(story\.php\?(story)_fbid=(\w+)\&id=(\w+)(\&|))
-</span><span class='line'>https:\/\/www\.facebook\.com\/(\w+)\/(videos|posts)\/([a-zA-Z0-9\.]+)
-</span><span class='line'>https:\/\/www\.facebook\.com\/((photo)\.php\?fbid=(\w+)(\&|)|(\w+)\/(photos)\/([a-zA-Z0-9\.]+))
-</span></code></pre></td></tr></table></div></figure>
-
 ]]></content>
   </entry>
   

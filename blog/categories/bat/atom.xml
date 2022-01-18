@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Bat | icps]]></title>
   <link href="https://icps0610.github.io/blog/categories/bat/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2022-01-09T15:18:29+08:00</updated>
+  <updated>2022-01-18T20:04:27+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,28 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Auto_hide_taskbar]]></title>
+    <link href="https://icps0610.github.io/blog/2022/01/18/auto-hide-taskbar/"/>
+    <updated>2022-01-18T20:03:25+08:00</updated>
+    <id>https://icps0610.github.io/blog/2022/01/18/auto-hide-taskbar</id>
+    <content type="html"><![CDATA[<pre><code class="bat">
+@echo off
+set logPath="z:\taskbar.log"
+set /p log=&lt; %logPath%
+set cmd1="&amp;{$p='HKCU:SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\StuckRects3';$v=(Get-ItemProperty -Path $p).Settings;$v[8]="
+set cmd2=";&amp;Set-ItemProperty -Path $p -Name Settings -Value $v;&amp;Stop-Process -f -ProcessName explorer}"
+if %log% == 1 (
+    powershell -command %cmd1%3%cmd2%
+    echo 0 &gt; %logPath%
+) else (
+    powershell -command %cmd1%2%cmd2%
+    echo 1 &gt; %logPath%
+)
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[主機板型號]]></title>
@@ -81,21 +103,6 @@ FOR /F %%i in (ip.txt) do (
     )
 )
 </code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Route]]></title>
-    <link href="https://icps0610.github.io/blog/2016/06/18/route/"/>
-    <updated>2016-06-18T01:41:14+08:00</updated>
-    <id>https://icps0610.github.io/blog/2016/06/18/route</id>
-    <content type="html"><![CDATA[<pre><code>@echo off
-route delete 0.0.0.0
-route add 0.0.0.0 192.168.43.1 mask 0.0.0.0
-route print | find "0.0.0.0"
-ping 127.0.0.1 -n 10 > nul
-</code></pre>
-
 ]]></content>
   </entry>
   
