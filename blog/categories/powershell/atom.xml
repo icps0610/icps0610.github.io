@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Powershell | icps]]></title>
   <link href="https://icps0610.github.io/blog/categories/powershell/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2022-01-18T20:04:27+08:00</updated>
+  <updated>2022-03-12T12:52:31+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,22 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[scheduledTask]]></title>
+    <link href="https://icps0610.github.io/blog/2022/03/05/scheduledtask/"/>
+    <updated>2022-03-05T03:08:03+08:00</updated>
+    <id>https://icps0610.github.io/blog/2022/03/05/scheduledtask</id>
+    <content type="html"><![CDATA[<pre><code class="go">
+`Get-ScheduledTask -TaskPath \ | Get-ScheduledTaskInfo | Where { $_.TaskName -match "jdc"} | Format-Table -Property TaskName, LastRunTime, NextRunTime`  
+
+
+`schtasks /query  | findstr "jdc"`  
+</code></pre>
+
+<blockquote><blockquote><p>ref <a href="https://docs.microsoft.com/zh-tw/windows-server/administration/windows-commands/schtasks-query">https://docs.microsoft.com/zh-tw/windows-server/administration/windows-commands/schtasks-query</a></p></blockquote></blockquote>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[HIDScript]]></title>

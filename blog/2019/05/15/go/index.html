@@ -184,18 +184,54 @@
 <span class='line-number'>11</span>
 <span class='line-number'>12</span>
 <span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
 </pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kd">func</span> <span class="nx">runCmd</span><span class="p">(</span><span class="nx">cmd</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
 </span><span class='line'>    <span class="nx">c</span> <span class="o">:=</span> <span class="nx">exec</span><span class="p">.</span><span class="nx">Command</span><span class="p">(</span><span class="nx">cmd</span><span class="p">)</span>
 </span><span class='line'>    <span class="nx">_</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">c</span><span class="p">.</span><span class="nx">Output</span><span class="p">()</span>
 </span><span class='line'>    <span class="nx">printError</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
 </span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">func</span> <span class="nx">runCmd</span><span class="p">(</span><span class="nx">cmd</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">c</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">exec</span><span class="p">.</span><span class="nx">Command</span><span class="p">(</span><span class="s">&quot;bash&quot;</span><span class="p">,</span> <span class="s">&quot;-c&quot;</span><span class="p">,</span> <span class="nx">cmd</span><span class="p">).</span><span class="nx">CombinedOutput</span><span class="p">()</span>
+</span><span class='line'>    <span class="nx">printError</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nb">string</span><span class="p">(</span><span class="nx">c</span><span class="p">))</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
 </span><span class='line'><span class="kd">func</span> <span class="nx">runCmd</span><span class="p">(</span><span class="nx">cmd</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
 </span><span class='line'>    <span class="nx">c</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">exec</span><span class="p">.</span><span class="nx">Command</span><span class="p">(</span><span class="s">&quot;cmd&quot;</span><span class="p">,</span> <span class="s">&quot;/c&quot;</span><span class="p">,</span> <span class="nx">cmd</span><span class="p">).</span><span class="nx">CombinedOutput</span><span class="p">()</span>
 </span><span class='line'>    <span class="nx">printError</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nb">string</span><span class="p">(</span><span class="nx">c</span><span class="p">))</span>
 </span><span class='line'><span class="p">}</span>
-</span><span class='line'><span class="kd">func</span> <span class="nx">runCmd</span><span class="p">(</span><span class="nx">cmd</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>    <span class="nx">c</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">exec</span><span class="p">.</span><span class="nx">Command</span><span class="p">(</span><span class="s">&quot;bash&quot;</span><span class="p">,</span> <span class="s">&quot;-c&quot;</span><span class="p">,</span> <span class="nx">cmd</span><span class="p">).</span><span class="nx">CombinedOutput</span><span class="p">()</span>
+</span><span class='line'>
+</span><span class='line'><span class="s">&quot;bytes&quot;</span>
+</span><span class='line'><span class="s">&quot;golang.org/x/text/encoding/traditionalchinese&quot;</span>
+</span><span class='line'><span class="s">&quot;golang.org/x/text/transform&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">func</span> <span class="nx">RunPS</span><span class="p">(</span><span class="nx">cmd</span> <span class="kt">string</span><span class="p">)</span> <span class="p">[]</span><span class="kt">string</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">big5utf8</span> <span class="o">:=</span> <span class="kd">func</span><span class="p">(</span><span class="nx">str</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">string</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nx">reader</span> <span class="o">:=</span> <span class="nx">transform</span><span class="p">.</span><span class="nx">NewReader</span><span class="p">(</span><span class="nx">bytes</span><span class="p">.</span><span class="nx">NewReader</span><span class="p">([]</span><span class="nb">byte</span><span class="p">(</span><span class="nx">str</span><span class="p">)),</span> <span class="nx">traditionalchinese</span><span class="p">.</span><span class="nx">Big5</span><span class="p">.</span><span class="nx">NewDecoder</span><span class="p">())</span>
+</span><span class='line'>        <span class="nx">out</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">ioutil</span><span class="p">.</span><span class="nx">ReadAll</span><span class="p">(</span><span class="nx">reader</span><span class="p">)</span>
+</span><span class='line'>        <span class="k">return</span> <span class="nb">string</span><span class="p">(</span><span class="nx">out</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="nx">c</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">exec</span><span class="p">.</span><span class="nx">Command</span><span class="p">(</span><span class="s">&quot;powershell&quot;</span><span class="p">,</span> <span class="s">&quot;/c&quot;</span><span class="p">,</span> <span class="nx">cmd</span><span class="p">).</span><span class="nx">CombinedOutput</span><span class="p">()</span>
 </span><span class='line'>    <span class="nx">printError</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nb">string</span><span class="p">(</span><span class="nx">c</span><span class="p">))</span>
+</span><span class='line'>    <span class="nx">content</span> <span class="o">:=</span> <span class="nx">big5utf8</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">c</span><span class="p">))</span>
+</span><span class='line'>    <span class="k">return</span> <span class="nx">strings</span><span class="p">.</span><span class="nx">Split</span><span class="p">(</span><span class="nx">content</span><span class="p">,</span> <span class="s">&quot;\n&quot;</span><span class="p">)</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
@@ -555,9 +591,6 @@
 <span class='line-number'>67</span>
 <span class='line-number'>68</span>
 <span class='line-number'>69</span>
-<span class='line-number'>70</span>
-<span class='line-number'>71</span>
-<span class='line-number'>72</span>
 </pre></td><td class='code'><pre><code class='go'><span class='line'><span class="s">&quot;io/ioutil&quot;</span>
 </span><span class='line'>
 </span><span class='line'><span class="err">#</span><span class="nx">save</span><span class="o">&amp;</span><span class="nx">read</span>
@@ -618,17 +651,14 @@
 </span><span class='line'><span class="nx">c</span> <span class="o">:=</span> <span class="nb">string</span><span class="p">(</span><span class="nx">d</span><span class="p">)</span>
 </span><span class='line'>
 </span><span class='line'>
-</span><span class='line'><span class="kd">func</span> <span class="nx">appendFile</span><span class="p">(</span><span class="nx">path</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">data</span> <span class="p">[]</span><span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>    <span class="nx">f</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">OpenFile</span><span class="p">(</span><span class="nx">path</span><span class="p">,</span> <span class="nx">os</span><span class="p">.</span><span class="nx">O_APPEND</span><span class="p">|</span><span class="nx">os</span><span class="p">.</span><span class="nx">O_CREATE</span><span class="p">|</span><span class="nx">os</span><span class="p">.</span><span class="nx">O_WRONLY</span><span class="p">,</span> <span class="mo">0644</span><span class="p">)</span>
-</span><span class='line'>    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-</span><span class='line'>        <span class="nx">log</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
-</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="kd">func</span> <span class="nx">appendFile</span><span class="p">(</span><span class="nx">data</span> <span class="p">[]</span><span class="kt">string</span><span class="p">,</span> <span class="nx">path</span> <span class="kt">string</span> <span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">f</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">OpenFile</span><span class="p">(</span><span class="nx">path</span><span class="p">,</span> <span class="nx">os</span><span class="p">.</span><span class="nx">O_APPEND</span><span class="p">|</span><span class="nx">os</span><span class="p">.</span><span class="nx">O_CREATE</span><span class="p">|</span><span class="nx">os</span><span class="p">.</span><span class="nx">O_WRONLY</span><span class="p">,</span> <span class="mo">0666</span><span class="p">)</span>
+</span><span class='line'>    <span class="nx">printError</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
 </span><span class='line'>    <span class="k">defer</span> <span class="nx">f</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
 </span><span class='line'>
 </span><span class='line'>    <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">line</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">data</span> <span class="p">{</span>
-</span><span class='line'>        <span class="nx">f</span><span class="p">.</span><span class="nx">WriteString</span><span class="p">(</span><span class="nx">line</span> <span class="o">+</span> <span class="s">&quot;n&quot;</span><span class="p">)</span>
+</span><span class='line'>        <span class="nx">f</span><span class="p">.</span><span class="nx">WriteString</span><span class="p">(</span><span class="nx">line</span> <span class="o">+</span> <span class="s">&quot;\n&quot;</span><span class="p">)</span>
 </span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
@@ -1078,7 +1108,6 @@
 <span class='line-number'>15</span>
 <span class='line-number'>16</span>
 <span class='line-number'>17</span>
-<span class='line-number'>18</span>
 </pre></td><td class='code'><pre><code class='go'><span class='line'><span class="c1">// RFC822      = &quot;02 Jan 06 15:04 MST&quot;</span>
 </span><span class='line'><span class="c1">// RFC822Z     = &quot;02 Jan 06 15:04 -0700&quot;</span>
 </span><span class='line'><span class="c1">// RFC850      = &quot;Monday, 02-Jan-06 15:04:05 MST&quot;</span>
@@ -1087,15 +1116,14 @@
 </span><span class='line'><span class="c1">// RFC3339     = &quot;2006-01-02T15:04:05Z07:00&quot;</span>
 </span><span class='line'><span class="c1">// RFC3339Nano = &quot;2006-01-02T15:04:05.999999999Z07:00&quot;</span>
 </span><span class='line'>
-</span><span class='line'><span class="kd">func</span> <span class="nx">unixTime</span><span class="p">(</span><span class="nx">y</span><span class="p">,</span> <span class="nx">m</span><span class="p">,</span> <span class="nx">d</span><span class="p">,</span> <span class="nx">h</span><span class="p">,</span> <span class="nx">mi</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
-</span><span class='line'>    <span class="nx">date</span> <span class="o">:=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;%v-%.2v-%.2vT%.2v:%.2v:00.000Z&quot;</span><span class="p">,</span> <span class="nx">y</span><span class="p">,</span> <span class="nx">m</span><span class="p">,</span> <span class="nx">d</span><span class="p">,</span> <span class="nx">h</span><span class="p">,</span> <span class="nx">mi</span><span class="p">)</span>
+</span><span class='line'><span class="kd">func</span> <span class="nx">TimeTime</span><span class="p">(</span><span class="nx">day</span> <span class="kt">int</span><span class="p">)</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Time</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">date</span> <span class="o">:=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;%v-%02v-%02vT00:00:00.000+08:00&quot;</span><span class="p">,</span> <span class="nx">NowYear</span><span class="p">,</span> <span class="nx">NowMonth</span><span class="p">,</span> <span class="nx">day</span><span class="p">)</span>
 </span><span class='line'>    <span class="nx">t</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Parse</span><span class="p">(</span><span class="nx">time</span><span class="p">.</span><span class="nx">RFC3339</span><span class="p">,</span> <span class="nx">date</span><span class="p">)</span>
-</span><span class='line'>    <span class="nx">unix</span> <span class="o">:=</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Unix</span><span class="p">()</span> <span class="o">-</span> <span class="mi">60</span><span class="o">*</span><span class="mi">60</span><span class="o">*</span><span class="mi">8</span>
-</span><span class='line'>    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="nx">unix</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">return</span> <span class="nx">t</span>
 </span><span class='line'><span class="p">}</span>
-</span><span class='line'><span class="kd">func</span> <span class="nx">timeStamp</span><span class="p">(</span><span class="nx">utime</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">string</span> <span class="p">{</span>
-</span><span class='line'>    <span class="nx">t</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Unix</span><span class="p">(</span><span class="nb">int64</span><span class="p">(</span><span class="nx">utime</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
-</span><span class='line'>    <span class="k">return</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;%d/%02d/%02d&quot;</span><span class="p">,</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Year</span><span class="p">(),</span> <span class="nb">int</span><span class="p">(</span><span class="nx">t</span><span class="p">.</span><span class="nx">Month</span><span class="p">()),</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Day</span><span class="p">())</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">func</span> <span class="nx">UnixTime</span><span class="p">(</span><span class="nx">u</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Time</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="nx">u</span><span class="p">.</span><span class="nx">Unix</span><span class="p">())</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
@@ -1140,6 +1168,15 @@
 <span class='line-number'>36</span>
 <span class='line-number'>37</span>
 <span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
 </pre></td><td class='code'><pre><code class='go'><span class='line'><span class="kn">package</span> <span class="nx">main</span>
 </span><span class='line'>
 </span><span class='line'><span class="kn">import</span> <span class="p">(</span>
@@ -1177,6 +1214,15 @@
 </span><span class='line'>    <span class="nx">unix</span> <span class="o">:=</span> <span class="nb">int64</span><span class="p">(</span><span class="nx">unixTime</span><span class="p">(</span><span class="nx">y</span><span class="p">,</span> <span class="nx">m</span><span class="p">,</span> <span class="nx">d</span><span class="p">)</span> <span class="o">+</span> <span class="nx">days</span><span class="o">*</span><span class="mi">60</span><span class="o">*</span><span class="mi">60</span><span class="o">*</span><span class="mi">24</span> <span class="o">-</span> <span class="mi">60</span><span class="o">*</span><span class="mi">60</span><span class="o">*</span><span class="mi">8</span><span class="p">)</span>
 </span><span class='line'>    <span class="nx">t</span> <span class="o">:=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Unix</span><span class="p">(</span><span class="nx">unix</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 </span><span class='line'>    <span class="k">return</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Year</span><span class="p">(),</span> <span class="nb">int</span><span class="p">(</span><span class="nx">t</span><span class="p">.</span><span class="nx">Month</span><span class="p">()),</span> <span class="nx">t</span><span class="p">.</span><span class="nx">Day</span><span class="p">()</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="kd">func</span> <span class="nx">GetDays</span><span class="p">(</span><span class="nx">year</span><span class="p">,</span> <span class="nx">month</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">days</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">31</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">}</span>
+</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="nx">year</span><span class="o">%</span><span class="mi">4</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="nx">year</span><span class="o">%</span><span class="mi">100</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">||</span> <span class="p">(</span><span class="nx">year</span><span class="o">%</span><span class="mi">400</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="nx">year</span><span class="o">%</span><span class="mi">3200</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nx">days</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">=</span> <span class="mi">29</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="k">return</span> <span class="nx">days</span><span class="p">[</span><span class="nx">month</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
@@ -1438,6 +1484,49 @@
 
 
 <h3>array</h3>
+
+<h6>pop</h6>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="nx">words</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">words</span><span class="p">[:</span><span class="nx">idx</span><span class="p">],</span> <span class="nx">words</span><span class="p">[</span><span class="nx">idx</span><span class="o">+</span><span class="mi">1</span><span class="p">:]</span><span class="o">...</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">func</span> <span class="nx">remove</span><span class="p">(</span><span class="nx">words</span> <span class="p">[]</span><span class="kt">string</span><span class="p">,</span> <span class="nx">idxs</span> <span class="o">...</span><span class="kt">int</span><span class="p">)</span> <span class="p">[]</span><span class="kt">string</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">include</span> <span class="o">:=</span> <span class="kd">func</span><span class="p">(</span><span class="nx">idx</span> <span class="kt">int</span><span class="p">,</span> <span class="nx">idxs</span> <span class="p">[]</span><span class="kt">int</span><span class="p">)</span> <span class="kt">bool</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">i</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">idxs</span> <span class="p">{</span>
+</span><span class='line'>            <span class="k">if</span> <span class="nx">i</span> <span class="o">==</span> <span class="nx">idx</span> <span class="p">{</span>
+</span><span class='line'>                <span class="k">return</span> <span class="kc">true</span>
+</span><span class='line'>            <span class="p">}</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>        <span class="k">return</span> <span class="kc">false</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">result</span> <span class="p">[]</span><span class="kt">string</span>
+</span><span class='line'>    <span class="k">for</span> <span class="nx">idx</span><span class="p">,</span> <span class="nx">word</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">words</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">if</span> <span class="p">!</span><span class="nx">include</span><span class="p">(</span><span class="nx">idx</span><span class="p">,</span> <span class="nx">idxs</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>            <span class="nx">result</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">result</span><span class="p">,</span> <span class="nx">word</span><span class="p">)</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="k">return</span> <span class="nx">result</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
 
 <h6>eachSlice N part</h6>
 
@@ -2009,6 +2098,8 @@
 <span class='line-number'>102</span>
 <span class='line-number'>103</span>
 <span class='line-number'>104</span>
+<span class='line-number'>105</span>
+<span class='line-number'>106</span>
 </pre></td><td class='code'><pre><code class='go'><span class='line'><span class="s">&quot;github.com/anaskhan96/soup&quot;</span>
 </span><span class='line'><span class="s">&quot;fmt&quot;</span>
 </span><span class='line'><span class="s">&quot;io/ioutil&quot;</span>
@@ -2076,9 +2167,11 @@
 </span><span class='line'>
 </span><span class='line'><span class="p">}</span>
 </span><span class='line'>
-</span><span class='line'><span class="kd">func</span> <span class="nx">runJs</span><span class="p">(</span><span class="nx">page</span> <span class="o">*</span><span class="nx">agouti</span><span class="p">.</span><span class="nx">Page</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'><span class="kd">func</span> <span class="nx">runJs</span><span class="p">(</span><span class="nx">page</span> <span class="o">*</span><span class="nx">agouti</span><span class="p">.</span><span class="nx">Page</span><span class="p">)</span> <span class="kt">string</span><span class="p">{</span>
 </span><span class='line'>    <span class="nx">js</span> <span class="o">:=</span> <span class="s">`window.scrollTo(0,window.scrollY+window.innerHeight*.9);`</span>
-</span><span class='line'>    <span class="nx">page</span><span class="p">.</span><span class="nx">RunScript</span><span class="p">(</span><span class="nx">js</span><span class="p">,</span> <span class="kc">nil</span><span class="p">,</span> <span class="kc">nil</span><span class="p">)</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">text</span> <span class="kt">string</span>
+</span><span class='line'>    <span class="nx">page</span><span class="p">.</span><span class="nx">RunScript</span><span class="p">(</span><span class="nx">js</span><span class="p">,</span> <span class="kc">nil</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">text</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">return</span> <span class="nx">text</span>
 </span><span class='line'><span class="p">}</span>
 </span><span class='line'>
 </span><span class='line'><span class="kd">func</span> <span class="nx">sendKeys</span><span class="p">(</span><span class="nx">page</span> <span class="o">*</span><span class="nx">agouti</span><span class="p">.</span><span class="nx">Page</span><span class="p">,</span> <span class="nx">key</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
@@ -2595,6 +2688,31 @@
 </span><span class='line'><span class="nx">printError</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure>
 
+
+<h3>encoding big5</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="s">&quot;golang.org/x/text/transform&quot;</span>
+</span><span class='line'><span class="s">&quot;bytes&quot;</span>
+</span><span class='line'><span class="s">&quot;golang.org/x/text/encoding/traditionalchinese&quot;</span>
+</span><span class='line'><span class="s">&quot;io/ioutil&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">func</span> <span class="nx">big5utf8</span><span class="p">(</span><span class="nx">str</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">string</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">reader</span> <span class="o">:=</span> <span class="nx">transform</span><span class="p">.</span><span class="nx">NewReader</span><span class="p">(</span><span class="nx">bytes</span><span class="p">.</span><span class="nx">NewReader</span><span class="p">([]</span><span class="nb">byte</span><span class="p">(</span><span class="nx">str</span><span class="p">)),</span> <span class="nx">traditionalchinese</span><span class="p">.</span><span class="nx">Big5</span><span class="p">.</span><span class="nx">NewDecoder</span><span class="p">())</span>
+</span><span class='line'>    <span class="nx">out</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">ioutil</span><span class="p">.</span><span class="nx">ReadAll</span><span class="p">(</span><span class="nx">reader</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">return</span> <span class="nb">string</span><span class="p">(</span><span class="nx">out</span><span class="p">)</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
 </div>
 
 
@@ -2655,8 +2773,8 @@
 <li class='category'><a href='/blog/categories/go/'>go (1)</a></li>
 <li class='category'><a href='/blog/categories/golang/'>golang (10)</a></li>
 <li class='category'><a href='/blog/categories/juniper/'>juniper (1)</a></li>
-<li class='category'><a href='/blog/categories/linux/'>linux (33)</a></li>
-<li class='category'><a href='/blog/categories/powershell/'>powershell (1)</a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (34)</a></li>
+<li class='category'><a href='/blog/categories/powershell/'>powershell (2)</a></li>
 <li class='category'><a href='/blog/categories/python/'>python (10)</a></li>
 <li class='category'><a href='/blog/categories/ror/'>ror (35)</a></li>
 <li class='category'><a href='/blog/categories/ruby/'>ruby (59)</a></li>
@@ -2670,6 +2788,14 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2022/03/05/scheduledtask/">scheduledTask</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2022/01/31/newline/">Newline</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2022/01/18/auto-hide-taskbar/">Auto_hide_taskbar</a>
       </li>
     
@@ -2679,14 +2805,6 @@
     
       <li class="post">
         <a href="/blog/2021/11/27/autologin/">Autologin</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2021/11/26/trendmicro/">trendMicro</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2021/11/03/button-to-rand/">Button_to_rand</a>
       </li>
     
   </ul>

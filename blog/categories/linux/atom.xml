@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | icps]]></title>
   <link href="https://icps0610.github.io/blog/categories/linux/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2022-01-18T20:04:27+08:00</updated>
+  <updated>2022-03-12T12:52:31+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,15 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Newline]]></title>
+    <link href="https://icps0610.github.io/blog/2022/01/31/newline/"/>
+    <updated>2022-01-31T02:56:14+08:00</updated>
+    <id>https://icps0610.github.io/blog/2022/01/31/newline</id>
+    <content type="html"><![CDATA[<p><code>echo -e "\e[9m%s\e[0m"</code></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[cpuTemp_pi]]></title>
@@ -69,15 +78,6 @@ apt purge -y thunderbird  gnome-keyring empathy aisleriot  landscape-client-ui-i
 <blockquote><blockquote><p>ref <a href="https://blog.csdn.net/codemacket/article/details/77864770">https://blog.csdn.net/codemacket/article/details/77864770</a>
 <code>sudo umount /run/user/1000/gvfs</code>
 <code>rm -rf /run/user/1000/gvfs</code></p></blockquote></blockquote>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[特定APP不升級]]></title>
-    <link href="https://icps0610.github.io/blog/2020/03/19/upgrade-excludet-specific-package/"/>
-    <updated>2020-03-19T16:05:53+08:00</updated>
-    <id>https://icps0610.github.io/blog/2020/03/19/upgrade-excludet-specific-package</id>
-    <content type="html"><![CDATA[<p><code>apt-mark hold package-name</code></p>
 ]]></content>
   </entry>
   

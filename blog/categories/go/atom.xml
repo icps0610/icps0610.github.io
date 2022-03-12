@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Go | icps]]></title>
   <link href="https://icps0610.github.io/blog/categories/go/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2022-01-18T20:04:27+08:00</updated>
+  <updated>2022-03-12T12:52:31+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -71,13 +71,31 @@ GOOS=windows GOARCH=amd64 go build  -ldflags -H=windowsgui -o hello.exe hello.go
     _, err := c.Output()
     printError(err)
 }
+
+func runCmd(cmd string) {
+    c, err := exec.Command("bash", "-c", cmd).CombinedOutput()
+    printError(err, string(c))
+}
+
 func runCmd(cmd string) {
     c, err := exec.Command("cmd", "/c", cmd).CombinedOutput()
     printError(err, string(c))
 }
-func runCmd(cmd string) {
-    c, err := exec.Command("bash", "-c", cmd).CombinedOutput()
+
+"bytes"
+"golang.org/x/text/encoding/traditionalchinese"
+"golang.org/x/text/transform"
+
+func RunPS(cmd string) []string {
+    big5utf8 := func(str string) string {
+        reader := transform.NewReader(bytes.NewReader([]byte(str)), traditionalchinese.Big5.NewDecoder())
+        out, _ := ioutil.ReadAll(reader)
+        return string(out)
+    }
+    c, err := exec.Command("powershell", "/c", cmd).CombinedOutput()
     printError(err, string(c))
+    content := big5utf8(string(c))
+    return strings.Split(content, "\n")
 }
 </code></pre>
 
@@ -296,17 +314,14 @@ d, _ := utfutil.ReadFile("txt", utfutil.UTF8)
 c := string(d)
 
 
-func appendFile(path string, data []string) {
-    f, err := os.OpenFile(path, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
-    if err != nil {
-        log.Println(err)
-    }
+func appendFile(data []string, path string ) {
+    f, err := os.OpenFile(path, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0666)
+    printError(err)
     defer f.Close()
 
     for _, line := range data {
-        f.WriteString(line + "n")
+        f.WriteString(line + "\n")
     }
-
 }
 </code></pre>
 
@@ -561,15 +576,14 @@ func timeFormat() string {
 // RFC3339     = "2006-01-02T15:04:05Z07:00"
 // RFC3339Nano = "2006-01-02T15:04:05.999999999Z07:00"
 
-func unixTime(y, m, d, h, mi int) int {
-    date := fmt.Sprintf("%v-%.2v-%.2vT%.2v:%.2v:00.000Z", y, m, d, h, mi)
+func TimeTime(day int) time.Time {
+    date := fmt.Sprintf("%v-%02v-%02vT00:00:00.000+08:00", NowYear, NowMonth, day)
     t, _ := time.Parse(time.RFC3339, date)
-    unix := t.Unix() - 60*60*8
-    return int(unix)
+    return t
 }
-func timeStamp(utime int) string {
-    t := time.Unix(int64(utime), 0)
-    return fmt.Sprintf("%d/%02d/%02d", t.Year(), int(t.Month()), t.Day())
+
+func UnixTime(u time.Time) int {
+    return int(u.Unix())
 }
 </code></pre>
 
@@ -612,6 +626,15 @@ func getAfterDays(y, m, d, days int) (int, int, int) {
     unix := int64(unixTime(y, m, d) + days*60*60*24 - 60*60*8)
     t := time.Unix(unix, 0)
     return t.Year(), int(t.Month()), t.Day()
+}
+
+
+func GetDays(year, month int) {
+    days := []int{31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31}
+    if (year%4 == 0 &amp;&amp; year%100 != 0) || (year%400 == 0 &amp;&amp; year%3200 != 0) {
+        days[1] = 29
+    }
+    return days[month-1]
 }
 </code></pre>
 
@@ -759,6 +782,29 @@ func strIndexS(str string, bstr string) []int {
 </code></pre>
 
 <h3>array</h3>
+
+<h6>pop</h6>
+
+<pre><code class="go">words = append(words[:idx], words[idx+1:]...)
+
+func remove(words []string, idxs ...int) []string {
+    include := func(idx int, idxs []int) bool {
+        for _, i := range idxs {
+            if i == idx {
+                return true
+            }
+        }
+        return false
+    }
+    var result []string
+    for idx, word := range words {
+        if !include(idx, idxs) {
+            result = append(result, word)
+        }
+    }
+    return result
+}
+</code></pre>
 
 <h6>eachSlice N part</h6>
 
@@ -1088,9 +1134,11 @@ func main (){
 
 }
 
-func runJs(page *agouti.Page) {
+func runJs(page *agouti.Page) string{
     js := `window.scrollTo(0,window.scrollY+window.innerHeight*.9);`
-    page.RunScript(js, nil, nil)
+    var text string
+    page.RunScript(js, nil, &amp;text)
+    return text
 }
 
 func sendKeys(page *agouti.Page, key string) {
@@ -1383,6 +1431,20 @@ fmt.Println(string(output))
 
 err = client.Upload("/tmdp/weatherTmp", "/tmp/123")
 printError(err)
+</code></pre>
+
+<h3>encoding big5</h3>
+
+<pre><code class="go">"golang.org/x/text/transform"
+"bytes"
+"golang.org/x/text/encoding/traditionalchinese"
+"io/ioutil"
+
+func big5utf8(str string) string {
+    reader := transform.NewReader(bytes.NewReader([]byte(str)), traditionalchinese.Big5.NewDecoder())
+    out, _ := ioutil.ReadAll(reader)
+    return string(out)
+}
 </code></pre>
 ]]></content>
   </entry>

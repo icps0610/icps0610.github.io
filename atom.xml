@@ -4,7 +4,7 @@
   <title><![CDATA[icps]]></title>
   <link href="https://icps0610.github.io/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2022-01-18T20:04:27+08:00</updated>
+  <updated>2022-03-12T12:52:31+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -12,6 +12,35 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[scheduledTask]]></title>
+    <link href="https://icps0610.github.io/blog/2022/03/05/scheduledtask/"/>
+    <updated>2022-03-05T03:08:03+08:00</updated>
+    <id>https://icps0610.github.io/blog/2022/03/05/scheduledtask</id>
+    <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="s">`Get-ScheduledTask -TaskPath \ | Get-ScheduledTaskInfo | Where { $_.TaskName -match &quot;jdc&quot;} | Format-Table -Property TaskName, LastRunTime, NextRunTime`</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="s">`schtasks /query  | findstr &quot;jdc&quot;`</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<blockquote><blockquote><p>ref <a href="https://docs.microsoft.com/zh-tw/windows-server/administration/windows-commands/schtasks-query">https://docs.microsoft.com/zh-tw/windows-server/administration/windows-commands/schtasks-query</a></p></blockquote></blockquote>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Newline]]></title>
+    <link href="https://icps0610.github.io/blog/2022/01/31/newline/"/>
+    <updated>2022-01-31T02:56:14+08:00</updated>
+    <id>https://icps0610.github.io/blog/2022/01/31/newline</id>
+    <content type="html"><![CDATA[<p><code>echo -e "\e[9m%s\e[0m"</code></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Auto_hide_taskbar]]></title>
@@ -1156,45 +1185,6 @@ Ref <a href="https://www.raspberrypi.org/forums/viewtopic.php?t=121125">https://
     <updated>2020-10-01T17:03:54+08:00</updated>
     <id>https://icps0610.github.io/blog/2020/10/01/convert</id>
     <content type="html"><![CDATA[<p>convert [path] -trim +repage -quality 80 -resize &lsquo;800x600&rsquo; -gravity center -background transparent -extent 800x600 [path]</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Gdrive]]></title>
-    <link href="https://icps0610.github.io/blog/2020/09/30/gdrive/"/>
-    <updated>2020-09-30T12:24:48+08:00</updated>
-    <id>https://icps0610.github.io/blog/2020/09/30/gdrive</id>
-    <content type="html"><![CDATA[<p><code>https://github.com/prasmussen/gdrive</code></p>
-
-<blockquote><blockquote><p>ref <a href="https://atceiling.blogspot.com/2020/02/raspberry-pi-57google-drive.html">https://atceiling.blogspot.com/2020/02/raspberry-pi-57google-drive.html</a></p></blockquote></blockquote>
-
-<p><code>https://console.developers.google.com/</code></p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>##handlers_drive.go
-</span><span class='line'>
-</span><span class='line'>const ClientId = "ClientId"
-</span><span class='line'>const ClientSecret = "ClientSecret"
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p><code>go get github.com/prasmussen/gdrive</code>-
-<code>go build -ldflags '-w -s'</code>
-<code>sudo mv gdrive /usr/local/bin/gdrive</code>
-<code>sudo chmod a+x /usr/local/bin/gdrive</code></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Regedit]]></title>
-    <link href="https://icps0610.github.io/blog/2020/08/07/regedit/"/>
-    <updated>2020-08-07T10:59:54+08:00</updated>
-    <id>https://icps0610.github.io/blog/2020/08/07/regedit</id>
-    <content type="html"><![CDATA[<p><code>powershell Get-ItemProperty 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Run'</code>
-<code>powershell Get-ItemProperty 'HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Run'</code></p>
 ]]></content>
   </entry>
   

@@ -13,18 +13,7 @@
 2
 3
 4
-5
-6
-7
-8
-9
-10
-11
-12
-@echo off
-set logPath=&quot;z:\taskbar.log&quot;
-set /p log=&lt; %logPath%
-set cmd1=&quot;&amp;{$p=&#39;HKCU:SOFTWARE\ &hellip;">
+`Get-ScheduledTask -TaskPath \ | Get-ScheduledTaskInfo | Where { $_.TaskName -match &quot;jdc&quot;} | Format-Table -Property TaskName, &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -83,6 +72,75 @@ set cmd1=&quot;&amp;{$p=&#39;HKCU:SOFTWARE\ &hellip;">
       <div class="blog-index">
   
 
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2022/03/05/scheduledtask/">scheduledTask</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2022-03-05T03:08:03+08:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2022</span></span> <span class='time'>3:08 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='go'><span class='line'><span class="s">`Get-ScheduledTask -TaskPath \ | Get-ScheduledTaskInfo | Where { $_.TaskName -match &quot;jdc&quot;} | Format-Table -Property TaskName, LastRunTime, NextRunTime`</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="s">`schtasks /query  | findstr &quot;jdc&quot;`</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<blockquote><blockquote><p>ref <a href="https://docs.microsoft.com/zh-tw/windows-server/administration/windows-commands/schtasks-query">https://docs.microsoft.com/zh-tw/windows-server/administration/windows-commands/schtasks-query</a></p></blockquote></blockquote>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2022/01/31/newline/">Newline</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2022-01-31T02:56:14+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>31</span><span class='date-suffix'>st</span>, <span class='date-year'>2022</span></span> <span class='time'>2:56 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><code>echo -e "\e[9m%s\e[0m"</code></p>
+</div>
+  
+  
+
+
+    </article>
+  
   
     <article>
       
@@ -226,139 +284,6 @@ set cmd1=&quot;&amp;{$p=&#39;HKCU:SOFTWARE\ &hellip;">
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2021/11/26/trendmicro/">trendMicro</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2021-11-26T03:43:39+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2021</span></span> <span class='time'>3:43 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3>另外一個版本的產品已被安裝</h3>
-
-<p>HKLM\SOFTWARE\Wow6432Node\TrendMicro
-HKLM\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\
-HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Installer\UserData\S-1-5-18\Products\</p>
-
-<h3>Error 1316</h3>
-
-<p><a href="https://success.trendmicro.com/solution/000283081">https://success.trendmicro.com/solution/000283081</a>
-HKLM\SOFTWARE\Classes\Installer\Products\1EFA14817AB44D447800A6FC68A0E81D\SourceList\
-PackageName  XXX.msi</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2021/11/03/button-to-rand/">Button_to_rand</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2021-11-03T20:28:59+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>3</span><span class='date-suffix'>rd</span>, <span class='date-year'>2021</span></span> <span class='time'>8:28 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>Private Sub CommandButton1_Click()
-</span><span class='line'>
-</span><span class='line'>Dim min As Integer, max As Integer, p1 As Integer, p2 As Integer
-</span><span class='line'>
-</span><span class='line'>min = 300
-</span><span class='line'>max = 1500
-</span><span class='line'>
-</span><span class='line'>p1 = rand(min, max)
-</span><span class='line'>p2 = rand(min, max)
-</span><span class='line'>
-</span><span class='line'>CommandButton1.Enabled = False
-</span><span class='line'>
-</span><span class='line'>For i = 1 To 1500
-</span><span class='line'>    If p1 &gt;= i Then
-</span><span class='line'>        工作表1.Range("B9") = Race()
-</span><span class='line'>    End If
-</span><span class='line'>    If p2 &gt;= i Then
-</span><span class='line'>        工作表1.Range("H9") = Race()
-</span><span class='line'>    End If
-</span><span class='line'>Next i
-</span><span class='line'>
-</span><span class='line'>CommandButton1.Enabled = True
-</span><span class='line'>End Sub
-</span><span class='line'>
-</span><span class='line'>Private Function rand(min As Integer, max As Integer) As Integer
-</span><span class='line'>    rand = Int((max - min + 1) * Rnd() + min)
-</span><span class='line'>End Function
-</span><span class='line'>
-</span><span class='line'>Private Function Race() As String
-</span><span class='line'>    ype = Array("英格蘭", "中國", "法蘭西", "羅馬", "蒙古", "羅斯", "蘇丹", "阿拔斯")
-</span><span class='line'>    Race = ype(Int((8) * Rnd()))
-</span><span class='line'>End Function
-</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
     <a href="/blog/archives">Blog Archives</a>
@@ -378,8 +303,8 @@ PackageName  XXX.msi</p>
 <li class='category'><a href='/blog/categories/go/'>go (1)</a></li>
 <li class='category'><a href='/blog/categories/golang/'>golang (10)</a></li>
 <li class='category'><a href='/blog/categories/juniper/'>juniper (1)</a></li>
-<li class='category'><a href='/blog/categories/linux/'>linux (33)</a></li>
-<li class='category'><a href='/blog/categories/powershell/'>powershell (1)</a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (34)</a></li>
+<li class='category'><a href='/blog/categories/powershell/'>powershell (2)</a></li>
 <li class='category'><a href='/blog/categories/python/'>python (10)</a></li>
 <li class='category'><a href='/blog/categories/ror/'>ror (35)</a></li>
 <li class='category'><a href='/blog/categories/ruby/'>ruby (59)</a></li>
@@ -393,6 +318,14 @@ PackageName  XXX.msi</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2022/03/05/scheduledtask/">scheduledTask</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2022/01/31/newline/">Newline</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2022/01/18/auto-hide-taskbar/">Auto_hide_taskbar</a>
       </li>
     
@@ -402,14 +335,6 @@ PackageName  XXX.msi</p>
     
       <li class="post">
         <a href="/blog/2021/11/27/autologin/">Autologin</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2021/11/26/trendmicro/">trendMicro</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2021/11/03/button-to-rand/">Button_to_rand</a>
       </li>
     
   </ul>
