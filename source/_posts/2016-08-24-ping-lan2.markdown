@@ -8,13 +8,15 @@ categories: bat
 ``` bat
 @echo off
 SETLOCAL ENABLEDELAYEDEXPANSION
-set l=192.168.0
-for /l %%i in (1,1,254) do (
-   ping -n 1 -w 1 %l%.%%i > nul
+set lan=192.168.0
+set start=%1
+set stop=%2
+for /l %%i in (%start%,1,%stop%) do (
+   ping -n 1 -w 1 %lan%.%%i > nul
     if !errorlevel! == 0 (
-        echo %l%.%%i O
+        echo %lan%.%%i O
     ) else (
-        echo %l%.%%i X 
+        echo %lan%.%%i X
     )
 )
 ```

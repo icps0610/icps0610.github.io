@@ -7,12 +7,16 @@ categories: bat
 ---
 ### 把wifi網卡當作基地台
 <pre><code>@echo off
-netsh wlan set hostednetwork mode=allow ssid=<font color="red">wifi-name</font> key=<font color="red">12345</font>
-netsh wlan start hostednetwork
+netsh wlan set host mode=allow ssid=<font color="red">wifi-name</font> key=<font color="red">12345</font>
+netsh wlan start host
 echo ==============已經啟動 按任意鍵取消==============
 pause>nul
-netsh wlan stop hostednetwork
+netsh wlan stop host
 </code></pre>
 ### 顯示wifi密碼
 <pre><code>netsh wlan show profile name=<font color="red">wifi-name</font> key=clear
 </code></pre>
+
+```
+for /f "skip=9 tokens=1,2 delims=:" %i in ('netsh wlan show profiles') do @echo %j | netsh wlan show profiles %j key=clear | findstr "名稱 金鑰內容" | findstr /v "SSID"
+```

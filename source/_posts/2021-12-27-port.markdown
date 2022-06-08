@@ -1,0 +1,12 @@
+---
+layout: post
+title: "port"
+date: 2021-12-27 04:17:58 +0800
+comments: true
+categories: win
+---
+
+`netstat -aon | findstr '[port_number]'`  
+`tasklist | findstr '[PID]'`  
+
+`netsh interface portproxy show all`  

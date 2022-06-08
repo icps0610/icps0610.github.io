@@ -6,23 +6,14 @@ comments: true
 categories: go
 ---
 
-###### sleep
-``` go
-time.Sleep(1 * time.Second)
-
-func sleep(t int) {
-    time.Sleep(time.Duration(t) * time.Millisecond)
-}
-```
-
 ###### PrintError
-```
+``` go
 "runtime"
 
-func PrintError(err error, str ...string) {
+func printError(err error, str ...string) {
     if err != nil {
         pc, _, _, _ := runtime.Caller(1)
-        fmt.Println(" - ", runtime.FuncForPC(pc).Name())
+        fmt.Println(" -> ", runtime.FuncForPC(pc).Name())
         fmt.Println("   - ", err)
         for _, s := range str {
             fmt.Println("     - ", s)
@@ -32,6 +23,14 @@ func PrintError(err error, str ...string) {
 
 ```
 
+###### sleep
+``` go
+time.Sleep(1 * time.Second)
+
+func sleep(t int) {
+    time.Sleep(time.Duration(t) * time.Millisecond)
+}
+```
 ### cmd
 
 ###### toEXE  
@@ -50,40 +49,64 @@ GOOS=windows GOARCH=amd64 go build  -ldflags -H=windowsgui -o hello.exe hello.go
 `os.Args[1]`
 ##### run command
 ``` go
-
-
 func runCmd(cmd string) {
     c := exec.Command(cmd)
     _, err := c.Output()
     printError(err)
 }
-func runCmd(cmd string) {
-    c, err := exec.Command("cmd", "/c", cmd).CombinedOutput()
-    printError(err, string(c))
-}
+
 func runCmd(cmd string) {
     c, err := exec.Command("bash", "-c", cmd).CombinedOutput()
     printError(err, string(c))
 }
+
+func runCmd(cmd string) {
+    c, err := exec.Command("cmd", "/c", cmd).CombinedOutput()
+    printError(err, string(c))
+}
+
+"bytes"
+"golang.org/x/text/encoding/traditionalchinese"
+"golang.org/x/text/transform"
+
+func RunPS(cmd string) []string {
+    big5utf8 := func(str string) string {
+        reader := transform.NewReader(bytes.NewReader([]byte(str)), traditionalchinese.Big5.NewDecoder())
+        out, _ := ioutil.ReadAll(reader)
+        return string(out)
+    }
+    c, err := exec.Command("powershell", "/c", cmd).CombinedOutput()
+    printError(err, string(c))
+    content := big5utf8(string(c))
+    return strings.Split(content, "\n")
+}
+
+
 ```
 ##### ipconfig
 ``` go
-ifaces, _ := net.Interfaces()
-// handle err
-for _, i := range ifaces {
-    addrs, _ := i.Addrs()
-    // handle err
-    for _, addr := range addrs {
-        var ip net.IP
-        switch v := addr.(type) {
-        case *net.IPNet:
-            ip = v.IP
-        case *net.IPAddr:
-            ip = v.IP
+func getLocalIp() []string {
+    var result []string
+    ifaces, _ := net.Interfaces()
+    for _, i := range ifaces {
+        addrs, _ := i.Addrs()
+        for _, addr := range addrs {
+            var gip net.IP
+            switch v := addr.(type) {
+            case *net.IPNet:
+                gip = v.IP
+            case *net.IPAddr:
+                gip = v.IP
+            }
+            ip := gip.To4()
+            if ip != nil && !ip.IsLoopback() {
+                result = append(result, ip.String())
+            }
         }
-        fmt.Println(ip)
     }
+    return result
 }
+
 ```
 
 #####  checkUrl
@@ -143,6 +166,18 @@ func listFile(root string) []string {
     return files[1:]
 }
 
+"io/ioutil"
+
+func listFile(filePath string) []string {
+    var files []string
+    fs, err := ioutil.ReadDir(filePath)
+    printError(err)
+
+    for _, f := range fs {
+        files = append(files, f.Name())
+    }
+    return files
+}
 ```
 
 ``` go
@@ -174,6 +209,13 @@ func getScreenshot(page *agouti.Page, px, py, width, height int, imageName strin
     sleep(delay)
 }
 
+```
+```
+function getElementByXpath(path) {
+  return document.evaluate(path, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+}
+
+console.log( getElementByXpath("//div[11]//span") );
 ```
 
 ###### curl
@@ -223,12 +265,12 @@ bufio.NewReader(os.Stdin).ReadBytes('\n')
 
 #save&read
 
-func save(content, path string) {
+func saveFile(path, content string) {
     err := ioutil.WriteFile(path, []byte(content), 0644)
     printError(err)
 }
 
-func read(path string) string{
+func readFile(path string) string{
     dat, err := ioutil.ReadFile(path)
     printError(err)
     return string(dat)
@@ -250,13 +292,21 @@ import(
     "golang.org/x/text/encoding/traditionalchinese"
     "golang.org/x/text/transform"
 )
+
 "io/ioutil"
 "strings"
+"bytes"
 
 func readFile(path string) []string {
     dat, err := ioutil.ReadFile(path)
     printError(err)
     var lines []string
+    win16be := unicode.UTF16(unicode.BigEndian, unicode.IgnoreBOM)
+    utf16bom := unicode.BOMOverride(win16be.NewDecoder())
+    unicodeReader := transform.NewReader(bytes.NewReader(dat), utf16bom)
+    decoded, err := ioutil.ReadAll(unicodeReader)
+    printError(err)
+
     for _, l := range strings.Split(string(dat), "\n") {
         //str, _, _ := transform.String(traditionalchinese.Big5.NewDecoder(), str2)
         //str2, _, _ := transform.String(traditionalchinese.Big5.NewEncoder(), str)
@@ -271,21 +321,15 @@ d, _ := utfutil.ReadFile("txt", utfutil.UTF8)
 c := string(d)
 
 
-func appendFile(path string, data []string) {
-    f, err := os.OpenFile(path, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
-    if err != nil {
-        log.Println(err)
-    }
+func appendFile(data []string, path string ) {
+    f, err := os.OpenFile(path, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0666)
+    printError(err)
     defer f.Close()
 
     for _, line := range data {
-        f.WriteString(line + "n")
+        f.WriteString(line + "\n")
     }
-
 }
-
-
-
 
 ```
 >>ref https://stackoverflow.com/questions/20875336/how-can-i-get-a-files-ctime-atime-mtime-and-change-them
@@ -446,6 +490,21 @@ func getImageSize(file string) (string, string) {
     size := strings.Split(strings.Split(c, " ")[2], "x")
     return size[0], size[1]
 }
+
+func getImageSize(path string) (image.Image, int, int) {
+    f, err := os.Open(path)
+    defer f.Close()
+
+    im, _, err := image.DecodeConfig(f)
+    printError(err)
+
+    ioReader, err := os.Open(path)
+    printError(err)
+
+    img, _, err := image.Decode(ioReader)
+    printError(err)
+    return img, im.Width, im.Height
+}
 ```
 ### debug
 
@@ -520,18 +579,20 @@ func timeFormat() string {
 // RFC1123Z    = "Mon, 02 Jan 2006 15:04:05 -0700"
 // RFC3339     = "2006-01-02T15:04:05Z07:00"
 // RFC3339Nano = "2006-01-02T15:04:05.999999999Z07:00"
-    
-func unixTime(y, m, d, h, mi int) int {
-    date := fmt.Sprintf("%v-%.2v-%.2vT%.2v:%.2v:00.000Z", y, m, d, h, mi)
+
+func TimeTime(day int) time.Time {
+    date := fmt.Sprintf("%v-%02v-%02vT00:00:00.000+08:00", NowYear, NowMonth, day)
     t, _ := time.Parse(time.RFC3339, date)
-    unix := t.Unix() - 60*60*8
-    return int(unix)
-}
-func timeStamp(utime int) string {
-    t := time.Unix(int64(utime), 0)
-    return fmt.Sprintf("%d/%02d/%02d", t.Year(), int(t.Month()), t.Day())
+    return t
 }
 
+func getUnixTime(u time.Time) int {
+    return int(u.Unix())
+}
+
+func getTimetime() time.Time{
+    return  time.Unix(int64(respone.UTime), 0)
+}
 ```
 
 ##### date cal
@@ -573,6 +634,15 @@ func getAfterDays(y, m, d, days int) (int, int, int) {
     unix := int64(unixTime(y, m, d) + days*60*60*24 - 60*60*8)
     t := time.Unix(unix, 0)
     return t.Year(), int(t.Month()), t.Day()
+}
+
+
+func GetDays(year, month int) {
+    days := []int{31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31}
+    if (year%4 == 0 && year%100 != 0) || (year%400 == 0 && year%3200 != 0) {
+        days[1] = 29
+    }
+    return days[month-1]
 }
 
 ```
@@ -716,6 +786,30 @@ func strEachSlice(str string, l int) []string {
 
 
 ### array
+###### pop
+``` go
+words = append(words[:idx], words[idx+1:]...)
+
+func remove(words []string, idxs ...int) []string {
+    include := func(idx int, idxs []int) bool {
+        for _, i := range idxs {
+            if i == idx {
+                return true
+            }
+        }
+        return false
+    }
+    var result []string
+    for idx, word := range words {
+        if !include(idx, idxs) {
+            result = append(result, word)
+        }
+    }
+    return result
+}
+
+```
+
 ###### eachSlice N part
 ``` go
 func eachSlice(arr []string, l int) [][]string {
@@ -878,7 +972,7 @@ func arrCompare(a1, a2 []string) ([]string, []string, []string) {
 ### math
 ###### power
 ``` go
-import "math"
+"math"
 math.Pow(2, 5)
 
 func pow(n, p int) int {
@@ -952,8 +1046,6 @@ width, height := bounds.Max.X, bounds.Max.Y
 
 pixel := rgbaToPixel(img.At(x, y).RGBA())
 
-```
-``` go
 
   f, err = os.Open(input)
         img, _, err = image.Decode(f)
@@ -1035,9 +1127,11 @@ func main (){
 
 }
 
-func runJs(page *agouti.Page) {
+func runJs(page *agouti.Page) string{
     js := `window.scrollTo(0,window.scrollY+window.innerHeight*.9);`
-    page.RunScript(js, nil, nil)
+    var text string
+    page.RunScript(js, nil, &text)
+    return text
 }
 
 func sendKeys(page *agouti.Page, key string) {
@@ -1281,6 +1375,7 @@ func pickFolder() string {
     pickFolderDialog, err := cfd.NewSelectFolderDialog(cfd.DialogConfig{
         Title: "PickFolder",
         Role:  "PickFolderExample",
+        Folder: `Z:\`,
     })
     printError(err)
     err = pickFolderDialog.Show()
@@ -1347,4 +1442,19 @@ fmt.Println(string(output))
 err = client.Upload("/tmdp/weatherTmp", "/tmp/123")
 printError(err)
 
+```
+
+### encoding big5
+
+``` go
+"golang.org/x/text/transform"
+"bytes"
+"golang.org/x/text/encoding/traditionalchinese"
+"io/ioutil"
+
+func big5utf8(str string) string {
+    reader := transform.NewReader(bytes.NewReader([]byte(str)), traditionalchinese.Big5.NewDecoder())
+    out, _ := ioutil.ReadAll(reader)
+    return string(out)
+}
 ```
