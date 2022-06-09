@@ -3,7 +3,7 @@ layout: post
 title: "regedit"
 date: 2020-08-07 10:59:54 +0800
 comments: true
-categories: cmd
+categories: win
 ---
 
 `powershell Get-ItemProperty 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Run'`
