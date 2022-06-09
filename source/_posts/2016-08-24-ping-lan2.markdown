@@ -8,6 +8,17 @@ categories: bat
 ``` bat
 @echo off
 SETLOCAL ENABLEDELAYEDEXPANSION
+
+for /l %%i in (0,51,250) do (
+    set /a e=%%i+51
+    set /a s=%%i+1
+    
+    echo !s! !e!
+    start lan.bat !s! !e!
+)
+
+@echo off
+SETLOCAL ENABLEDELAYEDEXPANSION
 set lan=192.168.0
 set start=%1
 set stop=%2
@@ -19,6 +30,7 @@ for /l %%i in (%start%,1,%stop%) do (
         echo %lan%.%%i X
     )
 )
+exit
 ```
 
 ``` bat
