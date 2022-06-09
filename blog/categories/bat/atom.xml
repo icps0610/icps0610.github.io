@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Bat | icps]]></title>
   <link href="https://icps0610.github.io/blog/categories/bat/atom.xml" rel="self"/>
   <link href="https://icps0610.github.io/"/>
-  <updated>2022-03-12T12:52:31+08:00</updated>
+  <updated>2022-06-09T13:41:39+08:00</updated>
   <id>https://icps0610.github.io/</id>
   <author>
     <name><![CDATA[icps]]></name>
@@ -81,15 +81,29 @@ pause
     <id>https://icps0610.github.io/blog/2016/08/24/ping-lan2</id>
     <content type="html"><![CDATA[<pre><code class="bat">@echo off
 SETLOCAL ENABLEDELAYEDEXPANSION
-set l=192.168.0
-for /l %%i in (1,1,254) do (
-   ping -n 1 -w 1 %l%.%%i &gt; nul
+
+for /l %%i in (0,51,250) do (
+    set /a e=%%i+51
+    set /a s=%%i+1
+
+    echo !s! !e!
+    start lan.bat !s! !e!
+)
+
+@echo off
+SETLOCAL ENABLEDELAYEDEXPANSION
+set lan=192.168.0
+set start=%1
+set stop=%2
+for /l %%i in (%start%,1,%stop%) do (
+   ping -n 1 -w 1 %lan%.%%i &gt; nul
     if !errorlevel! == 0 (
-        echo %l%.%%i O
+        echo %lan%.%%i O
     ) else (
-        echo %l%.%%i X 
+        echo %lan%.%%i X
     )
 )
+exit
 </code></pre>
 
 <pre><code class="bat">@echo off
